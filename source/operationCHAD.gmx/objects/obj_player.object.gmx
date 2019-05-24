@@ -39,6 +39,7 @@ xspeed = 0;
 yspeed = 0;
 
 crouch = false;
+crouch_fall = false;
 double_jump = false;
 
 shoot_timer = 0;
@@ -123,7 +124,19 @@ if (recoil &gt; 0)
 // crouch/fall through floors
 if (crouch)
     {
-    if (!keyboard_check(global.key_down[0]))
+    if (keyboard_check(global.key_down[0]))
+        {
+        if (keyboard_check_pressed(global.key_up[0]))
+        and (on_ground and place_meeting(x,y+1,par_jt))
+        and (!place_meeting(x,y+1,par_solid))
+            {
+            // fall through jump through platform
+            crouch_fall = true;
+            on_ground = false;
+            y += 1;
+            }
+        }
+    else
         {
         if (!place_meeting(x,y-1,par_solid))
             {
@@ -135,21 +148,11 @@ if (crouch)
     }
 else
     {
-    if (keyboard_check_pressed(global.key_down[0]))
+    if (keyboard_check(global.key_down[0]))
         {
-        if (on_ground and place_meeting(x,y+1,par_jt))
-        and (!place_meeting(x,y+1,par_solid))
-            {
-            // fall through jump through platform
-            on_ground = false;
-            y += 1;
-            }
-        else
-            {
-            // crouch
-            crouch = true;
-            mask_index = msk_player_crouch;
-            }
+        // crouch
+        crouch = true;
+        mask_index = msk_player_crouch;
         }
     }
 
@@ -203,7 +206,15 @@ if (on_ground)
     {
     if (abs(xspeed) &gt; 0)
         {
-        if (sprite_index != spr_player_walk)
+        if (crouch)
+            {
+            if (sprite_index != spr_player_crouch_walk)
+                {
+                sprite_index = spr_player_crouch_walk;
+                image_index = 0;
+                }
+            }
+        else if (sprite_index != spr_player_walk)
             {
             sprite_index = spr_player_walk;
             image_index = 0;
@@ -217,7 +228,15 @@ if (on_ground)
         }
     else
         {
-        if (sprite_index != spr_player_idle)
+        if (crouch)
+            {
+            if (sprite_index != spr_player_crouch_idle)
+                {
+                sprite_index = spr_player_crouch_idle;
+                image_index = 0;
+                }
+            }
+        else if (sprite_index != spr_player_idle)
             {
             sprite_index = spr_player_idle;
             image_index = 0;
@@ -226,7 +245,12 @@ if (on_ground)
     }
 else
     {
-    if (sprite_index != spr_player_walk)
+    if (crouch)
+        {
+        if (sprite_index != spr_player_crouch_walk)
+            sprite_index = spr_player_crouch_walk;
+        }
+    else if (sprite_index != spr_player_walk)
         sprite_index = spr_player_walk;
     
     if (yspeed &lt; 0)
@@ -235,33 +259,38 @@ else
         image_index = 5;
     }
 
-// jump
-if (keyboard_check_pressed(global.key_up[0]))
+if (crouch_fall)
+    crouch_fall = false;
+else
     {
-    if (on_ground)
+    // jump
+    if (keyboard_check_pressed(global.key_up[0]))
         {
-        // first jump
-        on_ground = false;
-        yspeed = -7;
-        
-        repeat(5)
+        if (on_ground)
             {
-            var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
-            inst.direction = choose(0,180)+random_range(-15,15);
-            inst.speed = 4+random(2);
+            // first jump
+            on_ground = false;
+            yspeed = -7;
+            
+            repeat(5)
+                {
+                var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
+                inst.direction = choose(0,180)+random_range(-15,15);
+                inst.speed = 4+random(2);
+                }
             }
-        }
-    else if (double_jump)
-        {
-        // double jump
-        double_jump = false;
-        yspeed = -7;
-        
-        repeat(5)
+        else if (double_jump)
             {
-            var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
-            inst.direction = choose(0,180)+random_range(-15,15);
-            inst.speed = 3+random(2);
+            // double jump
+            double_jump = false;
+            yspeed = -7;
+            
+            repeat(5)
+                {
+                var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
+                inst.direction = choose(0,180)+random_range(-15,15);
+                inst.speed = 3+random(2);
+                }
             }
         }
     }
