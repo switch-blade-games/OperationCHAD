@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>x1 = x;
-y1 = y-32;
+y1 = y;
 x2 = x;
-y2 = y+32;
+y2 = y;
 
 spd = 1;
 dir = 1;
@@ -106,12 +106,18 @@ x += ldx;
 with(par_actor)
     {
     if (place_meeting(x,y+1,other))
+    and !(place_meeting(x,y+1,par_jt) and !place_meeting(x,y,par_jt))
         {
         on_actor[on_actors] = id;
         on_actors++;
         
         if (!place_meeting(x+other.ldx,y,par_solid))
+            {
+            if (object_index == obj_player) and (move_state == mState.hang)
+                move_state = mState.walk;
+
             x += other.ldx;
+            }
         }
     else
         {
@@ -121,7 +127,12 @@ with(par_actor)
         if (place_meeting(x-other.ldx,y,other))
             {
             if (!place_meeting(x+other.ldx,y,par_solid))
+                {
+                if (object_index == obj_player) and (move_state == mState.hang)
+                    move_state = mState.walk;
+                
                 x += other.ldx;
+                }
             }
         }
     }
@@ -133,7 +144,12 @@ for(var i=0; i&lt;on_actors; i++;)
     with(on_actor[i])
         {
         if (!place_meeting(x,y+other.ldy,par_solid))
+            {
+            if (object_index == obj_player) and (move_state == mState.hang)
+                move_state = mState.walk;
+            
             y += other.ldy;
+            }
         }
     }
 
@@ -144,7 +160,12 @@ for(var i=0; i&lt;off_actors; i++;)
         if (place_meeting(x,y-other.ldy,other))
             {
             if (!place_meeting(x,y+other.ldy,par_solid))
+                {
+                if (object_index == obj_player) and (move_state == mState.hang)
+                    move_state = mState.walk;
+                
                 y += other.ldy;
+                }
             }
         }
     }

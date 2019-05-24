@@ -98,7 +98,7 @@ apply_input();
 animate();
 collide();
 
-arm_pos = -2 + (move_state == mState.crouch)*8;
+arm_pos = -2 + (move_state == mState.crouch)*6;
 
 // weapon
 if (shoot_timer &gt; 0)

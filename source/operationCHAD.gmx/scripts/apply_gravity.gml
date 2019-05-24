@@ -16,7 +16,23 @@ switch(move_state)
         
         // gravity
         if !(on_ground)
+            {
+            if (yspeed > 0) and (!keyboard_check(global.key_down[0]))
+                {
+                var inst = instance_place(x,y,par_mb);
+                if (inst != noone)
+                    {
+                    if (bbox_top >= inst.bbox_top)
+                        {
+                        move_state = mState.hang;
+                        yspeed = 0;
+                        
+                        y = inst.bbox_top+24;
+                        }
+                    }
+                }
             yspeed += grav;
+            }
         break;
     
     case mState.hang:
