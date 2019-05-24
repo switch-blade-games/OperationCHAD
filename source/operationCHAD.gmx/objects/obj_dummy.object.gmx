@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>sprite_index = choose(spr_character_pumpkin,spr_character_yoloswag,spr_character_stonetoss);
 image_speed = 0;
-image_xscale = choose(-1,1);
+dir = choose(-1,1);
 </string>
           </argument>
         </arguments>
