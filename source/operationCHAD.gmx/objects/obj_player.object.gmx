@@ -25,25 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index = spr_player_walk;
+            <string>// player move states
+enum mState
+    {
+    idle,
+    walk,
+    hang,
+    climb,
+    crouch
+    }
+
+// weapon stats
+weapons = 0;
+weapon_name[weapons] = "Rifle";
+weapon_auto[weapons] = true;
+weapon_time[weapons] = 9;
+weapon_kick[weapons] = 4;
+weapon_pspd[weapons] = 12;
+weapon_proj[weapons] = obj_bullet;
+weapon_case[weapons] = obj_casing;
+weapons++;
+
+// player animation
+sprite_index = spr_player_walk;
 image_speed = 0;
 image_index = 0;
 
-face = 1;
-aim = 0;
-dir = 1;
-
+// player position/physics
 grav = 0.4;
 fric = 1;
 xspeed = 0;
 yspeed = 0;
 
-crouch = false;
-crouch_fall = false;
+// player motion state/flags
+move_state = mState.walk;
 double_jump = false;
 
+// player direction
+face = 1;
+aim = 0;
+dir = 1;
+
+// player weapon
+cur_weapon = 0;
 shoot_timer = 0;
 recoil = 0;
+arm_pos = 0;
 </string>
           </argument>
         </arguments>
@@ -66,295 +93,18 @@ recoil = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// aim and face the mouse
-/*
-aim = point_direction(x,y,mouse_x,mouse_y);
-aim = round(aim/45)*45;
-if (mouse_x &gt;= x)
-    face = +1;
-else
-    face = -1;
-*/
+            <string>apply_gravity();
+apply_input();
+animate();
+collide();
 
-if (mouse_check_button(mb_left))
-    {
-    if (shoot_timer == 0)
-        {
-        shoot_timer = 9;
-        recoil = 4;
-        
-        // aim vector
-        var ldx = lengthdir_x(1,aim);
-        var ldy = lengthdir_y(1,aim);
-        
-        // bullet
-        var inst = instance_create(x+ldx*16,y+crouch_y+ldy*16,obj_bullet);
-        inst.direction = aim;
-        inst.speed = 12;
-        inst.image_angle = aim;
-        inst.image_yscale = choose(-1,1);
-        
-        // bullet/shell casing
-        var inst = instance_create(x+ldx*12,y+crouch_y+ldy*12,obj_casing);
-        if (aim == 0)
-            inst.direction = aim+random_range(130,160);
-        else
-            inst.direction = aim-random_range(130,160);
-        inst.speed = 6+random(2);
-        
-        // smoke
-        repeat(3)
-            {
-            var inst = instance_create(x+ldx*12,y+crouch_y+ldy*12,obj_dust);
-            inst.direction = aim+random_range(-15,15);
-            inst.speed = 6+random(2);
-            inst.friction = 0.8;
-            inst.image_xscale *= 0.5;
-            inst.image_yscale *= 0.5;
-            inst.fade = 0.1;
-            }
-        }
-    }
+arm_pos = -2 + (move_state == mState.crouch)*8;
 
+// weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
 if (recoil &gt; 0)
     recoil--;
-
-// crouch/fall through floors
-if (crouch)
-    {
-    if (keyboard_check(global.key_down[0]))
-        {
-        if (keyboard_check_pressed(global.key_up[0]))
-        and (on_ground and place_meeting(x,y+1,par_jt))
-        and (!place_meeting(x,y+1,par_solid))
-            {
-            // fall through jump through platform
-            crouch_fall = true;
-            on_ground = false;
-            y += 1;
-            }
-        }
-    else
-        {
-        if (!place_meeting(x,y-1,par_solid))
-            {
-            // stop crouching
-            crouch = false;
-            mask_index = msk_player;
-            }
-        }
-    }
-else
-    {
-    if (keyboard_check(global.key_down[0]))
-        {
-        // crouch
-        crouch = true;
-        mask_index = msk_player_crouch;
-        }
-    }
-
-// detect if we're standing on ground
-on_ground = false;
-if (place_meeting(x,y+1,par_solid))
-or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed &gt;= 0)
-    {
-    // on the ground
-    on_ground = true;
-    // reset double jump to true when we land
-    double_jump = true;
-    }
-
-// gravity
-if !(on_ground)
-    yspeed += grav;
-
-// horizontal movement input
-move_speed = 3-crouch;
-if (keyboard_check(global.key_right[0])-keyboard_check(global.key_left[0]) != 0)
-    {
-    // move left or right
-    if (keyboard_check(global.key_right[0]))
-        {
-        xspeed = +move_speed;
-        
-        aim = 0;
-        dir = +1;
-        face = 1;
-        }
-    if (keyboard_check(global.key_left[0]))
-        {
-        xspeed = -move_speed;
-        
-        aim = 180;
-        dir = -1;
-        face = -1;
-        }
-    }
-else
-    {
-    // friction
-    if (xspeed &gt; 0)
-        xspeed = max(0,xspeed-fric);
-    else if (xspeed &lt; 0)
-        xspeed = min(0,xspeed+fric);
-    }
-
-if (on_ground)
-    {
-    if (abs(xspeed) &gt; 0)
-        {
-        if (crouch)
-            {
-            if (sprite_index != spr_player_crouch_walk)
-                {
-                sprite_index = spr_player_crouch_walk;
-                image_index = 0;
-                }
-            }
-        else if (sprite_index != spr_player_walk)
-            {
-            sprite_index = spr_player_walk;
-            image_index = 0;
-            }
-        
-        image_index += abs(xspeed)*0.1;
-        if (image_index &gt; image_number)
-            image_index = 0;
-        else if (image_index &lt; 0)
-            image_index = image_number-1;
-        }
-    else
-        {
-        if (crouch)
-            {
-            if (sprite_index != spr_player_crouch_idle)
-                {
-                sprite_index = spr_player_crouch_idle;
-                image_index = 0;
-                }
-            }
-        else if (sprite_index != spr_player_idle)
-            {
-            sprite_index = spr_player_idle;
-            image_index = 0;
-            }
-        }
-    }
-else
-    {
-    if (crouch)
-        {
-        if (sprite_index != spr_player_crouch_walk)
-            sprite_index = spr_player_crouch_walk;
-        }
-    else if (sprite_index != spr_player_walk)
-        sprite_index = spr_player_walk;
-    
-    if (yspeed &lt; 0)
-        image_index = 4;
-    else if (yspeed &gt;= 0)
-        image_index = 5;
-    }
-
-if (crouch_fall)
-    crouch_fall = false;
-else
-    {
-    // jump
-    if (keyboard_check_pressed(global.key_up[0]))
-        {
-        if (on_ground)
-            {
-            // first jump
-            on_ground = false;
-            yspeed = -7;
-            
-            repeat(5)
-                {
-                var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
-                inst.direction = choose(0,180)+random_range(-15,15);
-                inst.speed = 4+random(2);
-                }
-            }
-        else if (double_jump)
-            {
-            // double jump
-            double_jump = false;
-            yspeed = -7;
-            
-            repeat(5)
-                {
-                var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);
-                inst.direction = choose(0,180)+random_range(-15,15);
-                inst.speed = 3+random(2);
-                }
-            }
-        }
-    }
-
-// horizontal collision detection/response
-var tx = round(abs(xspeed));
-if (tx &gt; 0)
-    {
-    var ux = sign(xspeed);
-    repeat(tx)
-        {
-        if (place_meeting(x+ux,y,par_solid))
-            {
-            // stop before moving into the wall
-            xspeed = 0;
-            break;
-            }
-        else
-            x += ux;
-        }
-    }
-
-// vertical collision detection/response
-var ty = round(abs(yspeed));
-if (ty &gt; 0)
-    {
-    // split up vertical collision checks
-    // check downward independently from upward
-    // lets us detect one way platforms
-    
-    if (yspeed &gt; 0)
-        {
-        // check downward
-        var uy = sign(yspeed);
-        repeat(ty)
-            {
-            if (place_meeting(x,y+uy,par_solid))
-            or (place_meeting(x,y+uy,par_jt) and !place_meeting(x,y,par_jt))
-                {
-                // stop before moving into the wall
-                yspeed = 0;
-                break;
-                }
-            else
-                y += uy;
-            }
-        }
-    else if (yspeed &lt; 0)
-        {
-        // check upward
-        var uy = sign(yspeed);
-        repeat(ty)
-            {
-            if (place_meeting(x,y+uy,par_solid))
-                {
-                // stop before moving into the wall
-                yspeed = 0;
-                break;
-                }
-            else
-                y += uy;
-            }
-        }
-    }
 
 // simple shitty camera
 view_wview[0] = 480;
@@ -386,13 +136,6 @@ view_yview[0] = round(view_yview[0]);
           <argument>
             <kind>1</kind>
             <string>draw_sprite_ext(sprite_index,image_index,x,y,dir,1,0,-1,1);
-
-var ldx = lengthdir_x(1,aim);
-var ldy = lengthdir_y(1,aim);
-crouch_y = -2 + crouch*8;
-armdis = max(0,8-recoil);
-
-//draw_sprite_ext(spr_guns,0,x+ldx*armdis,y+crouch_y+ldy*armdis,1,face,aim,-1,1);
 </string>
           </argument>
         </arguments>

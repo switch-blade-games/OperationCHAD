@@ -1,0 +1,25 @@
+switch(move_state)
+    {
+    case mState.walk:
+    case mState.crouch:
+    
+        // detect if we're standing on ground
+        on_ground = false;
+        if (place_meeting(x,y+1,par_solid))
+        or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
+            {
+            // on the ground
+            on_ground = true;
+            // reset double jump to true when we land
+            double_jump = true;
+            }
+        
+        // gravity
+        if !(on_ground)
+            yspeed += grav;
+        break;
+    
+    case mState.hang:
+        on_ground = false;
+        break;
+    }
