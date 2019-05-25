@@ -7,6 +7,7 @@ switch(move_state)
         on_ground = false;
         if (place_meeting(x,y+1,par_solid))
         or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
+        or (position_meeting(x,bbox_bottom+1,par_ramp))
             {
             // on the ground
             on_ground = true;

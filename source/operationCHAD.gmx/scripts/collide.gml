@@ -1,23 +1,39 @@
-// horizontal collision detection/response
+// sub pixel movement
+subx += xspeed;
+suby += yspeed;
 var tx = round(abs(xspeed));
+var ty = round(abs(yspeed));
+var rx = round(subx);
+var ry = round(suby);
+subx -= rx;
+suby -= ry;
+
+// horizontal collision detection/response
 if (tx > 0)
     {
     var ux = sign(xspeed);
     repeat(tx)
         {
-        if (place_meeting(x+ux,y,par_solid))
+        // move up slope
+        if (place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y-1,par_solid))
+            y -= 1;
+        
+        // move down slope
+        if (!place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y+1,par_solid) and place_meeting(x+ux,y+2,par_solid))
+            y += 1;
+        
+        if (!place_meeting(x+ux,y,par_solid))
+            x += ux;
+        else
             {
             // stop before moving into the wall
             xspeed = 0;
             break;
             }
-        else
-            x += ux;
         }
     }
 
 // vertical collision detection/response
-var ty = round(abs(yspeed));
 if (ty > 0)
     {
     // split up vertical collision checks

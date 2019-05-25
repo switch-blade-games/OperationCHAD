@@ -24,6 +24,8 @@
     <sprite>sprites\spr_player_hang</sprite>
     <sprite>sprites\spr_player_crouch_idle</sprite>
     <sprite>sprites\spr_player_crouch_walk</sprite>
+    <sprite>sprites\msk_ramp_r</sprite>
+    <sprite>sprites\msk_ramp_l</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -44,6 +46,7 @@
       <object>objects\par_jt</object>
       <object>objects\par_move</object>
       <object>objects\par_mb</object>
+      <object>objects\par_ramp</object>
     </objects>
     <object>objects\obj_control</object>
     <object>objects\obj_shadows</object>
@@ -51,9 +54,11 @@
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
     <object>objects\obj_wall_mb</object>
+    <object>objects\obj_ramp_r</object>
+    <object>objects\obj_ramp_l</object>
+    <object>objects\obj_wall_move</object>
     <object>objects\obj_dummy</object>
     <object>objects\obj_bullet</object>
-    <object>objects\obj_wall_move</object>
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
   </objects>
