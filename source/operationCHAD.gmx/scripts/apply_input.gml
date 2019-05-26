@@ -63,21 +63,13 @@ switch(move_state)
         else
             {
             // jump
-            if (keyboard_check_pressed(global.key_up[0]))
-                {
-                if (on_ground) // first jump
-                    jump();
-                else if (double_jump) // double jump
-                    {
-                    double_jump = false;
-                    jump();
-                    }
-                }
+            if (on_ground) and (keyboard_check_pressed(global.key_jump[0]))
+                jump();
             }
         
         if (on_ground) or (!on_ground and yspeed >= 1)
             {
-            if (mouse_check_button(mb_left))
+            if (keyboard_check(global.key_fire[0]))
                 {
                 fire_weapon();
                 roll = false;
@@ -135,13 +127,13 @@ switch(move_state)
                 }
             }
         
-        if (mouse_check_button(mb_left))
+        if (keyboard_check(global.key_fire[0]))
             fire_weapon();
         break;
     
     case mState.hang:
         
-        if (mouse_check_button(mb_left))
+        if (keyboard_check(global.key_fire[0]))
             {
             fire_weapon();
             
@@ -189,12 +181,17 @@ switch(move_state)
                 }
             }
         
+        if (yspeed > 0)
+            yspeed = max(0,yspeed-fric);
+        else if (yspeed < 0)
+            yspeed = min(0,yspeed+fric);
+        
         if (keyboard_check_pressed(global.key_down[0]))
             {
             move_state = mState.walk;
             roll = false;
             }
-        if (keyboard_check_pressed(global.key_up[0]))
+        if (keyboard_check_pressed(global.key_jump[0]))
             {
             move_state = mState.walk;
             jump();
@@ -224,7 +221,7 @@ switch(move_state)
             else if (h_dir == -1)
                 aim = 0;
             
-            if (mouse_check_button(mb_left))
+            if (keyboard_check(global.key_fire[0]))
                 {
                 fire_weapon();
                 
@@ -252,16 +249,16 @@ switch(move_state)
                     }
                 }
             
-            if (keyboard_check(global.key_left[0]) and h_dir == 1)
-            or (keyboard_check(global.key_right[0]) and h_dir == -1)
+            if (keyboard_check_pressed(global.key_jump[0]))
                 {
-                if (keyboard_check_pressed(global.key_up[0]))
+                if ((keyboard_check(global.key_right[0]) and h_dir == -1)
+                or (keyboard_check(global.key_left[0]) and h_dir == +1))
                     {
                     move_state = mState.walk;
-                    double_jump = false;
                     jump();
                     }
-                else if (keyboard_check(global.key_down[0]))
+                else if (!(keyboard_check(global.key_left[0]) and h_dir == -1)
+                and !(keyboard_check(global.key_right[0]) and h_dir == +1))
                     {
                     move_state = mState.walk;
                     roll = false;

@@ -1,10 +1,10 @@
 // sub pixel movement
 subx += xspeed;
 suby += yspeed;
-var tx = round(abs(xspeed));
-var ty = round(abs(yspeed));
-var rx = round(subx);
-var ry = round(suby);
+var tx = round(abs(subx));
+var ty = round(abs(suby));
+var rx = tx*sign(xspeed);
+var ry = ty*sign(yspeed);
 subx -= rx;
 suby -= ry;
 
@@ -12,6 +12,9 @@ suby -= ry;
 if (tx > 0)
     {
     var ux = sign(xspeed);
+    
+    var xp = x;
+    var yp = y;
     repeat(tx)
         {
         // move up slope
@@ -31,6 +34,15 @@ if (tx > 0)
             break;
             }
         }
+    xdis = x-xp;
+    ydis = y-yp;
+    
+    if (global.ramptype)
+        {
+        var dis = point_distance(xp,yp,x,y);
+        if (dis > tx)
+            subx -= (dis-tx)*ux;
+        }
     }
 
 // vertical collision detection/response
@@ -47,7 +59,8 @@ if (ty > 0)
         repeat(ty)
             {
             if (place_meeting(x,y+uy,par_solid))
-            or (place_meeting(x,y+uy,par_jt) and !place_meeting(x,y,par_jt))
+            or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
+            and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)))
                 {
                 // stop before moving into the wall
                 yspeed = 0;

@@ -74,6 +74,10 @@ cur_weapon = 0;
 shoot_timer = 0;
 recoil = 0;
 arm_pos = 0;
+
+// debug
+xdis = 0;
+ydis = 0;
 </string>
           </argument>
         </arguments>

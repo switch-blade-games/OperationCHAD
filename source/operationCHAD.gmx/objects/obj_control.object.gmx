@@ -27,17 +27,21 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
-instance_create(0,0,obj_shadows);
-
+display_set_gui_size(view_wview[0],view_hview[0]);
 background_color = $CAC26D;
 
+instance_create(0,0,obj_shadows);
+
 global.autotile = true;
+global.ramptype = false;
 
 // key binds
-global.key_up[0] = ord("W");
-global.key_down[0] = ord("S");
-global.key_left[0] = ord("A");
-global.key_right[0] = ord("D");
+global.key_up[0] = vk_up;
+global.key_down[0] = vk_down;
+global.key_left[0] = vk_left;
+global.key_right[0] = vk_right;
+global.key_fire[0] = ord("Z");
+global.key_jump[0] = ord("X");
 </string>
           </argument>
         </arguments>
@@ -93,6 +97,81 @@ if (global.autotile)
     with(obj_climb)
         tile_add(tile_walls,96,32,32,32,x-4,y+4,20);
     }
+
+if (keyboard_check_pressed(ord("Q")))
+    global.ramptype = !global.ramptype;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color($000000);
+draw_set_alpha(0.25);
+draw_rectangle(0,0,display_get_gui_width(),84,0);
+draw_set_alpha(1.00);
+
+draw_sprite(spr_controls,0,display_get_gui_width()-192,0);
+
+if (global.ramptype)
+    {
+    draw_set_color($000000);
+    draw_text(11,11,"Slope Movement: CLAMPED");
+    draw_text(11,13,"Slope Movement: CLAMPED");
+    draw_text(13,11,"Slope Movement: CLAMPED");
+    draw_text(13,13,"Slope Movement: CLAMPED");
+    draw_text(11,31,"Player reconciles for increased speed on slopes, but may appear choppy");
+    draw_text(11,33,"Player reconciles for increased speed on slopes, but may appear choppy");
+    draw_text(13,31,"Player reconciles for increased speed on slopes, but may appear choppy");
+    draw_text(13,33,"Player reconciles for increased speed on slopes, but may appear choppy");
+    draw_text(11,51,"Press [Q] to switch");
+    draw_text(11,53,"Press [Q] to switch");
+    draw_text(13,51,"Press [Q] to switch");
+    draw_text(13,53,"Press [Q] to switch");
+    
+    draw_set_color($FFFFFF);
+    draw_text(12,12,"Slope Movement: CLAMPED");
+    draw_text(12,32,"Player reconciles for increased speed on slopes, but may appear choppy");
+    draw_text(12,52,"Press [Q] to switch");
+    }
+else
+    {
+    draw_set_color($000000);
+    draw_text(11,11,"Slope Movement: UNCLAMPED");
+    draw_text(11,13,"Slope Movement: UNCLAMPED");
+    draw_text(13,11,"Slope Movement: UNCLAMPED");
+    draw_text(13,13,"Slope Movement: UNCLAMPED");
+    draw_text(11,31,"Player moves faster on slopes than flat tiles, but always appears smooth");
+    draw_text(11,33,"Player moves faster on slopes than flat tiles, but always appears smooth");
+    draw_text(13,31,"Player moves faster on slopes than flat tiles, but always appears smooth");
+    draw_text(13,33,"Player moves faster on slopes than flat tiles, but always appears smooth");
+    draw_text(11,51,"Press [Q] to switch");
+    draw_text(11,53,"Press [Q] to switch");
+    draw_text(13,51,"Press [Q] to switch");
+    draw_text(13,53,"Press [Q] to switch");
+    
+    draw_set_color($FFFFFF);
+    draw_text(12,12,"Slope Movement: UNCLAMPED");
+    draw_text(12,32,"Player moves faster on slopes than flat tiles, but always appears smooth");
+    draw_text(12,52,"Press [Q] to switch");
+    }
+    
 </string>
           </argument>
         </arguments>

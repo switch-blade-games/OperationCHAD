@@ -27,6 +27,7 @@
     <sprite>sprites\spr_player_climb</sprite>
     <sprite>sprites\msk_ramp_r</sprite>
     <sprite>sprites\msk_ramp_l</sprite>
+    <sprite>sprites\spr_controls</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -56,6 +57,7 @@
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
     <object>objects\obj_wall_mb</object>
+    <object>objects\obj_climb</object>
     <object>objects\obj_ramp_r</object>
     <object>objects\obj_ramp_l</object>
     <object>objects\obj_wall_move</object>
@@ -63,7 +65,6 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
-    <object>objects\obj_climb</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_default</room>

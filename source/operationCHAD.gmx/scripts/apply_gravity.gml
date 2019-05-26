@@ -6,13 +6,11 @@ switch(move_state)
         // detect if we're standing on ground
         on_ground = false;
         if (place_meeting(x,y+1,par_solid))
-        or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
-        or (position_meeting(x,bbox_bottom+1,par_ramp))
+        or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
+        and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)) and yspeed >= 0)
             {
             // on the ground
             on_ground = true;
-            // reset double jump to true when we land
-            double_jump = true;
             // reset jump roll
             roll = false;
             }
@@ -34,7 +32,8 @@ switch(move_state)
                         }
                     }
                 }
-            yspeed += grav;
+            if (yspeed < 10)
+                yspeed += grav;
             }
         break;
     
@@ -51,8 +50,6 @@ switch(move_state)
             {
             // on the ground
             on_ground = true;
-            // reset double jump to true when we land
-            double_jump = true;
             // reset jump roll
             roll = false;
             }

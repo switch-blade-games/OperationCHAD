@@ -1,5 +1,5 @@
 on_ground = false;
-yspeed = -7;
+yspeed = -8;
 roll = true;
 
 repeat(5)
