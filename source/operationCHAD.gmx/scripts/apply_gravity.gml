@@ -1,7 +1,7 @@
 switch(move_state)
     {
     case mState.walk:
-    case mState.crouch:
+    case mState.duck:
     
         // detect if we're standing on ground
         on_ground = false;
@@ -13,6 +13,8 @@ switch(move_state)
             on_ground = true;
             // reset double jump to true when we land
             double_jump = true;
+            // reset jump roll
+            roll = false;
             }
         
         // gravity

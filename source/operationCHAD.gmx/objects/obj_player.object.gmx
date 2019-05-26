@@ -30,9 +30,9 @@ enum mState
     {
     idle,
     walk,
+    duck,
     hang,
     climb,
-    crouch
     }
 
 // weapon stats
@@ -64,6 +64,7 @@ move_state = mState.walk;
 double_jump = false;
 
 // player direction
+roll = false;
 face = 1;
 aim = 0;
 dir = 1;
@@ -100,7 +101,7 @@ apply_input();
 animate();
 collide();
 
-arm_pos = -2 + (move_state == mState.crouch)*6;
+arm_pos = -2 + (move_state == mState.duck)*12;
 
 // weapon
 if (shoot_timer &gt; 0)

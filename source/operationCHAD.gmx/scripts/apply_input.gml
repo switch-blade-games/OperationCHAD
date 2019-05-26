@@ -41,8 +41,8 @@ switch(move_state)
             {
             if (on_ground)
                 {
-                move_state = mState.crouch;
-                mask_index = msk_player_crouch;
+                move_state = mState.duck;
+                mask_index = msk_player_duck;
                 }
             }
         else
@@ -60,17 +60,20 @@ switch(move_state)
                 }
             }
         
-        if (mouse_check_button(mb_left))
-            fire_weapon();
+        if (on_ground) or (!on_ground and yspeed >= 1)
+            {
+            if (mouse_check_button(mb_left))
+                {
+                fire_weapon();
+                roll = false;
+                }
+            }
         break;
     
-    case mState.crouch:
+    case mState.duck:
         
-        // horizontal movement input
-        move_speed = 2;
         if (h_dir != 0)
             {
-            xspeed = move_speed*h_dir;
             face = h_dir;
             dir = h_dir;
             
@@ -80,14 +83,12 @@ switch(move_state)
             if (keyboard_check(global.key_left[0]))
                 aim = 180;
             }
-        else
-            {
-            // friction
-            if (xspeed > 0)
-                xspeed = max(0,xspeed-fric);
-            else if (xspeed < 0)
-                xspeed = min(0,xspeed+fric);
-            }
+        
+        // friction
+        if (xspeed > 0)
+            xspeed = max(0,xspeed-fric);
+        else if (xspeed < 0)
+            xspeed = min(0,xspeed+fric);
         
         if (keyboard_check(global.key_down[0]))
             {
@@ -119,41 +120,64 @@ switch(move_state)
         break;
     
     case mState.hang:
-        // horizontal movement input
-        move_speed = 2;
-        if (h_dir != 0)
+        
+        if (mouse_check_button(mb_left))
             {
-            xspeed = move_speed*h_dir;
-            face = h_dir;
-            dir = h_dir;
+            fire_weapon();
             
-            // move left or right
-            if (keyboard_check(global.key_right[0]))
-                aim = 0;
-            if (keyboard_check(global.key_left[0]))
-                aim = 180;
-            }
-        else
-            {
+            if (h_dir != 0)
+                {
+                face = h_dir;
+                dir = h_dir;
+                
+                // move left or right
+                if (keyboard_check(global.key_right[0]))
+                    aim = 0;
+                if (keyboard_check(global.key_left[0]))
+                    aim = 180;
+                }
+            
             // friction
             if (xspeed > 0)
                 xspeed = max(0,xspeed-fric);
             else if (xspeed < 0)
                 xspeed = min(0,xspeed+fric);
             }
+        else
+            {
+            // horizontal movement input
+            move_speed = 2;
+            if (h_dir != 0)
+                {
+                xspeed = move_speed*h_dir;
+                face = h_dir;
+                dir = h_dir;
+                
+                // move left or right
+                if (keyboard_check(global.key_right[0]))
+                    aim = 0;
+                if (keyboard_check(global.key_left[0]))
+                    aim = 180;
+                }
+            else
+                {
+                // friction
+                if (xspeed > 0)
+                    xspeed = max(0,xspeed-fric);
+                else if (xspeed < 0)
+                    xspeed = min(0,xspeed+fric);
+                }
+            }
         
         if (keyboard_check_pressed(global.key_down[0]))
+            {
             move_state = mState.walk;
+            roll = false;
+            }
         if (keyboard_check_pressed(global.key_up[0]))
             {
             move_state = mState.walk;
             jump();
-            }
-        
-        if (h_dir == 0)
-            {
-            if (mouse_check_button(mb_left))
-                fire_weapon();
             }
         break;
     }

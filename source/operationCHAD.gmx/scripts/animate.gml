@@ -26,56 +26,43 @@ switch(move_state)
             }
         else
             {
-            if (sprite_index != spr_player_walk)
-                sprite_index = spr_player_walk;
-            
-            if (yspeed < 0)
-                image_index = 4;
-            else if (yspeed >= 0)
-                image_index = 5;
-            }
-        break;
-    
-    case mState.crouch:
-        if (on_ground)
-            {
-            if (abs(xspeed) > 0)
+            if (roll)
                 {
-                if (sprite_index != spr_player_crouch_walk)
+                if (sprite_index != spr_player_jump)
                     {
-                    sprite_index = spr_player_crouch_walk;
+                    sprite_index = spr_player_jump;
                     image_index = 0;
                     }
                 
-                image_index += abs(xspeed)*0.1;
+                image_index += 0.25;
                 if (image_index > image_number)
                     image_index = 0;
-                else if (image_index < 0)
-                    image_index = image_number-1;
                 }
-            else if (sprite_index != spr_player_crouch_idle)
+            else
                 {
-                sprite_index = spr_player_crouch_idle;
-                image_index = 0;
+                if (sprite_index != spr_player_walk)
+                    sprite_index = spr_player_walk;
+                
+                image_index = 4;
                 }
             }
-        else
+        break;
+    
+    case mState.duck:
+        if (sprite_index != spr_player_duck)
             {
-            if (sprite_index != spr_player_crouch_walk)
-                sprite_index = spr_player_crouch_walk;
-            
-            if (yspeed < 0)
-                image_index = 4;
-            else if (yspeed >= 0)
-                image_index = 5;
+            sprite_index = spr_player_duck;
+            image_index = 0;
             }
         break;
     
     case mState.hang:
         if (sprite_index != spr_player_hang)
-            {
             sprite_index = spr_player_hang;
+        
+        if (mouse_check_button(mb_left))
+            image_index = 1;
+        else
             image_index = 0;
-            }
         break;
     }

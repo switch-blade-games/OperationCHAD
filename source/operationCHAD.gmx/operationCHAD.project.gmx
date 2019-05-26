@@ -7,7 +7,7 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\msk_player</sprite>
-    <sprite>sprites\msk_player_crouch</sprite>
+    <sprite>sprites\msk_player_duck</sprite>
     <sprite>sprites\msk_wall</sprite>
     <sprite>sprites\msk_wall_jt</sprite>
     <sprite>sprites\spr_character_pumpkin</sprite>
@@ -20,10 +20,10 @@
     <sprite>sprites\spr_arrow_h</sprite>
     <sprite>sprites\spr_dust</sprite>
     <sprite>sprites\spr_player_walk</sprite>
+    <sprite>sprites\spr_player_jump</sprite>
     <sprite>sprites\spr_player_idle</sprite>
     <sprite>sprites\spr_player_hang</sprite>
-    <sprite>sprites\spr_player_crouch_idle</sprite>
-    <sprite>sprites\spr_player_crouch_walk</sprite>
+    <sprite>sprites\spr_player_duck</sprite>
     <sprite>sprites\msk_ramp_r</sprite>
     <sprite>sprites\msk_ramp_l</sprite>
   </sprites>
