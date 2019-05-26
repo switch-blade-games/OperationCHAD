@@ -41,4 +41,20 @@ switch(move_state)
     case mState.hang:
         on_ground = false;
         break;
+    
+    case mState.climb:
+        on_ground = false;
+        
+        if (place_meeting(x,y+1,par_solid))
+        or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
+        or (position_meeting(x,bbox_bottom+1,par_ramp))
+            {
+            // on the ground
+            on_ground = true;
+            // reset double jump to true when we land
+            double_jump = true;
+            // reset jump roll
+            roll = false;
+            }
+        break;
     }

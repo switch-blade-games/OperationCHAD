@@ -24,6 +24,7 @@
     <sprite>sprites\spr_player_idle</sprite>
     <sprite>sprites\spr_player_hang</sprite>
     <sprite>sprites\spr_player_duck</sprite>
+    <sprite>sprites\spr_player_climb</sprite>
     <sprite>sprites\msk_ramp_r</sprite>
     <sprite>sprites\msk_ramp_l</sprite>
   </sprites>
@@ -47,6 +48,7 @@
       <object>objects\par_move</object>
       <object>objects\par_mb</object>
       <object>objects\par_ramp</object>
+      <object>objects\par_climb</object>
     </objects>
     <object>objects\obj_control</object>
     <object>objects\obj_shadows</object>
@@ -61,6 +63,7 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
+    <object>objects\obj_climb</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_default</room>

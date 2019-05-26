@@ -9,6 +9,7 @@ else
 */
 
 var h_dir = keyboard_check(global.key_right[0])-keyboard_check(global.key_left[0]);
+var v_dir = keyboard_check(global.key_down[0])-keyboard_check(global.key_up[0]);
 
 switch(move_state)
     {
@@ -24,9 +25,23 @@ switch(move_state)
             
             // move left or right
             if (keyboard_check(global.key_right[0]))
+                {
+                if (place_meeting(x+1,y,par_climb) and !on_ground)
+                    {
+                    move_state = mState.climb;
+                    yspeed = 0;
+                    }
                 aim = 0;
+                }
             if (keyboard_check(global.key_left[0]))
+                {
+                if (place_meeting(x-1,y,par_climb) and !on_ground)
+                    {
+                    move_state = mState.climb;
+                    yspeed = 0;
+                    }
                 aim = 180;
+                }
             }
         else
             {
@@ -98,9 +113,14 @@ switch(move_state)
                 if (on_ground)
                 and (place_meeting(x,y+1,par_jt))
                 and (!place_meeting(x,y+1,par_solid))
+                and (!place_meeting(x,y-1,par_solid))
                     {
                     // fall through jump through platform
+                    move_state = mState.walk;
                     on_ground = false;
+                    roll = false;
+                    
+                    mask_index = msk_player;
                     y += 1;
                     }
                 }
@@ -178,6 +198,75 @@ switch(move_state)
             {
             move_state = mState.walk;
             jump();
+            }
+        break;
+    
+    case mState.climb:
+        
+        h_dir = place_meeting(x+1,y,par_climb)-place_meeting(x-1,y,par_climb);
+        if (h_dir == 0)
+            {
+            if (!place_meeting(x+face,y,par_solid))
+            and (keyboard_check(global.key_up[0]))
+                x += face;
+            
+            move_state = mState.walk;
+            roll = false;
+            }
+        else
+            {
+            face = h_dir;
+            dir = h_dir;
+            
+            // move left or right
+            if (h_dir == 1)
+                aim = 180;
+            else if (h_dir == -1)
+                aim = 0;
+            
+            if (mouse_check_button(mb_left))
+                {
+                fire_weapon();
+                
+                // friction
+                if (yspeed > 0)
+                    yspeed = max(0,yspeed-fric);
+                else if (yspeed < 0)
+                    yspeed = min(0,yspeed+fric);
+                }
+            else
+                {
+                // vertical movement input
+                move_speed = 2;
+                if (v_dir != 0)
+                    {
+                    yspeed = move_speed*v_dir;
+                    }
+                else
+                    {
+                    // friction
+                    if (yspeed > 0)
+                        yspeed = max(0,yspeed-fric);
+                    else if (yspeed < 0)
+                        yspeed = min(0,yspeed+fric);
+                    }
+                }
+            
+            if (keyboard_check(global.key_left[0]) and h_dir == 1)
+            or (keyboard_check(global.key_right[0]) and h_dir == -1)
+                {
+                if (keyboard_check_pressed(global.key_up[0]))
+                    {
+                    move_state = mState.walk;
+                    double_jump = false;
+                    jump();
+                    }
+                else if (keyboard_check(global.key_down[0]))
+                    {
+                    move_state = mState.walk;
+                    roll = false;
+                    }
+                }
             }
         break;
     }

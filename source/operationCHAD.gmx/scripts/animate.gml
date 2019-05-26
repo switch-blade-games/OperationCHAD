@@ -65,4 +65,14 @@ switch(move_state)
         else
             image_index = 0;
         break;
+    
+    case mState.climb:
+        if (sprite_index != spr_player_climb)
+            sprite_index = spr_player_climb;
+        
+        if (mouse_check_button(mb_left))
+            image_index = 1;
+        else
+            image_index = 0;
+        break;
     }
