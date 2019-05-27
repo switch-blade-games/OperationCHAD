@@ -3,12 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>30</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="8" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,14 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(par_actor)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,dir,image_yscale,image_angle,0,0.25);
-with(par_move)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
-with(obj_dust)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
-with(obj_target)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
+            <string>team = -1;
+damage = 1;
 </string>
           </argument>
         </arguments>

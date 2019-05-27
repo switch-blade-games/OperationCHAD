@@ -12,6 +12,8 @@ if (shoot_timer == 0)
     inst.direction = aim;
     inst.speed = weapon_pspd[cur_weapon]
     inst.image_angle = aim;
+    inst.team = 0;
+    inst.damage = 4;
     
     // bullet/shell casing
     var inst = instance_create(x+ldx*12,y+arm_pos+ldy*12,weapon_case[cur_weapon]);

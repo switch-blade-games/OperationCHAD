@@ -26,7 +26,9 @@ switch(move_state)
             // move left or right
             if (keyboard_check(global.key_right[0]))
                 {
-                if (place_meeting(x+1,y,par_climb) and !on_ground)
+                if (!keyboard_check(global.key_down[0]))
+                and (place_meeting(x+1,y,par_climb))
+                and (yspeed >= -2)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -35,7 +37,9 @@ switch(move_state)
                 }
             if (keyboard_check(global.key_left[0]))
                 {
-                if (place_meeting(x-1,y,par_climb) and !on_ground)
+                if (!keyboard_check(global.key_down[0]))
+                and (place_meeting(x-1,y,par_climb))
+                and (yspeed >= -2)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -52,9 +56,14 @@ switch(move_state)
                 xspeed = min(0,xspeed+fric);
             }
         
-        if (keyboard_check(global.key_down[0]))
+        if (keyboard_check_pressed(global.key_down[0])
+        or (keyboard_check(global.key_down[0])
+        and (place_meeting(x,y+1,par_jt))
+        and (!place_meeting(x,y+1,par_solid))
+        and (!place_meeting(x,y-1,par_solid))))
+        and (on_ground)
             {
-            if (on_ground)
+            if (!place_meeting(x+face,y,par_solid))
                 {
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
@@ -201,11 +210,11 @@ switch(move_state)
     case mState.climb:
         
         h_dir = place_meeting(x+1,y,par_climb)-place_meeting(x-1,y,par_climb);
-        if (h_dir == 0)
+        if (h_dir == 0) // no longer climbing on a wall
             {
             if (!place_meeting(x+face,y,par_solid))
             and (keyboard_check(global.key_up[0]))
-                x += face;
+                x += face; // jump up onto ledge
             
             move_state = mState.walk;
             roll = false;
@@ -249,19 +258,38 @@ switch(move_state)
                     }
                 }
             
+            // stop climbing when climbing down to floor
+            if (keyboard_check(global.key_down[0])) and (on_ground)
+                {
+                move_state = mState.walk;
+                roll = false;
+                
+                aim = point_direction(0,0,h_dir,0);
+                }
+            
+            // jump/fall off
             if (keyboard_check_pressed(global.key_jump[0]))
                 {
-                if ((keyboard_check(global.key_right[0]) and h_dir == -1)
+                if (keyboard_check(global.key_up[0])) // jump
+                or ((keyboard_check(global.key_right[0]) and h_dir == -1)
                 or (keyboard_check(global.key_left[0]) and h_dir == +1))
+                and (!keyboard_check(global.key_down[0]))
                     {
                     move_state = mState.walk;
                     jump();
+                    
+                    aim = point_direction(0,0,h_dir,0);
+                    show_debug_message("JUMP");
                     }
-                else if (!(keyboard_check(global.key_left[0]) and h_dir == -1)
-                and !(keyboard_check(global.key_right[0]) and h_dir == +1))
+                else if (keyboard_check(global.key_down[0])) // fall
+                //or (!(keyboard_check(global.key_right[0]) and h_dir == -1)
+                //and !(keyboard_check(global.key_left[0]) and h_dir == +1))
                     {
                     move_state = mState.walk;
                     roll = false;
+                    
+                    aim = point_direction(0,0,h_dir,0);
+                    show_debug_message("FALL");
                     }
                 }
             }

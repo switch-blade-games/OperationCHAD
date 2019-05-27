@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_projectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.5;
+            <string>event_inherited();
+
+image_speed = 0.5;
 image_index = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_shootable">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (team == other.team) or (!other.canhit)
+    exit;
+
+other.hp = max(0,other.hp-damage);
+other.flash = 4;
+
+if (other.object_index == obj_target)
+    {
+    var dir = point_direction(x,y,other.x,other.y);
+    other.xoff += lengthdir_x(6,dir);
+    other.yoff += lengthdir_y(6,dir);
+    }
+
+instance_destroy();
 </string>
           </argument>
         </arguments>
