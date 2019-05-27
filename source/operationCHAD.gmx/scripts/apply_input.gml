@@ -26,9 +26,9 @@ switch(move_state)
             // move left or right
             if (keyboard_check(global.key_right[0]))
                 {
-                if (!keyboard_check(global.key_down[0]))
-                and (place_meeting(x+1,y,par_climb))
-                and (yspeed >= -2)
+                var inst = instance_place(x+1,y,par_climb);
+                if (!keyboard_check(global.key_down[0])) and (yspeed >= -2)
+                and (inst != noone) and (inst.sides & tile_side.right)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -37,9 +37,9 @@ switch(move_state)
                 }
             if (keyboard_check(global.key_left[0]))
                 {
-                if (!keyboard_check(global.key_down[0]))
-                and (place_meeting(x-1,y,par_climb))
-                and (yspeed >= -2)
+                var inst = instance_place(x-1,y,par_climb);
+                if (!keyboard_check(global.key_down[0])) and (yspeed >= -2)
+                and (inst != noone) and (inst.sides & tile_side.left)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -63,7 +63,7 @@ switch(move_state)
         and (!place_meeting(x,y-1,par_solid))))
         and (on_ground)
             {
-            if (!place_meeting(x+face,y,par_solid))
+            if (!place_meeting(x+face,y,par_climb))
                 {
                 move_state = mState.duck;
                 mask_index = msk_player_duck;

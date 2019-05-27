@@ -8,6 +8,9 @@ var ry = ty*sign(yspeed);
 subx -= rx;
 suby -= ry;
 
+xpre = x;
+ypre = y;
+
 // horizontal collision detection/response
 if (tx > 0)
     {
@@ -34,8 +37,6 @@ if (tx > 0)
             break;
             }
         }
-    xdis = x-xp;
-    ydis = y-yp;
     
     if (global.ramptype)
         {

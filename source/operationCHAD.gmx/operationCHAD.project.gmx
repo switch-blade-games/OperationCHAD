@@ -63,7 +63,8 @@
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
     <object>objects\obj_wall_mb</object>
-    <object>objects\obj_climb</object>
+    <object>objects\obj_climb_r</object>
+    <object>objects\obj_climb_l</object>
     <object>objects\obj_ramp_r</object>
     <object>objects\obj_ramp_l</object>
     <object>objects\obj_wall_move</object>

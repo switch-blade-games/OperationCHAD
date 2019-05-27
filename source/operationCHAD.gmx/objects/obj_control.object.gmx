@@ -35,6 +35,14 @@ background_color = $CAC26D;
 
 instance_create(0,0,obj_shadows);
 
+enum tile_side {
+    none = 0,
+    right = 1,
+    left = 2,
+    top = 4,
+    bottom = 8
+    }
+
 global.autotile = true;
 global.ramptype = false;
 
@@ -79,12 +87,14 @@ if (global.autotile)
     with(obj_wall_jt)
         tile_add(tile_walls,32,0,32,32,x,y,10);
     with(obj_wall_mb)
-        tile_add(tile_walls,64,0,32,32,x,y,10);
+        tile_add(tile_walls,64,64,32,32,x,y,10);
     with(obj_ramp_r)
         tile_add(tile_walls,0,64,32,32,x,y,10);
     with(obj_ramp_l)
         tile_add(tile_walls,32,64,32,32,x,y,10);
-    with(obj_climb)
+    with(obj_climb_r)
+        tile_add(tile_walls,64,0,32,32,x,y,10);
+    with(obj_climb_l)
         tile_add(tile_walls,96,0,32,32,x,y,10);
     
     with(obj_wall)
@@ -92,12 +102,14 @@ if (global.autotile)
     with(obj_wall_jt)
         tile_add(tile_walls,32,32,32,32,x-4,y+4,20);
     with(obj_wall_mb)
-        tile_add(tile_walls,64,32,32,32,x-4,y+4,20);
+        tile_add(tile_walls,64,96,32,32,x-4,y+4,20);
     with(obj_ramp_r)
         tile_add(tile_walls,0,96,32,32,x-4,y+4,20);
     with(obj_ramp_l)
         tile_add(tile_walls,32,96,32,32,x-4,y+4,20);
-    with(obj_climb)
+    with(obj_climb_r)
+        tile_add(tile_walls,64,32,32,32,x-4,y+4,20);
+    with(obj_climb_l)
         tile_add(tile_walls,96,32,32,32,x-4,y+4,20);
     }
 

@@ -4,7 +4,7 @@ switch(move_state)
     case mState.walk:
         if (on_ground)
             {
-            if (abs(xspeed) > 0)
+            if (abs(x-xpre) > 0)
                 {
                 if (sprite_index != spr_player_walk)
                     {
@@ -12,7 +12,7 @@ switch(move_state)
                     image_index = 0;
                     }
                 
-                image_index += abs(xspeed)*0.1;
+                image_index += abs(x-xpre)*0.1;
                 if (image_index > image_number)
                     image_index = 0;
                 else if (image_index < 0)
