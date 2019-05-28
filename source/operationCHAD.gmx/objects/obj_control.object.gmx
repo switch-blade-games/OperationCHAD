@@ -27,9 +27,16 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
-gui_w = view_wview[0]/2;
-gui_h = view_hview[0]/2;
+// view/display/gui setup
+view_wview[0] = 400;
+view_hview[0] = 240;
+window_set_size(view_wview[0]*2,view_hview[0]*2);
+window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+surface_resize(application_surface,view_wview[0],view_hview[0]);
+gui_w = view_wview[0];
+gui_h = view_hview[0];
 display_set_gui_size(gui_w,gui_h);
+
 draw_set_font(fnt_default);
 background_color = $CAC26D;
 
@@ -83,34 +90,34 @@ if (global.autotile)
     tile_layer_delete(10);
     tile_layer_delete(20);
     with(obj_wall)
-        tile_add(tile_walls,0,0,32,32,x,y,10);
+        tile_add(tile_walls,0,0,20,20,x,y,10);
     with(obj_wall_jt)
-        tile_add(tile_walls,32,0,32,32,x,y,10);
+        tile_add(tile_walls,20,0,20,20,x,y,10);
     with(obj_wall_mb)
-        tile_add(tile_walls,64,64,32,32,x,y,10);
+        tile_add(tile_walls,40,40,20,20,x,y,10);
     with(obj_ramp_r)
-        tile_add(tile_walls,0,64,32,32,x,y,10);
+        tile_add(tile_walls,0,40,20,20,x,y,10);
     with(obj_ramp_l)
-        tile_add(tile_walls,32,64,32,32,x,y,10);
+        tile_add(tile_walls,20,40,20,20,x,y,10);
     with(obj_climb_r)
-        tile_add(tile_walls,64,0,32,32,x,y,10);
+        tile_add(tile_walls,40,0,20,20,x,y,10);
     with(obj_climb_l)
-        tile_add(tile_walls,96,0,32,32,x,y,10);
+        tile_add(tile_walls,60,0,20,20,x,y,10);
     
     with(obj_wall)
-        tile_add(tile_walls,0,32,32,32,x-4,y+4,20);
+        tile_add(tile_walls,0,20,20,20,x-4,y+4,20);
     with(obj_wall_jt)
-        tile_add(tile_walls,32,32,32,32,x-4,y+4,20);
+        tile_add(tile_walls,20,20,20,20,x-4,y+4,20);
     with(obj_wall_mb)
-        tile_add(tile_walls,64,96,32,32,x-4,y+4,20);
+        tile_add(tile_walls,40,60,20,20,x-4,y+4,20);
     with(obj_ramp_r)
-        tile_add(tile_walls,0,96,32,32,x-4,y+4,20);
+        tile_add(tile_walls,0,60,20,20,x-4,y+4,20);
     with(obj_ramp_l)
-        tile_add(tile_walls,32,96,32,32,x-4,y+4,20);
+        tile_add(tile_walls,20,60,20,20,x-4,y+4,20);
     with(obj_climb_r)
-        tile_add(tile_walls,64,32,32,32,x-4,y+4,20);
+        tile_add(tile_walls,40,20,20,20,x-4,y+4,20);
     with(obj_climb_l)
-        tile_add(tile_walls,96,32,32,32,x-4,y+4,20);
+        tile_add(tile_walls,60,20,20,20,x-4,y+4,20);
     }
 
 if (keyboard_check_pressed(ord("Q")))

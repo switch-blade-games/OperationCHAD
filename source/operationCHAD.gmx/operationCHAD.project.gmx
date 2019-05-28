@@ -10,9 +10,6 @@
     <sprite>sprites\msk_player_duck</sprite>
     <sprite>sprites\msk_wall</sprite>
     <sprite>sprites\msk_wall_jt</sprite>
-    <sprite>sprites\spr_character_pumpkin</sprite>
-    <sprite>sprites\spr_character_yoloswag</sprite>
-    <sprite>sprites\spr_character_stonetoss</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
@@ -28,6 +25,8 @@
     <sprite>sprites\msk_ramp_r</sprite>
     <sprite>sprites\msk_ramp_l</sprite>
     <sprite>sprites\spr_target</sprite>
+    <sprite>sprites\spr_particle</sprite>
+    <sprite>sprites\msk_particle</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -73,6 +72,7 @@
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
     <object>objects\obj_target</object>
+    <object>objects\obj_particle</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_default</room>

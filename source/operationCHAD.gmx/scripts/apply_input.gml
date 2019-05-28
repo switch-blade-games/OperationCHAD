@@ -195,7 +195,8 @@ switch(move_state)
         else if (yspeed < 0)
             yspeed = min(0,yspeed+fric);
         
-        if (keyboard_check_pressed(global.key_down[0]))
+        if !(position_meeting(x,y-24,par_mb))
+        or (keyboard_check_pressed(global.key_down[0]))
             {
             move_state = mState.walk;
             roll = false;
