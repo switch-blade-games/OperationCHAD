@@ -18,7 +18,7 @@ switch(move_state)
         // gravity
         if !(on_ground)
             {
-            if (yspeed > 0) and (!keyboard_check(global.key_down[0]))
+            if (yspeed > 0) and (!input_down)
                 {
                 var inst = instance_place(x,y,par_mb);
                 if (inst != noone)

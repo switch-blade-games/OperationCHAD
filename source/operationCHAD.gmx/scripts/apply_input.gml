@@ -8,8 +8,8 @@ else
     face = -1;
 */
 
-var h_dir = keyboard_check(global.key_right[0])-keyboard_check(global.key_left[0]);
-var v_dir = keyboard_check(global.key_down[0])-keyboard_check(global.key_up[0]);
+var h_dir = input_right-input_left;
+var v_dir = input_down-input_up;
 
 switch(move_state)
     {
@@ -24,10 +24,10 @@ switch(move_state)
             dir = h_dir;
             
             // move left or right
-            if (keyboard_check(global.key_right[0]))
+            if (input_right)
                 {
                 var inst = instance_place(x+1,y,par_climb);
-                if (!keyboard_check(global.key_down[0])) and (yspeed >= -2)
+                if (!input_down) and (yspeed >= -2)
                 and (inst != noone) and (inst.sides & tile_side.right)
                     {
                     move_state = mState.climb;
@@ -35,10 +35,10 @@ switch(move_state)
                     }
                 aim = 0;
                 }
-            if (keyboard_check(global.key_left[0]))
+            if (input_left)
                 {
                 var inst = instance_place(x-1,y,par_climb);
-                if (!keyboard_check(global.key_down[0])) and (yspeed >= -2)
+                if (!input_down) and (yspeed >= -2)
                 and (inst != noone) and (inst.sides & tile_side.left)
                     {
                     move_state = mState.climb;
@@ -56,8 +56,8 @@ switch(move_state)
                 xspeed = min(0,xspeed+fric);
             }
         
-        if (keyboard_check_pressed(global.key_down[0])
-        or (keyboard_check(global.key_down[0])
+        if (input_down_pressed
+        or (input_down
         and (place_meeting(x,y+1,par_jt))
         and (!place_meeting(x,y+1,par_solid))
         and (!place_meeting(x,y-1,par_solid))))
@@ -72,13 +72,13 @@ switch(move_state)
         else
             {
             // jump
-            if (on_ground) and (keyboard_check_pressed(global.key_jump[0]))
+            if (on_ground) and (input_jump_pressed)
                 jump();
             }
         
         if (on_ground) or (!on_ground and yspeed >= 1)
             {
-            if (keyboard_check(global.key_fire[0]))
+            if (input_fire)
                 {
                 fire_weapon();
                 roll = false;
@@ -94,9 +94,9 @@ switch(move_state)
             dir = h_dir;
             
             // move left or right
-            if (keyboard_check(global.key_right[0]))
+            if (input_right)
                 aim = 0;
-            if (keyboard_check(global.key_left[0]))
+            if (input_left)
                 aim = 180;
             }
         
@@ -106,10 +106,10 @@ switch(move_state)
         else if (xspeed < 0)
             xspeed = min(0,xspeed+fric);
         
-        if (keyboard_check(global.key_down[0]))
+        if (input_down)
             {
             // fall through one way floors
-            if (keyboard_check_pressed(global.key_up[0]))
+            if (input_jump_pressed)
                 {
                 if (on_ground)
                 and (place_meeting(x,y+1,par_jt))
@@ -136,13 +136,13 @@ switch(move_state)
                 }
             }
         
-        if (keyboard_check(global.key_fire[0]))
+        if (input_fire)
             fire_weapon();
         break;
     
     case mState.hang:
         
-        if (keyboard_check(global.key_fire[0]))
+        if (input_fire)
             {
             fire_weapon();
             
@@ -152,9 +152,9 @@ switch(move_state)
                 dir = h_dir;
                 
                 // move left or right
-                if (keyboard_check(global.key_right[0]))
+                if (input_right)
                     aim = 0;
-                if (keyboard_check(global.key_left[0]))
+                if (input_left)
                     aim = 180;
                 }
             
@@ -175,9 +175,9 @@ switch(move_state)
                 dir = h_dir;
                 
                 // move left or right
-                if (keyboard_check(global.key_right[0]))
+                if (input_right)
                     aim = 0;
-                if (keyboard_check(global.key_left[0]))
+                if (input_left)
                     aim = 180;
                 }
             else
@@ -196,12 +196,12 @@ switch(move_state)
             yspeed = min(0,yspeed+fric);
         
         if !(position_meeting(x,y-24,par_mb))
-        or (keyboard_check_pressed(global.key_down[0]))
+        or (input_down_pressed)
             {
             move_state = mState.walk;
             roll = false;
             }
-        if (keyboard_check_pressed(global.key_jump[0]))
+        if (input_jump_pressed)
             {
             move_state = mState.walk;
             jump();
@@ -214,7 +214,7 @@ switch(move_state)
         if (h_dir == 0) // no longer climbing on a wall
             {
             if (!place_meeting(x+face,y,par_solid))
-            and (keyboard_check(global.key_up[0]))
+            and (input_up)
                 x += face; // jump up onto ledge
             
             move_state = mState.walk;
@@ -231,7 +231,7 @@ switch(move_state)
             else if (h_dir == -1)
                 aim = 0;
             
-            if (keyboard_check(global.key_fire[0]))
+            if (input_fire)
                 {
                 fire_weapon();
                 
@@ -246,9 +246,7 @@ switch(move_state)
                 // vertical movement input
                 move_speed = 2;
                 if (v_dir != 0)
-                    {
                     yspeed = move_speed*v_dir;
-                    }
                 else
                     {
                     // friction
@@ -260,7 +258,7 @@ switch(move_state)
                 }
             
             // stop climbing when climbing down to floor
-            if (keyboard_check(global.key_down[0])) and (on_ground)
+            if (input_down) and (on_ground)
                 {
                 move_state = mState.walk;
                 roll = false;
@@ -269,28 +267,24 @@ switch(move_state)
                 }
             
             // jump/fall off
-            if (keyboard_check_pressed(global.key_jump[0]))
+            if (input_jump_pressed)
                 {
-                if (keyboard_check(global.key_up[0])) // jump
-                or ((keyboard_check(global.key_right[0]) and h_dir == -1)
-                or (keyboard_check(global.key_left[0]) and h_dir == +1))
-                and (!keyboard_check(global.key_down[0]))
+                if (input_up) // jump
+                or ((input_right and h_dir == -1)
+                or (input_left and h_dir == +1))
+                and (!input_down)
                     {
                     move_state = mState.walk;
                     jump();
                     
                     aim = point_direction(0,0,h_dir,0);
-                    show_debug_message("JUMP");
                     }
-                else if (keyboard_check(global.key_down[0])) // fall
-                //or (!(keyboard_check(global.key_right[0]) and h_dir == -1)
-                //and !(keyboard_check(global.key_left[0]) and h_dir == +1))
+                else if (input_down) // fall
                     {
                     move_state = mState.walk;
                     roll = false;
                     
                     aim = point_direction(0,0,h_dir,0);
-                    show_debug_message("FALL");
                     }
                 }
             }

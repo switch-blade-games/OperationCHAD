@@ -60,7 +60,7 @@ switch(move_state)
         if (sprite_index != spr_player_hang)
             sprite_index = spr_player_hang;
         
-        if (keyboard_check(global.key_fire[0]))
+        if (input_fire)
             image_index = 1;
         else
             image_index = 0;
@@ -70,7 +70,7 @@ switch(move_state)
         if (sprite_index != spr_player_climb)
             sprite_index = spr_player_climb;
         
-        if (keyboard_check(global.key_fire[0]))
+        if (input_fire)
             image_index = 1;
         else
             image_index = 0;

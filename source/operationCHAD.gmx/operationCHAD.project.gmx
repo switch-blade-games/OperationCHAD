@@ -33,12 +33,22 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\apply_gravity.gml</script>
-    <script>scripts\apply_input.gml</script>
-    <script>scripts\animate.gml</script>
-    <script>scripts\collide.gml</script>
-    <script>scripts\fire_weapon.gml</script>
-    <script>scripts\jump.gml</script>
+    <scripts name="gamepad">
+      <script>scripts\gamepad_init.gml</script>
+      <script>scripts\gamepad_update.gml</script>
+      <script>scripts\gamepad_checkall.gml</script>
+      <script>scripts\gamepad_checkall_pressed.gml</script>
+      <script>scripts\gamepad_checkall_released.gml</script>
+    </scripts>
+    <scripts name="player">
+      <script>scripts\input.gml</script>
+      <script>scripts\apply_gravity.gml</script>
+      <script>scripts\apply_input.gml</script>
+      <script>scripts\animate.gml</script>
+      <script>scripts\collide.gml</script>
+      <script>scripts\fire_weapon.gml</script>
+      <script>scripts\jump.gml</script>
+    </scripts>
     <script>scripts\draw_text_outline.gml</script>
   </scripts>
   <fonts name="fonts">

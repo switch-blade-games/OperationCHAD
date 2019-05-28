@@ -98,7 +98,8 @@ arm_pos = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>apply_gravity();
+            <string>input();
+apply_gravity();
 apply_input();
 animate();
 collide();
