@@ -51,6 +51,11 @@
     </scripts>
     <script>scripts\draw_text_outline.gml</script>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
+    <shader type="GLSLES">shaders\shd_crt.shader</shader>
+    <shader type="GLSLES">shaders\shd_crt2.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
   </fonts>
@@ -67,6 +72,7 @@
       <object>objects\par_projectile</object>
     </objects>
     <object>objects\obj_control</object>
+    <object>objects\obj_shader</object>
     <object>objects\obj_shadows</object>
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>

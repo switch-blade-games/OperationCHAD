@@ -40,7 +40,9 @@ display_set_gui_size(gui_w,gui_h);
 draw_set_font(fnt_default);
 background_color = $CAC26D;
 
-instance_create(0,0,obj_shadows);
+global.crt = true;
+global.autotile = true;
+global.ramptype = false;
 
 enum tile_side {
     none = 0,
@@ -50,8 +52,8 @@ enum tile_side {
     bottom = 8
     }
 
-global.autotile = true;
-global.ramptype = false;
+instance_create(0,0,obj_shadows);
+instance_create(0,0,obj_shader);
 
 // gamepad
 gamepad_init();
@@ -158,6 +160,7 @@ if (keyboard_check_pressed(ord("Q")))
             <kind>1</kind>
             <string>draw_set_color($000000);
 draw_rectangle(0,0,192,40,0);
+draw_rectangle(view_wview[0]-192,0,view_wview[0],20,0);
 
 draw_set_color($FFFFFF);
 if (global.ramptype)
@@ -170,6 +173,7 @@ else
     draw_text(6,4,"Slope Movement: SMOOTH");
     draw_text(6,20,"Press [Q] to switch");
     }
+draw_text(view_wview[0]-192+6,4,"[W] to toggle CRT Shader");
 
 draw_set_color($000000);
 </string>
