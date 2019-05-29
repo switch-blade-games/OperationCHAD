@@ -195,8 +195,25 @@ switch(move_state)
         else if (yspeed < 0)
             yspeed = min(0,yspeed+fric);
         
-        if !(position_meeting(x,y-24,par_mb))
-        or (input_down_pressed)
+        var i = 0;
+        while(!position_meeting(x,(y-24)+i,par_mb) and i <= 8)
+            i++;
+        
+        var inst = instance_position(x,(y-24)+i,par_mb);
+        if (inst != noone)
+            {
+            var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
+            if (!place_meeting(x,yh,par_solid))
+                y = yh;
+            }
+        else
+            {
+            show_debug_message("FALL");
+            move_state = mState.walk;
+            roll = false;
+            }
+        
+        if (input_down_pressed)
             {
             move_state = mState.walk;
             roll = false;

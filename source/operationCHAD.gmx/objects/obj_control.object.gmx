@@ -40,7 +40,7 @@ display_set_gui_size(gui_w,gui_h);
 draw_set_font(fnt_default);
 background_color = $CAC26D;
 
-global.crt = true;
+global.crt = false;
 global.autotile = true;
 global.ramptype = false;
 
@@ -72,6 +72,10 @@ global.pad_left[0] = gp_padl;
 global.pad_right[0] = gp_padr;
 global.pad_fire[0] = gp_face3;
 global.pad_jump[0] = gp_face1;
+
+// debug
+global.shadow_time = 0;
+global.shader_time = 0;
 </string>
           </argument>
         </arguments>
@@ -102,36 +106,24 @@ if (global.autotile)
     global.autotile = false;
     
     tile_layer_delete(10);
-    tile_layer_delete(20);
     with(obj_wall)
         tile_add(tile_walls,0,0,20,20,x,y,10);
     with(obj_wall_jt)
         tile_add(tile_walls,20,0,20,20,x,y,10);
-    with(obj_wall_mb)
-        tile_add(tile_walls,40,40,20,20,x,y,10);
     with(obj_ramp_r)
+        tile_add(tile_walls,0,20,20,20,x,y,10);
+    with(obj_ramp_l)
+        tile_add(tile_walls,20,20,20,20,x,y,10);
+    with(obj_climb_r)
         tile_add(tile_walls,0,40,20,20,x,y,10);
-    with(obj_ramp_l)
+    with(obj_climb_l)
         tile_add(tile_walls,20,40,20,20,x,y,10);
-    with(obj_climb_r)
-        tile_add(tile_walls,40,0,20,20,x,y,10);
-    with(obj_climb_l)
-        tile_add(tile_walls,60,0,20,20,x,y,10);
-    
-    with(obj_wall)
-        tile_add(tile_walls,0,20,20,20,x-4,y+4,20);
-    with(obj_wall_jt)
-        tile_add(tile_walls,20,20,20,20,x-4,y+4,20);
-    with(obj_wall_mb)
-        tile_add(tile_walls,40,60,20,20,x-4,y+4,20);
-    with(obj_ramp_r)
-        tile_add(tile_walls,0,60,20,20,x-4,y+4,20);
-    with(obj_ramp_l)
-        tile_add(tile_walls,20,60,20,20,x-4,y+4,20);
-    with(obj_climb_r)
-        tile_add(tile_walls,40,20,20,20,x-4,y+4,20);
-    with(obj_climb_l)
-        tile_add(tile_walls,60,20,20,20,x-4,y+4,20);
+    with(obj_mb)
+        tile_add(tile_walls,0,60,20,20,x,y,10);
+    with(obj_mb_r)
+        tile_add(tile_walls,20,60,40,40,x,y,10);
+    with(obj_mb_l)
+        tile_add(tile_walls,60,60,40,40,x,y,10);
     }
 
 if (keyboard_check_pressed(ord("Q")))
@@ -174,6 +166,9 @@ else
     draw_text(6,20,"Press [Q] to switch");
     }
 draw_text(view_wview[0]-192+6,4,"[W] to toggle CRT Shader");
+
+//draw_text(6,128,"shadows: "+string(global.shadow_time)+"ms");
+//draw_text(6,144,"shaders: "+string(global.shader_time)+"ms");
 
 draw_set_color($000000);
 </string>

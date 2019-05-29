@@ -27,6 +27,9 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
+    <sprite>sprites\msk_mb</sprite>
+    <sprite>sprites\msk_mb_r</sprite>
+    <sprite>sprites\msk_mb_l</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -77,11 +80,13 @@
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_jt</object>
-    <object>objects\obj_wall_mb</object>
-    <object>objects\obj_climb_r</object>
-    <object>objects\obj_climb_l</object>
     <object>objects\obj_ramp_r</object>
     <object>objects\obj_ramp_l</object>
+    <object>objects\obj_climb_r</object>
+    <object>objects\obj_climb_l</object>
+    <object>objects\obj_mb</object>
+    <object>objects\obj_mb_r</object>
+    <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
     <object>objects\obj_dummy</object>
     <object>objects\obj_bullet</object>

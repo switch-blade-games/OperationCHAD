@@ -20,15 +20,20 @@ switch(move_state)
             {
             if (yspeed > 0) and (!input_down)
                 {
-                var inst = instance_place(x,y,par_mb);
+                var inst = instance_place(x,y-4,par_mb);
                 if (inst != noone)
                     {
                     if (bbox_top >= inst.bbox_top)
                         {
-                        move_state = mState.hang;
-                        yspeed = 0;
-                        
-                        y = inst.bbox_top+24;
+                        var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
+                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-20,par_mb))
+                        and (abs(y-yh) <= abs(yspeed))
+                            {
+                            show_debug_message("HANG! YOLD: "+string(y)+" YNEW: "+string(yh));
+                            move_state = mState.hang;
+                            yspeed = 0;
+                            y = yh;
+                            }
                         }
                     }
                 }

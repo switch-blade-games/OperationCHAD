@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>surf_shadow = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,14 +48,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(par_actor)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,dir,image_yscale,image_angle,0,0.25);
+            <string>if (!surface_exists(surf_shadow))
+    surf_shadow = surface_create(view_wview[0]+80,view_hview[0]+80);
+
+var time = get_timer();
+
+var xoff = -(view_xview[0]-40)-4;
+var yoff = -(view_yview[0]-40)+4;
+
+surface_set_target(surf_shadow);
+draw_clear_alpha($000000,0);
+
+with(obj_wall)
+    draw_background_part_ext(tile_walls,0,0,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_wall_jt)
+    draw_background_part_ext(tile_walls,20,0,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_ramp_r)
+    draw_background_part_ext(tile_walls,0,20,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_ramp_l)
+    draw_background_part_ext(tile_walls,20,20,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_climb_r)
+    draw_background_part_ext(tile_walls,0,40,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_climb_l)
+    draw_background_part_ext(tile_walls,20,40,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_mb)
+    draw_background_part_ext(tile_walls,0,60,20,20,x+xoff,y+yoff,1,1,0,1);
+with(obj_mb_r)
+    draw_background_part_ext(tile_walls,20,60,40,40,x+xoff,y+yoff,1,1,0,1);
+with(obj_mb_l)
+    draw_background_part_ext(tile_walls,60,60,40,40,x+xoff,y+yoff,1,1,0,1);
+
+with(par_actor)
+    draw_sprite_ext(sprite_index,image_index,x+xoff,y+yoff,dir,image_yscale,image_angle,0,1);
 with(par_move)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
+    draw_sprite_ext(sprite_index,image_index,x+xoff,y+yoff,image_xscale,image_yscale,image_angle,0,1);
 with(obj_dust)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
+    draw_sprite_ext(sprite_index,image_index,x+xoff,y+yoff,image_xscale,image_yscale,image_angle,0,1);
 with(obj_target)
-    draw_sprite_ext(sprite_index,image_index,x-4,y+4,image_xscale,image_yscale,image_angle,0,0.25);
+    draw_sprite_ext(sprite_index,image_index,x+xoff,y+yoff,image_xscale,image_yscale,image_angle,0,1);
+
+surface_reset_target();
+
+draw_surface_ext(surf_shadow,view_xview[0]-40,view_yview[0]-40,1,1,0,-1,0.25);
+
+global.shadow_time = round((get_timer()-time)/1000);
 </string>
           </argument>
         </arguments>
