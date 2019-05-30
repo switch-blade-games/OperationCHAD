@@ -6,30 +6,37 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\msk_player</sprite>
-    <sprite>sprites\msk_player_duck</sprite>
-    <sprite>sprites\msk_wall</sprite>
-    <sprite>sprites\msk_wall_jt</sprite>
+    <sprites name="walls">
+      <sprite>sprites\msk_wall</sprite>
+      <sprite>sprites\msk_wall_half</sprite>
+      <sprite>sprites\msk_wall_jt</sprite>
+      <sprite>sprites\msk_ramp_r</sprite>
+      <sprite>sprites\msk_ramp_l</sprite>
+      <sprite>sprites\msk_ramp_half_r</sprite>
+      <sprite>sprites\msk_ramp_half_l</sprite>
+      <sprite>sprites\msk_mb</sprite>
+      <sprite>sprites\msk_mb_r</sprite>
+      <sprite>sprites\msk_mb_l</sprite>
+      <sprite>sprites\spr_wall_move</sprite>
+    </sprites>
+    <sprites name="player">
+      <sprite>sprites\msk_player</sprite>
+      <sprite>sprites\msk_player_duck</sprite>
+      <sprite>sprites\spr_player_idle</sprite>
+      <sprite>sprites\spr_player_walk</sprite>
+      <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_duck</sprite>
+      <sprite>sprites\spr_player_hang</sprite>
+      <sprite>sprites\spr_player_climb</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
-    <sprite>sprites\spr_wall_move</sprite>
     <sprite>sprites\spr_arrow_h</sprite>
     <sprite>sprites\spr_dust</sprite>
-    <sprite>sprites\spr_player_walk</sprite>
-    <sprite>sprites\spr_player_jump</sprite>
-    <sprite>sprites\spr_player_idle</sprite>
-    <sprite>sprites\spr_player_hang</sprite>
-    <sprite>sprites\spr_player_duck</sprite>
-    <sprite>sprites\spr_player_climb</sprite>
-    <sprite>sprites\msk_ramp_r</sprite>
-    <sprite>sprites\msk_ramp_l</sprite>
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
-    <sprite>sprites\msk_mb</sprite>
-    <sprite>sprites\msk_mb_r</sprite>
-    <sprite>sprites\msk_mb_l</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -79,9 +86,12 @@
     <object>objects\obj_shadows</object>
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
+    <object>objects\obj_wall_half</object>
     <object>objects\obj_wall_jt</object>
     <object>objects\obj_ramp_r</object>
     <object>objects\obj_ramp_l</object>
+    <object>objects\obj_ramp_half_r</object>
+    <object>objects\obj_ramp_half_l</object>
     <object>objects\obj_climb_r</object>
     <object>objects\obj_climb_l</object>
     <object>objects\obj_mb</object>

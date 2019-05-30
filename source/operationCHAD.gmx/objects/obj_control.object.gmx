@@ -108,12 +108,18 @@ if (global.autotile)
     tile_layer_delete(10);
     with(obj_wall)
         tile_add(tile_walls,0,0,20,20,x,y,10);
-    with(obj_wall_jt)
+    with(obj_wall_half)
         tile_add(tile_walls,20,0,20,20,x,y,10);
+    with(obj_wall_jt)
+        tile_add(tile_walls,40,0,20,20,x,y,10);
     with(obj_ramp_r)
         tile_add(tile_walls,0,20,20,20,x,y,10);
     with(obj_ramp_l)
         tile_add(tile_walls,20,20,20,20,x,y,10);
+    with(obj_ramp_half_r)
+        tile_add(tile_walls,40,20,20,20,x,y,10);
+    with(obj_ramp_half_l)
+        tile_add(tile_walls,60,20,20,20,x,y,10);
     with(obj_climb_r)
         tile_add(tile_walls,0,40,20,20,x,y,10);
     with(obj_climb_l)

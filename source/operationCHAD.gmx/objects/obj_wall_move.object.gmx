@@ -113,8 +113,13 @@ with(par_actor)
         
         if (!place_meeting(x+other.ldx,y,par_solid))
             {
-            if (object_index == obj_player) and (move_state == mState.hang)
+            if (object_index == obj_player)
+            and ((move_state == mState.hang)
+            or (move_state == mState.climb))
+                {
                 move_state = mState.walk;
+                roll = false;
+                }
 
             x += other.ldx;
             }
@@ -128,8 +133,13 @@ with(par_actor)
             {
             if (!place_meeting(x+other.ldx,y,par_solid))
                 {
-                if (object_index == obj_player) and (move_state == mState.hang)
+                if (object_index == obj_player)
+                and ((move_state == mState.hang)
+                or (move_state == mState.climb))
+                    {
                     move_state = mState.walk;
+                    roll = false;
+                    }
                 
                 x += other.ldx;
                 }
@@ -145,8 +155,13 @@ for(var i=0; i&lt;on_actors; i++;)
         {
         if (!place_meeting(x,y+other.ldy,par_solid))
             {
-            if (object_index == obj_player) and (move_state == mState.hang)
+            if (object_index == obj_player)
+            and ((move_state == mState.hang)
+            or (move_state == mState.climb))
+                {
                 move_state = mState.walk;
+                roll = false;
+                }
             
             y += other.ldy;
             }
@@ -161,8 +176,13 @@ for(var i=0; i&lt;off_actors; i++;)
             {
             if (!place_meeting(x,y+other.ldy,par_solid))
                 {
-                if (object_index == obj_player) and (move_state == mState.hang)
+                if (object_index == obj_player)
+                and ((move_state == mState.hang)
+                or (move_state == mState.climb))
+                    {
                     move_state = mState.walk;
+                    roll = false;
+                    }
                 
                 y += other.ldy;
                 }
@@ -191,8 +211,8 @@ for(var i=0; i&lt;off_actors; i++;)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_wall_move,0,x,y);
-draw_sprite_ext(spr_arrow_h,0,x+16,y+16,1,1,ang,-1,1);
+            <string>draw_sprite_ext(spr_wall_move,0,x,y,image_xscale,image_yscale,0,-1,1);
+draw_sprite_ext(spr_arrow_h,0,x+image_xscale*10,y+image_yscale*10,1,1,ang,-1,1);
 </string>
           </argument>
         </arguments>
