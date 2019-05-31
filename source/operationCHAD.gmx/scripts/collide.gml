@@ -38,12 +38,12 @@ if (tx > 0)
             }
         }
     
-    if (global.ramptype)
-        {
-        var dis = point_distance(xp,yp,x,y);
-        if (dis > tx)
-            subx -= (dis-tx)*ux;
-        }
+    //if (global.ramptype)
+    //    {
+    var dis = point_distance(xp,yp,x,y);
+    if (dis > tx)
+        subx -= (dis-tx)*ux;
+    //    }
     }
 
 // vertical collision detection/response

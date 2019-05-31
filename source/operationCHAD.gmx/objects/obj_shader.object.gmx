@@ -27,19 +27,12 @@
             <kind>1</kind>
             <string>application_surface_draw_enable(false);
 
-/*
-// shd_crt
-xc = 0.10;
-yc = 0.15;
-scan = 600;
+temp_surf = -1;
 
+xc = 0.15;
+yc = 0.20;
 u_xCurve = shader_get_uniform(shd_crt,"xCurve");
 u_yCurve = shader_get_uniform(shd_crt,"yCurve");
-u_scan = shader_get_uniform(shd_crt,"scanline");
-*/
-
-// shd_crt2
-u_timer = shader_get_uniform(shd_crt2,"timer");
 </string>
           </argument>
         </arguments>
@@ -90,16 +83,44 @@ u_timer = shader_get_uniform(shd_crt2,"timer");
     {
     var time = get_timer();
     
-    // shd_crt
-    shader_set(shd_crt2);
-    shader_set_uniform_f(u_timer,get_timer()/1000000);
-    draw_surface(application_surface,0,0);
+    if (!surface_exists(temp_surf))
+        temp_surf = surface_create(400,240);
+    
+    surface_set_target(temp_surf);
+    draw_clear(background_color);
+    
+    if (keyboard_check(ord("1")))
+        draw_sprite_ext(spr_pixelart_test,0,0,0,2,2,0,-1,1);
+    else if (keyboard_check(ord("2")))
+        draw_sprite_ext(spr_pixelart_test,1,0,0,2,2,0,-1,1);
+    else if (keyboard_check(ord("3")))
+        draw_sprite_ext(spr_pixelart_test,2,0,0,2,2,0,-1,1);
+    else
+        draw_surface(application_surface,0,0);
+    
+    surface_reset_target();
+    
+    shader_set(shd_crt);
+    shader_set_uniform_f(u_xCurve,xc);
+    shader_set_uniform_f(u_yCurve,yc);
+    
+    draw_surface(temp_surf,0,0);
+    
     shader_reset();
     
     global.shader_time = round((get_timer()-time)/1000);
     }
 else
-    draw_surface(application_surface,0,0);
+    {
+    if (keyboard_check(ord("1")))
+        draw_sprite_ext(spr_pixelart_test,0,0,0,2,2,0,-1,1);
+    else if (keyboard_check(ord("2")))
+        draw_sprite_ext(spr_pixelart_test,1,0,0,2,2,0,-1,1);
+    else if (keyboard_check(ord("3")))
+        draw_sprite_ext(spr_pixelart_test,2,0,0,2,2,0,-1,1);
+    else
+        draw_surface(application_surface,0,0);
+    }
 </string>
           </argument>
         </arguments>

@@ -190,16 +190,13 @@ switch(move_state)
                 }
             }
         
-        if (yspeed > 0)
-            yspeed = max(0,yspeed-fric);
-        else if (yspeed < 0)
-            yspeed = min(0,yspeed+fric);
+        yspeed = 0;
         
         var i = 0;
-        while(!position_meeting(x,(y-24)+i,par_mb) and i <= 8)
+        var inst = instance_position(x,(y-26)+i,par_mb);
+        while(inst == noone and i<12)
             i++;
         
-        var inst = instance_position(x,(y-24)+i,par_mb);
         if (inst != noone)
             {
             var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
@@ -208,7 +205,6 @@ switch(move_state)
             }
         else
             {
-            show_debug_message("FALL");
             move_state = mState.walk;
             roll = false;
             }

@@ -20,7 +20,11 @@ switch(move_state)
             {
             if (yspeed > 0) and (!input_down)
                 {
-                var inst = instance_place(x,y-4,par_mb);
+                var i = 0;
+                var inst = instance_position(x,(y-26)+i,par_mb);
+                while(inst == noone and i<12)
+                    i++;
+                
                 if (inst != noone)
                     {
                     if (bbox_top >= inst.bbox_top)
@@ -29,7 +33,6 @@ switch(move_state)
                         if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-20,par_mb))
                         and (abs(y-yh) <= abs(yspeed))
                             {
-                            show_debug_message("HANG! YOLD: "+string(y)+" YNEW: "+string(yh));
                             move_state = mState.hang;
                             yspeed = 0;
                             y = yh;

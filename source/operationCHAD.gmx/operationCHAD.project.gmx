@@ -37,6 +37,7 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
+    <sprite>sprites\spr_pixelart_test</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_walls</background>
@@ -64,7 +65,6 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
-    <shader type="GLSLES">shaders\shd_crt2.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
