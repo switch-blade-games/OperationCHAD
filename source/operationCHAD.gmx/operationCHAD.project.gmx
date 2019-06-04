@@ -9,7 +9,7 @@
     <sprites name="walls">
       <sprite>sprites\msk_wall</sprite>
       <sprite>sprites\msk_wall_half</sprite>
-      <sprite>sprites\msk_wall_jt</sprite>
+      <sprite>sprites\msk_jt</sprite>
       <sprite>sprites\msk_ramp_r</sprite>
       <sprite>sprites\msk_ramp_l</sprite>
       <sprite>sprites\msk_ramp_half_r</sprite>
@@ -37,10 +37,11 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
-    <sprite>sprites\spr_pixelart_test</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\tile_walls</background>
+    <background>background\til_tiles_area1</background>
+    <background>background\til_tiles_area2</background>
+    <background>background\til_tiles_area3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -59,6 +60,11 @@
       <script>scripts\collide.gml</script>
       <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
+    </scripts>
+    <scripts name="editor">
+      <script>scripts\editor_clear.gml</script>
+      <script>scripts\editor_save.gml</script>
+      <script>scripts\editor_load.gml</script>
     </scripts>
     <script>scripts\draw_text_outline.gml</script>
   </scripts>
@@ -81,13 +87,14 @@
       <object>objects\par_shootable</object>
       <object>objects\par_projectile</object>
     </objects>
+    <object>objects\obj_editor</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_shadows</object>
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_half</object>
-    <object>objects\obj_wall_jt</object>
+    <object>objects\obj_jt</object>
     <object>objects\obj_ramp_r</object>
     <object>objects\obj_ramp_l</object>
     <object>objects\obj_ramp_half_r</object>
@@ -104,8 +111,10 @@
     <object>objects\obj_dust</object>
     <object>objects\obj_target</object>
     <object>objects\obj_particle</object>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_editor</room>
     <room>rooms\rm_default</room>
   </rooms>
   <help>

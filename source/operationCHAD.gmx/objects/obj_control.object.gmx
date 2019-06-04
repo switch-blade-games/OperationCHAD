@@ -38,10 +38,10 @@ gui_h = view_hview[0];
 display_set_gui_size(gui_w,gui_h);
 
 draw_set_font(fnt_default);
-background_color = $CAC26D;
 
 global.crt = true;
-global.autotile = true;
+global.xshake = 0;
+global.yshake = 0;
 
 enum tile_side {
     none = 0,
@@ -98,38 +98,6 @@ global.shader_time = 0;
           <argument>
             <kind>1</kind>
             <string>gamepad_update();
-
-// walls set global.autotile to true when created or destroyed
-if (global.autotile)
-    {
-    global.autotile = false;
-    
-    tile_layer_delete(10);
-    with(obj_wall)
-        tile_add(tile_walls,0,0,20,20,x,y,10);
-    with(obj_wall_half)
-        tile_add(tile_walls,20,0,20,20,x,y,10);
-    with(obj_wall_jt)
-        tile_add(tile_walls,40,0,20,20,x,y,10);
-    with(obj_ramp_r)
-        tile_add(tile_walls,0,20,20,20,x,y,10);
-    with(obj_ramp_l)
-        tile_add(tile_walls,20,20,20,20,x,y,10);
-    with(obj_ramp_half_r)
-        tile_add(tile_walls,40,20,20,20,x,y,10);
-    with(obj_ramp_half_l)
-        tile_add(tile_walls,60,20,20,20,x,y,10);
-    with(obj_climb_r)
-        tile_add(tile_walls,0,40,20,20,x,y,10);
-    with(obj_climb_l)
-        tile_add(tile_walls,20,40,20,20,x,y,10);
-    with(obj_mb)
-        tile_add(tile_walls,0,60,20,20,x,y,10);
-    with(obj_mb_r)
-        tile_add(tile_walls,20,60,40,40,x,y,10);
-    with(obj_mb_l)
-        tile_add(tile_walls,60,60,40,40,x,y,10);
-    }
 </string>
           </argument>
         </arguments>

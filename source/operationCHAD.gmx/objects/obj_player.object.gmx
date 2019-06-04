@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// player move states
+            <string>instance_create(x,y,obj_camera);
+
+// player move states
 enum mState
     {
     idle,
@@ -111,12 +113,6 @@ if (shoot_timer &gt; 0)
     shoot_timer--;
 if (recoil &gt; 0)
     recoil--;
-
-// simple shitty camera
-view_xview[0] += ((x-view_wview[0]/2)-view_xview[0])*0.2;
-view_yview[0] += ((y-view_hview[0]/2)-view_yview[0])*0.2;
-view_xview[0] = round(view_xview[0]);
-view_yview[0] = round(view_yview[0]);
 </string>
           </argument>
         </arguments>

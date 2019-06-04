@@ -60,29 +60,29 @@ surface_set_target(surf_shadow);
 draw_clear_alpha($000000,0);
 
 with(obj_wall)
-    draw_background_part_ext(tile_walls,0,0,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,0,0,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_wall_half)
-    draw_background_part_ext(tile_walls,20,0,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,20,0,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_wall_jt)
-    draw_background_part_ext(tile_walls,40,0,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,40,0,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_ramp_r)
-    draw_background_part_ext(tile_walls,0,20,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,0,20,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_ramp_l)
-    draw_background_part_ext(tile_walls,20,20,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,20,20,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_ramp_half_r)
-    draw_background_part_ext(tile_walls,40,20,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,40,20,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_ramp_half_l)
-    draw_background_part_ext(tile_walls,60,20,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,60,20,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_climb_r)
-    draw_background_part_ext(tile_walls,0,40,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,0,40,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_climb_l)
-    draw_background_part_ext(tile_walls,20,40,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,20,40,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_mb)
-    draw_background_part_ext(tile_walls,0,60,20,20,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,0,60,20,20,x+xoff,y+yoff,1,1,0,1);
 with(obj_mb_r)
-    draw_background_part_ext(tile_walls,20,60,40,40,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,20,60,40,40,x+xoff,y+yoff,1,1,0,1);
 with(obj_mb_l)
-    draw_background_part_ext(tile_walls,60,60,40,40,x+xoff,y+yoff,1,1,0,1);
+    draw_background_part_ext(global.tileset,60,60,40,40,x+xoff,y+yoff,1,1,0,1);
 
 with(par_actor)
     draw_sprite_ext(sprite_index,image_index,x+xoff,y+yoff,dir,image_yscale,image_angle,0,1);
