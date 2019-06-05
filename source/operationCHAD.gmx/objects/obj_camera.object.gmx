@@ -32,10 +32,10 @@
     up = 2,
     left = 4,
     down = 8,
-    free = 16,
+    free = 15
     }
 
-cam_state = camState.right;
+cam_state = camState.free;
 target = obj_player;
 </string>
           </argument>

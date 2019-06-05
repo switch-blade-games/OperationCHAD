@@ -94,6 +94,7 @@
     <object>objects\obj_editor</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
+    <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_half</object>
@@ -114,7 +115,6 @@
     <object>objects\obj_dust</object>
     <object>objects\obj_target</object>
     <object>objects\obj_particle</object>
-    <object>objects\obj_camera</object>
     <object>objects\obj_player_spawn</object>
   </objects>
   <rooms name="rooms">

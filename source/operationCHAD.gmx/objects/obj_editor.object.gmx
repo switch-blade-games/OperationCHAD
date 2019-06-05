@@ -103,7 +103,7 @@ layers = 7;
 for(var i=0; i&lt;layers; i++;)
     {
     layer_count[i] = 0;
-    layer_depth[i] = -15 + i*5;
+    layer_depth[i] = 15 - i*5;
     }
 // tile layer select
 layer = 3;
