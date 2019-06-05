@@ -37,6 +37,7 @@
     <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
+    <sprite>sprites\spr_player_spawn</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
@@ -65,6 +66,8 @@
       <script>scripts\editor_clear.gml</script>
       <script>scripts\editor_save.gml</script>
       <script>scripts\editor_load.gml</script>
+      <script>scripts\editor_play.gml</script>
+      <script>scripts\editor_edit.gml</script>
     </scripts>
     <script>scripts\draw_text_outline.gml</script>
   </scripts>
@@ -86,11 +89,11 @@
       <object>objects\par_climb</object>
       <object>objects\par_shootable</object>
       <object>objects\par_projectile</object>
+      <object>objects\par_effect</object>
     </objects>
     <object>objects\obj_editor</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
-    <object>objects\obj_shadows</object>
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_wall_half</object>
@@ -112,6 +115,7 @@
     <object>objects\obj_target</object>
     <object>objects\obj_particle</object>
     <object>objects\obj_camera</object>
+    <object>objects\obj_player_spawn</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_editor</room>

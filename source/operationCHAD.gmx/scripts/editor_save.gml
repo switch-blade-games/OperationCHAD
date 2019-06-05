@@ -1,5 +1,9 @@
 /// editor_save(filepath);
 
+var file_name = filename_name(argument[0]);
+var file_ext = filename_ext(argument[0]);
+global.levelname = string_replace_all(file_name,file_ext,"");
+
 var buff = buffer_create(4096,buffer_grow,1);
 buffer_seek(buff,buffer_seek_start,0);
 buffer_write(buff,buffer_u8,global.version);
@@ -57,6 +61,27 @@ for(var i=0; i<layers; i++;)
     show_debug_message("TILES["+string(i)+"]: "+string(num));
     buffer_poke(buff,seek,buffer_u16,num);
     }
+
+var seek = buffer_tell(buff);
+buffer_write(buff,buffer_u16,0);
+
+var num = 0;
+var key = ds_map_find_first(entity_map);
+while(key != undefined)
+    {
+    var inst = ds_map_find_value(entity_map,key);
+    if (instance_exists(inst))
+        {
+        buffer_write(buff,buffer_u16,inst.object_index);
+        buffer_write(buff,buffer_s16,inst.x);
+        buffer_write(buff,buffer_s16,inst.y);
+        num++;
+        }
+    var key = ds_map_find_next(entity_map,key);
+    }
+
+show_debug_message("ENTITIES: "+string(num));
+buffer_poke(buff,seek,buffer_u16,num);
 
 buffer_save(buff,argument[0]);
 buffer_delete(buff);

@@ -12,6 +12,10 @@ if (version != global.version)
 
 editor_clear();
 
+var file_name = filename_name(argument[0]);
+var file_ext = filename_ext(argument[0]);
+global.levelname = string_replace_all(file_name,file_ext,"");
+
 var collide_map_size = buffer_read(buff,buffer_u16);
 show_debug_message("COLLIDERS: "+string(collide_map_size));
 
@@ -45,7 +49,21 @@ for(var i=0; i<layers; i++;)
         var th = buffer_read(buff,buffer_u8)*20;
         
         tile_add(tbg,tl,tt,tw,th,tx,ty,layer_depth[i]);
+        layer_count[i]++;
         }
+    }
+
+var entity_map_size = buffer_read(buff,buffer_u16);
+show_debug_message("ENTITIES: "+string(entity_map_size));
+
+for(var i=0; i<entity_map_size; i++;)
+    {
+    var obj = buffer_read(buff,buffer_u16);
+    var ex = buffer_read(buff,buffer_s16);
+    var ey = buffer_read(buff,buffer_s16);
+    
+    var inst = instance_create(ex,ey,obj);
+    ds_map_add(entity_map,string(ex)+":"+string(ey),inst);
     }
 
 buffer_delete(buff);

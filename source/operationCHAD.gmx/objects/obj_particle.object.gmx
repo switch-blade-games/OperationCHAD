@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>15</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_effect</parentName>
   <maskName>spr_particle</maskName>
   <events>
     <event eventtype="0" enumb="0">

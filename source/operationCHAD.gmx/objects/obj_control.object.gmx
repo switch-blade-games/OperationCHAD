@@ -51,7 +51,6 @@ enum tile_side {
     bottom = 8
     }
 
-instance_create(0,0,obj_shadows);
 instance_create(0,0,obj_shader);
 
 // gamepad
