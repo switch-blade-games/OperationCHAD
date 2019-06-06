@@ -30,19 +30,9 @@
 image_speed = 0;
 image_index = 0;
 
-hpmax = 12;
-hp = hpmax;
-flash = 0;
-
-xpos = x;
-ypos = y;
-xoff = 0;
-yoff = 0;
-
 //JB stuff
 
 life=4
-
 
 INIT=0
 JUMP=1
@@ -141,17 +131,7 @@ state=JUMP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//x = xpos+xoff;
-//y = ypos+yoff;
-
-xoff *= 0.95;
-yoff *= 0.95;
-
-
-//JB
-
-
-//destroy if out of view
+            <string>//destroy if out of view
 if(x&lt;view_xview[0]-32)
     instance_destroy()
 
@@ -196,11 +176,8 @@ if(x&lt;FLYx)
 if(state=CRAWL){
 
     //this is a very inelegant way to check how many other babies are flying at this moment. If there's too many, no flying permit
-    
-    
     //will the baby be able to fly
     var FLYINGpermit=false
-    
     
     //number of flying babies to be added up
     var FLYnum=0;
@@ -217,17 +194,11 @@ if(state=CRAWL){
     if(FLYnum&lt;=embro_controller.FLYmax)
         FLYINGpermit=true
     
-    
-    
-    
     if(FLYINGpermit=true)
     if(random(FLYodds)&lt;1)
-    {
-
+        {
         vspeed=FLYspe*-FLIP
         state=FLY
-        
-        
         }
 }
 </string>
@@ -294,11 +265,8 @@ state=FLY
 sprite_index=baby_crawl_spr
 
 
-draw_sprite_ext(sprite_index,flash &gt; 0,x,y,1,FLIP,0,-1,image_alpha);
-if (flash &gt; 0)
-    flash--;
-    
-    
+draw_sprite_ext(sprite_index,image_index,x,y,1,FLIP,0,-1,image_alpha);
+
 //draw_text(x,y-20,vspeed)
 </string>
           </argument>

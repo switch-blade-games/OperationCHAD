@@ -10,31 +10,28 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,dev_cheater)
+  <code>instance_create(0,0,dev_cheater);
 
-window_set_fullscreen(true)
-
-//setting colors
+window_set_fullscreen(true);
 
 //colors
-global.YELLOW=make_color_rgb(218,212,94)
-global.DARKpurple=make_color_rgb(20,12,28)
-global.GREEN=make_color_rgb(109,170,44)
-global.PINK=make_color_rgb(208,70,72)
-global.LIGHTgrey=make_color_rgb(133,149,161)
-global.MEDgrey=make_color_rgb(117,113,97)
-global.DARKgrey=make_color_rgb(78,74,78)
-global.WHITE=make_color_rgb(222,238,214)
-global.DARKgreen=make_color_rgb(52,101,36)
-global.DARKblue=make_color_rgb(48,52,109)
-global.MEDblue=make_color_rgb(89,125,206)
-global.LIGHTblue=make_color_rgb(109,194,202)
-global.PURPLE=make_color_rgb(68,38,52)
-global.BROWN=make_color_rgb(133,76,48)
-global.ORANGE=make_color_rgb(210,125,44)
+global.YELLOW=make_color_rgb(218,212,94);
+global.DARKpurple=make_color_rgb(20,12,28);
+global.GREEN=make_color_rgb(109,170,44);
+global.PINK=make_color_rgb(208,70,72);
+global.LIGHTgrey=make_color_rgb(133,149,161);
+global.MEDgrey=make_color_rgb(117,113,97);
+global.DARKgrey=make_color_rgb(78,74,78);
+global.WHITE=make_color_rgb(222,238,214);
+global.DARKgreen=make_color_rgb(52,101,36);
+global.DARKblue=make_color_rgb(48,52,109);
+global.MEDblue=make_color_rgb(89,125,206);
+global.LIGHTblue=make_color_rgb(109,194,202);
+global.PURPLE=make_color_rgb(68,38,52);
+global.BROWN=make_color_rgb(133,76,48);
+global.ORANGE=make_color_rgb(210,125,44);
 
-
-room_goto_next()</code>
+room_goto_next();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

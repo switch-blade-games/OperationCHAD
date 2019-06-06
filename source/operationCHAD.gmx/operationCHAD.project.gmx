@@ -29,17 +29,18 @@
       <sprite>sprites\spr_player_hang</sprite>
       <sprite>sprites\spr_player_climb</sprite>
     </sprites>
+    <sprites name="editor">
+      <sprite>sprites\spr_player_spawn</sprite>
+      <sprite>sprites\spr_camera</sprite>
+      <sprite>sprites\spr_camera_arrow</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
     <sprite>sprites\spr_arrow_h</sprite>
     <sprite>sprites\spr_dust</sprite>
-    <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
-    <sprite>sprites\spr_player_spawn</sprite>
-    <sprite>sprites\spr_camera</sprite>
-    <sprite>sprites\spr_camera_arrow</sprite>
     <sprites name="embro">
       <sprite>sprites\baby_jump_spr</sprite>
       <sprite>sprites\baby_crawl_spr</sprite>
@@ -107,7 +108,11 @@
       <object>objects\par_projectile</object>
       <object>objects\par_effect</object>
     </objects>
-    <object>objects\obj_editor</object>
+    <objects name="editor">
+      <object>objects\obj_editor</object>
+      <object>objects\obj_player_spawn</object>
+      <object>objects\obj_camera_path</object>
+    </objects>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
@@ -130,10 +135,7 @@
     <object>objects\obj_bullet</object>
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
-    <object>objects\obj_target</object>
     <object>objects\obj_particle</object>
-    <object>objects\obj_player_spawn</object>
-    <object>objects\obj_camera_path</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>
@@ -154,10 +156,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
-    <room>rooms\clown_room</room>
     <room>rooms\NPC_room</room>
     <room>rooms\embro_room</room>
-    <room>rooms\rm_default</room>
+    <room>rooms\clown_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -54,30 +54,22 @@ image_index = 0;
             <string>if (team == other.team) or (!other.canhit)
     exit;
 
-other.hp = max(0,other.hp-damage);
-other.flash = 4;
+var dir = point_direction(x,y,other.x,other.y);
+var ldx = lengthdir_x(1,dir);
+var ldy = lengthdir_y(1,dir);
 
-if (other.object_index == obj_target)
+repeat(choose(2,3))
     {
-    var dir = point_direction(x,y,other.x,other.y);
-    var ldx = lengthdir_x(1,dir);
-    var ldy = lengthdir_y(1,dir);
-    other.xoff += ldx*6;
-    other.yoff += ldy*6;
-    
-    repeat(choose(2,3))
-        {
-        var inst = instance_create(other.x-ldx*8,other.y-ldy*8,obj_particle);
-        inst.sprite_index = spr_target;
-        inst.image_index = 0;
-        inst.x2 = 4+irandom(4);
-        inst.y2 = 4+irandom(4);
-        inst.x1 = irandom(sprite_get_width(spr_target)-1-inst.x2);
-        inst.y1 = irandom(sprite_get_height(spr_target)-1-inst.y2);
-        inst.direction = dir+random_range(-30,30);
-        inst.xspeed = lengthdir_x(4+random(2),inst.direction);
-        inst.yspeed = lengthdir_y(4+random(2),inst.direction);
-        }
+    var inst = instance_create(other.x-ldx*8,other.y-ldy*8,obj_particle);
+    inst.sprite_index = other.sprite_index;
+    inst.image_index = 0;
+    inst.x2 = 4+irandom(4);
+    inst.y2 = 4+irandom(4);
+    inst.x1 = irandom(sprite_get_width(inst.sprite_index)-1-inst.x2);
+    inst.y1 = irandom(sprite_get_height(inst.sprite_index)-1-inst.y2);
+    inst.direction = dir+random_range(-30,30);
+    inst.xspeed = lengthdir_x(4+random(2),inst.direction);
+    inst.yspeed = lengthdir_y(4+random(2),inst.direction);
     }
 
 instance_destroy();
