@@ -1,5 +1,4 @@
 /*
-// aim and face the mouse
 aim = point_direction(x,y,mouse_x,mouse_y);
 aim = round(aim/45)*45;
 if (mouse_x >= x)
@@ -33,7 +32,10 @@ switch(move_state)
                     move_state = mState.climb;
                     yspeed = 0;
                     }
-                aim = 0;
+                if (input_up)
+                    aim = 45;
+                else
+                    aim = 0;
                 }
             if (input_left)
                 {
@@ -44,11 +46,21 @@ switch(move_state)
                     move_state = mState.climb;
                     yspeed = 0;
                     }
-                aim = 180;
+                if (input_up)
+                    aim = 135;
+                else
+                    aim = 180;
                 }
             }
         else
             {
+            if (input_up)
+                aim = 90;
+            else if (face > 0)
+                aim = 0;
+            else if (face < 0)
+                aim = 180;
+            
             // friction
             if (xspeed > 0)
                 xspeed = max(0,xspeed-fric);
