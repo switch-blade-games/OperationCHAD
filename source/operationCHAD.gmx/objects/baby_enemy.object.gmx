@@ -299,7 +299,7 @@ if (flash &gt; 0)
     flash--;
     
     
-draw_text(x,y-20,vspeed)
+//draw_text(x,y-20,vspeed)
 </string>
           </argument>
         </arguments>

@@ -127,7 +127,11 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var dir = point_direction(other.x,other.y,x,y);
+            <string>//bets can pass through walls
+
+exit
+
+var dir = point_direction(other.x,other.y,x,y);
 var ldx = lengthdir_x(1,dir);
 var ldy = lengthdir_y(1,dir);
 repeat(5)

@@ -49,10 +49,15 @@
       <sprite>sprites\embro_case_bottom_spr</sprite>
       <sprite>sprites\embro_overlay_spr</sprite>
     </sprites>
+    <sprite>sprites\NPC_enemy_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
     <background>background\embro_BG</background>
+    <background>background\NPC_BG</background>
+    <background>background\NPC_foreground_BG</background>
+    <background>background\NPC_floor_BG</background>
+    <background>background\NPC_pillars_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -139,10 +144,17 @@
       <object>objects\embro_case</object>
       <object>objects\embro_case_bottom</object>
     </objects>
+    <objects name="NPC_island">
+      <object>objects\NPC_enemy</object>
+      <object>objects\NPC_spawner</object>
+      <object>objects\NPC_controller</object>
+      <object>objects\NPC_BG_drawer</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\embro_room</room>
+    <room>rooms\NPC_room</room>
     <room>rooms\rm_default</room>
   </rooms>
   <help>
