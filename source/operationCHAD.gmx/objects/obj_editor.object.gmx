@@ -82,9 +82,9 @@ collide_map = ds_map_create();
 tselect = 0;
 tileset[0] = til_tiles_area1;
 bgcolor[0] = $CAC26D;
-tileset[1] = til_tiles_area2;
+tileset[1] = til_tiles_area1;
 bgcolor[1] = $304C85;
-tileset[2] = til_tiles_area3;
+tileset[2] = til_tiles_area1;
 bgcolor[2] = $6D3430;
 // tile region select
 tclickx1 = 0;

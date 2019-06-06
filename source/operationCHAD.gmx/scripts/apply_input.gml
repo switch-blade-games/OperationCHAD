@@ -28,7 +28,7 @@ switch(move_state)
                 {
                 var inst = instance_place(x+1,y,par_climb);
                 if (!input_down) and (yspeed >= -2)
-                and (inst != noone) and (inst.sides & tile_side.right)
+                and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -39,7 +39,7 @@ switch(move_state)
                 {
                 var inst = instance_place(x-1,y,par_climb);
                 if (!input_down) and (yspeed >= -2)
-                and (inst != noone) and (inst.sides & tile_side.left)
+                and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
                     {
                     move_state = mState.climb;
                     yspeed = 0;

@@ -43,8 +43,6 @@
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
-    <background>background\til_tiles_area2</background>
-    <background>background\til_tiles_area3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -105,6 +103,7 @@
     <object>objects\obj_ramp_l</object>
     <object>objects\obj_ramp_half_r</object>
     <object>objects\obj_ramp_half_l</object>
+    <object>objects\obj_climb</object>
     <object>objects\obj_climb_r</object>
     <object>objects\obj_climb_l</object>
     <object>objects\obj_mb</object>
@@ -122,7 +121,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_default</room>
-    <room>rooms\rm_editor</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
