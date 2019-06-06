@@ -130,12 +130,15 @@ if (global.particles)
         }
     }
 
-with(other)
+if (!other.invulnerable)
     {
-    flash = 1;
-    life = max(0,life-other.damage);
-    if (life == 0)
-        instance_destroy();
+    with(other)
+        {
+        flash = 1;
+        life = max(0,life-other.damage);
+        if (life == 0)
+            instance_destroy();
+        }
     }
 
 instance_destroy();

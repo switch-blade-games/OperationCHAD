@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>instance_create(0,0,NPC_BG_drawer);
-background_y[0]=0;
 </string>
           </argument>
         </arguments>
@@ -49,7 +48,12 @@ background_y[0]=0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_background_tiled(NPC_foreground_BG,-round(view_xview[0]/4),view_yview[0])
+            <string>var xpos = view_xview[0] - round(abs(view_xview[0]*1.25) mod view_wview[0])*sign(view_xview[0]);
+for(var i=0; i&lt;2; i++;)
+    {
+    draw_background(NPC_foreground_top,xpos + view_wview[0]*i,0);
+    draw_background(NPC_foreground_bot,xpos + view_wview[0]*i,view_yview[0]+view_hview[0]-80);
+    }
 </string>
           </argument>
         </arguments>

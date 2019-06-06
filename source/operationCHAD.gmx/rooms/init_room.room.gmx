@@ -11,8 +11,7 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,dev_cheater);
-
-window_set_fullscreen(true);
+instance_create(0,0,obj_menu);
 
 //colors
 global.YELLOW=make_color_rgb(218,212,94);
@@ -31,8 +30,8 @@ global.PURPLE=make_color_rgb(68,38,52);
 global.BROWN=make_color_rgb(133,76,48);
 global.ORANGE=make_color_rgb(210,125,44);
 
-room_goto_next();</code>
-  <enableViews>0</enableViews>
+background_color = global.MEDblue;</code>
+  <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
@@ -62,7 +61,7 @@ room_goto_next();</code>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="400" hview="240" xport="0" yport="0" wport="400" hport="240" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>

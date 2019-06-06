@@ -56,7 +56,8 @@
     <background>background\til_tiles_area1</background>
     <background>background\embro_BG</background>
     <background>background\NPC_BG</background>
-    <background>background\NPC_foreground_BG</background>
+    <background>background\NPC_foreground_top</background>
+    <background>background\NPC_foreground_bot</background>
     <background>background\NPC_floor_BG</background>
     <background>background\NPC_pillars_BG</background>
     <background>background\clown_BG</background>
@@ -115,6 +116,15 @@
       <object>objects\obj_player_spawn</object>
       <object>objects\obj_camera_path</object>
     </objects>
+    <objects name="projectiles">
+      <object>objects\obj_bullet</object>
+    </objects>
+    <objects name="effects">
+      <object>objects\obj_casing</object>
+      <object>objects\obj_dust</object>
+      <object>objects\obj_particle</object>
+    </objects>
+    <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
@@ -133,10 +143,6 @@
     <object>objects\obj_mb_r</object>
     <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_casing</object>
-    <object>objects\obj_dust</object>
-    <object>objects\obj_particle</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>

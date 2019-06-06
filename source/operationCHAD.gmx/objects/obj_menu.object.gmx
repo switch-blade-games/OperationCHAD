@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,40 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>application_surface_draw_enable(false);
+            <string>// view/display/gui setup
+view_wview[0] = 400;
+view_hview[0] = 240;
+window_set_fullscreen(true);
+//window_set_size(view_wview[0]*2,view_hview[0]*2);
+//window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+surface_resize(application_surface,view_wview[0],view_hview[0]);
+gui_w = view_wview[0];
+gui_h = view_hview[0];
+display_set_gui_size(gui_w,gui_h);
 
-temp_surf = -1;
+draw_set_font(fnt_default);
 
-global.xc = 0.15;
-global.yc = 0.20;
-u_xCurve = shader_get_uniform(shd_crt,"xCurve");
-u_yCurve = shader_get_uniform(shd_crt,"yCurve");
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>application_surface_draw_enable(true);
+global.crt = false;
+global.particles = true;
+global.pause = false;
+global.xshake = 0;
+global.yshake = 0;
 
-if (surface_exists(temp_surf))
-    surface_free(temp_surf);
+instance_create(0,0,obj_shader);
+
+// gamepad
+gamepad_init();
+
+// key binds
+global.key_up[0] = vk_up;
+global.key_down[0] = vk_down;
+global.key_left[0] = vk_left;
+global.key_right[0] = vk_right;
+global.key_fire[0] = ord("Z");
+global.key_jump[0] = ord("X");
+
+global.pad_up[0] = gp_padu;
+global.pad_down[0] = gp_padd;
+global.pad_left[0] = gp_padl;
+global.pad_right[0] = gp_padr;
+global.pad_fire[0] = gp_face3;
+global.pad_jump[0] = gp_face1;
+
+bg_alpha = 0;
+bg_heady = -80;
 </string>
           </argument>
         </arguments>
@@ -81,11 +88,16 @@ if (surface_exists(temp_surf))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(ord("W")))
-    global.crt = !global.crt;
+            <string>gamepad_update();
 
-global.xc += (0.15-global.xc)*0.1;
-global.yc += (0.20-global.yc)*0.1;
+view_xview[0] += 1;
+
+bg_alpha += (0.4-bg_alpha)*0.05;
+bg_heady += (0-bg_heady)*0.05;
+
+if (keyboard_check_pressed(ord("Z")))
+or (keyboard_check_pressed(ord("X")))
+    room_goto_next();
 </string>
           </argument>
         </arguments>
@@ -108,28 +120,61 @@ global.yc += (0.20-global.yc)*0.1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.crt)
+            <string>draw_set_color($000000);
+draw_set_alpha(bg_alpha);
+draw_rectangle(0,0,view_wview[0],view_hview[0],0);
+draw_set_alpha(1.0);
+
+draw_set_halign(1);
+draw_set_valign(1);
+draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
+if (sin(current_time/200) &gt; 0)
+    draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
+draw_set_halign(0);
+draw_set_valign(0);
+
+draw_set_color($000000);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var sx = sign(view_xview[0]);
+var x1 = view_xview[0] - round(abs(view_xview[0]*0.02) mod view_wview[0])*sx;
+var x2 = view_xview[0] - round(abs(view_xview[0]*0.25) mod view_wview[0])*sx;
+var x3 = view_xview[0] - round(abs(view_xview[0]*1.25) mod view_wview[0])*sx;
+
+// bg
+for(var i=0; i&lt;2; i++;)
+    draw_background(NPC_BG,x1 + view_wview[0]*i,view_yview[0]);
+for(var i=0; i&lt;2; i++;)
+    draw_background(NPC_pillars_BG,x2 + view_wview[0]*i,view_yview[0]);
+
+shader_set(shd_grayscale);
+// fg
+for(var i=0; i&lt;2; i++;)
     {
-    var time = get_timer();
-    
-    if (!surface_exists(temp_surf))
-        temp_surf = surface_create(400,240);
-    
-    surface_set_target(temp_surf);
-    draw_clear(background_color);
-    draw_surface(application_surface,0,0);
-    surface_reset_target();
-    
-    shader_set(shd_crt);
-    shader_set_uniform_f(u_xCurve,global.xc);
-    shader_set_uniform_f(u_yCurve,global.yc);
-    draw_surface(temp_surf,0,0);
-    shader_reset();
-    
-    global.shader_time = round((get_timer()-time)/1000);
+    draw_background(NPC_foreground_top,x3 + view_wview[0]*i,round(bg_heady));
+    draw_background(NPC_foreground_bot,x3 + view_wview[0]*i,view_yview[0]+view_hview[0]-80-round(bg_heady));
     }
-else
-    draw_surface(application_surface,0,0);
+shader_reset();
 </string>
           </argument>
         </arguments>

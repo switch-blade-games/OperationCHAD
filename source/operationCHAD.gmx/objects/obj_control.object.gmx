@@ -27,23 +27,8 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
-// view/display/gui setup
-view_wview[0] = 400;
-view_hview[0] = 240;
-window_set_size(view_wview[0]*2,view_hview[0]*2);
-window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
-surface_resize(application_surface,view_wview[0],view_hview[0]);
 gui_w = view_wview[0];
 gui_h = view_hview[0];
-display_set_gui_size(gui_w,gui_h);
-
-draw_set_font(fnt_default);
-
-global.crt = false;
-global.particles = true;
-global.pause = false;
-global.xshake = 0;
-global.yshake = 0;
 
 enum tile_side {
     none = 0,
@@ -52,26 +37,6 @@ enum tile_side {
     top = 4,
     bottom = 8
     }
-
-instance_create(0,0,obj_shader);
-
-// gamepad
-gamepad_init();
-
-// key binds
-global.key_up[0] = vk_up;
-global.key_down[0] = vk_down;
-global.key_left[0] = vk_left;
-global.key_right[0] = vk_right;
-global.key_fire[0] = ord("Z");
-global.key_jump[0] = ord("X");
-
-global.pad_up[0] = gp_padu;
-global.pad_down[0] = gp_padd;
-global.pad_left[0] = gp_padl;
-global.pad_right[0] = gp_padr;
-global.pad_fire[0] = gp_face3;
-global.pad_jump[0] = gp_face1;
 
 surf_pause = -1;
 </string>

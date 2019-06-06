@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifemax = 1;
+            <string>invulnerable = true;
+lifemax = 1;
 life = lifemax;
 
 team = -1;
