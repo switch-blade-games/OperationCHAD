@@ -33,6 +33,9 @@ global.xc = 0.15;
 global.yc = 0.20;
 u_xCurve = shader_get_uniform(shd_crt,"xCurve");
 u_yCurve = shader_get_uniform(shd_crt,"yCurve");
+
+//JB code to set crt default to false
+global.crt=!global.crt
 </string>
           </argument>
         </arguments>

@@ -16,7 +16,7 @@ switch(move_state)
     case mState.walk:
         
         // horizontal movement input
-        move_speed = 3;
+        move_speed = MOVEspe;
         if (h_dir != 0)
             {
             xspeed = move_speed*h_dir;

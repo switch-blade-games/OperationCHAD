@@ -40,9 +40,19 @@
     <sprite>sprites\spr_player_spawn</sprite>
     <sprite>sprites\spr_camera</sprite>
     <sprite>sprites\spr_camera_arrow</sprite>
+    <sprites name="embro">
+      <sprite>sprites\baby_jump_spr</sprite>
+      <sprite>sprites\baby_crawl_spr</sprite>
+      <sprite>sprites\cooler_spr</sprite>
+      <sprite>sprites\embro_spr</sprite>
+      <sprite>sprites\embro_case_spr</sprite>
+      <sprite>sprites\embro_case_bottom_spr</sprite>
+      <sprite>sprites\embro_overlay_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
+    <background>background\embro_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -118,8 +128,21 @@
     <object>objects\obj_particle</object>
     <object>objects\obj_player_spawn</object>
     <object>objects\obj_camera_path</object>
+    <objects name="JB_stuff">
+      <object>objects\dev_cheater</object>
+    </objects>
+    <objects name="embro">
+      <object>objects\baby_enemy</object>
+      <object>objects\cooler</object>
+      <object>objects\embro_controller</object>
+      <object>objects\embro</object>
+      <object>objects\embro_case</object>
+      <object>objects\embro_case_bottom</object>
+    </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\init_room</room>
+    <room>rooms\embro_room</room>
     <room>rooms\rm_default</room>
   </rooms>
   <help>
