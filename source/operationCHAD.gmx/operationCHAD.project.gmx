@@ -58,7 +58,7 @@
     <background>background\NPC_foreground_BG</background>
     <background>background\NPC_floor_BG</background>
     <background>background\NPC_pillars_BG</background>
-    <background>background\background6</background>
+    <background>background\clown_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -154,8 +154,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
-    <room>rooms\embro_room</room>
+    <room>rooms\clown_room</room>
     <room>rooms\NPC_room</room>
+    <room>rooms\embro_room</room>
     <room>rooms\rm_default</room>
   </rooms>
   <help>
