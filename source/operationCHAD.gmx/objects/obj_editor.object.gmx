@@ -129,8 +129,8 @@ system_map = ds_map_create();
 
 // entity info
 entities = 0;
-entity[entities] = obj_target;
-entity_name[entities++] = "Target";
+//entity[entities] = obj_target;
+//entity_name[entities++] = "Target";
 // game object select
 eselect = 0;
 escroll = 0;

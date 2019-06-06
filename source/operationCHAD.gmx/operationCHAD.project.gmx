@@ -91,6 +91,7 @@
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
+    <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
@@ -98,6 +99,7 @@
   <objects name="objects">
     <objects name="parents">
       <object>objects\par_actor</object>
+      <object>objects\par_enemy</object>
       <object>objects\par_solid</object>
       <object>objects\par_jt</object>
       <object>objects\par_move</object>
@@ -131,7 +133,6 @@
     <object>objects\obj_mb_r</object>
     <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
-    <object>objects\obj_dummy</object>
     <object>objects\obj_bullet</object>
     <object>objects\obj_casing</object>
     <object>objects\obj_dust</object>
@@ -156,8 +157,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
-    <room>rooms\NPC_room</room>
     <room>rooms\embro_room</room>
+    <room>rooms\NPC_room</room>
     <room>rooms\clown_room</room>
   </rooms>
   <help>
