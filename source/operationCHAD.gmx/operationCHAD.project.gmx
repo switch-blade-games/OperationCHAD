@@ -58,6 +58,7 @@
     <background>background\NPC_foreground_BG</background>
     <background>background\NPC_floor_BG</background>
     <background>background\NPC_pillars_BG</background>
+    <background>background\background6</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
