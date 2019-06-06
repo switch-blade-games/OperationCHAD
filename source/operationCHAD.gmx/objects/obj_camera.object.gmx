@@ -59,9 +59,19 @@ target = obj_player;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(target)) or (cam_state == 0)
+            <string>view_xview[0] += ((x-view_wview[0]/2)-view_xview[0])*0.2;
+view_yview[0] += ((y-view_hview[0]/2)-view_yview[0])*0.2;
+view_xview[0] = round(view_xview[0]+random_range(-global.xshake,global.xshake));
+view_yview[0] = round(view_yview[0]+random_range(-global.yshake,global.yshake));
+
+global.xshake += (0-global.xshake)*0.25;
+global.yshake += (0-global.yshake)*0.25;
+
+if (!instance_exists(target)) or (cam_state == 0)
     exit;
 
+xprevious = x;
+yprevious = y;
 if (cam_state &amp; camState.right == camState.right) and (target.x &gt; x)
     x = target.x;
 if (cam_state &amp; camState.up == camState.up) and (target.y &lt; y)
@@ -71,13 +81,23 @@ if (cam_state &amp; camState.left == camState.left) and (target.x &lt; x)
 if (cam_state &amp; camState.down == camState.down) and (target.y &gt; y)
     y = target.y;
 
-view_xview[0] += ((x-view_wview[0]/2)-view_xview[0])*0.2;
-view_yview[0] += ((y-view_hview[0]/2)-view_yview[0])*0.2;
-view_xview[0] = round(view_xview[0]+random_range(-global.xshake,global.xshake));
-view_yview[0] = round(view_yview[0]+random_range(-global.yshake,global.yshake));
-
-global.xshake += (0-global.xshake)*0.25;
-global.yshake += (0-global.yshake)*0.25;
+var inst = instance_nearest(x,y,obj_camera_path);
+if (inst != noone) and (instance_exists(inst))
+    {
+    if (inst.active)
+        {
+        if ((cam_state &amp; camState.right == camState.right) and x &gt;= inst.x and xprevious &lt; inst.x)
+        or ((cam_state &amp; camState.up == camState.up) and y &lt;= inst.y and yprevious &gt; inst.y)
+        or ((cam_state &amp; camState.left == camState.left) and x &lt;= inst.x and xprevious &gt; inst.x)
+        or ((cam_state &amp; camState.down == camState.down) and y &lt;= inst.y and yprevious &lt; inst.y)
+            {
+            cam_state = ds_map_find_value(inst.propmap,"cam_state");
+            inst.active = false;
+            x = inst.x;
+            y = inst.y;
+            }
+        }
+    }
 </string>
           </argument>
         </arguments>

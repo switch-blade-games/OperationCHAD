@@ -38,6 +38,8 @@
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
     <sprite>sprites\spr_player_spawn</sprite>
+    <sprite>sprites\spr_camera</sprite>
+    <sprite>sprites\spr_camera_arrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
@@ -116,10 +118,11 @@
     <object>objects\obj_target</object>
     <object>objects\obj_particle</object>
     <object>objects\obj_player_spawn</object>
+    <object>objects\obj_camera_path</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_editor</room>
     <room>rooms\rm_default</room>
+    <room>rooms\rm_editor</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

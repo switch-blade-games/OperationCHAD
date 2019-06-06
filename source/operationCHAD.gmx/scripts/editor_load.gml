@@ -3,6 +3,7 @@
 var buff = buffer_load(argument[0]);
 buffer_seek(buff,buffer_seek_start,0);
 
+// check map version
 var version = buffer_read(buff,buffer_u8);
 if (version != global.version)
     {
@@ -10,15 +11,16 @@ if (version != global.version)
     return(false);
     }
 
+// clear editor
 editor_clear();
 
+// retrieve map name from filename
 var file_name = filename_name(argument[0]);
 var file_ext = filename_ext(argument[0]);
 global.levelname = string_replace_all(file_name,file_ext,"");
 
+// load colliders
 var collide_map_size = buffer_read(buff,buffer_u16);
-show_debug_message("COLLIDERS: "+string(collide_map_size));
-
 for(var i=0; i<collide_map_size; i++;)
     {
     var obj = buffer_read(buff,buffer_u16);
@@ -29,14 +31,11 @@ for(var i=0; i<collide_map_size; i++;)
     ds_map_add(collide_map,string(ox)+":"+string(oy),inst);
     }
 
+// load layers and tiles
 layers = buffer_read(buff,buffer_u8);
-show_debug_message("LAYERS: "+string(layers));
-
 for(var i=0; i<layers; i++;)
     {
     var tiles = buffer_read(buff,buffer_u16);
-    show_debug_message("TILES["+string(i)+"]: "+string(tiles));
-    
     layer_depth[i] = buffer_read(buff,buffer_s8);
     for(var j=0; j<tiles; j++;)
         {
@@ -53,9 +52,32 @@ for(var i=0; i<layers; i++;)
         }
     }
 
-var entity_map_size = buffer_read(buff,buffer_u16);
-show_debug_message("ENTITIES: "+string(entity_map_size));
+// load systems
+var system_map_size = buffer_read(buff,buffer_u16);
+for(var i=0; i<system_map_size; i++;)
+    {
+    var obj = buffer_read(buff,buffer_u16);
+    var sx = buffer_read(buff,buffer_s16);
+    var sy = buffer_read(buff,buffer_s16);
+    var inst = instance_create(sx,sy,obj);
+    
+    var propsize = buffer_read(buff,buffer_u8);
+    for(var i=0; i<propsize; i++;)
+        {
+        var propkey = buffer_read(buff,buffer_string);
+        var type = buffer_read(buff,buffer_u8);
+        if (type)
+            var val = buffer_read(buff,buffer_f32);
+        else
+            var val = buffer_read(buff,buffer_string);
+        ds_map_set(inst.propmap,propkey,val);
+        }
+    
+    ds_map_add(system_map,string(sx)+":"+string(sy),inst);
+    }
 
+// load entities
+var entity_map_size = buffer_read(buff,buffer_u16);
 for(var i=0; i<entity_map_size; i++;)
     {
     var obj = buffer_read(buff,buffer_u16);

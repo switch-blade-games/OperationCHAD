@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.version = 1;
+            <string>global.version = 2;
 global.levelname = "Untitled";
 
 // view/display/gui setup
@@ -114,10 +114,21 @@ lslideb = 10;
 lslidev = 0.5;
 lslideg = false;
 
+// system info
+systems = 0;
+system[systems] = obj_player_spawn;
+system_name[systems++] = "Player Spawn";
+system[systems] = obj_camera_path;
+system_name[systems++] = "Camera Path";
+// system select
+scamera = 15;
+sselect = 0;
+sscroll = 0;
+supdate = false;
+system_map = ds_map_create();
+
 // entity info
 entities = 0;
-entity[entities] = obj_player_spawn;
-entity_name[entities++] = "Player";
 entity[entities] = obj_target;
 entity_name[entities++] = "Target";
 // game object select
@@ -168,8 +179,16 @@ gridh = 32;
         if (device_mouse_x_to_gui(0) &gt; 128)
         and (device_mouse_y_to_gui(0) &gt; 64)
             {
-            var mx = floor(mouse_x/20)*20;
-            var my = floor(mouse_y/20)*20;
+            if (keyboard_check(vk_alt))
+                {
+                var mx = floor(mouse_x/10)*10;
+                var my = floor(mouse_y/10)*10;
+                }
+            else
+                {
+                var mx = floor(mouse_x/20)*20;
+                var my = floor(mouse_y/20)*20;
+                }
             
             // add colliders
             if (mouse_check_button(mb_left))
@@ -258,8 +277,16 @@ gridh = 32;
         if (device_mouse_x_to_gui(0) &gt; 132)
         and (device_mouse_y_to_gui(0) &gt; 64)
             {
-            var mx = floor(mouse_x/20)*20;
-            var my = floor(mouse_y/20)*20;
+            if (keyboard_check(vk_alt))
+                {
+                var mx = floor(mouse_x/10)*10;
+                var my = floor(mouse_y/10)*10;
+                }
+            else
+                {
+                var mx = floor(mouse_x/20)*20;
+                var my = floor(mouse_y/20)*20;
+                }
             
             if (mouse_check_button(mb_left))
                 {
@@ -292,31 +319,48 @@ gridh = 32;
             }
         break;
     
-    case 2: // entities
+    case 2: // systems
         if (mouse_wheel_up())
-            escroll = max(0,escroll-1);
+            sscroll = max(0,sscroll-1);
         if (mouse_wheel_down())
-            escroll = min(escroll+1,0);
+            sscroll = min(sscroll+1,0);
         
         if (device_mouse_x_to_gui(0) &gt; 128)
         and (device_mouse_y_to_gui(0) &gt; 64)
             {
-            var mx = floor(mouse_x/20)*20;
-            var my = floor(mouse_y/20)*20;
+            var spr = object_get_sprite(system[sselect]);
+            var sw = sprite_get_width(spr);
+            var sh = sprite_get_height(spr);
+            var ox = sprite_get_xoffset(spr);
+            var oy = sprite_get_yoffset(spr);
             
-            // add colliders
+            if (keyboard_check(vk_alt))
+                {
+                var mx = floor(mouse_x/10)*10;
+                var my = floor(mouse_y/10)*10;
+                }
+            else
+                {
+                var mx = floor(mouse_x/20)*20;
+                var my = floor(mouse_y/20)*20;
+                }
+            
+            // add systems
             if (mouse_check_button(mb_left))
                 {
-                if (!ds_map_exists(entity_map,string(mx)+":"+string(my)))
+                if (!ds_map_exists(system_map,string(mx)+":"+string(my)))
                     {
-                    var inst = instance_create(mx,my,entity[eselect]);
+                    var inst = instance_create(mx+ox,my+oy,system[sselect]);
                     inst.visible = true;
                     
-                    ds_map_add(entity_map,string(mx)+":"+string(my),inst);
+                    if (system[sselect] == obj_camera_path)
+                        ds_map_set(inst.propmap,"cam_state",scamera);
+                    
+                    ds_map_add(system_map,string(mx)+":"+string(my),inst);
                     }
                 }
         
-            while(instance_number(obj_player_spawn) &gt; 1)
+            if (instance_number(obj_player_spawn) &gt; 1)
                 {
                 var inst = instance_find(obj_player_spawn,0);
                 with(obj_player_spawn)
@@ -326,7 +370,59 @@ gridh = 32;
                     }
                 }
             
-            // delete colliders
+            // delete systems
+            if (mouse_check_button(mb_right))
+                {
+                if (ds_map_exists(system_map,string(mx)+":"+string(my)))
+                    {
+                    with(ds_map_find_value(system_map,string(mx)+":"+string(my)))
+                        instance_destroy();
+                    
+                    ds_map_delete(system_map,string(mx)+":"+string(my));
+                    }
+                }
+            }
+        break;
+    
+    case 3: // entities
+        if (mouse_wheel_up())
+            escroll = max(0,escroll-1);
+        if (mouse_wheel_down())
+            escroll = min(escroll+1,0);
+        
+        if (device_mouse_x_to_gui(0) &gt; 128)
+        and (device_mouse_y_to_gui(0) &gt; 64)
+            {
+            var spr = object_get_sprite(entity[eselect]);
+            var sw = sprite_get_width(spr);
+            var sh = sprite_get_height(spr);
+            var ox = sprite_get_xoffset(spr);
+            var oy = sprite_get_yoffset(spr);
+            
+            if (keyboard_check(vk_alt))
+                {
+                var mx = floor(mouse_x/10)*10;
+                var my = floor(mouse_y/10)*10;
+                }
+            else
+                {
+                var mx = floor(mouse_x/20)*20;
+                var my = floor(mouse_y/20)*20;
+                }
+            
+            // add entities
+            if (mouse_check_button(mb_left))
+                {
+                if (!ds_map_exists(entity_map,string(mx)+":"+string(my)))
+                    {
+                    var inst = instance_create(mx+ox,my+oy,entity[eselect]);
+                    inst.visible = true;
+                    
+                    ds_map_add(entity_map,string(mx)+":"+string(my),inst);
+                    }
+                }
+            
+            // delete entities
             if (mouse_check_button(mb_right))
                 {
                 if (ds_map_exists(entity_map,string(mx)+":"+string(my)))
@@ -347,6 +443,7 @@ if (oldmode != mode)
     oldmode = mode;
     cupdate = true;
     tupdate = true;
+    supdate = true;
     eupdate = true;
     }
 
@@ -389,6 +486,23 @@ if (tupdate)
             if (tile_exists(tile))
                 tile_set_alpha(tile,talpha[i]);
             }
+        }
+    }
+if (supdate)
+    {
+    supdate = false;
+    
+    var salpha = 0.2;
+    if (mode == 2)
+        salpha = 1.0;
+    
+    var key = ds_map_find_first(system_map);
+    while(key != undefined)
+        {
+        var inst = ds_map_find_value(system_map,key);
+        with(inst)
+            image_alpha = salpha;
+        var key = ds_map_find_next(system_map,key);
         }
     }
 if (eupdate)
@@ -531,8 +645,9 @@ var xpos = 0;
 var tab;
 tab[0] = "Colliders";
 tab[1] = "Tiles";
-tab[2] = "Entities";
-for(var i=0; i&lt;3; i++;)
+tab[2] = "System";
+tab[3] = "Entities";
+for(var i=0; i&lt;4; i++;)
     {
     var sw = string_width(tab[i]);
     if (point_in_rectangle(mx,my,xpos,32,xpos+sw+11,63))
@@ -690,7 +805,72 @@ switch(mode)
         draw_rectangle(xpos,ypos,xpos-1+tselectw*20,ypos-1+tselecth*20,1);
         break;
     
-    case 2: // entities
+    case 2: // system
+        draw_set_alpha(0.6);
+        draw_rectangle(0,64,128,view_hview[0],0);
+        draw_set_alpha(1.0);
+        
+        var ypos = 0;
+        for(var i=sscroll; i&lt;min(systems,sscroll+8); i++;)
+            {
+            var str = string(system_name[i]);
+            var spr = object_get_sprite(system[i]);
+            var sw = sprite_get_width(spr);
+            var sh = sprite_get_height(spr);
+            var ox = sprite_get_xoffset(spr)*(20/sw);
+            var oy = sprite_get_yoffset(spr)*(20/sh);
+            var in = point_in_rectangle(mx,my,6,70+ypos*50,122,118+ypos*50);
+            
+            draw_sprite_ext(spr,0,12+ox,76+oy+ypos*50,20/sw,20/sh,0,-1,1);
+            if (sselect == i)
+                {
+                draw_set_color($FFFFFF);
+                draw_rectangle(6,70+ypos*50,122,118+ypos*50,1);
+                draw_text(12,100+ypos*50,str);
+                }
+            else
+                {
+                if (in)
+                    {
+                    draw_set_color($CCCCCC);
+                    draw_rectangle(6,70+ypos*50,122,118+ypos*50,1);
+                    draw_text(12,100+ypos*50,str);
+                    }
+                else
+                    {
+                    draw_set_color($AAAAAA);
+                    draw_text(12,100+ypos*50,str);
+                    }
+                }
+            
+            if (i == 1) // camera
+                {
+                draw_sprite_ext(spr_camera_arrow,(scamera &amp; 1 == 1),112,095+ypos*50,1,1,000,-1,1);
+                draw_sprite_ext(spr_camera_arrow,(scamera &amp; 2 == 2),099,081+ypos*50,1,1,090,-1,1);
+                draw_sprite_ext(spr_camera_arrow,(scamera &amp; 4 == 4),085,094+ypos*50,1,1,180,-1,1);
+                draw_sprite_ext(spr_camera_arrow,(scamera &amp; 8 == 8),098,108+ypos*50,1,1,270,-1,1);
+                
+                if (mouse_check_button_pressed(mb_left))
+                    {
+                    if (point_in_rectangle(mx,my,112-6,081-10+ypos*50,112+10,108+10+ypos*50))
+                        scamera = scamera ^ 1;
+                    if (point_in_rectangle(mx,my,085-10,081-10+ypos*50,112+10,081+6+ypos*50))
+                        scamera = scamera ^ 2;
+                    if (point_in_rectangle(mx,my,085-10,081-10+ypos*50,085+6,108+10+ypos*50))
+                        scamera = scamera ^ 4;
+                    if (point_in_rectangle(mx,my,085-10,108-6+ypos*50,112+10,108+10+ypos*50))
+                        scamera = scamera ^ 8;
+                    }
+                }
+            
+            if (in and mouse_check_button_pressed(mb_left))
+                sselect = i;
+            
+            ypos++;
+            }
+        break;
+    
+    case 3: // entities
         draw_set_alpha(0.6);
         draw_rectangle(0,64,128,view_hview[0],0);
         draw_set_alpha(1.0);
@@ -767,15 +947,31 @@ draw_set_color($000000);
 if (grid)
     {
     draw_primitive_begin(pr_linelist);
-    for(var i=0; i&lt;=gridw; i++;)
+    if (keyboard_check(vk_alt))
         {
-        draw_vertex(0,i*20);
-        draw_vertex(gridw*20,i*20);
+        for(var i=0; i&lt;=gridw*2; i++;)
+            {
+            draw_vertex(0,i*10);
+            draw_vertex(gridw*20,i*10);
+            }
+        for(var i=0; i&lt;=gridh*2; i++;)
+            {
+            draw_vertex(i*10,0);
+            draw_vertex(i*10,gridh*20);
+            }
         }
-    for(var i=0; i&lt;=gridh; i++;)
+    else
         {
-        draw_vertex(i*20,0);
-        draw_vertex(i*20,gridh*20);
+        for(var i=0; i&lt;=gridw; i++;)
+            {
+            draw_vertex(0,i*20);
+            draw_vertex(gridw*20,i*20);
+            }
+        for(var i=0; i&lt;=gridh; i++;)
+            {
+            draw_vertex(i*20,0);
+            draw_vertex(i*20,gridh*20);
+            }
         }
     draw_primitive_end();
     }
@@ -783,12 +979,21 @@ if (grid)
 switch(mode)
     {
     case 0: // colliders
-    case 2: // entities
+    case 2: // systems
+    case 3: // entities
         if (device_mouse_x_to_gui(0) &gt; 128)
         and (device_mouse_y_to_gui(0) &gt; 64)
             {
-            rx = floor(mouse_x/20)*20;
-            ry = floor(mouse_y/20)*20;
+            if (keyboard_check(vk_alt))
+                {
+                rx = floor(mouse_x/10)*10;
+                ry = floor(mouse_y/10)*10;
+                }
+            else
+                {
+                rx = floor(mouse_x/20)*20;
+                ry = floor(mouse_y/20)*20;
+                }
             draw_set_color($FFFFFF);
             draw_rectangle(rx,ry,rx+19,ry+19,1);
             }
@@ -797,12 +1002,32 @@ switch(mode)
         if (device_mouse_x_to_gui(0) &gt; 132)
         and (device_mouse_y_to_gui(0) &gt; 64)
             {
-            rx = floor(mouse_x/20)*20;
-            ry = floor(mouse_y/20)*20;
-            draw_set_color($FFFFFF);
-            draw_rectangle(rx,ry,rx-1+tselectw*20,ry-1+tselecth*20,1);
+            if (keyboard_check(vk_alt))
+                {
+                rx = floor(mouse_x/10)*10;
+                ry = floor(mouse_y/10)*10;
+                draw_set_color($FFFFFF);
+                draw_rectangle(rx,ry,rx-1+tselectw*20,ry-1+tselecth*20,1);
+                }
+            else
+                {
+                rx = floor(mouse_x/20)*20;
+                ry = floor(mouse_y/20)*20;
+                draw_set_color($FFFFFF);
+                draw_rectangle(rx,ry,rx-1+tselectw*20,ry-1+tselecth*20,1);
+                }
             }
         break;
+    }
+
+var inst = instance_position(mouse_x,mouse_y,obj_camera_path);
+if (inst != noone) and (instance_exists(inst))
+    {
+    var path = ds_map_find_value(inst.propmap,"cam_state");
+    draw_sprite_ext(spr_camera_arrow,(path &amp; 1 == 1),inst.x+30,inst.y+10,1,1,000,-1,1);
+    draw_sprite_ext(spr_camera_arrow,(path &amp; 2 == 2),inst.x+10,inst.y-10,1,1,090,-1,1);
+    draw_sprite_ext(spr_camera_arrow,(path &amp; 4 == 4),inst.x-10,inst.y+10,1,1,180,-1,1);
+    draw_sprite_ext(spr_camera_arrow,(path &amp; 8 == 8),inst.x+10,inst.y+30,1,1,270,-1,1);
     }
 </string>
           </argument>

@@ -13,6 +13,7 @@ display_set_gui_size(gui_w,gui_h);
 view_xview[0] = edit_vx;
 view_yview[0] = edit_vy;
 
+// delete game objects
 with(obj_control)
     instance_destroy();
 with(obj_player)
@@ -26,6 +27,7 @@ with(par_projectile)
 with(par_effect)
     instance_destroy();
 
+// show colliders
 var key = ds_map_find_first(collide_map);
 while(key != undefined)
     {
@@ -35,6 +37,7 @@ while(key != undefined)
     var key = ds_map_find_next(collide_map,key);
     }
 
+// show tiles
 for(var i=0; i<layers; i++;)
     {
     var tilelist = tile_get_ids_at_depth(layer_depth[i]);
@@ -48,11 +51,12 @@ for(var i=0; i<layers; i++;)
         }
     }
 
-var key = ds_map_find_first(entity_map);
+// show systems
+var key = ds_map_find_first(system_map);
 while(key != undefined)
     {
-    var inst = ds_map_find_value(entity_map,key);
+    var inst = ds_map_find_value(system_map,key);
     with(inst)
         visible = true;
-    var key = ds_map_find_next(entity_map,key);
+    var key = ds_map_find_next(system_map,key);
     }
