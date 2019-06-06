@@ -61,8 +61,8 @@ target = obj_player;
             <kind>1</kind>
             <string>view_xview[0] += ((x-view_wview[0]/2)-view_xview[0])*0.2;
 view_yview[0] += ((y-view_hview[0]/2)-view_yview[0])*0.2;
-view_xview[0] = round(view_xview[0]+random_range(-global.xshake,global.xshake));
-view_yview[0] = round(view_yview[0]+random_range(-global.yshake,global.yshake));
+view_xview[0] = round(view_xview[0]); // view_xview[0] = round(view_xview[0]+random_range(-global.xshake,global.xshake));
+view_yview[0] = round(view_yview[0]); // view_yview[0] = round(view_yview[0]+random_range(-global.yshake,global.yshake));
 
 //disabling screenshake for now
 
