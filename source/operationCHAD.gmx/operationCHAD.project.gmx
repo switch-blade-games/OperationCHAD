@@ -70,6 +70,11 @@
       <script>scripts\gamepad_checkall.gml</script>
       <script>scripts\gamepad_checkall_pressed.gml</script>
       <script>scripts\gamepad_checkall_released.gml</script>
+      <script>scripts\gamepad_lastall.gml</script>
+      <script>scripts\gamepad_check.gml</script>
+      <script>scripts\gamepad_check_pressed.gml</script>
+      <script>scripts\gamepad_check_released.gml</script>
+      <script>scripts\gamepad_last.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>

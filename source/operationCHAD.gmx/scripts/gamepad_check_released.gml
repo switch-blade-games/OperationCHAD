@@ -1,6 +1,7 @@
-/// gamepad_checkall_released(function);
+/// gamepad_check_released(slot,function);
 
-var _func = argument[0];
+var _slot = argument[0];
+var _func = argument[1];
 var _axis;
 
 if (_func == gp_axislv)
@@ -16,27 +17,21 @@ switch(_func)
     {
     case gp_axislh: case gp_axislv:
     case gp_axisrh: case gp_axisrv:
-        for(i=0; i<4; i++;)
+        if (global.gp[_slot,0])
             {
-            if (!global.gp[i,0])
-                continue;
-            
-            if (abs(gamepad_axis_value(i,_func)) < global.gp[i,4])
-            and (global.gp[i,_axis])
+            if (abs(gamepad_axis_value(_slot,_func)) < global.gp[_slot,4])
+            and (global.gp[_slot,_axis])
                 {
-                global.gp[i,_axis] = false;
+                global.gp[_slot,_axis] = false;
                 return(true);
                 }
             }
         break;
     
     default:
-        for(i=0; i<4; i++;)
+        if (global.gp[_slot,0])
             {
-            if (!global.gp[i,0])
-                continue;
-            
-            if (gamepad_button_check_released(i,_func))
+            if (gamepad_button_check_released(_slot,_func))
                 return(true);
             }
         break;
