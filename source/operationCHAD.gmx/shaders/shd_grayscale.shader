@@ -21,5 +21,5 @@ void main()
     vec4 col = v_vColour*texture2D(gm_BaseTexture,v_vTexcoord);
     float val = sqrt(.241*col.r*col.r + .691*col.g*col.g + 0.068*col.b*col.b);
     
-    gl_FragColor = vec4(val,val,val,1.0);
+    gl_FragColor = vec4(val,val,val,col.a);
     }

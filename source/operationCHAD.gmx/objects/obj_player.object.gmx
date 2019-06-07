@@ -25,13 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x,y,obj_camera);
+            <string>event_inherited();
 
 // player move states
 enum mState
     {
     idle,
     walk,
+    lock,
     duck,
     hang,
     climb,
@@ -56,6 +57,7 @@ image_index = 0;
 // player position/physics
 grav = 0.4;
 fric = 1;
+MOVEspe=2;
 xspeed = 0;
 yspeed = 0;
 subx = 0;
@@ -78,9 +80,6 @@ cur_weapon = 0;
 shoot_timer = 0;
 recoil = 0;
 arm_pos = 0;
-
-//JBcode
-MOVEspe=2
 </string>
           </argument>
         </arguments>

@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(x+60,y+110,embro)
-
+            <string>instance_create(x+65,y+180,embro)
 instance_create(x,y+160,embro_case_bottom)
 </string>
           </argument>

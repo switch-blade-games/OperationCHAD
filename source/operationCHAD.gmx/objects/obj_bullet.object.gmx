@@ -51,32 +51,38 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (team == other.team) or (!other.canhit)
+            <string>if (team == other.team) or (other.nohit)
     exit;
 
-other.hp = max(0,other.hp-damage);
-other.flash = 4;
-
-if (other.object_index == obj_target)
+if (global.particles)
     {
-    var dir = point_direction(x,y,other.x,other.y);
-    var ldx = lengthdir_x(1,dir);
-    var ldy = lengthdir_y(1,dir);
-    other.xoff += ldx*6;
-    other.yoff += ldy*6;
+    var spr = other.sprite_index;
+    var ind = other.image_index;
+    var sw = sprite_get_width(spr);
+    var sh = sprite_get_height(spr);
     
     repeat(choose(2,3))
         {
-        var inst = instance_create(other.x-ldx*8,other.y-ldy*8,obj_particle);
-        inst.sprite_index = spr_target;
-        inst.image_index = 0;
+        var inst = instance_create(x,y,obj_particle);
+        inst.sprite_index = spr;
+        inst.image_index = ind;
         inst.x2 = 4+irandom(4);
         inst.y2 = 4+irandom(4);
-        inst.x1 = irandom(sprite_get_width(spr_target)-1-inst.x2);
-        inst.y1 = irandom(sprite_get_height(spr_target)-1-inst.y2);
-        inst.direction = dir+random_range(-30,30);
-        inst.xspeed = lengthdir_x(4+random(2),inst.direction);
-        inst.yspeed = lengthdir_y(4+random(2),inst.direction);
+        inst.x1 = irandom((sw-1)-inst.x2);
+        inst.y1 = irandom((sh-1)-inst.y2);
+        inst.direction = direction+random_range(-30,30);
+        inst.speed = 2+random(2);
+        }
+    }
+
+if (!other.invulnerable)
+    {
+    with(other)
+        {
+        flash = 1;
+        life = max(0,life-other.damage);
+        if (life == 0)
+            instance_destroy();
         }
     }
 
@@ -103,8 +109,12 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (direction &gt; 180) and (direction &lt; 360)
+            <string>// bullets pass through walls
+
+/*
+if (direction &gt; 180) and (direction &lt; 360)
     instance_destroy();
+*/
 </string>
           </argument>
         </arguments>
@@ -127,10 +137,9 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//bets can pass through walls
+            <string>// bullets pass through walls
 
-exit
-
+/*
 var dir = point_direction(other.x,other.y,x,y);
 var ldx = lengthdir_x(1,dir);
 var ldy = lengthdir_y(1,dir);
@@ -141,6 +150,62 @@ repeat(5)
     var inst = instance_create(hit_x,hit_y,obj_dust);
     inst.direction = dir+random_range(-15,15);
     inst.speed = 2+random(2);
+    }
+
+instance_destroy();
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (team == other.team) or (other.nohit)
+    exit;
+
+if (global.particles)
+    {
+    var spr = other.sprite_index;
+    var ind = other.image_index;
+    var sw = sprite_get_width(spr);
+    var sh = sprite_get_height(spr);
+    
+    repeat(choose(2,3))
+        {
+        var inst = instance_create(x,y,obj_particle);
+        inst.sprite_index = spr;
+        inst.image_index = ind;
+        inst.x2 = 4+irandom(4);
+        inst.y2 = 4+irandom(4);
+        inst.x1 = irandom((sw-1)-inst.x2);
+        inst.y1 = irandom((sh-1)-inst.y2);
+        inst.direction = direction+random_range(-30,30);
+        inst.speed = 2+random(2);
+        }
+    }
+
+with(other)
+    {
+    flash = 1;
+    life = max(0,life-other.damage);
+    if (life == 0)
+        instance_destroy();
     }
 
 instance_destroy();

@@ -135,11 +135,20 @@ alarm[0]=babyrate+random(ratenoise)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//if all collers/spawners have been destroyed, move on to next phase
-if(PHASE=1)
-if(instance_number(cooler)=0)
-PHASE=2
+            <string>switch(PHASE)
+    {
+    case 1: // spawning babies
+        if (instance_number(cooler) == 0)
+            {
+            PHASE = 2;
+            if (instance_exists(embro))
+                embro.nohit = false;
+            }
+        break;
+    
+    case 2: // getting lit up
+        break;
+    }
 </string>
           </argument>
         </arguments>

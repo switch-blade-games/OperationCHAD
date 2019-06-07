@@ -26,12 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+alarm[0] = room_speed*5;
 
-on_ground = false;
-xspeed = 0;
-yspeed = 0;
+gravity = 0.4;
 
-timer = 0;
 x1 = 0;
 y1 = 0;
 x2 = 4;
@@ -41,7 +39,7 @@ y2 = 4;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -58,53 +56,7 @@ y2 = 4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (on_ground)
-    {
-    timer++;
-    if (timer &gt; 90)
-        instance_destroy();
-    }
-else
-    {
-    yspeed += 0.4;
-    
-    if !(place_meeting(x+xspeed,y,par_solid))
-        x += xspeed;
-    else
-        {
-        var sx = sign(xspeed);
-        repeat(round(abs(xspeed)))
-            {
-            if (!place_meeting(x+sx,y,par_solid))
-                x += sx;
-            else
-                {
-                xspeed = 0;
-                break;
-                }
-            }
-        }
-    
-    if !(place_meeting(x,y+yspeed,par_solid))
-        y += yspeed;
-    else
-        {
-        var sy = sign(yspeed);
-        repeat(round(abs(yspeed)))
-            {
-            if (!place_meeting(x,y+sy,par_solid))
-                y += sy;
-            else
-                {
-                yspeed = 0;
-                if (!on_ground) and (place_meeting(x,y+1,par_solid))
-                    on_ground = true;
-                
-                break;
-                }
-            }
-        }
-    }
+            <string>instance_destroy();
 </string>
           </argument>
         </arguments>

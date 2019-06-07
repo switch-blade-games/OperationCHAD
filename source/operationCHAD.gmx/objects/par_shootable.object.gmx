@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>team = -1;
-canhit = true;
+            <string>invulnerable = true;
+lifemax = 1;
+life = lifemax;
+
+team = -1;
+nohit = false;
+flash = 0;
 </string>
           </argument>
         </arguments>

@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_background_tiled(NPC_BG,view_xview[0]/12,view_yview[0])
-
-draw_background_tiled(NPC_pillars_BG,view_xview[0]/8,view_yview[0])
+            <string>draw_background_tiled(NPC_BG,round(view_xview[0]*0.8),view_yview[0]);
+draw_background_tiled(NPC_pillars_BG,round(view_xview[0]/4),view_yview[0]);
 </string>
           </argument>
         </arguments>

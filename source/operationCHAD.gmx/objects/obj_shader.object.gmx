@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -31,11 +31,8 @@ temp_surf = -1;
 
 global.xc = 0.15;
 global.yc = 0.20;
-u_xCurve = shader_get_uniform(shd_crt,"xCurve");
-u_yCurve = shader_get_uniform(shd_crt,"yCurve");
-
-//JB code to set crt default to false
-global.crt=!global.crt
+global.u_xc = shader_get_uniform(shd_crt,"xCurve");
+global.u_yc = shader_get_uniform(shd_crt,"yCurve");
 </string>
           </argument>
         </arguments>
@@ -62,33 +59,6 @@ global.crt=!global.crt
 
 if (surface_exists(temp_surf))
     surface_free(temp_surf);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (keyboard_check_pressed(ord("W")))
-    global.crt = !global.crt;
-
-global.xc += (0.15-global.xc)*0.1;
-global.yc += (0.20-global.yc)*0.1;
 </string>
           </argument>
         </arguments>
@@ -124,8 +94,8 @@ global.yc += (0.20-global.yc)*0.1;
     surface_reset_target();
     
     shader_set(shd_crt);
-    shader_set_uniform_f(u_xCurve,global.xc);
-    shader_set_uniform_f(u_yCurve,global.yc);
+    shader_set_uniform_f(global.u_xc,global.xc);
+    shader_set_uniform_f(global.u_yc,global.yc);
     draw_surface(temp_surf,0,0);
     shader_reset();
     

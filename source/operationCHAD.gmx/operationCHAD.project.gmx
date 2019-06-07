@@ -29,17 +29,18 @@
       <sprite>sprites\spr_player_hang</sprite>
       <sprite>sprites\spr_player_climb</sprite>
     </sprites>
+    <sprites name="editor">
+      <sprite>sprites\spr_player_spawn</sprite>
+      <sprite>sprites\spr_camera</sprite>
+      <sprite>sprites\spr_camera_arrow</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
     <sprite>sprites\spr_arrow_h</sprite>
     <sprite>sprites\spr_dust</sprite>
-    <sprite>sprites\spr_target</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
-    <sprite>sprites\spr_player_spawn</sprite>
-    <sprite>sprites\spr_camera</sprite>
-    <sprite>sprites\spr_camera_arrow</sprite>
     <sprites name="embro">
       <sprite>sprites\baby_jump_spr</sprite>
       <sprite>sprites\baby_crawl_spr</sprite>
@@ -50,12 +51,15 @@
       <sprite>sprites\embro_overlay_spr</sprite>
     </sprites>
     <sprite>sprites\NPC_enemy_spr</sprite>
+    <sprite>sprites\spr_buttons_xbox</sprite>
+    <sprite>sprites\spr_buttons_ps</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
     <background>background\embro_BG</background>
     <background>background\NPC_BG</background>
-    <background>background\NPC_foreground_BG</background>
+    <background>background\NPC_foreground_top</background>
+    <background>background\NPC_foreground_bot</background>
     <background>background\NPC_floor_BG</background>
     <background>background\NPC_pillars_BG</background>
     <background>background\clown_BG</background>
@@ -68,6 +72,11 @@
       <script>scripts\gamepad_checkall.gml</script>
       <script>scripts\gamepad_checkall_pressed.gml</script>
       <script>scripts\gamepad_checkall_released.gml</script>
+      <script>scripts\gamepad_lastall.gml</script>
+      <script>scripts\gamepad_check.gml</script>
+      <script>scripts\gamepad_check_pressed.gml</script>
+      <script>scripts\gamepad_check_released.gml</script>
+      <script>scripts\gamepad_last.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
@@ -85,11 +94,21 @@
       <script>scripts\editor_play.gml</script>
       <script>scripts\editor_edit.gml</script>
     </scripts>
+    <scripts name="settings">
+      <script>scripts\settings_save.gml</script>
+      <script>scripts\settings_load.gml</script>
+      <script>scripts\settings_init.gml</script>
+    </scripts>
     <script>scripts\draw_text_outline.gml</script>
+    <script>scripts\key_last.gml</script>
+    <script>scripts\key_to_text.gml</script>
+    <script>scripts\pad_to_sprite.gml</script>
+    <script>scripts\val_to_text.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
+    <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
@@ -97,6 +116,7 @@
   <objects name="objects">
     <objects name="parents">
       <object>objects\par_actor</object>
+      <object>objects\par_enemy</object>
       <object>objects\par_solid</object>
       <object>objects\par_jt</object>
       <object>objects\par_move</object>
@@ -107,7 +127,20 @@
       <object>objects\par_projectile</object>
       <object>objects\par_effect</object>
     </objects>
-    <object>objects\obj_editor</object>
+    <objects name="editor">
+      <object>objects\obj_editor</object>
+      <object>objects\obj_player_spawn</object>
+      <object>objects\obj_camera_path</object>
+    </objects>
+    <objects name="projectiles">
+      <object>objects\obj_bullet</object>
+    </objects>
+    <objects name="effects">
+      <object>objects\obj_casing</object>
+      <object>objects\obj_dust</object>
+      <object>objects\obj_particle</object>
+    </objects>
+    <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
@@ -126,14 +159,6 @@
     <object>objects\obj_mb_r</object>
     <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
-    <object>objects\obj_dummy</object>
-    <object>objects\obj_bullet</object>
-    <object>objects\obj_casing</object>
-    <object>objects\obj_dust</object>
-    <object>objects\obj_target</object>
-    <object>objects\obj_particle</object>
-    <object>objects\obj_player_spawn</object>
-    <object>objects\obj_camera_path</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>
@@ -157,7 +182,10 @@
     <room>rooms\embro_room</room>
     <room>rooms\NPC_room</room>
     <room>rooms\clown_room</room>
+<<<<<<< HEAD
     <room>rooms\rm_default</room>
+=======
+>>>>>>> 5b3db5baf8f3eef7e7a1bebce5592ff78c3305d4
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-11</depth>
   <persistent>0</persistent>
-  <parentName>par_shootable</parentName>
+  <parentName>par_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -30,64 +30,45 @@
 image_speed = 0;
 image_index = 0;
 
-hpmax = 12;
-hp = hpmax;
-flash = 0;
+lifemax = 4;
+life = lifemax;
 
-xpos = x;
-ypos = y;
-xoff = 0;
-yoff = 0;
-
-//JB stuff
-
-life=4
-
-
-INIT=0
-JUMP=1
-CRAWL=2
-FLY=3
-
-state=INIT
+// state
+INIT = 0;
+JUMP = 1;
+CRAWL = 2;
+FLY = 3;
+state = INIT;
 
 //just giving the object a moment to initialize, then onto the starting jump
-alarm[0]=2
-
-//1=bottom, -1=top, is assigned by the coller/spawner
-FLIP=1
-
-
-
-
-//speed of starting jump
-JUMPspe=2
+alarm[0] = 2;
 
 //speed pulling the baby vertically when jumping
-grav=0.1
-
-
-//speed of crawling/horizonal movement
-CRAWLspe=1
-
-//speed of flying
-FLYspe=1
-
-
-//past this x, start entertaining the idea of flying vertically
-FLYx=180
-
+grav = 0.1;
 
 //for bottom spawning babies, this is the y they snap to on the floor
-BOTTOM=210
+BOTTOM = 210;
 
 //for top spawning babies, this it the y the cling too on the ceiling
-TOP=10
+TOP = 10;
+
+//past this x, start entertaining the idea of flying vertically
+FLYx = 180;
+
+//1=bottom, -1=top, is assigned by the coller/spawner
+FLIP = 1;
+
+//speed of starting jump
+JUMPspe = 2;
+
+//speed of crawling/horizonal movement
+CRAWLspe = 1;
+
+//speed of flying
+FLYspe = 1;
 
 //the larger the number the less likely to fly
-FLYodds=50
-//
-
+FLYodds = 50;
 </string>
           </argument>
         </arguments>
@@ -141,17 +122,7 @@ state=JUMP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//x = xpos+xoff;
-//y = ypos+yoff;
-
-xoff *= 0.95;
-yoff *= 0.95;
-
-
-//JB
-
-
-//destroy if out of view
+            <string>//destroy if out of view
 if(x&lt;view_xview[0]-32)
     instance_destroy()
 
@@ -196,11 +167,8 @@ if(x&lt;FLYx)
 if(state=CRAWL){
 
     //this is a very inelegant way to check how many other babies are flying at this moment. If there's too many, no flying permit
-    
-    
     //will the baby be able to fly
     var FLYINGpermit=false
-    
     
     //number of flying babies to be added up
     var FLYnum=0;
@@ -217,50 +185,34 @@ if(state=CRAWL){
     if(FLYnum&lt;=embro_controller.FLYmax)
         FLYINGpermit=true
     
-    
-    
-    
     if(FLYINGpermit=true)
     if(random(FLYodds)&lt;1)
-    {
-
+        {
         vspeed=FLYspe*-FLIP
         state=FLY
-        
-        
         }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_projectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//getting hit with bullet
 
-with(other)
-    instance_destroy()
+// animate
+switch(state)
+    {
+    case JUMP:
+        if (sprite_index != baby_jump_spr)
+            {
+            sprite_index = baby_jump_spr;
+            image_index = 0;
+            }
+        break;
     
-life-=1
-
-if(life&lt;=0)
-instance_destroy()
+    case CRAWL:
+    case FLY:
+        if (sprite_index != baby_crawl_spr)
+            {
+            sprite_index = baby_crawl_spr;
+            image_index = 0;
+            }
+        break;
+    }
 </string>
           </argument>
         </arguments>
@@ -283,23 +235,15 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_yscale=FLIP
+            <string>draw_sprite_ext(sprite_index,image_index,x,y,1,FLIP,0,-1,image_alpha);
 
-if(state=JUMP)
-sprite_index=baby_jump_spr
-
-if(state=CRAWL)
-or
-state=FLY
-sprite_index=baby_crawl_spr
-
-
-draw_sprite_ext(sprite_index,flash &gt; 0,x,y,1,FLIP,0,-1,image_alpha);
 if (flash &gt; 0)
-    flash--;
-    
-    
-//draw_text(x,y-20,vspeed)
+    {
+    shader_set(shd_flash);
+    draw_sprite_ext(sprite_index,image_index,x,y,1,FLIP,0,-1,image_alpha);
+    shader_reset();
+    flash = max(0,flash-0.5);
+    }
 </string>
           </argument>
         </arguments>

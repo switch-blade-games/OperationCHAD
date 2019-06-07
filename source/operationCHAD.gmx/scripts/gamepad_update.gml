@@ -1,94 +1,105 @@
 /// gamepad_update();
 
-i = 0;
-repeat(4)
+// place in 'End Step' event
+
+global.gpcount = 0;
+for(var i=0; i<4; i++;)
     {
     if (gamepad_is_connected(i))
         {
-        if (global.gp[i,0] == false)
+        if (!global.gp[i,0])
             {
             global.gp[i,0] = true;
             global.gp[i,1] = gamepad_get_description(i);
             global.gp[i,2] = 0;
             global.gp[i,3] = 0;
-            global.gp[i,4] = 0;
+            //global.gp[i,4] = 0.05;
+            global.gp[i,5] = false;
+            global.gp[i,6] = false;
+            global.gp[i,7] = false;
+            global.gp[i,8] = false;
+            global.gp[i,9] = -1;
+            global.gpcount++;
             }
+        
+        // gamepad rumble
+        gamepad_set_vibration(i,global.gp[i,2],global.gp[i,3]);
         global.gp[i,2] *= 0.9;
         global.gp[i,3] *= 0.9;
         
+        // reset last function
+        global.gp[i,9] = -1;
+        
         // left stick vertical
-        if (global.gp[i,5] == true)
+        if (global.gp[i,5])
             {
-            if (abs(gamepad_axis_value(i,gp_axislv)) < 0.05) {
+            if (abs(gamepad_axis_value(i,gp_axislv)) < global.gp[i,4])
                 global.gp[i,5] = false;
-                }
             }
-        else
+        else if (abs(gamepad_axis_value(i,gp_axislv)) > global.gp[i,4])
             {
-            if (abs(gamepad_axis_value(i,gp_axislv)) > 0.05) {
-                global.gp[i,5] = true;
-                }
+            global.gp[i,5] = true;
+            global.gp[i,9] = gp_axislv;
             }
         
         // left stick horizontal
-        if (global.gp[i,6] == true)
+        if (global.gp[i,6])
             {
-            if (abs(gamepad_axis_value(i,gp_axislh)) < 0.05) {
+            if (abs(gamepad_axis_value(i,gp_axislh)) < global.gp[i,4])
                 global.gp[i,6] = false;
-                }
             }
-        else
+        else if (abs(gamepad_axis_value(i,gp_axislh)) > global.gp[i,4])
             {
-            if (abs(gamepad_axis_value(i,gp_axislh)) > 0.05) {
-                global.gp[i,6] = true;
-                }
+            global.gp[i,6] = true;
+            global.gp[i,9] = gp_axislh;
             }
         
         // right stick vertical
-        if (global.gp[i,7] == true)
+        if (global.gp[i,7])
             {
-            if (abs(gamepad_axis_value(i,gp_axisrv)) < 0.05) {
+            if (abs(gamepad_axis_value(i,gp_axisrv)) < global.gp[i,4])
                 global.gp[i,7] = false;
-                }
             }
-        else
+        else if (abs(gamepad_axis_value(i,gp_axisrv)) > global.gp[i,4])
             {
-            if (abs(gamepad_axis_value(i,gp_axisrv)) > 0.05) {
-                global.gp[i,7] = true;
-                }
+            global.gp[i,7] = true;
+            global.gp[i,9] = gp_axisrv;
             }
         
         // right stick horizontal
-        if (global.gp[i,8] == true)
+        if (global.gp[i,8])
             {
-            if (abs(gamepad_axis_value(i,gp_axisrh)) < 0.05) {
+            if (abs(gamepad_axis_value(i,gp_axisrh)) < global.gp[i,4])
                 global.gp[i,8] = false;
-                }
             }
-        else
+        else if (abs(gamepad_axis_value(i,gp_axisrh)) > global.gp[i,4])
             {
-            if (abs(gamepad_axis_value(i,gp_axisrh)) > 0.05) {
-                global.gp[i,8] = true;
-                }
+            global.gp[i,8] = true;
+            global.gp[i,9] = gp_axisrh;
+            }
+        
+        // last function
+        for(var j=0; j<gamepad_button_count(i); j++;)
+            {
+            if (gamepad_button_check_pressed(i,gp_face1+j))
+                global.gp[i,9] = gp_face1+j;
             }
         }
     else
         {
-        if (global.gp[i,0] == true)
+        if (global.gp[i,0])
             {
             global.gp[i,0] = false;
             global.gp[i,1] = "";
             global.gp[i,2] = 0;
             global.gp[i,3] = 0;
-            global.gp[i,4] = 0;
+            //global.gp[i,4] = 0.05;
             global.gp[i,5] = false;
             global.gp[i,6] = false;
             global.gp[i,7] = false;
             global.gp[i,8] = false;
-            global.gp[i,9] = 0;
-            global.gp[i,10] = 0;
+            global.gp[i,9] = -1;
+            global.gpcount--;
             }
         }
-    
-    i++;
     }

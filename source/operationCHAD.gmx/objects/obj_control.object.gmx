@@ -27,21 +27,21 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
-// view/display/gui setup
+// view/window/gui
 view_wview[0] = 400;
 view_hview[0] = 240;
-window_set_size(view_wview[0]*2,view_hview[0]*2);
-window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+if (global.fullscreen)
+    window_set_fullscreen(true);
+else
+    {
+    window_set_size(view_wview[0]*2,view_hview[0]*2);
+    window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+    }
 surface_resize(application_surface,view_wview[0],view_hview[0]);
+display_set_gui_size(view_wview[0],view_hview[0]);
+
 gui_w = view_wview[0];
 gui_h = view_hview[0];
-display_set_gui_size(gui_w,gui_h);
-
-draw_set_font(fnt_default);
-
-global.crt = true;
-global.xshake = 0;
-global.yshake = 0;
 
 enum tile_side {
     none = 0,
@@ -51,35 +51,13 @@ enum tile_side {
     bottom = 8
     }
 
-instance_create(0,0,obj_shader);
-
-// gamepad
-gamepad_init();
-
-// key binds
-global.key_up[0] = vk_up;
-global.key_down[0] = vk_down;
-global.key_left[0] = vk_left;
-global.key_right[0] = vk_right;
-global.key_fire[0] = ord("Z");
-global.key_jump[0] = ord("X");
-
-global.pad_up[0] = gp_padu;
-global.pad_down[0] = gp_padd;
-global.pad_left[0] = gp_padl;
-global.pad_right[0] = gp_padr;
-global.pad_fire[0] = gp_face3;
-global.pad_jump[0] = gp_face1;
-
-// debug
-global.shadow_time = 0;
-global.shader_time = 0;
+surf_pause = -1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -119,8 +97,53 @@ global.shader_time = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw_text(6,128,"shadows: "+string(global.shadow_time)+"ms");
-//draw_text(6,144,"shaders: "+string(global.shader_time)+"ms");
+            <string>if (keyboard_check_pressed(ord("P")))
+or (gamepad_checkall_pressed(gp_start,false))
+    {
+    global.pause = !global.pause;
+    if (global.pause)
+        {
+        surf_pause = surface_create(view_wview[0],view_hview[0]);
+        
+        surface_set_target(surf_pause);
+        draw_clear(background_color);
+        draw_surface(application_surface,0,0);
+        surface_reset_target();
+        
+        instance_deactivate_all(true);
+        }
+    else
+        {
+        if (surface_exists(surf_pause))
+            surface_free(surf_pause);
+        surf_pause = -1;
+        
+        instance_activate_all();
+        }
+    }
+
+if (global.pause and surface_exists(surf_pause))
+    {
+    shader_set(shd_crt);
+    shader_set_uniform_f(global.u_xc,global.xc);
+    shader_set_uniform_f(global.u_yc,global.yc);
+    draw_surface(surf_pause,0,0);
+    shader_reset();
+    
+    draw_set_color($000000);
+    draw_set_alpha(0.75);
+    draw_rectangle(0,0,view_wview[0],view_hview[0],0);
+    draw_set_alpha(1.0);
+    
+    draw_set_font(fnt_default);
+    draw_set_color($FFFFFF);
+    draw_set_halign(1);
+    draw_set_valign(1);
+    draw_text_outline(view_wview[0]/2,view_hview[0]/3,"PAUSED");
+    draw_set_valign(0);
+    draw_set_halign(0);
+    draw_set_color($000000);
+    }
 </string>
           </argument>
         </arguments>

@@ -1,51 +1,45 @@
 /// gamepad_checkall_released(function);
 
-// if argument1 is true, it will return the value of the gamepad's function
-// if argument1 is false, it will only return true or false
+var _func = argument[0];
+var _axis;
 
-if (argument0 == gp_axislv) {
-    axis = 5;
-    }
-if (argument0 == gp_axislh) {
-    axis = 6;
-    }
-if (argument0 == gp_axisrv) {
-    axis = 7;
-    }
-if (argument0 == gp_axisrh) {
-    axis = 8;
-    }
+if (_func == gp_axislv)
+    _axis = 5;
+else if (_func == gp_axislh)
+    _axis = 6;
+else if (_func == gp_axisrv)
+    _axis = 7;
+else if (_func == gp_axisrh)
+    _axis = 8;
 
-switch(argument0)
+switch(_func)
     {
     case gp_axislh: case gp_axislv:
     case gp_axisrh: case gp_axisrv:
-        for(i = 0; i < 4; i++)
+        for(i=0; i<4; i++;)
             {
-            if (gamepad_is_connected(i))
+            if (!global.gp[i,0])
+                continue;
+            
+            if (abs(gamepad_axis_value(i,_func)) < global.gp[i,4])
+            and (global.gp[i,_axis])
                 {
-                if (abs(gamepad_axis_value(i,argument0)) < 0.05)
-                    {
-                    if (global.gp[i,axis] == true)
-                        {
-                        global.gp[i,axis] = false;
-                        return(true);
-                        }
-                    }
+                global.gp[i,_axis] = false;
+                return(true);
                 }
             }
-    break;
+        break;
+    
     default:
-        for(i = 0; i < 4; i++)
+        for(i=0; i<4; i++;)
             {
-            if (gamepad_is_connected(i))
-                {
-                if (gamepad_button_check_released(i,argument0)) {
-                    return(true);
-                    }
-                }
+            if (!global.gp[i,0])
+                continue;
+            
+            if (gamepad_button_check_released(i,_func))
+                return(true);
             }
-    break;
+        break;
     }
 
 return(false);
