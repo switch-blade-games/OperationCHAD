@@ -182,10 +182,6 @@
     <room>rooms\embro_room</room>
     <room>rooms\NPC_room</room>
     <room>rooms\clown_room</room>
-<<<<<<< HEAD
-    <room>rooms\rm_default</room>
-=======
->>>>>>> 5b3db5baf8f3eef7e7a1bebce5592ff78c3305d4
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

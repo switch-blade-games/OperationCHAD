@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enum camState
+            <string>x = view_wview[0]/2;
+y = view_hview[0]/2;
+
+enum camState
     {
     static = 0,
     right = 1,
