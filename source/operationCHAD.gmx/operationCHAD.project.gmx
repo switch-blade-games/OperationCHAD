@@ -51,6 +51,8 @@
       <sprite>sprites\embro_overlay_spr</sprite>
     </sprites>
     <sprite>sprites\NPC_enemy_spr</sprite>
+    <sprite>sprites\spr_buttons_xbox</sprite>
+    <sprite>sprites\spr_buttons_ps</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
@@ -93,6 +95,9 @@
       <script>scripts\editor_edit.gml</script>
     </scripts>
     <script>scripts\draw_text_outline.gml</script>
+    <script>scripts\key_to_text.gml</script>
+    <script>scripts\pad_to_sprite.gml</script>
+    <script>scripts\key_last.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>

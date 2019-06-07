@@ -38,6 +38,7 @@ display_set_gui_size(gui_w,gui_h);
 
 draw_set_font(fnt_default);
 
+global.btnstyle = 0;
 global.crt = false;
 global.particles = true;
 global.pause = false;
@@ -63,6 +64,12 @@ global.pad_left[0] = gp_padl;
 global.pad_right[0] = gp_padr;
 global.pad_fire[0] = gp_face3;
 global.pad_jump[0] = gp_face1;
+
+menu = 0;
+select = 0;
+selectx = 0;
+selecty = 0;
+rebind = false;
 
 bg_alpha = 0;
 bg_heady = -80;
@@ -90,14 +97,205 @@ bg_heady = -80;
             <kind>1</kind>
             <string>gamepad_update();
 
-view_xview[0] += 1;
+switch(menu)
+    {
+    case 0: // title screen
+        if (keyboard_check_pressed(ord("Z")))
+        or (keyboard_check_pressed(ord("X")))
+        or (gamepad_check_pressed(0,gp_face1,false))
+        or (gamepad_check_pressed(0,gp_face3,false))
+            menu = 1;
+        break;
+    
+    case 1: // main menu
+        if (keyboard_check_pressed(ord("Z")))
+        or (keyboard_check_pressed(ord("X")))
+        or (gamepad_check_pressed(0,gp_face1,false))
+        or (gamepad_check_pressed(0,gp_face3,false))
+            {
+            if (select == 0)
+                room_goto_next();
+            else if (select == 2)
+                {
+                menu = 2;
+                selectx = 0;
+                selecty = 0;
+                }
+            }
+        
+        if (keyboard_check_pressed(vk_up))
+        or (gamepad_check_pressed(0,gp_padu,false))
+            select = max(0,select-1);
+        if (keyboard_check_pressed(vk_down))
+        or (gamepad_check_pressed(0,gp_padd,false))
+            select = min(2,select+1);
+        break;
+    
+    case 2: // options
+        if (rebind)
+            {
+            if (selectx == 0)
+                {
+                var newkey = key_last();
+                if (newkey &gt; -1)
+                    {
+                    rebind = false;
+                    
+                    // unbind from other existing keys
+                    if (global.key_up[0] == newkey)
+                        global.key_up[0] = -2;
+                    if (global.key_down[0] == newkey)
+                        global.key_down[0] = -2;
+                    if (global.key_left[0] == newkey)
+                        global.key_left[0] = -2;
+                    if (global.key_right[0] == newkey)
+                        global.key_right[0] = -2;
+                    if (global.key_jump[0] == newkey)
+                        global.key_jump[0] = -2;
+                    if (global.key_fire[0] == newkey)
+                        global.key_fire[0] = -2;
+                    
+                    // bind to new key
+                    if (selecty == 0)
+                        global.key_up[0] = newkey;
+                    else if (selecty == 1)
+                        global.key_down[0] = newkey;
+                    else if (selecty == 2)
+                        global.key_left[0] = newkey;
+                    else if (selecty == 3)
+                        global.key_right[0] = newkey;
+                    else if (selecty == 4)
+                        global.key_jump[0] = newkey;
+                    else if (selecty == 5)
+                        global.key_fire[0] = newkey;
+                    }
+                }
+            else if (selectx == 1)
+                {
+                var newpad = gamepad_last(0);
+                if (newpad &gt; -1)
+                    {
+                    rebind = false;
+                    
+                    // unbind from other existing keys
+                    if (global.pad_up[0] == newpad)
+                        global.pad_up[0] = -2;
+                    if (global.pad_down[0] == newpad)
+                        global.pad_down[0] = -2;
+                    if (global.pad_left[0] == newpad)
+                        global.pad_left[0] = -2;
+                    if (global.pad_right[0] == newpad)
+                        global.pad_right[0] = -2;
+                    if (global.pad_jump[0] == newpad)
+                        global.pad_jump[0] = -2;
+                    if (global.pad_fire[0] == newpad)
+                        global.pad_fire[0] = -2;
+                    
+                    // bind to new key
+                    if (selecty == 0)
+                        global.pad_up[0] = newpad;
+                    else if (selecty == 1)
+                        global.pad_down[0] = newpad;
+                    else if (selecty == 2)
+                        global.pad_left[0] = newpad;
+                    else if (selecty == 3)
+                        global.pad_right[0] = newpad;
+                    else if (selecty == 4)
+                        global.pad_jump[0] = newpad;
+                    else if (selecty == 5)
+                        global.pad_fire[0] = newpad;
+                    }
+                }
+            }
+        else
+            {
+            if (keyboard_check_pressed(ord("Z")))
+            or (keyboard_check_pressed(ord("X")))
+            or (gamepad_check_pressed(0,gp_face1,false))
+            or (gamepad_check_pressed(0,gp_face3,false))
+                {
+                if (selecty &lt;= 5)
+                    {
+                    rebind = true;
+                    if (selectx == 0)
+                        {
+                        if (selecty == 0)
+                            global.key_up[0] = -1;
+                        else if (selecty == 1)
+                            global.key_down[0] = -1;
+                        else if (selecty == 2)
+                            global.key_left[0] = -1;
+                        else if (selecty == 3)
+                            global.key_right[0] = -1;
+                        else if (selecty == 4)
+                            global.key_jump[0] = -1;
+                        else if (selecty == 5)
+                            global.key_fire[0] = -1;
+                        }
+                    else if (selectx == 1)
+                        {
+                        if (selecty == 0)
+                            global.pad_up[0] = -1;
+                        else if (selecty == 1)
+                            global.pad_down[0] = -1;
+                        else if (selecty == 2)
+                            global.pad_left[0] = -1;
+                        else if (selecty == 3)
+                            global.pad_right[0] = -1;
+                        else if (selecty == 4)
+                            global.pad_jump[0] = -1;
+                        else if (selecty == 5)
+                            global.pad_fire[0] = -1;
+                        }
+                    }
+                else
+                    {
+                    if (selectx == 0)
+                        {
+                        var ready = true;
+                        if (global.key_up[0] &lt; 0)
+                        or (global.key_down[0] &lt; 0)
+                        or (global.key_left[0] &lt; 0)
+                        or (global.key_right[0] &lt; 0)
+                        or (global.key_jump[0] &lt; 0)
+                        or (global.key_fire[0] &lt; 0)
+                        or (global.pad_up[0] &lt; 0)
+                        or (global.pad_down[0] &lt; 0)
+                        or (global.pad_left[0] &lt; 0)
+                        or (global.pad_right[0] &lt; 0)
+                        or (global.pad_jump[0] &lt; 0)
+                        or (global.pad_fire[0] &lt; 0)
+                            ready = false;
+                        
+                        if (ready)
+                            {
+                            menu = 1;
+                            select = 2;
+                            }
+                        }
+                    else if (selectx == 1)
+                        global.btnstyle = !global.btnstyle;
+                    }
+                }
+            if (keyboard_check_pressed(vk_left))
+            or (gamepad_check_pressed(0,gp_padl,false))
+                selectx = max(0,selectx-1);
+            if (keyboard_check_pressed(vk_right))
+            or (gamepad_check_pressed(0,gp_padr,false))
+                selectx = min(selectx+1,1);
+            if (keyboard_check_pressed(vk_up))
+            or (gamepad_check_pressed(0,gp_padu,false))
+                selecty = max(0,selecty-1);
+            if (keyboard_check_pressed(vk_down))
+            or (gamepad_check_pressed(0,gp_padd,false))
+                selecty = min(selecty+1,6);
+            }
+        break;
+    }
 
+view_xview[0] += 1;
 bg_alpha += (0.4-bg_alpha)*0.05;
 bg_heady += (0-bg_heady)*0.05;
-
-if (keyboard_check_pressed(ord("Z")))
-or (keyboard_check_pressed(ord("X")))
-    room_goto_next();
 </string>
           </argument>
         </arguments>
@@ -125,13 +323,77 @@ draw_set_alpha(bg_alpha);
 draw_rectangle(0,0,view_wview[0],view_hview[0],0);
 draw_set_alpha(1.0);
 
-draw_set_halign(1);
-draw_set_valign(1);
-draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
-if (sin(current_time/200) &gt; 0)
-    draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
-draw_set_halign(0);
-draw_set_valign(0);
+switch(menu)
+    {
+    case 0: // title screen
+        draw_set_halign(1);
+        draw_set_valign(1);
+        draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
+        if (sin(current_time/200) &gt; 0)
+            draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
+        draw_set_halign(0);
+        draw_set_valign(0);
+        break;
+    
+    case 1: // main menu
+        draw_text_outline(60,24,"Operation C.H.A.D.");
+        
+        draw_text_outline(60,120+00,"1 PLAYER START");
+        draw_text_outline(60,120+20,"2 PLAYER START");
+        draw_text_outline(60,120+40,"OPTIONS");
+        
+        draw_sprite(spr_camera_arrow,1,32,126+select*20);
+        break;
+    
+    case 2: // options
+        draw_set_color($000000);
+        draw_set_alpha(0.6);
+        draw_rectangle(40,48,view_wview[0]-40,view_hview[0]-44,0);
+        draw_set_alpha(1.0);
+        
+        draw_text_outline(60,24,"Options");
+        
+        var i = 0;
+        draw_text_outline(60,56,"ACTION");
+        draw_text_outline(60,82+i++*18,"UP");
+        draw_text_outline(60,82+i++*18,"DOWN");
+        draw_text_outline(60,82+i++*18,"LEFT");
+        draw_text_outline(60,82+i++*18,"RIGHT");
+        draw_text_outline(60,82+i++*18,"JUMP");
+        draw_text_outline(60,82+i++*18,"FIRE");
+        
+        var i = 0;
+        draw_text_outline(160,56,"KEYBOARD");
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_up[0])));
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_down[0])));
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_left[0])));
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_right[0])));
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_jump[0])));
+        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_fire[0])));
+        
+        if (global.btnstyle)
+            var btnspr = spr_buttons_xbox;
+        else
+            var btnspr = spr_buttons_ps;
+        
+        var i = 0;
+        draw_text_outline(284,56,"GAMEPAD");
+        draw_sprite(btnspr,pad_to_sprite(global.pad_up[0]),284,90+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_down[0]),284,90+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_left[0]),284,90+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_right[0]),284,90+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_jump[0]),284,90+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_fire[0]),284,90+i++*18);
+        
+        draw_text_outline(110,202,"BACK");
+        draw_text_outline(220,202,"TOGGLE STYLE");
+        
+        if (selecty &lt;= 5)
+            draw_sprite(spr_camera_arrow,1-rebind,140+selectx*124,90+selecty*18);
+        else
+            draw_sprite(spr_camera_arrow,1,90+selectx*110,210);
+        break;
+    }
 
 draw_set_color($000000);
 </string>

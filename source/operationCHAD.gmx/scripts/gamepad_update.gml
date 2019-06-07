@@ -81,8 +81,8 @@ for(var i=0; i<4; i++;)
         // last function
         for(var j=0; j<gamepad_button_count(i); j++;)
             {
-            if (gamepad_button_check_pressed(i,j))
-                global.gp[i,9] = j;
+            if (gamepad_button_check_pressed(i,gp_face1+j))
+                global.gp[i,9] = gp_face1+j;
             }
         }
     else
