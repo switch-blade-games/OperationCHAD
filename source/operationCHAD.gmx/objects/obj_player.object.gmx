@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 
+instance_create(x,y,obj_camera);
+
 // player move states
 enum mState
     {

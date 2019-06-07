@@ -31,8 +31,8 @@ temp_surf = -1;
 
 global.xc = 0.15;
 global.yc = 0.20;
-global.u_xc = shader_get_uniform(shd_crt,"xCurve");
-global.u_yc = shader_get_uniform(shd_crt,"yCurve");
+u_xCurve = shader_get_uniform(shd_crt,"xCurve");
+u_yCurve = shader_get_uniform(shd_crt,"yCurve");
 </string>
           </argument>
         </arguments>
@@ -94,8 +94,8 @@ if (surface_exists(temp_surf))
     surface_reset_target();
     
     shader_set(shd_crt);
-    shader_set_uniform_f(global.u_xc,global.xc);
-    shader_set_uniform_f(global.u_yc,global.yc);
+    shader_set_uniform_f(u_xCurve,global.xc);
+    shader_set_uniform_f(u_yCurve,global.yc);
     draw_surface(temp_surf,0,0);
     shader_reset();
     
