@@ -1,18 +1,15 @@
-/*
-aim = point_direction(x,y,mouse_x,mouse_y);
-aim = round(aim/45)*45;
-if (mouse_x >= x)
-    face = +1;
-else
-    face = -1;
-*/
-
 var h_dir = input_right-input_left;
 var v_dir = input_down-input_up;
 
 switch(move_state)
     {
     case mState.walk:
+        
+        if (input_lock)
+            {
+            move_state = mState.lock;
+            break;
+            }
         
         // horizontal movement input
         move_speed = MOVEspe;
@@ -88,14 +85,53 @@ switch(move_state)
                 jump();
             }
         
-        if (on_ground) or (!on_ground and yspeed >= 1)
+        if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
             {
-            if (input_fire)
-                {
-                fire_weapon();
-                roll = false;
-                }
+            fire_weapon();
+            roll = false;
             }
+        break;
+    
+    case mState.lock:
+        if (!input_lock)
+            {
+            if (!input_down)
+                move_state = mState.walk;
+            else
+                {
+                move_state = mState.duck;
+                mask_index = msk_player_duck;
+                }
+            break;
+            }
+        
+        // aim
+        if (h_dir != 0)
+            {
+            face = h_dir;
+            dir = h_dir;
+            }
+        if (h_dir == 0 and v_dir == 0)
+            {
+            if (face > 0)
+                aim = 0;
+            else if (face < 0)
+                aim = 180;
+            }
+        else
+            aim = point_direction(0,0,h_dir,v_dir);
+        
+        if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
+            {
+            fire_weapon();
+            roll = false;
+            }
+        
+        // friction
+        if (xspeed > 0)
+            xspeed = max(0,xspeed-fric);
+        else if (xspeed < 0)
+            xspeed = min(0,xspeed+fric);
         break;
     
     case mState.duck:

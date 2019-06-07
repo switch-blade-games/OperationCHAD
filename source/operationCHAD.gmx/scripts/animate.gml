@@ -48,6 +48,14 @@ switch(move_state)
             }
         break;
     
+    case mState.lock:
+        if (sprite_index != spr_player_idle)
+            {
+            sprite_index = spr_player_idle;
+            image_index = 0;
+            }
+        break;
+    
     case mState.duck:
         if (sprite_index != spr_player_duck)
             {

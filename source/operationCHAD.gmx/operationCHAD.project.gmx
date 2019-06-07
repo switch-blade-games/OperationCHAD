@@ -94,10 +94,16 @@
       <script>scripts\editor_play.gml</script>
       <script>scripts\editor_edit.gml</script>
     </scripts>
+    <scripts name="settings">
+      <script>scripts\settings_save.gml</script>
+      <script>scripts\settings_load.gml</script>
+      <script>scripts\settings_init.gml</script>
+    </scripts>
     <script>scripts\draw_text_outline.gml</script>
+    <script>scripts\key_last.gml</script>
     <script>scripts\key_to_text.gml</script>
     <script>scripts\pad_to_sprite.gml</script>
-    <script>scripts\key_last.gml</script>
+    <script>scripts\val_to_text.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>

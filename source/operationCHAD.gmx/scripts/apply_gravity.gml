@@ -2,6 +2,7 @@ switch(move_state)
     {
     case mState.walk:
     case mState.duck:
+    case mState.lock:
     
         // detect if we're standing on ground
         on_ground = false;

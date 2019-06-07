@@ -25,45 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// view/display/gui setup
-view_wview[0] = 400;
-view_hview[0] = 240;
-window_set_fullscreen(true);
-//window_set_size(view_wview[0]*2,view_hview[0]*2);
-//window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
-surface_resize(application_surface,view_wview[0],view_hview[0]);
-gui_w = view_wview[0];
-gui_h = view_hview[0];
-display_set_gui_size(gui_w,gui_h);
-
+            <string>// set the font
 draw_set_font(fnt_default);
 
-global.btnstyle = 0;
-global.crt = false;
-global.particles = true;
-global.pause = false;
-global.xshake = 0;
-global.yshake = 0;
+// init settings
+settings_init();
+// load settings if they exist or save them if they don't
+settings_path = working_directory+"settings.ini";
+if (file_exists(settings_path))
+    settings_load(settings_path);
+else
+    settings_save(settings_path);
 
-instance_create(0,0,obj_shader);
+// view/window/gui
+view_wview[0] = 400;
+view_hview[0] = 240;
+if (global.fullscreen)
+    window_set_fullscreen(true);
+else
+    {
+    window_set_size(view_wview[0]*2,view_hview[0]*2);
+    window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+    }
+surface_resize(application_surface,view_wview[0],view_hview[0]);
+display_set_gui_size(view_wview[0],view_hview[0]);
 
 // gamepad
 gamepad_init();
 
-// key binds
-global.key_up[0] = vk_up;
-global.key_down[0] = vk_down;
-global.key_left[0] = vk_left;
-global.key_right[0] = vk_right;
-global.key_fire[0] = ord("Z");
-global.key_jump[0] = ord("X");
+// globals
+global.pause = false;
+global.xshake = 0;
+global.yshake = 0;
 
-global.pad_up[0] = gp_padu;
-global.pad_down[0] = gp_padd;
-global.pad_left[0] = gp_padl;
-global.pad_right[0] = gp_padr;
-global.pad_fire[0] = gp_face3;
-global.pad_jump[0] = gp_face1;
+// create shader controller
+instance_create(0,0,obj_shader);
 
 menu = 0;
 select = 0;
@@ -102,36 +98,78 @@ switch(menu)
     case 0: // title screen
         if (keyboard_check_pressed(ord("Z")))
         or (keyboard_check_pressed(ord("X")))
-        or (gamepad_check_pressed(0,gp_face1,false))
-        or (gamepad_check_pressed(0,gp_face3,false))
+        or (gamepad_checkall_pressed(gp_face1,false))
+        or (gamepad_checkall_pressed(gp_face3,false))
             menu = 1;
         break;
     
     case 1: // main menu
         if (keyboard_check_pressed(ord("Z")))
         or (keyboard_check_pressed(ord("X")))
-        or (gamepad_check_pressed(0,gp_face1,false))
-        or (gamepad_check_pressed(0,gp_face3,false))
+        or (gamepad_checkall_pressed(gp_face1,false))
+        or (gamepad_checkall_pressed(gp_face3,false))
             {
             if (select == 0)
                 room_goto_next();
             else if (select == 2)
                 {
                 menu = 2;
-                selectx = 0;
-                selecty = 0;
+                select = 0;
                 }
             }
         
         if (keyboard_check_pressed(vk_up))
-        or (gamepad_check_pressed(0,gp_padu,false))
+        or (gamepad_checkall_pressed(gp_padu,false))
             select = max(0,select-1);
         if (keyboard_check_pressed(vk_down))
-        or (gamepad_check_pressed(0,gp_padd,false))
+        or (gamepad_checkall_pressed(gp_padd,false))
             select = min(2,select+1);
         break;
     
-    case 2: // options
+    case 2: // settings
+        if (keyboard_check_pressed(ord("Z")))
+        or (keyboard_check_pressed(ord("X")))
+        or (gamepad_checkall_pressed(gp_face1,false))
+        or (gamepad_checkall_pressed(gp_face3,false))
+            {
+            if (select == 0)
+                {
+                global.fullscreen = !global.fullscreen;
+                window_set_fullscreen(global.fullscreen);
+                if (!global.fullscreen)
+                    {
+                    window_set_size(view_wview[0]*2,view_hview[0]*2);
+                    window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+                    }
+                }
+            else if (select == 1)
+                global.crt = !global.crt;
+            else if (select == 2)
+                global.particles = !global.particles;
+            else if (select == 3)
+                {
+                menu = 3;
+                selectx = 0;
+                selecty = 0;
+                }
+            else if (select == 4)
+                {
+                menu = 1;
+                select = 0;
+                
+                settings_save(settings_path);
+                }
+            }
+        
+        if (keyboard_check_pressed(vk_up))
+        or (gamepad_checkall_pressed(gp_padu,false))
+            select = max(0,select-1);
+        if (keyboard_check_pressed(vk_down))
+        or (gamepad_checkall_pressed(gp_padd,false))
+            select = min(4,select+1);
+        break;
+    
+    case 3: // edit keybinds
         if (rebind)
             {
             if (selectx == 0)
@@ -142,32 +180,36 @@ switch(menu)
                     rebind = false;
                     
                     // unbind from other existing keys
-                    if (global.key_up[0] == newkey)
-                        global.key_up[0] = -2;
-                    if (global.key_down[0] == newkey)
-                        global.key_down[0] = -2;
                     if (global.key_left[0] == newkey)
                         global.key_left[0] = -2;
                     if (global.key_right[0] == newkey)
                         global.key_right[0] = -2;
+                    if (global.key_up[0] == newkey)
+                        global.key_up[0] = -2;
+                    if (global.key_down[0] == newkey)
+                        global.key_down[0] = -2;
                     if (global.key_jump[0] == newkey)
                         global.key_jump[0] = -2;
                     if (global.key_fire[0] == newkey)
                         global.key_fire[0] = -2;
+                    if (global.key_lock[0] == newkey)
+                        global.key_lock[0] = -2;
                     
                     // bind to new key
                     if (selecty == 0)
-                        global.key_up[0] = newkey;
-                    else if (selecty == 1)
-                        global.key_down[0] = newkey;
-                    else if (selecty == 2)
                         global.key_left[0] = newkey;
-                    else if (selecty == 3)
+                    else if (selecty == 1)
                         global.key_right[0] = newkey;
+                    else if (selecty == 2)
+                        global.key_up[0] = newkey;
+                    else if (selecty == 3)
+                        global.key_down[0] = newkey;
                     else if (selecty == 4)
                         global.key_jump[0] = newkey;
                     else if (selecty == 5)
                         global.key_fire[0] = newkey;
+                    else if (selecty == 6)
+                        global.key_lock[0] = newkey;
                     }
                 }
             else if (selectx == 1)
@@ -178,32 +220,36 @@ switch(menu)
                     rebind = false;
                     
                     // unbind from other existing keys
-                    if (global.pad_up[0] == newpad)
-                        global.pad_up[0] = -2;
-                    if (global.pad_down[0] == newpad)
-                        global.pad_down[0] = -2;
                     if (global.pad_left[0] == newpad)
                         global.pad_left[0] = -2;
                     if (global.pad_right[0] == newpad)
                         global.pad_right[0] = -2;
+                    if (global.pad_up[0] == newpad)
+                        global.pad_up[0] = -2;
+                    if (global.pad_down[0] == newpad)
+                        global.pad_down[0] = -2;
                     if (global.pad_jump[0] == newpad)
                         global.pad_jump[0] = -2;
                     if (global.pad_fire[0] == newpad)
                         global.pad_fire[0] = -2;
+                    if (global.pad_lock[0] == newpad)
+                        global.pad_lock[0] = -2;
                     
                     // bind to new key
                     if (selecty == 0)
-                        global.pad_up[0] = newpad;
-                    else if (selecty == 1)
-                        global.pad_down[0] = newpad;
-                    else if (selecty == 2)
                         global.pad_left[0] = newpad;
-                    else if (selecty == 3)
+                    else if (selecty == 1)
                         global.pad_right[0] = newpad;
+                    else if (selecty == 2)
+                        global.pad_up[0] = newpad;
+                    else if (selecty == 3)
+                        global.pad_down[0] = newpad;
                     else if (selecty == 4)
                         global.pad_jump[0] = newpad;
                     else if (selecty == 5)
                         global.pad_fire[0] = newpad;
+                    else if (selecty == 6)
+                        global.pad_lock[0] = newpad;
                     }
                 }
             }
@@ -211,41 +257,45 @@ switch(menu)
             {
             if (keyboard_check_pressed(ord("Z")))
             or (keyboard_check_pressed(ord("X")))
-            or (gamepad_check_pressed(0,gp_face1,false))
-            or (gamepad_check_pressed(0,gp_face3,false))
+            or (gamepad_checkall_pressed(gp_face1,false))
+            or (gamepad_checkall_pressed(gp_face3,false))
                 {
-                if (selecty &lt;= 5)
+                if (selecty &lt;= 6)
                     {
                     rebind = true;
                     if (selectx == 0)
                         {
                         if (selecty == 0)
-                            global.key_up[0] = -1;
-                        else if (selecty == 1)
-                            global.key_down[0] = -1;
-                        else if (selecty == 2)
                             global.key_left[0] = -1;
-                        else if (selecty == 3)
+                        else if (selecty == 1)
                             global.key_right[0] = -1;
+                        else if (selecty == 2)
+                            global.key_up[0] = -1;
+                        else if (selecty == 3)
+                            global.key_down[0] = -1;
                         else if (selecty == 4)
                             global.key_jump[0] = -1;
                         else if (selecty == 5)
                             global.key_fire[0] = -1;
+                        else if (selecty == 6)
+                            global.key_lock[0] = -1;
                         }
                     else if (selectx == 1)
                         {
                         if (selecty == 0)
-                            global.pad_up[0] = -1;
-                        else if (selecty == 1)
-                            global.pad_down[0] = -1;
-                        else if (selecty == 2)
                             global.pad_left[0] = -1;
-                        else if (selecty == 3)
+                        else if (selecty == 1)
                             global.pad_right[0] = -1;
+                        else if (selecty == 2)
+                            global.pad_up[0] = -1;
+                        else if (selecty == 3)
+                            global.pad_down[0] = -1;
                         else if (selecty == 4)
                             global.pad_jump[0] = -1;
                         else if (selecty == 5)
                             global.pad_fire[0] = -1;
+                        else if (selecty == 6)
+                            global.pad_lock[0] = -1;
                         }
                     }
                 else
@@ -259,18 +309,21 @@ switch(menu)
                         or (global.key_right[0] &lt; 0)
                         or (global.key_jump[0] &lt; 0)
                         or (global.key_fire[0] &lt; 0)
+                        or (global.key_lock[0] &lt; 0)
                         or (global.pad_up[0] &lt; 0)
                         or (global.pad_down[0] &lt; 0)
                         or (global.pad_left[0] &lt; 0)
                         or (global.pad_right[0] &lt; 0)
                         or (global.pad_jump[0] &lt; 0)
                         or (global.pad_fire[0] &lt; 0)
+                        or (global.pad_lock[0] &lt; 0)
                             ready = false;
                         
+                        // return to settings menu
                         if (ready)
                             {
-                            menu = 1;
-                            select = 2;
+                            menu = 2;
+                            select = 0;
                             }
                         }
                     else if (selectx == 1)
@@ -278,17 +331,17 @@ switch(menu)
                     }
                 }
             if (keyboard_check_pressed(vk_left))
-            or (gamepad_check_pressed(0,gp_padl,false))
+            or (gamepad_checkall_pressed(gp_padl,false))
                 selectx = max(0,selectx-1);
             if (keyboard_check_pressed(vk_right))
-            or (gamepad_check_pressed(0,gp_padr,false))
+            or (gamepad_checkall_pressed(gp_padr,false))
                 selectx = min(selectx+1,1);
             if (keyboard_check_pressed(vk_up))
-            or (gamepad_check_pressed(0,gp_padu,false))
+            or (gamepad_checkall_pressed(gp_padu,false))
                 selecty = max(0,selecty-1);
             if (keyboard_check_pressed(vk_down))
-            or (gamepad_check_pressed(0,gp_padd,false))
-                selecty = min(selecty+1,6);
+            or (gamepad_checkall_pressed(gp_padd,false))
+                selecty = min(selecty+1,7);
             }
         break;
     }
@@ -328,9 +381,28 @@ switch(menu)
     case 0: // title screen
         draw_set_halign(1);
         draw_set_valign(1);
+        
         draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
         if (sin(current_time/200) &gt; 0)
-            draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
+            {
+            if (sin(current_time/400) &gt; 0)
+                draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
+            else
+                {
+                draw_text_outline(view_wview[0]/2,180,"-  or  -  to Start!");
+                if (global.btnstyle)
+                    {
+                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-57,180);
+                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,180);
+                    }
+                else
+                    {
+                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-57,180);
+                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,180);
+                    }
+                }
+            }
+                    
         draw_set_halign(0);
         draw_set_valign(0);
         break;
@@ -345,31 +417,53 @@ switch(menu)
         draw_sprite(spr_camera_arrow,1,32,126+select*20);
         break;
     
-    case 2: // options
+    case 2: // settings
         draw_set_color($000000);
         draw_set_alpha(0.6);
-        draw_rectangle(40,48,view_wview[0]-40,view_hview[0]-44,0);
+        draw_rectangle(40,30,view_wview[0]-40,view_hview[0]-44,0);
         draw_set_alpha(1.0);
         
-        draw_text_outline(60,24,"Options");
+        var i = 0;
+        draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.fullscreen));
+        draw_text_outline(60,64+i++*18,"CRT SHADER: "+val_to_text(0,global.crt));
+        draw_text_outline(60,64+i++*18,"PARTICLES: "+val_to_text(0,global.particles));
+        draw_text_outline(60,64+i++*18,"CONTROLS");
+        
+        draw_text_outline(60,202,"BACK");
+        
+        if (select &lt;= 3)
+            draw_sprite(spr_camera_arrow,1,40,72+select*18);
+        else
+            draw_sprite(spr_camera_arrow,1,40,210);
+        break;
+    
+    case 3: // edit keybinds
+        draw_set_color($000000);
+        draw_set_alpha(0.6);
+        draw_rectangle(40,30,view_wview[0]-40,view_hview[0]-44,0);
+        draw_set_alpha(1.0);
+        
+        //draw_text_outline(60,24,"Options");
         
         var i = 0;
-        draw_text_outline(60,56,"ACTION");
-        draw_text_outline(60,82+i++*18,"UP");
-        draw_text_outline(60,82+i++*18,"DOWN");
-        draw_text_outline(60,82+i++*18,"LEFT");
-        draw_text_outline(60,82+i++*18,"RIGHT");
-        draw_text_outline(60,82+i++*18,"JUMP");
-        draw_text_outline(60,82+i++*18,"FIRE");
+        draw_text_outline(60,38,"ACTION");
+        draw_text_outline(60,64+i++*18,"LEFT");
+        draw_text_outline(60,64+i++*18,"RIGHT");
+        draw_text_outline(60,64+i++*18,"UP");
+        draw_text_outline(60,64+i++*18,"DOWN");
+        draw_text_outline(60,64+i++*18,"JUMP");
+        draw_text_outline(60,64+i++*18,"FIRE");
+        draw_text_outline(60,64+i++*18,"LOCK");
         
         var i = 0;
-        draw_text_outline(160,56,"KEYBOARD");
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_up[0])));
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_down[0])));
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_left[0])));
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_right[0])));
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_jump[0])));
-        draw_text_outline(160,82+i++*18,string(key_to_text(global.key_fire[0])));
+        draw_text_outline(160,38,"KEYBOARD");
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_left[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_right[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_up[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_down[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_jump[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_fire[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_lock[0])));
         
         if (global.btnstyle)
             var btnspr = spr_buttons_xbox;
@@ -377,19 +471,20 @@ switch(menu)
             var btnspr = spr_buttons_ps;
         
         var i = 0;
-        draw_text_outline(284,56,"GAMEPAD");
-        draw_sprite(btnspr,pad_to_sprite(global.pad_up[0]),284,90+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_down[0]),284,90+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_left[0]),284,90+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_right[0]),284,90+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_jump[0]),284,90+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_fire[0]),284,90+i++*18);
+        draw_text_outline(284,38,"GAMEPAD");
+        draw_sprite(btnspr,pad_to_sprite(global.pad_left[0]),284,72+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_right[0]),284,72+i++*18)
+        draw_sprite(btnspr,pad_to_sprite(global.pad_up[0]),284,72+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_down[0]),284,72+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_jump[0]),284,72+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_fire[0]),284,72+i++*18);
+        draw_sprite(btnspr,pad_to_sprite(global.pad_lock[0]),284,72+i++*18);
         
         draw_text_outline(110,202,"BACK");
         draw_text_outline(220,202,"TOGGLE STYLE");
         
-        if (selecty &lt;= 5)
-            draw_sprite(spr_camera_arrow,1-rebind,140+selectx*124,90+selecty*18);
+        if (selecty &lt;= 6)
+            draw_sprite(spr_camera_arrow,1-rebind,140+selectx*124,72+selecty*18);
         else
             draw_sprite(spr_camera_arrow,1,90+selectx*110,210);
         break;
