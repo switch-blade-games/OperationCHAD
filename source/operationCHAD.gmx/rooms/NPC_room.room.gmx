@@ -13,6 +13,7 @@
   <code>background_color = global.MEDblue;
 
 instance_create(0,0,obj_control);
+instance_create(0,0,obj_camera);
 instance_create(0,0,NPC_controller);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

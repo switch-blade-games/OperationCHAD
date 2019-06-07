@@ -27,6 +27,19 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
+// view/window/gui
+view_wview[0] = 400;
+view_hview[0] = 240;
+if (global.fullscreen)
+    window_set_fullscreen(true);
+else
+    {
+    window_set_size(view_wview[0]*2,view_hview[0]*2);
+    window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
+    }
+surface_resize(application_surface,view_wview[0],view_hview[0]);
+display_set_gui_size(view_wview[0],view_hview[0]);
+
 gui_w = view_wview[0];
 gui_h = view_hview[0];
 
@@ -88,35 +101,21 @@ surf_pause = -1;
 or (gamepad_checkall_pressed(gp_start,false))
     {
     global.pause = !global.pause;
-    
     if (global.pause)
         {
         surf_pause = surface_create(view_wview[0],view_hview[0]);
         
         surface_set_target(surf_pause);
-        draw_clear($000000);
+        draw_clear(background_color);
         draw_surface(application_surface,0,0);
-        
-        draw_set_color($000000);
-        draw_set_alpha(0.75);
-        draw_rectangle(0,0,view_wview[0],view_hview[0],0);
-        draw_set_alpha(1.0);
-        
-        draw_set_color($FFFFFF);
-        draw_set_halign(1);
-        draw_set_valign(1);
-        draw_text(view_wview[0]/2,view_hview[0]/3,"PAUSED");
-        draw_set_valign(0);
-        draw_set_halign(0);
-        draw_set_color($000000);
-        
         surface_reset_target();
         
         instance_deactivate_all(true);
         }
     else
         {
-        surface_free(surf_pause);
+        if (surface_exists(surf_pause))
+            surface_free(surf_pause);
         surf_pause = -1;
         
         instance_activate_all();
@@ -124,7 +123,27 @@ or (gamepad_checkall_pressed(gp_start,false))
     }
 
 if (global.pause and surface_exists(surf_pause))
+    {
+    shader_set(shd_crt);
+    shader_set_uniform_f(global.u_xc,global.xc);
+    shader_set_uniform_f(global.u_yc,global.yc);
     draw_surface(surf_pause,0,0);
+    shader_reset();
+    
+    draw_set_color($000000);
+    draw_set_alpha(0.75);
+    draw_rectangle(0,0,view_wview[0],view_hview[0],0);
+    draw_set_alpha(1.0);
+    
+    draw_set_font(fnt_default);
+    draw_set_color($FFFFFF);
+    draw_set_halign(1);
+    draw_set_valign(1);
+    draw_text_outline(view_wview[0]/2,view_hview[0]/3,"PAUSED");
+    draw_set_valign(0);
+    draw_set_halign(0);
+    draw_set_color($000000);
+    }
 </string>
           </argument>
         </arguments>
