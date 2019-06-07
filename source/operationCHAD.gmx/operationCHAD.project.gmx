@@ -154,9 +154,9 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
-    <room>rooms\clown_room</room>
-    <room>rooms\NPC_room</room>
     <room>rooms\embro_room</room>
+    <room>rooms\NPC_room</room>
+    <room>rooms\clown_room</room>
     <room>rooms\rm_default</room>
   </rooms>
   <help>
