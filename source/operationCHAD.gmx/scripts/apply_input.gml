@@ -121,6 +121,29 @@ switch(move_state)
         else
             aim = point_direction(0,0,h_dir,v_dir);
         
+        if (input_down)
+        and (!input_left)
+        and (!input_right)
+        and (on_ground)
+            {
+            if (!place_meeting(x+face,y,par_climb))
+                {
+                move_state = mState.duck;
+                mask_index = msk_player_duck;
+                
+                if (face > 0)
+                    aim = 0;
+                else if (face < 0)
+                    aim = 180;
+                }
+            }
+        else
+            {
+            // jump
+            if (on_ground) and (input_jump_pressed)
+                jump();
+            }
+        
         if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
             {
             fire_weapon();
@@ -190,20 +213,42 @@ switch(move_state)
     
     case mState.hang:
         
-        if (input_fire)
+        if (input_fire) or (input_lock)
             {
-            fire_weapon();
+            if (input_fire)
+                fire_weapon();
             
-            if (h_dir != 0)
+            if (input_lock)
                 {
-                face = h_dir;
-                dir = h_dir;
-                
-                // move left or right
-                if (input_right)
-                    aim = 0;
-                if (input_left)
-                    aim = 180;
+                // aim
+                if (h_dir != 0)
+                    {
+                    face = h_dir;
+                    dir = h_dir;
+                    }
+                if (h_dir == 0 and v_dir == 0)
+                    {
+                    if (face > 0)
+                        aim = 0;
+                    else if (face < 0)
+                        aim = 180;
+                    }
+                else
+                    aim = point_direction(0,0,h_dir,v_dir);
+                }
+            else
+                {
+                if (h_dir != 0)
+                    {
+                    face = h_dir;
+                    dir = h_dir;
+                    
+                    // move left or right
+                    if (input_right)
+                        aim = 0;
+                    if (input_left)
+                        aim = 180;
+                    }
                 }
             
             // friction
@@ -257,7 +302,7 @@ switch(move_state)
             roll = false;
             }
         
-        if (input_down_pressed)
+        if (input_down_pressed) and (!input_lock)
             {
             move_state = mState.walk;
             roll = false;
@@ -286,15 +331,43 @@ switch(move_state)
             face = h_dir;
             dir = h_dir;
             
-            // move left or right
-            if (h_dir == 1)
-                aim = 180;
-            else if (h_dir == -1)
-                aim = 0;
-            
-            if (input_fire)
+            if (input_lock)
                 {
-                fire_weapon();
+                if (h_dir == 1)
+                    {
+                    aim = 180;
+                    if (input_left) or (input_up) or (input_down)
+                        {
+                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
+                        aim = clamp(aim,90,270);
+                        }
+                    }
+                if (h_dir == -1)
+                    {
+                    aim = 0;
+                    if (input_left) or (input_up) or (input_down)
+                        {
+                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
+                        if (aim > 90) and (aim <= 180)
+                            aim = 90;
+                        if (aim > 180) and (aim <= 270)
+                            aim = 270;
+                        }
+                    }
+                }
+            else
+                {
+                // move left or right
+                if (h_dir == 1)
+                    aim = 180;
+                else if (h_dir == -1)
+                    aim = 0;
+                }
+            
+            if (input_fire) or (input_lock)
+                {
+                if (input_fire)
+                    fire_weapon();
                 
                 // friction
                 if (yspeed > 0)
