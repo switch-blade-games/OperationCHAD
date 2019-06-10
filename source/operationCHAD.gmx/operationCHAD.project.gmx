@@ -169,6 +169,8 @@
       <object>objects\par_climb</object>
       <object>objects\par_shootable</object>
       <object>objects\par_projectile</object>
+      <object>objects\par_actor_projectile</object>
+      <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
     </objects>
     <objects name="editor">
