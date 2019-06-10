@@ -28,6 +28,7 @@
       <sprite>sprites\spr_player_duck</sprite>
       <sprite>sprites\spr_player_hang</sprite>
       <sprite>sprites\spr_player_climb</sprite>
+      <sprite>sprites\spr_player_up</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\spr_player_spawn</sprite>
@@ -53,6 +54,22 @@
     <sprite>sprites\NPC_enemy_spr</sprite>
     <sprite>sprites\spr_buttons_xbox</sprite>
     <sprite>sprites\spr_buttons_ps</sprite>
+    <sprites name="fryguy">
+      <sprite>sprites\fry_flame_1_spr</sprite>
+      <sprite>sprites\fryguy_sit_spr</sprite>
+      <sprite>sprites\fryguy_eat_spr</sprite>
+      <sprite>sprites\fryguy_stand_spr</sprite>
+      <sprite>sprites\fryguy_jump_spr</sprite>
+      <sprite>sprites\fryguy_spit_spr</sprite>
+      <sprite>sprites\ember_spr</sprite>
+      <sprite>sprites\fryguy_chew_spr</sprite>
+      <sprite>sprites\fryguy_reach_spr</sprite>
+      <sprite>sprites\oven_door_spr</sprite>
+    </sprites>
+    <sprites name="environment">
+      <sprite>sprites\monkeybar_spr</sprite>
+      <sprite>sprites\block_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\til_tiles_area1</background>
@@ -105,6 +122,10 @@
     <script>scripts\key_to_text.gml</script>
     <script>scripts\pad_to_sprite.gml</script>
     <script>scripts\val_to_text.gml</script>
+    <scripts name="JB_scripts">
+      <script>scripts\outside_view.gml</script>
+      <script>scripts\enemy_hit.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
@@ -176,6 +197,24 @@
       <object>objects\NPC_spawner</object>
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
+    </objects>
+    <objects name="Fryguy">
+      <object>objects\fryguy</object>
+      <object>objects\fry_flame</object>
+      <object>objects\dir_flame</object>
+      <objects name="eat_attack">
+        <object>objects\eat_attack_controller</object>
+        <object>objects\oven_door</object>
+        <object>objects\wave_flame</object>
+        <object>objects\spit_flame</object>
+        <object>objects\ember_bounce</object>
+      </objects>
+      <objects name="stand_attack">
+        <object>objects\fryguy_stand_controller</object>
+        <object>objects\drop_flame</object>
+        <object>objects\fry_flame_maker</object>
+        <object>objects\ground_flame_shot</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
