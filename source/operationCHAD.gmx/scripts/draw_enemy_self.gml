@@ -1,5 +1,7 @@
 /// draw_enemy_self();
 
+
+
 var _spr = sprite_index;
 var _ind = image_index;
 var _x = x;

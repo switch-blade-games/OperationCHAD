@@ -13,6 +13,8 @@
   <code>instance_create(0,0,dev_cheater);
 instance_create(0,0,obj_menu);
 
+randomize()
+
 //colors
 global.YELLOW=make_color_rgb(218,212,94);
 global.DARKpurple=make_color_rgb(20,12,28);

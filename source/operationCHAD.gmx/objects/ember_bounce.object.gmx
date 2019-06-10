@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-6</depth>
   <persistent>0</persistent>
-  <parentName>par_enemy_projectile</parentName>
+  <parentName>par_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,12 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>enemy_init(4);
 
-lifemax = 4;
-life = lifemax;
-
-nohit = true;
 
 FLOORy=220
 
@@ -136,15 +132,7 @@ motion_add(270,grav)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
-
-if (flash &gt; 0)
-    {
-    shader_set(shd_flash);
-    draw_sprite(sprite_index,image_index,x,y);
-    shader_reset();
-    flash = max(0,flash-0.5);
-    }
+            <string>draw_enemy_self(sprite_index,image_index,x,y,image_xscale,image_yscale,0,-1,1);
 </string>
           </argument>
         </arguments>

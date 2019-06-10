@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>par_enemy</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -502,7 +502,9 @@ if(state=LIFT)
     sprite_index=fryguy_reach_spr
     
 
-draw_enemy_self();
+//draw_enemy_self();
+
+draw_self()
 
 //draw_text(x,y-40,alarm[1])
 </string>
