@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-
-invulnerable = false;
-lifemax = 30;
-life = lifemax;
+            <string>enemy_init(30);
 
 //rate=240
 //alarm[0]=2
@@ -65,7 +61,8 @@ FLIP=1
 with(SON)
     event_perform(ev_create,0)
     
-SON.FLIP=FLIP
+SON.FLIP=FLIP;
+SON.image_yscale = FLIP;
 
 //alarm[0]=rate
 </string>
@@ -90,15 +87,7 @@ SON.FLIP=FLIP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-
-if (flash &gt; 0)
-    {
-    shader_set(shd_flash);
-    draw_self();
-    shader_reset();
-    flash = max(0,flash-0.5);
-    }
+            <string>draw_enemy_self();
 </string>
           </argument>
         </arguments>

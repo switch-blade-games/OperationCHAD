@@ -36,5 +36,15 @@
     <frame index="13">images\spr_buttons_xbox_13.png</frame>
     <frame index="14">images\spr_buttons_xbox_14.png</frame>
     <frame index="15">images\spr_buttons_xbox_15.png</frame>
+    <frame index="16">images\spr_buttons_xbox_16.png</frame>
+    <frame index="17">images\spr_buttons_xbox_17.png</frame>
+    <frame index="18">images\spr_buttons_xbox_18.png</frame>
+    <frame index="19">images\spr_buttons_xbox_19.png</frame>
+    <frame index="20">images\spr_buttons_xbox_20.png</frame>
+    <frame index="21">images\spr_buttons_xbox_21.png</frame>
+    <frame index="22">images\spr_buttons_xbox_22.png</frame>
+    <frame index="23">images\spr_buttons_xbox_23.png</frame>
+    <frame index="24">images\spr_buttons_xbox_24.png</frame>
+    <frame index="25">images\spr_buttons_xbox_25.png</frame>
   </frames>
 </sprite>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ATTACK=choose(1,2)
+            <string>enemy_init(75);
+
+ATTACK=choose(1,2)
 
 //various states
 
@@ -500,8 +502,7 @@ if(state=LIFT)
     sprite_index=fryguy_reach_spr
     
 
-draw_self()
-
+draw_enemy_self();
 
 //draw_text(x,y-40,alarm[1])
 </string>

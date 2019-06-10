@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-
-invulnerable = false;
-lifemax = 50;
-life = lifemax;
+            <string>enemy_init(50);
 
 nohit = true;
 </string>
@@ -56,15 +52,7 @@ nohit = true;
             <kind>1</kind>
             <string>var float = round(sin(current_time/1000)*4);
 
-draw_sprite(sprite_index,image_index,x,y+float);
-
-if (flash &gt; 0)
-    {
-    shader_set(shd_flash);
-    draw_sprite(sprite_index,image_index,x,y+float);
-    shader_reset();
-    flash = max(0,flash-0.5);
-    }
+draw_enemy_self(sprite_index,image_index,x,y+float,image_xscale,image_yscale,image_angle,image_blend,image_alpha);
 </string>
           </argument>
         </arguments>

@@ -25,12 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>enemy_init(6);
 
 image_speed = 0.3;
-
-lifemax = 6;
-life = lifemax;
 
 facing=-1;
 WALKING=1;
@@ -59,15 +56,7 @@ motion_set(180,1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(NPC_enemy_spr,image_index,x,y,facing,1,0,-1,1);
-
-if (flash &gt; 0)
-    {
-    shader_set(shd_flash);
-    draw_sprite_ext(NPC_enemy_spr,image_index,x,y,facing,1,0,-1,1);
-    shader_reset();
-    flash = max(0,flash-0.5);
-    }
+            <string>draw_enemy_self(sprite_index,image_index,x,y,facing,1,0,-1,1);
 </string>
           </argument>
         </arguments>

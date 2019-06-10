@@ -12,7 +12,6 @@ if (shoot_timer == 0)
     inst.direction = aim;
     inst.speed = weapon_pspd[cur_weapon]
     inst.image_angle = aim;
-    inst.team = 0;
     inst.damage = 1;
     
     // bullet/shell casing
