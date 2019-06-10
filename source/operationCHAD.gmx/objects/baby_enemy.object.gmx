@@ -25,13 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>enemy_init(4);
 
 image_speed = 0;
 image_index = 0;
-
-lifemax = 4;
-life = lifemax;
 
 // state
 INIT = 0;
@@ -235,15 +232,7 @@ switch(state)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,y,1,FLIP,0,-1,image_alpha);
-
-if (flash &gt; 0)
-    {
-    shader_set(shd_flash);
-    draw_sprite_ext(sprite_index,image_index,x,y,1,FLIP,0,-1,image_alpha);
-    shader_reset();
-    flash = max(0,flash-0.5);
-    }
+            <string>draw_enemy_self(sprite_index,image_index,x,y,image_xscale,FLIP,0,-1,1);
 </string>
           </argument>
         </arguments>

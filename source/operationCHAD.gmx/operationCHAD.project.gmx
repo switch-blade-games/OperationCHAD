@@ -144,6 +144,10 @@
       <script>scripts\outside_view.gml</script>
       <script>scripts\enemy_hit.gml</script>
     </scripts>
+    <scripts name="enemies">
+      <script>scripts\enemy_init.gml</script>
+      <script>scripts\draw_enemy_self.gml</script>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
