@@ -1,104 +1,76 @@
 /// gamepad_update();
 
-// place in 'End Step' event
-
-global.gpcount = 0;
 for(var i=0; i<4; i++;)
     {
     if (gamepad_is_connected(i))
         {
-        if (!global.gp[i,0])
+        if (!global.gp[i,gpinfo.connected])
             {
-            global.gp[i,0] = true;
-            global.gp[i,1] = gamepad_get_description(i);
-            global.gp[i,2] = 0;
-            global.gp[i,3] = 0;
-            //global.gp[i,4] = 0.05;
-            global.gp[i,5] = false;
-            global.gp[i,6] = false;
-            global.gp[i,7] = false;
-            global.gp[i,8] = false;
-            global.gp[i,9] = -1;
+            global.gp[i,gpinfo.connected] = true;
+            global.gp[i,gpinfo.name] = gamepad_get_description(i);
+            global.gp[i,gpinfo.vib_l] = 0;
+            global.gp[i,gpinfo.vib_r] = 0;
+            global.gp[i,gpinfo.last] = 0;
+            global.gp[i,gpinfo.lastval] = 0;
             global.gpcount++;
             }
         
         // gamepad rumble
-        gamepad_set_vibration(i,global.gp[i,2],global.gp[i,3]);
-        global.gp[i,2] *= 0.9;
-        global.gp[i,3] *= 0.9;
+        gamepad_set_vibration(i,global.gp[i,gpinfo.vib_l],global.gp[i,gpinfo.vib_r]);
+        global.gp[i,gpinfo.vib_l] *= 0.9;
+        global.gp[i,gpinfo.vib_r] *= 0.9;
+        
+        // update last inputs
+        for(var j=0; j<gpinput.size; j++;)
+            global.gp_ilast[i,j] = global.gp_input[i,j];
+        
+        // update current inputs
+        for(var j=0; j<=gpinput.padr; j++;)
+            global.gp_input[i,gpinput.face1+j] = gamepad_button_check(i,gp_face1+j);
+        global.gp_input[i,gpinput.lsu] = gamepad_axis_value(i,gp_axislv) < -global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.lsd] = gamepad_axis_value(i,gp_axislv) > +global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.lsl] = gamepad_axis_value(i,gp_axislh) < -global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.lsr] = gamepad_axis_value(i,gp_axislh) > +global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.rsu] = gamepad_axis_value(i,gp_axisrv) < -global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.rsd] = gamepad_axis_value(i,gp_axisrv) > +global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.rsl] = gamepad_axis_value(i,gp_axisrh) < -global.gp[i,gpinfo.dead];
+        global.gp_input[i,gpinput.rsr] = gamepad_axis_value(i,gp_axisrh) > +global.gp[i,gpinfo.dead];
         
         // reset last function
-        global.gp[i,9] = -1;
+        global.gp[i,gpinfo.last] = -1;
+        global.gp[i,gpinfo.lastval] = 0;
         
-        // left stick vertical
-        if (global.gp[i,5])
+        // update last function
+        for(var j=0; j<gpinput.size; j++;)
             {
-            if (abs(gamepad_axis_value(i,gp_axislv)) < global.gp[i,4])
-                global.gp[i,5] = false;
-            }
-        else if (abs(gamepad_axis_value(i,gp_axislv)) > global.gp[i,4])
-            {
-            global.gp[i,5] = true;
-            global.gp[i,9] = gp_axislv;
-            }
-        
-        // left stick horizontal
-        if (global.gp[i,6])
-            {
-            if (abs(gamepad_axis_value(i,gp_axislh)) < global.gp[i,4])
-                global.gp[i,6] = false;
-            }
-        else if (abs(gamepad_axis_value(i,gp_axislh)) > global.gp[i,4])
-            {
-            global.gp[i,6] = true;
-            global.gp[i,9] = gp_axislh;
-            }
-        
-        // right stick vertical
-        if (global.gp[i,7])
-            {
-            if (abs(gamepad_axis_value(i,gp_axisrv)) < global.gp[i,4])
-                global.gp[i,7] = false;
-            }
-        else if (abs(gamepad_axis_value(i,gp_axisrv)) > global.gp[i,4])
-            {
-            global.gp[i,7] = true;
-            global.gp[i,9] = gp_axisrv;
-            }
-        
-        // right stick horizontal
-        if (global.gp[i,8])
-            {
-            if (abs(gamepad_axis_value(i,gp_axisrh)) < global.gp[i,4])
-                global.gp[i,8] = false;
-            }
-        else if (abs(gamepad_axis_value(i,gp_axisrh)) > global.gp[i,4])
-            {
-            global.gp[i,8] = true;
-            global.gp[i,9] = gp_axisrh;
-            }
-        
-        // last function
-        for(var j=0; j<gamepad_button_count(i); j++;)
-            {
-            if (gamepad_button_check_pressed(i,gp_face1+j))
-                global.gp[i,9] = gp_face1+j;
+            if (global.gp_input[i,j] and !global.gp_ilast[i,j])
+                {
+                global.gp[i,gpinfo.last] = j;
+                if (j <= gpinput.padr)
+                    global.gp[i,gpinfo.lastval] = gamepad_button_value(i,gp_face1+j);
+                else if (j >= gpinput.lsu)
+                    global.gp[i,gpinfo.lastval] = gamepad_axis_value(i,gp_face1+j);
+                break;
+                }
             }
         }
     else
         {
-        if (global.gp[i,0])
+        if (global.gp[i,gpinfo.connected])
             {
-            global.gp[i,0] = false;
-            global.gp[i,1] = "";
-            global.gp[i,2] = 0;
-            global.gp[i,3] = 0;
-            //global.gp[i,4] = 0.05;
-            global.gp[i,5] = false;
-            global.gp[i,6] = false;
-            global.gp[i,7] = false;
-            global.gp[i,8] = false;
-            global.gp[i,9] = -1;
+            global.gp[i,gpinfo.connected] = false;
+            global.gp[i,gpinfo.name] = "";
+            global.gp[i,gpinfo.vib_l] = 0;
+            global.gp[i,gpinfo.vib_r] = 0;
+            global.gp[i,gpinfo.last] = 0;
+            global.gp[i,gpinfo.lastval] = 0;
+            
+            for(var j=0; j<gpinput.size; j++;)
+                {
+                global.gp_input[i,j] = false;
+                global.gp_ilast[i,j] = false;
+                }
+            
             global.gpcount--;
             }
         }

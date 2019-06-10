@@ -101,14 +101,18 @@
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>
       <script>scripts\gamepad_update.gml</script>
-      <script>scripts\gamepad_checkall.gml</script>
-      <script>scripts\gamepad_checkall_pressed.gml</script>
-      <script>scripts\gamepad_checkall_released.gml</script>
-      <script>scripts\gamepad_lastall.gml</script>
+      <script>scripts\gamepad_check_all.gml</script>
+      <script>scripts\gamepad_check_pressed_all.gml</script>
+      <script>scripts\gamepad_check_released_all.gml</script>
+      <script>scripts\gamepad_value_all.gml</script>
+      <script>scripts\gamepad_last_all.gml</script>
+      <script>scripts\gamepad_lastvalue_all.gml</script>
       <script>scripts\gamepad_check.gml</script>
       <script>scripts\gamepad_check_pressed.gml</script>
       <script>scripts\gamepad_check_released.gml</script>
+      <script>scripts\gamepad_value.gml</script>
       <script>scripts\gamepad_last.gml</script>
+      <script>scripts\gamepad_lastvalue.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
@@ -176,8 +180,8 @@
       <object>objects\obj_dust</object>
       <object>objects\obj_particle</object>
     </objects>
-    <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
+    <object>objects\obj_menu</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
