@@ -371,10 +371,18 @@ bg_heady += (0-bg_heady)*0.05;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color($000000);
+            <string>//JB code
+
+draw_background(title_BG,0,0)
+
+/*
+
+draw_set_color($000000);
 draw_set_alpha(bg_alpha);
 draw_rectangle(0,0,view_wview[0],view_hview[0],0);
 draw_set_alpha(1.0);
+
+*/
 
 switch(menu)
     {
@@ -382,7 +390,7 @@ switch(menu)
         draw_set_halign(1);
         draw_set_valign(1);
         
-        draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
+        //draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
         if (sin(current_time/200) &gt; 0)
             {
             if (sin(current_time/400) &gt; 0)

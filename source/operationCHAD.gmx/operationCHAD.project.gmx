@@ -81,6 +81,7 @@
     <background>background\NPC_pillars_BG</background>
     <background>background\clown_BG</background>
     <background>background\fryguy_BG</background>
+    <background>background\title_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
