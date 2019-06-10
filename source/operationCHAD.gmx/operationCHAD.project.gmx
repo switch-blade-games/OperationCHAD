@@ -80,7 +80,7 @@
     <background>background\NPC_floor_BG</background>
     <background>background\NPC_pillars_BG</background>
     <background>background\clown_BG</background>
-    <background>background\fry_guy_BG</background>
+    <background>background\fryguy_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -215,6 +215,7 @@
         <object>objects\fry_flame_maker</object>
         <object>objects\ground_flame_shot</object>
       </objects>
+      <object>objects\fryguy_BG_drawer</object>
     </objects>
   </objects>
   <rooms name="rooms">
