@@ -303,7 +303,7 @@ switch(move_state)
         
         if (input_jump_pressed)
             {
-            if (input_down_pressed)
+            if (input_down)
                 {
                 if (!input_lock)
                     {
