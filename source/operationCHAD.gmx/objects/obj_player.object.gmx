@@ -68,6 +68,8 @@ ypre = y;
 // player motion state/flags
 move_state = mState.walk;
 double_jump = false;
+grace_jump = 0; // 2
+no_hang_time = 0; // 12
 
 // player direction
 roll = false;

@@ -373,36 +373,27 @@ bg_heady += (0-bg_heady)*0.05;
             <kind>1</kind>
             <string>draw_background(title_BG,0,0);
 
-/*
-draw_set_color($000000);
-draw_set_alpha(bg_alpha);
-draw_rectangle(0,0,view_wview[0],view_hview[0],0);
-draw_set_alpha(1.0);
-*/
-
 switch(menu)
     {
     case 0: // title screen
         draw_set_halign(1);
         draw_set_valign(1);
-        
-        draw_text_outline(view_wview[0]/2,60,"Operation C.H.A.D.");
         if (sin(current_time/200) &gt; 0)
             {
             if (sin(current_time/400) &gt; 0)
-                draw_text_outline(view_wview[0]/2,180,"Z or X to Start!");
+                draw_text_outline(view_wview[0]/2,200,"Z or X to Start!");
             else
                 {
-                draw_text_outline(view_wview[0]/2,180,"-  or  -  to Start!");
+                draw_text_outline(view_wview[0]/2,200,"-  or  -  to Start!");
                 if (global.btnstyle)
                     {
-                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-57,180);
-                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,180);
+                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-57,200);
+                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,200);
                     }
                 else
                     {
-                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-57,180);
-                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,180);
+                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-57,200);
+                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,200);
                     }
                 }
             }
@@ -412,8 +403,6 @@ switch(menu)
         break;
     
     case 1: // main menu
-        draw_text_outline(60,24,"Operation C.H.A.D.");
-        
         draw_text_outline(60,120+00,"1 PLAYER START");
         draw_text_outline(60,120+20,"2 PLAYER START");
         draw_text_outline(60,120+40,"OPTIONS");

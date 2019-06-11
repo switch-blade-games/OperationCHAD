@@ -81,7 +81,7 @@ switch(move_state)
         else
             {
             // jump
-            if (on_ground) and (input_jump_pressed)
+            if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
                 jump();
             }
         
@@ -190,6 +190,7 @@ switch(move_state)
                     // fall through jump through platform
                     move_state = mState.walk;
                     on_ground = false;
+                    grace_jump = 0;
                     roll = false;
                     
                     mask_index = msk_player;
@@ -283,13 +284,14 @@ switch(move_state)
                 }
             }
         
+        grace_jump = 0;
         yspeed = 0;
         
         var i = 0;
-        var inst = instance_position(x,(y-26)+i,par_mb);
-        while(inst == noone and i<12)
+        var inst = instance_position(x,(y-28)+i,par_mb);
+        while(inst == noone and i<16)
             i++;
-        
+    
         if (inst != noone)
             {
             var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
@@ -304,11 +306,13 @@ switch(move_state)
         
         if (input_down_pressed) and (!input_lock)
             {
+            no_hang_time = 12;
             move_state = mState.walk;
             roll = false;
             }
         if (input_jump_pressed)
             {
+            no_hang_time = 4;
             move_state = mState.walk;
             jump();
             }
@@ -422,5 +426,8 @@ switch(move_state)
                     }
                 }
             }
+        
+        xspeed = 0;
+        grace_jump = 0;
         break;
     }

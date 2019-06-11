@@ -14,16 +14,18 @@ switch(move_state)
             on_ground = true;
             // reset jump roll
             roll = false;
+            // grace jump time
+            grace_jump = 2;
             }
         
         // gravity
         if !(on_ground)
             {
-            if (yspeed > 0) and (!input_down)
+            if (yspeed > 0) and (!input_down) and (no_hang_time == 0)
                 {
                 var i = 0;
-                var inst = instance_position(x,(y-26)+i,par_mb);
-                while(inst == noone and i<12)
+                var inst = instance_position(x,(y-28)+i,par_mb);
+                while(inst == noone and i<16)
                     i++;
                 
                 if (inst != noone)
@@ -64,3 +66,8 @@ switch(move_state)
             }
         break;
     }
+
+if (no_hang_time > 0)
+    no_hang_time--;
+if (grace_jump > 0)
+    grace_jump--;
