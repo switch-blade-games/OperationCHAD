@@ -43,12 +43,12 @@ display_set_gui_size(view_wview[0],view_hview[0]);
 gui_w = view_wview[0];
 gui_h = view_hview[0];
 
-enum tile_side {
+enum tile_side
+    {
     none = 0,
     right = 1,
     left = 2,
-    top = 4,
-    bottom = 8
+    bottom = 4
     }
 
 surf_pause = -1;

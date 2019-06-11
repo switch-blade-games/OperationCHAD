@@ -38,12 +38,10 @@ if (tx > 0)
             }
         }
     
-    //if (global.ramptype)
-    //    {
+    // ramp speed normalization
     var dis = point_distance(xp,yp,x,y);
     if (dis > tx)
         subx -= (dis-tx)*ux;
-    //    }
     }
 
 // vertical collision detection/response
@@ -81,6 +79,10 @@ if (ty > 0)
                 {
                 // stop before moving into the wall
                 yspeed = 0;
+                
+                var inst = instance_place(x,y+uy,par_climb);
+                if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom) and (input_up)
+                    move_state = mState.climb;
                 break;
                 }
             else

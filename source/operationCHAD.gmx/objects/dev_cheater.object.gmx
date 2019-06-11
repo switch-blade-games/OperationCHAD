@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -96,20 +96,36 @@
             <kind>1</kind>
             <string>if (debug)
     {
+    draw_set_color(c_blue);
+    with(par_actor)
+        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+    draw_set_color(c_red);
+    with(par_enemy)
+        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     draw_set_color(c_fuchsia);
-    draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     with(par_solid)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     with(par_jt)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     with(par_mb)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    draw_set_color(c_orange);
-    with(par_mb)
-        draw_line(bbox_left,y1,bbox_right,y2);
-    draw_set_color(c_lime);
-    with(par_actor)
-        draw_point(x,y-24);
+    
+    var inst_num = 0;
+    inst_num += instance_number(par_solid);
+    inst_num += instance_number(par_jt);
+    inst_num += instance_number(par_mb);
+    inst_num += instance_number(par_actor);
+    inst_num += instance_number(par_enemy);
+    inst_num += instance_number(par_shootable);
+    inst_num += instance_number(par_projectile);
+    
+    var part_num = 0;
+    part_num += instance_number(par_effect);
+    
+    draw_text_outline(4,4,"FPS: "+string(fps_real));
+    draw_text_outline(4,16,"Version: "+string(global.version));
+    draw_text_outline(4,28,"Instances: "+string(inst_num));
+    draw_text_outline(4,40,"Particles: "+string(part_num));
     draw_set_color($000000);
     }
 </string>

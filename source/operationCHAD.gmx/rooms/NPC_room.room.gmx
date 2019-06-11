@@ -61,18 +61,6 @@ instance_create(0,0,NPC_controller);</code>
     <instance objName="obj_wall" x="0" y="-80" name="inst_32EA92A5" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="60" y="145" name="inst_FBBE463F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="NPC_spawner" x="1220" y="160" name="inst_6DD32A3A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="0" y="80" name="inst_CD583759" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="20" y="80" name="inst_FE2D7CB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="40" y="80" name="inst_A94C0ED8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="60" y="80" name="inst_4529CAB9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="80" y="80" name="inst_83163741" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="100" y="80" name="inst_D54D09A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="120" y="80" name="inst_2A9EE573" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="140" y="80" name="inst_AE0E009A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_r" x="160" y="60" name="inst_1CA89E34" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_r" x="200" y="40" name="inst_87BE2D5B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_l" x="280" y="40" name="inst_817CB3E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_l" x="320" y="60" name="inst_387039F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="NPC_floor_BG" x="0" y="160" w="40" h="40" xo="0" yo="0" id="10000097" name="inst_6C39A77A" depth="99" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

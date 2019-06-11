@@ -68,6 +68,7 @@ ypre = y;
 // player motion state/flags
 move_state = mState.walk;
 double_jump = false;
+climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
 
@@ -139,7 +140,7 @@ if (recoil &gt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,y,dir,1,0,-1,1);
+            <string>draw_sprite_ext(sprite_index,image_index,x,y,face,1,0,-1,1);
 </string>
           </argument>
         </arguments>

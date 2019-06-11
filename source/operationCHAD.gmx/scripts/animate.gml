@@ -18,10 +18,21 @@ switch(move_state)
                 else if (image_index < 0)
                     image_index = image_number-1;
                 }
-            else if (sprite_index != spr_player_idle)
+            else
                 {
-                sprite_index = spr_player_idle;
-                image_index = 0;
+                if (aim == 90)
+                    {
+                    if (sprite_index != spr_player_up)
+                        {
+                        sprite_index = spr_player_up;
+                        image_index = 0;
+                        }
+                    }
+                else if (sprite_index != spr_player_idle)
+                    {
+                    sprite_index = spr_player_idle;
+                    image_index = 0;
+                    }
                 }
             }
         else
@@ -100,7 +111,12 @@ switch(move_state)
         break;
     
     case mState.climb:
-        if (sprite_index != spr_player_climb)
+        if (climb_side == tile_side.bottom)
+            {
+            if (sprite_index != spr_player_hang)
+                sprite_index = spr_player_hang;
+            }
+        else if (sprite_index != spr_player_climb)
             sprite_index = spr_player_climb;
         
         if (input_fire)

@@ -214,6 +214,7 @@
     <object>objects\obj_climb</object>
     <object>objects\obj_climb_r</object>
     <object>objects\obj_climb_l</object>
+    <object>objects\obj_climb_b</object>
     <object>objects\obj_mb</object>
     <object>objects\obj_mb_r</object>
     <object>objects\obj_mb_l</object>

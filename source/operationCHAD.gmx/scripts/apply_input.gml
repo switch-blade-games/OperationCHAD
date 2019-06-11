@@ -17,26 +17,11 @@ switch(move_state)
             {
             xspeed = move_speed*h_dir;
             face = h_dir;
-            dir = h_dir;
             
             // move left or right
             if (input_right)
                 {
                 var inst = instance_place(x+1,y,par_climb);
-                if (!input_down) and (yspeed >= -2)
-                and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
-                    {
-                    move_state = mState.climb;
-                    yspeed = 0;
-                    }
-                if (input_up)
-                    aim = 45;
-                else
-                    aim = 0;
-                }
-            if (input_left)
-                {
-                var inst = instance_place(x-1,y,par_climb);
                 if (!input_down) and (yspeed >= -2)
                 and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
                     {
@@ -44,9 +29,33 @@ switch(move_state)
                     yspeed = 0;
                     }
                 if (input_up)
+                    aim = 45;
+                else
+                    {
+                    if (input_down)
+                        aim = 315;
+                    else
+                        aim = 0;
+                    }
+                }
+            if (input_left)
+                {
+                var inst = instance_place(x-1,y,par_climb);
+                if (!input_down) and (yspeed >= -2)
+                and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
+                    {
+                    move_state = mState.climb;
+                    yspeed = 0;
+                    }
+                if (input_up)
                     aim = 135;
                 else
-                    aim = 180;
+                    {
+                    if (input_down)
+                        aim = 225;
+                    else
+                        aim = 180;
+                    }
                 }
             }
         else
@@ -65,25 +74,29 @@ switch(move_state)
                 xspeed = min(0,xspeed+fric);
             }
         
-        if (input_down_pressed
-        or (input_down
-        and (place_meeting(x,y+1,par_jt))
-        and (!place_meeting(x,y+1,par_solid))
-        and (!place_meeting(x,y-1,par_solid))))
-        and (on_ground)
+        if (input_down) and (on_ground)
             {
-            if (!place_meeting(x+face,y,par_climb))
+            if (h_dir == 0) and (!place_meeting(x+face,y,par_solid))
                 {
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
                 }
             }
-        else
+        
+        if (!on_ground) and (input_up)
             {
-            // jump
-            if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
-                jump();
+            var inst = instance_place(x,y-1,par_climb);
+            if (!input_down) and (yspeed <= 0)
+            and (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
+                {
+                move_state = mState.climb;
+                yspeed = 0;
+                }
             }
+        
+        // jump
+        if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
+            jump();
         
         if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
             {
@@ -107,10 +120,7 @@ switch(move_state)
         
         // aim
         if (h_dir != 0)
-            {
             face = h_dir;
-            dir = h_dir;
-            }
         if (h_dir == 0 and v_dir == 0)
             {
             if (face > 0)
@@ -144,7 +154,7 @@ switch(move_state)
                 jump();
             }
         
-        if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
+        if (input_fire)
             {
             fire_weapon();
             roll = false;
@@ -162,7 +172,6 @@ switch(move_state)
         if (h_dir != 0)
             {
             face = h_dir;
-            dir = h_dir;
             
             // move left or right
             if (input_right)
@@ -221,10 +230,7 @@ switch(move_state)
             
             // aim
             if (h_dir != 0)
-                {
                 face = h_dir;
-                dir = h_dir;
-                }
             if (h_dir == 0 and v_dir == 0)
                 {
                 if (face > 0)
@@ -249,7 +255,6 @@ switch(move_state)
                 {
                 xspeed = move_speed*h_dir;
                 face = h_dir;
-                dir = h_dir;
                 
                 // move left or right
                 if (input_right)
@@ -318,114 +323,187 @@ switch(move_state)
     
     case mState.climb:
         
-        h_dir = place_meeting(x+1,y,par_climb)-place_meeting(x-1,y,par_climb);
-        if (h_dir == 0) // no longer climbing on a wall
+        climb_side = tile_side.none;
+        var inst = instance_place(x-1,y,par_climb);
+        if (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
+            climb_side += tile_side.right;
+        var inst = instance_place(x+1,y,par_climb);
+        if (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
+            climb_side += tile_side.left;
+        var inst = instance_place(x,y-1,par_climb);
+        if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
+            climb_side += tile_side.bottom;
+        
+        if ((climb_side & tile_side.bottom == tile_side.bottom) and (!input_fire)
+        and ((climb_side & tile_side.left == 0 and input_right) or (climb_side & tile_side.right == 0 and input_left)))
+            climb_side = tile_side.bottom;
+        //if ((climb_side & tile_side.right == tile_side.right) and (input_left or input_down))
+            //climb_side = tile_side.right;
+        //if ((climb_side & tile_side.left == tile_side.left) and (input_right or input_down))
+            //climb_side = tile_side.left;
+        
+        if (climb_side == tile_side.none) // no longer climbing on a wall
             {
+            /*
+             // jump up onto ledge
             if (!place_meeting(x+face,y,par_solid))
             and (input_up)
-                x += face; // jump up onto ledge
+                x += face;
+            */
             
             move_state = mState.walk;
             roll = false;
             }
         else
             {
-            face = h_dir;
-            dir = h_dir;
-            
-            if (input_lock)
+            // face away from wall you are climbing on
+            if (climb_side & tile_side.right == tile_side.right)
+                face = -1;
+            else if (climb_side & tile_side.left == tile_side.left)
+                face = 1;
+            else if (climb_side == tile_side.bottom)
                 {
-                if (h_dir == 1)
-                    {
-                    aim = 180;
-                    if (input_left) or (input_up) or (input_down)
-                        {
-                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
-                        aim = clamp(aim,90,270);
-                        }
-                    }
-                if (h_dir == -1)
-                    {
-                    aim = 0;
-                    if (input_left) or (input_up) or (input_down)
-                        {
-                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
-                        if (aim > 90) and (aim <= 180)
-                            aim = 90;
-                        if (aim > 180) and (aim <= 270)
-                            aim = 270;
-                        }
-                    }
-                }
-            else
-                {
-                // move left or right
-                if (h_dir == 1)
-                    aim = 180;
-                else if (h_dir == -1)
-                    aim = 0;
+                // face in direction of movement
+                if (h_dir != 0)
+                    face = h_dir;
                 }
             
-            if (input_fire) or (input_lock)
+            if (input_lock) or (input_fire)
                 {
-                if (input_fire)
-                    fire_weapon();
-                
                 // friction
+                if (xspeed > 0)
+                    xspeed = max(0,xspeed-fric);
+                else if (xspeed < 0)
+                    xspeed = min(0,xspeed+fric);
                 if (yspeed > 0)
                     yspeed = max(0,yspeed-fric);
                 else if (yspeed < 0)
                     yspeed = min(0,yspeed+fric);
+                
+                // aim
+                if (climb_side & tile_side.right == tile_side.right)
+                    {
+                    aim = 0;
+                    if (input_up) or (input_down)
+                        {
+                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
+                        if (climb_side & tile_side.bottom == tile_side.bottom)
+                            {
+                            if (aim < 180)
+                                aim = 0;
+                            else if (aim >= 180) and (aim < 270)
+                                aim = 270;
+                            }
+                        else
+                            {
+                            if (aim > 90) and (aim <= 180)
+                                aim = 90;
+                            if (aim > 180) and (aim <= 270)
+                                aim = 270;
+                            }
+                        }
+                    }
+                else if (climb_side & tile_side.left == tile_side.left)
+                    {
+                    aim = 180;
+                    if (input_up) or (input_down)
+                        {
+                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
+                        if (climb_side & tile_side.bottom == tile_side.bottom)
+                            aim = clamp(aim,180,270);
+                        else
+                            aim = clamp(aim,90,270);
+                        }
+                    }
+                else if (climb_side == tile_side.bottom)
+                    {
+                    aim = point_direction(0,0,face,0);
+                    if (h_dir != 0) or (input_down)
+                        aim = point_direction(0,0,input_right-input_left,input_down);
+                    }
+                
+                if (input_fire)
+                    fire_weapon();
                 }
             else
                 {
-                // vertical movement input
-                move_speed = 2;
-                if (v_dir != 0)
-                    yspeed = move_speed*v_dir;
-                else
+                // move and aim
+                if (climb_side & tile_side.right == tile_side.right)
+                or (climb_side & tile_side.left == tile_side.left)
                     {
-                    // friction
-                    if (yspeed > 0)
-                        yspeed = max(0,yspeed-fric);
-                    else if (yspeed < 0)
-                        yspeed = min(0,yspeed+fric);
-                    }
-                }
-            
-            // stop climbing when climbing down to floor
-            if (input_down) and (on_ground)
-                {
-                move_state = mState.walk;
-                roll = false;
-                
-                aim = point_direction(0,0,h_dir,0);
-                }
-            
-            // jump/fall off
-            if (input_jump_pressed)
-                {
-                if (input_up) // jump
-                or ((input_right and h_dir == -1)
-                or (input_left and h_dir == +1))
-                and (!input_down)
-                    {
-                    move_state = mState.walk;
-                    jump();
+                    xspeed = 0;
                     
-                    aim = point_direction(0,0,h_dir,0);
-                    }
-                else if (input_down) // fall
-                    {
-                    move_state = mState.walk;
-                    roll = false;
+                    // aim
+                    if (climb_side & tile_side.right == tile_side.right)
+                        aim = 180;
+                    else if (climb_side & tile_side.left == tile_side.left)
+                        aim = 0;
                     
-                    aim = point_direction(0,0,h_dir,0);
+                    // vertical movement
+                    if (v_dir == 0)
+                        {
+                        // friction
+                        if (yspeed > 0)
+                            yspeed = max(0,yspeed-fric);
+                        else if (yspeed < 0)
+                            yspeed = min(0,yspeed+fric);
+                        }
+                    else
+                        {
+                        move_speed = 2;
+                        yspeed = move_speed*v_dir;
+                        }
+                    
+                    // jump/fall off
+                    if (input_jump_pressed)
+                    or (on_ground and (input_down or ((climb_side & tile_side.right == tile_side.right) and input_right) or ((climb_side & tile_side.left == tile_side.left) and input_left)))
+                        {
+                        move_state = mState.walk;
+                        aim = point_direction(0,0,face,0);
+                        
+                        if (!on_ground)
+                        and (input_up or ((climb_side & tile_side.right == tile_side.right) and input_right and !input_left) or ((climb_side & tile_side.left == tile_side.left) and input_left and !input_right))
+                        and (!input_down) and (!place_meeting(x,y-1,par_solid))
+                            jump();
+                        else
+                            roll = false;
+                        }
+                    }
+                else if (climb_side == tile_side.bottom)
+                    {
+                    yspeed = 0;
+                    
+                    // horizontal movement
+                    if (h_dir == 0)
+                        {
+                        // friction
+                        if (xspeed > 0)
+                            xspeed = max(0,xspeed-fric);
+                        else if (xspeed < 0)
+                            xspeed = min(0,xspeed+fric);
+                        }
+                    else
+                        {
+                        move_speed = 2;
+                        xspeed = move_speed*h_dir;
+                        if (face > 0)
+                            aim = 0;
+                        else if (face < 0)
+                            aim = 180;
+                        }
+                    
+                    // fall off
+                    if (input_jump_pressed and !input_up)
+                    or (input_down and on_ground)
+                        {
+                        move_state = mState.walk;
+                        aim = point_direction(0,0,face,0);
+                        roll = false;
+                        }
                     }
                 }
             }
         
-        xspeed = 0;
         grace_jump = 0;
         break;
     }

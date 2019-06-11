@@ -25,21 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x1 = x;
-y1 = y;
-x2 = x;
-y2 = y;
+            <string>WAIT = -1;
+RIGHT = 0;
+UP = 1;
+LEFT = 2;
+DOWN = 3;
 
-spd = 1;
-dir = 1;
-delay = 45;
+wait_time = 40;
+
+state = WAIT;
+range = 20;
 timer = 0;
-
-x = x1;
-y = y1;
-
-ldx = 0;
-ldy = 0;
 </string>
           </argument>
         </arguments>
