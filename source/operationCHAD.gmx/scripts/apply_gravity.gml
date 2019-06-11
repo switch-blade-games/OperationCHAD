@@ -24,17 +24,20 @@ switch(move_state)
             if (yspeed > 0) and (!input_down) and (no_hang_time == 0)
                 {
                 var i = 0;
-                var inst = instance_position(x,(y-28)+i,par_mb);
-                while(inst == noone and i<16)
-                    i++;
+                var inst = noone;
+                while(inst == noone and i<=12)
+                    {
+                    inst = instance_position(x,(y-30)+i,par_mb);
+                    i += 2;
+                    }
                 
                 if (inst != noone)
                     {
-                    if (bbox_top >= inst.bbox_top)
+                    if (y >= inst.y)
                         {
                         var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
-                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-20,par_mb))
-                        and (abs(y-yh) <= abs(yspeed))
+                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
+                        and (abs(y-yh) <= 16)
                             {
                             move_state = mState.hang;
                             yspeed = 0;

@@ -288,14 +288,23 @@ switch(move_state)
         yspeed = 0;
         
         var i = 0;
-        var inst = instance_position(x,(y-28)+i,par_mb);
-        while(inst == noone and i<16)
-            i++;
-    
+        var inst = noone;
+        while(inst == noone and i<=12)
+            {
+            inst = instance_position(x,(y-30)+i,par_mb);
+            i += 2;
+            }
+        
         if (inst != noone)
             {
-            var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
-            if (!place_meeting(x,yh,par_solid))
+            if (!place_meeting(round(x+xspeed),y,par_solid))
+                var xh = round(x+xspeed);
+            else
+                var xh = x;
+            
+            var yh = round(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+24;
+            if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
+            and (abs(y-yh) <= 16)
                 y = yh;
             }
         else
