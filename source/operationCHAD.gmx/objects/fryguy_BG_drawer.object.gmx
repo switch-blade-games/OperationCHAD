@@ -25,22 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_visible[0]=false
+            <string>background_visible[0] = false;
 
-COL1=global.ORANGE
-COL2=global.YELLOW
-
-
-UP=1
-DOWN=2
-
-fade=0
-
-faderate=0.05
-
-fademax=1
-
-state=UP
+COL1 = global.ORANGE;
+COL2 = global.YELLOW;
 </string>
           </argument>
         </arguments>
@@ -63,34 +51,10 @@ state=UP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(COL1)
-
-draw_rectangle(0,0,400,240,false)
-
-draw_set_color(COL2)
-
-
-if(state=UP){
-    fade+=faderate
-    
-    if(fade&gt;=fademax)
-        state=DOWN
-    
-}
-
-if(state=DOWN){
-    fade-=faderate
-    if(fade&lt;=0)
-        state=UP
-}
-
-draw_set_alpha(fade)
-
-draw_rectangle(0,0,400,240,false)
-
-draw_set_color(c_white)
-draw_set_alpha(1)
-
+            <string>var col = merge_color(COL1,COL2,0.5+sin(current_time/150)*0.5);
+draw_set_color(col);
+draw_rectangle(0,0,view_wview[0],view_hview[0],false);
+draw_set_color($000000);
 
 draw_background(fryguy_BG,0,0)
 </string>

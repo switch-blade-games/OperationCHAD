@@ -15,7 +15,7 @@ switch(move_state)
             // reset jump roll
             roll = false;
             // grace jump time
-            grace_jump = 2;
+            grace_jump = 8;
             }
         
         // gravity
@@ -35,7 +35,7 @@ switch(move_state)
                     {
                     if (y >= inst.y)
                         {
-                        var yh = round(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
+                        var yh = floor(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
                         if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
                         and (abs(y-yh) <= 16)
                             {

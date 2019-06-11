@@ -35,6 +35,10 @@
       <sprite>sprites\spr_camera</sprite>
       <sprite>sprites\spr_camera_arrow</sprite>
     </sprites>
+    <sprites name="gamepad">
+      <sprite>sprites\spr_buttons_xbox</sprite>
+      <sprite>sprites\spr_buttons_ps</sprite>
+    </sprites>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
@@ -42,6 +46,7 @@
     <sprite>sprites\spr_dust</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
+    <sprite>sprites\NPC_enemy_spr</sprite>
     <sprites name="embro">
       <sprite>sprites\baby_jump_spr</sprite>
       <sprite>sprites\baby_crawl_spr</sprite>
@@ -51,9 +56,6 @@
       <sprite>sprites\embro_case_bottom_spr</sprite>
       <sprite>sprites\embro_overlay_spr</sprite>
     </sprites>
-    <sprite>sprites\NPC_enemy_spr</sprite>
-    <sprite>sprites\spr_buttons_xbox</sprite>
-    <sprite>sprites\spr_buttons_ps</sprite>
     <sprites name="fryguy">
       <sprite>sprites\fry_flame_1_spr</sprite>
       <sprite>sprites\fryguy_sit_spr</sprite>
@@ -84,17 +86,26 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\til_tiles_area1</background>
-    <background>background\embro_BG</background>
-    <background>background\NPC_BG</background>
-    <background>background\NPC_foreground_top</background>
-    <background>background\NPC_foreground_bot</background>
-    <background>background\NPC_floor_BG</background>
-    <background>background\NPC_pillars_BG</background>
-    <background>background\clown_BG</background>
-    <background>background\fryguy_BG</background>
     <background>background\title_BG</background>
-    <background>background\tong_BG</background>
+    <backgrounds name="embro">
+      <background>background\embro_BG</background>
+    </backgrounds>
+    <backgrounds name="npc">
+      <background>background\NPC_BG</background>
+      <background>background\NPC_foreground_top</background>
+      <background>background\NPC_foreground_bot</background>
+      <background>background\NPC_floor_BG</background>
+      <background>background\NPC_pillars_BG</background>
+    </backgrounds>
+    <backgrounds name="clown">
+      <background>background\clown_BG</background>
+    </backgrounds>
+    <backgrounds name="fryguy">
+      <background>background\fryguy_BG</background>
+    </backgrounds>
+    <backgrounds name="tongs">
+      <background>background\tong_BG</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -135,19 +146,21 @@
       <script>scripts\settings_load.gml</script>
       <script>scripts\settings_init.gml</script>
     </scripts>
-    <script>scripts\draw_text_outline.gml</script>
-    <script>scripts\key_last.gml</script>
-    <script>scripts\key_to_text.gml</script>
-    <script>scripts\pad_to_sprite.gml</script>
-    <script>scripts\val_to_text.gml</script>
-    <scripts name="JB_scripts">
-      <script>scripts\outside_view.gml</script>
-      <script>scripts\enemy_hit.gml</script>
-    </scripts>
     <scripts name="enemies">
       <script>scripts\enemy_init.gml</script>
       <script>scripts\draw_enemy_self.gml</script>
     </scripts>
+    <scripts name="ui">
+      <script>scripts\draw_text_outline.gml</script>
+      <script>scripts\val_to_text.gml</script>
+      <script>scripts\key_to_text.gml</script>
+      <script>scripts\pad_to_sprite.gml</script>
+    </scripts>
+    <scripts name="JB_scripts">
+      <script>scripts\outside_view.gml</script>
+      <script>scripts\enemy_hit.gml</script>
+    </scripts>
+    <script>scripts\key_last.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>

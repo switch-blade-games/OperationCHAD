@@ -219,38 +219,21 @@ switch(move_state)
             if (input_fire)
                 fire_weapon();
             
-            if (input_lock)
+            // aim
+            if (h_dir != 0)
                 {
-                // aim
-                if (h_dir != 0)
-                    {
-                    face = h_dir;
-                    dir = h_dir;
-                    }
-                if (h_dir == 0 and v_dir == 0)
-                    {
-                    if (face > 0)
-                        aim = 0;
-                    else if (face < 0)
-                        aim = 180;
-                    }
-                else
-                    aim = point_direction(0,0,h_dir,v_dir);
+                face = h_dir;
+                dir = h_dir;
+                }
+            if (h_dir == 0 and v_dir == 0)
+                {
+                if (face > 0)
+                    aim = 0;
+                else if (face < 0)
+                    aim = 180;
                 }
             else
-                {
-                if (h_dir != 0)
-                    {
-                    face = h_dir;
-                    dir = h_dir;
-                    
-                    // move left or right
-                    if (input_right)
-                        aim = 0;
-                    if (input_left)
-                        aim = 180;
-                    }
-                }
+                aim = point_direction(0,0,h_dir,v_dir);
             
             // friction
             if (xspeed > 0)
@@ -302,7 +285,7 @@ switch(move_state)
             else
                 var xh = x;
             
-            var yh = round(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+24;
+            var yh = floor(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+24;
             if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
             and (abs(y-yh) <= 16)
                 y = yh;
@@ -313,17 +296,23 @@ switch(move_state)
             roll = false;
             }
         
-        if (input_down_pressed) and (!input_lock)
-            {
-            no_hang_time = 12;
-            move_state = mState.walk;
-            roll = false;
-            }
         if (input_jump_pressed)
             {
-            no_hang_time = 4;
-            move_state = mState.walk;
-            jump();
+            if (input_down_pressed)
+                {
+                if (!input_lock)
+                    {
+                    no_hang_time = 12;
+                    move_state = mState.walk;
+                    roll = false;
+                    }
+                }
+            else
+                {
+                no_hang_time = 4;
+                move_state = mState.walk;
+                jump();
+                }
             }
         break;
     

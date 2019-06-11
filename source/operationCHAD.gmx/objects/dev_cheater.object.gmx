@@ -104,8 +104,37 @@
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     with(par_mb)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+    draw_set_color(c_orange);
+    with(par_mb)
+        draw_line(bbox_left,y1,bbox_right,y2);
+    draw_set_color(c_lime);
+    with(par_actor)
+        draw_point(x,y-24);
     draw_set_color($000000);
     }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_speed = 5;
 </string>
           </argument>
         </arguments>
@@ -177,6 +206,29 @@
             <kind>1</kind>
             <string>if (room_exists(room_next(room)))
     room_goto(room_next(room));
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="113">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_speed = 60;
 </string>
           </argument>
         </arguments>

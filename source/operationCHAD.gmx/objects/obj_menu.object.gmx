@@ -411,9 +411,9 @@ switch(menu)
         break;
     
     case 2: // settings
-        draw_set_color($000000);
-        draw_set_alpha(0.6);
-        draw_rectangle(40,30,view_wview[0]-40,view_hview[0]-44,0);
+        draw_set_color($1C0C14);
+        draw_set_alpha(0.75);
+        draw_rectangle(16,16,view_wview[0]-16,view_hview[0]-16,0);
         draw_set_alpha(1.0);
         
         var i = 0;
@@ -431,9 +431,9 @@ switch(menu)
         break;
     
     case 3: // edit keybinds
-        draw_set_color($000000);
-        draw_set_alpha(0.6);
-        draw_rectangle(40,30,view_wview[0]-40,view_hview[0]-44,0);
+        draw_set_color($1C0C14);
+        draw_set_alpha(0.75);
+        draw_rectangle(16,16,view_wview[0]-16,view_hview[0]-16,0);
         draw_set_alpha(1.0);
         
         //draw_text_outline(60,24,"Options");
