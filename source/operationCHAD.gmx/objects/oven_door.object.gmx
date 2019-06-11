@@ -81,6 +81,10 @@ EMBERspe=0.5
         
         //shake camera!!!
         
+        global.ynudge += 6;
+        global.xshake += 4;
+        global.yshake += 4;
+        
         //left moving embers
     
         repeat(EMBERnum){

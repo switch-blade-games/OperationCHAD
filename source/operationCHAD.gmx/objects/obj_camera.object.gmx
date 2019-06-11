@@ -62,17 +62,28 @@ target = obj_player;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_xview[0] += ((x-view_wview[0]/2)-view_xview[0])*0.2;
-view_yview[0] += ((y-view_hview[0]/2)-view_yview[0])*0.2;
-view_xview[0] = round(view_xview[0]); // view_xview[0] = round(view_xview[0]+random_range(-global.xshake,global.xshake));
-view_yview[0] = round(view_yview[0]); // view_yview[0] = round(view_yview[0]+random_range(-global.yshake,global.yshake));
+            <string>var cx = x - view_wview[0]/2;
+var cy = y - view_hview[0]/2;
+cx += global.xnudge;
+cy += global.ynudge;
+if (global.xshake &gt; 1)
+    cx += random_range(-global.xshake,global.xshake);
+if (global.yshake &gt; 1)
+    cy += random_range(-global.yshake,global.yshake);
+
+view_xview[0] += (cx-view_xview[0])*0.8;
+view_yview[0] += (cy-view_yview[0])*0.8;
+view_xview[0] = round(view_xview[0]);
+view_yview[0] = round(view_yview[0]);
+
+global.xnudge *= 0.8;
+global.ynudge *= 0.8;
+global.xshake *= 0.8;
+global.yshake *= 0.8;
 
 //disabling screenshake for now
 
-global.xshake += (0-global.xshake)*0.25;
-global.yshake += (0-global.yshake)*0.25;
-
-if (!instance_exists(target)) or (cam_state == 0)
+if (!instance_exists(target)) or (cam_state == camState.static)
     exit;
 
 xprevious = x;

@@ -38,6 +38,8 @@ else
     settings_save(settings_path);
 
 // view/window/gui
+view_xview[0] = 0;
+view_yview[0] = 0;
 view_wview[0] = 400;
 view_hview[0] = 240;
 if (global.fullscreen)
@@ -55,11 +57,14 @@ gamepad_init();
 
 // globals
 global.pause = false;
+global.xnudge = 0;
+global.ynudge = 0;
 global.xshake = 0;
 global.yshake = 0;
 
 // create shader controller
-instance_create(0,0,obj_shader);
+if (!instance_exists(obj_shader))
+    instance_create(0,0,obj_shader);
 
 menu = 0;
 select = 0;
@@ -346,7 +351,7 @@ switch(menu)
         break;
     }
 
-view_xview[0] += 1;
+// view_xview[0] += 1;
 bg_alpha += (0.4-bg_alpha)*0.05;
 bg_heady += (0-bg_heady)*0.05;
 </string>
@@ -354,7 +359,7 @@ bg_heady += (0-bg_heady)*0.05;
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -484,29 +489,8 @@ switch(menu)
     }
 
 draw_set_color($000000);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
+
+/*
 var sx = sign(view_xview[0]);
 var x1 = view_xview[0] - round(abs(view_xview[0]*0.02) mod view_wview[0])*sx;
 var x2 = view_xview[0] - round(abs(view_xview[0]*0.25) mod view_wview[0])*sx;
