@@ -33,7 +33,4 @@ if (shoot_timer == 0)
         inst.image_yscale *= 0.5;
         inst.fade = 0.1;
         }
-    
-    global.xshake += 3;
-    global.yshake += 2;
     }

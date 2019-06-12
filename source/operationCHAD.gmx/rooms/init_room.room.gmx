@@ -10,10 +10,11 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,dev_cheater);
+  <code>if (!instance_exists(dev_cheater))
+    instance_create(0,0,dev_cheater);
 instance_create(0,0,obj_menu);
 
-randomize()
+randomize();
 
 //colors
 global.YELLOW=make_color_rgb(218,212,94);

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>-100000</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -48,7 +48,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>game_restart()
+            <string>with(obj_shader)
+    instance_destroy();
+instance_destroy();
+game_restart()
 </string>
           </argument>
         </arguments>
@@ -126,6 +129,7 @@
     draw_text_outline(4,16,"Version: "+string(global.version));
     draw_text_outline(4,28,"Instances: "+string(inst_num));
     draw_text_outline(4,40,"Particles: "+string(part_num));
+    draw_text_outline(4,52,"CamPos: "+string(view_xview[0])+"/"+string(view_yview[0]));
     draw_set_color($000000);
     }
 </string>

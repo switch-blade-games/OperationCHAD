@@ -418,6 +418,10 @@ if(state=JUMP){
         instance_create(0,0,fryguy_stand_controller)
         
         alarm[1]=STANDtime
+        
+        global.ynudge += 4;
+        global.xshake += 2;
+        global.yshake += 2;
     }
 }
 
@@ -432,6 +436,10 @@ if(state=JUMPback){
         y=SITy
         state=SIT
         alarm[0]=SITtime
+        
+        global.ynudge += 2;
+        global.xshake += 4;
+        global.yshake += 4;
     }
 }
 

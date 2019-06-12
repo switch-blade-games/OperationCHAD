@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>background_visible[0] = false;
+background_color = global.MEDgrey;
 
 COL1 = global.ORANGE;
 COL2 = global.YELLOW;
@@ -53,7 +54,7 @@ COL2 = global.YELLOW;
             <kind>1</kind>
             <string>var col = merge_color(COL1,COL2,0.5+sin(current_time/150)*0.5);
 draw_set_color(col);
-draw_rectangle(0,0,view_wview[0],view_hview[0],false);
+draw_rectangle(4,4,396,236,false);
 draw_set_color($000000);
 
 draw_background(fryguy_BG,0,0)
