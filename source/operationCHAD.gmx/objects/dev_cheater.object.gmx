@@ -31,6 +31,37 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+if (keyboard_check(ord("W")))
+    global.w_amp += 0.1;
+if (keyboard_check(ord("S")))
+    global.w_amp -= 0.1;
+if (keyboard_check(ord("D")))
+    global.w_freq += 0.1;
+if (keyboard_check(ord("A")))
+    global.w_freq -= 0.1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="5" enumb="82">
       <action>
         <libid>1</libid>
@@ -130,6 +161,8 @@ game_restart()
     draw_text_outline(4,28,"Instances: "+string(inst_num));
     draw_text_outline(4,40,"Particles: "+string(part_num));
     draw_text_outline(4,52,"CamPos: "+string(view_xview[0])+"/"+string(view_yview[0]));
+    //draw_text_outline(4,64,"wAmp: "+string(global.w_amp));
+    //draw_text_outline(4,76,"wFreq: "+string(global.w_freq));
     draw_set_color($000000);
     }
 </string>

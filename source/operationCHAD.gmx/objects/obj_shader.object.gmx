@@ -29,10 +29,10 @@
 
 temp_surf = -1;
 
-global.xc = 0.15;
-global.yc = 0.20;
-global.u_xc = shader_get_uniform(shd_crt,"xCurve");
-global.u_yc = shader_get_uniform(shd_crt,"yCurve");
+u_crt = shader_get_uniform(shd_crt,"crt");
+u_time = shader_get_uniform(shd_crt,"time");
+u_amp = shader_get_uniform(shd_crt,"wAmp");
+u_freq = shader_get_uniform(shd_crt,"wFreq");
 </string>
           </argument>
         </arguments>
@@ -81,28 +81,21 @@ if (surface_exists(temp_surf))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.crt)
-    {
-    var time = get_timer();
-    
-    if (!surface_exists(temp_surf))
-        temp_surf = surface_create(400,240);
-    
-    surface_set_target(temp_surf);
-    draw_clear(background_color);
-    draw_surface(application_surface,0,0);
-    surface_reset_target();
-    
-    shader_set(shd_crt);
-    shader_set_uniform_f(global.u_xc,global.xc);
-    shader_set_uniform_f(global.u_yc,global.yc);
-    draw_surface(temp_surf,0,0);
-    shader_reset();
-    
-    global.shader_time = round((get_timer()-time)/1000);
-    }
-else
-    draw_surface(application_surface,0,0);
+            <string>if (!surface_exists(temp_surf))
+    temp_surf = surface_create(400,240);
+
+surface_set_target(temp_surf);
+draw_clear(background_color);
+draw_surface(application_surface,0,0);
+surface_reset_target();
+
+shader_set(shd_crt);
+shader_set_uniform_f(u_crt,global.crt);
+shader_set_uniform_f(u_amp,global.w_amp);
+shader_set_uniform_f(u_freq,global.w_freq);
+shader_set_uniform_f(u_time,get_timer()/1000000);
+draw_surface(temp_surf,0,0);
+shader_reset();
 </string>
           </argument>
         </arguments>

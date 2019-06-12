@@ -1,6 +1,6 @@
-attribute vec3 in_Position;                  // (x,y,z)
-attribute vec4 in_Colour;                    // (r,g,b,a)
-attribute vec2 in_TextureCoord;              // (u,v)
+attribute vec3 in_Position;
+attribute vec4 in_Colour;
+attribute vec2 in_TextureCoord;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
@@ -14,8 +14,10 @@ void main()
     v_vTexcoord = in_TextureCoord;
     }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float xCurve;
-uniform float yCurve;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float crt;
+uniform float wAmp;
+uniform float wFreq;
+uniform float time;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
@@ -24,25 +26,35 @@ const float scanline = 500.0;
 
 void main()
     {
+    vec4 cta = vec4(0.0);
+    
     vec2 tc = vec2(v_vTexcoord.x,v_vTexcoord.y);
+    tc.y += (sin(tc.x + time*wFreq)*wAmp)*0.02;
     
-    // distance from the center
-    float dx = abs(0.5-tc.x);
-    float dy = abs(0.5-tc.y);
-    // square it to smooth the edges
-    dx *= dx;
-    dy *= dy;
+    if (crt >= 0.5)
+        {
+        // distance from the center
+        float dx = abs(0.5-tc.x);
+        float dy = abs(0.5-tc.y);
+        // square it to smooth the edges
+        dx *= dx;
+        dy *= dy;
+        
+        tc.x -= 0.5; tc.x *= 1.0+(dy*0.15); tc.x += 0.5;
+        tc.y -= 0.5; tc.y *= 1.0+(dx*0.20); tc.y += 0.5;
     
-    tc.x -= 0.5; tc.x *= 1.0+(dy*xCurve); tc.x += 0.5;
-    tc.y -= 0.5; tc.y *= 1.0+(dx*yCurve); tc.y += 0.5;
-    
-    // get texel and add in scanline
-    vec4 cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
-    cta.rgb += sin(tc.y*scanline)*0.02;
-    
-    // cutoff
-    if(tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0 || tc.y < 0.0)
-        cta = vec4(0.0);
+        // get texel and add in scanline
+        cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
+        cta.rgb += sin(tc.y*scanline)*0.02;
+        
+        // cutoff
+        if(tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0 || tc.y < 0.0)
+            cta = vec4(0.0);
+        }
+    else
+        {
+        cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
+        }
     
     // apply
     gl_FragColor = v_vColour*cta;

@@ -34,8 +34,7 @@ settings_init();
 settings_path = working_directory+"settings.ini";
 if (file_exists(settings_path))
     settings_load(settings_path);
-else
-    settings_save(settings_path);
+settings_save(settings_path);
 
 // view/window/gui
 view_xview[0] = 0;
@@ -57,6 +56,8 @@ gamepad_init();
 
 // globals
 global.pause = false;
+global.w_amp = 0; // 4;
+global.w_freq = 0; // 2;
 global.xnudge = 0;
 global.ynudge = 0;
 global.xshake = 0;
