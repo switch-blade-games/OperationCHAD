@@ -84,6 +84,9 @@
       <sprite>sprites\sjw_9_spr</sprite>
       <sprite>sprites\sjw_10_spr</sprite>
     </sprites>
+    <sprites name="germany">
+      <sprite>sprites\motor_mockup_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -105,6 +108,12 @@
     </backgrounds>
     <backgrounds name="tongs">
       <background>background\tong_BG</background>
+    </backgrounds>
+    <backgrounds name="germany">
+      <background>background\road_BG</background>
+      <background>background\mountains_BG</background>
+      <background>background\hills_1_BG</background>
+      <background>background\motor_foreground_BG</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
@@ -258,9 +267,15 @@
     <objects name="tong_boss">
       <object>objects\sjw</object>
     </objects>
+    <objects name="germany_motor">
+      <object>objects\motor_controller</object>
+      <object>objects\motor_foreground</object>
+      <object>objects\motor_mockup</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\germany_motor_room</room>
     <room>rooms\fryguy_room</room>
     <room>rooms\embro_room</room>
     <room>rooms\tong_room</room>
