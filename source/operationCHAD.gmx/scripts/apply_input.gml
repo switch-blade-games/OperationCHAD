@@ -95,14 +95,11 @@ switch(move_state)
             }
         
         // jump
-        if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
+        if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed) and (!input_down)
             jump();
         
         if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
-            {
             fire_weapon();
-            roll = false;
-            }
         break;
     
     case mState.lock:
@@ -155,10 +152,7 @@ switch(move_state)
             }
         
         if (input_fire)
-            {
             fire_weapon();
-            roll = false;
-            }
         
         // friction
         if (xspeed > 0)
