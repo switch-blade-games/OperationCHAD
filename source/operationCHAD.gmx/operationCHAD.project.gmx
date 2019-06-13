@@ -140,6 +140,9 @@
       <background>background\motor_foreground_BG</background>
       <background>background\motor_sky_BG</background>
     </backgrounds>
+    <background>background\cloud_BG</background>
+    <background>background\cloud_tile_BG</background>
+    <background>background\moon_man_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -306,6 +309,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>
     <room>rooms\fryguy_room</room>
     <room>rooms\pooh_room</room>
