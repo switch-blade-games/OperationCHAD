@@ -14,6 +14,9 @@
     instance_create(0,0,dev_cheater);
 instance_create(0,0,obj_menu);
 
+
+global.JOYSTIX=font_add_sprite(joystix_font_spr,ord('!'),true,1)
+
 randomize();
 
 //colors

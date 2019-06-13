@@ -110,6 +110,14 @@
         <sprite>sprites\pepe_place_spr</sprite>
       </sprites>
     </sprites>
+    <sprites name="circle_ride">
+      <sprite>sprites\circle_frame_spr</sprite>
+      <sprite>sprites\circle_text_spr</sprite>
+      <sprite>sprites\circle_sign_spr</sprite>
+      <sprite>sprites\circle_cart_spr</sprite>
+    </sprites>
+    <sprite>sprites\joystix_font_spr</sprite>
+    <sprite>sprites\cam_icon_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -143,6 +151,7 @@
     <background>background\cloud_BG</background>
     <background>background\cloud_tile_BG</background>
     <background>background\moon_man_BG</background>
+    <background>background\checker_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -306,9 +315,16 @@
       <object>objects\pooh</object>
     </objects>
     <object>objects\player_mockup</object>
+    <objects name="clown_world">
+      <object>objects\circle_ride</object>
+      <object>objects\circle_sign</object>
+      <object>objects\circle_cam</object>
+      <object>objects\circle_cart</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\circle_room</room>
     <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>
     <room>rooms\fryguy_room</room>
