@@ -307,10 +307,10 @@
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\test_room</room>
+    <room>rooms\fryguy_room</room>
     <room>rooms\pooh_room</room>
     <room>rooms\NPC_room</room>
     <room>rooms\germany_motor_room</room>
-    <room>rooms\fryguy_room</room>
     <room>rooms\embro_room</room>
     <room>rooms\tong_room</room>
     <room>rooms\clown_room</room>
