@@ -86,7 +86,9 @@
     </sprites>
     <sprites name="germany">
       <sprite>sprites\motor_mockup_spr</sprite>
+      <sprite>sprites\motor_nazi_spr</sprite>
     </sprites>
+    <sprite>sprites\tank_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -113,7 +115,9 @@
       <background>background\road_BG</background>
       <background>background\mountains_BG</background>
       <background>background\hills_1_BG</background>
+      <background>background\hills_2_BG</background>
       <background>background\motor_foreground_BG</background>
+      <background>background\motor_sky_BG</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
@@ -271,6 +275,8 @@
       <object>objects\motor_controller</object>
       <object>objects\motor_foreground</object>
       <object>objects\motor_mockup</object>
+      <object>objects\motor_nazi</object>
+      <object>objects\tank</object>
     </objects>
   </objects>
   <rooms name="rooms">
