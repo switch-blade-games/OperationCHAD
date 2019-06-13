@@ -130,6 +130,9 @@ game_restart()
             <kind>1</kind>
             <string>if (debug)
     {
+    var vx = view_xview[0];
+    var vy = view_yview[0];
+    
     draw_set_color(c_blue);
     with(par_actor)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
@@ -156,13 +159,11 @@ game_restart()
     var part_num = 0;
     part_num += instance_number(par_effect);
     
-    draw_text_outline(4,4,"FPS: "+string(fps_real));
-    draw_text_outline(4,16,"Version: "+string(global.version));
-    draw_text_outline(4,28,"Instances: "+string(inst_num));
-    draw_text_outline(4,40,"Particles: "+string(part_num));
-    draw_text_outline(4,52,"CamPos: "+string(view_xview[0])+"/"+string(view_yview[0]));
-    //draw_text_outline(4,64,"wAmp: "+string(global.w_amp));
-    //draw_text_outline(4,76,"wFreq: "+string(global.w_freq));
+    draw_text_outline(vx+4,vy+4+000,"FPS: "+string(fps_real));
+    draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
+    draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
+    draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
+    draw_text_outline(vx+4,vy+4+048,"CamPos: "+string(vx)+"/"+string(vy));
     draw_set_color($000000);
     }
 </string>
@@ -233,7 +234,7 @@ game_restart()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room_exists(room_previous(room)))
+            <string>if (room_exists(room_previous(room))) and (room != menu_room)
     room_goto(room_previous(room));
 </string>
           </argument>

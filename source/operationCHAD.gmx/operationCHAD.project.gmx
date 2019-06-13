@@ -39,6 +39,7 @@
       <sprite>sprites\spr_buttons_xbox</sprite>
       <sprite>sprites\spr_buttons_ps</sprite>
     </sprites>
+    <sprite>sprites\joystix_font_spr</sprite>
     <sprite>sprites\spr_bullet</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_casings</sprite>
@@ -116,7 +117,6 @@
       <sprite>sprites\circle_sign_spr</sprite>
       <sprite>sprites\circle_cart_spr</sprite>
     </sprites>
-    <sprite>sprites\joystix_font_spr</sprite>
     <sprite>sprites\cam_icon_spr</sprite>
   </sprites>
   <backgrounds name="background">
@@ -213,9 +213,7 @@
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
-  <fonts name="fonts">
-    <font>fonts\fnt_default</font>
-  </fonts>
+  <fonts name="fonts"/>
   <objects name="objects">
     <objects name="parents">
       <object>objects\par_actor</object>
@@ -265,6 +263,7 @@
     <object>objects\obj_mb_r</object>
     <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
+    <object>objects\player_mockup</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>
@@ -314,7 +313,6 @@
     <objects name="pooh">
       <object>objects\pooh</object>
     </objects>
-    <object>objects\player_mockup</object>
     <objects name="clown_world">
       <object>objects\circle_ride</object>
       <object>objects\circle_sign</object>
@@ -324,6 +322,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\menu_room</room>
     <room>rooms\circle_room</room>
     <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>

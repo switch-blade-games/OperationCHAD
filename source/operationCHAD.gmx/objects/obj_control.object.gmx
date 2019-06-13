@@ -135,7 +135,7 @@ if (global.pause and surface_exists(surf_pause))
     draw_rectangle(0,0,view_wview[0],view_hview[0],0);
     draw_set_alpha(1.0);
     
-    draw_set_font(fnt_default);
+    draw_set_font(global.fnt_joystix);
     draw_set_color($FFFFFF);
     draw_set_halign(1);
     draw_set_valign(1);

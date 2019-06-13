@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// set the font
-draw_set_font(fnt_default);
+            <string>background_color = global.DARKpurple;
 
 // init settings
 settings_init();
@@ -73,8 +72,7 @@ selectx = 0;
 selecty = 0;
 rebind = false;
 
-bg_alpha = 0;
-bg_heady = -80;
+bg_alpha = 1;
 </string>
           </argument>
         </arguments>
@@ -351,10 +349,6 @@ switch(menu)
             }
         break;
     }
-
-// view_xview[0] += 1;
-bg_alpha += (0.4-bg_alpha)*0.05;
-bg_heady += (0-bg_heady)*0.05;
 </string>
           </argument>
         </arguments>
@@ -377,7 +371,8 @@ bg_heady += (0-bg_heady)*0.05;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_background(title_BG,0,0);
+            <string>var alpha = round(bg_alpha*5)/5;
+draw_background_ext(title_BG,0,0,1,1,0,-1,alpha);
 
 switch(menu)
     {
@@ -390,16 +385,16 @@ switch(menu)
                 draw_text_outline(view_wview[0]/2,200,"Z or X to Start!");
             else
                 {
-                draw_text_outline(view_wview[0]/2,200,"-  or  -  to Start!");
+                draw_text_outline(view_wview[0]/2,200," -  or  - to Start!");
                 if (global.btnstyle)
                     {
-                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-57,200);
-                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,200);
+                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-64,202);
+                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,202);
                     }
                 else
                     {
-                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-57,200);
-                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,200);
+                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-64,202);
+                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,202);
                     }
                 }
             }
@@ -417,11 +412,6 @@ switch(menu)
         break;
     
     case 2: // settings
-        draw_set_color($1C0C14);
-        draw_set_alpha(0.75);
-        draw_rectangle(16,16,view_wview[0]-16,view_hview[0]-16,0);
-        draw_set_alpha(1.0);
-        
         var i = 0;
         draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.fullscreen));
         draw_text_outline(60,64+i++*18,"CRT SHADER: "+val_to_text(0,global.crt));
@@ -437,13 +427,6 @@ switch(menu)
         break;
     
     case 3: // edit keybinds
-        draw_set_color($1C0C14);
-        draw_set_alpha(0.75);
-        draw_rectangle(16,16,view_wview[0]-16,view_hview[0]-16,0);
-        draw_set_alpha(1.0);
-        
-        //draw_text_outline(60,24,"Options");
-        
         var i = 0;
         draw_text_outline(60,38,"ACTION");
         draw_text_outline(60,64+i++*18,"LEFT");
@@ -490,6 +473,11 @@ switch(menu)
     }
 
 draw_set_color($000000);
+
+if (menu &gt; 0)
+    bg_alpha = max(0.25,bg_alpha-0.05);
+else
+    bg_alpha = min(1.00,bg_alpha+0.05);
 
 /*
 var sx = sign(view_xview[0]);
