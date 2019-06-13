@@ -102,6 +102,7 @@
         <sprite>sprites\pepe_arms_shoot_0_spr</sprite>
         <sprite>sprites\pepe_arms_45_spr</sprite>
         <sprite>sprites\pepe_arms_315_spr</sprite>
+        <sprite>sprites\pepe_arms_270_spr</sprite>
       </sprites>
       <sprites name="full">
         <sprite>sprites\pepe_jump_spr</sprite>
