@@ -89,6 +89,26 @@
       <sprite>sprites\motor_nazi_spr</sprite>
     </sprites>
     <sprite>sprites\tank_spr</sprite>
+    <sprite>sprites\pooh_spr</sprite>
+    <sprites name="pepe">
+      <sprites name="legs">
+        <sprite>sprites\pepe_legs_walk_spr</sprite>
+        <sprite>sprites\pepe_legs_stand_spr</sprite>
+      </sprites>
+      <sprites name="arms">
+        <sprite>sprites\pepe_arms_0_spr</sprite>
+        <sprite>sprites\pepe_arms_90_spr</sprite>
+        <sprite>sprites\pepe_arms_walk_0_spr</sprite>
+        <sprite>sprites\pepe_arms_shoot_0_spr</sprite>
+        <sprite>sprites\pepe_arms_45_spr</sprite>
+        <sprite>sprites\pepe_arms_315_spr</sprite>
+      </sprites>
+      <sprites name="full">
+        <sprite>sprites\pepe_jump_spr</sprite>
+        <sprite>sprites\pepe_duck_spr</sprite>
+        <sprite>sprites\pepe_place_spr</sprite>
+      </sprites>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -278,14 +298,20 @@
       <object>objects\motor_nazi</object>
       <object>objects\tank</object>
     </objects>
+    <objects name="pooh">
+      <object>objects\pooh</object>
+    </objects>
+    <object>objects\player_mockup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\test_room</room>
+    <room>rooms\pooh_room</room>
+    <room>rooms\NPC_room</room>
     <room>rooms\germany_motor_room</room>
     <room>rooms\fryguy_room</room>
     <room>rooms\embro_room</room>
     <room>rooms\tong_room</room>
-    <room>rooms\NPC_room</room>
     <room>rooms\clown_room</room>
   </rooms>
   <help>
