@@ -27,30 +27,24 @@
             <kind>1</kind>
             <string>STAND=0
 WALK=1
-
 JUMP=2
 
 state=STAND
 
-
 AIM=0
-
-
+FLIP = 1;
 
 FIRE=false
-
 
 //ARM
 ARMspe=0.2
 ARMmax=1
 ARMimg=0
 
-
 //LEG
 LEGspe=0.2
 LEGmax=10
 LEGimg=0
-
 
 //JUMP
 JUMPspe=2.5
@@ -62,10 +56,25 @@ JUMPanimax=4
 JUMPaniimg=0
 
 
+torso_spr[0] = pepe_arms_0_spr;
+torso_spr[1] = pepe_arms_45_spr;
+torso_spr[2] = pepe_arms_90_spr;
+torso_spr[3] = pepe_arms_45_spr;
+torso_spr[4] = pepe_arms_0_spr;
+torso_spr[5] = pepe_arms_315_spr;
+torso_spr[6] = pepe_arms_270_spr;
+torso_spr[7] = pepe_arms_315_spr;
 
-
-
-
+torso_y[0] = 0;
+torso_y[1] = -1;
+torso_y[2] = -3;
+torso_y[3] = -3;
+torso_y[4] = -2;
+torso_y[5] = 0;
+torso_y[6] = -1;
+torso_y[7] = -3;
+torso_y[8] = -3;
+torso_y[9] = -2;
 </string>
           </argument>
         </arguments>
@@ -88,7 +97,12 @@ JUMPaniimg=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>AIM=floor(point_direction(x,y,mouse_x,mouse_y)/45)
+            <string>AIM=round(point_direction(x,y,mouse_x,mouse_y)/45)
+AIM=clamp(AIM,0,7);
+if (mouse_x &gt;= x)
+    FLIP = 1;
+else
+    FLIP = -1;
 
 if (state=JUMP){
 
@@ -206,91 +220,37 @@ state=STAND
           <argument>
             <kind>1</kind>
             <string>draw_text(x,y-80,AIM)
-
 draw_text(x,y-100,state)
 
-
-
 if(state=JUMP){
-
-
     JUMPaniimg+=JUMPanispe
     if(JUMPaniimg&gt;=JUMPanimax)
         JUMPaniimg=0
 
-
-draw_sprite(pepe_jump_spr,JUMPaniimg,x,y)
+draw_sprite_ext(pepe_jump_spr,JUMPaniimg,x,y,FLIP,1,0,-1,1)
 
 exit
 }
 
-
-
 //draw legs
-
 if(state=STAND)
-    draw_sprite(pepe_legs_stand_spr,-1,x,y)
+    draw_sprite_ext(pepe_legs_stand_spr,-1,x,y,FLIP,1,0,-1,1)
 
-    
 if(state=WALK){
 
     LEGimg+=LEGspe
     if(LEGimg&gt;=LEGmax)
         LEGimg=0
-    draw_sprite(pepe_legs_walk_spr,LEGimg,x,y)
+    draw_sprite_ext(pepe_legs_walk_spr,LEGimg,x,y,FLIP,1,0,-1,1)
 }
-    
-    
 
 //draw arms
-
-
 if(FIRE=true){
     ARMimg+=ARMspe
     if(ARMimg&gt;=ARMmax+1)
         ARMimg=0
 }
-
-
-
-
-
-    
-
-
-if(AIM=0){
-
-    if(state=STAND)
-    draw_sprite(pepe_arms_0_spr,ARMimg,x,y)
-    
-    if(state=WALK){
-    
-        if(FIRE=false)
-        draw_sprite(pepe_arms_walk_0_spr,LEGimg,x,y)
-        else
-        draw_sprite(pepe_arms_shoot_0_spr,LEGimg,x,y)
-    }
-}
-
-if(AIM=1)
-    draw_sprite(pepe_arms_45_spr,ARMimg,x,y)
-    
-if(AIM=2)
-    draw_sprite(pepe_arms_90_spr,ARMimg,x,y)
-    
-if(AIM=6)
-    draw_sprite(pepe_arms_270_spr,ARMimg,x,y)
-    
-if(AIM=7)
-    draw_sprite(pepe_arms_315_spr,ARMimg,x,y)
-    
-    
-
-
-    
-    
-    
-
+draw_sprite_ext(torso_spr[AIM],ARMimg,x,y+torso_y[floor(LEGimg)],FLIP,1,0,-1,1)
 
 //draw_text(x,y-100,ARMimg)
 </string>
