@@ -122,6 +122,13 @@
       <sprite>sprites\megaphone_spr</sprite>
       <sprite>sprites\racist_text_spr</sprite>
     </sprites>
+    <sprites name="cine">
+      <sprite>sprites\gang_colors_spr</sprite>
+      <sprite>sprites\yolo_cine_spr</sprite>
+      <sprite>sprites\fox_cine_spr</sprite>
+      <sprite>sprites\pumpkin_cine_spr</sprite>
+      <sprite>sprites\stone_cine_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -210,6 +217,8 @@
     <scripts name="JB_scripts">
       <script>scripts\outside_view.gml</script>
       <script>scripts\enemy_hit.gml</script>
+      <script>scripts\blend_normal.gml</script>
+      <script>scripts\blend_sub.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
   </scripts>
@@ -218,6 +227,7 @@
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
+  <fonts name="fonts"/>
   <objects name="objects">
     <objects name="parents">
       <object>objects\par_actor</object>
@@ -329,11 +339,18 @@
       <object>objects\letter_spawner</object>
       <object>objects\letter_enemy</object>
     </objects>
+    <objects name="cine">
+      <object>objects\cine_controller</object>
+      <object>objects\cine_obj</object>
+      <object>objects\painter</object>
+      <object>objects\paint_parent</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
-    <room>rooms\protest_room</room>
+    <room>rooms\cine_room</room>
+    <room>rooms\megaphone_room</room>
     <room>rooms\circle_room</room>
     <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>

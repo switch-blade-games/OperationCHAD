@@ -12,6 +12,8 @@
   <showcolour>-1</showcolour>
   <code>randomize();
 
+
+
 // joystix font
 global.fnt_joystix = font_add_sprite(joystix_font_spr,ord('!'),true,1);
 draw_set_font(global.fnt_joystix);
