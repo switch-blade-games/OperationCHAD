@@ -164,8 +164,6 @@ var Yplace=0;
 draw_set_halign(fa_center)
 draw_set_valign(fa_top)
 
-draw_set_font(global.JOYSTIX)
-
 repeat(3){
 
     //Xplace=x+lengthdir_x(LEN,ANG+(i*120))
@@ -180,11 +178,8 @@ repeat(3){
     i+=1
 }
 
-
-
-
-
-    
+draw_set_halign(0);
+draw_set_valign(0);
 </string>
           </argument>
         </arguments>
