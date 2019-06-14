@@ -87,8 +87,8 @@
     <sprites name="germany">
       <sprite>sprites\motor_mockup_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
+      <sprite>sprites\tank_spr</sprite>
     </sprites>
-    <sprite>sprites\tank_spr</sprite>
     <sprite>sprites\pooh_spr</sprite>
     <sprites name="pepe">
       <sprites name="legs">
@@ -115,9 +115,13 @@
       <sprite>sprites\circle_text_spr</sprite>
       <sprite>sprites\circle_sign_spr</sprite>
       <sprite>sprites\circle_cart_spr</sprite>
+      <sprite>sprites\cam_icon_spr</sprite>
     </sprites>
     <sprite>sprites\joystix_font_spr</sprite>
-    <sprite>sprites\cam_icon_spr</sprite>
+    <sprites name="megaphone">
+      <sprite>sprites\megaphone_spr</sprite>
+      <sprite>sprites\racist_text_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -152,6 +156,7 @@
     <background>background\cloud_tile_BG</background>
     <background>background\moon_man_BG</background>
     <background>background\checker_BG</background>
+    <background>background\protest_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -321,9 +326,16 @@
       <object>objects\circle_cam</object>
       <object>objects\circle_cart</object>
     </objects>
+    <objects name="megaphone">
+      <object>objects\megaphone</object>
+      <object>objects\letter</object>
+      <object>objects\letter_spawner</object>
+      <object>objects\letter_enemy</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
+    <room>rooms\protest_room</room>
     <room>rooms\circle_room</room>
     <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>
