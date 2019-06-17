@@ -164,6 +164,7 @@
     <background>background\moon_man_BG</background>
     <background>background\checker_BG</background>
     <background>background\protest_BG</background>
+    <background>background\hitler_BG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -227,7 +228,6 @@
     <shader type="GLSLES">shaders\shd_crt.shader</shader>
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
-  <fonts name="fonts"/>
   <objects name="objects">
     <objects name="parents">
       <object>objects\par_actor</object>
@@ -349,6 +349,7 @@
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
+    <room>rooms\hitler_room</room>
     <room>rooms\cine_room</room>
     <room>rooms\megaphone_room</room>
     <room>rooms\circle_room</room>
