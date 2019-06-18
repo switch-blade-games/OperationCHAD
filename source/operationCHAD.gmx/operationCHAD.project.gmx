@@ -129,6 +129,11 @@
       <sprite>sprites\pumpkin_cine_spr</sprite>
       <sprite>sprites\stone_cine_spr</sprite>
     </sprites>
+    <sprites name="tong">
+      <sprite>sprites\needle_spr</sprite>
+      <sprite>sprites\needle_bubble_spr</sprite>
+      <sprite>sprites\acid_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -315,7 +320,11 @@
       <object>objects\fryguy_BG_drawer</object>
     </objects>
     <objects name="tong_boss">
+      <object>objects\tong_controller</object>
+      <object>objects\needle</object>
+      <object>objects\needle_bubble</object>
       <object>objects\sjw</object>
+      <object>objects\acid</object>
     </objects>
     <objects name="germany_motor">
       <object>objects\motor_controller</object>
@@ -349,6 +358,7 @@
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
+    <room>rooms\tong_room</room>
     <room>rooms\hitler_room</room>
     <room>rooms\cine_room</room>
     <room>rooms\megaphone_room</room>
@@ -360,7 +370,6 @@
     <room>rooms\NPC_room</room>
     <room>rooms\germany_motor_room</room>
     <room>rooms\embro_room</room>
-    <room>rooms\tong_room</room>
     <room>rooms\clown_room</room>
   </rooms>
   <help>
