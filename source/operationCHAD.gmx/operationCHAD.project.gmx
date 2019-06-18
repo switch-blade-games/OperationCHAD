@@ -155,6 +155,7 @@
     </backgrounds>
     <backgrounds name="tongs">
       <background>background\tong_BG</background>
+      <background>background\VG_tileset</background>
     </backgrounds>
     <backgrounds name="germany">
       <background>background\road_BG</background>
