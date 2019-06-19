@@ -361,8 +361,8 @@
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
-    <room>rooms\fryguy_room</room>
     <room>rooms\tong_room</room>
+    <room>rooms\fryguy_room</room>
     <room>rooms\germany_motor_room</room>
     <room>rooms\clown_room</room>
     <room>rooms\megaphone_room</room>
