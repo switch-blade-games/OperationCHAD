@@ -15,7 +15,8 @@ if (_version != global.version)
 
 // read settings
 global.fullscreen = buffer_read(buff,buffer_u8);
-global.crt = buffer_read(buff,buffer_u8);
+global.curve = buffer_read(buff,buffer_f32);
+global.scan = buffer_read(buff,buffer_f32);
 global.particles = buffer_read(buff,buffer_u8);
 global.btnstyle = buffer_read(buff,buffer_u8);
 // read keybinds

@@ -1,11 +1,12 @@
 /// settings_init();
 
-global.version = 2;
+global.version = 3;
 
 // settings
 global.fullscreen = false;
 global.btnstyle = true;
-global.crt = false;
+global.curve = 0.25;
+global.scan = 0.25;
 global.particles = false;
 // key binds
 global.key_left[0] = vk_left;

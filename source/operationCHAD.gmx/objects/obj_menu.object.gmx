@@ -53,10 +53,8 @@ display_set_gui_size(view_wview[0],view_hview[0]);
 // gamepad
 gamepad_init();
 
-// globals
+// game globals
 global.pause = false;
-global.w_amp = 0; // 4;
-global.w_freq = 0; // 2;
 global.xnudge = 0;
 global.ynudge = 0;
 global.xshake = 0;
@@ -147,16 +145,26 @@ switch(menu)
                     }
                 }
             else if (select == 1)
-                global.crt = !global.crt;
+                {
+                global.curve += 0.25;
+                if (global.curve &gt; 1)
+                    global.curve = 0;
+                }
             else if (select == 2)
-                global.particles = !global.particles;
+                {
+                global.scan += 0.25;
+                if (global.scan &gt; 1)
+                    global.scan = 0;
+                }
             else if (select == 3)
+                global.particles = !global.particles;
+            else if (select == 4)
                 {
                 menu = 3;
                 selectx = 0;
                 selecty = 0;
                 }
-            else if (select == 4)
+            else if (select == 5)
                 {
                 menu = 1;
                 select = 0;
@@ -170,7 +178,7 @@ switch(menu)
             select = max(0,select-1);
         if (keyboard_check_pressed(vk_down))
         or (gamepad_check_pressed_all(gpinput.padd))
-            select = min(4,select+1);
+            select = min(5,select+1);
         break;
     
     case 3: // edit keybinds
@@ -414,13 +422,14 @@ switch(menu)
     case 2: // settings
         var i = 0;
         draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.fullscreen));
-        draw_text_outline(60,64+i++*18,"CRT SHADER: "+val_to_text(0,global.crt));
+        draw_text_outline(60,64+i++*18,"CRT WARP: "+val_to_text(1,global.curve));
+        draw_text_outline(60,64+i++*18,"CRT SCANLINES: "+val_to_text(1,global.scan));
         draw_text_outline(60,64+i++*18,"PARTICLES: "+val_to_text(0,global.particles));
         draw_text_outline(60,64+i++*18,"CONTROLS");
         
         draw_text_outline(60,202,"BACK");
         
-        if (select &lt;= 3)
+        if (select &lt;= 4)
             draw_sprite(spr_camera_arrow,1,40,72+select*18);
         else
             draw_sprite(spr_camera_arrow,1,40,210);

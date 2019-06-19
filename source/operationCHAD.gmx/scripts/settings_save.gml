@@ -8,7 +8,8 @@ buffer_write(buff,buffer_u8,global.version);
 
 // write settings
 buffer_write(buff,buffer_u8,global.fullscreen);
-buffer_write(buff,buffer_u8,global.crt);
+buffer_write(buff,buffer_f32,global.curve);
+buffer_write(buff,buffer_f32,global.scan);
 buffer_write(buff,buffer_u8,global.particles);
 buffer_write(buff,buffer_u8,global.btnstyle);
 // write keybind keys

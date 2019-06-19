@@ -14,47 +14,34 @@ void main()
     v_vTexcoord = in_TextureCoord;
     }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float crt;
-uniform float wAmp;
-uniform float wFreq;
-uniform float time;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float scan;
+uniform float curve;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
-const float scanline = 500.0;
-
 void main()
     {
-    vec4 cta = vec4(0.0);
-    
     vec2 tc = vec2(v_vTexcoord.x,v_vTexcoord.y);
-    tc.y += (sin(tc.x + time*wFreq)*wAmp)*0.02;
     
-    if (crt >= 0.5)
-        {
-        // distance from the center
-        float dx = abs(0.5-tc.x);
-        float dy = abs(0.5-tc.y);
-        // square it to smooth the edges
-        dx *= dx;
-        dy *= dy;
-        
-        tc.x -= 0.5; tc.x *= 1.0+(dy*0.15); tc.x += 0.5;
-        tc.y -= 0.5; tc.y *= 1.0+(dx*0.20); tc.y += 0.5;
+    // distance from the center
+    float dx = abs(0.5-tc.x);
+    float dy = abs(0.5-tc.y);
+    // square it to smooth the edges
+    dx *= dx;
+    dy *= dy;
     
-        // get texel and add in scanline
-        cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
-        cta.rgb += sin(tc.y*scanline)*0.02;
-        
-        // cutoff
-        if(tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0 || tc.y < 0.0)
-            cta = vec4(0.0);
-        }
-    else
-        {
-        cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
-        }
+    tc.x -= 0.5; tc.x *= 1.0+(dy*(0.3*curve)); tc.x += 0.5;
+    tc.y -= 0.5; tc.y *= 1.0+(dx*(0.4*curve)); tc.y += 0.5;
+    
+    // get texel and add in scanline
+    vec4 cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
+    
+    // cutoff
+    float val = abs(sin(v_vTexcoord.y*480.0)*0.6*scan);
+    if(tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0 || tc.y < 0.0)
+        cta = vec4(0.0,0.0,0.0,val);
+    cta.rgb = mix(cta.rgb,vec3(0.0),val);
     
     // apply
     gl_FragColor = v_vColour*cta;
