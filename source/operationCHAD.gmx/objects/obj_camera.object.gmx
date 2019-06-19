@@ -39,7 +39,7 @@ enum camState
     }
 
 cam_state = camState.right;
-target = obj_player;
+target = par_actor;
 </string>
           </argument>
         </arguments>
@@ -83,20 +83,41 @@ global.yshake *= 0.8;
 
 //disabling screenshake for now
 
-if (!instance_exists(target)) or (cam_state == camState.static)
+if (!instance_exists(par_actor)) or (cam_state == camState.static)
     exit;
+
+var target_xmin = +9999;
+var target_ymin = +9999;
+var target_xmax = -9999;
+var target_ymax = -9999;
+with(par_actor)
+    {
+    if (x &lt; target_xmin)
+        target_xmin = x;
+    if (x &gt; target_xmax)
+        target_xmax = x;
+    if (y &lt; target_ymin)
+        target_ymin = y;
+    if (y &gt; target_ymax)
+        target_ymax = y;
+    }
 
 xprevious = x;
 yprevious = y;
-if (cam_state &amp; camState.right == camState.right) and (target.x &gt; x)
-    x = target.x;
-if (cam_state &amp; camState.up == camState.up) and (target.y &lt; y)
-    y = target.y;
-if (cam_state &amp; camState.left == camState.left) and (target.x &lt; x)
-    x = target.x;
-if (cam_state &amp; camState.down == camState.down) and (target.y &gt; y)
-    y = target.y;
+if (cam_state &amp; camState.right == camState.right)
+and (target_xmax &gt; x) and (target_xmin &gt; x - view_wview[0]/2 + 20)
+    x = target_xmax;
+if (cam_state &amp; camState.up == camState.up)
+and (target_ymin &lt; y) and (target_ymax &lt; y + view_hview[0]/2 - 20)
+    y = target_ymin;
+if (cam_state &amp; camState.left == camState.left)
+and (target_xmin &lt; x) and (target_xmax &lt; x + view_wview[0]/2 - 20)
+    x = target_xmin;
+if (cam_state &amp; camState.down == camState.down)
+and (target_ymax &gt; y) and (target_ymin &gt; y - view_hview[0]/2 + 20)
+    y = target_ymax;
 
+/*
 var inst = instance_nearest(x,y,obj_camera_path);
 if (inst != noone) and (instance_exists(inst))
     {

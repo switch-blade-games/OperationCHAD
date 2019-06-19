@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 
+gamepad_slot = 0;
+
 // player move states
 enum mState
     {

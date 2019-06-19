@@ -212,6 +212,16 @@ game_restart()
           <argument>
             <kind>1</kind>
             <string>debug = !debug;
+if (debug)
+    {
+    with(obj_player)
+        nohit = true;
+    }
+else
+    {
+    with(obj_player)
+        nohit = false;
+    }
 </string>
           </argument>
         </arguments>
