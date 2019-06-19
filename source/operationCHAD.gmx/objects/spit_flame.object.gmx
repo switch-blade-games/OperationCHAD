@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>par_enemy_projectile</parentName>
+  <maskName>spr_flame_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed=3
+            <string>event_inherited();
+
+speed=3
 </string>
           </argument>
         </arguments>

@@ -500,4 +500,15 @@ switch(move_state)
         
         grace_jump = 0;
         break;
+    
+    case mState.dead:
+        if (on_ground)
+            {
+            // friction
+            if (xspeed > 0)
+                xspeed = max(0,xspeed-fric);
+            else if (xspeed < 0)
+                xspeed = min(0,xspeed+fric);
+            }
+        break;
     }

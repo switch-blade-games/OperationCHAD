@@ -124,4 +124,12 @@ switch(move_state)
         else
             image_index = 0;
         break;
+    
+    case mState.dead:
+        if (sprite_index != spr_player_dead)
+            {
+            sprite_index = spr_player_dead;
+            image_index = 0;
+            }
+        break;
     }

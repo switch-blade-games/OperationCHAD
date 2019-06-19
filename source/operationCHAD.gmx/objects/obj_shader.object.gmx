@@ -31,6 +31,7 @@ application_surface_draw_enable(false);
 // flip flop buffers
 surf_temp_a = -1;
 surf_temp_b = -1;
+surf_temp_c = -1;
 
 // wavy shader uniforms
 u_time = shader_get_uniform(shd_wavy,"time");
@@ -80,6 +81,8 @@ if (surface_exists(surf_temp_a))
     surface_free(surf_temp_a);
 if (surface_exists(surf_temp_b))
     surface_free(surf_temp_b);
+if (surface_exists(surf_temp_c))
+    surface_free(surf_temp_c);
 </string>
           </argument>
         </arguments>
@@ -131,7 +134,11 @@ last = surf_temp_b;
 
 if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
     {
-    var surf_temp_c = surface_create(200,200);
+    if (!surface_exists(surf_temp_c))
+        surf_temp_c = surface_create(200,200);
+    else if (surface_get_width(surf_temp_c) != 200 or surface_get_height(surf_temp_c) != 200)
+        surface_resize(surf_temp_c,200,200);
+    
     surface_set_target(surf_temp_c);
     draw_clear($000000);
     draw_surface_part(last,20-view_xview[0],20-view_yview[0],200,200,0,0);
@@ -145,8 +152,6 @@ if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],v
     shader_set_uniform_f(u_scan,0.5);
     draw_surface(surf_temp_c,20,20);
     shader_reset();
-    
-    surface_free(surf_temp_c);
     }
 else
     {

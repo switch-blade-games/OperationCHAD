@@ -31,6 +31,8 @@ life = lifemax;
 team = 1;
 nohit = false;
 flash = 0;
+
+killOnContact = false;
 </string>
           </argument>
         </arguments>
