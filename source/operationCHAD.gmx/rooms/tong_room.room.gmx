@@ -111,10 +111,10 @@ instance_create(0,0,tong_controller)
     <instance objName="obj_climb_l" x="200" y="160" name="inst_C2943689" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="200" y="180" name="inst_F6A61123" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="200" y="200" name="inst_1E7D4D0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="needle" x="120" y="140" name="inst_C4E84939" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="20" y="-10" name="inst_31196647" locked="0" code="" scaleX="10" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="20" y="10" name="inst_9CC29F45" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="200" y="10" name="inst_C94197DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="needle" x="120" y="130" name="inst_83FF5A52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="VG_tileset" x="20" y="20" w="20" h="20" xo="0" yo="0" id="10000185" name="inst_6D86E2BD" depth="100" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
