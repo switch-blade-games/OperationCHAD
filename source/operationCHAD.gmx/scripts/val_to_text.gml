@@ -10,7 +10,10 @@ switch(argument[0])
         break;
     
     case 1: // percent
-        return(string(round(argument[1]*100))+"%");
+        if (argument[1] <= 0)
+            return("OFF");
+        else
+            return(string(round(argument[1]*100))+"%");
         break;
     
     case 2: // off-low-med-hi-max
