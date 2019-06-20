@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,13 +25,24 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>WAVEmax=6
+            <string>//higher for hard mode!!!
+WAVEmax=5
 
 
 WAVEodds=50
 
 repeat(WAVEmax/2)
-instance_create(20+random(360),-20,wave_flame)
+instance_create(20+random(360),-20,flame_boy)
+
+WRAPup=false
+
+
+EATattacktime=600
+
+alarm[0]=EATattacktime
+
+
+
 </string>
           </argument>
         </arguments>
@@ -54,11 +65,42 @@ instance_create(20+random(360),-20,wave_flame)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(wave_flame)
+            <string>with(flame_boy)
     instance_destroy()
     
 with(dir_flame)
     instance_destroy()
+    
+with(flame_bullet)
+    instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>WRAPup=true
+
+with(fryguy)
+    EATwatch=true
+    
+
 </string>
           </argument>
         </arguments>
@@ -81,14 +123,40 @@ with(dir_flame)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if(random(WAVEodds)&lt;1)
-if(instance_number(wave_flame)&lt;WAVEmax){
+            <string>if(WRAPup=true)
+exit
 
-    instance_create(20+random(360),-20,wave_flame)
+
+if(random(WAVEodds)&lt;1)
+if(instance_number(flame_boy)&lt;WAVEmax){
+
+    instance_create(20+random(360),-20,flame_boy)
 }
     
     
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_text(40,40,instance_number(flame_boy))
 </string>
           </argument>
         </arguments>

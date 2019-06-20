@@ -67,6 +67,14 @@
       <sprite>sprites\fryguy_chew_spr</sprite>
       <sprite>sprites\fryguy_reach_spr</sprite>
       <sprite>sprites\oven_door_spr</sprite>
+      <sprite>sprites\light_baby_spr</sprite>
+      <sprite>sprites\ghost_rope_spr</sprite>
+      <sprite>sprites\rope_mask_spr</sprite>
+      <sprite>sprites\flame_boy_spr</sprite>
+      <sprite>sprites\flame_boy_fall_spr</sprite>
+      <sprite>sprites\flame_boy_run_spr</sprite>
+      <sprite>sprites\flame_bullet_spr</sprite>
+      <sprite>sprites\bull_stand_spr</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
@@ -310,9 +318,10 @@
       <objects name="eat_attack">
         <object>objects\eat_attack_controller</object>
         <object>objects\oven_door</object>
-        <object>objects\wave_flame</object>
+        <object>objects\flame_boy</object>
         <object>objects\spit_flame</object>
         <object>objects\ember_bounce</object>
+        <object>objects\flame_bullet</object>
       </objects>
       <objects name="stand_attack">
         <object>objects\fryguy_stand_controller</object>
@@ -321,6 +330,12 @@
         <object>objects\ground_flame_shot</object>
       </objects>
       <object>objects\fryguy_BG_drawer</object>
+      <objects name="light_attack">
+        <object>objects\fryguy_light</object>
+        <object>objects\light_baby</object>
+        <object>objects\bull_placeholder</object>
+      </objects>
+      <object>objects\ghost_rope</object>
     </objects>
     <objects name="tong_boss">
       <object>objects\tong_controller</object>
@@ -362,8 +377,8 @@
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
-    <room>rooms\tong_room</room>
     <room>rooms\fryguy_room</room>
+    <room>rooms\tong_room</room>
     <room>rooms\germany_motor_room</room>
     <room>rooms\clown_room</room>
     <room>rooms\megaphone_room</room>

@@ -69,19 +69,19 @@ JUMPbackspe=3
 
 
 //where to land on the floor
-STANDy=140
+STANDy=120
 
 //where to sit
-SITy=100
+SITy=80
 
 //times for attack
 STANDtime=1000
 
 
-//time of EAT attack
+//time of EAT attack (moved over to eat_attack_controller
 EATattacktime=800
 
-EATtime=180
+EATtime=120
 
 EATimgspe=0.2
 
@@ -98,6 +98,8 @@ SPITrange=60
 PREslamtime=60
 
 RINGflamespe=1.5
+
+EATwatch=false
 
 
 
@@ -123,7 +125,9 @@ RINGflamespe=1.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=LIFT
+            <string>///Lift up over door
+
+state=LIFT
 
 //clear out eat attack
 
@@ -158,7 +162,9 @@ with(oven_door){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=REACH
+            <string>///Pull down oven door
+
+state=REACH
 
 instance_create(200,0,oven_door)
 
@@ -326,6 +332,9 @@ with(fryguy_stand_controller)
 
 state=JUMPback
 
+with(ghost_rope)
+    instance_destroy()
+
 motion_set(90,JUMPbackspe)
 
 </string>
@@ -350,19 +359,33 @@ motion_set(90,JUMPbackspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///pick different attacks
-
-if(ATTACK=1)
-ATTACK=2
-else
-ATTACK=1
+            <string>
 
 
+
+
+///pick different attacks
+
+//if(ATTACK=1)
+//ATTACK=2
+//else
+//ATTACK=1
+
+ATTACK=choose(1,2,3)
+
+//ATTACK=2
 
 ///////STAND attack
 
 if(ATTACK=1){
 state=JUMP
+
+//make ghost ropes
+instance_create(0,100,ghost_rope)
+
+var ROPE=instance_create(380,100,ghost_rope);
+
+ROPE.image_xscale=-1
 
 motion_set(90,JUMPspe)
 }
@@ -378,6 +401,14 @@ state=EAT
 
 alarm[2]=EATtime
 
+}
+
+
+if(ATTACK=3){
+
+instance_create(x,y,fryguy_light)
+
+instance_destroy()
 }
 
 
@@ -443,6 +474,15 @@ if(state=JUMPback){
     }
 }
 
+//wait for everything to clear out for EAT attack
+if(ATTACK=2){
+
+    if(EATwatch=true)
+    if(instance_number(flame_boy)=0){
+        alarm[7]=10
+        EATwatch=false
+    }
+}
 
 
     
