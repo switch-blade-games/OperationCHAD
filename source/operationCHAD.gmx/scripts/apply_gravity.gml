@@ -57,7 +57,6 @@ switch(move_state)
     
     case mState.climb:
         on_ground = false;
-        
         if (place_meeting(x,y+1,par_solid))
         or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
         or (position_meeting(x,bbox_bottom+1,par_ramp))
@@ -67,6 +66,26 @@ switch(move_state)
             // reset jump roll
             roll = false;
             }
+        break;
+    
+    case mState.dead:
+        // detect if we're standing on ground
+        on_ground = false;
+        if (place_meeting(x,y+1,par_solid))
+        or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
+        and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)) and yspeed >= 0)
+            {
+            // on the ground
+            on_ground = true;
+            // reset jump roll
+            roll = false;
+            // grace jump time
+            grace_jump = 8;
+            }
+        
+        // gravity
+        if (!on_ground) and (yspeed < 10)
+            yspeed += grav;
         break;
     }
 

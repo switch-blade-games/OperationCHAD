@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(6);
+killOnContact = true;
 
 image_speed = 0.3;
 

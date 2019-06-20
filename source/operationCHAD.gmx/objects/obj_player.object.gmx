@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 
+gamepad_slot = 0;
+
 // player move states
 enum mState
     {
@@ -36,6 +38,7 @@ enum mState
     duck,
     hang,
     climb,
+    dead
     }
 
 // weapon stats
@@ -71,6 +74,7 @@ double_jump = false;
 climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
+dead_timer = 120;
 
 // player direction
 roll = false;
@@ -83,6 +87,9 @@ cur_weapon = 0;
 shoot_timer = 0;
 recoil = 0;
 arm_pos = 0;
+
+xstart = x;
+ystart = y;
 </string>
           </argument>
         </arguments>
@@ -118,6 +125,103 @@ if (shoot_timer &gt; 0)
     shoot_timer--;
 if (recoil &gt; 0)
     recoil--;
+
+// dead
+if (move_state == mState.dead)
+    {
+    if (dead_timer &gt; 0)
+        dead_timer--;
+    else
+        {
+        move_state = mState.walk;
+        dead_timer = 120;
+        if (instance_exists(obj_camera))
+            {
+            if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
+                {
+                x = xstart;
+                y = ystart;
+                }
+            else
+                {
+                x = view_xview[0]+64;
+                y = view_yview[0];
+                }
+            }
+        else
+            {
+            x = xstart;
+            y = ystart;
+            }
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_enemy_projectile">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (team == other.team) or (nohit)
+    exit;
+
+if (move_state != mState.dead)
+    {
+    move_state = mState.dead;
+    on_ground = false;
+    xspeed = sign(x-other.x)*2;
+    yspeed = -8;
+    
+    //with(other)
+    //    instance_destroy();
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (team == other.team) or (!other.killOnContact) or (nohit)
+    exit;
+
+if (move_state != mState.dead)
+    {
+    move_state = mState.dead;
+    on_ground = false;
+    xspeed = sign(x-other.x)*2;
+    yspeed = -8;
+    }
 </string>
           </argument>
         </arguments>

@@ -13,9 +13,7 @@
   <code>instance_create(0,0,obj_control);
 instance_create(x,y,obj_camera);
 
-instance_create(0,0,tong_controller)
-
-//instance_create(0,0,fryguy_BG_drawer)</code>
+instance_create(0,0,tong_controller);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
