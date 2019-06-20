@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-<<<<<<< HEAD:source/operationCHAD.gmx/objects/flame_bullet.object.gmx
             <string>image_speed=0.3
-=======
             <string>event_inherited();
 
 LEFT=-1

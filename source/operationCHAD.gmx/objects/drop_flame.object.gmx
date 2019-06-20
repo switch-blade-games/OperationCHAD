@@ -25,15 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-<<<<<<< HEAD
-            <string>
-
-FLOORy=200
-=======
             <string>event_inherited();
 
 FLOORy=220
->>>>>>> d8c066f535fb6a625a84962fd3dada5aee8e6c79
 </string>
           </argument>
         </arguments>
