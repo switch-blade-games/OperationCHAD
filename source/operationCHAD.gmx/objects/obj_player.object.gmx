@@ -177,10 +177,10 @@ if (move_state == mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (team == other.team)
+            <string>if (team == other.team) or (nohit)
     exit;
 
-if (move_state != mState.dead) and (!nohit)
+if (move_state != mState.dead)
     {
     move_state = mState.dead;
     on_ground = false;
@@ -212,10 +212,10 @@ if (move_state != mState.dead) and (!nohit)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (team == other.team) or (!other.killOnContact)
+            <string>if (team == other.team) or (!other.killOnContact) or (nohit)
     exit;
 
-if (move_state != mState.dead) and (!nohit)
+if (move_state != mState.dead)
     {
     move_state = mState.dead;
     on_ground = false;

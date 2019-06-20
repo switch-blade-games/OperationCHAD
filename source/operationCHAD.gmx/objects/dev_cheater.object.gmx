@@ -48,15 +48,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if (keyboard_check(ord("W")))
-    global.w_amp += 0.1;
-if (keyboard_check(ord("S")))
-    global.w_amp -= 0.1;
-if (keyboard_check(ord("D")))
-    global.w_freq += 0.1;
-if (keyboard_check(ord("A")))
-    global.w_freq -= 0.1;
+            <string>if (debug)
+    {
+    with(par_actor)
+        nohit = true;
+    }
+else
+    {
+    with(par_actor)
+        nohit = false;
+    }
 </string>
           </argument>
         </arguments>
@@ -139,6 +140,9 @@ game_restart()
     draw_set_color(c_red);
     with(par_enemy)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+    draw_set_color(c_yellow);
+    with(par_projectile)
+        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     draw_set_color(c_fuchsia);
     with(par_solid)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
@@ -212,16 +216,6 @@ game_restart()
           <argument>
             <kind>1</kind>
             <string>debug = !debug;
-if (debug)
-    {
-    with(obj_player)
-        nohit = true;
-    }
-else
-    {
-    with(obj_player)
-        nohit = false;
-    }
 </string>
           </argument>
         </arguments>
