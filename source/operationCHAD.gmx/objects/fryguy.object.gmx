@@ -359,12 +359,7 @@ motion_set(90,JUMPbackspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-
-
-
-///pick different attacks
+            <string>///pick different attacks
 
 //if(ATTACK=1)
 //ATTACK=2
@@ -373,7 +368,7 @@ motion_set(90,JUMPbackspe)
 
 ATTACK=choose(1,2,3)
 
-//ATTACK=2
+ATTACK=1
 
 ///////STAND attack
 

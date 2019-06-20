@@ -318,6 +318,7 @@
     <objects name="fryguy_boss">
       <object>objects\fryguy</object>
       <object>objects\fry_flame</object>
+      <object>objects\fryguy_BG_drawer</object>
       <object>objects\dir_flame</object>
       <objects name="eat_attack">
         <object>objects\eat_attack_controller</object>
@@ -330,10 +331,10 @@
       <objects name="stand_attack">
         <object>objects\fryguy_stand_controller</object>
         <object>objects\drop_flame</object>
+        <object>objects\drop_flame</object>
         <object>objects\fry_flame_maker</object>
         <object>objects\ground_flame_shot</object>
       </objects>
-      <object>objects\fryguy_BG_drawer</object>
       <objects name="light_attack">
         <object>objects\fryguy_light</object>
         <object>objects\light_baby</object>
