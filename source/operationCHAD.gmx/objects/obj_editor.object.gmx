@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.version = 2;
+            <string>/*
+
+global.version = 2;
 global.levelname = "Untitled";
 
 // view/display/gui setup
@@ -163,7 +165,9 @@ gridh = 32;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch(mode)
+            <string>/*
+
+switch(mode)
     {
     case -1: // playtest
         if (!keyboard_check(vk_control)
@@ -594,7 +598,9 @@ view_yview[0] += (keyboard_check(ord("S"))-keyboard_check(ord("W")))*4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var mx = device_mouse_x_to_gui(0);
+            <string>/*
+
+var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
 
 if (mode == -1) // playtest
@@ -937,7 +943,9 @@ draw_set_color($000000);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (mode == -1)
+            <string>/*
+
+if (mode == -1)
     exit;
 
 draw_set_color($000000);

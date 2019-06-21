@@ -28,18 +28,6 @@
             <string>// instance is created in room creation code
 
 // view/window/gui
-view_wview[0] = 400;
-view_hview[0] = 240;
-if (global.fullscreen)
-    window_set_fullscreen(true);
-else
-    {
-    window_set_size(view_wview[0]*2,view_hview[0]*2);
-    window_set_position(display_get_width()/2-view_wview[0],display_get_height()/2-view_hview[0]);
-    }
-surface_resize(application_surface,view_wview[0],view_hview[0]);
-display_set_gui_size(view_wview[0],view_hview[0]);
-
 gui_w = view_wview[0];
 gui_h = view_hview[0];
 

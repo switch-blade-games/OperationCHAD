@@ -1,5 +1,7 @@
 /// editor_edit();
 
+/*
+
 mode = last;
 
 // view/display/gui setup

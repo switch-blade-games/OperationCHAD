@@ -1,5 +1,7 @@
 /// editor_save(filepath);
 
+/*
+
 // update map name
 var file_name = filename_name(argument[0]);
 var file_ext = filename_ext(argument[0]);
