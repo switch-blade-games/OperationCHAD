@@ -1,5 +1,7 @@
 /// editor_play();
 
+/*
+
 last = mode;
 mode = -1;
 

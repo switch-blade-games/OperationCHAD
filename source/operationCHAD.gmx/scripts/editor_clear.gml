@@ -1,5 +1,7 @@
 /// editor clear();
 
+/*
+
 global.levelname = "Untitled";
 
 // clear colliders

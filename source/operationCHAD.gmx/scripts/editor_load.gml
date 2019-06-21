@@ -1,5 +1,7 @@
 /// editor_load(filepath);
 
+/*
+
 var buff = buffer_load(argument[0]);
 buffer_seek(buff,buffer_seek_start,0);
 
