@@ -3,9 +3,9 @@
   <spriteName>fryguy_sit_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,70 +26,128 @@
           <argument>
             <kind>1</kind>
             <string>
-    
-    
-//alarm[0]=180
 
 
-WAITtime=60
+Hflip=choose(1,-1)
 
-//alarm[0]=WAITtime
+Vflip=-1
 
-JUMPspe=2.5
+Hmax=6
+Hadd=0.03
 
-//instance_create(0,0,light_controller)
-
-grav=0.05
-
+Vmax=2.6
+Vadd=0.1
 
 
-FLOORy=110
-
+LIGHTwait=0
 WAIT=1
-JUMP=2
-STAND=3
-WRAPup=4
+FLY=2
+FLYdone=3
+BACK=4
+LIGHTwait=5
+ALLDONE=6
 
-WRAPUPtime=60
+state=LIGHTwait
 
-state=WAIT
+LIGHTwaittime=60
 
 WAITtime=60
+
+alarm[5]=LIGHTwaittime
+
+FLYtime=1200
+
+FLYdonewait=60
+
+LIGHTwaittime=60
+
+ALLDONEtime=60
+
+BACKspe=1
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(0,0,light_drawer)
 
 alarm[0]=WAITtime
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_destroy()
 
-PREFLAMEtime=30
-
-FLAMErate=90
-
-FLAMEspe=1.5
-
-
-FLAMElist=ds_list_create()
-
-var i=0;
-
-repeat(3){
-
-    ds_list_insert(FLAMElist,i,i)
-    i+=1
-}
-
-ds_list_shuffle(FLAMElist)
-
-
-RIGHT=1
-LEFT=2
-
-facing=choose(LEFT,RIGHT)
-
-facing=LEFT
+instance_create(x,y,fryguy)
 
 
-FLAMEnum=20
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with(light_drawer)
+instance_destroy()
 
+state=ALLDONE
 
-
+alarm[4]=ALLDONEtime
 </string>
           </argument>
         </arguments>
@@ -112,9 +170,7 @@ FLAMEnum=20
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=JUMPback
-
-
+            <string>state=BACK
 </string>
           </argument>
         </arguments>
@@ -137,67 +193,12 @@ FLAMEnum=20
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FLAMEnum-=1
+            <string>
 
-var PULL=ds_list_find_value(FLAMElist,0);
+state=FLYdone
+speed=0
 
-ds_list_delete(FLAMElist,0)
-
-
-
-
-if(facing=LEFT)
-DIR=0
-else
-DIR=180
-
-
-var SON=0;
-
-if(PULL=0){
-
-    SON=instance_create(x,y+30,dir_flame);
-    SON.direction=DIR
-    SON.speed=FLAMEspe
-}
-
-if(PULL=1){
-
-    SON=instance_create(x,y+50,dir_flame);
-
-    SON.direction=DIR
-    SON.speed=FLAMEspe
-}
-
-if(PULL=2){
-
-    SON=instance_create(x,y+70,dir_flame);
-
-    SON.direction=DIR
-    SON.speed=FLAMEspe
-}
-
-if(ds_list_empty(FLAMElist)=true){
-var i=0;
-
-repeat(3){
-
-    ds_list_insert(FLAMElist,i,i)
-    i+=1
-}
-
-ds_list_shuffle(FLAMElist)
-}
-    
-
-if(FLAMEnum&gt;0)
-alarm[1]=FLAMErate
-
-if(FLAMEnum&lt;=0){
-alarm[2]=WRAPUPtime
-state=WRAPup
-}
-
+alarm[2]=FLYdonewait
 </string>
           </argument>
         </arguments>
@@ -220,19 +221,17 @@ state=WRAPup
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///JUMP
+            <string>///start flying
 
-state=JUMP
+hspeed=Hmax/2*Hflip
 
+//hspeed=Hflip
 
-if(facing=RIGHT)
-motion_set(60,JUMPspe)
-else
-motion_set(120,JUMPspe)
+vspeed=Vmax*Vflip
 
-    
-    
+state=FLY
 
+alarm[1]=FLYtime
 </string>
           </argument>
         </arguments>
@@ -255,78 +254,50 @@ motion_set(120,JUMPspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=JUMP){
+            <string>if(state=FLY){
 
-    motion_add(270,grav)
+if(x&gt;xstart)
+Hflip=-1
+if(x&lt;xstart)
+Hflip=1
+    
+hspeed+=Hadd*Hflip
 
-    if(y&gt;=FLOORy){
-        y=FLOORy
+if(hspeed&lt;-Hmax)
+hspeed=-Hmax
+
+if(hspeed&gt;Hmax)
+hspeed=Hmax
+
+
+
+if(y&gt;ystart)
+Vflip=-1
+if(y&lt;ystart)
+Vflip=1
+    
+vspeed+=Vadd*Vflip
+
+if(vspeed&lt;-Vmax)
+vspeed=-Vmax
+
+if(vspeed&gt;Vmax)
+vspeed=Vmax
+
+}
+
+
+if(state=BACK){
+
+    motion_set(point_direction(x,y,xstart,ystart),BACKspe)
+    if(point_distance(x,y,xstart,ystart)&lt;BACKspe){
+        x=xstart
+        y=ystart
         speed=0
-        state=STAND
-        
-        alarm[1]=PREFLAMEtime
-    }
+        state=LIGHTwait
+        alarm[3]=LIGHTwaittime
+        }
 }
-
-if(state=STAND)
-if(instance_number(fry_bomb)=0)
-if(random(60)&lt;1)
-instance_create(x,y,fry_bomb)
-
-
-
-///lighting stuff
-
-var AL=1;
-
-var NUM=6;
-var DIST=10;
-var BASE=60;
-var i=0;
-var NOISE=5;
-
-
-var ALrate=1/NUM;
-
-
-surface_set_target(LIGHTsur)
-
-
-draw_set_color(global.DARKpurple)
-
-draw_rectangle(0,0,400,240,false)
-
-draw_set_blend_mode(bm_subtract)
-
-
-
-draw_set_color(c_white)
-
-repeat(NUM){
-
-
-draw_set_alpha(AL-(i*ALrate))
-
-with(dir_flame)
-draw_circle(x,y,BASE/3+(i*DIST)+random(NOISE),false)
-
-draw_circle(x,y,BASE+(i*DIST)+random(NOISE),false)
-
-i+=1
-
-
-
-}
-
-draw_set_blend_mode(bm_normal)
-
-draw_set_alpha(1)
-
-surface_reset_target()
-
-
-
-
 </string>
           </argument>
         </arguments>
@@ -349,16 +320,7 @@ surface_reset_target()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(LIGHTsur,0,0)
-
-
-if(state=JUMP)
-    sprite_index=fryguy_jump_spr
-    
-if(state=STAND)
-    sprite_index=fryguy_stand_spr
-
-draw_self()
+            <string>draw_self()
 </string>
           </argument>
         </arguments>

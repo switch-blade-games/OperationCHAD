@@ -14,7 +14,9 @@
 var inst = instance_create(x,y,obj_camera);
 inst.cam_state = camState.static;
 
-instance_create(0,0,fryguy_BG_drawer)
+
+instance_create(0,0,fryguy_controller)
+
 
 with(obj_mb)
     visible=false</code>

@@ -6,6 +6,7 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\node_spr</sprite>
     <sprites name="walls">
       <sprite>sprites\msk_wall</sprite>
       <sprite>sprites\msk_wall_half</sprite>
@@ -78,6 +79,11 @@
       <sprite>sprites\flame_boy_run_spr</sprite>
       <sprite>sprites\flame_bullet_spr</sprite>
       <sprite>sprites\bull_stand_spr</sprite>
+      <sprite>sprites\fry_kid_spr</sprite>
+      <sprite>sprites\fry_bomb_spr</sprite>
+      <sprite>sprites\fryguy_die_spr</sprite>
+      <sprite>sprites\arm_ball_spr</sprite>
+      <sprite>sprites\arm_hand_spr</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
@@ -147,6 +153,13 @@
       <sprite>sprites\acid_spr</sprite>
       <sprite>sprites\drill_spr</sprite>
     </sprites>
+    <sprites name="effects">
+      <sprite>sprites\small_explode_spr</sprite>
+      <sprite>sprites\flame_ball_spr</sprite>
+      <sprite>sprites\small_flame_ball_spr</sprite>
+      <sprite>sprites\big_fry_spr</sprite>
+      <sprite>sprites\floor_flame_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -185,7 +198,12 @@
     <background>background\protest_BG</background>
     <background>background\hitler_BG</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\fry_U_path</path>
+    <path>paths\fry_UL_path</path>
+    <path>paths\fry_H_path</path>
+    <path>paths\fry_HL_path</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>
@@ -276,6 +294,7 @@
       <object>objects\obj_casing</object>
       <object>objects\obj_dust</object>
       <object>objects\obj_particle</object>
+      <object>objects\small_explode</object>
     </objects>
     <object>objects\obj_control</object>
     <object>objects\obj_menu</object>
@@ -316,8 +335,8 @@
       <object>objects\NPC_BG_drawer</object>
     </objects>
     <objects name="fryguy_boss">
+      <object>objects\fryguy_controller</object>
       <object>objects\fryguy</object>
-      <object>objects\fry_flame</object>
       <object>objects\fryguy_BG_drawer</object>
       <object>objects\dir_flame</object>
       <objects name="eat_attack">
@@ -330,17 +349,36 @@
       </objects>
       <objects name="stand_attack">
         <object>objects\fryguy_stand_controller</object>
-        <object>objects\drop_flame</object>
+        <object>objects\ghost_rope</object>
         <object>objects\drop_flame</object>
         <object>objects\fry_flame_maker</object>
         <object>objects\ground_flame_shot</object>
+        <object>objects\fry_blob</object>
+        <object>objects\fry_flame</object>
+        <object>objects\fry_bounce</object>
+        <object>objects\floor_flame</object>
+        <object>objects\pre_v_bounce</object>
+        <object>objects\fry_arm</object>
+        <object>objects\L_fry_arm</object>
+        <object>objects\arm_ball</object>
+        <object>objects\H_fry_flame</object>
+        <object>objects\fry_maker</object>
+        <object>objects\L_fry_maker</object>
       </objects>
       <objects name="light_attack">
-        <object>objects\fryguy_light</object>
+        <object>objects\light_drawer</object>
+        <object>objects\fryguy_light_2</object>
         <object>objects\light_baby</object>
-        <object>objects\bull_placeholder</object>
+        <object>objects\fry_bomb</object>
+        <object>objects\small_burst</object>
       </objects>
-      <object>objects\ghost_rope</object>
+      <objects name="scrap">
+        <object>objects\light_controller</object>
+        <object>objects\fry_kid</object>
+        <object>objects\fry_node</object>
+        <object>objects\bull_placeholder</object>
+        <object>objects\fryguy_light</object>
+      </objects>
     </objects>
     <objects name="tong_boss">
       <object>objects\tong_controller</object>

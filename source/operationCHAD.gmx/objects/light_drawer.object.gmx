@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,54 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//HORIZONAL FLAMES
+            <string>LIGHTsur=surface_create(400,240)
 
-Hlist=ds_list_create()
-
-//insert the 4 possibilities
-
-var i=0;
-
-NUM=4
-
-repeat(NUM){
-ds_list_insert(Hlist,0,i)
-i+=1
-}
-
-ds_list_shuffle(Hlist)
-
-Hrate=200
-
-alarm[0]=60
-
-
-//VERTICAL FLAMES
-
-//HORIZONAL FLAMES
-
-Vlist=ds_list_create()
-
-//insert the 4 possibilities
-
-var i=0;
-
-NUM=4
-
-repeat(NUM){
-ds_list_insert(Vlist,0,i)
-i+=1
-}
-
-ds_list_shuffle(Vlist)
-
-Vrate=200
-
-alarm[1]=60
-
-
-
-
+with(light_baby)
+    visible=true
 </string>
           </argument>
         </arguments>
@@ -95,21 +51,14 @@ alarm[1]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(drop_flame)
-    instance_destroy()
-    
-with(fry_flame_maker)
-    instance_destroy()
-
-    
-with(ground_flame_shot)
-    instance_destroy()
+            <string>with(light_baby)
+    visible=false
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -126,75 +75,60 @@ with(ground_flame_shot)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Vattacks
+            <string>///lighting stuff
 
-with(fryguy){
-TEMPspit=true
-alarm[9]=60
-}
+var AL=1;
 
-//repopulate the list if needed
+var NUM=6;
+var DIST=10;
+var BASE=60;
 var i=0;
+var NOISE=5;
 
-if(ds_list_empty(Vlist)){
 
-    repeat(NUM){
-ds_list_insert(Vlist,0,i)
+var ALrate=1/NUM;
+
+
+surface_set_target(LIGHTsur)
+
+
+draw_set_color(global.DARKpurple)
+
+draw_rectangle(0,0,400,240,false)
+
+draw_set_blend_mode(bm_subtract)
+
+
+
+draw_set_color(c_white)
+
+repeat(NUM){
+
+
+draw_set_alpha(AL-(i*ALrate))
+
+
+with(fryguy_light_2)
+draw_circle(x,y,BASE+(i*DIST)+random(NOISE),false)
+
 i+=1
+
+
+
 }
 
-ds_list_shuffle(Vlist)
+draw_set_blend_mode(bm_normal)
 
-}
+draw_set_alpha(1)
 
+surface_reset_target()
 
-//pull from list
-
-var Vattack=ds_list_find_value(Vlist,0);
-
-ds_list_delete(Vlist,0)
-
-//place a flame based what was pulled
-
-
-//amount to add to fryguy spawn y
-var Yadd=20;
-
-if(Vattack=0){
-
-    var Fson=instance_create(fryguy.x,fryguy.y+Yadd,ground_flame_shot);
-    Fson.Xdest=30
-    
-}
-
-if(Vattack=1){
-
-    var Fson=instance_create(fryguy.x,fryguy.y+Yadd,ground_flame_shot);
-    Fson.Xdest=70
-    
-}
-
-if(Vattack=2){
-
-    var Fson=instance_create(fryguy.x,fryguy.y+Yadd,ground_flame_shot);
-    Fson.Xdest=330
-    
-}
-
-if(Vattack=3){
-
-    var Fson=instance_create(fryguy.x,fryguy.y+Yadd,ground_flame_shot);
-    Fson.Xdest=370
-    
-}
-
-alarm[1]=Vrate
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -211,88 +145,8 @@ alarm[1]=Vrate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Hattacks
+            <string>draw_surface(LIGHTsur,0,0)
 
-
-//repopulate the list if needed
-var i=0;
-
-if(ds_list_empty(Hlist)){
-
-    repeat(NUM){
-ds_list_insert(Hlist,0,i)
-i+=1
-}
-
-ds_list_shuffle(Hlist)
-
-}
-
-//pull from list
-
-var Hattack=ds_list_find_value(Hlist,0);
-
-ds_list_delete(Hlist,0)
-
-//place a flame based what was pulled
-
-
-//0=Lup//1=L     2=Rup//3=R
-
-if(Hattack=0){
-
-
-
-    with(L_fry_arm){
-    
-    
-    state=TURNING
-    POINTdir=90
-    
-    }
-}
-
-if(Hattack=1){
-
-    with(L_fry_arm){
-    
-    
-    state=TURNING
-    POINTdir=180
-    
-    }
-}
-
-if(Hattack=2){
-
-
-    with(fry_arm){
-    
-    if(FLIP=1){
-    state=TURNING
-    POINTdir=90
-    }
-    }
-
-    //var Fson=instance_create(120,160,fry_flame_maker);
-    //Fson.ANG=180
-}
-
-if(Hattack=3){
-
-    with(fry_arm){
-    
-    if(FLIP=1){
-    state=TURNING
-    POINTdir=0
-    }
-    }
-
-    //var Fson=instance_create(280,160,fry_flame_maker);
-    //Fson.ANG=0
-}
-
-alarm[0]=Hrate
 </string>
           </argument>
         </arguments>
