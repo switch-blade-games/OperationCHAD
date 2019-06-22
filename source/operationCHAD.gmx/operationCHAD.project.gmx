@@ -84,6 +84,7 @@
       <sprite>sprites\fryguy_die_spr</sprite>
       <sprite>sprites\arm_ball_spr</sprite>
       <sprite>sprites\arm_hand_spr</sprite>
+      <sprite>sprites\flame_part_spr</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
@@ -335,6 +336,7 @@
       <object>objects\NPC_BG_drawer</object>
     </objects>
     <objects name="fryguy_boss">
+      <object>objects\flame_part_node</object>
       <object>objects\fryguy_controller</object>
       <object>objects\fryguy</object>
       <object>objects\fryguy_BG_drawer</object>
@@ -421,6 +423,7 @@
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
     <room>rooms\fryguy_room</room>
+    <room>rooms\pooh_room</room>
     <room>rooms\tong_room</room>
     <room>rooms\germany_motor_room</room>
     <room>rooms\clown_room</room>
@@ -430,7 +433,6 @@
     <room>rooms\cine_room</room>
     <room>rooms\cloud_room</room>
     <room>rooms\test_room</room>
-    <room>rooms\pooh_room</room>
     <room>rooms\NPC_room</room>
     <room>rooms\embro_room</room>
   </rooms>
