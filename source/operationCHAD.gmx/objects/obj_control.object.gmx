@@ -112,11 +112,16 @@ or (gamepad_check_pressed_all(gpinput.start))
 
 if (global.pause and surface_exists(surf_pause))
     {
-    shader_set(shd_crt);
-    shader_set_uniform_f(global.u_xc,global.xc);
-    shader_set_uniform_f(global.u_yc,global.yc);
-    draw_surface(surf_pause,0,0);
-    shader_reset();
+    if (instance_exists(obj_shader))
+        {
+        shader_set(shd_crt);
+        shader_set_uniform_f(obj_shader.u_curve,global.curve);
+        shader_set_uniform_f(obj_shader.u_scan,global.scan);
+        draw_surface(surf_pause,0,0);
+        shader_reset();
+        }
+    else
+        draw_surface(surf_pause,0,0);
     
     draw_set_color($000000);
     draw_set_alpha(0.75);
