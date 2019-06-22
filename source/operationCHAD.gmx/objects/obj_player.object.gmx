@@ -44,12 +44,39 @@ enum mState
 // weapon stats
 weapons = 0;
 weapon_name[weapons] = "Rifle";
-weapon_auto[weapons] = true;
 weapon_time[weapons] = 4;
-weapon_kick[weapons] = 4;
 weapon_pspd[weapons] = 8;
+weapon_pnum[weapons] = 1;
+weapon_sprd[weapons] = 0;
 weapon_proj[weapons] = obj_bullet;
-weapon_case[weapons] = obj_casing;
+weapon_case[weapons] = 0;
+weapons++;
+
+weapon_name[weapons] = "Spreadshot"
+weapon_time[weapons] = 6;
+weapon_pspd[weapons] = 8;
+weapon_pnum[weapons] = 5;
+weapon_sprd[weapons] = 5;
+weapon_proj[weapons] = obj_pellet;
+weapon_case[weapons] = 1;
+weapons++;
+
+weapon_name[weapons] = "Heat Seeker"
+weapon_time[weapons] = 10;
+weapon_pspd[weapons] = 6;
+weapon_pnum[weapons] = 1;
+weapon_sprd[weapons] = 0;
+weapon_proj[weapons] = obj_heat_seeker;
+weapon_case[weapons] = -1;
+weapons++;
+
+weapon_name[weapons] = "Flame Thrower"
+weapon_time[weapons] = 4;
+weapon_pspd[weapons] = 6;
+weapon_pnum[weapons] = 1;
+weapon_sprd[weapons] = 0;
+weapon_proj[weapons] = obj_flamethrower_flame;
+weapon_case[weapons] = -1;
 weapons++;
 
 // player animation
@@ -85,6 +112,7 @@ dir = 1;
 // player weapon
 cur_weapon = 0;
 shoot_timer = 0;
+flame_ang = 0;
 recoil = 0;
 arm_pos = 0;
 
@@ -125,6 +153,8 @@ if (shoot_timer &gt; 0)
     shoot_timer--;
 if (recoil &gt; 0)
     recoil--;
+if (cur_weapon == 3) and (flame_ang != aim)
+    flame_ang -= clamp(angle_difference(flame_ang,aim),-10,10);
 
 // dead
 if (move_state == mState.dead)

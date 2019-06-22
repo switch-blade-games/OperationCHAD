@@ -58,6 +58,15 @@ else
     with(par_actor)
         nohit = false;
     }
+
+for(var i=0; i&lt;10; i++;)
+    {
+    if (keyboard_check_pressed(vk_numpad0+i))
+        {
+        if (instance_exists(obj_player))
+            obj_player.cur_weapon = clamp(i,0,3);
+        }
+    }
 </string>
           </argument>
         </arguments>
