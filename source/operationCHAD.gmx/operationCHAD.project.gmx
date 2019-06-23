@@ -19,6 +19,7 @@
       <sprite>sprites\msk_mb_r</sprite>
       <sprite>sprites\msk_mb_l</sprite>
       <sprite>sprites\spr_wall_move</sprite>
+      <sprite>sprites\text_platform_mask_spr</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\msk_player</sprite>
@@ -161,6 +162,13 @@
       <sprite>sprites\big_fry_spr</sprite>
       <sprite>sprites\floor_flame_spr</sprite>
     </sprites>
+    <sprites name="internet">
+      <sprite>sprites\G_eye_spr</sprite>
+      <sprite>sprites\G_pupil_spr</sprite>
+      <sprite>sprites\sock_puppet_spr</sprite>
+      <sprite>sprites\internet_overlay_spr</sprite>
+      <sprite>sprites\text_platform_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -198,6 +206,10 @@
     <background>background\checker_BG</background>
     <background>background\protest_BG</background>
     <background>background\hitler_BG</background>
+    <backgrounds name="internet">
+      <background>background\grid_BG</background>
+      <background>background\glow_BG</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -418,10 +430,17 @@
       <object>objects\painter</object>
       <object>objects\paint_parent</object>
     </objects>
+    <objects name="internet">
+      <object>objects\G_eye</object>
+      <object>objects\sock_puppet</object>
+      <object>objects\internet_controller</object>
+      <object>objects\text_platform</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\init_room</room>
     <room>rooms\menu_room</room>
+    <room>rooms\internet_room</room>
     <room>rooms\fryguy_room</room>
     <room>rooms\pooh_room</room>
     <room>rooms\tong_room</room>
