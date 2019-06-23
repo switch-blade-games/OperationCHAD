@@ -14,6 +14,7 @@
 instance_create(0,0,obj_camera);
 
 
+
 instance_create(0,0,internet_controller)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -37,7 +38,7 @@ instance_create(0,0,internet_controller)</code>
   <backgrounds>
     <background visible="-1" foreground="0" name="glow_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="-1" stretch="0"/>
     <background visible="-1" foreground="0" name="grid_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="0" foreground="-1" name="&lt;undefined&gt;" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="-1" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>

@@ -29,6 +29,16 @@
 
 with(light_baby)
     visible=true
+    
+    
+Yspe=1
+
+Ydest=0
+
+
+    
+    
+
 </string>
           </argument>
         </arguments>
@@ -75,7 +85,9 @@ with(light_baby)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///lighting stuff
+            <string>Ydest-=Yspe
+
+///lighting stuff
 
 var AL=1;
 
@@ -95,6 +107,12 @@ surface_set_target(LIGHTsur)
 draw_set_color(global.DARKpurple)
 
 draw_rectangle(0,0,400,240,false)
+
+
+draw_set_alpha(0.5+random(0.2))
+draw_sprite_tiled(ghost_baby_spr,-1,0,Ydest)
+
+draw_set_alpha(1)
 
 draw_set_blend_mode(bm_subtract)
 

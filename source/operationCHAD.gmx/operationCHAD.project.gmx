@@ -6,6 +6,85 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprites name="0-Front End">
+      <sprites name="cine">
+        <sprite>sprites\gang_colors_spr</sprite>
+        <sprite>sprites\yolo_cine_spr</sprite>
+        <sprite>sprites\fox_cine_spr</sprite>
+        <sprite>sprites\pumpkin_cine_spr</sprite>
+        <sprite>sprites\stone_cine_spr</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="1-Planned Parenthood">
+      <sprites name="tong">
+        <sprite>sprites\needle_spr</sprite>
+        <sprite>sprites\needle_bubble_spr</sprite>
+        <sprite>sprites\spr_acid_mask</sprite>
+        <sprite>sprites\acid_spr</sprite>
+        <sprite>sprites\drill_spr</sprite>
+      </sprites>
+      <sprites name="megaphone">
+        <sprite>sprites\megaphone_spr</sprite>
+        <sprite>sprites\racist_text_spr</sprite>
+      </sprites>
+      <sprites name="fryguy">
+        <sprite>sprites\spr_flame_mask</sprite>
+        <sprite>sprites\fry_flame_1_spr</sprite>
+        <sprite>sprites\fryguy_sit_spr</sprite>
+        <sprite>sprites\fryguy_eat_spr</sprite>
+        <sprite>sprites\fryguy_stand_spr</sprite>
+        <sprite>sprites\fryguy_jump_spr</sprite>
+        <sprite>sprites\fryguy_spit_spr</sprite>
+        <sprite>sprites\spr_ember_mask</sprite>
+        <sprite>sprites\ember_spr</sprite>
+        <sprite>sprites\fryguy_chew_spr</sprite>
+        <sprite>sprites\fryguy_reach_spr</sprite>
+        <sprite>sprites\oven_door_spr</sprite>
+        <sprite>sprites\light_baby_spr</sprite>
+        <sprite>sprites\ghost_rope_spr</sprite>
+        <sprite>sprites\rope_mask_spr</sprite>
+        <sprite>sprites\flame_boy_spr</sprite>
+        <sprite>sprites\flame_boy_fall_spr</sprite>
+        <sprite>sprites\flame_boy_run_spr</sprite>
+        <sprite>sprites\flame_bullet_spr</sprite>
+        <sprite>sprites\bull_stand_spr</sprite>
+        <sprite>sprites\fry_kid_spr</sprite>
+        <sprite>sprites\fry_bomb_spr</sprite>
+        <sprite>sprites\fryguy_die_spr</sprite>
+        <sprite>sprites\arm_ball_spr</sprite>
+        <sprite>sprites\arm_hand_spr</sprite>
+        <sprite>sprites\flame_part_spr</sprite>
+        <sprite>sprites\ghost_baby_spr</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="2-Internet">
+      <sprite>sprites\internet_horizon_spr</sprite>
+      <sprite>sprites\G_eye_spr</sprite>
+      <sprite>sprites\G_pupil_spr</sprite>
+      <sprite>sprites\sock_puppet_spr</sprite>
+      <sprite>sprites\internet_overlay_spr</sprite>
+      <sprite>sprites\text_platform_spr</sprite>
+      <sprite>sprites\twitter_bird_spr</sprite>
+      <sprite>sprites\twitter_bird_mask_spr</sprite>
+    </sprites>
+    <sprites name="3-Germany">
+      <sprite>sprites\motor_mockup_spr</sprite>
+      <sprite>sprites\motor_nazi_spr</sprite>
+      <sprite>sprites\tank_spr</sprite>
+    </sprites>
+    <sprites name="4-Clown World">
+      <sprites name="circle_ride">
+        <sprite>sprites\circle_frame_spr</sprite>
+        <sprite>sprites\circle_text_spr</sprite>
+        <sprite>sprites\circle_sign_spr</sprite>
+        <sprite>sprites\circle_cart_spr</sprite>
+        <sprite>sprites\cam_icon_spr</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="5-Island of NPCs">
+      <sprite>sprites\NPC_enemy_spr</sprite>
+      <sprite>sprites\pooh_spr</sprite>
+    </sprites>
     <sprite>sprites\node_spr</sprite>
     <sprites name="walls">
       <sprite>sprites\msk_wall</sprite>
@@ -49,12 +128,12 @@
       <sprite>sprites\spr_flamethrower_flame</sprite>
     </sprites>
     <sprite>sprites\spr_casings</sprite>
+    <sprite>sprites\joystix_font_spr</sprite>
     <sprite>sprites\spr_guns</sprite>
     <sprite>sprites\spr_arrow_h</sprite>
     <sprite>sprites\spr_dust</sprite>
     <sprite>sprites\spr_particle</sprite>
     <sprite>sprites\msk_particle</sprite>
-    <sprite>sprites\NPC_enemy_spr</sprite>
     <sprites name="embro">
       <sprite>sprites\baby_jump_spr</sprite>
       <sprite>sprites\baby_crawl_spr</sprite>
@@ -63,34 +142,6 @@
       <sprite>sprites\embro_case_spr</sprite>
       <sprite>sprites\embro_case_bottom_spr</sprite>
       <sprite>sprites\embro_overlay_spr</sprite>
-    </sprites>
-    <sprites name="fryguy">
-      <sprite>sprites\spr_flame_mask</sprite>
-      <sprite>sprites\fry_flame_1_spr</sprite>
-      <sprite>sprites\fryguy_sit_spr</sprite>
-      <sprite>sprites\fryguy_eat_spr</sprite>
-      <sprite>sprites\fryguy_stand_spr</sprite>
-      <sprite>sprites\fryguy_jump_spr</sprite>
-      <sprite>sprites\fryguy_spit_spr</sprite>
-      <sprite>sprites\spr_ember_mask</sprite>
-      <sprite>sprites\ember_spr</sprite>
-      <sprite>sprites\fryguy_chew_spr</sprite>
-      <sprite>sprites\fryguy_reach_spr</sprite>
-      <sprite>sprites\oven_door_spr</sprite>
-      <sprite>sprites\light_baby_spr</sprite>
-      <sprite>sprites\ghost_rope_spr</sprite>
-      <sprite>sprites\rope_mask_spr</sprite>
-      <sprite>sprites\flame_boy_spr</sprite>
-      <sprite>sprites\flame_boy_fall_spr</sprite>
-      <sprite>sprites\flame_boy_run_spr</sprite>
-      <sprite>sprites\flame_bullet_spr</sprite>
-      <sprite>sprites\bull_stand_spr</sprite>
-      <sprite>sprites\fry_kid_spr</sprite>
-      <sprite>sprites\fry_bomb_spr</sprite>
-      <sprite>sprites\fryguy_die_spr</sprite>
-      <sprite>sprites\arm_ball_spr</sprite>
-      <sprite>sprites\arm_hand_spr</sprite>
-      <sprite>sprites\flame_part_spr</sprite>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
@@ -108,12 +159,6 @@
       <sprite>sprites\sjw_9_spr</sprite>
       <sprite>sprites\sjw_10_spr</sprite>
     </sprites>
-    <sprites name="germany">
-      <sprite>sprites\motor_mockup_spr</sprite>
-      <sprite>sprites\motor_nazi_spr</sprite>
-      <sprite>sprites\tank_spr</sprite>
-    </sprites>
-    <sprite>sprites\pooh_spr</sprite>
     <sprites name="pepe">
       <sprites name="legs">
         <sprite>sprites\pepe_legs_walk_spr</sprite>
@@ -134,45 +179,12 @@
         <sprite>sprites\pepe_place_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="circle_ride">
-      <sprite>sprites\circle_frame_spr</sprite>
-      <sprite>sprites\circle_text_spr</sprite>
-      <sprite>sprites\circle_sign_spr</sprite>
-      <sprite>sprites\circle_cart_spr</sprite>
-      <sprite>sprites\cam_icon_spr</sprite>
-    </sprites>
-    <sprite>sprites\joystix_font_spr</sprite>
-    <sprites name="megaphone">
-      <sprite>sprites\megaphone_spr</sprite>
-      <sprite>sprites\racist_text_spr</sprite>
-    </sprites>
-    <sprites name="cine">
-      <sprite>sprites\gang_colors_spr</sprite>
-      <sprite>sprites\yolo_cine_spr</sprite>
-      <sprite>sprites\fox_cine_spr</sprite>
-      <sprite>sprites\pumpkin_cine_spr</sprite>
-      <sprite>sprites\stone_cine_spr</sprite>
-    </sprites>
-    <sprites name="tong">
-      <sprite>sprites\needle_spr</sprite>
-      <sprite>sprites\needle_bubble_spr</sprite>
-      <sprite>sprites\spr_acid_mask</sprite>
-      <sprite>sprites\acid_spr</sprite>
-      <sprite>sprites\drill_spr</sprite>
-    </sprites>
     <sprites name="effects">
       <sprite>sprites\small_explode_spr</sprite>
       <sprite>sprites\flame_ball_spr</sprite>
       <sprite>sprites\small_flame_ball_spr</sprite>
       <sprite>sprites\big_fry_spr</sprite>
       <sprite>sprites\floor_flame_spr</sprite>
-    </sprites>
-    <sprites name="internet">
-      <sprite>sprites\G_eye_spr</sprite>
-      <sprite>sprites\G_pupil_spr</sprite>
-      <sprite>sprites\sock_puppet_spr</sprite>
-      <sprite>sprites\internet_overlay_spr</sprite>
-      <sprite>sprites\text_platform_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -212,6 +224,7 @@
     <background>background\protest_BG</background>
     <background>background\hitler_BG</background>
     <backgrounds name="internet">
+      <background>background\internet_TS</background>
       <background>background\grid_BG</background>
       <background>background\glow_BG</background>
     </backgrounds>
@@ -341,127 +354,154 @@
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>
-    <objects name="embro">
-      <object>objects\baby_enemy</object>
-      <object>objects\cooler</object>
-      <object>objects\embro_controller</object>
-      <object>objects\embro</object>
-      <object>objects\embro_case</object>
-      <object>objects\embro_case_bottom</object>
+    <objects name="0-Front End">
+      <objects name="cine">
+        <object>objects\cine_controller</object>
+        <object>objects\cine_obj</object>
+        <object>objects\painter</object>
+        <object>objects\paint_parent</object>
+      </objects>
     </objects>
-    <objects name="NPC_island">
+    <objects name="1- Planned Parenthood">
+      <objects name="tong_boss">
+        <object>objects\tong_controller</object>
+        <object>objects\needle</object>
+        <object>objects\needle_bubble</object>
+        <object>objects\sjw</object>
+        <object>objects\acid</object>
+        <object>objects\drill</object>
+      </objects>
+      <objects name="fryguy_boss">
+        <object>objects\flame_part_node</object>
+        <object>objects\fryguy_controller</object>
+        <object>objects\fryguy</object>
+        <object>objects\fryguy_BG_drawer</object>
+        <object>objects\dir_flame</object>
+        <objects name="eat_attack">
+          <object>objects\eat_attack_controller</object>
+          <object>objects\oven_door</object>
+          <object>objects\flame_boy</object>
+          <object>objects\spit_flame</object>
+          <object>objects\ember_bounce</object>
+          <object>objects\flame_bullet</object>
+        </objects>
+        <objects name="stand_attack">
+          <object>objects\fryguy_stand_controller</object>
+          <object>objects\ghost_rope</object>
+          <object>objects\drop_flame</object>
+          <object>objects\fry_flame_maker</object>
+          <object>objects\ground_flame_shot</object>
+          <object>objects\fry_blob</object>
+          <object>objects\fry_flame</object>
+          <object>objects\fry_bounce</object>
+          <object>objects\floor_flame</object>
+          <object>objects\pre_v_bounce</object>
+          <object>objects\fry_arm</object>
+          <object>objects\L_fry_arm</object>
+          <object>objects\arm_ball</object>
+          <object>objects\H_fry_flame</object>
+          <object>objects\fry_maker</object>
+          <object>objects\L_fry_maker</object>
+        </objects>
+        <objects name="light_attack">
+          <object>objects\light_drawer</object>
+          <object>objects\fryguy_light_2</object>
+          <object>objects\light_baby</object>
+          <object>objects\ghost_baby</object>
+          <object>objects\fry_bomb</object>
+          <object>objects\small_burst</object>
+        </objects>
+        <objects name="scrap">
+          <object>objects\light_controller</object>
+          <object>objects\fry_kid</object>
+          <object>objects\fry_node</object>
+          <object>objects\bull_placeholder</object>
+          <object>objects\fryguy_light</object>
+        </objects>
+      </objects>
+      <objects name="embro">
+        <object>objects\baby_enemy</object>
+        <object>objects\cooler</object>
+        <object>objects\embro_controller</object>
+        <object>objects\embro</object>
+        <object>objects\embro_case</object>
+        <object>objects\embro_case_bottom</object>
+      </objects>
+      <objects name="megaphone">
+        <object>objects\megaphone</object>
+        <object>objects\letter</object>
+        <object>objects\letter_spawner</object>
+        <object>objects\letter_enemy</object>
+      </objects>
+    </objects>
+    <objects name="2-Internet">
+      <object>objects\G_eye</object>
+      <object>objects\sock_puppet</object>
+      <object>objects\internet_controller</object>
+      <object>objects\text_platform</object>
+      <object>objects\horizon_drawer</object>
+      <object>objects\twitter_bird</object>
+    </objects>
+    <objects name="3-Germany">
+      <objects name="germany_motor">
+        <object>objects\motor_controller</object>
+        <object>objects\motor_foreground</object>
+        <object>objects\motor_mockup</object>
+        <object>objects\motor_nazi</object>
+        <object>objects\tank</object>
+      </objects>
+    </objects>
+    <objects name="4-Clown World">
+      <objects name="circle_ride">
+        <object>objects\circle_ride</object>
+        <object>objects\circle_sign</object>
+        <object>objects\circle_cart</object>
+        <object>objects\circle_cam</object>
+      </objects>
+    </objects>
+    <objects name="5-Island of NPCs">
+      <objects name="pooh">
+        <object>objects\pooh</object>
+      </objects>
       <object>objects\NPC_enemy</object>
       <object>objects\NPC_spawner</object>
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
     </objects>
-    <objects name="fryguy_boss">
-      <object>objects\flame_part_node</object>
-      <object>objects\fryguy_controller</object>
-      <object>objects\fryguy</object>
-      <object>objects\fryguy_BG_drawer</object>
-      <object>objects\dir_flame</object>
-      <objects name="eat_attack">
-        <object>objects\eat_attack_controller</object>
-        <object>objects\oven_door</object>
-        <object>objects\flame_boy</object>
-        <object>objects\spit_flame</object>
-        <object>objects\ember_bounce</object>
-        <object>objects\flame_bullet</object>
-      </objects>
-      <objects name="stand_attack">
-        <object>objects\fryguy_stand_controller</object>
-        <object>objects\ghost_rope</object>
-        <object>objects\drop_flame</object>
-        <object>objects\fry_flame_maker</object>
-        <object>objects\ground_flame_shot</object>
-        <object>objects\fry_blob</object>
-        <object>objects\fry_flame</object>
-        <object>objects\fry_bounce</object>
-        <object>objects\floor_flame</object>
-        <object>objects\pre_v_bounce</object>
-        <object>objects\fry_arm</object>
-        <object>objects\L_fry_arm</object>
-        <object>objects\arm_ball</object>
-        <object>objects\H_fry_flame</object>
-        <object>objects\fry_maker</object>
-        <object>objects\L_fry_maker</object>
-      </objects>
-      <objects name="light_attack">
-        <object>objects\light_drawer</object>
-        <object>objects\fryguy_light_2</object>
-        <object>objects\light_baby</object>
-        <object>objects\fry_bomb</object>
-        <object>objects\small_burst</object>
-      </objects>
-      <objects name="scrap">
-        <object>objects\light_controller</object>
-        <object>objects\fry_kid</object>
-        <object>objects\fry_node</object>
-        <object>objects\bull_placeholder</object>
-        <object>objects\fryguy_light</object>
-      </objects>
-    </objects>
-    <objects name="tong_boss">
-      <object>objects\tong_controller</object>
-      <object>objects\needle</object>
-      <object>objects\needle_bubble</object>
-      <object>objects\sjw</object>
-      <object>objects\acid</object>
-      <object>objects\drill</object>
-    </objects>
-    <objects name="germany_motor">
-      <object>objects\motor_controller</object>
-      <object>objects\motor_foreground</object>
-      <object>objects\motor_mockup</object>
-      <object>objects\motor_nazi</object>
-      <object>objects\tank</object>
-    </objects>
-    <objects name="pooh">
-      <object>objects\pooh</object>
-    </objects>
-    <objects name="clown_world">
-      <object>objects\circle_ride</object>
-      <object>objects\circle_sign</object>
-      <object>objects\circle_cam</object>
-      <object>objects\circle_cart</object>
-    </objects>
-    <objects name="megaphone">
-      <object>objects\megaphone</object>
-      <object>objects\letter</object>
-      <object>objects\letter_spawner</object>
-      <object>objects\letter_enemy</object>
-    </objects>
-    <objects name="cine">
-      <object>objects\cine_controller</object>
-      <object>objects\cine_obj</object>
-      <object>objects\painter</object>
-      <object>objects\paint_parent</object>
-    </objects>
-    <objects name="internet">
-      <object>objects\G_eye</object>
-      <object>objects\sock_puppet</object>
-      <object>objects\internet_controller</object>
-      <object>objects\text_platform</object>
-    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\init_room</room>
-    <room>rooms\menu_room</room>
-    <room>rooms\internet_room</room>
-    <room>rooms\fryguy_room</room>
-    <room>rooms\pooh_room</room>
-    <room>rooms\tong_room</room>
-    <room>rooms\germany_motor_room</room>
-    <room>rooms\clown_room</room>
-    <room>rooms\megaphone_room</room>
-    <room>rooms\hitler_room</room>
-    <room>rooms\circle_room</room>
-    <room>rooms\cine_room</room>
-    <room>rooms\cloud_room</room>
-    <room>rooms\test_room</room>
-    <room>rooms\NPC_room</room>
-    <room>rooms\embro_room</room>
+    <rooms name="0- Front End">
+      <room>rooms\init_room</room>
+      <room>rooms\menu_room</room>
+      <rooms name="2-Internet">
+        <room>rooms\internet_twitter_room</room>
+        <room>rooms\internet_vert_room</room>
+        <room>rooms\internet_room</room>
+      </rooms>
+    </rooms>
+    <rooms name="1-Planned Parenthood">
+      <room>rooms\fryguy_room</room>
+      <room>rooms\embro_room</room>
+      <room>rooms\tong_room</room>
+      <room>rooms\megaphone_room</room>
+    </rooms>
+    <rooms name="3-Germany">
+      <room>rooms\germany_motor_room</room>
+      <room>rooms\hitler_room</room>
+    </rooms>
+    <rooms name="4-Clown World">
+      <room>rooms\clown_room</room>
+      <room>rooms\circle_room</room>
+      <room>rooms\cloud_room</room>
+    </rooms>
+    <rooms name="5- Island of NPCs">
+      <room>rooms\NPC_room</room>
+      <room>rooms\pooh_room</room>
+    </rooms>
+    <rooms name="99-test">
+      <room>rooms\test_room</room>
+      <room>rooms\cine_room</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
