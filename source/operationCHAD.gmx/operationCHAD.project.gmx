@@ -82,6 +82,13 @@
         <sprite>sprites\circle_cart_spr</sprite>
         <sprite>sprites\cam_icon_spr</sprite>
       </sprites>
+      <sprite>sprites\pink_triangle_spr</sprite>
+      <sprite>sprites\unicorn_spr</sprite>
+      <sprite>sprites\plat_mask_spr</sprite>
+      <sprite>sprites\plat_spr</sprite>
+      <sprite>sprites\candle_spr</sprite>
+      <sprite>sprites\church_plat_spr</sprite>
+      <sprite>sprites\cross_spr</sprite>
     </sprites>
     <sprites name="5-Island of NPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
@@ -233,6 +240,7 @@
       <background>background\overton_BG</background>
       <background>background\octo_battle_BG</background>
     </backgrounds>
+    <background>background\ball_buster_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -464,6 +472,16 @@
         <object>objects\circle_cart</object>
         <object>objects\circle_cam</object>
       </objects>
+      <objects name="unicorn">
+        <object>objects\unicorn_controller</object>
+        <object>objects\pink_triangle</object>
+        <object>objects\unicorn</object>
+        <object>objects\tri_tracer</object>
+        <object>objects\plat</object>
+        <object>objects\candle</object>
+        <object>objects\church_plat</object>
+        <object>objects\cross</object>
+      </objects>
     </objects>
     <objects name="5-Island of NPCs">
       <objects name="pooh">
@@ -480,11 +498,12 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <room>rooms\unicorn_room</room>
+      <room>rooms\internet_twitter_room</room>
+      <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\octo_room</room>
       <room>rooms\overton_room</room>
-      <room>rooms\internet_twitter_room</room>
       <room>rooms\internet_vert_room</room>
       <room>rooms\internet_room</room>
     </rooms>
