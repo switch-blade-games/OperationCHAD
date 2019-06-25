@@ -66,6 +66,8 @@
       <sprite>sprites\text_platform_spr</sprite>
       <sprite>sprites\twitter_bird_spr</sprite>
       <sprite>sprites\twitter_bird_mask_spr</sprite>
+      <sprite>sprites\echo_spr</sprite>
+      <sprite>sprites\echo_mask_spr</sprite>
     </sprites>
     <sprites name="3-Germany">
       <sprite>sprites\motor_mockup_spr</sprite>
@@ -201,6 +203,7 @@
     </backgrounds>
     <backgrounds name="clown">
       <background>background\clown_BG</background>
+      <background>background\unicorn_BG</background>
     </backgrounds>
     <backgrounds name="fryguy">
       <background>background\fryguy_BG</background>
@@ -216,17 +219,19 @@
       <background>background\hills_2_BG</background>
       <background>background\motor_foreground_BG</background>
       <background>background\motor_sky_BG</background>
+      <background>background\hitler_BG</background>
     </backgrounds>
     <background>background\cloud_BG</background>
     <background>background\cloud_tile_BG</background>
     <background>background\moon_man_BG</background>
     <background>background\checker_BG</background>
     <background>background\protest_BG</background>
-    <background>background\hitler_BG</background>
     <backgrounds name="internet">
       <background>background\internet_TS</background>
       <background>background\grid_BG</background>
       <background>background\glow_BG</background>
+      <background>background\overton_BG</background>
+      <background>background\octo_battle_BG</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths">
@@ -441,6 +446,7 @@
       <object>objects\text_platform</object>
       <object>objects\horizon_drawer</object>
       <object>objects\twitter_bird</object>
+      <object>objects\echo</object>
     </objects>
     <objects name="3-Germany">
       <objects name="germany_motor">
@@ -473,11 +479,14 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <rooms name="2-Internet">
-        <room>rooms\internet_twitter_room</room>
-        <room>rooms\internet_vert_room</room>
-        <room>rooms\internet_room</room>
-      </rooms>
+      <room>rooms\unicorn_room</room>
+    </rooms>
+    <rooms name="2-Internet">
+      <room>rooms\octo_room</room>
+      <room>rooms\overton_room</room>
+      <room>rooms\internet_twitter_room</room>
+      <room>rooms\internet_vert_room</room>
+      <room>rooms\internet_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
       <room>rooms\fryguy_room</room>
