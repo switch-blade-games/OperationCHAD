@@ -301,6 +301,7 @@
       <script>scripts\enemy_hit.gml</script>
       <script>scripts\blend_normal.gml</script>
       <script>scripts\blend_sub.gml</script>
+      <script>scripts\random_col_set.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
   </scripts>
@@ -374,6 +375,7 @@
         <object>objects\painter</object>
         <object>objects\paint_parent</object>
       </objects>
+      <object>objects\ep_warning</object>
     </objects>
     <objects name="1- Planned Parenthood">
       <objects name="tong_boss">
@@ -497,6 +499,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\ep_room</room>
       <room>rooms\unicorn_room</room>
       <room>rooms\internet_twitter_room</room>
       <room>rooms\ball_buster_room</room>
