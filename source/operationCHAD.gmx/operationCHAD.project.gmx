@@ -500,6 +500,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <room>rooms\ep_room</room>
+      <room>rooms\tong_room</room>
       <room>rooms\unicorn_room</room>
       <room>rooms\internet_twitter_room</room>
       <room>rooms\ball_buster_room</room>
@@ -513,7 +514,6 @@
     <rooms name="1-Planned Parenthood">
       <room>rooms\fryguy_room</room>
       <room>rooms\embro_room</room>
-      <room>rooms\tong_room</room>
       <room>rooms\megaphone_room</room>
     </rooms>
     <rooms name="3-Germany">
