@@ -41,48 +41,34 @@ enum mState
     dead
     }
 
-// weapon stats
-weapons = 0;
-weapon_name[weapons] = "Rifle";
-weapon_time[weapons] = 4;
-weapon_pspd[weapons] = 8;
-weapon_pnum[weapons] = 1;
-weapon_sprd[weapons] = 0;
-weapon_proj[weapons] = obj_bullet;
-weapon_case[weapons] = 0;
-weapons++;
+// animation state
+enum aState
+    {
+    idle,
+    walk,
+    roll,
+    duck,
+    hang,
+    climb,
+    dead
+    }
 
-weapon_name[weapons] = "Spreadshot"
-weapon_time[weapons] = 6;
-weapon_pspd[weapons] = 8;
-weapon_pnum[weapons] = 5;
-weapon_sprd[weapons] = 5;
-weapon_proj[weapons] = obj_pellet;
-weapon_case[weapons] = 1;
-weapons++;
+// player skins
+enum skin
+    {
+    pepe,
+    stonetoss,
+    foxford,
+    yoloswag,
+    pumpkinhead
+    }
 
-weapon_name[weapons] = "Heat Seeker"
-weapon_time[weapons] = 10;
-weapon_pspd[weapons] = 6;
-weapon_pnum[weapons] = 1;
-weapon_sprd[weapons] = 0;
-weapon_proj[weapons] = obj_heat_seeker;
-weapon_case[weapons] = -1;
-weapons++;
-
-weapon_name[weapons] = "Flame Thrower"
-weapon_time[weapons] = 4;
-weapon_pspd[weapons] = 6;
-weapon_pnum[weapons] = 1;
-weapon_sprd[weapons] = 0;
-weapon_proj[weapons] = obj_flamethrower_flame;
-weapon_case[weapons] = -1;
-weapons++;
-
-// player animation
-sprite_index = spr_player_walk;
-image_speed = 0;
-image_index = 0;
+// player motion state/flags
+move_state = mState.walk;
+double_jump = false;
+climb_side = 0;
+grace_jump = 0; // 6
+no_hang_time = 0; // 12
 
 // player position/physics
 grav = 0.4;
@@ -95,29 +81,45 @@ suby = 0;
 xpre = x;
 ypre = y;
 
-// player motion state/flags
-move_state = mState.walk;
-double_jump = false;
-climb_side = 0;
-grace_jump = 0; // 6
-no_hang_time = 0; // 12
-dead_timer = 120;
-
-// player direction
-roll = false;
-face = 1;
+// player orientation
 aim = 0;
 dir = 1;
 
 // player weapon
-cur_weapon = 0;
+weapon_stats();
+cur_weapon = weapon.rifle;
 shoot_timer = 0;
 flame_ang = 0;
-recoil = 0;
 arm_pos = 0;
 
+// death/respawn
+dead_timer = 120;
 xstart = x;
 ystart = y;
+
+// player animation
+player_skin = skin.pepe;
+anim_state = aState.idle;
+anim_slope = 0;
+full_sprite = -1;
+full_index = 0;
+leg_sprite = -1;
+leg_index = 0;
+arm_sprite = -1;
+arm_index = 0;
+
+arm_y[0] = 0;
+arm_y[1] = -1;
+arm_y[2] = -3;
+arm_y[3] = -3;
+arm_y[4] = -2;
+arm_y[5] = 0;
+arm_y[6] = -1;
+arm_y[7] = -3;
+arm_y[8] = -3;
+arm_y[9] = -2;
+
+update_skin(player_skin);
 </string>
           </argument>
         </arguments>
@@ -146,13 +148,11 @@ apply_input();
 animate();
 collide();
 
-arm_pos = -2 + (move_state == mState.duck)*12;
+arm_pos = -18 + (move_state == mState.duck)*12;
 
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
-if (recoil &gt; 0)
-    recoil--;
 if (cur_weapon == 3) and (flame_ang != aim)
     flame_ang -= clamp(angle_difference(flame_ang,aim),-10,10);
 
@@ -278,7 +278,45 @@ if (move_state != mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index,image_index,x,y,face,1,0,-1,1);
+            <string>switch(anim_state)
+    {
+    case aState.idle:
+    case aState.walk:
+        if (anim_state == aState.idle)
+            leg_sprite_index = leg_sprite[0,anim_slope];
+        else if (anim_state == aState.walk)
+            leg_sprite_index = leg_sprite[1,anim_slope];
+        arm_sprite_index = arm_sprite[floor(aim/45)];
+        
+        draw_sprite_ext(leg_sprite_index,leg_index,x,y,dir,1,0,-1,1);
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y[leg_index],dir,1,0,-1,1);
+        break;
+    
+    case aState.roll:
+        full_sprite_index = roll_sprite;
+        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        break;
+    
+    case aState.duck:
+        full_sprite_index = duck_sprite;
+        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        break;
+    
+    case aState.hang:
+        full_sprite_index = hang_sprite;
+        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        break;
+    
+    case aState.climb:
+        full_sprite_index = climb_sprite;
+        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        break;
+    
+    case aState.dead:
+        full_sprite_index = dead_sprite;
+        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        break;
+    }
 </string>
           </argument>
         </arguments>

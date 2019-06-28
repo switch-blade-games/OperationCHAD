@@ -55,7 +55,6 @@ JUMPanispe=0.3
 JUMPanimax=4
 JUMPaniimg=0
 
-
 torso_spr[0] = pepe_arms_0_spr;
 torso_spr[1] = pepe_arms_45_spr;
 torso_spr[2] = pepe_arms_90_spr;

@@ -174,11 +174,9 @@
         <sprite>sprites\pepe_legs_stand_spr</sprite>
       </sprites>
       <sprites name="arms">
-        <sprite>sprites\pepe_arms_0_spr</sprite>
         <sprite>sprites\pepe_arms_90_spr</sprite>
-        <sprite>sprites\pepe_arms_walk_0_spr</sprite>
-        <sprite>sprites\pepe_arms_shoot_0_spr</sprite>
         <sprite>sprites\pepe_arms_45_spr</sprite>
+        <sprite>sprites\pepe_arms_0_spr</sprite>
         <sprite>sprites\pepe_arms_315_spr</sprite>
         <sprite>sprites\pepe_arms_270_spr</sprite>
       </sprites>
@@ -273,6 +271,8 @@
       <script>scripts\collide.gml</script>
       <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
+      <script>scripts\weapon_stats.gml</script>
+      <script>scripts\update_skin.gml</script>
     </scripts>
     <scripts name="editor">
       <script>scripts\editor_clear.gml</script>

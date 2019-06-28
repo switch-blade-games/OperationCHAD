@@ -16,7 +16,7 @@ switch(move_state)
         if (h_dir != 0)
             {
             xspeed = move_speed*h_dir;
-            face = h_dir;
+            dir = h_dir;
             
             // move left or right
             if (input_right)
@@ -62,9 +62,9 @@ switch(move_state)
             {
             if (input_up)
                 aim = 90;
-            else if (face > 0)
+            else if (dir > 0)
                 aim = 0;
-            else if (face < 0)
+            else if (dir < 0)
                 aim = 180;
             
             // friction
@@ -76,7 +76,7 @@ switch(move_state)
         
         if (input_down) and (on_ground)
             {
-            if (h_dir == 0) and (!place_meeting(x+face,y,par_solid))
+            if (h_dir == 0) and (!place_meeting(x+dir,y,par_solid))
                 {
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
@@ -98,7 +98,7 @@ switch(move_state)
         if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed) and (!input_down)
             jump();
         
-        if (input_fire) // and ((on_ground) or (!on_ground and yspeed >= 1))
+        if (input_fire)
             fire_weapon();
         break;
     
@@ -117,12 +117,12 @@ switch(move_state)
         
         // aim
         if (h_dir != 0)
-            face = h_dir;
+            dir = h_dir;
         if (h_dir == 0 and v_dir == 0)
             {
-            if (face > 0)
+            if (dir > 0)
                 aim = 0;
-            else if (face < 0)
+            else if (dir < 0)
                 aim = 180;
             }
         else
@@ -133,14 +133,14 @@ switch(move_state)
         and (!input_right)
         and (on_ground)
             {
-            if (!place_meeting(x+face,y,par_climb))
+            if (!place_meeting(x+dir,y,par_climb))
                 {
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
                 
-                if (face > 0)
+                if (dir > 0)
                     aim = 0;
-                else if (face < 0)
+                else if (dir < 0)
                     aim = 180;
                 }
             }
@@ -165,7 +165,7 @@ switch(move_state)
         
         if (h_dir != 0)
             {
-            face = h_dir;
+            dir = h_dir;
             
             // move left or right
             if (input_right)
@@ -194,7 +194,6 @@ switch(move_state)
                     move_state = mState.walk;
                     on_ground = false;
                     grace_jump = 0;
-                    roll = false;
                     
                     mask_index = msk_player;
                     y += 1;
@@ -224,12 +223,12 @@ switch(move_state)
             
             // aim
             if (h_dir != 0)
-                face = h_dir;
+                dir = h_dir;
             if (h_dir == 0 and v_dir == 0)
                 {
-                if (face > 0)
+                if (dir > 0)
                     aim = 0;
-                else if (face < 0)
+                else if (dir < 0)
                     aim = 180;
                 }
             else
@@ -248,7 +247,7 @@ switch(move_state)
             if (h_dir != 0)
                 {
                 xspeed = move_speed*h_dir;
-                face = h_dir;
+                dir = h_dir;
                 
                 // move left or right
                 if (input_right)
@@ -273,7 +272,7 @@ switch(move_state)
         var inst = noone;
         while(inst == noone and i<=12)
             {
-            inst = instance_position(x,(y-30)+i,par_mb);
+            inst = instance_position(x,(y-46)+i,par_mb);
             i += 2;
             }
         
@@ -284,16 +283,13 @@ switch(move_state)
             else
                 var xh = x;
             
-            var yh = floor(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+24;
-            if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
+            var yh = floor(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+40;
+            if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-40,par_mb))
             and (abs(y-yh) <= 16)
                 y = yh;
             }
         else
-            {
             move_state = mState.walk;
-            roll = false;
-            }
         
         if (input_jump_pressed)
             {
@@ -303,7 +299,6 @@ switch(move_state)
                     {
                     no_hang_time = 12;
                     move_state = mState.walk;
-                    roll = false;
                     }
                 }
             else
@@ -331,10 +326,12 @@ switch(move_state)
         if ((climb_side & tile_side.bottom == tile_side.bottom) and (!input_fire)
         and ((climb_side & tile_side.left == 0 and input_right) or (climb_side & tile_side.right == 0 and input_left)))
             climb_side = tile_side.bottom;
-        //if ((climb_side & tile_side.right == tile_side.right) and (input_left or input_down))
-            //climb_side = tile_side.right;
-        //if ((climb_side & tile_side.left == tile_side.left) and (input_right or input_down))
-            //climb_side = tile_side.left;
+        /*
+        if ((climb_side & tile_side.right == tile_side.right) and (input_left or input_down))
+            climb_side = tile_side.right;
+        if ((climb_side & tile_side.left == tile_side.left) and (input_right or input_down))
+            climb_side = tile_side.left;
+        */
         
         if (climb_side == tile_side.none) // no longer climbing on a wall
             {
@@ -344,22 +341,20 @@ switch(move_state)
             and (input_up)
                 x += face;
             */
-            
             move_state = mState.walk;
-            roll = false;
             }
         else
             {
             // face away from wall you are climbing on
             if (climb_side & tile_side.right == tile_side.right)
-                face = -1;
+                dir = -1;
             else if (climb_side & tile_side.left == tile_side.left)
-                face = 1;
+                dir = 1;
             else if (climb_side == tile_side.bottom)
                 {
                 // face in direction of movement
                 if (h_dir != 0)
-                    face = h_dir;
+                    dir = h_dir;
                 }
             
             if (input_lock) or (input_fire)
@@ -411,7 +406,7 @@ switch(move_state)
                     }
                 else if (climb_side == tile_side.bottom)
                     {
-                    aim = point_direction(0,0,face,0);
+                    aim = point_direction(0,0,dir,0);
                     if (h_dir != 0) or (input_down)
                         aim = point_direction(0,0,input_right-input_left,input_down);
                     }
@@ -453,14 +448,12 @@ switch(move_state)
                     or (on_ground and (input_down or ((climb_side & tile_side.right == tile_side.right) and input_right) or ((climb_side & tile_side.left == tile_side.left) and input_left)))
                         {
                         move_state = mState.walk;
-                        aim = point_direction(0,0,face,0);
+                        aim = point_direction(0,0,dir,0);
                         
                         if (!on_ground)
                         and (input_up or ((climb_side & tile_side.right == tile_side.right) and input_right and !input_left) or ((climb_side & tile_side.left == tile_side.left) and input_left and !input_right))
                         and (!input_down) and (!place_meeting(x,y-1,par_solid))
                             jump();
-                        else
-                            roll = false;
                         }
                     }
                 else if (climb_side == tile_side.bottom)
@@ -480,9 +473,9 @@ switch(move_state)
                         {
                         move_speed = 2;
                         xspeed = move_speed*h_dir;
-                        if (face > 0)
+                        if (dir > 0)
                             aim = 0;
-                        else if (face < 0)
+                        else if (dir < 0)
                             aim = 180;
                         }
                     
@@ -491,8 +484,7 @@ switch(move_state)
                     or (input_down and on_ground)
                         {
                         move_state = mState.walk;
-                        aim = point_direction(0,0,face,0);
-                        roll = false;
+                        aim = point_direction(0,0,dir,0);
                         }
                     }
                 }

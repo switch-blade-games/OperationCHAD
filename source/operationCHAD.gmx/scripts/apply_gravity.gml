@@ -12,8 +12,6 @@ switch(move_state)
             {
             // on the ground
             on_ground = true;
-            // reset jump roll
-            roll = false;
             // grace jump time
             grace_jump = 8;
             }
@@ -35,8 +33,8 @@ switch(move_state)
                     {
                     if (y >= inst.y)
                         {
-                        var yh = floor(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+24;
-                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-24,par_mb))
+                        var yh = floor(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+40;
+                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-40,par_mb))
                         and (abs(y-yh) <= 16)
                             {
                             move_state = mState.hang;
@@ -63,8 +61,6 @@ switch(move_state)
             {
             // on the ground
             on_ground = true;
-            // reset jump roll
-            roll = false;
             }
         break;
     
@@ -77,8 +73,6 @@ switch(move_state)
             {
             // on the ground
             on_ground = true;
-            // reset jump roll
-            roll = false;
             // grace jump time
             grace_jump = 8;
             }
