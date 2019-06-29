@@ -82,6 +82,17 @@
         <sprite>sprites\circle_cart_spr</sprite>
         <sprite>sprites\cam_icon_spr</sprite>
       </sprites>
+      <sprites name="unicorn">
+        <sprite>sprites\spr_unicorn_body</sprite>
+        <sprite>sprites\spr_unicorn_neck</sprite>
+        <sprite>sprites\spr_unicorn_head</sprite>
+        <sprite>sprites\spr_unicorn_tail</sprite>
+        <sprite>sprites\spr_unicorn_leg_ft</sprite>
+        <sprite>sprites\spr_unicorn_leg_fb</sprite>
+        <sprite>sprites\spr_unicorn_leg_bt</sprite>
+        <sprite>sprites\spr_unicorn_leg_bb</sprite>
+        <sprite>sprites\spr_unicorn_hoof</sprite>
+      </sprites>
       <sprite>sprites\pink_triangle_spr</sprite>
       <sprite>sprites\unicorn_spr</sprite>
       <sprite>sprites\plat_mask_spr</sprite>
@@ -365,6 +376,7 @@
     <object>objects\obj_mb_l</object>
     <object>objects\obj_wall_move</object>
     <object>objects\player_mockup</object>
+    <object>objects\obj_horse_mockup</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
     </objects>
