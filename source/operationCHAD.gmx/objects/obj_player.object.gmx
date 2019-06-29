@@ -98,7 +98,7 @@ xstart = x;
 ystart = y;
 
 // player animation
-player_skin = skin.pepe;
+player_skin = skin.yoloswag;
 anim_state = aState.idle;
 anim_slope = 0;
 full_sprite = -1;

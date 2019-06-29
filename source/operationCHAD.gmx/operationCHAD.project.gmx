@@ -82,13 +82,15 @@
         <sprite>sprites\circle_cart_spr</sprite>
         <sprite>sprites\cam_icon_spr</sprite>
       </sprites>
-      <sprite>sprites\pink_triangle_spr</sprite>
-      <sprite>sprites\unicorn_spr</sprite>
-      <sprite>sprites\plat_mask_spr</sprite>
-      <sprite>sprites\plat_spr</sprite>
-      <sprite>sprites\candle_spr</sprite>
-      <sprite>sprites\church_plat_spr</sprite>
-      <sprite>sprites\cross_spr</sprite>
+      <sprites name="Unicorn">
+        <sprite>sprites\unicorn_spr</sprite>
+        <sprite>sprites\pink_triangle_spr</sprite>
+        <sprite>sprites\candle_spr</sprite>
+        <sprite>sprites\church_plat_spr</sprite>
+        <sprite>sprites\cross_spr</sprite>
+        <sprite>sprites\rainbow_beam_spr</sprite>
+        <sprite>sprites\rainbow_obj_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="5-Island of NPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
@@ -193,6 +195,24 @@
       <sprite>sprites\big_fry_spr</sprite>
       <sprite>sprites\floor_flame_spr</sprite>
     </sprites>
+    <sprites name="yolo">
+      <sprites name="arms">
+        <sprite>sprites\yolo_arms_0_spr</sprite>
+        <sprite>sprites\yolo_arms_45_spr</sprite>
+        <sprite>sprites\yolo_arms_90_spr</sprite>
+        <sprite>sprites\yolo_arms_315_spr</sprite>
+        <sprite>sprites\yolo_arms_270_spr</sprite>
+      </sprites>
+      <sprites name="legs">
+        <sprite>sprites\yolo_legs_walk_spr</sprite>
+        <sprite>sprites\yolo_legs_stand_spr</sprite>
+      </sprites>
+      <sprites name="full">
+        <sprite>sprites\yolo_duck_spr</sprite>
+        <sprite>sprites\yolo_jump_spr</sprite>
+      </sprites>
+    </sprites>
+    <sprite>sprites\target_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -483,6 +503,8 @@
         <object>objects\candle</object>
         <object>objects\church_plat</object>
         <object>objects\cross</object>
+        <object>objects\rainbow_beam</object>
+        <object>objects\rainbow_obj</object>
       </objects>
     </objects>
     <objects name="5-Island of NPCs">
@@ -494,22 +516,24 @@
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
     </objects>
+    <object>objects\practice_target</object>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\internet_room</room>
+      <room>rooms\octo_room</room>
       <room>rooms\unicorn_room</room>
+      <room>rooms\cloud_room</room>
       <room>rooms\ep_room</room>
       <room>rooms\tong_room</room>
       <room>rooms\internet_twitter_room</room>
       <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="2-Internet">
-      <room>rooms\octo_room</room>
       <room>rooms\overton_room</room>
       <room>rooms\internet_vert_room</room>
-      <room>rooms\internet_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
       <room>rooms\fryguy_room</room>
@@ -523,7 +547,6 @@
     <rooms name="4-Clown World">
       <room>rooms\clown_room</room>
       <room>rooms\circle_room</room>
-      <room>rooms\cloud_room</room>
     </rooms>
     <rooms name="5- Island of NPCs">
       <room>rooms\NPC_room</room>
