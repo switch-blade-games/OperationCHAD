@@ -82,7 +82,6 @@
         <sprite>sprites\circle_cart_spr</sprite>
         <sprite>sprites\cam_icon_spr</sprite>
       </sprites>
-<<<<<<< HEAD
       <sprites name="Unicorn">
         <sprite>sprites\unicorn_spr</sprite>
         <sprite>sprites\pink_triangle_spr</sprite>
@@ -91,8 +90,9 @@
         <sprite>sprites\cross_spr</sprite>
         <sprite>sprites\rainbow_beam_spr</sprite>
         <sprite>sprites\rainbow_obj_spr</sprite>
+        <sprite>sprites\plat_mask_spr</sprite>
+        <sprite>sprites\plat_spr</sprite>
       </sprites>
-=======
       <sprites name="unicorn">
         <sprite>sprites\spr_unicorn_body</sprite>
         <sprite>sprites\spr_unicorn_neck</sprite>
@@ -104,14 +104,6 @@
         <sprite>sprites\spr_unicorn_leg_bb</sprite>
         <sprite>sprites\spr_unicorn_hoof</sprite>
       </sprites>
-      <sprite>sprites\pink_triangle_spr</sprite>
-      <sprite>sprites\unicorn_spr</sprite>
-      <sprite>sprites\plat_mask_spr</sprite>
-      <sprite>sprites\plat_spr</sprite>
-      <sprite>sprites\candle_spr</sprite>
-      <sprite>sprites\church_plat_spr</sprite>
-      <sprite>sprites\cross_spr</sprite>
->>>>>>> 31846716f72a39b46d4679836b20c37e0f5c8002
     </sprites>
     <sprites name="5-Island of NPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
