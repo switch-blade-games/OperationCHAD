@@ -25,7 +25,45 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// body part sprites
+            <string>enum uni
+    {
+    body, // body
+    neck, // neck
+    head, // head
+    leg_ftf, // leg front top [FRONT]
+    leg_fbf, // leg front bottom [FRONT]
+    hoof_ff, // hoof front [FRONT]
+    leg_rtf, // leg rear top [FRONT]
+    leg_rbf, // leg rear bottom [FRONT]
+    hoof_rf, // hoof rear [FRONT]
+    leg_ftb, // leg front top [BACK]
+    leg_fbb, // leg front bottom [BACK]
+    hoof_fb, // hoof front [BACK]
+    leg_rtb, // leg rear top [BACK]
+    leg_rbb, // leg rear bottom [BACK]
+    hoof_rb, // hoof rear [BACK]
+    tail, // tail
+    parts // how many body parts
+    }
+
+partname[uni.body] = "body";
+partname[uni.neck] = "neck";
+partname[uni.head] = "head";
+partname[uni.leg_ftf] = "leg_ftf";
+partname[uni.leg_fbf] = "leg_fbf";
+partname[uni.hoof_ff] = "hoof_ff";
+partname[uni.leg_rtf] = "leg_rtf";
+partname[uni.leg_rbf] = "leg_rbf";
+partname[uni.hoof_rf] = "hoof_rf";
+partname[uni.leg_ftb] = "leg_ftb";
+partname[uni.leg_fbb] = "leg_fbb";
+partname[uni.hoof_fb] = "hoof_fb";
+partname[uni.leg_rtb] = "leg_rtb";
+partname[uni.leg_rbb] = "leg_rbb";
+partname[uni.hoof_rb] = "hoof_rb";
+partname[uni.tail] = "tail";
+
+// body part sprites
 body_sprite = spr_unicorn_body;
 neck_sprite = spr_unicorn_neck;
 head_sprite = spr_unicorn_head;
@@ -43,36 +81,70 @@ HEAD_X = +36;
 HEAD_Y = -41;
 TAIL_X = -60;
 TAIL_Y = -18;
-LEG_FT_X = +50;
-LEG_FT_Y = +21;
-LEG_FB_X = +3;
-LEG_FB_Y = +31;
-HOOF_F_X = -2;
-HOOF_F_Y = +25;
-LEG_BT_X = -40;
-LEG_BT_Y = +12;
-LEG_BB_X = -24;
-LEG_BB_Y = +45;
-HOOF_B_X = -2;
-HOOF_B_Y = +25;
+// leg front FRONT
+LEG_FTF_X = +50;
+LEG_FTF_Y = +21;
+LEG_FBF_X = +3;
+LEG_FBF_Y = +31;
+HOOF_FF_X = -2;
+HOOF_FF_Y = +25;
+// leg rear FRONT
+LEG_RTF_X = -40;
+LEG_RTF_Y = +12;
+LEG_RBF_X = -24;
+LEG_RBF_Y = +45;
+HOOF_RF_X = -2;
+HOOF_RF_Y = +25;
+// leg front BACK
+LEG_FTB_X = +56;
+LEG_FTB_Y = +19;
+LEG_FBB_X = +3;
+LEG_FBB_Y = +31;
+HOOF_FB_X = -2;
+HOOF_FB_Y = +25;
+// leg rear BACK
+LEG_RTB_X = -34;
+LEG_RTB_Y = +10;
+LEG_RBB_X = -24;
+LEG_RBB_Y = +45;
+HOOF_RB_X = -2;
+HOOF_RB_Y = +25;
 
-// body part vectors (DO NOT MODIFY THIS PART)
+// neck
 NECK_DIR = point_direction(0,0,NECK_X,NECK_Y);
 NECK_DIS = point_distance(0,0,NECK_X,NECK_Y);
+// head
 HEAD_DIR = point_direction(0,0,HEAD_X,HEAD_Y);
 HEAD_DIS = point_distance(0,0,HEAD_X,HEAD_Y);
-LEG_FT_DIR = point_direction(0,0,LEG_FT_X,LEG_FT_Y);
-LEG_FT_DIS = point_distance(0,0,LEG_FT_X,LEG_FT_Y);
-LEG_FB_DIR = point_direction(0,0,LEG_FB_X,LEG_FB_Y);
-LEG_FB_DIS = point_distance(0,0,LEG_FB_X,LEG_FB_Y);
-HOOF_F_DIR = point_direction(0,0,HOOF_F_X,HOOF_F_Y);
-HOOF_F_DIS = point_distance(0,0,HOOF_F_X,HOOF_F_Y);
-LEG_BT_DIR = point_direction(0,0,LEG_BT_X,LEG_BT_Y);
-LEG_BT_DIS = point_distance(0,0,LEG_BT_X,LEG_BT_Y);
-LEG_BB_DIR = point_direction(0,0,LEG_BB_X,LEG_BB_Y);
-LEG_BB_DIS = point_distance(0,0,LEG_BB_X,LEG_BB_Y);
-HOOF_B_DIR = point_direction(0,0,HOOF_B_X,HOOF_B_Y);
-HOOF_B_DIS = point_distance(0,0,HOOF_B_X,HOOF_B_Y);
+// leg front FRONT
+LEG_FTF_DIR = point_direction(0,0,LEG_FTF_X,LEG_FTF_Y);
+LEG_FTF_DIS = point_distance(0,0,LEG_FTF_X,LEG_FTF_Y);
+LEG_FBF_DIR = point_direction(0,0,LEG_FBF_X,LEG_FBF_Y);
+LEG_FBF_DIS = point_distance(0,0,LEG_FBF_X,LEG_FBF_Y);
+HOOF_FF_DIR = point_direction(0,0,HOOF_FF_X,HOOF_FF_Y);
+HOOF_FF_DIS = point_distance(0,0,HOOF_FF_X,HOOF_FF_Y);
+// leg rear FRONT
+LEG_RTF_DIR = point_direction(0,0,LEG_RTF_X,LEG_RTF_Y);
+LEG_RTF_DIS = point_distance(0,0,LEG_RTF_X,LEG_RTF_Y);
+LEG_RBF_DIR = point_direction(0,0,LEG_RBF_X,LEG_RBF_Y);
+LEG_RBF_DIS = point_distance(0,0,LEG_RBF_X,LEG_RBF_Y);
+HOOF_RF_DIR = point_direction(0,0,HOOF_RF_X,HOOF_RF_Y);
+HOOF_RF_DIS = point_distance(0,0,HOOF_RF_X,HOOF_RF_Y);
+// leg front BACK
+LEG_FTB_DIR = point_direction(0,0,LEG_FTB_X,LEG_FTB_Y);
+LEG_FTB_DIS = point_distance(0,0,LEG_FTB_X,LEG_FTB_Y);
+LEG_FBB_DIR = point_direction(0,0,LEG_FBB_X,LEG_FBB_Y);
+LEG_FBB_DIS = point_distance(0,0,LEG_FBB_X,LEG_FBB_Y);
+HOOF_FB_DIR = point_direction(0,0,HOOF_FB_X,HOOF_FB_Y);
+HOOF_FB_DIS = point_distance(0,0,HOOF_FB_X,HOOF_FB_Y);
+// leg rear BACK
+LEG_RTB_DIR = point_direction(0,0,LEG_RTB_X,LEG_RTB_Y);
+LEG_RTB_DIS = point_distance(0,0,LEG_RTB_X,LEG_RTB_Y);
+LEG_RBB_DIR = point_direction(0,0,LEG_RBB_X,LEG_RBB_Y);
+LEG_RBB_DIS = point_distance(0,0,LEG_RBB_X,LEG_RBB_Y);
+HOOF_RB_DIR = point_direction(0,0,HOOF_RB_X,HOOF_RB_Y);
+HOOF_RB_DIS = point_distance(0,0,HOOF_RB_X,HOOF_RB_Y);
+// tail
 TAIL_DIR = point_direction(0,0,TAIL_X,TAIL_Y);
 TAIL_DIS = point_distance(0,0,TAIL_X,TAIL_Y);
 
@@ -88,34 +160,75 @@ neck_a = 0;
 head_x = neck_x+lengthdir_x(HEAD_DIS,body_a+neck_a+HEAD_DIR);
 head_y = neck_y+lengthdir_y(HEAD_DIS,body_a+neck_a+HEAD_DIR);
 head_a = 0;
-// leg front top
-leg_ft_x = body_x+lengthdir_x(LEG_FT_DIS,body_a+LEG_FT_DIR);
-leg_ft_y = body_y+lengthdir_y(LEG_FT_DIS,body_a+LEG_FT_DIR);
-leg_ft_a = 0;
-// leg front bottom
-leg_fb_x = leg_ft_x+lengthdir_x(LEG_FB_DIS,body_a+leg_ft_a+LEG_FB_DIR);
-leg_fb_y = leg_ft_y+lengthdir_y(LEG_FB_DIS,body_a+leg_ft_a+LEG_FB_DIR);
-leg_fb_a = 0;
-// hoof front
-hoof_f_x = leg_fb_x+lengthdir_x(HOOF_F_DIS,body_a+leg_ft_a+leg_fb_a+HOOF_F_DIR);
-hoof_f_y = leg_fb_y+lengthdir_y(HOOF_F_DIS,body_a+leg_ft_a+leg_fb_a+HOOF_F_DIR);
-hoof_f_a = 0;
-// leg back top
-leg_bt_x = body_x+lengthdir_x(LEG_BT_DIS,body_a+LEG_BT_DIR);
-leg_bt_y = body_y+lengthdir_y(LEG_BT_DIS,body_a+LEG_BT_DIR);
-leg_bt_a = 0;
-// leg back bottom
-leg_bb_x = leg_bt_x+lengthdir_x(LEG_BT_DIS,body_a+leg_bt_a+LEG_BB_DIR);
-leg_bb_y = leg_bt_y+lengthdir_y(LEG_BT_DIS,body_a+leg_bt_a+LEG_BB_DIR);
-leg_bb_a = 0;
-// hoof back
-hoof_b_x = leg_bb_x+lengthdir_x(HOOF_B_DIS,body_a+leg_bt_a+leg_bb_a+HOOF_B_DIR);
-hoof_b_y = leg_bb_y+lengthdir_y(HOOF_B_DIS,body_a+leg_bt_a+leg_bb_a+HOOF_B_DIR);
-hoof_b_a = 0;
+// leg front top FRONT
+leg_ftf_x = body_x+lengthdir_x(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+leg_ftf_y = body_y+lengthdir_y(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+leg_ftf_a = 0;
+// leg front bottom FRONT
+leg_fbf_x = leg_ftf_x+lengthdir_x(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+leg_fbf_y = leg_ftf_y+lengthdir_y(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+leg_fbf_a = 0;
+// hoof front FRONT
+hoof_ff_x = leg_fbf_x+lengthdir_x(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+hoof_ff_y = leg_fbf_y+lengthdir_y(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+hoof_ff_a = 0;
+    // leg rear top FRONT
+    leg_rtf_x = body_x+lengthdir_x(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+    leg_rtf_y = body_y+lengthdir_y(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+    leg_rtf_a = 0;
+    // leg rear bottom FRONT
+    leg_rbf_x = leg_rtf_x+lengthdir_x(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+    leg_rbf_y = leg_rtf_y+lengthdir_y(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+    leg_rbf_a = 0;
+// hoof rear FRONT
+hoof_rf_x = leg_rbf_x+lengthdir_x(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+hoof_rf_y = leg_rbf_y+lengthdir_y(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+hoof_rf_a = 0;
+// leg front top BACK
+leg_ftb_x = body_x+lengthdir_x(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+leg_ftb_y = body_y+lengthdir_y(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+leg_ftb_a = 0;
+// leg front bottom BACK
+leg_fbb_x = leg_ftb_x+lengthdir_x(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+leg_fbb_y = leg_ftb_y+lengthdir_y(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+leg_fbb_a = 0;
+// hoof front BACK
+hoof_fb_x = leg_fbb_x+lengthdir_x(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+hoof_fb_y = leg_fbb_y+lengthdir_y(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+hoof_fb_a = 0;
+    // leg rear top BACK
+    leg_rtb_x = body_x+lengthdir_x(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+    leg_rtb_y = body_y+lengthdir_y(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+    leg_rtb_a = 0;
+    // leg rear bottom BACK
+    leg_rbb_x = leg_rtb_x+lengthdir_x(LEG_RBB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+    leg_rbb_y = leg_rtb_y+lengthdir_y(LEG_RBB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+    leg_rbb_a = 0;
+// hoof rear BACK
+hoof_rb_x = leg_rbb_x+lengthdir_x(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+hoof_rb_y = leg_rbb_y+lengthdir_y(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+hoof_rb_a = 0;
 // tail
 tail_x = body_x+lengthdir_x(TAIL_DIS,body_a+TAIL_DIR);
 tail_y = body_y+lengthdir_y(TAIL_DIS,body_a+TAIL_DIR);
 tail_a = 0;
+
+
+time = 0;
+timestep = 0.2;
+edit = true;
+
+keyframes = 1;
+keyselect = 0;
+partselect = 0;
+parthover = -1;
+
+for(var i=0; i&lt;uni.parts; i++;)
+    {
+    keyframe_x[0,i] = x;
+    keyframe_y[0,i] = y;
+    keyframe_a[0,i] = 0;
+    }
 </string>
           </argument>
         </arguments>
@@ -138,48 +251,301 @@ tail_a = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>time = current_time/150;
+            <string>if (keyboard_check(vk_control))
+    {
+    if (edit)
+        {
+        if (keyboard_check_pressed(ord("S")))
+            {
+            var path = get_save_filename("Text Files|*.txt","");
+            if (path == "")
+                exit;
+            
+            var file = file_text_open_write(path);
+            
+            file_text_write_real(file,keyframes);
+            file_text_writeln(file);
+            
+            for(var i=0; i&lt;keyframes; i++;)
+                {
+                for(var j=0; j&lt;uni.parts; j++;)
+                    {
+                    file_text_write_real(file,keyframe_x[i,j]);
+                    file_text_writeln(file);
+                    file_text_write_real(file,keyframe_y[i,j]);
+                    file_text_writeln(file);
+                    file_text_write_real(file,keyframe_a[i,j]);
+                    file_text_writeln(file);
+                    }
+                }
+            
+            file_text_close(file);
+            }
+        else if (keyboard_check_pressed(ord("L")))
+            {
+            var path = get_open_filename("Text Files|*.txt","");
+            if (path == "") or (!file_exists(path))
+                exit;
+            
+            var file = file_text_open_read(path);
+            
+            keyframes = file_text_read_real(file);
+            file_text_readln(file);
+            
+            for(var i=0; i&lt;keyframes; i++;)
+                {
+                for(var j=0; j&lt;uni.parts; j++;)
+                    {
+                    keyframe_x[i,j] = file_text_read_real(file);
+                    file_text_readln(file);
+                    keyframe_y[i,j] = file_text_read_real(file);
+                    file_text_readln(file);
+                    keyframe_a[i,j] = file_text_read_real(file);
+                    file_text_readln(file);
+                    }
+                }
+            
+            file_text_close(file);
+            }
+        }
+    exit;
+    }
 
-// body
-body_x = x;
-body_y = y+sin(50+time)*4;
-body_a = sin(-20+time)*6;
-// neck
-neck_x = body_x+lengthdir_x(NECK_DIS,body_a+NECK_DIR);
-neck_y = body_y+lengthdir_y(NECK_DIS,body_a+NECK_DIR);
-neck_a = sin(-15 + time)*4;
-// head
-head_x = neck_x+lengthdir_x(HEAD_DIS,body_a+neck_a+HEAD_DIR);
-head_y = neck_y+lengthdir_y(HEAD_DIS,body_a+neck_a+HEAD_DIR);
-head_a = sin(-5 + time)*6;
-// leg front top
-leg_ft_x = body_x+lengthdir_x(LEG_FT_DIS,body_a+LEG_FT_DIR);
-leg_ft_y = body_y+lengthdir_y(LEG_FT_DIS,body_a+LEG_FT_DIR);
-leg_ft_a = sin(-65+time)*20;
-// leg front bottom
-leg_fb_x = leg_ft_x+lengthdir_x(LEG_FB_DIS,body_a+leg_ft_a+LEG_FB_DIR);
-leg_fb_y = leg_ft_y+lengthdir_y(LEG_FB_DIS,body_a+leg_ft_a+LEG_FB_DIR);
-leg_fb_a = -20+sin(-80+time)*45;
-// hoof front
-hoof_f_x = leg_fb_x+lengthdir_x(HOOF_F_DIS,body_a+leg_ft_a+leg_fb_a+HOOF_F_DIR);
-hoof_f_y = leg_fb_y+lengthdir_y(HOOF_F_DIS,body_a+leg_ft_a+leg_fb_a+HOOF_F_DIR);
-hoof_f_a = 0;
-// leg back top
-leg_bt_x = body_x+lengthdir_x(LEG_BT_DIS,body_a+LEG_BT_DIR);
-leg_bt_y = body_y+lengthdir_y(LEG_BT_DIS,body_a+LEG_BT_DIR);
-leg_bt_a = sin(55 + time)*20;
-// leg back bottom
-leg_bb_x = leg_bt_x+lengthdir_x(LEG_BT_DIS,body_a+leg_bt_a+LEG_BB_DIR);
-leg_bb_y = leg_bt_y+lengthdir_y(LEG_BT_DIS,body_a+leg_bt_a+LEG_BB_DIR);
-leg_bb_a = 20+sin(20+time)*45;
-// hoof back
-hoof_b_x = leg_bb_x+lengthdir_x(HOOF_B_DIS,body_a+leg_bt_a+leg_bb_a+HOOF_B_DIR);
-hoof_b_y = leg_bb_y+lengthdir_y(HOOF_B_DIS,body_a+leg_bt_a+leg_bb_a+HOOF_B_DIR);
-hoof_b_a = 0;
-// tail
-tail_x = body_x+lengthdir_x(TAIL_DIS,body_a+TAIL_DIR);
-tail_y = body_y+lengthdir_y(TAIL_DIS,body_a+TAIL_DIR);
-tail_a = sin(80 + time)*24;
+if (keyboard_check_pressed(vk_space))
+    edit = !edit;
+if (edit)
+    {
+    if (keyboard_check_pressed(vk_up))
+        {
+        for(var i=keyframes; i&gt;=keyselect+1; i--;)
+            {
+            for(var j=0; j&lt;uni.parts; j++;)
+                {
+                keyframe_x[i,j] = keyframe_x[i-1,j];
+                keyframe_y[i,j] = keyframe_y[i-1,j];
+                keyframe_a[i,j] = keyframe_a[i-1,j];
+                }
+            }
+        keyframes++;
+        keyselect++;
+        }
+    if (keyboard_check_pressed(vk_down)) and (keyframes &gt; 1)
+        {
+        for(var i=keyselect; i&lt;keyframes-1; i++;)
+            {
+            for(var j=0; j&lt;uni.parts; j++;)
+                {
+                keyframe_x[i,j] = keyframe_x[i+1,j];
+                keyframe_y[i,j] = keyframe_y[i+1,j];
+                keyframe_a[i,j] = keyframe_a[i+1,j];
+                }
+            }
+        keyframes--;
+        keyselect--;
+        }
+    if (keyboard_check_pressed(vk_left))
+        {
+        keyselect--;
+        if (keyselect &lt; 0)
+            keyselect = max(0,keyframes-1);
+        }
+    if (keyboard_check_pressed(vk_right))
+        {
+        keyselect++;
+        if (keyselect &gt; keyframes-1)
+            keyselect = 0;
+        }
+    
+    var xadjust = (keyboard_check(ord("D"))-keyboard_check(ord("A")))*(1 + 3*keyboard_check(vk_shift));
+    var yadjust = (keyboard_check(ord("S"))-keyboard_check(ord("W")))*(1 + 3*keyboard_check(vk_shift));
+    var aadjust = (keyboard_check(ord("Q"))-keyboard_check(ord("E")))*(1 + 3*keyboard_check(vk_shift));
+    if (partselect == 0)
+        {
+        keyframe_x[keyselect,partselect] += xadjust;
+        keyframe_y[keyselect,partselect] += yadjust;
+        keyframe_a[keyselect,partselect] += aadjust;
+        }
+    else
+        {
+        keyframe_a[keyselect,partselect] += aadjust;
+        }
+    
+    // body
+    body_x = keyframe_x[keyselect,uni.body];
+    body_y = keyframe_y[keyselect,uni.body];
+    body_a = keyframe_a[keyselect,uni.body];
+    // neck
+    neck_x = body_x+lengthdir_x(NECK_DIS,body_a+NECK_DIR);
+    neck_y = body_y+lengthdir_y(NECK_DIS,body_a+NECK_DIR);
+    neck_a = keyframe_a[keyselect,uni.neck];
+    // head
+    head_x = neck_x+lengthdir_x(HEAD_DIS,body_a+neck_a+HEAD_DIR);
+    head_y = neck_y+lengthdir_y(HEAD_DIS,body_a+neck_a+HEAD_DIR);
+    head_a = keyframe_a[keyselect,uni.head];
+    // leg front top FRONT
+    leg_ftf_x = body_x+lengthdir_x(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+    leg_ftf_y = body_y+lengthdir_y(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+    leg_ftf_a = keyframe_a[keyselect,uni.leg_ftf];
+    // leg front bottom FRONT
+    leg_fbf_x = leg_ftf_x+lengthdir_x(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+    leg_fbf_y = leg_ftf_y+lengthdir_y(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+    leg_fbf_a = keyframe_a[keyselect,uni.leg_fbf];
+    // hoof front FRONT
+    hoof_ff_x = leg_fbf_x+lengthdir_x(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+    hoof_ff_y = leg_fbf_y+lengthdir_y(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+    hoof_ff_a = keyframe_a[keyselect,uni.hoof_ff];
+    // leg rear top FRONT
+    leg_rtf_x = body_x+lengthdir_x(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+    leg_rtf_y = body_y+lengthdir_y(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+    leg_rtf_a = keyframe_a[keyselect,uni.leg_rtf];
+    // leg rear bottom FRONT
+    leg_rbf_x = leg_rtf_x+lengthdir_x(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+    leg_rbf_y = leg_rtf_y+lengthdir_y(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+    leg_rbf_a = keyframe_a[keyselect,uni.leg_rbf];
+    // hoof rear FRONT
+    hoof_rf_x = leg_rbf_x+lengthdir_x(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+    hoof_rf_y = leg_rbf_y+lengthdir_y(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+    hoof_rf_a = keyframe_a[keyselect,uni.hoof_rf];
+    // leg front top BACK
+    leg_ftb_x = body_x+lengthdir_x(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+    leg_ftb_y = body_y+lengthdir_y(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+    leg_ftb_a = keyframe_a[keyselect,uni.leg_ftb];
+    // leg front bottom BACK
+    leg_fbb_x = leg_ftb_x+lengthdir_x(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+    leg_fbb_y = leg_ftb_y+lengthdir_y(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+    leg_fbb_a = keyframe_a[keyselect,uni.leg_fbb];
+    // hoof front BACK
+    hoof_fb_x = leg_fbb_x+lengthdir_x(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+    hoof_fb_y = leg_fbb_y+lengthdir_y(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+    hoof_fb_a = keyframe_a[keyselect,uni.hoof_fb];
+    // leg rear top BACK
+    leg_rtb_x = body_x+lengthdir_x(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+    leg_rtb_y = body_y+lengthdir_y(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+    leg_rtb_a = keyframe_a[keyselect,uni.leg_rtb];
+    // leg rear bottom BACK
+    leg_rbb_x = leg_rtb_x+lengthdir_x(LEG_RTB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+    leg_rbb_y = leg_rtb_y+lengthdir_y(LEG_RTB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+    leg_rbb_a = keyframe_a[keyselect,uni.leg_rbb];
+    // hoof rear BACK
+    hoof_rb_x = leg_rbb_x+lengthdir_x(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+    hoof_rb_y = leg_rbb_y+lengthdir_y(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+    hoof_rb_a = keyframe_a[keyselect,uni.hoof_rb];
+    // tail
+    tail_x = body_x+lengthdir_x(TAIL_DIS,body_a+TAIL_DIR);
+    tail_y = body_y+lengthdir_y(TAIL_DIS,body_a+TAIL_DIR);
+    tail_a = keyframe_a[keyselect,uni.tail];
+    
+    var dis;
+    dis[00] = point_distance(mouse_x,mouse_y,body_x,body_y);
+    dis[01] = point_distance(mouse_x,mouse_y,neck_x,neck_y);
+    dis[02] = point_distance(mouse_x,mouse_y,head_x,head_y);
+    dis[03] = point_distance(mouse_x,mouse_y,leg_ftf_x,leg_ftf_y);
+    dis[04] = point_distance(mouse_x,mouse_y,leg_fbf_x,leg_fbf_y);
+    dis[05] = point_distance(mouse_x,mouse_y,hoof_ff_x,hoof_ff_y);
+    dis[06] = point_distance(mouse_x,mouse_y,leg_rtf_x,leg_rtf_y);
+    dis[07] = point_distance(mouse_x,mouse_y,leg_rbf_x,leg_rbf_y);
+    dis[08] = point_distance(mouse_x,mouse_y,hoof_rf_x,hoof_rf_y);
+    dis[09] = point_distance(mouse_x,mouse_y,leg_ftb_x,leg_ftb_y);
+    dis[10] = point_distance(mouse_x,mouse_y,leg_fbb_x,leg_fbb_y);
+    dis[11] = point_distance(mouse_x,mouse_y,hoof_fb_x,hoof_fb_y);
+    dis[12] = point_distance(mouse_x,mouse_y,leg_rtb_x,leg_rtb_y);
+    dis[13] = point_distance(mouse_x,mouse_y,leg_rbb_x,leg_rbb_y);
+    dis[14] = point_distance(mouse_x,mouse_y,hoof_rb_x,hoof_rb_y);
+    dis[15] = point_distance(mouse_x,mouse_y,tail_x,tail_y);
+    
+    dismin = 64;
+    parthover = -1;
+    for(var i=0; i&lt;uni.parts; i++;)
+        {
+        if (dis[i] &lt; dismin)
+            {
+            dismin = dis[i];
+            parthover = i;
+            if (mouse_check_button_pressed(mb_left))
+                partselect = i;
+            }
+        }
+    }
+else
+    {
+    time += timestep;
+    if (time &gt;= keyframes)
+        time = max(0,time-keyframes);
+    if (keyframes &gt; 1)
+        {
+        var lerpval = frac(time);
+        var curkey = floor(time);
+        if (curkey == keyframes-1)
+            var nxtkey = 0;
+        else
+            var nxtkey = floor(time)+1;
+        
+        // body
+        body_x = lerp(keyframe_x[curkey,uni.body],keyframe_x[nxtkey,uni.body],lerpval);
+        body_y = lerp(keyframe_y[curkey,uni.body],keyframe_y[nxtkey,uni.body],lerpval);
+        body_a = lerp(keyframe_a[curkey,uni.body],keyframe_a[nxtkey,uni.body],lerpval);
+        // neck
+        neck_x = body_x+lengthdir_x(NECK_DIS,body_a+NECK_DIR);
+        neck_y = body_y+lengthdir_y(NECK_DIS,body_a+NECK_DIR);
+        neck_a = lerp(keyframe_a[curkey,uni.neck],keyframe_a[nxtkey,uni.neck],lerpval);
+        // head
+        head_x = neck_x+lengthdir_x(HEAD_DIS,body_a+neck_a+HEAD_DIR);
+        head_y = neck_y+lengthdir_y(HEAD_DIS,body_a+neck_a+HEAD_DIR);
+        head_a = lerp(keyframe_a[curkey,uni.head],keyframe_a[nxtkey,uni.head],lerpval);
+        // leg front top FRONT
+        leg_ftf_x = body_x+lengthdir_x(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+        leg_ftf_y = body_y+lengthdir_y(LEG_FTF_DIS,body_a+LEG_FTF_DIR);
+        leg_ftf_a = lerp(keyframe_a[curkey,uni.leg_ftf],keyframe_a[nxtkey,uni.leg_ftf],lerpval);
+        // leg front bottom FRONT
+        leg_fbf_x = leg_ftf_x+lengthdir_x(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+        leg_fbf_y = leg_ftf_y+lengthdir_y(LEG_FBF_DIS,body_a+leg_ftf_a+LEG_FBF_DIR);
+        leg_fbf_a = lerp(keyframe_a[curkey,uni.leg_fbf],keyframe_a[nxtkey,uni.leg_fbf],lerpval);
+        // hoof front FRONT
+        hoof_ff_x = leg_fbf_x+lengthdir_x(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+        hoof_ff_y = leg_fbf_y+lengthdir_y(HOOF_FF_DIS,body_a+leg_ftf_a+leg_fbf_a+HOOF_FF_DIR);
+        hoof_ff_a = lerp(keyframe_a[curkey,uni.hoof_ff],keyframe_a[nxtkey,uni.hoof_ff],lerpval);
+            // leg rear top FRONT
+            leg_rtf_x = body_x+lengthdir_x(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+            leg_rtf_y = body_y+lengthdir_y(LEG_RTF_DIS,body_a+LEG_RTF_DIR);
+            leg_rtf_a = lerp(keyframe_a[curkey,uni.leg_rtf],keyframe_a[nxtkey,uni.leg_rtf],lerpval);
+            // leg rear bottom FRONT
+            leg_rbf_x = leg_rtf_x+lengthdir_x(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+            leg_rbf_y = leg_rtf_y+lengthdir_y(LEG_RTF_DIS,body_a+leg_rtf_a+LEG_RBF_DIR);
+            leg_rbf_a = lerp(keyframe_a[curkey,uni.leg_rbf],keyframe_a[nxtkey,uni.leg_rbf],lerpval);
+            // hoof rear FRONT
+            hoof_rf_x = leg_rbf_x+lengthdir_x(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+            hoof_rf_y = leg_rbf_y+lengthdir_y(HOOF_RF_DIS,body_a+leg_rtf_a+leg_rbf_a+HOOF_RF_DIR);
+            hoof_rf_a = lerp(keyframe_a[curkey,uni.hoof_rf],keyframe_a[nxtkey,uni.hoof_rf],lerpval);
+        // leg front top BACK
+        leg_ftb_x = body_x+lengthdir_x(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+        leg_ftb_y = body_y+lengthdir_y(LEG_FTB_DIS,body_a+LEG_FTB_DIR);
+        leg_ftb_a = lerp(keyframe_a[curkey,uni.leg_ftb],keyframe_a[nxtkey,uni.leg_ftb],lerpval);
+        // leg front bottom BACK
+        leg_fbb_x = leg_ftb_x+lengthdir_x(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+        leg_fbb_y = leg_ftb_y+lengthdir_y(LEG_FBB_DIS,body_a+leg_ftb_a+LEG_FBB_DIR);
+        leg_fbb_a = lerp(keyframe_a[curkey,uni.leg_fbb],keyframe_a[nxtkey,uni.leg_fbb],lerpval);
+        // hoof front BACK
+        hoof_fb_x = leg_fbb_x+lengthdir_x(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+        hoof_fb_y = leg_fbb_y+lengthdir_y(HOOF_FB_DIS,body_a+leg_ftb_a+leg_fbb_a+HOOF_FB_DIR);
+        hoof_fb_a = lerp(keyframe_a[curkey,uni.hoof_fb],keyframe_a[nxtkey,uni.hoof_fb],lerpval);
+            // leg rear top FRONT
+            leg_rtb_x = body_x+lengthdir_x(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+            leg_rtb_y = body_y+lengthdir_y(LEG_RTB_DIS,body_a+LEG_RTB_DIR);
+            leg_rtb_a = lerp(keyframe_a[curkey,uni.leg_rtb],keyframe_a[nxtkey,uni.leg_rtb],lerpval);
+            // leg rear bottom FRONT
+            leg_rbb_x = leg_rtb_x+lengthdir_x(LEG_RTB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+            leg_rbb_y = leg_rtb_y+lengthdir_y(LEG_RTB_DIS,body_a+leg_rtb_a+LEG_RBB_DIR);
+            leg_rbb_a = lerp(keyframe_a[curkey,uni.leg_rbb],keyframe_a[nxtkey,uni.leg_rbb],lerpval);
+            // hoof rear FRONT
+            hoof_rb_x = leg_rbb_x+lengthdir_x(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+            hoof_rb_y = leg_rbb_y+lengthdir_y(HOOF_RB_DIS,body_a+leg_rtb_a+leg_rbb_a+HOOF_RB_DIR);
+            hoof_rb_a = lerp(keyframe_a[curkey,uni.hoof_rb],keyframe_a[nxtkey,uni.hoof_rb],lerpval);
+        // tail
+        tail_x = body_x+lengthdir_x(TAIL_DIS,body_a+TAIL_DIR);
+        tail_y = body_y+lengthdir_y(TAIL_DIS,body_a+TAIL_DIR);
+        tail_a = lerp(keyframe_a[curkey,uni.tail],keyframe_a[nxtkey,uni.tail],lerpval);
+        }
+    }
 </string>
           </argument>
         </arguments>
@@ -202,27 +568,175 @@ tail_a = sin(80 + time)*24;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var t_body_a = body_a;
-var t_neck_a = body_a+neck_a;
-var t_head_a = body_a+neck_a+head_a;
-var t_hoof_b_a = body_a+leg_bt_a+leg_bb_a+hoof_b_a;
-var t_hoof_f_a = body_a+leg_ft_a+leg_fb_a+hoof_f_a;
-var t_leg_bt_a = body_a+leg_bt_a;
-var t_leg_ft_a = body_a+leg_ft_a;
-var t_leg_bb_a = body_a+leg_bt_a+leg_bb_a;
-var t_leg_fb_a = body_a+leg_ft_a+leg_fb_a;
-var t_tail_a = body_a+tail_a;
+            <string>draw_set_color($000000);
+if (edit)
+    {
+    draw_text(6,6+14*0,"EDIT MODE (SPACE TO PREVIEW)");
+    draw_text(6,6+14*1,"KEYFRAME: "+string(keyselect+1)+"/"+string(keyframes));
+    draw_text(6,6+14*2,"BODY PART: "+string(partname[partselect]));
+    draw_text(6,6+14*3,"[WASD] to MOVE - [QE] to ROTATE");
+    draw_text(6,6+14*4,"[LEFT/RIGHT] to SELECT keyframe");
+    draw_text(6,6+14*5,"[UP/DOWN] to ADD/REMOVE keyframes");
+    draw_text(6,6+14*6,"[CTRL]+[S/L] to SAVE/LOAD");
+    }
+else
+    {
+    draw_text(6,6+14*0,"PREVIEW MODE (SPACE TO EDIT)");
+    draw_text(6,6+14*1,"KEYFRAME: "+string(floor(time))+"/"+string(keyframes));
+    }
 
+// body
+var t_body_a = body_a;
+// neck
+var t_neck_a = body_a+neck_a;
+// head
+var t_head_a = body_a+neck_a+head_a;
+// back legs/hoofs
+var t_hoof_rb_a = body_a+leg_rtb_a+leg_rbb_a+hoof_rb_a;
+var t_hoof_fb_a = body_a+leg_ftb_a+leg_fbb_a+hoof_fb_a;
+var t_leg_rtb_a = body_a+leg_rtb_a;
+var t_leg_ftb_a = body_a+leg_ftb_a;
+var t_leg_rbb_a = body_a+leg_rtb_a+leg_rbb_a;
+var t_leg_fbb_a = body_a+leg_ftb_a+leg_fbb_a;
+// tail
+var t_tail_a = body_a+tail_a;
+// front legs/hoofs
+var t_hoof_rf_a = body_a+leg_rtf_a+leg_rbf_a+hoof_rf_a;
+var t_hoof_ff_a = body_a+leg_ftf_a+leg_fbf_a+hoof_ff_a;
+var t_leg_rtf_a = body_a+leg_rtf_a;
+var t_leg_ftf_a = body_a+leg_ftf_a;
+var t_leg_rbf_a = body_a+leg_rtf_a+leg_rbf_a;
+var t_leg_fbf_a = body_a+leg_ftf_a+leg_fbf_a;
+
+// back legs/hoofs
+draw_sprite_ext(spr_unicorn_hoof,0,hoof_rb_x,hoof_rb_y,1,1,t_hoof_rb_a,c_gray,1);
+draw_sprite_ext(spr_unicorn_hoof,0,hoof_fb_x,hoof_fb_y,1,1,t_hoof_fb_a,c_gray,1);
+draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtb_x,leg_rtb_y,1,1,t_leg_rtb_a,c_gray,1);
+draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftb_x,leg_ftb_y,1,1,t_leg_ftb_a,c_gray,1);
+draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbb_x,leg_rbb_y,1,1,t_leg_rbb_a,c_gray,1);
+draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbb_x,leg_fbb_y,1,1,t_leg_fbb_a,c_gray,1);
+// neck
 draw_sprite_ext(spr_unicorn_neck,0,neck_x,neck_y,1,1,t_neck_a,-1,1);
+// body
 draw_sprite_ext(spr_unicorn_body,0,body_x,body_y,1,1,t_body_a,-1,1);
+// head
 draw_sprite_ext(spr_unicorn_head,0,head_x,head_y,1,1,t_head_a,-1,1);
-draw_sprite_ext(spr_unicorn_hoof,0,hoof_b_x,hoof_b_y,1,1,t_hoof_b_a,-1,1);
-draw_sprite_ext(spr_unicorn_hoof,0,hoof_f_x,hoof_f_y,1,1,t_hoof_f_a,-1,1);
-draw_sprite_ext(spr_unicorn_leg_bt,0,leg_bt_x,leg_bt_y,1,1,t_leg_bt_a,-1,1);
-draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ft_x,leg_ft_y,1,1,t_leg_ft_a,-1,1);
-draw_sprite_ext(spr_unicorn_leg_bb,0,leg_bb_x,leg_bb_y,1,1,t_leg_bb_a,-1,1);
-draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fb_x,leg_fb_y,1,1,t_leg_fb_a,-1,1);
+// tail
 draw_sprite_ext(spr_unicorn_tail,0,tail_x,tail_y,1,1,t_tail_a,-1,1);
+// front legs/hoofs
+draw_sprite_ext(spr_unicorn_hoof,0,hoof_rf_x,hoof_rf_y,1,1,t_hoof_rf_a,-1,1);
+draw_sprite_ext(spr_unicorn_hoof,0,hoof_ff_x,hoof_ff_y,1,1,t_hoof_ff_a,-1,1);
+draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtf_x,leg_rtf_y,1,1,t_leg_rtf_a,-1,1);
+draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftf_x,leg_ftf_y,1,1,t_leg_ftf_a,-1,1);
+draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbf_x,leg_rbf_y,1,1,t_leg_rbf_a,-1,1);
+draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbf_x,leg_fbf_y,1,1,t_leg_fbf_a,-1,1);
+
+if (edit)
+    {
+    switch(parthover)
+        {
+        case uni.body:
+            draw_sprite_ext(spr_unicorn_body,0,body_x,body_y,1,1,t_body_a,c_fuchsia,0.5);
+            break;
+        case uni.neck:
+            draw_sprite_ext(spr_unicorn_neck,0,neck_x,neck_y,1,1,t_neck_a,c_fuchsia,0.5);
+            break;
+        case uni.head:
+            draw_sprite_ext(spr_unicorn_head,0,head_x,head_y,1,1,t_head_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_ftf:
+            draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftf_x,leg_ftf_y,1,1,t_leg_ftf_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_fbf:
+            draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbf_x,leg_fbf_y,1,1,t_leg_fbf_a,c_fuchsia,0.5);
+            break;
+        case uni.hoof_ff:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_ff_x,hoof_ff_y,1,1,t_hoof_ff_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_rtf:
+            draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtf_x,leg_rtf_y,1,1,t_leg_rtf_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_rbf:
+            draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbf_x,leg_rbf_y,1,1,t_leg_rbf_a,c_fuchsia,0.5);
+            break;
+        case uni.hoof_rf:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_rf_x,hoof_rf_y,1,1,t_hoof_rf_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_ftb:
+            draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftb_x,leg_ftb_y,1,1,t_leg_ftb_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_fbb:
+            draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbb_x,leg_fbb_y,1,1,t_leg_fbb_a,c_fuchsia,0.5);
+            break;
+        case uni.hoof_fb:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_fb_x,hoof_fb_y,1,1,t_hoof_fb_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_rtb:
+            draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtb_x,leg_rtb_y,1,1,t_leg_rtb_a,c_fuchsia,0.5);
+            break;
+        case uni.leg_rbb:
+            draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbb_x,leg_rbb_y,1,1,t_leg_rbb_a,c_fuchsia,0.5);
+            break;
+        case uni.hoof_rb:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_rb_x,hoof_rb_y,1,1,t_hoof_rb_a,c_fuchsia,0.5);
+            break;
+        case uni.tail:
+            draw_sprite_ext(spr_unicorn_tail,0,tail_x,tail_y,1,1,t_tail_a,c_fuchsia,0.5);
+            break;
+        }
+    
+    switch(partselect)
+        {
+        case uni.body:
+            draw_sprite_ext(spr_unicorn_body,0,body_x,body_y,1,1,t_body_a,c_fuchsia,0.8);
+            break;
+        case uni.neck:
+            draw_sprite_ext(spr_unicorn_neck,0,neck_x,neck_y,1,1,t_neck_a,c_fuchsia,0.8);
+            break;
+        case uni.head:
+            draw_sprite_ext(spr_unicorn_head,0,head_x,head_y,1,1,t_head_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_ftf:
+            draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftf_x,leg_ftf_y,1,1,t_leg_ftf_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_fbf:
+            draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbf_x,leg_fbf_y,1,1,t_leg_fbf_a,c_fuchsia,0.8);
+            break;
+        case uni.hoof_ff:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_ff_x,hoof_ff_y,1,1,t_hoof_ff_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_rtf:
+            draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtf_x,leg_rtf_y,1,1,t_leg_rtf_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_rbf:
+            draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbf_x,leg_rbf_y,1,1,t_leg_rbf_a,c_fuchsia,0.8);
+            break;
+        case uni.hoof_rf:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_rf_x,hoof_rf_y,1,1,t_hoof_rf_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_ftb:
+            draw_sprite_ext(spr_unicorn_leg_ft,0,leg_ftb_x,leg_ftb_y,1,1,t_leg_ftb_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_fbb:
+            draw_sprite_ext(spr_unicorn_leg_fb,0,leg_fbb_x,leg_fbb_y,1,1,t_leg_fbb_a,c_fuchsia,0.8);
+            break;
+        case uni.hoof_fb:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_fb_x,hoof_fb_y,1,1,t_hoof_fb_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_rtb:
+            draw_sprite_ext(spr_unicorn_leg_bt,0,leg_rtb_x,leg_rtb_y,1,1,t_leg_rtb_a,c_fuchsia,0.8);
+            break;
+        case uni.leg_rbb:
+            draw_sprite_ext(spr_unicorn_leg_bb,0,leg_rbb_x,leg_rbb_y,1,1,t_leg_rbb_a,c_fuchsia,0.8);
+            break;
+        case uni.hoof_rb:
+            draw_sprite_ext(spr_unicorn_hoof,0,hoof_rb_x,hoof_rb_y,1,1,t_hoof_rb_a,c_fuchsia,0.8);
+            break;
+        case uni.tail:
+            draw_sprite_ext(spr_unicorn_tail,0,tail_x,tail_y,1,1,t_tail_a,c_fuchsia,0.8);
+            break;
+        }
+    }
 </string>
           </argument>
         </arguments>
