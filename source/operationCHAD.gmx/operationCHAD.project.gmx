@@ -210,19 +210,41 @@
     </sprites>
     <sprites name="yolo">
       <sprites name="arms">
-        <sprite>sprites\yolo_arms_0_spr</sprite>
-        <sprite>sprites\yolo_arms_45_spr</sprite>
-        <sprite>sprites\yolo_arms_90_spr</sprite>
-        <sprite>sprites\yolo_arms_315_spr</sprite>
-        <sprite>sprites\yolo_arms_270_spr</sprite>
+        <sprites name="regular_arms">
+          <sprite>sprites\yolo_arms_270_spr</sprite>
+          <sprite>sprites\yolo_arms_315_spr</sprite>
+          <sprite>sprites\yolo_arms_90_spr</sprite>
+          <sprite>sprites\yolo_arms_45_spr</sprite>
+          <sprite>sprites\yolo_arms_0_spr</sprite>
+        </sprites>
+        <sprites name="single_arms">
+          <sprite>sprites\yolo_single_0_spr</sprite>
+          <sprite>sprites\yolo_single_45_spr</sprite>
+          <sprite>sprites\yolo_single_90_spr</sprite>
+          <sprite>sprites\yolo_single_270_spr</sprite>
+          <sprite>sprites\yolo_single_315_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="legs">
         <sprite>sprites\yolo_legs_walk_spr</sprite>
         <sprite>sprites\yolo_legs_stand_spr</sprite>
+        <sprite>sprites\yolo_legs_drop_spr</sprite>
+        <sprites name="ramp">
+          <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
+          <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
+          <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
+          <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="full">
         <sprite>sprites\yolo_duck_spr</sprite>
         <sprite>sprites\yolo_jump_spr</sprite>
+        <sprite>sprites\yolo_dead_down_spr</sprite>
+        <sprite>sprites\yolo_dead_fly_spr</sprite>
+        <sprite>sprites\yolo_dead_stand_spr</sprite>
+      </sprites>
+      <sprites name="part">
+        <sprite>sprites\yolo_moto_spr</sprite>
       </sprites>
     </sprites>
     <sprite>sprites\target_spr</sprite>
@@ -537,8 +559,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <room>rooms\internet_room</room>
-      <room>rooms\octo_room</room>
       <room>rooms\unicorn_room</room>
+      <room>rooms\octo_room</room>
       <room>rooms\cloud_room</room>
       <room>rooms\ep_room</room>
       <room>rooms\tong_room</room>
