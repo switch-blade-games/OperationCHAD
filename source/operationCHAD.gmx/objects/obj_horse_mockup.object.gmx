@@ -162,17 +162,20 @@ for(var i=1; i&lt;uni.parts; i++;)
 
 time = 0;
 timestep = 0.2;
-edit = true;
 
 keyframes = 1;
 keyselect = 0;
-partselect = 0;
-parthover = -1;
-
 keyframe_x[0] = 0;
 keyframe_y[0] = 0;
 for(var i=0; i&lt;uni.parts; i++;)
     keyframe_a[0,i] = 0;
+
+edit = true;
+mode = 0;
+partselect = 0;
+parthover = -1;
+drag_aold = 0;
+drag_a = 0;
 </string>
           </argument>
         </arguments>
@@ -224,7 +227,7 @@ for(var i=0; i&lt;uni.parts; i++;)
             buffer_save_ext(buff,path,0,bytes);
             buffer_delete(buff);
             }
-        else if (keyboard_check_pressed(ord("L")))
+        else if (keyboard_check_pressed(ord("L"))) and (show_question("LOAD? Unsaved progress will be lost!"))
             {
             var path = get_open_filename("Spine Files|*.spine","");
             if (path == "") or (!file_exists(path))
@@ -233,6 +236,7 @@ for(var i=0; i&lt;uni.parts; i++;)
             var buff = buffer_load(path);
             buffer_seek(buff,buffer_seek_start,0);
             
+            keyselect = 0;
             keyframes = buffer_read(buff,buffer_u8);
             
             for(var i=0; i&lt;keyframes; i++;)
@@ -246,14 +250,34 @@ for(var i=0; i&lt;uni.parts; i++;)
             
             buffer_delete(buff);
             }
+        else if (keyboard_check_pressed(ord("N"))) and (show_question("NEW? Unsaved progress will be lost!"))
+            {
+            keyselect = 0;
+            keyframes = 1;
+            
+            keyframe_x[0] = 0;
+            keyframe_y[0] = 0;
+            for(var i=0; i&lt;uni.parts; i++;)
+                keyframe_a[0,i] = 0;
+            }
         }
     exit;
     }
 
 if (keyboard_check_pressed(vk_space))
+    {
     edit = !edit;
+    if (edit)
+        {
+        if (mode == 0)
+            keyselect = floor(time);
+        else if (mode == 1)
+            keyselect = floor(time/2)*2;
+        }
+    }
 if (edit)
     {
+    // add keyframe
     if (keyboard_check_pressed(vk_up))
         {
         for(var i=keyframes; i&gt;=keyselect+1; i--;)
@@ -266,6 +290,7 @@ if (edit)
         keyframes++;
         keyselect++;
         }
+    // remove keyframe
     if (keyboard_check_pressed(vk_down)) and (keyframes &gt; 1)
         {
         for(var i=keyselect; i&lt;keyframes-1; i++;)
@@ -276,24 +301,28 @@ if (edit)
                 keyframe_a[i,j] = keyframe_a[i+1,j];
             }
         keyframes--;
-        keyselect--;
+        keyselect = max(0,keyselect-1);
         }
-    if (keyboard_check_pressed(vk_left))
+    // scroll to previous keyframe
+    if (keyboard_check_pressed(vk_left)) or (mouse_wheel_down())
         {
         keyselect--;
         if (keyselect &lt; 0)
             keyselect = max(0,keyframes-1);
         }
-    if (keyboard_check_pressed(vk_right))
+    // scroll to next keyframe
+    if (keyboard_check_pressed(vk_right)) or (mouse_wheel_up())
         {
         keyselect++;
         if (keyselect &gt; keyframes-1)
             keyselect = 0;
         }
     
+    // adjust position/rotation
     var xadjust = (keyboard_check(ord("D"))-keyboard_check(ord("A")))*(1 + 3*keyboard_check(vk_shift));
     var yadjust = (keyboard_check(ord("S"))-keyboard_check(ord("W")))*(1 + 3*keyboard_check(vk_shift));
     var aadjust = (keyboard_check(ord("Q"))-keyboard_check(ord("E")))*(1 + 3*keyboard_check(vk_shift));
+    
     if (partselect == uni.body)
         {
         keyframe_x[keyselect] += xadjust;
@@ -305,6 +334,7 @@ if (edit)
         keyframe_a[keyselect,partselect] += aadjust;
         }
     
+    // calculate position/rotations
     part_x[uni.body] = keyframe_x[keyselect];
     part_y[uni.body] = keyframe_y[keyselect];
     part_a[uni.body] = keyframe_a[keyselect,uni.body];
@@ -320,51 +350,111 @@ if (edit)
         part_a[i] = ang+keyframe_a[keyselect,i];
         }
     
-    var dis;
-    for(var i=0; i&lt;uni.parts; i++;)
-        dis[i] = point_distance(mouse_x,mouse_y,part_x[i],part_y[i]);
-    
-    dismin = 64;
-    parthover = -1;
-    for(var i=0; i&lt;uni.parts; i++;)
+    // find part closest to mouse
+    if (keyboard_check(vk_shift))
         {
-        if (dis[i] &lt; dismin)
+        drag_aold = drag_a;
+        drag_a = point_direction(x+part_x[partselect],y+part_y[partselect],mouse_x,mouse_y);
+        
+        if (mouse_check_button(mb_left)) and (partselect &gt; -1)
+            keyframe_a[keyselect,partselect] -= angle_difference(drag_aold,drag_a);
+        if (mouse_check_button(mb_right)) and (partselect &gt; -1)
+            keyframe_a[keyselect,partselect] = 0;
+        }
+    else
+        {
+        var dis;
+        for(var i=0; i&lt;uni.parts; i++;)
+            dis[i] = point_distance(mouse_x,mouse_y,x+part_x[i],y+part_y[i]);
+        
+        dismin = 64;
+        parthover = -1;
+        for(var i=0; i&lt;uni.parts; i++;)
             {
-            dismin = dis[i];
-            parthover = i;
-            if (mouse_check_button_pressed(mb_left))
-                partselect = i;
+            if (dis[i] &lt; dismin)
+                {
+                dismin = dis[i];
+                parthover = i;
+                if (mouse_check_button_pressed(mb_left))
+                    partselect = i;
+                }
             }
         }
     }
 else
     {
+    // switch between linear and bezier interpolation
+    if (keyboard_check_pressed(ord("M")))
+        mode = !mode;
+    
+    // adjust timestep
+    if (mouse_wheel_up())
+        timestep += 0.02;
+    if (mouse_wheel_down())
+        timestep -= 0.02;
+    
     time += timestep;
     if (time &gt;= keyframes)
         time = max(0,time-keyframes);
     
-    if (keyframes &gt; 1)
+    if (mode == 0)
         {
-        var lerpval = frac(time);
-        var curkey = floor(time);
-        if (curkey == keyframes-1)
-            var nxtkey = 0;
-        else
-            var nxtkey = floor(time)+1;
-        
-        part_x[uni.body] = lerp(keyframe_x[curkey],keyframe_x[nxtkey],lerpval);
-        part_y[uni.body] = lerp(keyframe_y[curkey],keyframe_y[nxtkey],lerpval);
-        part_a[uni.body] = lerp(keyframe_a[curkey,uni.body],keyframe_a[nxtkey,uni.body],lerpval);
-        
-        for(var i=1; i&lt;uni.parts; i++;)
+        // linear interpolation
+        if (keyframes &gt; 1)
             {
-            var xpos = part_x[parent[i]];
-            var ypos = part_y[parent[i]];
-            var ang = part_a[parent[i]];
+            var lerpval = time-floor(time);
             
-            part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
-            part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
-            part_a[i] = ang+lerp(keyframe_a[curkey,i],keyframe_a[nxtkey,i],lerpval);
+            var k1 = floor(time);
+            var k2 = floor(time)+1;
+            if (k2 &gt; keyframes-1)
+                k2 = max(0,k2-keyframes);
+            
+            part_x[uni.body] = lerp(keyframe_x[k1],keyframe_x[k2],lerpval);
+            part_y[uni.body] = lerp(keyframe_y[k1],keyframe_y[k2],lerpval);
+            part_a[uni.body] = lerp(keyframe_a[k1,uni.body],keyframe_a[k2,uni.body],lerpval);
+            
+            for(var i=1; i&lt;uni.parts; i++;)
+                {
+                var xpos = part_x[parent[i]];
+                var ypos = part_y[parent[i]];
+                var ang = part_a[parent[i]];
+                
+                part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
+                part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
+                part_a[i] = ang+lerp(keyframe_a[k1,i],keyframe_a[k2,i],lerpval);
+                }
+            }
+        }
+    else if (mode == 1)
+        {
+        // bezier interpolation
+        if (keyframes &gt; 2)
+            {
+            var lerpval = time/2-floor(time/2);
+            
+            var k1 = floor(time/2)*2-1;
+            var k2 = floor(time/2)*2+0;
+            var k3 = floor(time/2)*2+1;
+            
+            if (k1 &lt; 0)
+                k1 = min(k1+keyframes,keyframes-1);
+            if (k3 &gt; keyframes-1)
+                k3 = max(0,k3-keyframes);
+            
+            part_x[uni.body] = bezier(keyframe_x[k1],keyframe_x[k2],keyframe_x[k3],lerpval);
+            part_y[uni.body] = bezier(keyframe_y[k1],keyframe_y[k2],keyframe_y[k3],lerpval);
+            part_a[uni.body] = bezier(keyframe_a[k1,uni.body],keyframe_a[k2,uni.body],keyframe_a[k3,uni.body],lerpval);
+            
+            for(var i=1; i&lt;uni.parts; i++;)
+                {
+                var xpos = part_x[parent[i]];
+                var ypos = part_y[parent[i]];
+                var ang = part_a[parent[i]];
+                
+                part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
+                part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
+                part_a[i] = ang+bezier(keyframe_a[k1,i],keyframe_a[k2,i],keyframe_a[k3,i],lerpval);
+                }
             }
         }
     }
@@ -393,18 +483,16 @@ else
             <string>draw_set_color($000000);
 if (edit)
     {
-    draw_text(6,6+14*0,"EDIT MODE (SPACE TO PREVIEW)");
+    draw_text(6,6+14*0,"EDIT MODE");
     draw_text(6,6+14*1,"KEYFRAME: "+string(keyselect+1)+"/"+string(keyframes));
     draw_text(6,6+14*2,"BODY PART: "+string(partname[partselect]));
-    draw_text(6,6+14*3,"[WASD] to MOVE - [QE] to ROTATE");
-    draw_text(6,6+14*4,"[LEFT/RIGHT] to SELECT keyframe");
-    draw_text(6,6+14*5,"[UP/DOWN] to ADD/REMOVE keyframes");
-    draw_text(6,6+14*6,"[CTRL]+[S/L] to SAVE/LOAD");
     }
 else
     {
-    draw_text(6,6+14*0,"PREVIEW MODE (SPACE TO EDIT)");
+    draw_text(6,6+14*0,"PREVIEW MODE");
     draw_text(6,6+14*1,"KEYFRAME: "+string(floor(time))+"/"+string(keyframes));
+    draw_text(6,6+14*2,"TIMESTEP: "+string(round(timestep*1000))+"ms");
+    draw_text(6,6+14*3,"BEZIER: "+val_to_text(0,mode));
     }
 
 // back legs/hoofs

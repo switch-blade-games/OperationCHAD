@@ -360,6 +360,7 @@
       <script>scripts\random_col_set.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
+    <script>scripts\bezier.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
