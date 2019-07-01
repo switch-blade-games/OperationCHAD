@@ -46,6 +46,7 @@ enum aState
     {
     idle,
     walk,
+    drop,
     roll,
     duck,
     hang,
@@ -65,10 +66,13 @@ enum skin
 
 // player motion state/flags
 move_state = mState.walk;
-double_jump = false;
+on_ground = false;
+on_ramp = false;
+ramp_slope = 1;
 climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
+drop = false;
 
 // player position/physics
 grav = 0.4;
@@ -90,7 +94,7 @@ weapon_stats();
 cur_weapon = weapon.rifle;
 shoot_timer = 0;
 flame_ang = 0;
-arm_pos = 0;
+gun_y = -18;
 
 // death/respawn
 dead_timer = 120;
@@ -108,16 +112,18 @@ leg_index = 0;
 arm_sprite = -1;
 arm_index = 0;
 
-arm_y[0] = 0;
-arm_y[1] = -1;
-arm_y[2] = -3;
-arm_y[3] = -3;
-arm_y[4] = -2;
-arm_y[5] = 0;
-arm_y[6] = -1;
-arm_y[7] = -3;
-arm_y[8] = -3;
-arm_y[9] = -2;
+leg_y = 0;
+arm_y = 0;
+walk_y[0] = 0;
+walk_y[1] = -1;
+walk_y[2] = -3;
+walk_y[3] = -3;
+walk_y[4] = -2;
+walk_y[5] = 0;
+walk_y[6] = -1;
+walk_y[7] = -3;
+walk_y[8] = -3;
+walk_y[9] = -2;
 
 update_skin(player_skin);
 </string>
@@ -148,8 +154,6 @@ apply_input();
 animate();
 collide();
 
-arm_pos = -18 + (move_state == mState.duck)*12;
-
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
@@ -165,6 +169,7 @@ if (move_state == mState.dead)
         {
         move_state = mState.walk;
         dead_timer = 120;
+        drop = true;
         if (instance_exists(obj_camera))
             {
             if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
@@ -282,38 +287,135 @@ if (move_state != mState.dead)
     {
     case aState.idle:
     case aState.walk:
-        if (anim_state == aState.idle)
-            leg_sprite_index = leg_sprite[0,anim_slope];
-        else if (anim_state == aState.walk)
-            leg_sprite_index = leg_sprite[1,anim_slope];
-        arm_sprite_index = arm_sprite[floor(aim/45)];
         
-        draw_sprite_ext(leg_sprite_index,leg_index,x,y,dir,1,0,-1,1);
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y[leg_index],dir,1,0,-1,1);
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        
+        if (anim_state == aState.idle)
+            {
+            if (on_ramp)
+                {
+                leg_y = 7;
+                arm_y = 2;
+                
+                if (dir &gt; 0)
+                    {
+                    if (ramp_slope &gt; 0)
+                        leg_sprite_index = leg_idle_sprite[1];
+                    else if (ramp_slope &lt; 0)
+                        leg_sprite_index = leg_idle_sprite[2];
+                    }
+                else if (dir &lt; 0)
+                    {
+                    if (ramp_slope &gt; 0)
+                        leg_sprite_index = leg_idle_sprite[2];
+                    else if (ramp_slope &lt; 0)
+                        leg_sprite_index = leg_idle_sprite[1];
+                    }
+                }
+            else
+                leg_sprite_index = leg_idle_sprite[0];
+            }
+        else if (anim_state == aState.walk)
+            leg_sprite_index = leg_walk_sprite[0];
+        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+        
+        if (on_ramp) and (anim_state == aState.idle)
+            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,sign(ramp_slope),1,0,-1,1);
+        else
+            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
+        break;
+    
+    case aState.drop:
+        
+        gun_y = -18;
+        leg_y = 2;
+        arm_y = 0;
+        
+        leg_sprite_index = leg_drop_sprite;
+        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
         break;
     
     case aState.roll:
+        
+        gun_y = -18;
+        
         full_sprite_index = roll_sprite;
         draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
         break;
     
     case aState.duck:
-        full_sprite_index = duck_sprite;
-        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        
+        if (on_ramp)
+            {
+            gun_y = -18;
+            leg_y = 7;
+            arm_y = 6;
+            
+            if (dir &gt; 0)
+                {
+                if (ramp_slope &gt; 0)
+                    leg_sprite_index = leg_idle_sprite[3];
+                else if (ramp_slope &lt; 0)
+                    leg_sprite_index = leg_idle_sprite[4];
+                }
+            else if (dir &lt; 0)
+                {
+                if (ramp_slope &gt; 0)
+                    leg_sprite_index = leg_idle_sprite[4];
+                else if (ramp_slope &lt; 0)
+                    leg_sprite_index = leg_idle_sprite[3];
+                }
+            
+            arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,sign(ramp_slope),1,0,-1,1);
+            draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
+            }
+        else
+            {
+            gun_y = -6;
+            
+            full_sprite_index = duck_sprite;
+            draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+            }
         break;
     
     case aState.hang:
-        full_sprite_index = hang_sprite;
-        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        
+        leg_sprite_index = leg_hang_sprite;
+        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        
+        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
         break;
     
     case aState.climb:
-        full_sprite_index = climb_sprite;
-        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
+        
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        
+        leg_sprite_index = leg_hang_sprite;
+        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        
+        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,-dir,1,0,-1,1);
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],-dir,1,0,-1,1);
         break;
     
     case aState.dead:
-        full_sprite_index = dead_sprite;
+        if (on_ground)
+            full_sprite_index = dead_down_sprite;
+        else
+            full_sprite_index = dead_roll_sprite;
+        
         draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
         break;
     }

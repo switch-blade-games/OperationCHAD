@@ -5,7 +5,7 @@ switch(move_state)
     {
     case mState.walk:
         
-        if (input_lock)
+        if (input_lock) and (on_ground)
             {
             move_state = mState.lock;
             break;
@@ -21,6 +21,7 @@ switch(move_state)
             // move left or right
             if (input_right)
                 {
+                // climb wall to the right
                 var inst = instance_place(x+1,y,par_climb);
                 if (!input_down) and (yspeed >= -2)
                 and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
@@ -28,6 +29,8 @@ switch(move_state)
                     move_state = mState.climb;
                     yspeed = 0;
                     }
+                
+                // aim
                 if (input_up)
                     aim = 45;
                 else
@@ -40,6 +43,7 @@ switch(move_state)
                 }
             if (input_left)
                 {
+                // climb wall to the left
                 var inst = instance_place(x-1,y,par_climb);
                 if (!input_down) and (yspeed >= -2)
                 and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
@@ -47,6 +51,8 @@ switch(move_state)
                     move_state = mState.climb;
                     yspeed = 0;
                     }
+                
+                // aim
                 if (input_up)
                     aim = 135;
                 else
@@ -60,8 +66,14 @@ switch(move_state)
             }
         else
             {
+            // aim
             if (input_up)
                 aim = 90;
+            else if (input_down)
+                {
+                if (!on_ground)
+                    aim = 270;
+                }
             else if (dir > 0)
                 aim = 0;
             else if (dir < 0)
@@ -74,15 +86,18 @@ switch(move_state)
                 xspeed = min(0,xspeed+fric);
             }
         
+        // duck
         if (input_down) and (on_ground)
             {
-            if (h_dir == 0) and (!place_meeting(x+dir,y,par_solid))
+            if (h_dir == 0)
                 {
+                // stop walking and duck
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
                 }
             }
         
+        // climb wall above the player
         if (!on_ground) and (input_up)
             {
             var inst = instance_place(x,y-1,par_climb);
@@ -98,6 +113,7 @@ switch(move_state)
         if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed) and (!input_down)
             jump();
         
+        // fire weapon
         if (input_fire)
             fire_weapon();
         break;
@@ -105,10 +121,12 @@ switch(move_state)
     case mState.lock:
         if (!input_lock)
             {
+            // exit lock, start walking
             if (!input_down)
                 move_state = mState.walk;
             else
                 {
+                // exit lock, start ducking
                 move_state = mState.duck;
                 mask_index = msk_player_duck;
                 }
@@ -128,50 +146,37 @@ switch(move_state)
         else
             aim = point_direction(0,0,h_dir,v_dir);
         
-        if (input_down)
-        and (!input_left)
-        and (!input_right)
-        and (on_ground)
-            {
-            if (!place_meeting(x+dir,y,par_climb))
-                {
-                move_state = mState.duck;
-                mask_index = msk_player_duck;
-                
-                if (dir > 0)
-                    aim = 0;
-                else if (dir < 0)
-                    aim = 180;
-                }
-            }
-        else
-            {
-            // jump
-            if (on_ground) and (input_jump_pressed)
-                jump();
-            }
+        // exit lock, jump
+        if (on_ground) and (input_jump_pressed)
+            jump();
         
+        // fire weapon
         if (input_fire)
             fire_weapon();
         
-        // friction
-        if (xspeed > 0)
-            xspeed = max(0,xspeed-fric);
-        else if (xspeed < 0)
-            xspeed = min(0,xspeed+fric);
+        if (on_ground)
+            {
+            // friction
+            if (xspeed > 0)
+                xspeed = max(0,xspeed-fric);
+            else if (xspeed < 0)
+                xspeed = min(0,xspeed+fric);
+            }
         break;
     
     case mState.duck:
         
+        if (dir > 0)
+            aim = 0;
+        else if (dir < 0)
+            aim = 180;
+        
         if (h_dir != 0)
             {
-            dir = h_dir;
-            
-            // move left or right
-            if (input_right)
-                aim = 0;
-            if (input_left)
-                aim = 180;
+            // stop crouching, start moving
+            move_state = mState.walk;
+            mask_index = msk_player;
+            break;
             }
         
         // friction
@@ -182,18 +187,18 @@ switch(move_state)
         
         if (input_down)
             {
-            // fall through one way floors
+            // drop through platforms
             if (input_jump_pressed)
                 {
                 if (on_ground)
                 and (place_meeting(x,y+1,par_jt))
                 and (!place_meeting(x,y+1,par_solid))
-                and (!place_meeting(x,y-1,par_solid))
                     {
-                    // fall through jump through platform
+                    // stop crouching, drop through
                     move_state = mState.walk;
                     on_ground = false;
                     grace_jump = 0;
+                    drop = true;
                     
                     mask_index = msk_player;
                     y += 1;
@@ -203,13 +208,22 @@ switch(move_state)
         else
             {
             // stop crouching
-            if (!place_meeting(x,y-1,par_solid))
+            if (!place_meeting(x,y-8,par_solid))
                 {
                 move_state = mState.walk;
                 mask_index = msk_player;
                 }
             }
+            
+        // stop crouching, jump
+        if (on_ground) and (input_jump_pressed)
+            {
+            move_state = mState.walk;
+            mask_index = msk_player;
+            jump();
+            }
         
+        // shoot
         if (input_fire)
             fire_weapon();
         break;
@@ -289,7 +303,10 @@ switch(move_state)
                 y = yh;
             }
         else
+            {
             move_state = mState.walk;
+            drop = true;
+            }
         
         if (input_jump_pressed)
             {
@@ -297,14 +314,16 @@ switch(move_state)
                 {
                 if (!input_lock)
                     {
-                    no_hang_time = 12;
                     move_state = mState.walk;
+                    no_hang_time = 12;
+                    drop = true;
                     }
                 }
             else
                 {
-                no_hang_time = 4;
                 move_state = mState.walk;
+                no_hang_time = 4;
+                drop = false;
                 jump();
                 }
             }
@@ -341,7 +360,9 @@ switch(move_state)
             and (input_up)
                 x += face;
             */
+            
             move_state = mState.walk;
+            drop = true;
             }
         else
             {
@@ -449,11 +470,15 @@ switch(move_state)
                         {
                         move_state = mState.walk;
                         aim = point_direction(0,0,dir,0);
+                        drop = true;
                         
                         if (!on_ground)
                         and (input_up or ((climb_side & tile_side.right == tile_side.right) and input_right and !input_left) or ((climb_side & tile_side.left == tile_side.left) and input_left and !input_right))
                         and (!input_down) and (!place_meeting(x,y-1,par_solid))
+                            {
+                            drop = false;
                             jump();
+                            }
                         }
                     }
                 else if (climb_side == tile_side.bottom)
@@ -485,6 +510,7 @@ switch(move_state)
                         {
                         move_state = mState.walk;
                         aim = point_direction(0,0,dir,0);
+                        drop = true;
                         }
                     }
                 }

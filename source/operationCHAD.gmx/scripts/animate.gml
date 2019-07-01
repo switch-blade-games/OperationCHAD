@@ -40,17 +40,42 @@ switch(move_state)
             }
         else
             {
-            if (anim_state != aState.roll)
+            if (drop)
                 {
-                anim_state = aState.roll
-                full_index = 0;
+                if (anim_state != aState.drop)
+                    {
+                    anim_state = aState.drop;
+                    leg_index = 0;
+                    }
+                }
+            else
+                {
+                if (anim_state != aState.roll)
+                    {
+                    anim_state = aState.roll
+                    full_index = 0;
+                    }
                 }
             
-            full_index += 0.3;
-            if (full_index >= 4)
-                full_index = 0;
-            else if (full_index < 0)
-                full_index = 3;
+            if (anim_state == aState.drop)
+                {
+                if (input_fire)
+                    {
+                    arm_index += 0.2;
+                    if (arm_index >= 2)
+                        arm_index = 0;
+                    }
+                else
+                    arm_index = 0;
+                }
+            if (anim_state == aState.roll)
+                {
+                full_index += 0.3;
+                if (full_index >= 4)
+                    full_index = 0;
+                else if (full_index < 0)
+                    full_index = 3;
+                }
             }
         break;
     
@@ -58,17 +83,35 @@ switch(move_state)
         if (anim_state != aState.duck)
             {
             anim_state = aState.duck;
-            full_index = 0;
-            }
-        
-        if (input_fire)
-            {
-            full_index += 0.2;
-            if (full_index >= 2)
+            
+            if (on_ramp)
+                leg_index = 0;
+            else
                 full_index = 0;
             }
+        
+        if (on_ramp)
+            {
+            if (input_fire)
+                {
+                arm_index += 0.2;
+                if (arm_index >= 2)
+                    arm_index = 0;
+                }
+            else
+                arm_index = 0;
+            }
         else
-            full_index = 0;
+            {
+            if (input_fire)
+                {
+                full_index += 0.2;
+                if (full_index >= 2)
+                    full_index = 0;
+                }
+            else
+                full_index = 0;
+            }
         break;
     
     case mState.hang:
@@ -76,9 +119,13 @@ switch(move_state)
             anim_state = aState.hang;
         
         if (input_fire)
-            full_index = 1;
+            {
+            arm_index += 0.2;
+            if (arm_index >= 2)
+                arm_index = 0;
+            }
         else
-            full_index = 0;
+            arm_index = 0;
         break;
     
     case mState.climb:
@@ -91,9 +138,13 @@ switch(move_state)
             anim_state = aState.climb;
         
         if (input_fire)
-            full_index = 1;
+            {
+            arm_index += 0.2;
+            if (arm_index >= 2)
+                arm_index = 0;
+            }
         else
-            full_index = 0;
+            arm_index = 0;
         break;
     
     case mState.dead:
@@ -101,6 +152,19 @@ switch(move_state)
             {
             anim_state = aState.dead;
             full_index = 0;
+            }
+        
+        if (on_ground)
+            {
+            full_index = 0;
+            }
+        else
+            {
+            full_index += 0.3;
+            if (full_index >= 4)
+                full_index = 0;
+            else if (full_index < 0)
+                full_index = 3;
             }
         break;
     }

@@ -16,6 +16,8 @@ if (_version != global.version)
 // video settings
 global.fullscreen = buffer_read(buff,buffer_u8);
 global.scale = buffer_read(buff,buffer_u8);
+global.vsync = buffer_read(buff,buffer_u8);
+global.aa = buffer_read(buff,buffer_u8);
 global.curve = buffer_read(buff,buffer_f32);
 global.scan = buffer_read(buff,buffer_f32);
 global.particles = buffer_read(buff,buffer_u8);

@@ -1,3 +1,5 @@
+var muzzle_y = gun_y+arm_y;
+
 if (shoot_timer == 0)
     {
     shoot_timer = weapon_time[cur_weapon];
@@ -21,7 +23,7 @@ if (shoot_timer == 0)
         var ldy = lengthdir_y(1,ang);
         
         // bullet
-        var inst = instance_create(x+ldx*16,y+arm_pos+ldy*16,weapon_proj[cur_weapon]);
+        var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
         inst.direction = ang;
         inst.speed = weapon_pspd[cur_weapon]
         inst.image_angle = ang;
@@ -36,7 +38,7 @@ if (shoot_timer == 0)
     if (weapon_case[cur_weapon] >= 0)
         {
         // bullet/shell casing
-        var inst = instance_create(x+ldx*12,y+arm_pos+ldy*12,obj_casing);
+        var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_casing);
         if (aim == 0)
             inst.direction = aim+random_range(130,160);
         else
@@ -49,7 +51,7 @@ if (shoot_timer == 0)
     // smoke
     repeat(3)
         {
-        var inst = instance_create(x+ldx*12,y+arm_pos+ldy*12,obj_dust);
+        var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_dust);
         inst.direction = aim+random_range(-15,15);
         inst.speed = 6+random(2);
         inst.friction = 0.8;

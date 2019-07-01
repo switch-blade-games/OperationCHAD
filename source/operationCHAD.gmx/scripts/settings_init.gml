@@ -1,10 +1,12 @@
 /// settings_init();
 
-global.version = 4;
+global.version = 5;
 
 // video settings
 global.fullscreen = false;
 global.scale = 2;
+global.vsync = 0;
+global.aa = 0;
 global.curve = 0.25;
 global.scan = 0.25;
 global.particles = false;

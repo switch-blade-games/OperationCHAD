@@ -28,4 +28,15 @@ switch(argument[0])
         if (argument[1] > 0.75)
             return("MAX");
         break;
+    
+    case 3: // vsync levels
+        if (argument[1] < 2)
+            return("OFF");
+        if (argument[1] == 2)
+            return("2XAA");
+        if (argument[1] == 4)
+            return("4XAA");
+        if (argument[1] == 8)
+            return("8XAA");
+        break;
     }

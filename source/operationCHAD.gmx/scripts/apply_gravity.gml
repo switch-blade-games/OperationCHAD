@@ -14,10 +14,25 @@ switch(move_state)
             on_ground = true;
             // grace jump time
             grace_jump = 8;
+            // drop
+            drop = false;
             }
         
         // gravity
-        if !(on_ground)
+        if (on_ground)
+            {
+            if (place_meeting(x,y+1,par_ramp))
+                {
+                on_ramp = true;
+                ramp_slope = 1;
+                var inst = instance_place(x,y+1,par_ramp);
+                if (inst != noone)
+                    ramp_slope = inst.slope;
+                }
+            else
+                on_ramp = false;
+            }
+        else
             {
             if (yspeed > 0) and (!input_down) and (no_hang_time == 0)
                 {

@@ -9,6 +9,8 @@ buffer_write(buff,buffer_u8,global.version);
 // video settings
 buffer_write(buff,buffer_u8,global.fullscreen);
 buffer_write(buff,buffer_u8,global.scale);
+buffer_write(buff,buffer_u8,global.vsync);
+buffer_write(buff,buffer_u8,global.aa);
 buffer_write(buff,buffer_f32,global.curve);
 buffer_write(buff,buffer_f32,global.scan);
 buffer_write(buff,buffer_u8,global.particles);

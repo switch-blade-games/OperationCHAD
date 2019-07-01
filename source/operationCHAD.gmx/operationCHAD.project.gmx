@@ -229,6 +229,7 @@
         <sprite>sprites\yolo_legs_walk_spr</sprite>
         <sprite>sprites\yolo_legs_stand_spr</sprite>
         <sprite>sprites\yolo_legs_drop_spr</sprite>
+        <sprite>sprites\yolo_legs_hang_spr</sprite>
         <sprites name="ramp">
           <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
           <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
