@@ -560,8 +560,8 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\internet_room</room>
       <room>rooms\unicorn_room</room>
+      <room>rooms\internet_room</room>
       <room>rooms\octo_room</room>
       <room>rooms\cloud_room</room>
       <room>rooms\ep_room</room>
