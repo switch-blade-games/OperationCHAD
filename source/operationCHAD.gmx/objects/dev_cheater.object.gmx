@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>debug = false;
+event_user(0);
 </string>
           </argument>
         </arguments>
@@ -48,7 +49,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (debug)
+            <string>// toggle debug mode
+if (keyboard_check_pressed(vk_f1))
+    debug = !debug;
+
+// don't hurt player in debug mode
+if (debug)
     {
     with(par_actor)
         nohit = true;
@@ -59,6 +65,20 @@ else
         nohit = false;
     }
 
+// next room
+if (keyboard_check_pressed(vk_pageup))
+    {
+    if (room_exists(room_next(room)))
+        room_goto(room_next(room));
+    }
+// previous room
+if (keyboard_check_pressed(vk_pagedown))
+    {
+    if (room_exists(room_previous(room))) and (room != menu_room)
+        room_goto(room_previous(room));
+    }
+
+// change weapons
 for(var i=0; i&lt;10; i++;)
     {
     if (keyboard_check_pressed(vk_numpad0+i))
@@ -67,12 +87,25 @@ for(var i=0; i&lt;10; i++;)
             obj_player.cur_weapon = clamp(i,0,obj_player.weapons);
         }
     }
+
+// restart
+if (keyboard_check_pressed(ord("R")))
+    {
+    with(obj_shader)
+        instance_destroy();
+    instance_destroy();
+    game_restart()
+    }
+
+// end
+if (keyboard_check_pressed(vk_escape))
+    game_end();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="82">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,10 +122,34 @@ for(var i=0; i&lt;10; i++;)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(obj_shader)
-    instance_destroy();
-instance_destroy();
-game_restart()
+            <string>// output OS info for debugging
+var file = file_text_open_write(working_directory+"debug.txt");
+
+file_text_write_string(file,"[OS]");
+file_text_writeln(file);
+file_text_write_string(file,string(val_to_text(4,os_type)));
+file_text_writeln(file);
+file_text_write_string(file,"[VERSION]");
+file_text_writeln(file);
+file_text_write_string(file,string(os_version));
+file_text_writeln(file);
+
+var info_map = os_get_info();
+if (info_map &gt; -1)
+    {
+    var key = ds_map_find_first(info_map);
+    while(key != undefined)
+        {
+        file_text_write_string(file,"["+string_upper(string(key))+"]");
+        file_text_writeln(file);
+        file_text_write_string(file,string_upper(string(info_map[?key])));
+        file_text_writeln(file);
+        
+        key = ds_map_find_next(info_map,key);
+        }
+    }
+
+file_text_close(file);
 </string>
           </argument>
         </arguments>
@@ -156,146 +213,6 @@ game_restart()
     draw_text_outline(vx+4,vy+4+048,"CamPos: "+string(vx)+"/"+string(vy));
     draw_set_color($000000);
     }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="113">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_speed = 5;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="112">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>debug = !debug;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="34">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (room_exists(room_previous(room))) and (room != menu_room)
-    room_goto(room_previous(room));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="33">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (room_exists(room_next(room)))
-    room_goto(room_next(room));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>game_end()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="113">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_speed = 60;
 </string>
           </argument>
         </arguments>

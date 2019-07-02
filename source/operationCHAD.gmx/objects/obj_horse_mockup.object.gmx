@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enum uni
+            <string>// part enums
+enum uni
     {
     body, // body
     neck, // neck
@@ -46,6 +47,7 @@
     parts // how many body parts
     }
 
+// part names
 partname[uni.body] = "body";
 partname[uni.neck] = "neck";
 partname[uni.head] = "head";
@@ -81,7 +83,7 @@ sprite[uni.leg_rbb] = spr_unicorn_leg_bb;
 sprite[uni.hoof_rb] = spr_unicorn_hoof;
 sprite[uni.tail] = spr_unicorn_tail;
 
-// body
+// define part offsets
 off_x[uni.body] = 0;
 off_y[uni.body] = 0;
 // neck and head
@@ -121,6 +123,7 @@ off_y[uni.hoof_rb] = +25;
 off_x[uni.tail] = -60;
 off_y[uni.tail] = -18;
 
+// init and generate offsets
 for(var i=0; i&lt;uni.parts; i++;)
     {
     parent[i] = -1;
@@ -132,6 +135,7 @@ for(var i=0; i&lt;uni.parts; i++;)
     off_dis[i] = point_distance(0,0,off_x[i],off_y[i]);
     }
 
+// define part hierarchy
 parent[uni.body] = -1;
 parent[uni.neck] = uni.body;
 parent[uni.head] = uni.neck;
@@ -149,6 +153,7 @@ parent[uni.leg_rbb] = uni.leg_rtb;
 parent[uni.hoof_rb] = uni.leg_rbb;
 parent[uni.tail] = uni.body;
 
+// set position/orientation of all parts
 for(var i=1; i&lt;uni.parts; i++;)
     {
     var xpos = part_x[parent[i]];
@@ -163,6 +168,7 @@ for(var i=1; i&lt;uni.parts; i++;)
 time = 0;
 timestep = 0.2;
 
+// main keyframe set
 keyframes = 1;
 keyselect = 0;
 keyframe_x[0] = 0;
@@ -170,6 +176,7 @@ keyframe_y[0] = 0;
 for(var i=0; i&lt;uni.parts; i++;)
     keyframe_a[0,i] = 0;
 
+// alternate keyframe set
 keyframe_lerp = 0;
 keyframes_to = 1;
 keyframe_xto[0] = 0;
@@ -214,10 +221,12 @@ drag_a = 0;
 
 if (edit)
     {
+    // keyboard hotkeys
     if (keyboard_check(vk_control))
         {
         if (keyboard_check_pressed(ord("S")))
             {
+            // save
             var path = get_save_filename("Spine Files|*.spine","");
             if (path == "")
                 exit;
@@ -243,6 +252,7 @@ if (edit)
             }
         else if (keyboard_check_pressed(ord("L"))) and (show_question("LOAD? Unsaved progress will be lost!"))
             {
+            // load
             var path = get_open_filename("Spine Files|*.spine","");
             if (path == "") or (!file_exists(path))
                 exit;
@@ -266,6 +276,7 @@ if (edit)
             }
         else if (keyboard_check_pressed(ord("N"))) and (show_question("NEW? Unsaved progress will be lost!"))
             {
+            // new
             keyselect = 0;
             keyframes = 1;
             
@@ -374,6 +385,8 @@ if (edit)
                 {
                 dismin = dis[i];
                 parthover = i;
+                
+                // select part closest to mouse
                 if (mouse_check_button_pressed(mb_left))
                     partselect = i;
                 }
@@ -382,8 +395,10 @@ if (edit)
     }
 else
     {
+    // keyboard shortcuts
     if (keyboard_check(vk_control)) and (keyboard_check_pressed(ord("L")))
         {
+        // load alternate keyframe set
         var path = get_open_filename("Spine Files|*.spine","");
         if (path == "") or (!file_exists(path))
             exit;
@@ -405,10 +420,11 @@ else
         buffer_delete(buff);
         }
     
+    // keyframe set interpolation
     if (keyboard_check(vk_add))
-        keyframe_lerp = min(1,keyframe_lerp+0.02);
+        keyframe_lerp = min(1,keyframe_lerp+0.01);
     if (keyboard_check(vk_subtract))
-        keyframe_lerp = max(0,keyframe_lerp-0.02);
+        keyframe_lerp = max(0,keyframe_lerp-0.01);
     
     // adjust timestep
     if (mouse_wheel_up())

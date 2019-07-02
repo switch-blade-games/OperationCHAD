@@ -32,11 +32,22 @@ switch(argument[0])
     case 3: // vsync levels
         if (argument[1] < 2)
             return("OFF");
-        if (argument[1] == 2)
+        else if (argument[1] == 2)
             return("2XAA");
-        if (argument[1] == 4)
+        else if (argument[1] == 4)
             return("4XAA");
-        if (argument[1] == 8)
+        else if (argument[1] == 8)
             return("8XAA");
+        break;
+    
+    case 4: // os type
+        if (argument[1] == os_windows)
+            return("WINDOWS");
+        else if (argument[1] == os_macosx)
+            return("OSX");
+        else if (argument[1] == os_linux)
+            return("LINUX");
+        else if (argument[1] == os_unknown)
+            return("UNKNOWN");
         break;
     }
