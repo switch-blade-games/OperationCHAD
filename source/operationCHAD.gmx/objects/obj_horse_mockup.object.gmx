@@ -170,6 +170,13 @@ keyframe_y[0] = 0;
 for(var i=0; i&lt;uni.parts; i++;)
     keyframe_a[0,i] = 0;
 
+keyframe_lerp = 0;
+keyframes_to = 1;
+keyframe_xto[0] = 0;
+keyframe_yto[0] = 0;
+for(var i=0; i&lt;uni.parts; i++;)
+    keyframe_ato[0,i] = 0;
+
 edit = true;
 mode = 0;
 partselect = 0;
@@ -198,9 +205,16 @@ drag_a = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_control))
+            <string>if (keyboard_check_pressed(vk_space))
     {
+    edit = !edit;
     if (edit)
+        keyselect = floor(time/2)*2;
+    }
+
+if (edit)
+    {
+    if (keyboard_check(vk_control))
         {
         if (keyboard_check_pressed(ord("S")))
             {
@@ -261,22 +275,7 @@ drag_a = 0;
                 keyframe_a[0,i] = 0;
             }
         }
-    exit;
-    }
-
-if (keyboard_check_pressed(vk_space))
-    {
-    edit = !edit;
-    if (edit)
-        {
-        if (mode == 0)
-            keyselect = floor(time);
-        else if (mode == 1)
-            keyselect = floor(time/2)*2;
-        }
-    }
-if (edit)
-    {
+    
     // add keyframe
     if (keyboard_check_pressed(vk_up))
         {
@@ -383,9 +382,33 @@ if (edit)
     }
 else
     {
-    // switch between linear and bezier interpolation
-    if (keyboard_check_pressed(ord("M")))
-        mode = !mode;
+    if (keyboard_check(vk_control)) and (keyboard_check_pressed(ord("L")))
+        {
+        var path = get_open_filename("Spine Files|*.spine","");
+        if (path == "") or (!file_exists(path))
+            exit;
+        
+        var buff = buffer_load(path);
+        buffer_seek(buff,buffer_seek_start,0);
+        
+        keyframes_to = buffer_read(buff,buffer_u8);
+        
+        for(var i=0; i&lt;keyframes; i++;)
+            {
+            keyframe_xto[i] = buffer_read(buff,buffer_s16);
+            keyframe_yto[i] = buffer_read(buff,buffer_s16);
+            
+            for(var j=0; j&lt;uni.parts; j++;)
+                keyframe_ato[i,j] = buffer_read(buff,buffer_s16);
+            }
+        
+        buffer_delete(buff);
+        }
+    
+    if (keyboard_check(vk_add))
+        keyframe_lerp = min(1,keyframe_lerp+0.02);
+    if (keyboard_check(vk_subtract))
+        keyframe_lerp = max(0,keyframe_lerp-0.02);
     
     // adjust timestep
     if (mouse_wheel_up())
@@ -397,64 +420,56 @@ else
     if (time &gt;= keyframes)
         time = max(0,time-keyframes);
     
-    if (mode == 0)
+    // bezier interpolation
+    if (keyframes &gt; 2)
         {
-        // linear interpolation
-        if (keyframes &gt; 1)
+        var lerpval = time/2-floor(time/2);
+        
+        var k1 = floor(time/2)*2-1;
+        var k2 = floor(time/2)*2+0;
+        var k3 = floor(time/2)*2+1;
+        
+        if (k1 &lt; 0)
+            k1 = min(k1+keyframes,keyframes-1);
+        if (k3 &gt; keyframes-1)
+            k3 = max(0,k3-keyframes);
+        
+        var x1 = bezier(keyframe_x[k1],keyframe_x[k2],keyframe_x[k3],lerpval);
+        var y1 = bezier(keyframe_y[k1],keyframe_y[k2],keyframe_y[k3],lerpval);
+        var a1 = bezier(keyframe_a[k1,uni.body],keyframe_a[k2,uni.body],keyframe_a[k3,uni.body],lerpval);
+        
+        if (keyframes_to == keyframes)
             {
-            var lerpval = time-floor(time);
-            
-            var k1 = floor(time);
-            var k2 = floor(time)+1;
-            if (k2 &gt; keyframes-1)
-                k2 = max(0,k2-keyframes);
-            
-            part_x[uni.body] = lerp(keyframe_x[k1],keyframe_x[k2],lerpval);
-            part_y[uni.body] = lerp(keyframe_y[k1],keyframe_y[k2],lerpval);
-            part_a[uni.body] = lerp(keyframe_a[k1,uni.body],keyframe_a[k2,uni.body],lerpval);
-            
-            for(var i=1; i&lt;uni.parts; i++;)
-                {
-                var xpos = part_x[parent[i]];
-                var ypos = part_y[parent[i]];
-                var ang = part_a[parent[i]];
-                
-                part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
-                part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
-                part_a[i] = ang+lerp(keyframe_a[k1,i],keyframe_a[k2,i],lerpval);
-                }
+            var x2 = bezier(keyframe_xto[k1],keyframe_xto[k2],keyframe_xto[k3],lerpval);
+            var y2 = bezier(keyframe_yto[k1],keyframe_yto[k2],keyframe_yto[k3],lerpval);
+            var a2 = bezier(keyframe_ato[k1,uni.body],keyframe_ato[k2,uni.body],keyframe_ato[k3,uni.body],lerpval);
             }
-        }
-    else if (mode == 1)
-        {
-        // bezier interpolation
-        if (keyframes &gt; 2)
+        else
             {
-            var lerpval = time/2-floor(time/2);
+            var x2 = x1;
+            var y2 = y1;
+            var a2 = a1;
+            }
+        
+        part_x[uni.body] = lerp(x1,x2,keyframe_lerp);
+        part_y[uni.body] = lerp(y1,y2,keyframe_lerp);
+        part_a[uni.body] = lerp(a1,a2,keyframe_lerp);
+        
+        for(var i=1; i&lt;uni.parts; i++;)
+            {
+            var xpos = part_x[parent[i]];
+            var ypos = part_y[parent[i]];
+            var ang = part_a[parent[i]];
             
-            var k1 = floor(time/2)*2-1;
-            var k2 = floor(time/2)*2+0;
-            var k3 = floor(time/2)*2+1;
+            var a1 = bezier(keyframe_a[k1,i],keyframe_a[k2,i],keyframe_a[k3,i],lerpval);
+            if (keyframes_to == keyframes)
+                var a2 = bezier(keyframe_ato[k1,i],keyframe_ato[k2,i],keyframe_ato[k3,i],lerpval);
+            else
+                var a2 = a1;
             
-            if (k1 &lt; 0)
-                k1 = min(k1+keyframes,keyframes-1);
-            if (k3 &gt; keyframes-1)
-                k3 = max(0,k3-keyframes);
-            
-            part_x[uni.body] = bezier(keyframe_x[k1],keyframe_x[k2],keyframe_x[k3],lerpval);
-            part_y[uni.body] = bezier(keyframe_y[k1],keyframe_y[k2],keyframe_y[k3],lerpval);
-            part_a[uni.body] = bezier(keyframe_a[k1,uni.body],keyframe_a[k2,uni.body],keyframe_a[k3,uni.body],lerpval);
-            
-            for(var i=1; i&lt;uni.parts; i++;)
-                {
-                var xpos = part_x[parent[i]];
-                var ypos = part_y[parent[i]];
-                var ang = part_a[parent[i]];
-                
-                part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
-                part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
-                part_a[i] = ang+bezier(keyframe_a[k1,i],keyframe_a[k2,i],keyframe_a[k3,i],lerpval);
-                }
+            part_x[i] = xpos+lengthdir_x(off_dis[i],ang+off_dir[i]);
+            part_y[i] = ypos+lengthdir_y(off_dis[i],ang+off_dir[i]);
+            part_a[i] = ang+lerp(a1,a2,keyframe_lerp);
             }
         }
     }
@@ -492,7 +507,6 @@ else
     draw_text(6,6+14*0,"PREVIEW MODE");
     draw_text(6,6+14*1,"KEYFRAME: "+string(floor(time))+"/"+string(keyframes));
     draw_text(6,6+14*2,"TIMESTEP: "+string(round(timestep*1000))+"ms");
-    draw_text(6,6+14*3,"BEZIER: "+val_to_text(0,mode));
     }
 
 // back legs/hoofs
