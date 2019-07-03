@@ -73,6 +73,7 @@
       <sprite>sprites\motor_mockup_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
       <sprite>sprites\tank_spr</sprite>
+      <sprite>sprites\foreground_branch_spr</sprite>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -281,6 +282,8 @@
       <background>background\motor_foreground_BG</background>
       <background>background\motor_sky_BG</background>
       <background>background\hitler_BG</background>
+      <background>background\grass_BG</background>
+      <background>background\treeline_BG</background>
     </backgrounds>
     <background>background\cloud_BG</background>
     <background>background\cloud_tile_BG</background>
@@ -523,6 +526,7 @@
         <object>objects\motor_mockup</object>
         <object>objects\motor_nazi</object>
         <object>objects\tank</object>
+        <object>objects\foreground_branch</object>
       </objects>
     </objects>
     <objects name="4-Clown World">
@@ -560,34 +564,34 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\unicorn_room</room>
-      <room>rooms\internet_room</room>
-      <room>rooms\octo_room</room>
-      <room>rooms\cloud_room</room>
+      <room>rooms\germany_motor_room</room>
       <room>rooms\ep_room</room>
-      <room>rooms\tong_room</room>
-      <room>rooms\internet_twitter_room</room>
-      <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\overton_room</room>
+      <room>rooms\octo_room</room>
+      <room>rooms\internet_twitter_room</room>
+      <room>rooms\internet_room</room>
       <room>rooms\internet_vert_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
       <room>rooms\fryguy_room</room>
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
+      <room>rooms\tong_room</room>
     </rooms>
     <rooms name="3-Germany">
-      <room>rooms\germany_motor_room</room>
       <room>rooms\hitler_room</room>
     </rooms>
     <rooms name="4-Clown World">
       <room>rooms\clown_room</room>
       <room>rooms\circle_room</room>
+      <room>rooms\unicorn_room</room>
+      <room>rooms\cloud_room</room>
     </rooms>
     <rooms name="5- Island of NPCs">
       <room>rooms\NPC_room</room>
+      <room>rooms\ball_buster_room</room>
       <room>rooms\pooh_room</room>
     </rooms>
     <rooms name="99-test">
