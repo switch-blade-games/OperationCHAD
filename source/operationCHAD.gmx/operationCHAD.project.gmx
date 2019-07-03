@@ -564,6 +564,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\hitler_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\ep_room</room>
     </rooms>
@@ -579,9 +580,6 @@
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
-    </rooms>
-    <rooms name="3-Germany">
-      <room>rooms\hitler_room</room>
     </rooms>
     <rooms name="4-Clown World">
       <room>rooms\clown_room</room>
