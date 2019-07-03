@@ -3,8 +3,8 @@
   <spriteName>pepe_place_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>-10000</depth>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,61 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>STAND=0
-WALK=1
-JUMP=2
+            <string>surf_mockup = -1;
 
-state=STAND
+mText[mState.idle]  = "idle";
+mText[mState.walk]  = "walk";
+mText[mState.lock]  = "lock";
+mText[mState.duck]  = "duck";
+mText[mState.hang]  = "hang";
+mText[mState.climb] = "climb";
+mText[mState.dead]  = "dead";
 
-AIM=0
-FLIP = 1;
+aText[aState.idle]  = "idle";
+aText[aState.walk]  = "walk";
+aText[aState.drop]  = "drop";
+aText[aState.roll]  = "roll";
+aText[aState.duck]  = "duck";
+aText[aState.hang]  = "hang";
+aText[aState.climb] = "climb";
+aText[aState.dead]  = "dead";
 
-FIRE=false
-
-//ARM
-ARMspe=0.2
-ARMmax=1
-ARMimg=0
-
-//LEG
-LEGspe=0.2
-LEGmax=10
-LEGimg=0
-
-//JUMP
-JUMPspe=2.5
-JUMPgrav=0.05
-
-//JUMPani
-JUMPanispe=0.3
-JUMPanimax=4
-JUMPaniimg=0
-
-torso_spr[0] = pepe_arms_0_spr;
-torso_spr[1] = pepe_arms_45_spr;
-torso_spr[2] = pepe_arms_90_spr;
-torso_spr[3] = pepe_arms_45_spr;
-torso_spr[4] = pepe_arms_0_spr;
-torso_spr[5] = pepe_arms_315_spr;
-torso_spr[6] = pepe_arms_270_spr;
-torso_spr[7] = pepe_arms_315_spr;
-
-torso_y[0] = 0;
-torso_y[1] = -1;
-torso_y[2] = -3;
-torso_y[3] = -3;
-torso_y[4] = -2;
-torso_y[5] = 0;
-torso_y[6] = -1;
-torso_y[7] = -3;
-torso_y[8] = -3;
-torso_y[9] = -2;
+mx = 0;
+my = 0;
+click = -1;
+click_x = 0;
+click_y = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -96,106 +71,28 @@ torso_y[9] = -2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>AIM=round(point_direction(x,y,mouse_x,mouse_y)/45)
-AIM=clamp(AIM,0,7);
-if (mouse_x &gt;= x)
-    FLIP = 1;
-else
-    FLIP = -1;
+            <string>if (surface_exists(surf_mockup))
+    draw_surface(surf_mockup,view_wview[0]/2,0);
 
-if (state=JUMP){
-
-    motion_add(270,JUMPgrav)
+draw_set_halign(0);
+draw_set_valign(0);
+if (instance_exists(obj_player))
+    {
+    var dx = view_wview[0]/2;
+    var dy = 0;
+    draw_text_outline(dx+4,2+dy++*14,"Player States");
+    draw_text_outline(dx+10,2+dy++*14,"Movement: "+string(mText[obj_player.move_state]));
+    draw_text_outline(dx+10,2+dy++*14,"Animation: "+string(aText[obj_player.anim_state]));
     
-    if(y&gt;ystart)
-    if(vspeed&gt;0){
-        state=STAND
-        y=ystart
-        speed=0
+    draw_text_outline(dx+4,2+dy++*14,"Sprites");
+    if (obj_player.full_sprite)
+        draw_text_outline(dx+10,2+dy++*14,"Full: "+string(sprite_get_name(obj_player.full_sprite_index)));
+    else
+        {
+        draw_text_outline(dx+10,2+dy++*14,"Leg: "+string(sprite_get_name(obj_player.leg_sprite_index)));
+        draw_text_outline(dx+10,2+dy++*14,"Arm: "+string(sprite_get_name(obj_player.arm_sprite_index)));
         }
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="56">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>FIRE=false
-
-ANIimg=0
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="54">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(state=STAND){
-
-LEGimg=0
-
-state=WALK
-
-exit
-}
-
-if(state=WALK)
-state=STAND
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="53">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>FIRE=true
+    }
 </string>
           </argument>
         </arguments>
@@ -218,68 +115,137 @@ state=STAND
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(x,y-80,AIM)
-draw_text(x,y-100,state)
+            <string>mx = device_mouse_x_to_gui(0)-view_wview[0]/2;
+my = device_mouse_y_to_gui(0);
 
-if(state=JUMP){
-    JUMPaniimg+=JUMPanispe
-    if(JUMPaniimg&gt;=JUMPanimax)
-        JUMPaniimg=0
+if (!surface_exists(surf_mockup))
+    surf_mockup = surface_create(view_wview[0]/2,view_hview[0]);
 
-draw_sprite_ext(pepe_jump_spr,JUMPaniimg,x,y,FLIP,1,0,-1,1)
+surface_set_target(surf_mockup);
+draw_clear(background_color);
 
-exit
-}
+draw_set_color($000000);
+if (instance_exists(obj_player))
+    {
+    if (mouse_check_button_pressed(mb_right))
+    or (keyboard_check_pressed(vk_alt))
+        obj_player.debug_freeze = !obj_player.debug_freeze;
+    
+    xpos = obj_player.x;
+    ypos = obj_player.y;
+    
+    with(obj_player)
+        {
+        x = view_wview[0]/4;
+        y = 136;
+        event_perform(ev_draw,0);
+        }
+    
+    if (obj_player.full_sprite)
+        {
+        with(obj_player)
+            {
+            var ox = sprite_get_xoffset(full_sprite_index);
+            var oy = sprite_get_yoffset(full_sprite_index);
+            var sw = sprite_get_width(full_sprite_index);
+            var sh = sprite_get_height(full_sprite_index);
+            
+            debug_draw = 0;
+            x = view_wview[0]/4;
+            y = 204;
+            event_perform(ev_draw,0);
+            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
+            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
+            }
+        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
+            {
+            if (mouse_check_button_pressed(mb_left)) and (click == -1)
+                {
+                click = obj_player.debug_draw;
+                click_x = mx;
+                click_y = my;
+                }
+            if (mouse_check_button_pressed(mb_middle))
+                sprite_set_offset(obj_player.full_sprite_index,sprite_get_width(obj_player.full_sprite_index)/2,sprite_get_height(obj_player.full_sprite_index));
+            }
+        if (mouse_check_button(mb_left)) and (click == 0)
+            sprite_set_offset(obj_player.full_sprite_index,ox-(mx-click_x)*obj_player.full_dir,oy-(my-click_y));
+        }
+    else
+        {
+        with(obj_player)
+            {
+            var ox = sprite_get_xoffset(leg_sprite_index);
+            var oy = sprite_get_yoffset(leg_sprite_index);
+            var sw = sprite_get_width(leg_sprite_index);
+            var sh = sprite_get_height(leg_sprite_index);
+            
+            debug_draw = 1;
+            x = view_wview[0]/4-40;
+            y = 204;
+            event_perform(ev_draw,0);
+            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
+            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
+            }
+        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
+            {
+            if (mouse_check_button_pressed(mb_left)) and (click == -1)
+                {
+                click = obj_player.debug_draw;
+                click_x = mx;
+                click_y = my;
+                }
+            if (mouse_check_button_pressed(mb_middle))
+                sprite_set_offset(obj_player.leg_sprite_index,sprite_get_width(obj_player.leg_sprite_index)/2,sprite_get_height(obj_player.leg_sprite_index));
+            }
+        if (mouse_check_button(mb_left)) and (click == 1)
+            sprite_set_offset(obj_player.leg_sprite_index,ox-(mx-click_x)*obj_player.leg_dir,oy-(my-click_y));
+        with(obj_player)
+            {
+            var ox = sprite_get_xoffset(arm_sprite_index);
+            var oy = sprite_get_yoffset(arm_sprite_index);
+            var sw = sprite_get_width(arm_sprite_index);
+            var sh = sprite_get_height(arm_sprite_index);
+            
+            debug_draw = 2;
+            x = view_wview[0]/4+40;
+            y = 204;
+            event_perform(ev_draw,0);
+            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
+            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
+            }
+        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
+            {
+            if (mouse_check_button_pressed(mb_left)) and (click == -1)
+                {
+                click = obj_player.debug_draw;
+                click_x = mx;
+                click_y = my;
+                }
+            if (mouse_check_button_pressed(mb_middle))
+                sprite_set_offset(obj_player.arm_sprite_index,sprite_get_width(obj_player.arm_sprite_index)/2,sprite_get_height(obj_player.arm_sprite_index));
+            }
+        if (mouse_check_button(mb_left)) and (click == 2)
+            sprite_set_offset(obj_player.arm_sprite_index,ox-(mx-click_x)*obj_player.arm_dir,oy-(my-click_y));
+        }
+    
+    if (mouse_check_button(mb_left))
+        {
+        if (click &gt; -1)
+            {
+            click_x = mx;
+            click_y = my;
+            }
+        }
+    else
+        click = -1;
+    
+    obj_player.x = xpos;
+    obj_player.y = ypos;
+    obj_player.debug_draw = -1;
+    }
 
-//draw legs
-if(state=STAND)
-    draw_sprite_ext(pepe_legs_stand_spr,-1,x,y,FLIP,1,0,-1,1)
-
-if(state=WALK){
-
-    LEGimg+=LEGspe
-    if(LEGimg&gt;=LEGmax)
-        LEGimg=0
-    draw_sprite_ext(pepe_legs_walk_spr,LEGimg,x,y,FLIP,1,0,-1,1)
-}
-
-//draw arms
-if(FIRE=true){
-    ARMimg+=ARMspe
-    if(ARMimg&gt;=ARMmax+1)
-        ARMimg=0
-}
-draw_sprite_ext(torso_spr[AIM],ARMimg,x,y+torso_y[floor(LEGimg)],FLIP,1,0,-1,1)
-
-//draw_text(x,y-100,ARMimg)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(y=ystart)
-if not(state=JUMP){
-
-    motion_set(90,JUMPspe)
-    state=JUMP
-}
+surface_reset_target();
 </string>
           </argument>
         </arguments>

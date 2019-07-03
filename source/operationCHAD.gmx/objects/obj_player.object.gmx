@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>event_inherited();
 
+debug_draw = -1;
+debug_freeze = false;
+
 gamepad_slot = 0;
 
 // player move states
@@ -105,11 +108,12 @@ ystart = y;
 player_skin = skin.yoloswag;
 anim_state = aState.idle;
 anim_slope = 0;
-full_sprite = -1;
+full_sprite = false;
+full_sprite_index = -1;
 full_index = 0;
-leg_sprite = -1;
+leg_sprite_index = -1;
 leg_index = 0;
-arm_sprite = -1;
+arm_sprite_index = -1;
 arm_index = 0;
 
 leg_y = 0;
@@ -124,6 +128,9 @@ walk_y[6] = -1;
 walk_y[7] = -3;
 walk_y[8] = -3;
 walk_y[9] = -2;
+leg_dir = 1;
+arm_dir = 1;
+full_dir = 1;
 
 update_skin(player_skin);
 </string>
@@ -148,7 +155,10 @@ update_skin(player_skin);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>input();
+            <string>if (debug_freeze)
+    exit;
+
+input();
 apply_gravity();
 apply_input();
 animate();
@@ -283,141 +293,23 @@ if (move_state != mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>switch(anim_state)
+            <string>if (debug_draw &gt; -1)
     {
-    case aState.idle:
-    case aState.walk:
-        
-        gun_y = -18;
-        leg_y = 0;
-        arm_y = 0;
-        
-        if (anim_state == aState.idle)
-            {
-            if (on_ramp)
-                {
-                leg_y = 7;
-                arm_y = 2;
-                
-                if (dir &gt; 0)
-                    {
-                    if (ramp_slope &gt; 0)
-                        leg_sprite_index = leg_idle_sprite[1];
-                    else if (ramp_slope &lt; 0)
-                        leg_sprite_index = leg_idle_sprite[2];
-                    }
-                else if (dir &lt; 0)
-                    {
-                    if (ramp_slope &gt; 0)
-                        leg_sprite_index = leg_idle_sprite[2];
-                    else if (ramp_slope &lt; 0)
-                        leg_sprite_index = leg_idle_sprite[1];
-                    }
-                }
-            else
-                leg_sprite_index = leg_idle_sprite[0];
-            }
-        else if (anim_state == aState.walk)
-            leg_sprite_index = leg_walk_sprite[0];
-        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
-        
-        if (on_ramp) and (anim_state == aState.idle)
-            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,sign(ramp_slope),1,0,-1,1);
-        else
-            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
-        break;
-    
-    case aState.drop:
-        
-        gun_y = -18;
-        leg_y = 2;
-        arm_y = 0;
-        
-        leg_sprite_index = leg_drop_sprite;
-        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
-        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
-        break;
-    
-    case aState.roll:
-        
-        gun_y = -18;
-        
-        full_sprite_index = roll_sprite;
-        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
-        break;
-    
-    case aState.duck:
-        
-        if (on_ramp)
-            {
-            gun_y = -18;
-            leg_y = 7;
-            arm_y = 6;
-            
-            if (dir &gt; 0)
-                {
-                if (ramp_slope &gt; 0)
-                    leg_sprite_index = leg_idle_sprite[3];
-                else if (ramp_slope &lt; 0)
-                    leg_sprite_index = leg_idle_sprite[4];
-                }
-            else if (dir &lt; 0)
-                {
-                if (ramp_slope &gt; 0)
-                    leg_sprite_index = leg_idle_sprite[4];
-                else if (ramp_slope &lt; 0)
-                    leg_sprite_index = leg_idle_sprite[3];
-                }
-            
-            arm_sprite_index = arm_normal_sprite[floor(aim/45)];
-            draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,sign(ramp_slope),1,0,-1,1);
-            draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
-            }
-        else
-            {
-            gun_y = -6;
-            
-            full_sprite_index = duck_sprite;
-            draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
-            }
-        break;
-    
-    case aState.hang:
-        
-        gun_y = -18;
-        leg_y = 0;
-        arm_y = 0;
-        
-        leg_sprite_index = leg_hang_sprite;
-        arm_sprite_index = arm_single_sprite[floor(aim/45)];
-        
-        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,dir,1,0,-1,1);
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],dir,1,0,-1,1);
-        break;
-    
-    case aState.climb:
-        
-        gun_y = -18;
-        leg_y = 0;
-        arm_y = 0;
-        
-        leg_sprite_index = leg_hang_sprite;
-        arm_sprite_index = arm_single_sprite[floor(aim/45)];
-        
-        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,-dir,1,0,-1,1);
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],-dir,1,0,-1,1);
-        break;
-    
-    case aState.dead:
-        if (on_ground)
-            full_sprite_index = dead_down_sprite;
-        else
-            full_sprite_index = dead_roll_sprite;
-        
-        draw_sprite_ext(full_sprite_index,full_index,x,y,dir,1,0,-1,1);
-        break;
+    if (debug_draw == 0)
+        draw_sprite_ext(full_sprite_index,full_index,x,y,full_dir,1,0,-1,1);
+    else if (debug_draw == 1)
+        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,leg_dir,1,0,-1,1);
+    else if (debug_draw == 2)
+        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
+    exit;
+    }
+
+if (full_sprite)
+    draw_sprite_ext(full_sprite_index,full_index,x,y,full_dir,1,0,-1,1);
+else
+    {
+    draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,leg_dir,1,0,-1,1);
+    draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
     }
 </string>
           </argument>

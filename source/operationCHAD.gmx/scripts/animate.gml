@@ -168,3 +168,136 @@ switch(move_state)
             }
         break;
     }
+
+switch(anim_state)
+    {
+    case aState.idle:
+    case aState.walk:
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        leg_dir = dir;
+        arm_dir = dir;
+        
+        full_sprite = false;
+        if (anim_state == aState.idle)
+            {
+            if (on_ramp)
+                {
+                leg_y = 7;
+                arm_y = 2;
+                leg_dir = sign(ramp_slope);
+                
+                if (dir > 0)
+                    {
+                    if (ramp_slope > 0)
+                        leg_sprite_index = leg_idle_sprite[1];
+                    else if (ramp_slope < 0)
+                        leg_sprite_index = leg_idle_sprite[2];
+                    }
+                else if (dir < 0)
+                    {
+                    if (ramp_slope > 0)
+                        leg_sprite_index = leg_idle_sprite[2];
+                    else if (ramp_slope < 0)
+                        leg_sprite_index = leg_idle_sprite[1];
+                    }
+                }
+            else
+                leg_sprite_index = leg_idle_sprite[0];
+            }
+        else if (anim_state == aState.walk)
+            leg_sprite_index = leg_walk_sprite[0];
+        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+        break;
+    
+    case aState.drop:
+        gun_y = -18;
+        leg_y = 2;
+        arm_y = 0;
+        leg_dir = dir;
+        arm_dir = dir;
+        
+        full_sprite = false;
+        leg_sprite_index = leg_drop_sprite;
+        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+        break;
+    
+    case aState.roll:
+        gun_y = -18;
+        full_dir = dir;
+        
+        full_sprite = true;
+        full_sprite_index = roll_sprite;
+        break;
+    
+    case aState.duck:
+        if (on_ramp)
+            {
+            gun_y = -18;
+            leg_y = 7;
+            arm_y = 6;
+            leg_dir = sign(ramp_slope);
+            arm_dir = dir;
+            
+            full_sprite = false;
+            if (dir > 0)
+                {
+                if (ramp_slope > 0)
+                    leg_sprite_index = leg_idle_sprite[3];
+                else if (ramp_slope < 0)
+                    leg_sprite_index = leg_idle_sprite[4];
+                }
+            else if (dir < 0)
+                {
+                if (ramp_slope > 0)
+                    leg_sprite_index = leg_idle_sprite[4];
+                else if (ramp_slope < 0)
+                    leg_sprite_index = leg_idle_sprite[3];
+                }
+            arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+            }
+        else
+            {
+            gun_y = -6;
+            full_dir = dir;
+            
+            full_sprite = true;
+            full_sprite_index = duck_sprite;
+            }
+        break;
+    
+    case aState.hang:
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        leg_dir = dir;
+        arm_dir = dir;
+        
+        full_sprite = false;
+        leg_sprite_index = leg_hang_sprite;
+        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        break;
+    
+    case aState.climb:
+        gun_y = -18;
+        leg_y = 0;
+        arm_y = 0;
+        leg_dir = -dir;
+        arm_dir = -dir;
+        
+        full_sprite = false;
+        leg_sprite_index = leg_hang_sprite;
+        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        break;
+    
+    case aState.dead:
+        full_dir = dir;
+        
+        full_sprite = true;
+        if (on_ground)
+            full_sprite_index = dead_down_sprite;
+        else
+            full_sprite_index = dead_roll_sprite;
+        break;
+    }
