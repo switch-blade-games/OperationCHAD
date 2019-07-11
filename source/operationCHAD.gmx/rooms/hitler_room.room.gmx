@@ -80,6 +80,7 @@ inst.cam_state = camState.static;</code>
     <instance objName="obj_jt" x="0" y="100" name="inst_3E3D7BB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jt" x="210" y="120" name="inst_D4BED029" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jt" x="210" y="180" name="inst_85057137" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hitler" x="40" y="100" name="inst_1ECAFC0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -74,6 +74,12 @@
       <sprite>sprites\motor_nazi_spr</sprite>
       <sprite>sprites\tank_spr</sprite>
       <sprite>sprites\foreground_branch_spr</sprite>
+      <sprites name="hitler">
+        <sprite>sprites\hitler_stand_spr</sprite>
+        <sprite>sprites\hitler_shoot_spr</sprite>
+        <sprite>sprites\hitler_duck_spr</sprite>
+        <sprite>sprites\hitler_slash_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -304,6 +310,7 @@
     <path>paths\fry_UL_path</path>
     <path>paths\fry_H_path</path>
     <path>paths\fry_HL_path</path>
+    <path>paths\H12_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -527,6 +534,9 @@
         <object>objects\motor_nazi</object>
         <object>objects\tank</object>
         <object>objects\foreground_branch</object>
+      </objects>
+      <objects name="hitler">
+        <object>objects\hitler</object>
       </objects>
     </objects>
     <objects name="4-Clown World">
