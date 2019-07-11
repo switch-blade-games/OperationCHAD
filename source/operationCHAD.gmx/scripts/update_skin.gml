@@ -4,52 +4,57 @@
 switch(argument[0])
     {
     case skin.yoloswag:
-        // BODY SEGMENT SPRITES
+        // === LEGS ===
         
-        // legs IDLE
-        leg_idle_sprite[0] = yolo_legs_stand_spr; // no slope
-        leg_idle_sprite[1] = yolo_ramp_stand_R_spr; // right slope STAND
-        leg_idle_sprite[2] = yolo_ramp_stand_L_spr; // left slope STAND
-        leg_idle_sprite[3] = yolo_ramp_crouch_R_spr; // right slope CROUCH
-        leg_idle_sprite[4] = yolo_ramp_crouch_L_spr; // left slope CROUCH
-        // legs WALK (no slope)
+        // idle
+        sprite[skin_spr.leg_idle] = yolo_legs_stand_spr; // no slope
+        sprite[skin_spr.leg_idle_r] = yolo_ramp_stand_R_spr; // right slope
+        sprite[skin_spr.leg_idle_l] = yolo_ramp_stand_L_spr; // left slope
+        // duck
+        sprite[skin_spr.leg_duck_r] = yolo_ramp_stand_R_spr; // right slope crouch
+        sprite[skin_spr.leg_duck_l] = yolo_ramp_stand_L_spr; // left slope crouch
+        // walk
+        sprite[skin_spr.leg_walk] = yolo_legs_walk_spr;
         leg_walk_sprite[0] = yolo_legs_walk_spr;
-        // legs DROP
+        // drop
+        sprite[skin_spr.leg_drop] = yolo_legs_drop_spr;
         leg_drop_sprite = yolo_legs_drop_spr;
-        // legs HANG
+        // hang
+        sprite[skin_spr.leg_hang] = yolo_legs_hang_spr;
         leg_hang_sprite = yolo_legs_hang_spr;
         
-        // arms NORMAL
-        arm_normal_sprite[0] = yolo_arms_0_spr; // 0
-        arm_normal_sprite[1] = yolo_arms_45_spr; // 45
-        arm_normal_sprite[2] = yolo_arms_90_spr; // 90
-        arm_normal_sprite[3] = yolo_arms_45_spr; // 135
-        arm_normal_sprite[4] = yolo_arms_0_spr; // 180
-        arm_normal_sprite[5] = yolo_arms_315_spr; // 225
-        arm_normal_sprite[6] = yolo_arms_270_spr; // 270
-        arm_normal_sprite[7] = yolo_arms_315_spr; // 315
-        // arms SINGLE
-        arm_single_sprite[0] = yolo_single_0_spr; // 0
-        arm_single_sprite[1] = yolo_single_45_spr; // 45
-        arm_single_sprite[2] = yolo_single_90_spr; // 90
-        arm_single_sprite[3] = yolo_single_45_spr; // 135
-        arm_single_sprite[4] = yolo_single_0_spr; // 180
-        arm_single_sprite[5] = yolo_single_315_spr; // 225
-        arm_single_sprite[6] = yolo_single_270_spr; // 270
-        arm_single_sprite[7] = yolo_single_315_spr; // 315
+        // === ARMS ===
         
-        // FULL BODY SPRITES
+        // normal
+        sprite[skin_spr.arm_0] = yolo_arms_0_spr;
+        sprite[skin_spr.arm_45] = yolo_arms_45_spr;
+        sprite[skin_spr.arm_90] = yolo_arms_90_spr;
+        sprite[skin_spr.arm_135] = yolo_arms_45_spr;
+        sprite[skin_spr.arm_180] = yolo_arms_0_spr;
+        sprite[skin_spr.arm_225] = yolo_arms_315_spr;
+        sprite[skin_spr.arm_270] = yolo_arms_270_spr;
+        sprite[skin_spr.arm_315] = yolo_arms_315_spr;
+        // single
+        sprite[skin_spr.arm_single_0] = yolo_single_0_spr;
+        sprite[skin_spr.arm_single_45] = yolo_single_45_spr;
+        sprite[skin_spr.arm_single_90] = yolo_single_90_spr;
+        sprite[skin_spr.arm_single_135] = yolo_single_45_spr;
+        sprite[skin_spr.arm_single_180] = yolo_single_0_spr;
+        sprite[skin_spr.arm_single_225] = yolo_single_315_spr;
+        sprite[skin_spr.arm_single_270] = yolo_single_270_spr;
+        sprite[skin_spr.arm_single_315] = yolo_single_315_spr;
         
-        // roll sprite
-        roll_sprite = yolo_jump_spr;
-        // duck sprite
-        duck_sprite = yolo_duck_spr;
+        // === FULL ===
         
-        // dead STAND sprite
-        dead_stand_sprite = yolo_dead_stand_spr;
-        // dead ROLL sprite
-        dead_roll_sprite = yolo_dead_fly_spr;
-        // dead DOWN sprite
-        dead_down_sprite = yolo_dead_down_spr;
+        // roll
+        sprite[skin_spr.full_roll] = yolo_jump_spr;
+        // duck
+        sprite[skin_spr.full_duck] = yolo_duck_spr;
+        // dead idle
+        sprite[skin_spr.full_dead_idle] = yolo_dead_stand_spr;
+        // dead roll
+        sprite[skin_spr.full_dead_roll] = yolo_dead_fly_spr;
+        // dead down
+        sprite[skin_spr.full_dead_down] = yolo_dead_down_spr;
         break;
     }

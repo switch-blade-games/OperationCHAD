@@ -191,24 +191,24 @@ switch(anim_state)
                 if (dir > 0)
                     {
                     if (ramp_slope > 0)
-                        leg_sprite_index = leg_idle_sprite[1];
+                        leg_sprite_index = sprite[skin_spr.leg_idle_r];
                     else if (ramp_slope < 0)
-                        leg_sprite_index = leg_idle_sprite[2];
+                        leg_sprite_index = sprite[skin_spr.leg_idle_l];
                     }
                 else if (dir < 0)
                     {
                     if (ramp_slope > 0)
-                        leg_sprite_index = leg_idle_sprite[2];
+                        leg_sprite_index = sprite[skin_spr.leg_idle_l];
                     else if (ramp_slope < 0)
-                        leg_sprite_index = leg_idle_sprite[1];
+                        leg_sprite_index = sprite[skin_spr.leg_idle_r];
                     }
                 }
             else
-                leg_sprite_index = leg_idle_sprite[0];
+                leg_sprite_index = sprite[skin_spr.leg_idle];
             }
         else if (anim_state == aState.walk)
-            leg_sprite_index = leg_walk_sprite[0];
-        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+            leg_sprite_index = sprite[skin_spr.leg_walk];
+        arm_sprite_index = sprite[skin_spr.arm_0 + floor(aim/45)];
         break;
     
     case aState.drop:
@@ -219,8 +219,8 @@ switch(anim_state)
         arm_dir = dir;
         
         full_sprite = false;
-        leg_sprite_index = leg_drop_sprite;
-        arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+        leg_sprite_index = sprite[skin_spr.leg_drop];
+        arm_sprite_index = sprite[skin_spr.arm_0 + floor(aim/45)];
         break;
     
     case aState.roll:
@@ -228,7 +228,7 @@ switch(anim_state)
         full_dir = dir;
         
         full_sprite = true;
-        full_sprite_index = roll_sprite;
+        full_sprite_index = sprite[skin_spr.full_roll];
         break;
     
     case aState.duck:
@@ -244,18 +244,18 @@ switch(anim_state)
             if (dir > 0)
                 {
                 if (ramp_slope > 0)
-                    leg_sprite_index = leg_idle_sprite[3];
+                    leg_sprite_index = sprite[skin_spr.leg_duck_r];
                 else if (ramp_slope < 0)
-                    leg_sprite_index = leg_idle_sprite[4];
+                    leg_sprite_index = sprite[skin_spr.leg_duck_l];
                 }
             else if (dir < 0)
                 {
                 if (ramp_slope > 0)
-                    leg_sprite_index = leg_idle_sprite[4];
+                    leg_sprite_index = sprite[skin_spr.leg_duck_l];
                 else if (ramp_slope < 0)
-                    leg_sprite_index = leg_idle_sprite[3];
+                    leg_sprite_index = sprite[skin_spr.leg_duck_r];
                 }
-            arm_sprite_index = arm_normal_sprite[floor(aim/45)];
+            arm_sprite_index = sprite[skin_spr.arm_0 + floor(aim/45)];
             }
         else
             {
@@ -263,7 +263,7 @@ switch(anim_state)
             full_dir = dir;
             
             full_sprite = true;
-            full_sprite_index = duck_sprite;
+            full_sprite_index = sprite[skin_spr.full_duck];
             }
         break;
     
@@ -275,8 +275,8 @@ switch(anim_state)
         arm_dir = dir;
         
         full_sprite = false;
-        leg_sprite_index = leg_hang_sprite;
-        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        leg_sprite_index = sprite[skin_spr.leg_hang];
+        arm_sprite_index = sprite[skin_spr.arm_single_0 + floor(aim/45)];
         break;
     
     case aState.climb:
@@ -287,8 +287,8 @@ switch(anim_state)
         arm_dir = -dir;
         
         full_sprite = false;
-        leg_sprite_index = leg_hang_sprite;
-        arm_sprite_index = arm_single_sprite[floor(aim/45)];
+        leg_sprite_index = sprite[skin_spr.leg_hang];
+        arm_sprite_index = sprite[skin_spr.arm_single_0 + floor(aim/45)];
         break;
     
     case aState.dead:
@@ -296,8 +296,8 @@ switch(anim_state)
         
         full_sprite = true;
         if (on_ground)
-            full_sprite_index = dead_down_sprite;
+            full_sprite_index = sprite[skin_spr.full_dead_down];
         else
-            full_sprite_index = dead_roll_sprite;
+            full_sprite_index = sprite[skin_spr.full_dead_roll];
         break;
     }

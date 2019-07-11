@@ -67,6 +67,41 @@ enum skin
     pumpkinhead
     }
 
+// player skin sprites
+enum skin_spr
+    {
+    leg_idle,
+    leg_idle_r,
+    leg_idle_l,
+    leg_duck_r,
+    leg_duck_l,
+    leg_walk,
+    leg_drop,
+    leg_hang,
+    arm_0,
+    arm_45,
+    arm_90,
+    arm_135,
+    arm_180,
+    arm_225,
+    arm_270,
+    arm_315,
+    arm_single_0,
+    arm_single_45,
+    arm_single_90,
+    arm_single_135,
+    arm_single_180,
+    arm_single_225,
+    arm_single_270,
+    arm_single_315,
+    full_roll,
+    full_duck,
+    full_dead_idle,
+    full_dead_roll,
+    full_dead_down,
+    size
+    }
+
 // player motion state/flags
 move_state = mState.walk;
 on_ground = false;
