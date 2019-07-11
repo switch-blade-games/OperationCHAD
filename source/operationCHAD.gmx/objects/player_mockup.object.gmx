@@ -54,6 +54,77 @@ click_y = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check(vk_control)) and (instance_exists(obj_player))
+    {
+    if (keyboard_check_pressed(ord("S")))
+        {
+        var file = get_save_filename("Sprite Origin Files|*.sof","");
+        if (file != "")
+            {
+            // save offsets
+            var buff = buffer_create(1024,buffer_grow,1);
+            buffer_seek(buff,buffer_seek_start,0);
+            
+            buffer_write(buff,buffer_u8,skin_spr.size);
+            
+            for(var i=0; i&lt;skin_spr.size; i++;)
+                {
+                var ox = sprite_get_xoffset(obj_player.sprite[i]);
+                var oy = sprite_get_yoffset(obj_player.sprite[i]);
+                buffer_write(buff,buffer_s8,ox);
+                buffer_write(buff,buffer_s8,oy);
+                }
+            
+            var bytes = buffer_tell(buff);
+            buffer_save_ext(buff,file,0,bytes);
+            buffer_delete(buff);
+            }
+        }
+    if (keyboard_check_pressed(ord("L")))
+        {
+        var file = get_open_filename("Sprite Origin Files|*.sof","");
+        if (file != "") and (file_exists(file))
+            {
+            var buff = buffer_load(file);
+            buffer_seek(buff,buffer_seek_start,0);
+            
+            var num = buffer_read(buff,buffer_u8);
+            if (num == skin_spr.size)
+                {
+                for(var i=0; i&lt;skin_spr.size; i++;)
+                    {
+                    var ox = buffer_read(buff,buffer_s8);
+                    var oy = buffer_read(buff,buffer_s8);
+                    sprite_set_offset(obj_player.sprite[i],ox,oy);
+                    }
+                }
+            
+            buffer_delete(buff);
+            }
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -165,8 +236,6 @@ if (instance_exists(obj_player))
                 click_x = mx;
                 click_y = my;
                 }
-            if (mouse_check_button_pressed(mb_middle))
-                sprite_set_offset(obj_player.full_sprite_index,sprite_get_width(obj_player.full_sprite_index)/2,sprite_get_height(obj_player.full_sprite_index));
             }
         if (mouse_check_button(mb_left)) and (click == 0)
             sprite_set_offset(obj_player.full_sprite_index,ox-(mx-click_x)*obj_player.full_dir,oy-(my-click_y));
@@ -195,8 +264,6 @@ if (instance_exists(obj_player))
                 click_x = mx;
                 click_y = my;
                 }
-            if (mouse_check_button_pressed(mb_middle))
-                sprite_set_offset(obj_player.leg_sprite_index,sprite_get_width(obj_player.leg_sprite_index)/2,sprite_get_height(obj_player.leg_sprite_index));
             }
         if (mouse_check_button(mb_left)) and (click == 1)
             sprite_set_offset(obj_player.leg_sprite_index,ox-(mx-click_x)*obj_player.leg_dir,oy-(my-click_y));
@@ -222,8 +289,6 @@ if (instance_exists(obj_player))
                 click_x = mx;
                 click_y = my;
                 }
-            if (mouse_check_button_pressed(mb_middle))
-                sprite_set_offset(obj_player.arm_sprite_index,sprite_get_width(obj_player.arm_sprite_index)/2,sprite_get_height(obj_player.arm_sprite_index));
             }
         if (mouse_check_button(mb_left)) and (click == 2)
             sprite_set_offset(obj_player.arm_sprite_index,ox-(mx-click_x)*obj_player.arm_dir,oy-(my-click_y));
