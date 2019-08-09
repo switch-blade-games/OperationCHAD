@@ -256,6 +256,12 @@
       </sprites>
     </sprites>
     <sprite>sprites\target_spr</sprite>
+    <sprites name="flying">
+      <sprite>sprites\stone_fly_spr</sprite>
+      <sprite>sprites\fox_fly_spr</sprite>
+      <sprite>sprites\yolo_fly_spr</sprite>
+      <sprite>sprites\pumpkin_fly_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -569,6 +575,9 @@
       <object>objects\NPC_BG_drawer</object>
     </objects>
     <object>objects\practice_target</object>
+    <objects name="flying">
+      <object>objects\PC_fly</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
