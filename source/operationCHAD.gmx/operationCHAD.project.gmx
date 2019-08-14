@@ -80,6 +80,9 @@
         <sprite>sprites\hitler_duck_spr</sprite>
         <sprite>sprites\hitler_slash_spr</sprite>
       </sprites>
+      <sprite>sprites\nazi_truck_spr</sprite>
+      <sprite>sprites\back_shot_spr</sprite>
+      <sprite>sprites\floor_shot_spr</sprite>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -540,6 +543,12 @@
         <object>objects\motor_nazi</object>
         <object>objects\tank</object>
         <object>objects\foreground_branch</object>
+        <object>objects\nazi_truck</object>
+        <object>objects\truck_shooter</object>
+        <object>objects\floor_shot</object>
+        <object>objects\floor_shooter</object>
+        <object>objects\floor_shot_son</object>
+        <object>objects\back_shot</object>
       </objects>
       <objects name="hitler">
         <object>objects\hitler</object>

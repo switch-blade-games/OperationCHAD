@@ -136,6 +136,8 @@ background_color=global.LIGHTgrey</code>
     <instance objName="obj_wall" x="400" y="200" name="inst_22817B46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="220" name="inst_1730836D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="motor_mockup" x="50" y="210" name="inst_B06DBAD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="nazi_truck" x="210" y="150" name="inst_5937EE98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="90" y="200" name="inst_12287ED2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
