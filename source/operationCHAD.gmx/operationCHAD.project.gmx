@@ -574,8 +574,8 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\hitler_room</room>
       <room>rooms\germany_motor_room</room>
+      <room>rooms\hitler_room</room>
       <room>rooms\ep_room</room>
     </rooms>
     <rooms name="2-Internet">
