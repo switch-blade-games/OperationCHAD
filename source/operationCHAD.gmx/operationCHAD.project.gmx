@@ -83,6 +83,14 @@
       <sprite>sprites\nazi_truck_spr</sprite>
       <sprite>sprites\back_shot_spr</sprite>
       <sprite>sprites\floor_shot_spr</sprite>
+      <sprite>sprites\nazi_gunner_spr</sprite>
+      <sprite>sprites\nazi_missle_spr</sprite>
+      <sprite>sprites\flame_point_spr</sprite>
+      <sprite>sprites\nazi_plane_spr</sprite>
+      <sprite>sprites\para_man_spr</sprite>
+      <sprite>sprites\parachute_spr</sprite>
+      <sprite>sprites\grenade_spr</sprite>
+      <sprite>sprites\front_plane_spr</sprite>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -320,6 +328,9 @@
     <path>paths\fry_H_path</path>
     <path>paths\fry_HL_path</path>
     <path>paths\H12_path</path>
+    <path>paths\flame_path</path>
+    <path>paths\shot_path_1</path>
+    <path>paths\grenade_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -538,6 +549,7 @@
     <objects name="3-Germany">
       <objects name="germany_motor">
         <object>objects\motor_controller</object>
+        <object>objects\nazi_missle_maker</object>
         <object>objects\motor_foreground</object>
         <object>objects\motor_mockup</object>
         <object>objects\motor_nazi</object>
@@ -545,10 +557,22 @@
         <object>objects\foreground_branch</object>
         <object>objects\nazi_truck</object>
         <object>objects\truck_shooter</object>
+        <object>objects\truck_flame_man</object>
         <object>objects\floor_shot</object>
         <object>objects\floor_shooter</object>
-        <object>objects\floor_shot_son</object>
         <object>objects\back_shot</object>
+        <object>objects\floor_shot_starter</object>
+        <object>objects\flame_shot_starter</object>
+        <object>objects\flame_point</object>
+        <object>objects\flame_back_shot</object>
+        <object>objects\nazi_missle</object>
+        <object>objects\nazi_plane</object>
+        <object>objects\plane_marker</object>
+        <object>objects\para_man</object>
+        <object>objects\grenade_test</object>
+        <object>objects\grenade_make</object>
+        <object>objects\front_plane</object>
+        <object>objects\para_leave</object>
       </objects>
       <objects name="hitler">
         <object>objects\hitler</object>

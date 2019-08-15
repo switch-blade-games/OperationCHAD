@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -30,6 +30,106 @@
 Xrate=8
 
 instance_create(0,0,motor_foreground)
+
+instance_create(0,0,nazi_missle_maker)
+
+
+//instance_create(0,0,nazi_missle_maker)
+
+alarm[0]=60
+
+PLANErate=300
+
+PLANEshots=0
+
+MEN=false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>MEN=true
+
+alarm[0]=PLANErate
+
+PLANEshots=-1000
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(view_xview[0]-100,140,nazi_truck)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>PLANEshots+=1
+
+
+instance_create(200,10,front_plane)
+
+if(PLANEshots=2){
+    
+    alarm[1]=120
+    exit
+}
+
+alarm[0]=PLANErate
+
+
+
 </string>
           </argument>
         </arguments>
@@ -57,9 +157,22 @@ if(random(200)&lt;1)
     instance_create(400,0+random(-20),foreground_branch)
 
 
-if(instance_number(motor_nazi)&lt;3)
+
+if(MEN=true){
+
+
+if(instance_number(motor_nazi)=0)
 if(random(200)&lt;1)
     instance_create(440,210,motor_nazi)
+    
+    
+if(instance_number(para_man)&lt;3)
+if(random(200)&lt;1)
+    instance_create(200+random(200),-40,para_man)                                    
+    
+
+    
+}
 </string>
           </argument>
         </arguments>
