@@ -272,6 +272,9 @@
       <sprite>sprites\fox_fly_spr</sprite>
       <sprite>sprites\yolo_fly_spr</sprite>
       <sprite>sprites\pumpkin_fly_spr</sprite>
+      <sprite>sprites\stone_shot_spr</sprite>
+      <sprite>sprites\white_knight_spr</sprite>
+      <sprite>sprites\yolo_shot_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -321,6 +324,7 @@
       <background>background\octo_battle_BG</background>
     </backgrounds>
     <background>background\ball_buster_BG</background>
+    <background>background\thot_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -610,12 +614,16 @@
     <object>objects\practice_target</object>
     <objects name="flying">
       <object>objects\PC_fly</object>
+      <object>objects\flying_cam</object>
+      <object>objects\flying_shot</object>
+      <object>objects\white_knight</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\thot_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\hitler_room</room>
       <room>rooms\ep_room</room>
