@@ -276,6 +276,10 @@
       <sprite>sprites\white_knight_spr</sprite>
       <sprite>sprites\yolo_shot_spr</sprite>
     </sprites>
+    <sprites name="sub_sequence">
+      <sprite>sprites\sub_ground_spr</sprite>
+      <sprite>sprites\sub_part_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -325,6 +329,7 @@
     </backgrounds>
     <background>background\ball_buster_BG</background>
     <background>background\thot_BG</background>
+    <background>background\sub_clouds_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -581,6 +586,8 @@
       <objects name="hitler">
         <object>objects\hitler</object>
       </objects>
+      <object>objects\sub_controller</object>
+      <object>objects\sub_part</object>
     </objects>
     <objects name="4-Clown World">
       <objects name="circle_ride">
@@ -623,12 +630,13 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\thot_room</room>
+      <room>rooms\sub_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\hitler_room</room>
       <room>rooms\ep_room</room>
     </rooms>
     <rooms name="2-Internet">
+      <room>rooms\thot_room</room>
       <room>rooms\overton_room</room>
       <room>rooms\octo_room</room>
       <room>rooms\internet_twitter_room</room>
