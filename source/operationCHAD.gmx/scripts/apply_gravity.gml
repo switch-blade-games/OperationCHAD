@@ -83,10 +83,11 @@ switch(move_state)
         on_bike = false;
         if (!instance_exists(vehicle))
             move_state = mState.walk;
-        else if (y >= vehicle.y-20)
+        else if (y >= vehicle.y-8)
             {
             on_bike = true;
-            y = vehicle.y-20;
+            y = vehicle.y-8;
+            yspeed = 0;
             }
         else
             yspeed += grav;

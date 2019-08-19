@@ -53,11 +53,7 @@ bump_timer = 75+irandom(75);
           <argument>
             <kind>1</kind>
             <string>if (instance_exists(rider))
-    {
     x = rider.x;
-    if (rider.on_ground)
-        y = rider.y+20;
-    }
 
 /*
 if (bump_timer &gt; 0)

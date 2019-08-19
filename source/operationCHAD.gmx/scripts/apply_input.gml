@@ -4,7 +4,6 @@ var v_dir = input_down-input_up;
 switch(move_state)
     {
     case mState.walk:
-        
         if (input_lock) and (on_ground)
             {
             move_state = mState.lock;
@@ -12,10 +11,9 @@ switch(move_state)
             }
         
         // horizontal movement input
-        move_speed = MOVEspe;
         if (h_dir != 0)
             {
-            xspeed = move_speed*h_dir;
+            xspeed = walk_speed*h_dir;
             dir = h_dir;
             
             // move left or right
@@ -165,7 +163,6 @@ switch(move_state)
         break;
     
     case mState.duck:
-        
         if (dir > 0)
             aim = 0;
         else if (dir < 0)
@@ -229,7 +226,6 @@ switch(move_state)
         break;
     
     case mState.hang:
-        
         if (input_fire) or (input_lock)
             {
             if (input_fire)
@@ -257,10 +253,9 @@ switch(move_state)
         else
             {
             // horizontal movement input
-            move_speed = 2;
             if (h_dir != 0)
                 {
-                xspeed = move_speed*h_dir;
+                xspeed = hang_speed*h_dir;
                 dir = h_dir;
                 
                 // move left or right
@@ -330,7 +325,6 @@ switch(move_state)
         break;
     
     case mState.climb:
-        
         climb_side = tile_side.none;
         var inst = instance_place(x-1,y,par_climb);
         if (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
@@ -345,12 +339,6 @@ switch(move_state)
         if ((climb_side & tile_side.bottom == tile_side.bottom) and (!input_fire)
         and ((climb_side & tile_side.left == 0 and input_right) or (climb_side & tile_side.right == 0 and input_left)))
             climb_side = tile_side.bottom;
-        /*
-        if ((climb_side & tile_side.right == tile_side.right) and (input_left or input_down))
-            climb_side = tile_side.right;
-        if ((climb_side & tile_side.left == tile_side.left) and (input_right or input_down))
-            climb_side = tile_side.left;
-        */
         
         if (climb_side == tile_side.none) // no longer climbing on a wall
             {
@@ -459,10 +447,7 @@ switch(move_state)
                             yspeed = min(0,yspeed+fric);
                         }
                     else
-                        {
-                        move_speed = 2;
-                        yspeed = move_speed*v_dir;
-                        }
+                        yspeed = climb_speed*v_dir;
                     
                     // jump/fall off
                     if (input_jump_pressed)
@@ -496,8 +481,7 @@ switch(move_state)
                         }
                     else
                         {
-                        move_speed = 2;
-                        xspeed = move_speed*h_dir;
+                        xspeed = hang_speed*h_dir;
                         if (dir > 0)
                             aim = 0;
                         else if (dir < 0)
@@ -520,10 +504,77 @@ switch(move_state)
         break;
     
     case mState.bike:
-        if (on_bike)
+        if (input_lock) and (on_ground)
             {
-            
+            move_state = mState.lock;
+            break;
             }
+        
+        // horizontal movement input
+        var move_speed = bike_speed;
+        if (h_dir != 0)
+            {
+            xspeed = move_speed*h_dir;
+            dir = h_dir;
+            
+            // move left or right
+            if (input_right)
+                {
+                // aim
+                if (input_up)
+                    aim = 45;
+                else
+                    {
+                    if (input_down)
+                        aim = 315;
+                    else
+                        aim = 0;
+                    }
+                }
+            if (input_left)
+                {
+                // aim
+                if (input_up)
+                    aim = 135;
+                else
+                    {
+                    if (input_down)
+                        aim = 225;
+                    else
+                        aim = 180;
+                    }
+                }
+            }
+        else
+            {
+            // aim
+            if (input_up)
+                aim = 90;
+            else if (input_down)
+                {
+                if (!on_ground)
+                    aim = 270;
+                }
+            else if (dir > 0)
+                aim = 0;
+            else if (dir < 0)
+                aim = 180;
+            
+            // friction
+            if (xspeed > 0)
+                xspeed = max(0,xspeed-fric);
+            else if (xspeed < 0)
+                xspeed = min(0,xspeed+fric);
+            }
+        
+        // jump
+        if (on_bike) and (input_jump_pressed) and (!input_down)
+            jump();
+        
+        // fire weapon
+        if (input_fire)
+            fire_weapon();
+        break;
     
     case mState.dead:
         if (on_ground)

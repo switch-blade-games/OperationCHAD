@@ -147,6 +147,43 @@ switch(move_state)
             arm_index = 0;
         break;
     
+    case mState.bike:
+        if (on_bike)
+            {
+            if (anim_state != aState.bike)
+                {
+                anim_state = aState.bike;
+                leg_index = 1;
+                
+                if (input_fire)
+                    {
+                    arm_index += 0.2;
+                    if (arm_index >= 2)
+                        arm_index = 0;
+                    }
+                else
+                    arm_index = 0;
+                }
+            }
+        else
+            {
+            if (anim_state != aState.roll)
+                {
+                anim_state = aState.roll
+                full_index = 0;
+                }
+            
+            if (anim_state == aState.roll)
+                {
+                full_index += 0.3;
+                if (full_index >= 4)
+                    full_index = 0;
+                else if (full_index < 0)
+                    full_index = 3;
+                }
+            }
+        break;
+    
     case mState.dead:
         if (anim_state != aState.dead)
             {
@@ -288,6 +325,18 @@ switch(anim_state)
         
         full_sprite = false;
         leg_sprite_index = sprite[skin_spr.leg_hang];
+        arm_sprite_index = sprite[skin_spr.arm_single_0 + floor(aim/45)];
+        break;
+    
+    case aState.bike:
+        gun_y = -10;
+        leg_y = 0;
+        arm_y = 0;
+        leg_dir = 1;
+        arm_dir = dir;
+        
+        full_sprite = false;
+        leg_sprite_index = sprite[skin_spr.leg_walk];
         arm_sprite_index = sprite[skin_spr.arm_single_0 + floor(aim/45)];
         break;
     
