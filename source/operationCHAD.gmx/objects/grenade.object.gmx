@@ -25,10 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>projectile_init(obj_player.x+10,obj_player.y-40,100,2+random(2))
+            <string>var success = projectile(obj_player.x+10,obj_player.y-40,5,0.05);
+if (!success)
+    {
+    instance_destroy();
+    exit;
+    }
 
 enemy_init(1)
-
 
 TRACErate=2
 
@@ -105,10 +109,7 @@ alarm[0]=TRACErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>projectile_step()
-
-
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>

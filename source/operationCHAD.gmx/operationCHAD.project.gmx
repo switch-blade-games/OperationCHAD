@@ -413,8 +413,7 @@
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
-    <script>scripts\projectile_init.gml</script>
-    <script>scripts\projectile_step.gml</script>
+    <script>scripts\projectile.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>

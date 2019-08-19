@@ -27,7 +27,11 @@
             <kind>1</kind>
             <string>target = obj_player;
 if (instance_exists(target))
-    projectile_init(target.x,target.y,128,1.7);
+    {
+    var success = projectile(target.x,target.y,5,0.05);
+    if (!success)
+        instance_destroy();
+    }
 else
     instance_destroy();
 </string>
@@ -52,14 +56,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>xprevious = x;
-yprevious = y;
-var impact = projectile_step();
-
-image_angle = point_direction(xprevious,yprevious,x,y);
-
-if (impact)
-    instance_destroy();
+            <string>image_angle = point_direction(x,y,x+hspeed,y+vspeed+gravity);
 </string>
           </argument>
         </arguments>
