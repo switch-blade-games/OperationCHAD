@@ -11,82 +11,92 @@ suby -= ry;
 xpre = x;
 ypre = y;
 
-// horizontal collision detection/response
-if (tx > 0)
+if (no_clip) or (move_state == mState.bike)
     {
-    var ux = sign(xspeed);
-    
-    var xp = x;
-    var yp = y;
-    repeat(tx)
-        {
-        // move up slope
-        if (place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y-1,par_solid))
-            y -= 1;
-        
-        // move down slope
-        if (!place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y+1,par_solid) and place_meeting(x+ux,y+2,par_solid))
-            y += 1;
-        
-        if (!place_meeting(x+ux,y,par_solid))
-            x += ux;
-        else
-            {
-            // stop before moving into the wall
-            xspeed = 0;
-            break;
-            }
-        }
-    
-    // ramp speed normalization
-    var dis = point_distance(xp,yp,x,y);
-    if (dis > tx)
-        subx -= (dis-tx)*ux;
+    if (tx > 0)
+        x += sign(xspeed)*tx;
+    if (ty > 0)
+        y += sign(yspeed)*ty;
     }
-
-// vertical collision detection/response
-if (ty > 0)
+else
     {
-    // split up vertical collision checks
-    // check downward independently from upward
-    // lets us detect one way platforms
-    
-    if (yspeed > 0)
+    // horizontal collision detection/response
+    if (tx > 0)
         {
-        // check downward
-        var uy = sign(yspeed);
-        repeat(ty)
+        var ux = sign(xspeed);
+        
+        var xp = x;
+        var yp = y;
+        repeat(tx)
             {
-            if (place_meeting(x,y+uy,par_solid))
-            or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
-            and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)))
+            // move up slope
+            if (place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y-1,par_solid))
+                y -= 1;
+            
+            // move down slope
+            if (!place_meeting(x+ux,y,par_solid) and !place_meeting(x+ux,y+1,par_solid) and place_meeting(x+ux,y+2,par_solid))
+                y += 1;
+            
+            if (!place_meeting(x+ux,y,par_solid))
+                x += ux;
+            else
                 {
                 // stop before moving into the wall
-                yspeed = 0;
+                xspeed = 0;
                 break;
                 }
-            else
-                y += uy;
             }
+        
+        // ramp speed normalization
+        var dis = point_distance(xp,yp,x,y);
+        if (dis > tx)
+            subx -= (dis-tx)*ux;
         }
-    else if (yspeed < 0)
+    
+    // vertical collision detection/response
+    if (ty > 0)
         {
-        // check upward
-        var uy = sign(yspeed);
-        repeat(ty)
+        // split up vertical collision checks
+        // check downward independently from upward
+        // lets us detect one way platforms
+        
+        if (yspeed > 0)
             {
-            if (place_meeting(x,y+uy,par_solid))
+            // check downward
+            var uy = sign(yspeed);
+            repeat(ty)
                 {
-                // stop before moving into the wall
-                yspeed = 0;
-                
-                var inst = instance_place(x,y+uy,par_climb);
-                if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom) and (input_up)
-                    move_state = mState.climb;
-                break;
+                if (place_meeting(x,y+uy,par_solid))
+                or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
+                and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)))
+                    {
+                    // stop before moving into the wall
+                    yspeed = 0;
+                    break;
+                    }
+                else
+                    y += uy;
                 }
-            else
-                y += uy;
+            }
+        else if (yspeed < 0)
+            {
+            // check upward
+            var uy = sign(yspeed);
+            repeat(ty)
+                {
+                if (place_meeting(x,y+uy,par_solid))
+                    {
+                    // stop before moving into the wall
+                    yspeed = 0;
+                    
+                    var inst = instance_place(x,y+uy,par_climb);
+                    if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom) and (input_up)
+                        move_state = mState.climb;
+                    break;
+                    }
+                else
+                    y += uy;
+                }
             }
         }
     }

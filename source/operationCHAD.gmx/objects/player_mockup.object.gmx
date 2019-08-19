@@ -33,6 +33,7 @@ mText[mState.lock]  = "lock";
 mText[mState.duck]  = "duck";
 mText[mState.hang]  = "hang";
 mText[mState.climb] = "climb";
+mText[mState.bike]  = "bike";
 mText[mState.dead]  = "dead";
 
 aText[aState.idle]  = "idle";
@@ -42,6 +43,7 @@ aText[aState.roll]  = "roll";
 aText[aState.duck]  = "duck";
 aText[aState.hang]  = "hang";
 aText[aState.climb] = "climb";
+aText[aState.bike]  = "bike";
 aText[aState.dead]  = "dead";
 
 mx = 0;

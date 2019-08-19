@@ -17,8 +17,9 @@ inst.cam_state = camState.static;
 instance_create(0,0,motor_controller);
 
 var player = instance_create(90,180,obj_player);
-var bike = instance_create(90,180,motor_player);
+var bike = instance_create(90,204,motor_player);
 player.vehicle = bike;
+player.move_state = mState.bike;
 bike.rider = player;
 
 background_color=global.LIGHTgrey;</code>
