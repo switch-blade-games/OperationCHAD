@@ -104,6 +104,8 @@
         <sprite>sprites\naval_mine_spr</sprite>
         <sprite>sprites\mine_holder_spr</sprite>
         <sprite>sprites\mine_smoke_spr</sprite>
+        <sprite>sprites\grenade_tracer_spr</sprite>
+        <sprite>sprites\S_grenade_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -615,6 +617,7 @@
         <object>objects\mine_holder</object>
         <object>objects\naval_mine</object>
         <object>objects\mine_smoke</object>
+        <object>objects\grenade_tracer</object>
       </objects>
     </objects>
     <objects name="4-Clown World">

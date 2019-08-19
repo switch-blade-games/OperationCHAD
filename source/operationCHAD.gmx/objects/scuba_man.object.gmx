@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>dad=-1
 
-enemy_init(20)
+enemy_init(10)
 
 WAIT=1
 FIRE=2
@@ -39,7 +39,7 @@ WAITtime=120
 
 alarm[0]=WAITtime
 
-FIREtime=60
+FIREtime=240
 
 Xoffset=30
 </string>
@@ -94,7 +94,7 @@ Xoffset=30
             <string>state=FIRE
 instance_create(x,y,grenade)
 
-alarm[1]=FIREtime
+alarm[0]=FIREtime
 </string>
           </argument>
         </arguments>

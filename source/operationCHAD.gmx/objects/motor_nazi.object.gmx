@@ -25,11 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spe=2
+            <string>spe=2.5+random(1)
 
 motion_set(180,spe)
 
-enemy_init(6);
+enemy_init(3);
 </string>
           </argument>
         </arguments>

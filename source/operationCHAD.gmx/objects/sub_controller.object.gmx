@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//set up stuff for sub hover
+            <string>
+
+//set up stuff for sub hover
 SUBup=1
 SUBdown=2
 
@@ -95,6 +97,10 @@ SUBpart.MYpart=SUBnum
 
 //create components based on SUBnum
 
+
+//marine
+//if(SUBnum=1)
+//SUBpart.MARINE=true
 
 
 
