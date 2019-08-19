@@ -79,6 +79,19 @@ switch(move_state)
             }
         break;
     
+    case mState.bike:
+        on_bike = false;
+        if (!instance_exists(vehicle))
+            move_state = mState.walk;
+        else if (y >= vehicle.y-20)
+            {
+            on_bike = true;
+            y = vehicle.y-20;
+            }
+        else
+            yspeed += grav;
+        break;
+    
     case mState.dead:
         // detect if we're standing on ground
         on_ground = false;

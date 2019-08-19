@@ -411,7 +411,8 @@
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
-    <script>scripts\projectile.gml</script>
+    <script>scripts\projectile_init.gml</script>
+    <script>scripts\projectile_step.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
@@ -572,7 +573,7 @@
         <object>objects\motor_controller</object>
         <object>objects\nazi_missle_maker</object>
         <object>objects\motor_foreground</object>
-        <object>objects\motor_mockup</object>
+        <object>objects\motor_player</object>
         <object>objects\motor_nazi</object>
         <object>objects\tank</object>
         <object>objects\foreground_branch</object>
@@ -594,6 +595,7 @@
         <object>objects\grenade_make</object>
         <object>objects\front_plane</object>
         <object>objects\para_leave</object>
+        <object>objects\projectile_test</object>
       </objects>
       <objects name="hitler">
         <object>objects\hitler</object>
