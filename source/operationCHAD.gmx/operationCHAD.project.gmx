@@ -279,6 +279,8 @@
     <sprites name="sub_sequence">
       <sprite>sprites\sub_ground_spr</sprite>
       <sprite>sprites\sub_part_spr</sprite>
+      <sprite>sprites\sub_missle_part_spr</sprite>
+      <sprite>sprites\sub_missle_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -588,6 +590,9 @@
       </objects>
       <object>objects\sub_controller</object>
       <object>objects\sub_part</object>
+      <object>objects\sub_missle_part</object>
+      <object>objects\sub_missle</object>
+      <object>objects\missle_flame</object>
     </objects>
     <objects name="4-Clown World">
       <objects name="circle_ride">
