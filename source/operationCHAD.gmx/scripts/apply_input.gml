@@ -519,6 +519,12 @@ switch(move_state)
         grace_jump = 0;
         break;
     
+    case mState.bike:
+        if (on_bike)
+            {
+            
+            }
+    
     case mState.dead:
         if (on_ground)
             {

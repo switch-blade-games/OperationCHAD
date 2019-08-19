@@ -39,10 +39,6 @@ SUBmargin=10
 
 SUBnum=0
 
-
-
-
-
 background_hspeed[0]=-2
 
 global.SUBy=160
@@ -172,6 +168,11 @@ draw_clear_alpha(c_white,0)
 draw_sprite_tiled(sub_ground_spr,-1,GROUNDx,0)
 
 surface_reset_target()
+
+// PROJECTILE TESTS
+
+if (mouse_check_button_pressed(mb_left))
+    instance_create(mouse_x,mouse_y,projectile_test);
 </string>
           </argument>
         </arguments>

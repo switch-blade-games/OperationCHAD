@@ -41,6 +41,7 @@ enum mState
     duck,
     hang,
     climb,
+    bike,
     dead
     }
 
@@ -54,6 +55,7 @@ enum aState
     duck,
     hang,
     climb,
+    bike,
     dead
     }
 
@@ -106,10 +108,12 @@ enum skin_spr
 move_state = mState.walk;
 on_ground = false;
 on_ramp = false;
+on_bike = false;
 ramp_slope = 1;
 climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
+vehicle = noone;
 drop = false;
 
 // player position/physics
