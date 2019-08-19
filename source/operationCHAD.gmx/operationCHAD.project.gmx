@@ -91,6 +91,20 @@
       <sprite>sprites\parachute_spr</sprite>
       <sprite>sprites\grenade_spr</sprite>
       <sprite>sprites\front_plane_spr</sprite>
+      <sprites name="sub_sequence">
+        <sprite>sprites\sub_ground_spr</sprite>
+        <sprite>sprites\sub_part_spr</sprite>
+        <sprite>sprites\sub_missle_part_spr</sprite>
+        <sprite>sprites\sub_missle_spr</sprite>
+        <sprite>sprites\twin_turret_spr</sprite>
+        <sprite>sprites\twin_bullet_spr</sprite>
+        <sprite>sprites\twin_turret_place_spr</sprite>
+        <sprite>sprites\scuba_man_spr</sprite>
+        <sprite>sprites\sub_water_spr</sprite>
+        <sprite>sprites\naval_mine_spr</sprite>
+        <sprite>sprites\mine_holder_spr</sprite>
+        <sprite>sprites\mine_smoke_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -276,12 +290,6 @@
       <sprite>sprites\white_knight_spr</sprite>
       <sprite>sprites\yolo_shot_spr</sprite>
     </sprites>
-    <sprites name="sub_sequence">
-      <sprite>sprites\sub_ground_spr</sprite>
-      <sprite>sprites\sub_part_spr</sprite>
-      <sprite>sprites\sub_missle_part_spr</sprite>
-      <sprite>sprites\sub_missle_spr</sprite>
-    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -399,6 +407,7 @@
       <script>scripts\blend_normal.gml</script>
       <script>scripts\blend_sub.gml</script>
       <script>scripts\random_col_set.gml</script>
+      <script>scripts\blend_zero.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
@@ -589,11 +598,22 @@
       <objects name="hitler">
         <object>objects\hitler</object>
       </objects>
-      <object>objects\sub_controller</object>
-      <object>objects\sub_part</object>
-      <object>objects\sub_missle_part</object>
-      <object>objects\sub_missle</object>
-      <object>objects\missle_flame</object>
+      <objects name="submarine">
+        <object>objects\sub_controller</object>
+        <object>objects\sub_part</object>
+        <object>objects\sub_water_drawer</object>
+        <object>objects\scuba_man</object>
+        <object>objects\grenade</object>
+        <object>objects\twin_turret</object>
+        <object>objects\twin_turret_place</object>
+        <object>objects\twin_bullet</object>
+        <object>objects\missle_flame</object>
+        <object>objects\sub_missle</object>
+        <object>objects\sub_missle_part</object>
+        <object>objects\mine_holder</object>
+        <object>objects\naval_mine</object>
+        <object>objects\mine_smoke</object>
+      </objects>
     </objects>
     <objects name="4-Clown World">
       <objects name="circle_ride">

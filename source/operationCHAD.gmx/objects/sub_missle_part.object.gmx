@@ -81,7 +81,9 @@ alarm[0]=rate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>y=global.SUBpostfade
+            <string>outside_view(100)
+
+y=global.SUBpostfade
 </string>
           </argument>
         </arguments>

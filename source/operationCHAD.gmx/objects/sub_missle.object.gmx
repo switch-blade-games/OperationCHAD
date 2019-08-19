@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>6</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_enemy_projectile</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>yfade=60
+            <string>
+
+yfade=60
 
 dad=-1
 
@@ -142,8 +144,16 @@ alarm[1]=FLAMErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>outside_view(80)
+
+
 if not(dad=-1){
+
+if(instance_number(dad)=0){
+    instance_destroy()
+    exit
+}
+
 
     x=dad.x+30
     
