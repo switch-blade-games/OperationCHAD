@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var success = projectile(obj_player.x+10,obj_player.y-40,5,0.05);
+            <string>var success = projectile(obj_player.x,obj_player.y+40,5,0.05);
 if (!success)
     {
     instance_destroy();
