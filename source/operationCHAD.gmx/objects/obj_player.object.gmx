@@ -120,6 +120,7 @@ climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
 vehicle = noone;
+vehicle_shake = 0;
 
 // player position/physics
 walk_speed = 2;
@@ -370,11 +371,11 @@ if (invulnerable)
     }
 
 if (full_sprite)
-    draw_sprite_ext(full_sprite_index,full_index,x,y,full_dir,1,0,-1,1);
+    draw_sprite_ext(full_sprite_index,full_index,x,y+vehicle_shake,full_dir,1,0,-1,1);
 else
     {
-    draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,leg_dir,1,0,-1,1);
-    draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
+    draw_sprite_ext(leg_sprite_index,leg_index,x,y+vehicle_shake+leg_y,leg_dir,1,0,-1,1);
+    draw_sprite_ext(arm_sprite_index,arm_index,x,y+vehicle_shake+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
     }
 
 if (invulnerable)

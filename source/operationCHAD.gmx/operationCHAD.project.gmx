@@ -70,7 +70,8 @@
       <sprite>sprites\echo_mask_spr</sprite>
     </sprites>
     <sprites name="3-Germany">
-      <sprite>sprites\motor_mockup_spr</sprite>
+      <sprite>sprites\motor_player_spr</sprite>
+      <sprite>sprites\motor_shadow_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
       <sprite>sprites\tank_spr</sprite>
       <sprite>sprites\foreground_branch_spr</sprite>
