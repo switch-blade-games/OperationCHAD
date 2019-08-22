@@ -205,15 +205,6 @@
           <sprite>sprites\yolo_moto_spr</sprite>
         </sprites>
       </sprites>
-      <sprites name="flying">
-        <sprite>sprites\stone_fly_spr</sprite>
-        <sprite>sprites\fox_fly_spr</sprite>
-        <sprite>sprites\yolo_fly_spr</sprite>
-        <sprite>sprites\pumpkin_fly_spr</sprite>
-        <sprite>sprites\stone_shot_spr</sprite>
-        <sprite>sprites\white_knight_spr</sprite>
-        <sprite>sprites\yolo_shot_spr</sprite>
-      </sprites>
       <sprites name="stone">
         <sprite>sprites\spr_player_idle</sprite>
         <sprite>sprites\spr_player_walk</sprite>
@@ -223,6 +214,15 @@
         <sprite>sprites\spr_player_climb</sprite>
         <sprite>sprites\spr_player_up</sprite>
         <sprite>sprites\spr_player_dead</sprite>
+      </sprites>
+      <sprites name="flying">
+        <sprite>sprites\stone_fly_spr</sprite>
+        <sprite>sprites\fox_fly_spr</sprite>
+        <sprite>sprites\yolo_fly_spr</sprite>
+        <sprite>sprites\pumpkin_fly_spr</sprite>
+        <sprite>sprites\stone_shot_spr</sprite>
+        <sprite>sprites\white_knight_spr</sprite>
+        <sprite>sprites\yolo_shot_spr</sprite>
       </sprites>
       <sprite>sprites\spr_guns</sprite>
     </sprites>

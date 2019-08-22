@@ -84,10 +84,22 @@ shake = choose(-shake,shake,shake)*0.9;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(rider))
+            <string>if (!instance_exists(rider))
+    exit;
+
+if (rider.move_state == mState.bike)
     {
+    // shadow
     draw_sprite(motor_shadow_spr,0,x,y);
+    
+    if (rider.invulnerable_flash)
+        shader_set(shd_flash);
+    
+    // bike
     draw_sprite(motor_player_spr,0,x,y+shake);
+    
+    if (rider.invulnerable_flash)
+        shader_reset();
     }
 </string>
           </argument>
