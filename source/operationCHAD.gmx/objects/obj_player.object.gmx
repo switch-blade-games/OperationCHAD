@@ -110,12 +110,16 @@ move_state = mState.walk;
 on_ground = false;
 on_ramp = false;
 on_bike = false;
+drop = false;
+invulnerable = false;
+invulnerable_flash = false;
+invulnerable_time = 0; // set to 180 when respawn
+invulnerable_rate = 3; // higher = slower
 ramp_slope = 1;
 climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
 vehicle = noone;
-drop = false;
 
 // player position/physics
 walk_speed = 2;
@@ -223,6 +227,10 @@ if (move_state == mState.dead)
         move_state = mState.walk;
         dead_timer = 120;
         drop = true;
+        
+        invulnerable = true;
+        invulnerable_time = 180;
+        
         if (instance_exists(obj_camera))
             {
             if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
@@ -265,9 +273,7 @@ if (move_state == mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>exit
-
-if (team == other.team) or (nohit)
+            <string>if (team == other.team) or (nohit) or (invulnerable)
     exit;
 
 if (move_state != mState.dead)
@@ -302,9 +308,7 @@ if (move_state != mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>exit
-
-if (team == other.team) or (!other.killOnContact) or (nohit)
+            <string>if (team == other.team) or (!other.killOnContact) or (nohit) or (invulnerable)
     exit;
 
 if (move_state != mState.dead)
@@ -347,12 +351,36 @@ if (move_state != mState.dead)
     exit;
     }
 
+if (invulnerable)
+    {
+    if (invulnerable_time &gt; 0)
+        {
+        invulnerable_time--;
+        if (invulnerable_time mod invulnerable_rate == 0)
+            invulnerable_flash = !invulnerable_flash;
+        }
+    else
+        {
+        invulnerable = false;
+        invulnerable_flash = false;
+        }
+    
+    if (invulnerable_flash)
+        shader_set(shd_flash);
+    }
+
 if (full_sprite)
     draw_sprite_ext(full_sprite_index,full_index,x,y,full_dir,1,0,-1,1);
 else
     {
     draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,leg_dir,1,0,-1,1);
     draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
+    }
+
+if (invulnerable)
+    {
+    if (invulnerable_flash)
+        shader_reset();
     }
 </string>
           </argument>
