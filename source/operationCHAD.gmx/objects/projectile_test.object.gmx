@@ -25,12 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>target = obj_player;
+            <string>var target = obj_player;
 if (instance_exists(target))
     {
-    var success = projectile(target.x,target.y,5,0.05);
-    if (!success)
-        instance_destroy();
+    projectile(x,y,target.x,target.y,8,0.4);
+    image_angle = point_direction(x,y,x+hspeed,y+vspeed+gravity);
     }
 else
     instance_destroy();

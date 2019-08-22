@@ -25,12 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var success = projectile(obj_player.x,obj_player.y+40,5,0.05);
-if (!success)
-    {
-    instance_destroy();
-    exit;
-    }
+            <string>projectile(x,y,obj_player.x,obj_player.y,8,0.4);
+image_angle = point_direction(x,y,x+hspeed,y+vspeed+gravity);
 
 enemy_init(1)
 

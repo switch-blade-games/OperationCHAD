@@ -143,41 +143,87 @@
       <sprite>sprites\NPC_enemy_spr</sprite>
       <sprite>sprites\pooh_spr</sprite>
     </sprites>
-    <sprite>sprites\node_spr</sprite>
-    <sprites name="walls">
-      <sprite>sprites\msk_wall</sprite>
-      <sprite>sprites\msk_wall_half</sprite>
-      <sprite>sprites\msk_jt</sprite>
-      <sprite>sprites\msk_ramp_r</sprite>
-      <sprite>sprites\msk_ramp_l</sprite>
-      <sprite>sprites\msk_ramp_half_r</sprite>
-      <sprite>sprites\msk_ramp_half_l</sprite>
-      <sprite>sprites\msk_mb</sprite>
-      <sprite>sprites\msk_mb_r</sprite>
-      <sprite>sprites\msk_mb_l</sprite>
-      <sprite>sprites\spr_wall_move</sprite>
-      <sprite>sprites\text_platform_mask_spr</sprite>
-    </sprites>
     <sprites name="player">
       <sprite>sprites\msk_player</sprite>
       <sprite>sprites\msk_player_duck</sprite>
-      <sprite>sprites\spr_player_idle</sprite>
-      <sprite>sprites\spr_player_dead</sprite>
-      <sprite>sprites\spr_player_walk</sprite>
-      <sprite>sprites\spr_player_jump</sprite>
-      <sprite>sprites\spr_player_duck</sprite>
-      <sprite>sprites\spr_player_hang</sprite>
-      <sprite>sprites\spr_player_climb</sprite>
-      <sprite>sprites\spr_player_up</sprite>
-    </sprites>
-    <sprites name="editor">
-      <sprite>sprites\spr_player_spawn</sprite>
-      <sprite>sprites\spr_camera</sprite>
-      <sprite>sprites\spr_camera_arrow</sprite>
-    </sprites>
-    <sprites name="gamepad">
-      <sprite>sprites\spr_buttons_xbox</sprite>
-      <sprite>sprites\spr_buttons_ps</sprite>
+      <sprites name="pepe">
+        <sprites name="legs">
+          <sprite>sprites\pepe_legs_walk_spr</sprite>
+          <sprite>sprites\pepe_legs_stand_spr</sprite>
+        </sprites>
+        <sprites name="arms">
+          <sprite>sprites\pepe_arms_90_spr</sprite>
+          <sprite>sprites\pepe_arms_45_spr</sprite>
+          <sprite>sprites\pepe_arms_0_spr</sprite>
+          <sprite>sprites\pepe_arms_315_spr</sprite>
+          <sprite>sprites\pepe_arms_270_spr</sprite>
+        </sprites>
+        <sprites name="full">
+          <sprite>sprites\pepe_jump_spr</sprite>
+          <sprite>sprites\pepe_duck_spr</sprite>
+          <sprite>sprites\pepe_place_spr</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="yolo">
+        <sprites name="arms">
+          <sprites name="regular_arms">
+            <sprite>sprites\yolo_arms_270_spr</sprite>
+            <sprite>sprites\yolo_arms_315_spr</sprite>
+            <sprite>sprites\yolo_arms_90_spr</sprite>
+            <sprite>sprites\yolo_arms_45_spr</sprite>
+            <sprite>sprites\yolo_arms_0_spr</sprite>
+          </sprites>
+          <sprites name="single_arms">
+            <sprite>sprites\yolo_single_0_spr</sprite>
+            <sprite>sprites\yolo_single_45_spr</sprite>
+            <sprite>sprites\yolo_single_90_spr</sprite>
+            <sprite>sprites\yolo_single_270_spr</sprite>
+            <sprite>sprites\yolo_single_315_spr</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="legs">
+          <sprite>sprites\yolo_legs_walk_spr</sprite>
+          <sprite>sprites\yolo_legs_stand_spr</sprite>
+          <sprite>sprites\yolo_legs_drop_spr</sprite>
+          <sprite>sprites\yolo_legs_hang_spr</sprite>
+          <sprites name="ramp">
+            <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
+            <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
+            <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
+            <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="full">
+          <sprite>sprites\yolo_duck_spr</sprite>
+          <sprite>sprites\yolo_jump_spr</sprite>
+          <sprite>sprites\yolo_dead_down_spr</sprite>
+          <sprite>sprites\yolo_dead_fly_spr</sprite>
+          <sprite>sprites\yolo_dead_stand_spr</sprite>
+        </sprites>
+        <sprites name="part">
+          <sprite>sprites\yolo_moto_spr</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="flying">
+        <sprite>sprites\stone_fly_spr</sprite>
+        <sprite>sprites\fox_fly_spr</sprite>
+        <sprite>sprites\yolo_fly_spr</sprite>
+        <sprite>sprites\pumpkin_fly_spr</sprite>
+        <sprite>sprites\stone_shot_spr</sprite>
+        <sprite>sprites\white_knight_spr</sprite>
+        <sprite>sprites\yolo_shot_spr</sprite>
+      </sprites>
+      <sprites name="stone">
+        <sprite>sprites\spr_player_idle</sprite>
+        <sprite>sprites\spr_player_walk</sprite>
+        <sprite>sprites\spr_player_jump</sprite>
+        <sprite>sprites\spr_player_duck</sprite>
+        <sprite>sprites\spr_player_hang</sprite>
+        <sprite>sprites\spr_player_climb</sprite>
+        <sprite>sprites\spr_player_up</sprite>
+        <sprite>sprites\spr_player_dead</sprite>
+      </sprites>
+      <sprite>sprites\spr_guns</sprite>
     </sprites>
     <sprites name="projectiles">
       <sprite>sprites\spr_bullet</sprite>
@@ -185,13 +231,6 @@
       <sprite>sprites\spr_heat_seeker</sprite>
       <sprite>sprites\spr_flamethrower_flame</sprite>
     </sprites>
-    <sprite>sprites\spr_casings</sprite>
-    <sprite>sprites\joystix_font_spr</sprite>
-    <sprite>sprites\spr_guns</sprite>
-    <sprite>sprites\spr_arrow_h</sprite>
-    <sprite>sprites\spr_dust</sprite>
-    <sprite>sprites\spr_particle</sprite>
-    <sprite>sprites\msk_particle</sprite>
     <sprites name="embro">
       <sprite>sprites\baby_jump_spr</sprite>
       <sprite>sprites\baby_crawl_spr</sprite>
@@ -204,6 +243,7 @@
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
       <sprite>sprites\block_spr</sprite>
+      <sprite>sprites\target_spr</sprite>
     </sprites>
     <sprites name="SJWs">
       <sprite>sprites\sjw_1_spr</sprite>
@@ -217,80 +257,41 @@
       <sprite>sprites\sjw_9_spr</sprite>
       <sprite>sprites\sjw_10_spr</sprite>
     </sprites>
-    <sprites name="pepe">
-      <sprites name="legs">
-        <sprite>sprites\pepe_legs_walk_spr</sprite>
-        <sprite>sprites\pepe_legs_stand_spr</sprite>
-      </sprites>
-      <sprites name="arms">
-        <sprite>sprites\pepe_arms_90_spr</sprite>
-        <sprite>sprites\pepe_arms_45_spr</sprite>
-        <sprite>sprites\pepe_arms_0_spr</sprite>
-        <sprite>sprites\pepe_arms_315_spr</sprite>
-        <sprite>sprites\pepe_arms_270_spr</sprite>
-      </sprites>
-      <sprites name="full">
-        <sprite>sprites\pepe_jump_spr</sprite>
-        <sprite>sprites\pepe_duck_spr</sprite>
-        <sprite>sprites\pepe_place_spr</sprite>
-      </sprites>
-    </sprites>
     <sprites name="effects">
       <sprite>sprites\small_explode_spr</sprite>
       <sprite>sprites\flame_ball_spr</sprite>
       <sprite>sprites\small_flame_ball_spr</sprite>
       <sprite>sprites\big_fry_spr</sprite>
       <sprite>sprites\floor_flame_spr</sprite>
+      <sprite>sprites\spr_casings</sprite>
+      <sprite>sprites\spr_dust</sprite>
     </sprites>
-    <sprites name="yolo">
-      <sprites name="arms">
-        <sprites name="regular_arms">
-          <sprite>sprites\yolo_arms_270_spr</sprite>
-          <sprite>sprites\yolo_arms_315_spr</sprite>
-          <sprite>sprites\yolo_arms_90_spr</sprite>
-          <sprite>sprites\yolo_arms_45_spr</sprite>
-          <sprite>sprites\yolo_arms_0_spr</sprite>
-        </sprites>
-        <sprites name="single_arms">
-          <sprite>sprites\yolo_single_0_spr</sprite>
-          <sprite>sprites\yolo_single_45_spr</sprite>
-          <sprite>sprites\yolo_single_90_spr</sprite>
-          <sprite>sprites\yolo_single_270_spr</sprite>
-          <sprite>sprites\yolo_single_315_spr</sprite>
-        </sprites>
+    <sprites name="engine">
+      <sprite>sprites\joystix_font_spr</sprite>
+      <sprite>sprites\node_spr</sprite>
+      <sprite>sprites\msk_particle</sprite>
+      <sprite>sprites\spr_particle</sprite>
+      <sprites name="colliders">
+        <sprite>sprites\msk_wall</sprite>
+        <sprite>sprites\msk_jt</sprite>
+        <sprite>sprites\msk_ramp_half_r</sprite>
+        <sprite>sprites\msk_ramp_half_l</sprite>
+        <sprite>sprites\msk_mb</sprite>
+        <sprite>sprites\msk_mb_r</sprite>
+        <sprite>sprites\msk_mb_l</sprite>
+        <sprite>sprites\spr_wall_move</sprite>
+        <sprite>sprites\text_platform_mask_spr</sprite>
       </sprites>
-      <sprites name="legs">
-        <sprite>sprites\yolo_legs_walk_spr</sprite>
-        <sprite>sprites\yolo_legs_stand_spr</sprite>
-        <sprite>sprites\yolo_legs_drop_spr</sprite>
-        <sprite>sprites\yolo_legs_hang_spr</sprite>
-        <sprites name="ramp">
-          <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
-          <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
-          <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
-          <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
-        </sprites>
+      <sprites name="gamepad">
+        <sprite>sprites\spr_buttons_xbox</sprite>
+        <sprite>sprites\spr_buttons_ps</sprite>
       </sprites>
-      <sprites name="full">
-        <sprite>sprites\yolo_duck_spr</sprite>
-        <sprite>sprites\yolo_jump_spr</sprite>
-        <sprite>sprites\yolo_dead_down_spr</sprite>
-        <sprite>sprites\yolo_dead_fly_spr</sprite>
-        <sprite>sprites\yolo_dead_stand_spr</sprite>
+      <sprites name="editor">
+        <sprite>sprites\spr_player_spawn</sprite>
+        <sprite>sprites\spr_camera</sprite>
+        <sprite>sprites\spr_camera_arrow</sprite>
+        <sprite>sprites\spr_arrow_h</sprite>
       </sprites>
-      <sprites name="part">
-        <sprite>sprites\yolo_moto_spr</sprite>
-      </sprites>
-    </sprites>
-    <sprite>sprites\target_spr</sprite>
-    <sprites name="flying">
-      <sprite>sprites\stone_fly_spr</sprite>
-      <sprite>sprites\fox_fly_spr</sprite>
-      <sprite>sprites\yolo_fly_spr</sprite>
-      <sprite>sprites\pumpkin_fly_spr</sprite>
-      <sprite>sprites\stone_shot_spr</sprite>
-      <sprite>sprites\white_knight_spr</sprite>
-      <sprite>sprites\yolo_shot_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -437,10 +438,19 @@
       <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
     </objects>
-    <objects name="editor">
-      <object>objects\obj_editor</object>
-      <object>objects\obj_player_spawn</object>
-      <object>objects\obj_camera_path</object>
+    <objects name="colliders">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_jt</object>
+      <object>objects\obj_ramp_r</object>
+      <object>objects\obj_ramp_l</object>
+      <object>objects\obj_climb</object>
+      <object>objects\obj_climb_r</object>
+      <object>objects\obj_climb_l</object>
+      <object>objects\obj_climb_b</object>
+      <object>objects\obj_mb</object>
+      <object>objects\obj_mb_l</object>
+      <object>objects\obj_mb_r</object>
+      <object>objects\obj_wall_move</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
@@ -454,30 +464,19 @@
       <object>objects\obj_particle</object>
       <object>objects\small_explode</object>
     </objects>
-    <object>objects\obj_control</object>
+    <objects name="editor">
+      <object>objects\obj_editor</object>
+      <object>objects\obj_horse_mockup</object>
+      <object>objects\player_mockup</object>
+    </objects>
     <object>objects\obj_menu</object>
+    <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_wall_half</object>
-    <object>objects\obj_jt</object>
-    <object>objects\obj_ramp_r</object>
-    <object>objects\obj_ramp_l</object>
-    <object>objects\obj_ramp_half_r</object>
-    <object>objects\obj_ramp_half_l</object>
-    <object>objects\obj_climb</object>
-    <object>objects\obj_climb_r</object>
-    <object>objects\obj_climb_l</object>
-    <object>objects\obj_climb_b</object>
-    <object>objects\obj_mb</object>
-    <object>objects\obj_mb_r</object>
-    <object>objects\obj_mb_l</object>
-    <object>objects\obj_wall_move</object>
-    <object>objects\player_mockup</object>
-    <object>objects\obj_horse_mockup</object>
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
+      <object>objects\practice_target</object>
     </objects>
     <objects name="0-Front End">
       <objects name="cine">
@@ -649,7 +648,6 @@
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
     </objects>
-    <object>objects\practice_target</object>
     <objects name="flying">
       <object>objects\PC_fly</object>
       <object>objects\flying_cam</object>
