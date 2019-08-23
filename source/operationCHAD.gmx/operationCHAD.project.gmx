@@ -258,6 +258,16 @@
           <sprite>sprites\yolo_single_270_spr</sprite>
           <sprite>sprites\yolo_single_315_spr</sprite>
         </sprites>
+        <sprites name="climb_arms">
+          <sprite>sprites\yolo_climb_0_spr</sprite>
+          <sprite>sprites\yolo_climb_45_spr</sprite>
+          <sprite>sprites\yolo_climb_90_spr</sprite>
+          <sprite>sprites\yolo_climb_135_spr</sprite>
+          <sprite>sprites\yolo_climb_180_spr</sprite>
+          <sprite>sprites\yolo_climb_225_spr</sprite>
+          <sprite>sprites\yolo_climb_270_spr</sprite>
+          <sprite>sprites\yolo_climb_315_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="legs">
         <sprite>sprites\yolo_legs_walk_spr</sprite>
@@ -270,6 +280,7 @@
           <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
           <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
         </sprites>
+        <sprite>sprites\yolo_climb_legs_spr</sprite>
       </sprites>
       <sprites name="full">
         <sprite>sprites\yolo_duck_spr</sprite>
