@@ -75,7 +75,8 @@ enemy_init(3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_enemy_self(sprite_index,image_index,x,y,image_xscale,image_yscale,0,-1,1);
+            <string>draw_sprite(motor_shadow_spr,0,x,y);
+draw_enemy_self(sprite_index,image_index,x,y,image_xscale,image_yscale,0,-1,1);
 </string>
           </argument>
         </arguments>

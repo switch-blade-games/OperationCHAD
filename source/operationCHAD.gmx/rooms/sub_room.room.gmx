@@ -14,6 +14,11 @@
 var inst = instance_create(0,0,obj_camera);
 inst.cam_state = camState.static;
 
+var player = instance_create(60,80,obj_player);
+var bike = instance_create(60,100,motor_player);
+player.vehicle = bike;
+player.move_state = mState.bike;
+bike.rider = player;
 
 instance_create(0,0,sub_controller)
 
@@ -115,8 +120,6 @@ background_color=global.LIGHTgrey</code>
     <instance objName="obj_wall" x="400" y="180" name="inst_0757C2A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="200" name="inst_22817B46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="220" name="inst_1730836D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="60" y="100" name="inst_12287ED2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bike_placeholder" x="60" y="100" name="inst_42A79546" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

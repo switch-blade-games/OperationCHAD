@@ -329,11 +329,16 @@ switch(anim_state)
         break;
     
     case aState.bike:
-        gun_y = -10;
+        gun_y = -18;
         leg_y = 0;
         arm_y = 0;
         leg_dir = 1;
         arm_dir = dir;
+        
+        if (instance_exists(vehicle))
+            vehicle_shake = vehicle.shake;
+        else
+            vehicle_shake = 0;
         
         full_sprite = false;
         leg_sprite_index = sprite[skin_spr.leg_walk];

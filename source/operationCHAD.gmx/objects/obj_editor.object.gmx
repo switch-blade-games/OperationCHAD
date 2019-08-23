@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>/*
-
 global.version = 2;
 global.levelname = "Untitled";
 

@@ -1,42 +1,29 @@
-/// projectile(tx,ty,v,g);
+/// projectile(x1,y1,x2,y2,v,g);
 
 // tx - target x
 // ty - target y
 // v - velocity
 // g - gravity
 
-x1 = x;
-y1 = y;
-x2 = argument[0];
-y2 = argument[1];
-v = argument[2];
-g = argument[3];
+var x1 = argument[0];
+var y1 = argument[1];
+var x2 = argument[2];
+var y2 = argument[3];
+var v = argument[4];
+var g = argument[5];
 
-ox = abs(x2-x1);
-oy = y1-y2;
+a = g/2;
+b = ((y2-y1) - a*(x2*x2-x1*x1))/(x2-x1);
+c = -a*x1*x1 - b*x1 + y1;
 
-q0 = v*v*v*v - g*(g*ox*ox + 2*oy*v*v);
-if (q0 < 0)
-    return(false);
-q0 = sqrt(q0);
+var theta = darctan(2*a*x1+b);
 
-q1 = v*v + q0;
-q2 = v*v - q0;
+var vx = sign(x2-x1);
+var v = vx/dcos(theta);
+var vy = v*dsin(theta);
 
-q0 = min(q1,q2);
-if (q0 < 0)
-    return(false);
-
-var sx = 1;
-if (x1 > x2)
-    sx = -1;
-
-theta = arctan2(q1,g*ox);
-hspeed = +cos(theta)*v*sx;
-vspeed = -sin(theta)*v;
 gravity = g;
+hspeed = vx;
+vspeed = vy;
 
-xprevious = x;
-yprevious = y;
-image_angle = point_direction(x,y,x+hspeed,y+vspeed+gravity);
 return(true);
