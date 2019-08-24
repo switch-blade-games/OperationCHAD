@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_color = global.DARKpurple;
+            <string>CLOUDx=0
+CLOUDspe=-3
+
+background_color = global.DARKpurple;
 
 // init settings
 settings_init();
@@ -519,6 +522,14 @@ switch(menu)
             <string>var alpha = round(bg_alpha*5)/5;
 draw_background_ext(title_BG,0,0,1,1,0,-1,alpha);
 
+CLOUDx+=CLOUDspe
+
+draw_background_tiled(title_clouds_BG,CLOUDx,0)
+
+draw_background(title_front_BG,0,0)
+
+draw_background(title_banner_BG,0,0)
+
 switch(menu)
     {
     case 0: // title screen
@@ -527,19 +538,19 @@ switch(menu)
         if (sin(current_time/200) &gt; 0)
             {
             if (sin(current_time/400) &gt; 0)
-                draw_text_outline(view_wview[0]/2,200,"Z or X to Start!");
+                draw_text_outline(view_wview[0]/2,230,"Z or X to Start!");
             else
                 {
-                draw_text_outline(view_wview[0]/2,200," -  or  - to Start!");
+                draw_text_outline(view_wview[0]/2,230," -  or  - to Start!");
                 if (global.btnstyle)
                     {
-                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-64,202);
-                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,202);
+                    draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-64,230);
+                    draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,230);
                     }
                 else
                     {
-                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-64,202);
-                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,202);
+                    draw_sprite(spr_buttons_ps,0,view_wview[0]/2-64,230);
+                    draw_sprite(spr_buttons_ps,2,view_wview[0]/2-18,230);
                     }
                 }
             }
