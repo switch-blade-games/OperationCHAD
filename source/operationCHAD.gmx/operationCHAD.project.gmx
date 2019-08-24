@@ -167,19 +167,29 @@
       </sprites>
       <sprites name="yolo">
         <sprites name="arms">
-          <sprites name="regular_arms">
-            <sprite>sprites\yolo_arms_270_spr</sprite>
-            <sprite>sprites\yolo_arms_315_spr</sprite>
-            <sprite>sprites\yolo_arms_90_spr</sprite>
-            <sprite>sprites\yolo_arms_45_spr</sprite>
-            <sprite>sprites\yolo_arms_0_spr</sprite>
-          </sprites>
+		  <sprites name="regular_arms">
+		    <sprite>sprites\yolo_arms_270_spr</sprite>
+		    <sprite>sprites\yolo_arms_315_spr</sprite>
+		    <sprite>sprites\yolo_arms_90_spr</sprite>
+		    <sprite>sprites\yolo_arms_45_spr</sprite>
+		    <sprite>sprites\yolo_arms_0_spr</sprite>
+		  </sprites>
           <sprites name="single_arms">
             <sprite>sprites\yolo_single_0_spr</sprite>
             <sprite>sprites\yolo_single_45_spr</sprite>
             <sprite>sprites\yolo_single_90_spr</sprite>
             <sprite>sprites\yolo_single_270_spr</sprite>
             <sprite>sprites\yolo_single_315_spr</sprite>
+          </sprites>
+          <sprites name="climb_arms">
+            <sprite>sprites\yolo_climb_0_spr</sprite>
+            <sprite>sprites\yolo_climb_45_spr</sprite>
+            <sprite>sprites\yolo_climb_90_spr</sprite>
+            <sprite>sprites\yolo_climb_135_spr</sprite>
+            <sprite>sprites\yolo_climb_180_spr</sprite>
+            <sprite>sprites\yolo_climb_225_spr</sprite>
+            <sprite>sprites\yolo_climb_270_spr</sprite>
+            <sprite>sprites\yolo_climb_315_spr</sprite>
           </sprites>
         </sprites>
         <sprites name="legs">
@@ -193,7 +203,8 @@
             <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
             <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
           </sprites>
-        </sprites>
+          <sprite>sprites\yolo_climb_legs_spr</sprite>
+	    </sprites>
         <sprites name="full">
           <sprite>sprites\yolo_duck_spr</sprite>
           <sprite>sprites\yolo_jump_spr</sprite>
@@ -267,47 +278,6 @@
       <sprite>sprites\spr_casings</sprite>
       <sprite>sprites\spr_dust</sprite>
     </sprites>
-<<<<<<< HEAD
-    <sprites name="yolo">
-      <sprites name="arms">
-        <sprites name="regular_arms">
-          <sprite>sprites\yolo_arms_270_spr</sprite>
-          <sprite>sprites\yolo_arms_315_spr</sprite>
-          <sprite>sprites\yolo_arms_90_spr</sprite>
-          <sprite>sprites\yolo_arms_45_spr</sprite>
-          <sprite>sprites\yolo_arms_0_spr</sprite>
-        </sprites>
-        <sprites name="single_arms">
-          <sprite>sprites\yolo_single_0_spr</sprite>
-          <sprite>sprites\yolo_single_45_spr</sprite>
-          <sprite>sprites\yolo_single_90_spr</sprite>
-          <sprite>sprites\yolo_single_270_spr</sprite>
-          <sprite>sprites\yolo_single_315_spr</sprite>
-        </sprites>
-        <sprites name="climb_arms">
-          <sprite>sprites\yolo_climb_0_spr</sprite>
-          <sprite>sprites\yolo_climb_45_spr</sprite>
-          <sprite>sprites\yolo_climb_90_spr</sprite>
-          <sprite>sprites\yolo_climb_135_spr</sprite>
-          <sprite>sprites\yolo_climb_180_spr</sprite>
-          <sprite>sprites\yolo_climb_225_spr</sprite>
-          <sprite>sprites\yolo_climb_270_spr</sprite>
-          <sprite>sprites\yolo_climb_315_spr</sprite>
-        </sprites>
-      </sprites>
-      <sprites name="legs">
-        <sprite>sprites\yolo_legs_walk_spr</sprite>
-        <sprite>sprites\yolo_legs_stand_spr</sprite>
-        <sprite>sprites\yolo_legs_drop_spr</sprite>
-        <sprite>sprites\yolo_legs_hang_spr</sprite>
-        <sprites name="ramp">
-          <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
-          <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
-          <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
-          <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
-        </sprites>
-        <sprite>sprites\yolo_climb_legs_spr</sprite>
-=======
     <sprites name="engine">
       <sprite>sprites\joystix_font_spr</sprite>
       <sprite>sprites\node_spr</sprite>
@@ -323,7 +293,6 @@
         <sprite>sprites\msk_mb_l</sprite>
         <sprite>sprites\spr_wall_move</sprite>
         <sprite>sprites\text_platform_mask_spr</sprite>
->>>>>>> 0e29b6fb5b9d81c70dc99714918fbe45767e6408
       </sprites>
       <sprites name="gamepad">
         <sprite>sprites\spr_buttons_xbox</sprite>
