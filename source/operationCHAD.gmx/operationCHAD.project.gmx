@@ -167,13 +167,13 @@
       </sprites>
       <sprites name="yolo">
         <sprites name="arms">
-		  <sprites name="regular_arms">
-		    <sprite>sprites\yolo_arms_270_spr</sprite>
-		    <sprite>sprites\yolo_arms_315_spr</sprite>
-		    <sprite>sprites\yolo_arms_90_spr</sprite>
-		    <sprite>sprites\yolo_arms_45_spr</sprite>
-		    <sprite>sprites\yolo_arms_0_spr</sprite>
-		  </sprites>
+          <sprites name="regular_arms">
+            <sprite>sprites\yolo_arms_270_spr</sprite>
+            <sprite>sprites\yolo_arms_315_spr</sprite>
+            <sprite>sprites\yolo_arms_90_spr</sprite>
+            <sprite>sprites\yolo_arms_45_spr</sprite>
+            <sprite>sprites\yolo_arms_0_spr</sprite>
+          </sprites>
           <sprites name="single_arms">
             <sprite>sprites\yolo_single_0_spr</sprite>
             <sprite>sprites\yolo_single_45_spr</sprite>
@@ -196,24 +196,29 @@
           <sprite>sprites\yolo_legs_walk_spr</sprite>
           <sprite>sprites\yolo_legs_stand_spr</sprite>
           <sprite>sprites\yolo_legs_drop_spr</sprite>
-          <sprite>sprites\yolo_legs_hang_spr</sprite>
           <sprites name="ramp">
             <sprite>sprites\yolo_ramp_crouch_R_spr</sprite>
             <sprite>sprites\yolo_ramp_crouch_L_spr</sprite>
             <sprite>sprites\yolo_ramp_stand_R_spr</sprite>
             <sprite>sprites\yolo_ramp_stand_L_spr</sprite>
           </sprites>
-          <sprite>sprites\yolo_climb_legs_spr</sprite>
-	    </sprites>
+          <sprites name="climb">
+            <sprite>sprites\yolo_legs_monkey_spr</sprite>
+            <sprite>sprites\yolo_climb_legs_spr</sprite>
+          </sprites>
+        </sprites>
         <sprites name="full">
           <sprite>sprites\yolo_duck_spr</sprite>
           <sprite>sprites\yolo_jump_spr</sprite>
           <sprite>sprites\yolo_dead_down_spr</sprite>
           <sprite>sprites\yolo_dead_fly_spr</sprite>
           <sprite>sprites\yolo_dead_stand_spr</sprite>
+          <sprite>sprites\yolo_climb_up_spr</sprite>
+          <sprite>sprites\yolo_climb_monkey_spr</sprite>
         </sprites>
-        <sprites name="part">
+        <sprites name="motorcycle">
           <sprite>sprites\yolo_moto_spr</sprite>
+          <sprite>sprites\yolo_moto_fire_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="stone">
