@@ -2,14 +2,14 @@
 <sprite>
   <type>0</type>
   <xorig>40</xorig>
-  <yorigin>60</yorigin>
+  <yorigin>30</yorigin>
   <colkind>1</colkind>
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>69</bbox_right>
-  <bbox_top>15</bbox_top>
+  <bbox_right>79</bbox_right>
+  <bbox_top>0</bbox_top>
   <bbox_bottom>59</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -21,5 +21,6 @@
   <height>60</height>
   <frames>
     <frame index="0">images\motor_nazi_spr_0.png</frame>
+    <frame index="1">images\motor_nazi_spr_1.png</frame>
   </frames>
 </sprite>

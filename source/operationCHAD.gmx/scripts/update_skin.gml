@@ -20,8 +20,8 @@ switch(argument[0])
         sprite[skin_spr.leg_drop] = yolo_legs_drop_spr;
         leg_drop_sprite = yolo_legs_drop_spr;
         // hang
-        sprite[skin_spr.leg_hang] = yolo_legs_hang_spr;
-        leg_hang_sprite = yolo_legs_hang_spr;
+        sprite[skin_spr.leg_hang] = yolo_legs_monkey_spr;
+        leg_hang_sprite = yolo_legs_monkey_spr;
         
         // === ARMS ===
         

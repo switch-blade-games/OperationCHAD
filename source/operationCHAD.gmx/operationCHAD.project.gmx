@@ -72,6 +72,7 @@
     <sprites name="3-Germany">
       <sprite>sprites\motor_player_spr</sprite>
       <sprite>sprites\motor_shadow_spr</sprite>
+      <sprite>sprites\nazi_moto_under_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
       <sprite>sprites\tank_spr</sprite>
       <sprite>sprites\foreground_branch_spr</sprite>
@@ -219,6 +220,8 @@
         <sprites name="motorcycle">
           <sprite>sprites\yolo_moto_spr</sprite>
           <sprite>sprites\yolo_moto_fire_spr</sprite>
+          <sprite>sprites\yolo_moto_back_spr</sprite>
+          <sprite>sprites\motor_cycle_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="stone">
@@ -676,8 +679,8 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\sub_room</room>
       <room>rooms\germany_motor_room</room>
+      <room>rooms\sub_room</room>
       <room>rooms\hitler_room</room>
       <room>rooms\ep_room</room>
     </rooms>

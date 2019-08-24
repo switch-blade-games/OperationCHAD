@@ -30,6 +30,9 @@
 motion_set(180,spe)
 
 enemy_init(3);
+
+
+image_speed=0.6
 </string>
           </argument>
         </arguments>
@@ -76,6 +79,9 @@ enemy_init(3);
           <argument>
             <kind>1</kind>
             <string>draw_sprite(motor_shadow_spr,0,x,y);
+draw_sprite(nazi_moto_under_spr,-1,x,y)
+draw_sprite(motor_cycle_spr,-1,x,y)
+
 draw_enemy_self(sprite_index,image_index,x,y,image_xscale,image_yscale,0,-1,1);
 </string>
           </argument>
