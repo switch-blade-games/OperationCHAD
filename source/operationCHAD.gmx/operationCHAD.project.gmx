@@ -215,7 +215,7 @@
           <sprite>sprites\yolo_dead_fly_spr</sprite>
           <sprite>sprites\yolo_dead_stand_spr</sprite>
           <sprite>sprites\yolo_climb_up_spr</sprite>
-          <sprite>sprites\yolo_climb_monkey_spr</sprite>
+          <sprite>sprites\yolo_monkey_move_spr</sprite>
         </sprites>
         <sprites name="motorcycle">
           <sprite>sprites\yolo_moto_spr</sprite>
@@ -311,6 +311,22 @@
         <sprite>sprites\spr_camera</sprite>
         <sprite>sprites\spr_camera_arrow</sprite>
         <sprite>sprites\spr_arrow_h</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="cutscenes">
+      <sprites name="ending">
+        <sprite>sprites\end_1_spr</sprite>
+        <sprite>sprites\end_2_spr</sprite>
+        <sprite>sprites\end_3_spr</sprite>
+        <sprite>sprites\end_4_spr</sprite>
+        <sprite>sprites\end_44_spr</sprite>
+        <sprite>sprites\end_5_spr</sprite>
+        <sprite>sprites\end_6_spr</sprite>
+        <sprite>sprites\end_7_spr</sprite>
+        <sprite>sprites\end_8_spr</sprite>
+        <sprite>sprites\end_9_spr</sprite>
+        <sprite>sprites\end_10_spr</sprite>
+        <sprite>sprites\ending_pan_spr</sprite>
       </sprites>
     </sprites>
   </sprites>
@@ -677,11 +693,16 @@
       <object>objects\flying_shot</object>
       <object>objects\white_knight</object>
     </objects>
+    <objects name="cutscene">
+      <object>objects\ending_cutscene</object>
+      <object>objects\ending_pan</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\end_cutscene_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\sub_room</room>
       <room>rooms\hitler_room</room>
