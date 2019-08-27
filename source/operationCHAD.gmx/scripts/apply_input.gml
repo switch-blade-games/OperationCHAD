@@ -503,15 +503,17 @@ switch(move_state)
         grace_jump = 0;
         break;
     
-    case mState.bike:
-        if (input_lock) and (on_ground)
+    case mState.moto:
+        /*
+        if (input_lock) and (on_moto)
             {
             move_state = mState.lock;
             break;
             }
+        */
         
         // horizontal movement input
-        var move_speed = bike_speed;
+        var move_speed = moto_speed;
         if (h_dir != 0)
             {
             xspeed = move_speed*h_dir;
@@ -568,7 +570,7 @@ switch(move_state)
             }
         
         // jump
-        if (on_bike) and (input_jump_pressed) and (!input_down)
+        if (on_moto) and (input_jump_pressed) and (!input_down)
             jump();
         
         // fire weapon

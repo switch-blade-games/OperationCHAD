@@ -25,7 +25,50 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surf_mockup = -1;
+            <string>sText[skin_spr.leg_idle]       = "leg_idle";
+sText[skin_spr.leg_idle_r]     = "leg_idle_r";
+sText[skin_spr.leg_idle_l]     = "leg_idle_l";
+sText[skin_spr.leg_duck_r]     = "leg_duck_r";
+sText[skin_spr.leg_duck_l]     = "leg_duck_l";
+sText[skin_spr.leg_walk]       = "leg_walk";
+sText[skin_spr.leg_drop]       = "leg_drop";
+sText[skin_spr.leg_hang]       = "leg_hang";
+sText[skin_spr.leg_climb]      = "leg_climb";
+sText[skin_spr.leg_moto]       = "leg_moto";
+sText[skin_spr.arm_0]          = "arm_0";
+sText[skin_spr.arm_45]         = "arm_45";
+sText[skin_spr.arm_90]         = "arm_90";
+sText[skin_spr.arm_135]        = "arm_135";
+sText[skin_spr.arm_180]        = "arm_180";
+sText[skin_spr.arm_225]        = "arm_225";
+sText[skin_spr.arm_270]        = "arm_270";
+sText[skin_spr.arm_315]        = "arm_315";
+sText[skin_spr.arm_single_0]   = "arm_single_0";
+sText[skin_spr.arm_single_45]  = "arm_single_45";
+sText[skin_spr.arm_single_90]  = "arm_single_90";
+sText[skin_spr.arm_single_135] = "arm_single_135";
+sText[skin_spr.arm_single_180] = "arm_single_180";
+sText[skin_spr.arm_single_225] = "arm_single_225";
+sText[skin_spr.arm_single_270] = "arm_single_270";
+sText[skin_spr.arm_single_315] = "arm_single_315";
+sText[skin_spr.arm_climb_0]    = "arm_climb_0";
+sText[skin_spr.arm_climb_45]   = "arm_climb_45";
+sText[skin_spr.arm_climb_90]   = "arm_climb_90";
+sText[skin_spr.arm_climb_135]  = "arm_climb_135";
+sText[skin_spr.arm_climb_180]  = "arm_climb_180";
+sText[skin_spr.arm_climb_225]  = "arm_climb_225";
+sText[skin_spr.arm_climb_270]  = "arm_climb_270";
+sText[skin_spr.arm_climb_315]  = "arm_climb_315";
+sText[skin_spr.full_roll]      = "full_roll";
+sText[skin_spr.full_duck]      = "full_duck";
+sText[skin_spr.full_hang]      = "full_hang";
+sText[skin_spr.full_climb]     = "full_climb";
+sText[skin_spr.full_moto]      = "full_moto";
+sText[skin_spr.full_dead_idle] = "full_dead_idle";
+sText[skin_spr.full_dead_roll] = "full_dead_roll";
+sText[skin_spr.full_dead_down] = "full_dead_down";
+sText[skin_spr.extra_arm_moto] = "extra_arm_moto";
+sText[skin_spr.extra_moto]     = "extra_moto";
 
 mText[mState.idle]  = "idle";
 mText[mState.walk]  = "walk";
@@ -33,22 +76,37 @@ mText[mState.lock]  = "lock";
 mText[mState.duck]  = "duck";
 mText[mState.hang]  = "hang";
 mText[mState.climb] = "climb";
-mText[mState.bike]  = "bike";
+mText[mState.moto]  = "moto";
 mText[mState.dead]  = "dead";
 
-aText[aState.idle]  = "idle";
-aText[aState.walk]  = "walk";
-aText[aState.drop]  = "drop";
-aText[aState.roll]  = "roll";
-aText[aState.duck]  = "duck";
-aText[aState.hang]  = "hang";
-aText[aState.climb] = "climb";
-aText[aState.bike]  = "bike";
-aText[aState.dead]  = "dead";
+aText[aState.idle]       = "idle";
+aText[aState.walk]       = "walk";
+aText[aState.drop]       = "drop";
+aText[aState.roll]       = "roll";
+aText[aState.duck]       = "duck";
+aText[aState.hang]       = "hang";
+aText[aState.hang_move]  = "hang_move";
+aText[aState.climb]      = "climb";
+aText[aState.climb_move] = "climb_move";
+aText[aState.moto]       = "moto";
+aText[aState.moto_fire]  = "moto_fire";
+aText[aState.dead]       = "dead";
+
+dText[doll.full] = "Full";
+dText[doll.arms] = "Arms";
+dText[doll.legs] = "Legs";
+dText[doll.back] = "Back";
+dText[doll.moto] = "Moto";
+
+edit_type = -1;
+edit_index = 0;
+edit_state = 0;
+state_count = 0;
+state_index = 0;
 
 mx = 0;
 my = 0;
-click = -1;
+click = false;
 click_x = 0;
 click_y = 0;
 </string>
@@ -75,23 +133,25 @@ click_y = 0;
             <kind>1</kind>
             <string>if (keyboard_check(vk_control)) and (instance_exists(obj_player))
     {
+    // save sprite offsets
     if (keyboard_check_pressed(ord("S")))
         {
         var file = get_save_filename("Sprite Origin Files|*.sof","");
         if (file != "")
             {
-            // save offsets
+            // save
             var buff = buffer_create(1024,buffer_grow,1);
             buffer_seek(buff,buffer_seek_start,0);
             
-            buffer_write(buff,buffer_u8,skin_spr.size);
-            
             for(var i=0; i&lt;skin_spr.size; i++;)
                 {
-                var ox = sprite_get_xoffset(obj_player.sprite[i]);
-                var oy = sprite_get_yoffset(obj_player.sprite[i]);
-                buffer_write(buff,buffer_s8,ox);
-                buffer_write(buff,buffer_s8,oy);
+                buffer_write(buff,buffer_u16,obj_player.sprite_offset_states[i]);
+                for(var j=0; j&lt;num; j++;)
+                    {
+                    buffer_write(buff,buffer_u8,sprite_offset_state[i,j]);
+                    buffer_write(buff,buffer_s8,sprite_offset_x[i,j]);
+                    buffer_write(buff,buffer_s8,sprite_offset_y[i,j]);
+                    }
                 }
             
             var bytes = buffer_tell(buff);
@@ -99,22 +159,41 @@ click_y = 0;
             buffer_delete(buff);
             }
         }
+    // load sprite offsets
     if (keyboard_check_pressed(ord("L")))
         {
         var file = get_open_filename("Sprite Origin Files|*.sof","");
         if (file != "") and (file_exists(file))
             {
+            // clear
+            for(var i=0; i&lt;skin_spr.size; i++;)
+                {
+                sprite_offset_states[i] = 0;
+                sprite_offset_state[i,0] = 0;
+                sprite_offset_x[i,0] = 0;
+                sprite_offset_y[i,0] = 0;
+                }
+            
+            // load
             var buff = buffer_load(file);
             buffer_seek(buff,buffer_seek_start,0);
             
-            var num = buffer_read(buff,buffer_u8);
-            if (num == skin_spr.size)
+            for(var i=0; i&lt;skin_spr.size; i++;)
                 {
-                for(var i=0; i&lt;skin_spr.size; i++;)
+                var num = buffer_read(buff,buffer_u16);
+                for(var j=0; j&lt;num; j++;)
                     {
-                    var ox = buffer_read(buff,buffer_s8);
-                    var oy = buffer_read(buff,buffer_s8);
-                    sprite_set_offset(obj_player.sprite[i],ox,oy);
+                    var state = buffer_read(buff,buffer_u8);
+                    var offx  = buffer_read(buff,buffer_s8);
+                    var offy  = buffer_read(buff,buffer_s8);
+                    
+                    if (state &lt; aState.size)
+                        {
+                        obj_player.sprite_offset_state[i,j] = state;
+                        obj_player.sprite_offset_x[i,j] = offx;
+                        obj_player.sprite_offset_y[i,j] = offy;
+                        obj_player.sprite_offset_states[i]++;
+                        }
                     }
                 }
             
@@ -144,26 +223,38 @@ click_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (surface_exists(surf_mockup))
-    draw_surface(surf_mockup,view_wview[0]/2,0);
+            <string>var ux = device_mouse_x_to_gui(0);
+var uy = device_mouse_y_to_gui(0);
 
 draw_set_halign(0);
 draw_set_valign(0);
 if (instance_exists(obj_player))
     {
-    var dx = view_wview[0]/2;
+    var dx = 4;
     var dy = 0;
-    draw_text_outline(dx+4,2+dy++*14,"Player States");
-    draw_text_outline(dx+10,2+dy++*14,"Movement: "+string(mText[obj_player.move_state]));
-    draw_text_outline(dx+10,2+dy++*14,"Animation: "+string(aText[obj_player.anim_state]));
+    draw_text_outline(dx,2+dy++*14,"Player States");
+    draw_text_outline(dx+6,2+dy++*14,"Movement: "+string(mText[obj_player.move_state]));
+    draw_text_outline(dx+6,2+dy++*14,"Animation: "+string(aText[obj_player.anim_state]));
     
-    draw_text_outline(dx+4,2+dy++*14,"Sprites");
-    if (obj_player.full_sprite)
-        draw_text_outline(dx+10,2+dy++*14,"Full: "+string(sprite_get_name(obj_player.full_sprite_index)));
-    else
+    draw_text_outline(dx,2+dy++*14,"Sprites");
+    for(var i=0; i&lt;doll.size; i++;)
         {
-        draw_text_outline(dx+10,2+dy++*14,"Leg: "+string(sprite_get_name(obj_player.leg_sprite_index)));
-        draw_text_outline(dx+10,2+dy++*14,"Arm: "+string(sprite_get_name(obj_player.arm_sprite_index)));
+        if (!obj_player.draw[i])
+            continue;
+        
+        if (edit_type == i)
+            {
+            draw_rectangle_color(dx+6,2+dy*14,128,2+dy*14+13,$AAAAAA,$AAAAAA,$AAAAAA,$AAAAAA,0);
+            draw_text_outline(dx+6,2+dy++*14,string(dText[i])+" "+string(sprite_get_name(obj_player.spr_id[i])));
+            }
+        else if (point_in_rectangle(ux,uy,dx+6,2+dy*14,128,2+dy*14+13))
+            {
+            if (mouse_check_button_pressed(mb_left))
+                edit_type = i;
+            draw_text_outline(dx+6,2+dy++*14,string(dText[i])+" "+string(sprite_get_name(obj_player.spr_id[i])));
+            }
+        else
+            draw_text_outline(dx+6,2+dy++*14,string(dText[i])+" "+string(sprite_get_name(obj_player.spr_id[i])),$CCCCCC,$444444);
         }
     }
 </string>
@@ -188,14 +279,8 @@ if (instance_exists(obj_player))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mx = device_mouse_x_to_gui(0)-view_wview[0]/2;
+            <string>mx = device_mouse_x_to_gui(0);
 my = device_mouse_y_to_gui(0);
-
-if (!surface_exists(surf_mockup))
-    surf_mockup = surface_create(view_wview[0]/2,view_hview[0]);
-
-surface_set_target(surf_mockup);
-draw_clear(background_color);
 
 draw_set_color($000000);
 if (instance_exists(obj_player))
@@ -204,115 +289,108 @@ if (instance_exists(obj_player))
     or (keyboard_check_pressed(vk_alt))
         obj_player.debug_freeze = !obj_player.debug_freeze;
     
-    xpos = obj_player.x;
-    ypos = obj_player.y;
+    // draw black bg
+    draw_set_color($000000);
+    draw_set_alpha(0.75);
+    draw_rectangle(0,0,view_wview[0],view_hview[0],0);
     
-    with(obj_player)
+    var dx = 128;
+    var dy = 64;
+    for(var i=0; i&lt;doll.size; i++;)
         {
-        x = view_wview[0]/4;
-        y = 136;
-        event_perform(ev_draw,0);
+        if (!obj_player.draw[i])
+            continue;
+        dy += 14;
         }
+    draw_rectangle(0,0,dx,dy,0);
     
-    if (obj_player.full_sprite)
+    draw_set_alpha(1.0);
+    
+    if (keyboard_check(vk_control))
         {
         with(obj_player)
             {
-            var ox = sprite_get_xoffset(full_sprite_index);
-            var oy = sprite_get_yoffset(full_sprite_index);
-            var sw = sprite_get_width(full_sprite_index);
-            var sh = sprite_get_height(full_sprite_index);
-            
-            debug_draw = 0;
-            x = view_wview[0]/4;
-            y = 204;
-            event_perform(ev_draw,0);
-            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
-            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
+            draw_sprite_ext(yolo_legs_idle_spr,0,x,y,dir,1,0,-1,0.5);
+            draw_sprite_ext(yolo_arms_0_spr,0,x,y,dir,1,0,-1,0.5);
             }
-        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
-            {
-            if (mouse_check_button_pressed(mb_left)) and (click == -1)
-                {
-                click = obj_player.debug_draw;
-                click_x = mx;
-                click_y = my;
-                }
-            }
-        if (mouse_check_button(mb_left)) and (click == 0)
-            sprite_set_offset(obj_player.full_sprite_index,ox-(mx-click_x)*obj_player.full_dir,oy-(my-click_y));
+        }
+    
+    // draw player
+    with(obj_player)
+        event_perform(ev_draw,0);
+    
+    // grab player variables
+    if (edit_type &gt; -1) and (obj_player.draw[edit_type] &gt; -1)
+        {
+        edit_index = obj_player.spr_index[edit_type];
+        edit_state = obj_player.anim_state;
+        state_count = obj_player.sprite_offset_states[edit_index];
+        reset = false;
         }
     else
+        reset = true;
+    
+    if (reset)
         {
-        with(obj_player)
+        edit_index = 0;
+        edit_state = 0;
+        state_count = 0;
+        state_index = 0;
+        
+        click = false;
+        click_x = 0;
+        click_y = 0;
+        obj_player.debug_freeze = false;
+        exit;
+        }
+    
+    if (mouse_check_button_pressed(mb_left)) and (!click)
+    and (!point_in_rectangle(mx,my,0,0,dx,dy))
+        {
+        // record mouse position
+        click = true;
+        click_x = mx;
+        click_y = my;
+        
+        exists = false;
+        state_index = state_count;
+        for(var i=0; i&lt;state_count; i++;)
             {
-            var ox = sprite_get_xoffset(leg_sprite_index);
-            var oy = sprite_get_yoffset(leg_sprite_index);
-            var sw = sprite_get_width(leg_sprite_index);
-            var sh = sprite_get_height(leg_sprite_index);
-            
-            debug_draw = 1;
-            x = view_wview[0]/4-40;
-            y = 204;
-            event_perform(ev_draw,0);
-            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
-            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
-            }
-        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
-            {
-            if (mouse_check_button_pressed(mb_left)) and (click == -1)
+            // edit existing offset
+            var temp_state = obj_player.sprite_offset_state[edit_index,i];
+            if (temp_state == edit_state)
                 {
-                click = obj_player.debug_draw;
-                click_x = mx;
-                click_y = my;
+                exists = true;
+                state_index = i;
+                break;
                 }
             }
-        if (mouse_check_button(mb_left)) and (click == 1)
-            sprite_set_offset(obj_player.leg_sprite_index,ox-(mx-click_x)*obj_player.leg_dir,oy-(my-click_y));
-        with(obj_player)
+        if (!exists)
             {
-            var ox = sprite_get_xoffset(arm_sprite_index);
-            var oy = sprite_get_yoffset(arm_sprite_index);
-            var sw = sprite_get_width(arm_sprite_index);
-            var sh = sprite_get_height(arm_sprite_index);
-            
-            debug_draw = 2;
-            x = view_wview[0]/4+40;
-            y = 204;
-            event_perform(ev_draw,0);
-            draw_rectangle(x-sw/2,y-sh,x+sw/2,y,1);
-            draw_text_outline(x-sw/2,y+6,"("+string(ox)+","+string(oy)+")");
+            // create new offset to edit
+            obj_player.sprite_offset_state[edit_index,state_index] = edit_state;
+            obj_player.sprite_offset_x[edit_index,state_index] = 0;
+            obj_player.sprite_offset_y[edit_index,state_index] = 0;
+            obj_player.sprite_offset_states[edit_index]++;
             }
-        if (point_in_rectangle(mx,my,obj_player.x-sw/2,obj_player.y-sh,obj_player.x+sw/2,obj_player.y))
-            {
-            if (mouse_check_button_pressed(mb_left)) and (click == -1)
-                {
-                click = obj_player.debug_draw;
-                click_x = mx;
-                click_y = my;
-                }
-            }
-        if (mouse_check_button(mb_left)) and (click == 2)
-            sprite_set_offset(obj_player.arm_sprite_index,ox-(mx-click_x)*obj_player.arm_dir,oy-(my-click_y));
         }
     
     if (mouse_check_button(mb_left))
         {
-        if (click &gt; -1)
+        if (click)
             {
+            obj_player.sprite_offset_x[edit_index,state_index] += (mx-click_x);
+            obj_player.sprite_offset_y[edit_index,state_index] += (my-click_y);
+            obj_player.spr_ox[edit_type] = obj_player.sprite_offset_x[edit_index,state_index];
+            obj_player.spr_oy[edit_type] = obj_player.sprite_offset_y[edit_index,state_index];
+            
             click_x = mx;
             click_y = my;
             }
         }
     else
-        click = -1;
-    
-    obj_player.x = xpos;
-    obj_player.y = ypos;
-    obj_player.debug_draw = -1;
+        click = false;
     }
-
-surface_reset_target();
 </string>
           </argument>
         </arguments>

@@ -14,15 +14,14 @@
 var inst = instance_create(0,0,obj_camera);
 inst.cam_state = camState.static;
 
-var player = instance_create(60,80,obj_player);
-var bike = instance_create(60,100,motor_player);
-player.vehicle = bike;
-player.move_state = mState.bike;
-bike.rider = player;
+var player = instance_create(60,70,obj_player);
+player.move_state = mState.moto;
 
 instance_create(0,0,sub_controller)
 
-background_color=global.LIGHTgrey</code>
+background_color=global.LIGHTgrey
+
+global.moto_floor = 100;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

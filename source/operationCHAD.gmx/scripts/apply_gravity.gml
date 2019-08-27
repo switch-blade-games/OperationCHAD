@@ -79,18 +79,28 @@ switch(move_state)
             }
         break;
     
-    case mState.bike:
-        on_bike = false;
-        if (!instance_exists(vehicle))
-            move_state = mState.walk;
-        else if (y >= vehicle.y-8)
+    case mState.moto:
+        // player gravity
+        on_moto = false;
+        if (y >= moto_y)
             {
-            on_bike = true;
-            y = vehicle.y-8;
+            on_moto = true;
+            y = moto_y;
             yspeed = 0;
             }
         else
             yspeed += grav;
+        
+        // moto gravity
+        if (moto_y >= global.moto_floor)
+            {
+            moto_y = global.moto_floor;
+            moto_yspeed = 0;
+            }
+        else
+            moto_yspeed += grav;
+        
+        moto_y += moto_yspeed;
         break;
     
     case mState.dead:

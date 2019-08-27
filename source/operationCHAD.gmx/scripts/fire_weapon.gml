@@ -1,4 +1,4 @@
-var muzzle_y = gun_y+arm_y;
+var muzzle_y = gun_y;
 
 if (shoot_timer == 0)
     {

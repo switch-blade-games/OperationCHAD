@@ -43,6 +43,8 @@ PLANErate=300
 PLANEshots=0
 
 MEN=false
+
+global.moto_floor = 210;
 </string>
           </argument>
         </arguments>

@@ -41,7 +41,7 @@ enum mState
     duck,
     hang,
     climb,
-    bike,
+    moto,
     dead
     }
 
@@ -54,9 +54,13 @@ enum aState
     roll,
     duck,
     hang,
+    hang_move,
     climb,
-    bike,
-    dead
+    climb_move,
+    moto,
+    moto_fire,
+    dead,
+    size
     }
 
 // player skins
@@ -80,6 +84,8 @@ enum skin_spr
     leg_walk,
     leg_drop,
     leg_hang,
+    leg_climb,
+    leg_moto,
     arm_0,
     arm_45,
     arm_90,
@@ -96,11 +102,34 @@ enum skin_spr
     arm_single_225,
     arm_single_270,
     arm_single_315,
+    arm_climb_0,
+    arm_climb_45,
+    arm_climb_90,
+    arm_climb_135,
+    arm_climb_180,
+    arm_climb_225,
+    arm_climb_270,
+    arm_climb_315,
     full_roll,
     full_duck,
+    full_hang,
+    full_climb,
+    full_moto,
     full_dead_idle,
     full_dead_roll,
     full_dead_down,
+    extra_arm_moto,
+    extra_moto,
+    size
+    }
+
+enum doll
+    {
+    full,
+    arms,
+    legs,
+    back,
+    moto,
     size
     }
 
@@ -109,7 +138,7 @@ no_clip = false;
 move_state = mState.walk;
 on_ground = false;
 on_ramp = false;
-on_bike = false;
+on_moto = false;
 drop = false;
 invulnerable = false;
 invulnerable_flash = false;
@@ -119,12 +148,13 @@ ramp_slope = 1;
 climb_side = 0;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
-vehicle = noone;
-vehicle_shake = 0;
+moto_y = 0;
+moto_yspeed = 0;
+moto_shake = 0;
 
 // player position/physics
 walk_speed = 2;
-bike_speed = 3;
+moto_speed = 3;
 hang_speed = 2;
 climb_speed = 2;
 grav = 0.4;
@@ -149,6 +179,7 @@ gun_y = -18;
 
 // death/respawn
 dead_timer = 120;
+dead_moto = false;
 xstart = x;
 ystart = y;
 
@@ -156,16 +187,16 @@ ystart = y;
 player_skin = skin.yoloswag;
 anim_state = aState.idle;
 anim_slope = 0;
-full_sprite = false;
-full_sprite_index = -1;
-full_index = 0;
-leg_sprite_index = -1;
-leg_index = 0;
-arm_sprite_index = -1;
-arm_index = 0;
 
-leg_y = 0;
-arm_y = 0;
+for(var i=0; i&lt;doll.size; i++;)
+    {
+    img_index[i] = 0;
+    spr_ox[i] = 0;
+    spr_oy[i] = 0;
+    }
+paperdoll_clear();
+update_skin(player_skin);
+
 walk_y[0] = 0;
 walk_y[1] = -1;
 walk_y[2] = -3;
@@ -176,11 +207,6 @@ walk_y[6] = -1;
 walk_y[7] = -3;
 walk_y[8] = -3;
 walk_y[9] = -2;
-leg_dir = 1;
-arm_dir = 1;
-full_dir = 1;
-
-update_skin(player_skin);
 </string>
           </argument>
         </arguments>
@@ -229,12 +255,17 @@ if (move_state == mState.dead)
         invulnerable = true;
         invulnerable_time = 180;
         
-        if (instance_exists(vehicle))
+        dead_moto = false;
+        if (instance_exists(motor_controller))
+        or (instance_exists(sub_controller))
+            dead_moto = true;
+        
+        if (dead_moto)
             {
-            move_state = mState.bike;
+            move_state = mState.moto;
             drop = false;
             
-            y = vehicle.y-20;
+            y = moto_y;
             }
         else
             {
@@ -351,18 +382,7 @@ if (move_state != mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (debug_draw &gt; -1)
-    {
-    if (debug_draw == 0)
-        draw_sprite_ext(full_sprite_index,full_index,x,y,full_dir,1,0,-1,1);
-    else if (debug_draw == 1)
-        draw_sprite_ext(leg_sprite_index,leg_index,x,y+leg_y,leg_dir,1,0,-1,1);
-    else if (debug_draw == 2)
-        draw_sprite_ext(arm_sprite_index,arm_index,x,y+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
-    exit;
-    }
-
-if (invulnerable)
+            <string>if (invulnerable)
     {
     if (invulnerable_time &gt; 0)
         {
@@ -380,13 +400,21 @@ if (invulnerable)
         shader_set(shd_flash);
     }
 
-if (full_sprite)
-    draw_sprite_ext(full_sprite_index,full_index,x,y+vehicle_shake,full_dir,1,0,-1,1);
+if (on_moto)
+    var mShake = moto_shake;
 else
-    {
-    draw_sprite_ext(leg_sprite_index,leg_index,x,y+vehicle_shake+leg_y,leg_dir,1,0,-1,1);
-    draw_sprite_ext(arm_sprite_index,arm_index,x,y+vehicle_shake+arm_y+walk_y[leg_index],arm_dir,1,0,-1,1);
-    }
+    var mShake = 0;
+
+if (draw[doll.back])
+    draw_sprite_ext(spr_id[doll.back],img_index[doll.back],x+spr_ox[doll.back],y+spr_oy[doll.back]+mShake,spr_dir[doll.back],1,0,-1,1);
+if (draw[doll.moto])
+    draw_sprite_ext(spr_id[doll.moto],img_index[doll.moto],x+spr_ox[doll.moto],moto_y+spr_oy[doll.moto]+mShake,spr_dir[doll.moto],1,0,-1,1);
+if (draw[doll.full])
+    draw_sprite_ext(spr_id[doll.full],img_index[doll.full],x+spr_ox[doll.full],y+spr_oy[doll.full]+mShake,spr_dir[doll.full],1,0,-1,1);
+if (draw[doll.legs])
+    draw_sprite_ext(spr_id[doll.legs],img_index[doll.legs],x+spr_ox[doll.legs],y+spr_oy[doll.legs]+mShake,spr_dir[doll.legs],1,0,-1,1);
+if (draw[doll.arms])
+    draw_sprite_ext(spr_id[doll.arms],img_index[doll.arms],x+spr_ox[doll.arms],y+spr_oy[doll.arms]+mShake+walk_y[img_index[doll.legs]],spr_dir[doll.arms],1,0,-1,1);
 
 if (invulnerable)
     {

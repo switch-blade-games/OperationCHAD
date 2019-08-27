@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>CLOUDx=0
-CLOUDspe=-3
-
-background_color = global.DARKpurple;
+            <string>background_color = global.DARKpurple;
 
 // init settings
 settings_init();
@@ -77,6 +74,9 @@ selecty = 0;
 rebind = false;
 
 bg_alpha = 1;
+
+CLOUDx = 0;
+CLOUDspe = -3;
 </string>
           </argument>
         </arguments>
