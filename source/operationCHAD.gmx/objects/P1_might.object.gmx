@@ -39,7 +39,9 @@ ANGRY=6
 
 state=0
 
-image_speed=0.1
+image_speed=0.01
+
+SHAKEspe=0.1
 
 
 MIGHT=0
@@ -258,16 +260,20 @@ LOSE=5
 
 draw_set_color(global.YELLOW)
 
-draw_rectangle(x-20+1,y-20+METERmax-1,x-1,y-20+METERmax-MIGHT-3,false)
+draw_rectangle(x-20+4,y-20+METERmax-1,x-4,y-20+METERmax-MIGHT-3,false)
 
 draw_set_color(c_white)
 
 draw_sprite(might_meter_spr,-1,x-20,y-20)
 
-if(state=START)
-or
-state=WAIT
+if(state=WAIT)
+
 sprite_index=stone_might_start_spr
+
+if(state=START){
+image_speed=SHAKEspe
+sprite_index=stone_might_shake_spr
+}
 
 if(state=UP)
 sprite_index=stone_might_up_spr

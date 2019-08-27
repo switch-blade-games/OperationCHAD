@@ -52,7 +52,7 @@ global.SUBspe=-0.5
 
 rate=120
 
-alarm[0]=rate
+//alarm[0]=rate
 
 global.GROUNDy=100
 
