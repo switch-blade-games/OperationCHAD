@@ -737,6 +737,8 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\clown_room</room>
+      <room>rooms\fryguy_room</room>
       <room>rooms\might_room</room>
     </rooms>
     <rooms name="2-Internet">
@@ -748,13 +750,11 @@
       <room>rooms\internet_vert_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
-      <room>rooms\fryguy_room</room>
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
     </rooms>
     <rooms name="4-Clown World">
-      <room>rooms\clown_room</room>
       <room>rooms\circle_room</room>
       <room>rooms\unicorn_room</room>
       <room>rooms\cloud_room</room>
