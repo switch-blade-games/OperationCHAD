@@ -65,6 +65,257 @@ alarm[0]=WAITtime
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="9">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>state=CONCLUDE
+
+with(P1_might)
+state=ANGRY
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="8">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Diverse tally
+
+with(diverse_man){
+
+
+        
+    
+        var SON=instance_create(x,y-40,might_score);
+        with(SON)
+            event_perform(ev_create,0)
+        SON.dad=id
+        SON.DIVERSE=true
+
+}
+      
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///P2 tally
+
+with(P1_might){
+
+    if(PLAYER=2){
+        
+    
+        var SON=instance_create(x,y-40,might_score);
+        with(SON)
+            event_perform(ev_create,0)
+        SON.dad=id
+    }
+}
+        
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="6">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///P1 tally
+
+with(P1_might){
+
+    if(PLAYER=1){
+        
+    
+        var SON=instance_create(x,y-40,might_score);
+        with(SON)
+            event_perform(ev_create,0)
+        SON.dad=id
+    }
+}
+            
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///diverse GO!
+
+with(diverse_man){
+alarm[0]=GOtime
+state=START
+}
+
+state=BOTGO
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///P2 done, BOT ready?
+
+state=BOTREADY
+
+alarm[5]=WAITtime
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Player 2 go!
+
+state=P2GO
+
+    with(P1_might){
+
+    if(PLAYER=2)
+    state=1
+
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///P1 done, P2 ready?
+
+state=P2READY
+
+alarm[3]=WAITtime
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -82,7 +333,7 @@ alarm[0]=WAITtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>///P1 GO!
 
 state=P1GO
 
@@ -116,7 +367,9 @@ state=P1GO
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=P1READY
+            <string>///P1 Ready?
+
+state=P1READY
 
 
 
@@ -176,6 +429,10 @@ var TEXTy=210;
 if(state=WAIT)
 draw_text(TEXTx,TEXTy,"test your affirmative might!")
 
+
+
+//PLAYER 1
+
 if(state=P1READY)
 draw_text(TEXTx,TEXTy,"player 1 get ready!")
 
@@ -207,13 +464,72 @@ draw_text(TEXTx,TEXTy,"aw too bad player 1.")
 }
 
 
-
+///PLAYER 2
 
 if(state=P2READY)
 draw_text(TEXTx,TEXTy,"player 2 get ready!")
 
-if(state=P2GO)
+if(state=P2GO){
+
+//player 2 interacts now
+if(P2.state=1)
 draw_text(TEXTx,TEXTy,"player 2 go!")
+
+//up or strike
+if(P2.state=2)
+or
+P2.state=3
+draw_text(TEXTx,TEXTy,"...")
+
+
+}
+
+if(state=P2DONE){
+
+//4=WIN, 5=LOSE
+
+if(P2.state=4)
+draw_text(TEXTx,TEXTy,"very nice player 2!")
+
+if(P2.state=5)
+draw_text(TEXTx,TEXTy,"aw too bad player 2.")
+
+}
+
+
+if(state=BOTREADY){
+
+draw_text(TEXTx,TEXTy,"diversity inclusion get ready!")
+
+}
+
+if(state=BOTGO){
+
+//player interacts now
+if(diverse_man.state=1)
+draw_text(TEXTx,TEXTy,"diversity inclustion go!")
+
+//up or strike
+if(diverse_man.state=2)
+or
+P1.state=3
+draw_text(TEXTx,TEXTy,"...")
+
+}
+
+
+if(state=ALLDONE){
+
+    draw_text(TEXTx,TEXTy,"lets tally the scores...")
+    
+}
+
+
+if(state=CONCLUDE){
+
+    draw_text(TEXTx,TEXTy,"there you have it! diversity is our strength!")
+    
+}
 
 </string>
           </argument>

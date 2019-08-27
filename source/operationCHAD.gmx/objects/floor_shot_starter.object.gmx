@@ -57,6 +57,8 @@ BULLETnum=0
             <string>var FATHER=dad;
 
 if(dad.ACTIVE=true){
+
+
 BULLETson[BULLETnum]=instance_create(x,y,back_shot);
 
 with(BULLETson[BULLETnum]){

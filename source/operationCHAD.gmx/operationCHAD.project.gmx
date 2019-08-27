@@ -330,17 +330,26 @@
       </sprites>
     </sprites>
     <sprites name="99-mini_games">
-      <sprite>sprites\stone_might_start_spr</sprite>
-      <sprite>sprites\stone_might_up_spr</sprite>
-      <sprite>sprites\stone_might_strike_spr</sprite>
-      <sprite>sprites\stone_might_win_spr</sprite>
-      <sprite>sprites\stone_might_lose_spr</sprite>
       <sprite>sprites\might_wood_spr</sprite>
       <sprite>sprites\might_wood_break_spr</sprite>
       <sprite>sprites\might_hehe_spr</sprite>
       <sprite>sprites\might_HUD_spr</sprite>
       <sprite>sprites\might_block_spr</sprite>
       <sprite>sprites\might_meter_spr</sprite>
+      <sprites name="stone">
+        <sprite>sprites\stone_might_start_spr</sprite>
+        <sprite>sprites\stone_might_up_spr</sprite>
+        <sprite>sprites\stone_might_strike_spr</sprite>
+        <sprite>sprites\stone_might_win_spr</sprite>
+        <sprite>sprites\stone_might_lose_spr</sprite>
+        <sprite>sprites\stone_angry_spr</sprite>
+      </sprites>
+      <sprites name="diverse">
+        <sprite>sprites\diverse_might_start_spr</sprite>
+        <sprite>sprites\diverse_strike_spr</sprite>
+        <sprite>sprites\diverse_up_spr</sprite>
+        <sprite>sprites\diverse_win_spr</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -721,6 +730,7 @@
       <object>objects\might_block</object>
       <object>objects\might_score</object>
       <object>objects\might_hehe</object>
+      <object>objects\diverse_man</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -34,6 +34,8 @@ STRIKE=3
 WIN=4
 LOSE=5
 
+ANGRY=6
+
 
 state=0
 
@@ -116,8 +118,22 @@ else
 state=LOSE
 
 
-if(PLAYER=1)
-might_controller.state=3
+if(PLAYER=1){
+
+with(might_controller){
+state=P1DONE
+alarm[2]=WAITtime
+}
+}
+
+
+if(PLAYER=2){
+
+with(might_controller){
+state=P2DONE
+alarm[4]=WAITtime
+}
+}
 </string>
           </argument>
         </arguments>
@@ -264,6 +280,9 @@ sprite_index=stone_might_win_spr
 
 if(state=LOSE)
 sprite_index=stone_might_lose_spr
+
+if(state=ANGRY)
+sprite_index=stone_angry_spr
 
 draw_self()
 

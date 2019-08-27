@@ -20,6 +20,9 @@ with(SON)
 event_perform(ev_create,0)
 SON.PLAYER=2
 
+
+instance_create(40+200,40,diverse_man)
+
 //instance_create(40+100,40,P1_might)
 
 
