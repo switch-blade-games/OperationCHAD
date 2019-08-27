@@ -216,12 +216,17 @@ file_text_close(file);
     var part_num = 0;
     part_num += instance_number(par_effect);
     
-    draw_text_outline(vx+4,vy+4+000,"FPS: "+string(fps_real));
-    draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
-    draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
-    draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
-    draw_text_outline(vx+4,vy+4+048,"CamPos: "+string(vx)+"/"+string(vy));
-    draw_set_color($000000);
+    if (!instance_exists(player_mockup))
+        {
+        draw_set_halign(0);
+        draw_set_valign(0);
+        draw_text_outline(vx+4,vy+4+000,"FPS: "+string(fps_real));
+        draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
+        draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
+        draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
+        draw_text_outline(vx+4,vy+4+048,"CamPos: "+string(vx)+"/"+string(vy));
+        draw_set_color($000000);
+        }
     }
 </string>
           </argument>
