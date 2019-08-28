@@ -109,6 +109,9 @@ my = 0;
 click = false;
 click_x = 0;
 click_y = 0;
+
+panel_x = 0;
+panel_y = 0;
 </string>
           </argument>
         </arguments>
@@ -131,75 +134,227 @@ click_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_control)) and (instance_exists(obj_player))
+            <string>mx = device_mouse_x_to_gui(0);
+my = device_mouse_y_to_gui(0);
+
+var edit_input = false;
+var edit_save = false;
+
+if (instance_exists(obj_player))
     {
-    // save sprite offsets
-    if (keyboard_check_pressed(ord("S")))
+    if (mouse_check_button_pressed(mb_right))
+    or (keyboard_check_pressed(vk_alt))
+        obj_player.debug_freeze = !obj_player.debug_freeze;
+    
+    if (mouse_check_button_pressed(mb_left))
+        edit_input = true;
+    if (keyboard_check_pressed(vk_left)
+    or  keyboard_check_pressed(vk_right)
+    or  keyboard_check_pressed(vk_up)
+    or  keyboard_check_pressed(vk_down)) and (obj_player.debug_freeze)
+        edit_input = true;
+    
+    if (mouse_check_button_released(mb_left))
+        edit_save = true;
+    if (keyboard_check_released(vk_left)
+    or  keyboard_check_released(vk_right)
+    or  keyboard_check_released(vk_up)
+    or  keyboard_check_released(vk_down)) and (obj_player.debug_freeze)
+        edit_save = true;
+    
+    // grab player variables
+    if (edit_type &gt; -1) and (obj_player.draw[edit_type] &gt; -1)
         {
-        var file = obj_player.offset_path;
-        if (file != "")
+        edit_index = obj_player.spr_index[edit_type];
+        edit_state = obj_player.anim_state;
+        state_count = obj_player.sprite_offset_states[edit_index];
+        reset = false;
+        }
+    else
+        reset = true;
+    
+    if (reset)
+        {
+        edit_index = 0;
+        edit_state = 0;
+        state_count = 0;
+        state_index = 0;
+        
+        click = false;
+        click_x = 0;
+        click_y = 0;
+        obj_player.debug_freeze = false;
+        exit;
+        }
+    
+    if (edit_input)
+        {
+        if (mouse_check_button_pressed(mb_left)) and (!click)
+        and (!point_in_rectangle(mx,my,0,0,panel_x,panel_y))
             {
-            // save
-            var buff = buffer_create(1024,buffer_grow,1);
-            buffer_seek(buff,buffer_seek_start,0);
-            
-            for(var i=0; i&lt;skin_spr.size; i++;)
+            // record mouse position
+            click = true;
+            click_x = mx;
+            click_y = my;
+            }
+        
+        exists = false;
+        state_index = state_count;
+        for(var i=0; i&lt;state_count; i++;)
+            {
+            // edit existing offset
+            var temp_state = obj_player.sprite_offset_state[edit_index,i];
+            if (temp_state == edit_state)
                 {
-                buffer_write(buff,buffer_u16,obj_player.sprite_offset_states[i]);
-                for(var j=0; j&lt;obj_player.sprite_offset_states[i]; j++;)
-                    {
-                    buffer_write(buff,buffer_u8,obj_player.sprite_offset_state[i,j]);
-                    buffer_write(buff,buffer_s8,obj_player.sprite_offset_x[i,j]);
-                    buffer_write(buff,buffer_s8,obj_player.sprite_offset_y[i,j]);
-                    }
+                exists = true;
+                state_index = i;
+                break;
                 }
-            
-            var bytes = buffer_tell(buff);
-            buffer_save_ext(buff,file,0,bytes);
-            buffer_delete(buff);
+            }
+        if (!exists)
+            {
+            // create new offset to edit
+            obj_player.sprite_offset_state[edit_index,state_index] = edit_state;
+            obj_player.sprite_offset_x[edit_index,state_index] = 0;
+            obj_player.sprite_offset_y[edit_index,state_index] = 0;
+            obj_player.sprite_offset_states[edit_index]++;
             }
         }
-    // load sprite offsets
-    if (keyboard_check_pressed(ord("L")))
+    
+    if (edit_input) or ((mouse_check_button(mb_left)) and (click))
         {
-        var file = obj_player.offset_path;
-        if (file_exists(file))
+        if (mouse_check_button(mb_left)) and (click)
             {
-            // clear
-            for(var i=0; i&lt;skin_spr.size; i++;)
+            obj_player.sprite_offset_x[edit_index,state_index] += (mx-click_x)*obj_player.spr_dir[edit_type];
+            obj_player.sprite_offset_y[edit_index,state_index] += (my-click_y);
+            click_x = mx;
+            click_y = my;
+            }
+        if (keyboard_check_pressed(vk_left))
+            obj_player.sprite_offset_x[edit_index,state_index] -= obj_player.spr_dir[edit_type];
+        if (keyboard_check_pressed(vk_right))
+            obj_player.sprite_offset_x[edit_index,state_index] += obj_player.spr_dir[edit_type];
+        if (keyboard_check_pressed(vk_up))
+            obj_player.sprite_offset_y[edit_index,state_index]--;
+        if (keyboard_check_pressed(vk_down))
+            obj_player.sprite_offset_y[edit_index,state_index]++;
+        
+        obj_player.spr_ox[edit_type] = obj_player.sprite_offset_x[edit_index,state_index];
+        obj_player.spr_oy[edit_type] = obj_player.sprite_offset_y[edit_index,state_index];
+        }
+    
+    if (edit_save)
+        event_user(0);
+    
+    if (!mouse_check_button(mb_left))
+        click = false;
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// load();
+
+var file = obj_player.offset_path;
+if (file_exists(file))
+    {
+    // clear
+    for(var i=0; i&lt;skin_spr.size; i++;)
+        {
+        obj_player.sprite_offset_states[i] = 0;
+        obj_player.sprite_offset_state[i,0] = 0;
+        obj_player.sprite_offset_x[i,0] = 0;
+        obj_player.sprite_offset_y[i,0] = 0;
+        }
+    
+    // load
+    var buff = buffer_load(file);
+    buffer_seek(buff,buffer_seek_start,0);
+    
+    for(var i=0; i&lt;skin_spr.size; i++;)
+        {
+        var num = buffer_read(buff,buffer_u16);
+        for(var j=0; j&lt;num; j++;)
+            {
+            var state = buffer_read(buff,buffer_u8);
+            var offx  = buffer_read(buff,buffer_s8);
+            var offy  = buffer_read(buff,buffer_s8);
+            
+            if (state &lt; aState.size)
                 {
-                obj_player.sprite_offset_states[i] = 0;
-                obj_player.sprite_offset_state[i,0] = 0;
-                obj_player.sprite_offset_x[i,0] = 0;
-                obj_player.sprite_offset_y[i,0] = 0;
+                obj_player.sprite_offset_state[i,j] = state;
+                obj_player.sprite_offset_x[i,j] = offx;
+                obj_player.sprite_offset_y[i,j] = offy;
+                obj_player.sprite_offset_states[i]++;
                 }
-            
-            // load
-            var buff = buffer_load(file);
-            buffer_seek(buff,buffer_seek_start,0);
-            
-            for(var i=0; i&lt;skin_spr.size; i++;)
-                {
-                var num = buffer_read(buff,buffer_u16);
-                for(var j=0; j&lt;num; j++;)
-                    {
-                    var state = buffer_read(buff,buffer_u8);
-                    var offx  = buffer_read(buff,buffer_s8);
-                    var offy  = buffer_read(buff,buffer_s8);
-                    
-                    if (state &lt; aState.size)
-                        {
-                        obj_player.sprite_offset_state[i,j] = state;
-                        obj_player.sprite_offset_x[i,j] = offx;
-                        obj_player.sprite_offset_y[i,j] = offy;
-                        obj_player.sprite_offset_states[i]++;
-                        }
-                    }
-                }
-            
-            buffer_delete(buff);
             }
         }
+    
+    buffer_delete(buff);
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// save();
+
+var file = obj_player.offset_path;
+if (file != "")
+    {
+    // save
+    var buff = buffer_create(1024,buffer_grow,1);
+    buffer_seek(buff,buffer_seek_start,0);
+    
+    for(var i=0; i&lt;skin_spr.size; i++;)
+        {
+        buffer_write(buff,buffer_u16,obj_player.sprite_offset_states[i]);
+        for(var j=0; j&lt;obj_player.sprite_offset_states[i]; j++;)
+            {
+            buffer_write(buff,buffer_u8,obj_player.sprite_offset_state[i,j]);
+            buffer_write(buff,buffer_s8,obj_player.sprite_offset_x[i,j]);
+            buffer_write(buff,buffer_s8,obj_player.sprite_offset_y[i,j]);
+            }
+        }
+    
+    var bytes = buffer_tell(buff);
+    buffer_save_ext(buff,file,0,bytes);
+    buffer_delete(buff);
     }
 </string>
           </argument>
@@ -279,30 +434,22 @@ if (instance_exists(obj_player))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mx = device_mouse_x_to_gui(0);
-my = device_mouse_y_to_gui(0);
-
-draw_set_color($000000);
-if (instance_exists(obj_player))
+            <string>if (instance_exists(obj_player))
     {
-    if (mouse_check_button_pressed(mb_right))
-    or (keyboard_check_pressed(vk_alt))
-        obj_player.debug_freeze = !obj_player.debug_freeze;
-    
     // draw black bg
     draw_set_color($000000);
     draw_set_alpha(0.75);
     draw_rectangle(0,0,view_wview[0],view_hview[0],0);
     
-    var dx = 128;
-    var dy = 64;
+    panel_x = 128;
+    panel_y = 64;
     for(var i=0; i&lt;doll.size; i++;)
         {
         if (!obj_player.draw[i])
             continue;
-        dy += 14;
+       panel_y += 14;
         }
-    draw_rectangle(0,0,dx,dy,0);
+    draw_rectangle(0,0,panel_x,panel_y,0);
     
     draw_set_alpha(1.0);
     
@@ -318,78 +465,6 @@ if (instance_exists(obj_player))
     // draw player
     with(obj_player)
         event_perform(ev_draw,0);
-    
-    // grab player variables
-    if (edit_type &gt; -1) and (obj_player.draw[edit_type] &gt; -1)
-        {
-        edit_index = obj_player.spr_index[edit_type];
-        edit_state = obj_player.anim_state;
-        state_count = obj_player.sprite_offset_states[edit_index];
-        reset = false;
-        }
-    else
-        reset = true;
-    
-    if (reset)
-        {
-        edit_index = 0;
-        edit_state = 0;
-        state_count = 0;
-        state_index = 0;
-        
-        click = false;
-        click_x = 0;
-        click_y = 0;
-        obj_player.debug_freeze = false;
-        exit;
-        }
-    
-    if (mouse_check_button_pressed(mb_left)) and (!click)
-    and (!point_in_rectangle(mx,my,0,0,dx,dy))
-        {
-        // record mouse position
-        click = true;
-        click_x = mx;
-        click_y = my;
-        
-        exists = false;
-        state_index = state_count;
-        for(var i=0; i&lt;state_count; i++;)
-            {
-            // edit existing offset
-            var temp_state = obj_player.sprite_offset_state[edit_index,i];
-            if (temp_state == edit_state)
-                {
-                exists = true;
-                state_index = i;
-                break;
-                }
-            }
-        if (!exists)
-            {
-            // create new offset to edit
-            obj_player.sprite_offset_state[edit_index,state_index] = edit_state;
-            obj_player.sprite_offset_x[edit_index,state_index] = 0;
-            obj_player.sprite_offset_y[edit_index,state_index] = 0;
-            obj_player.sprite_offset_states[edit_index]++;
-            }
-        }
-    
-    if (mouse_check_button(mb_left))
-        {
-        if (click)
-            {
-            obj_player.sprite_offset_x[edit_index,state_index] += (mx-click_x);
-            obj_player.sprite_offset_y[edit_index,state_index] += (my-click_y);
-            obj_player.spr_ox[edit_type] = obj_player.sprite_offset_x[edit_index,state_index];
-            obj_player.spr_oy[edit_type] = obj_player.sprite_offset_y[edit_index,state_index];
-            
-            click_x = mx;
-            click_y = my;
-            }
-        }
-    else
-        click = false;
     }
 </string>
           </argument>
