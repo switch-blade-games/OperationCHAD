@@ -738,12 +738,12 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\clown_room</room>
+      <room>rooms\sub_room</room>
+      <room>rooms\overton_room</room>
       <room>rooms\might_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
-      <room>rooms\overton_room</room>
       <room>rooms\octo_room</room>
       <room>rooms\internet_twitter_room</room>
       <room>rooms\internet_room</room>
@@ -767,13 +767,11 @@
     </rooms>
     <rooms name="99-mini_games">
       <room>rooms\end_cutscene_room</room>
-      <room>rooms\test_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
     </rooms>
     <rooms name="germany">
       <room>rooms\hitler_room</room>
-      <room>rooms\sub_room</room>
       <room>rooms\germany_motor_room</room>
     </rooms>
   </rooms>

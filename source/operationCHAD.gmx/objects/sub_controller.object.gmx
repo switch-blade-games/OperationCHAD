@@ -52,7 +52,7 @@ global.SUBspe=-0.5
 
 rate=120
 
-//alarm[0]=rate
+alarm[0]=rate
 
 global.GROUNDy=100
 
@@ -87,7 +87,9 @@ WATERson.WATERspe=(global.GROUNDspe-2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SUBnum+=1
+            <string>var BIKEy=-30;
+
+SUBnum+=1
 
 var SUBpart=instance_create(400+20,global.SUBy,sub_part);
 
@@ -147,16 +149,16 @@ SUBpart.TWIN=true
 
 //motor
 if(SUBnum=13)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 
 //motor
 if(SUBnum=14)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 //motor
 if(SUBnum=15)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 
 //TWIN
@@ -166,12 +168,12 @@ SUBpart.TWIN=true
 
 //motor
 if(SUBnum=18)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 
 //motor
 if(SUBnum=19)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 
 
@@ -199,7 +201,7 @@ SUBpart.MARINE=true
 
 //motor
 if(SUBnum=23)
-instance_create(440,global.GROUNDy,motor_nazi)
+instance_create(440,global.GROUNDy+BIKEy,motor_nazi)
 
 ///missle
 if(SUBnum=25){
@@ -324,6 +326,8 @@ draw_clear_alpha(c_white,0)
 draw_sprite_tiled(sub_ground_spr,-1,GROUNDx,0)
 
 surface_reset_target()
+
+exit
 
 // PROJECTILE TESTS
 
