@@ -738,8 +738,8 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\might_room</room>
       <room>rooms\clown_room</room>
+      <room>rooms\might_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
