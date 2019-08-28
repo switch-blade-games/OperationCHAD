@@ -94,7 +94,7 @@ for(var i=0; i<skin_spr.size; i++;)
 
 if (file_exists(offset_path))
     {
-    var buff = buffer_load(file);
+    var buff = buffer_load(offset_path);
     buffer_seek(buff,buffer_seek_start,0);
     
     for(var i=0; i<skin_spr.size; i++;)

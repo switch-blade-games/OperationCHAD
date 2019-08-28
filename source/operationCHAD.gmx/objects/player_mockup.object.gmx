@@ -136,7 +136,7 @@ click_y = 0;
     // save sprite offsets
     if (keyboard_check_pressed(ord("S")))
         {
-        var file = get_save_filename("Sprite Origin Files|*.sof","");
+        var file = obj_player.offset_path;
         if (file != "")
             {
             // save
@@ -162,8 +162,8 @@ click_y = 0;
     // load sprite offsets
     if (keyboard_check_pressed(ord("L")))
         {
-        var file = get_open_filename("Sprite Origin Files|*.sof","");
-        if (file != "") and (file_exists(file))
+        var file = obj_player.offset_path;
+        if (file_exists(file))
             {
             // clear
             for(var i=0; i&lt;skin_spr.size; i++;)
