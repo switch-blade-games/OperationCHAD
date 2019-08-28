@@ -455,6 +455,9 @@
       <script>scripts\editor_load.gml</script>
       <script>scripts\editor_play.gml</script>
       <script>scripts\editor_edit.gml</script>
+      <script>scripts\offsets_save.gml</script>
+      <script>scripts\offsets_load.gml</script>
+      <script>scripts\offsets_clear.gml</script>
     </scripts>
     <scripts name="settings">
       <script>scripts\settings_save.gml</script>

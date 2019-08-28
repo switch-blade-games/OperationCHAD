@@ -50,6 +50,8 @@ enum aState
     {
     idle,
     walk,
+    ramp_idle,
+    ramp_walk,
     drop,
     roll,
     duck,

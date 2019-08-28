@@ -81,6 +81,8 @@ mText[mState.dead]  = "dead";
 
 aText[aState.idle]       = "idle";
 aText[aState.walk]       = "walk";
+aText[aState.ramp_idle]  = "ramp_idle";
+aText[aState.ramp_walk]  = "ramp_walk";
 aText[aState.drop]       = "drop";
 aText[aState.roll]       = "roll";
 aText[aState.duck]       = "duck";
@@ -244,117 +246,10 @@ if (instance_exists(obj_player))
         }
     
     if (edit_save)
-        event_user(0);
+        offsets_save(obj_player.offset_path);
     
     if (!mouse_check_button(mb_left))
         click = false;
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// load();
-
-var file = obj_player.offset_path;
-if (file_exists(file))
-    {
-    // clear
-    for(var i=0; i&lt;skin_spr.size; i++;)
-        {
-        obj_player.sprite_offset_states[i] = 0;
-        obj_player.sprite_offset_state[i,0] = 0;
-        obj_player.sprite_offset_x[i,0] = 0;
-        obj_player.sprite_offset_y[i,0] = 0;
-        }
-    
-    // load
-    var buff = buffer_load(file);
-    buffer_seek(buff,buffer_seek_start,0);
-    
-    for(var i=0; i&lt;skin_spr.size; i++;)
-        {
-        var num = buffer_read(buff,buffer_u16);
-        for(var j=0; j&lt;num; j++;)
-            {
-            var state = buffer_read(buff,buffer_u8);
-            var offx  = buffer_read(buff,buffer_s8);
-            var offy  = buffer_read(buff,buffer_s8);
-            
-            if (state &lt; aState.size)
-                {
-                obj_player.sprite_offset_state[i,j] = state;
-                obj_player.sprite_offset_x[i,j] = offx;
-                obj_player.sprite_offset_y[i,j] = offy;
-                obj_player.sprite_offset_states[i]++;
-                }
-            }
-        }
-    
-    buffer_delete(buff);
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// save();
-
-var file = obj_player.offset_path;
-if (file != "")
-    {
-    // save
-    var buff = buffer_create(1024,buffer_grow,1);
-    buffer_seek(buff,buffer_seek_start,0);
-    
-    for(var i=0; i&lt;skin_spr.size; i++;)
-        {
-        buffer_write(buff,buffer_u16,obj_player.sprite_offset_states[i]);
-        for(var j=0; j&lt;obj_player.sprite_offset_states[i]; j++;)
-            {
-            buffer_write(buff,buffer_u8,obj_player.sprite_offset_state[i,j]);
-            buffer_write(buff,buffer_s8,obj_player.sprite_offset_x[i,j]);
-            buffer_write(buff,buffer_s8,obj_player.sprite_offset_y[i,j]);
-            }
-        }
-    
-    var bytes = buffer_tell(buff);
-    buffer_save_ext(buff,file,0,bytes);
-    buffer_delete(buff);
     }
 </string>
           </argument>

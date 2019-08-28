@@ -8,10 +8,21 @@ switch(move_state)
             {
             if (abs(xspeed) > 0)
                 {
-                if (anim_state != aState.walk)
+                if (on_ramp)
                     {
-                    anim_state = aState.walk;
-                    img_index[doll.legs] = 0;
+                    if (anim_state != aState.ramp_walk)
+                        {
+                        anim_state = aState.ramp_walk;
+                        img_index[doll.legs] = 0;
+                        }
+                    }
+                else
+                    {
+                    if (anim_state != aState.walk)
+                        {
+                        anim_state = aState.walk;
+                        img_index[doll.legs] = 0;
+                        }
                     }
                 
                 img_index[doll.legs] += 0.2;
@@ -22,10 +33,21 @@ switch(move_state)
                 }
             else
                 {
-                if (anim_state != aState.idle)
+                if (on_ramp)
                     {
-                    anim_state = aState.idle;
-                    img_index[doll.legs] = 0;
+                    if (anim_state != aState.ramp_idle)
+                        {
+                        anim_state = aState.ramp_idle;
+                        img_index[doll.legs] = 0;
+                        }
+                    }
+                else
+                    {
+                    if (anim_state != aState.idle)
+                        {
+                        anim_state = aState.idle;
+                        img_index[doll.legs] = 0;
+                        }
                     }
                 }
             
@@ -298,28 +320,37 @@ switch(anim_state)
         
         // legs
         if (anim_state == aState.idle)
-            {
-            if (on_ramp)
-                {
-                if (dir > 0)
-                    {
-                    if (ramp_slope > 0)
-                        paperdoll(doll.legs,skin_spr.leg_idle_r,1);
-                    else if (ramp_slope < 0)
-                        paperdoll(doll.legs,skin_spr.leg_idle_l,-1);
-                    }
-                else if (dir < 0)
-                    {
-                    if (ramp_slope > 0)
-                        paperdoll(doll.legs,skin_spr.leg_idle_l,1);
-                    else if (ramp_slope < 0)
-                        paperdoll(doll.legs,skin_spr.leg_idle_r,-1);
-                    }
-                }
-            else
-                paperdoll(doll.legs,skin_spr.leg_idle,dir);
-            }
+            paperdoll(doll.legs,skin_spr.leg_idle,dir);
         else if (anim_state == aState.walk)
+            paperdoll(doll.legs,skin_spr.leg_walk,dir);
+        
+        // arms
+        paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
+        break;
+    
+    case aState.ramp_idle:
+    case aState.ramp_walk:
+        gun_y = -18;
+        
+        // legs
+        if (anim_state == aState.ramp_idle)
+            {
+            if (dir > 0)
+                {
+                if (ramp_slope > 0)
+                    paperdoll(doll.legs,skin_spr.leg_idle_r,1);
+                else if (ramp_slope < 0)
+                    paperdoll(doll.legs,skin_spr.leg_idle_l,-1);
+                }
+            else if (dir < 0)
+                {
+                if (ramp_slope > 0)
+                    paperdoll(doll.legs,skin_spr.leg_idle_l,1);
+                else if (ramp_slope < 0)
+                    paperdoll(doll.legs,skin_spr.leg_idle_r,-1);
+                }
+            }
+        else if (anim_state == aState.ramp_walk)
             paperdoll(doll.legs,skin_spr.leg_walk,dir);
         
         // arms
@@ -348,7 +379,7 @@ switch(anim_state)
     case aState.duck:
         if (on_ramp)
             {
-            gun_y = -18;
+            gun_y = -12;
             
             // legs
             if (dir > 0)
@@ -378,7 +409,7 @@ switch(anim_state)
         break;
     
     case aState.hang:
-        gun_y = -18;
+        gun_y = -22;
         
         paperdoll(doll.legs,skin_spr.leg_hang,dir);
         paperdoll(doll.arms,skin_spr.arm_single_0 + floor(aim/45),dir);
