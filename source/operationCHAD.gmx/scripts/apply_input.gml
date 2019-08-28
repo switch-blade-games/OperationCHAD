@@ -433,9 +433,9 @@ switch(move_state)
                     
                     // aim
                     if (climb_side & tile_side.right == tile_side.right)
-                        aim = 180;
-                    else if (climb_side & tile_side.left == tile_side.left)
                         aim = 0;
+                    else if (climb_side & tile_side.left == tile_side.left)
+                        aim = 180;
                     
                     // vertical movement
                     if (v_dir == 0)

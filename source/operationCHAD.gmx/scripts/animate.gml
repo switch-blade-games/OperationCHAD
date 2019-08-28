@@ -392,7 +392,11 @@ switch(anim_state)
         gun_y = -18;
         
         paperdoll(doll.legs,skin_spr.leg_climb,dir);
-        paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),dir);
+        if ((aim == 90) and (dir == -1))
+        or ((aim == 270) and (dir == 1))
+            paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),-1);
+        else
+            paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),+1);
         break;
     
     case aState.climb_move:
