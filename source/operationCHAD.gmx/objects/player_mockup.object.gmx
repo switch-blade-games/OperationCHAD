@@ -146,11 +146,11 @@ click_y = 0;
             for(var i=0; i&lt;skin_spr.size; i++;)
                 {
                 buffer_write(buff,buffer_u16,obj_player.sprite_offset_states[i]);
-                for(var j=0; j&lt;num; j++;)
+                for(var j=0; j&lt;obj_player.sprite_offset_states[i]; j++;)
                     {
-                    buffer_write(buff,buffer_u8,sprite_offset_state[i,j]);
-                    buffer_write(buff,buffer_s8,sprite_offset_x[i,j]);
-                    buffer_write(buff,buffer_s8,sprite_offset_y[i,j]);
+                    buffer_write(buff,buffer_u8,obj_player.sprite_offset_state[i,j]);
+                    buffer_write(buff,buffer_s8,obj_player.sprite_offset_x[i,j]);
+                    buffer_write(buff,buffer_s8,obj_player.sprite_offset_y[i,j]);
                     }
                 }
             
@@ -168,10 +168,10 @@ click_y = 0;
             // clear
             for(var i=0; i&lt;skin_spr.size; i++;)
                 {
-                sprite_offset_states[i] = 0;
-                sprite_offset_state[i,0] = 0;
-                sprite_offset_x[i,0] = 0;
-                sprite_offset_y[i,0] = 0;
+                obj_player.sprite_offset_states[i] = 0;
+                obj_player.sprite_offset_state[i,0] = 0;
+                obj_player.sprite_offset_x[i,0] = 0;
+                obj_player.sprite_offset_y[i,0] = 0;
                 }
             
             // load

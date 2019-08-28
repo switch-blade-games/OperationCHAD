@@ -25,3 +25,8 @@ if (sprite_offset_states[_index] > 0)
             }
         }
     }
+else
+    {
+    spr_ox[_type] = 0;
+    spr_oy[_type] = 0;
+    }
