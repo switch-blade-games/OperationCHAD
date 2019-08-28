@@ -60,6 +60,8 @@ switch(argument[0])
         sprite[skin_spr.full_roll] = yolo_jump_spr;
         // duck
         sprite[skin_spr.full_duck] = yolo_duck_spr;
+        // hang
+        sprite[skin_spr.full_hang] = yolo_hang_move_spr;
         // climb
         sprite[skin_spr.full_climb] = yolo_climb_move_spr;
         // moto
