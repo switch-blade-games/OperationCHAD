@@ -406,15 +406,15 @@ else
     var mShake = 0;
 
 if (draw[doll.back])
-    draw_sprite_ext(spr_id[doll.back],img_index[doll.back],x+spr_ox[doll.back],y+spr_oy[doll.back]+mShake,spr_dir[doll.back],1,0,-1,1);
+    draw_sprite_ext(spr_id[doll.back],img_index[doll.back],x+spr_ox[doll.back]*spr_dir[doll.back],y+spr_oy[doll.back]+mShake,spr_dir[doll.back],1,0,-1,1);
 if (draw[doll.moto])
-    draw_sprite_ext(spr_id[doll.moto],img_index[doll.moto],x+spr_ox[doll.moto],moto_y+spr_oy[doll.moto]+mShake,spr_dir[doll.moto],1,0,-1,1);
+    draw_sprite_ext(spr_id[doll.moto],img_index[doll.moto],x+spr_ox[doll.moto]*spr_dir[doll.moto],moto_y+spr_oy[doll.moto]+mShake,spr_dir[doll.moto],1,0,-1,1);
 if (draw[doll.full])
-    draw_sprite_ext(spr_id[doll.full],img_index[doll.full],x+spr_ox[doll.full],y+spr_oy[doll.full]+mShake,spr_dir[doll.full],1,0,-1,1);
+    draw_sprite_ext(spr_id[doll.full],img_index[doll.full],x+spr_ox[doll.full]*spr_dir[doll.full],y+spr_oy[doll.full]+mShake,spr_dir[doll.full],1,0,-1,1);
 if (draw[doll.legs])
-    draw_sprite_ext(spr_id[doll.legs],img_index[doll.legs],x+spr_ox[doll.legs],y+spr_oy[doll.legs]+mShake,spr_dir[doll.legs],1,0,-1,1);
+    draw_sprite_ext(spr_id[doll.legs],img_index[doll.legs],x+spr_ox[doll.legs]*spr_dir[doll.legs],y+spr_oy[doll.legs]+mShake,spr_dir[doll.legs],1,0,-1,1);
 if (draw[doll.arms])
-    draw_sprite_ext(spr_id[doll.arms],img_index[doll.arms],x+spr_ox[doll.arms],y+spr_oy[doll.arms]+mShake+walk_y[img_index[doll.legs]],spr_dir[doll.arms],1,0,-1,1);
+    draw_sprite_ext(spr_id[doll.arms],img_index[doll.arms],x+spr_ox[doll.arms]*spr_dir[doll.arms],y+spr_oy[doll.arms]+mShake+walk_y[img_index[doll.legs]],spr_dir[doll.arms],1,0,-1,1);
 
 if (invulnerable)
     {
