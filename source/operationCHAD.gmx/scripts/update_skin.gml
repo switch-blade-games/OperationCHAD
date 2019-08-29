@@ -8,9 +8,10 @@ switch(argument[0])
         
         // idle
         sprite[skin_spr.leg_idle] = yolo_legs_idle_spr; // no slope
+        // ramp_idle
         sprite[skin_spr.leg_idle_r] = yolo_legs_ramp_idle_R_spr; // right slope
         sprite[skin_spr.leg_idle_l] = yolo_legs_ramp_idle_L_spr; // left slope
-        // duck
+        // ramp_duck
         sprite[skin_spr.leg_duck_r] = yolo_legs_ramp_duck_R_spr; // right slope duck
         sprite[skin_spr.leg_duck_l] = yolo_legs_ramp_duck_L_spr; // left slope duck
         // walk
@@ -60,6 +61,8 @@ switch(argument[0])
         sprite[skin_spr.full_roll] = yolo_jump_spr;
         // duck
         sprite[skin_spr.full_duck] = yolo_duck_spr;
+        // hang
+        sprite[skin_spr.full_hang] = yolo_hang_move_spr;
         // climb
         sprite[skin_spr.full_climb] = yolo_climb_move_spr;
         // moto
@@ -83,38 +86,5 @@ switch(argument[0])
         break;
     }
 
-// load sprite offsets
-for(var i=0; i<skin_spr.size; i++;)
-    {
-    sprite_offset_states[i] = 0;
-    sprite_offset_state[i,0] = -1;
-    sprite_offset_x[i,0] = 0;
-    sprite_offset_y[i,0] = 0;
-    }
-
-if (file_exists(offset_path))
-    {
-    var buff = buffer_load(offset_path);
-    buffer_seek(buff,buffer_seek_start,0);
-    
-    for(var i=0; i<skin_spr.size; i++;)
-        {
-        var num = buffer_read(buff,buffer_u16);
-        for(var j=0; j<num; j++;)
-            {
-            var state = buffer_read(buff,buffer_u8);
-            var offx  = buffer_read(buff,buffer_s8);
-            var offy  = buffer_read(buff,buffer_s8);
-            
-            if (state < aState.size)
-                {
-                sprite_offset_state[i,j] = state;
-                sprite_offset_x[i,j] = offx;
-                sprite_offset_y[i,j] = offy;
-                sprite_offset_states[i]++;
-                }
-            }
-        }
-    
-    buffer_delete(buff);
-    }
+offsets_clear();
+offsets_load(offset_path);
