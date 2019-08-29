@@ -408,6 +408,8 @@
     <backgrounds name="99-mini_games">
       <background>background\might_BG</background>
     </backgrounds>
+    <background>background\FF_BG</background>
+    <background>background\mario_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -724,14 +726,19 @@
       <object>objects\ending_pan</object>
     </objects>
     <objects name="99-mini_games">
-      <object>objects\might_controller</object>
-      <object>objects\P1_might</object>
-      <object>objects\might_wood</object>
-      <object>objects\might_draw_over</object>
-      <object>objects\might_block</object>
-      <object>objects\might_score</object>
-      <object>objects\might_hehe</object>
-      <object>objects\diverse_man</object>
+      <objects name="test_your_might">
+        <object>objects\might_controller</object>
+        <object>objects\P1_might</object>
+        <object>objects\might_wood</object>
+        <object>objects\might_draw_over</object>
+        <object>objects\might_score</object>
+        <object>objects\might_hehe</object>
+        <object>objects\diverse_man</object>
+        <object>objects\might_block</object>
+      </objects>
+      <objects name="FF">
+        <object>objects\FF_controller</object>
+      </objects>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -739,8 +746,9 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <room>rooms\sub_room</room>
+      <room>rooms\mario_room</room>
+      <room>rooms\FF_room</room>
       <room>rooms\overton_room</room>
-      <room>rooms\might_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -767,6 +775,7 @@
     </rooms>
     <rooms name="99-mini_games">
       <room>rooms\end_cutscene_room</room>
+      <room>rooms\might_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
     </rooms>
