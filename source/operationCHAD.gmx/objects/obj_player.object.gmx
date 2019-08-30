@@ -147,7 +147,7 @@ invulnerable_flash = false;
 invulnerable_time = 0; // set to 180 when respawn
 invulnerable_rate = 3; // higher = slower
 ramp_slope = 1;
-climb_side = 0;
+climb_side = tile_side.none;
 grace_jump = 0; // 6
 no_hang_time = 0; // 12
 moto_y = 0;
