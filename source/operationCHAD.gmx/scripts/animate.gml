@@ -445,6 +445,7 @@ switch(anim_state)
         
         paperdoll(doll.legs,skin_spr.leg_moto,1);
         paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),1);
+        paperdoll(doll.moto,skin_spr.extra_moto,1);
         break;
     
     case aState.dead:

@@ -381,7 +381,13 @@ switch(move_state)
                 // aim
                 if (climb_side & tile_side.right == tile_side.right)
                     {
-                    aim = 0;
+                    dir = -1;
+                    if (h_dir == 0 and v_dir == 0)
+                        aim = 0;
+                    else
+                        aim = point_direction(0,0,h_dir,v_dir);
+                    
+                    /* only aim away from wall
                     if (input_up) or (input_down)
                         {
                         aim = point_direction(0,0,input_right-input_left,input_down-input_up);
@@ -400,10 +406,17 @@ switch(move_state)
                                 aim = 270;
                             }
                         }
+                    */
                     }
                 else if (climb_side & tile_side.left == tile_side.left)
                     {
-                    aim = 180;
+                    dir = 1;
+                    if (h_dir == 0 and v_dir == 0)
+                        aim = 180;
+                    else
+                        aim = point_direction(0,0,h_dir,v_dir);
+                    
+                    /* only aim away from wall
                     if (input_up) or (input_down)
                         {
                         aim = point_direction(0,0,input_right-input_left,input_down-input_up);
@@ -412,6 +425,7 @@ switch(move_state)
                         else
                             aim = clamp(aim,90,270);
                         }
+                    */
                     }
                 else if (climb_side == tile_side.bottom)
                     {
