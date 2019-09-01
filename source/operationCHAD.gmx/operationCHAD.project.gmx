@@ -416,6 +416,7 @@
     </backgrounds>
     <background>background\FF_BG</background>
     <background>background\mario_BG</background>
+    <background>background\grid_tile_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -555,6 +556,7 @@
     <objects name="JB_stuff">
       <object>objects\dev_cheater</object>
       <object>objects\practice_target</object>
+      <object>objects\cam_deactivator</object>
     </objects>
     <objects name="0-Front End">
       <objects name="cine">
@@ -748,6 +750,9 @@
       <objects name="FF">
         <object>objects\FF_controller</object>
       </objects>
+    </objects>
+    <objects name="demo">
+      <object>objects\NPC_dummy</object>
     </objects>
   </objects>
   <rooms name="rooms">
