@@ -270,6 +270,7 @@
       <sprite>sprites\monkey_L_spr</sprite>
       <sprite>sprites\climb_R_spr</sprite>
       <sprite>sprites\climb_L_spr</sprite>
+      <sprite>sprites\platform_spr</sprite>
     </sprites>
     <sprites name="SJWs">
       <sprite>sprites\sjw_1_spr</sprite>
@@ -759,6 +760,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\demo_room_2</room>
       <room>rooms\demo_room</room>
       <room>rooms\sub_room</room>
     </rooms>

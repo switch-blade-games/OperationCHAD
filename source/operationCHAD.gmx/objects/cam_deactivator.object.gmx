@@ -92,6 +92,10 @@ instance_activate_object(obj_camera)
 instance_activate_object(obj_shader)
 instance_activate_object(obj_menu)
 instance_activate_object(obj_editor)
+
+instance_activate_object(dev_cheater)
+
+instance_activate_object(player_mockup)
 </string>
           </argument>
         </arguments>
