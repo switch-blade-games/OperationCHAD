@@ -1161,6 +1161,11 @@ enum camState {
     <instance objName="obj_climb_r" x="7400" y="5000" name="inst_B3A6E584" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="7400" y="5020" name="inst_C3990B94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="7400" y="5040" name="inst_D70D187A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb" x="800" y="7560" name="inst_D73B996D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb" x="780" y="7560" name="inst_CE3F5280" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="NPC_dummy" x="1760" y="7720" name="inst_CB29D3F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="NPC_dummy" x="1840" y="7720" name="inst_2626B29D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="NPC_dummy" x="1940" y="7720" name="inst_4C57F138" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

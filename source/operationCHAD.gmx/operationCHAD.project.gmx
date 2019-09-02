@@ -143,7 +143,6 @@
     </sprites>
     <sprites name="5-Island of NPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
-      <sprite>sprites\pooh_spr</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\msk_player</sprite>
@@ -359,6 +358,19 @@
         <sprite>sprites\diverse_win_spr</sprite>
       </sprites>
     </sprites>
+    <sprites name="pooh">
+      <sprite>sprites\pooh_spr</sprite>
+      <sprite>sprites\pooh_BG_spr</sprite>
+      <sprite>sprites\pooh_ground_spr</sprite>
+      <sprite>sprites\donkey_sock_spr</sprite>
+      <sprite>sprites\pooh_flags_spr</sprite>
+      <sprite>sprites\pooh_shit_spr</sprite>
+      <sprite>sprites\spear_spr</sprite>
+      <sprite>sprites\gas_light_spr</sprite>
+      <sprite>sprites\fent_needle_spr</sprite>
+      <sprite>sprites\sickle_spin_spr</sprite>
+      <sprite>sprites\sickel_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -503,6 +515,19 @@
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <objects name="objects">
+    <objects name="pooh">
+      <object>objects\pooh_controller</object>
+      <object>objects\pooh</object>
+      <object>objects\pooh_ground_drawer</object>
+      <object>objects\donkey_puppet</object>
+      <object>objects\pooh_BG_drawer</object>
+      <object>objects\pooh_shit</object>
+      <object>objects\gas_light</object>
+      <object>objects\spear</object>
+      <object>objects\fent_needle</object>
+      <object>objects\fent_controller</object>
+      <object>objects\sickle</object>
+    </objects>
     <objects name="parents">
       <object>objects\par_actor</object>
       <object>objects\par_enemy</object>
@@ -719,9 +744,6 @@
       </objects>
     </objects>
     <objects name="5-Island of NPCs">
-      <objects name="pooh">
-        <object>objects\pooh</object>
-      </objects>
       <object>objects\NPC_enemy</object>
       <object>objects\NPC_spawner</object>
       <object>objects\NPC_controller</object>
@@ -760,9 +782,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\demo_room_2</room>
-      <room>rooms\demo_room</room>
-      <room>rooms\sub_room</room>
+      <room>rooms\pooh_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -785,9 +805,10 @@
     <rooms name="5- Island of NPCs">
       <room>rooms\NPC_room</room>
       <room>rooms\ball_buster_room</room>
-      <room>rooms\pooh_room</room>
     </rooms>
     <rooms name="99-mini_games">
+      <room>rooms\demo_room</room>
+      <room>rooms\demo_room_2</room>
       <room>rooms\end_cutscene_room</room>
       <room>rooms\might_room</room>
       <room>rooms\cine_room</room>
@@ -798,6 +819,7 @@
     <rooms name="germany">
       <room>rooms\hitler_room</room>
       <room>rooms\germany_motor_room</room>
+      <room>rooms\sub_room</room>
     </rooms>
   </rooms>
   <help>
