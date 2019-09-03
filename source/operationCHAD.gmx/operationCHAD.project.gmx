@@ -369,7 +369,9 @@
       <sprite>sprites\gas_light_spr</sprite>
       <sprite>sprites\fent_needle_spr</sprite>
       <sprite>sprites\sickle_spin_spr</sprite>
-      <sprite>sprites\sickel_spr</sprite>
+      <sprite>sprites\pooh_rocket_spr</sprite>
+      <sprite>sprites\wheat_spr</sprite>
+      <sprite>sprites\wheat_harvest_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -440,6 +442,7 @@
     <path>paths\flame_path</path>
     <path>paths\shot_path_1</path>
     <path>paths\grenade_path</path>
+    <path>paths\sickle_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -527,6 +530,10 @@
       <object>objects\fent_needle</object>
       <object>objects\fent_controller</object>
       <object>objects\sickle</object>
+      <object>objects\pooh_rocket</object>
+      <object>objects\wheat</object>
+      <object>objects\wheat_maker</object>
+      <object>objects\sickle_2</object>
     </objects>
     <objects name="parents">
       <object>objects\par_actor</object>

@@ -65,9 +65,7 @@ with(obj_wall)
     <instance objName="obj_wall" x="0" y="-100" name="inst_A00E0A82" locked="0" code="" scaleX="21" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="-80" name="inst_FD0727BE" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="40" y="180" name="inst_AA8DDFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="donkey_puppet" x="60" y="100" name="inst_3E3692FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="gas_light" x="380" y="80" name="inst_316BA5C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="sickle" x="280" y="140" name="inst_6951FE4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="sickle" x="340" y="180" name="inst_7A5C68F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
