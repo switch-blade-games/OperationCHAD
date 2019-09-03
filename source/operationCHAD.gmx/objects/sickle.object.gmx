@@ -166,6 +166,10 @@ with(wheat){
     
 }
 
+instance_destroy()
+
+instance_create(0,0,fent_controller)
+
 path_speed=0
 
 path_position=0.00001

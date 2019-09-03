@@ -372,6 +372,7 @@
       <sprite>sprites\pooh_rocket_spr</sprite>
       <sprite>sprites\wheat_spr</sprite>
       <sprite>sprites\wheat_harvest_spr</sprite>
+      <sprite>sprites\final_circle_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -534,6 +535,8 @@
       <object>objects\wheat</object>
       <object>objects\wheat_maker</object>
       <object>objects\sickle_2</object>
+      <object>objects\final_controller</object>
+      <object>objects\final_spiral</object>
     </objects>
     <objects name="parents">
       <object>objects\par_actor</object>
@@ -789,6 +792,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\final_room</room>
       <room>rooms\pooh_room</room>
     </rooms>
     <rooms name="2-Internet">

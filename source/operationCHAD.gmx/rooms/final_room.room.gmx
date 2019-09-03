@@ -14,7 +14,8 @@
 var inst = instance_create(0,0,obj_camera);
 inst.cam_state = camState.static;
 
-instance_create(0,0,pooh_controller)
+
+instance_create(0,0,final_controller)
 
 with(obj_wall)
     visible=false</code>
