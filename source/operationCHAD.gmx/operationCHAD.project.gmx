@@ -373,6 +373,7 @@
       <sprite>sprites\wheat_spr</sprite>
       <sprite>sprites\wheat_harvest_spr</sprite>
       <sprite>sprites\final_circle_spr</sprite>
+      <sprite>sprites\pooh_octo_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -535,8 +536,10 @@
       <object>objects\wheat</object>
       <object>objects\wheat_maker</object>
       <object>objects\sickle_2</object>
-      <object>objects\final_controller</object>
-      <object>objects\final_spiral</object>
+      <objects name="final">
+        <object>objects\final_spiral</object>
+        <object>objects\final_controller</object>
+      </objects>
     </objects>
     <objects name="parents">
       <object>objects\par_actor</object>
