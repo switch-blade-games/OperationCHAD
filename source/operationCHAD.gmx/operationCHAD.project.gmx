@@ -270,6 +270,7 @@
       <sprite>sprites\climb_R_spr</sprite>
       <sprite>sprites\climb_L_spr</sprite>
       <sprite>sprites\platform_spr</sprite>
+      <sprite>sprites\death_block_spr</sprite>
     </sprites>
     <sprites name="SJWs">
       <sprite>sprites\sjw_1_spr</sprite>
@@ -374,6 +375,17 @@
       <sprite>sprites\wheat_harvest_spr</sprite>
       <sprite>sprites\final_circle_spr</sprite>
       <sprite>sprites\pooh_octo_spr</sprite>
+      <sprite>sprites\pooh_torch_spr</sprite>
+      <sprites name="fent">
+        <sprite>sprites\fent_BG_spr</sprite>
+        <sprite>sprites\fent_hand_spr</sprite>
+        <sprite>sprites\fent_BG_2_spr</sprite>
+      </sprites>
+      <sprite>sprites\xi_bot_spr</sprite>
+    </sprites>
+    <sprites name="painters">
+      <sprite>sprites\fent_P1_spr</sprite>
+      <sprite>sprites\fent_P2_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -434,6 +446,9 @@
     <background>background\FF_BG</background>
     <background>background\mario_BG</background>
     <background>background\grid_tile_BG</background>
+    <background>background\NPC_game_BG</background>
+    <background>background\NPC_boss_BG</background>
+    <background>background\pooh_tiles</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -521,6 +536,7 @@
   </shaders>
   <objects name="objects">
     <objects name="pooh">
+      <object>objects\xi_bot</object>
       <object>objects\pooh_controller</object>
       <object>objects\pooh</object>
       <object>objects\pooh_ground_drawer</object>
@@ -539,6 +555,19 @@
       <objects name="final">
         <object>objects\final_spiral</object>
         <object>objects\final_controller</object>
+      </objects>
+      <object>objects\pooh_torch</object>
+      <object>objects\pooh_cam_1</object>
+      <object>objects\pooh_cam_2</object>
+      <objects name="painters">
+        <object>objects\blank_painter</object>
+        <object>objects\fent_painter</object>
+      </objects>
+      <objects name="fent">
+        <object>objects\fent_controller_2</object>
+        <object>objects\fent_BG_drawer</object>
+        <object>objects\fent_BG_drawer_2</object>
+        <object>objects\fent_hand</object>
       </objects>
     </objects>
     <objects name="parents">
@@ -569,6 +598,7 @@
       <object>objects\obj_mb_l</object>
       <object>objects\obj_mb_r</object>
       <object>objects\obj_wall_move</object>
+      <object>objects\death_block</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
@@ -795,8 +825,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\final_room</room>
-      <room>rooms\pooh_room</room>
+      <room>rooms\fent_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -818,6 +847,7 @@
     </rooms>
     <rooms name="5- Island of NPCs">
       <room>rooms\NPC_room</room>
+      <room>rooms\NPC_game_room</room>
       <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="99-mini_games">
@@ -834,6 +864,11 @@
       <room>rooms\hitler_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\sub_room</room>
+    </rooms>
+    <rooms name="pooh">
+      <room>rooms\final_room</room>
+      <room>rooms\pooh_stage</room>
+      <room>rooms\pooh_room</room>
     </rooms>
   </rooms>
   <help>
