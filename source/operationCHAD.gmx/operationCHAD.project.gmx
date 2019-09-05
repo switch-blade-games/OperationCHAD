@@ -360,28 +360,40 @@
       </sprites>
     </sprites>
     <sprites name="pooh">
-      <sprite>sprites\pooh_spr</sprite>
-      <sprite>sprites\pooh_BG_spr</sprite>
-      <sprite>sprites\pooh_ground_spr</sprite>
-      <sprite>sprites\donkey_sock_spr</sprite>
-      <sprite>sprites\pooh_flags_spr</sprite>
-      <sprite>sprites\pooh_shit_spr</sprite>
-      <sprite>sprites\spear_spr</sprite>
-      <sprite>sprites\gas_light_spr</sprite>
-      <sprite>sprites\fent_needle_spr</sprite>
-      <sprite>sprites\sickle_spin_spr</sprite>
-      <sprite>sprites\pooh_rocket_spr</sprite>
-      <sprite>sprites\wheat_spr</sprite>
-      <sprite>sprites\wheat_harvest_spr</sprite>
-      <sprite>sprites\final_circle_spr</sprite>
-      <sprite>sprites\pooh_octo_spr</sprite>
-      <sprite>sprites\pooh_torch_spr</sprite>
+      <sprites name="pooh_mech">
+        <sprite>sprites\pooh_spr</sprite>
+        <sprite>sprites\pooh_BG_spr</sprite>
+        <sprite>sprites\pooh_ground_spr</sprite>
+        <sprite>sprites\donkey_sock_spr</sprite>
+        <sprite>sprites\pooh_flags_spr</sprite>
+        <sprite>sprites\pooh_shit_spr</sprite>
+        <sprite>sprites\spear_spr</sprite>
+        <sprite>sprites\gas_light_spr</sprite>
+        <sprite>sprites\pooh_rocket_spr</sprite>
+        <sprite>sprites\sickle_spin_spr</sprite>
+        <sprite>sprites\wheat_spr</sprite>
+        <sprite>sprites\wheat_harvest_spr</sprite>
+      </sprites>
+      <sprites name="final">
+        <sprite>sprites\final_circle_spr</sprite>
+        <sprite>sprites\pooh_octo_spr</sprite>
+      </sprites>
       <sprites name="fent">
         <sprite>sprites\fent_BG_spr</sprite>
         <sprite>sprites\fent_hand_spr</sprite>
         <sprite>sprites\fent_BG_2_spr</sprite>
+        <sprite>sprites\fent_needle_spr</sprite>
       </sprites>
-      <sprite>sprites\xi_bot_spr</sprite>
+      <sprites name="xi_battle">
+        <sprite>sprites\xi_bot_spr</sprite>
+        <sprite>sprites\xi_spin_spr</sprite>
+        <sprite>sprites\china_star_spr</sprite>
+        <sprite>sprites\star_blast_spr</sprite>
+        <sprite>sprites\xi_front_spr</sprite>
+      </sprites>
+      <sprites name="pooh_stage">
+        <sprite>sprites\pooh_torch_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="painters">
       <sprite>sprites\fent_P1_spr</sprite>
@@ -449,6 +461,7 @@
     <background>background\NPC_game_BG</background>
     <background>background\NPC_boss_BG</background>
     <background>background\pooh_tiles</background>
+    <background>background\xi_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -536,29 +549,25 @@
   </shaders>
   <objects name="objects">
     <objects name="pooh">
-      <object>objects\xi_bot</object>
-      <object>objects\pooh_controller</object>
-      <object>objects\pooh</object>
-      <object>objects\pooh_ground_drawer</object>
-      <object>objects\donkey_puppet</object>
-      <object>objects\pooh_BG_drawer</object>
-      <object>objects\pooh_shit</object>
-      <object>objects\gas_light</object>
-      <object>objects\spear</object>
-      <object>objects\fent_needle</object>
-      <object>objects\fent_controller</object>
-      <object>objects\sickle</object>
-      <object>objects\pooh_rocket</object>
-      <object>objects\wheat</object>
-      <object>objects\wheat_maker</object>
-      <object>objects\sickle_2</object>
+      <objects name="mech_battle">
+        <object>objects\pooh_controller</object>
+        <object>objects\pooh</object>
+        <object>objects\gas_light</object>
+        <object>objects\pooh_BG_drawer</object>
+        <object>objects\pooh_shit</object>
+        <object>objects\donkey_puppet</object>
+        <object>objects\pooh_ground_drawer</object>
+        <object>objects\spear</object>
+        <object>objects\sickle</object>
+        <object>objects\pooh_rocket</object>
+        <object>objects\wheat</object>
+        <object>objects\wheat_maker</object>
+        <object>objects\sickle_2</object>
+      </objects>
       <objects name="final">
         <object>objects\final_spiral</object>
         <object>objects\final_controller</object>
       </objects>
-      <object>objects\pooh_torch</object>
-      <object>objects\pooh_cam_1</object>
-      <object>objects\pooh_cam_2</object>
       <objects name="painters">
         <object>objects\blank_painter</object>
         <object>objects\fent_painter</object>
@@ -568,6 +577,19 @@
         <object>objects\fent_BG_drawer</object>
         <object>objects\fent_BG_drawer_2</object>
         <object>objects\fent_hand</object>
+        <object>objects\fent_needle</object>
+        <object>objects\fent_controller</object>
+      </objects>
+      <objects name="pooh_stage">
+        <object>objects\pooh_torch</object>
+        <object>objects\pooh_cam_2</object>
+        <object>objects\pooh_cam_1</object>
+      </objects>
+      <objects name="xi_battle">
+        <object>objects\star_controller</object>
+        <object>objects\star_shooter</object>
+        <object>objects\xi_bot</object>
+        <object>objects\star_shot</object>
       </objects>
     </objects>
     <objects name="parents">
@@ -825,7 +847,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\fent_room</room>
+      <room>rooms\xi_room_</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -869,6 +891,7 @@
       <room>rooms\final_room</room>
       <room>rooms\pooh_stage</room>
       <room>rooms\pooh_room</room>
+      <room>rooms\fent_room</room>
     </rooms>
   </rooms>
   <help>
