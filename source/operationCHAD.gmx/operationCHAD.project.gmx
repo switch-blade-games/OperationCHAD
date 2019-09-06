@@ -847,7 +847,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\xi_room_</room>
+      <room>rooms\xi_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -888,10 +888,10 @@
       <room>rooms\sub_room</room>
     </rooms>
     <rooms name="pooh">
-      <room>rooms\final_room</room>
-      <room>rooms\pooh_stage</room>
       <room>rooms\pooh_room</room>
       <room>rooms\fent_room</room>
+      <room>rooms\final_room</room>
+      <room>rooms\pooh_stage</room>
     </rooms>
   </rooms>
   <help>
