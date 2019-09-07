@@ -335,6 +335,34 @@
         <sprite>sprites\end_10_spr</sprite>
         <sprite>sprites\ending_pan_spr</sprite>
       </sprites>
+      <sprites name="time_machine">
+        <sprite>sprites\time_1_spr</sprite>
+        <sprite>sprites\time_2_spr</sprite>
+        <sprite>sprites\time_3_spr</sprite>
+        <sprite>sprites\time_4_spr</sprite>
+        <sprite>sprites\time_5_spr</sprite>
+        <sprite>sprites\time_6_spr</sprite>
+        <sprite>sprites\time_7_spr</sprite>
+        <sprite>sprites\time_8_spr</sprite>
+        <sprite>sprites\time_9_spr</sprite>
+        <sprite>sprites\time_10_spr</sprite>
+        <sprite>sprites\time_11_spr</sprite>
+        <sprite>sprites\time_12_spr</sprite>
+        <sprite>sprites\time_13_spr</sprite>
+        <sprite>sprites\time_14_spr</sprite>
+        <sprite>sprites\time_15_spr</sprite>
+        <sprite>sprites\time_16_spr</sprite>
+        <sprite>sprites\time_17_spr</sprite>
+        <sprite>sprites\time_18_spr</sprite>
+        <sprite>sprites\time_19_spr</sprite>
+        <sprite>sprites\time_20_spr</sprite>
+        <sprite>sprites\time_21_spr</sprite>
+        <sprite>sprites\time_22_spr</sprite>
+        <sprite>sprites\time_23_spr</sprite>
+        <sprite>sprites\time_24_spr</sprite>
+        <sprite>sprites\time_25_spr</sprite>
+        <sprite>sprites\time_26_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="99-mini_games">
       <sprite>sprites\might_wood_spr</sprite>
@@ -822,6 +850,7 @@
     </objects>
     <objects name="cutscene">
       <object>objects\ending_cutscene</object>
+      <object>objects\time_cutscene</object>
       <object>objects\ending_pan</object>
     </objects>
     <objects name="99-mini_games">
@@ -847,7 +876,7 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\xi_room</room>
+      <room>rooms\time_cutscene_room</room>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -892,6 +921,7 @@
       <room>rooms\fent_room</room>
       <room>rooms\final_room</room>
       <room>rooms\pooh_stage</room>
+      <room>rooms\xi_room</room>
     </rooms>
   </rooms>
   <help>
