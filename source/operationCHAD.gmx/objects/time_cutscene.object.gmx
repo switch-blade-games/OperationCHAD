@@ -65,13 +65,15 @@ PAGE[21]=time_21_spr
 
 PAGE[22]=time_22_spr
 
-PAGE[23]=time_23_spr
+PAGE[23]=time_222_spr
 
-PAGE[24]=time_24_spr
+PAGE[24]=time_23_spr
 
-PAGE[25]=time_25_spr
+PAGE[25]=time_24_spr
 
-PAGE[26]=time_26_spr
+PAGE[26]=time_25_spr
+
+PAGE[27]=time_26_spr
 
 MAX=array_length_1d(PAGE)
 

@@ -358,6 +358,7 @@
         <sprite>sprites\time_20_spr</sprite>
         <sprite>sprites\time_21_spr</sprite>
         <sprite>sprites\time_22_spr</sprite>
+        <sprite>sprites\time_222_spr</sprite>
         <sprite>sprites\time_23_spr</sprite>
         <sprite>sprites\time_24_spr</sprite>
         <sprite>sprites\time_25_spr</sprite>
@@ -849,8 +850,8 @@
       <object>objects\white_knight</object>
     </objects>
     <objects name="cutscene">
-      <object>objects\ending_cutscene</object>
       <object>objects\time_cutscene</object>
+      <object>objects\ending_cutscene</object>
       <object>objects\ending_pan</object>
     </objects>
     <objects name="99-mini_games">
@@ -876,7 +877,12 @@
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\time_cutscene_room</room>
+      <rooms name="demo_rooms">
+        <room>rooms\time_cutscene_room</room>
+        <room>rooms\fryguy_room</room>
+        <room>rooms\demo_room</room>
+        <room>rooms\demo_room_2</room>
+      </rooms>
     </rooms>
     <rooms name="2-Internet">
       <room>rooms\thot_room</room>
@@ -889,7 +895,6 @@
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
-      <room>rooms\fryguy_room</room>
     </rooms>
     <rooms name="4-Clown World">
       <room>rooms\circle_room</room>
@@ -902,12 +907,7 @@
       <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="99-mini_games">
-      <room>rooms\demo_room</room>
-      <room>rooms\demo_room_2</room>
-      <room>rooms\end_cutscene_room</room>
       <room>rooms\might_room</room>
-      <room>rooms\cine_room</room>
-      <room>rooms\ep_room</room>
       <room>rooms\mario_room</room>
       <room>rooms\FF_room</room>
     </rooms>
@@ -922,6 +922,11 @@
       <room>rooms\final_room</room>
       <room>rooms\pooh_stage</room>
       <room>rooms\xi_room</room>
+    </rooms>
+    <rooms name="cutscenes and gags">
+      <room>rooms\end_cutscene_room</room>
+      <room>rooms\cine_room</room>
+      <room>rooms\ep_room</room>
     </rooms>
   </rooms>
   <help>
