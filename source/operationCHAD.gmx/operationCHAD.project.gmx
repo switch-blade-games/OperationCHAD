@@ -364,6 +364,9 @@
         <sprite>sprites\time_25_spr</sprite>
         <sprite>sprites\time_26_spr</sprite>
       </sprites>
+      <sprites name="game_over">
+        <sprite>sprites\game_over_BG_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="99-mini_games">
       <sprite>sprites\might_wood_spr</sprite>
@@ -853,6 +856,9 @@
       <object>objects\time_cutscene</object>
       <object>objects\ending_cutscene</object>
       <object>objects\ending_pan</object>
+      <objects name="game_over">
+        <object>objects\game_over_controller</object>
+      </objects>
     </objects>
     <objects name="99-mini_games">
       <objects name="test_your_might">
@@ -878,8 +884,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\time_cutscene_room</room>
-        <room>rooms\fryguy_room</room>
+        <room>rooms\game_over_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -892,6 +897,7 @@
       <room>rooms\internet_vert_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
+      <room>rooms\fryguy_room</room>
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
@@ -925,6 +931,7 @@
     </rooms>
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
+      <room>rooms\time_cutscene_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
     </rooms>
