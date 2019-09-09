@@ -367,6 +367,16 @@
       <sprites name="game_over">
         <sprite>sprites\game_over_BG_spr</sprite>
       </sprites>
+      <sprites name="opening">
+        <sprite>sprites\open_1_spr</sprite>
+        <sprite>sprites\open_2_spr</sprite>
+        <sprite>sprites\open_3_spr</sprite>
+        <sprite>sprites\open_4_spr</sprite>
+        <sprite>sprites\open_5_spr</sprite>
+        <sprite>sprites\open_6_spr</sprite>
+        <sprite>sprites\open_7_spr</sprite>
+        <sprite>sprites\open_8_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="99-mini_games">
       <sprite>sprites\might_wood_spr</sprite>
@@ -853,6 +863,7 @@
       <object>objects\white_knight</object>
     </objects>
     <objects name="cutscene">
+      <object>objects\opening_cutscene</object>
       <object>objects\time_cutscene</object>
       <object>objects\ending_cutscene</object>
       <object>objects\ending_pan</object>
@@ -884,7 +895,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\game_over_room</room>
+        <room>rooms\open_cutscene_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -934,6 +945,7 @@
       <room>rooms\time_cutscene_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
+      <room>rooms\game_over_room</room>
     </rooms>
   </rooms>
   <help>
