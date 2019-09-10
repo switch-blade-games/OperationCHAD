@@ -4,78 +4,22 @@ var v_dir = input_down-input_up;
 switch(move_state)
     {
     case mState.walk:
-        if (input_lock) and (on_ground)
-            {
-            move_state = mState.lock;
-            break;
-            }
+        lock = (input_lock) and (on_ground);
         
-        // horizontal movement input
-        if (h_dir != 0)
-            {
-            xspeed = walk_speed*h_dir;
-            dir = h_dir;
-            
-            // move left or right
-            if (input_right)
-                {
-                // climb wall to the right
-                var inst = instance_place(x+1,y,par_climb);
-                if (!input_down) and (yspeed >= -2)
-                and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
-                    {
-                    move_state = mState.climb;
-                    yspeed = 0;
-                    }
-                
-                // aim
-                if (input_up)
-                    aim = 45;
-                else
-                    {
-                    if (input_down)
-                        aim = 315;
-                    else
-                        aim = 0;
-                    }
-                }
-            if (input_left)
-                {
-                // climb wall to the left
-                var inst = instance_place(x-1,y,par_climb);
-                if (!input_down) and (yspeed >= -2)
-                and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
-                    {
-                    move_state = mState.climb;
-                    yspeed = 0;
-                    }
-                
-                // aim
-                if (input_up)
-                    aim = 135;
-                else
-                    {
-                    if (input_down)
-                        aim = 225;
-                    else
-                        aim = 180;
-                    }
-                }
-            }
-        else
+        if (lock)
             {
             // aim
-            if (input_up)
-                aim = 90;
-            else if (input_down)
+            if (h_dir != 0)
+                dir = h_dir;
+            if (h_dir == 0 and v_dir == 0)
                 {
-                if (!on_ground)
-                    aim = 270;
+                if (dir > 0)
+                    aim = 0;
+                else if (dir < 0)
+                    aim = 180;
                 }
-            else if (dir > 0)
-                aim = 0;
-            else if (dir < 0)
-                aim = 180;
+            else
+                aim = point_direction(0,0,h_dir,v_dir);
             
             // friction
             if (xspeed > 0)
@@ -83,27 +27,103 @@ switch(move_state)
             else if (xspeed < 0)
                 xspeed = min(0,xspeed+fric);
             }
-        
-        // duck
-        if (input_down) and (on_ground)
+        else
             {
-            if (h_dir == 0)
+            // horizontal movement input
+            if (h_dir != 0)
                 {
-                // stop walking and duck
-                move_state = mState.duck;
-                mask_index = msk_player_duck;
+                xspeed = walk_speed*h_dir;
+                dir = h_dir;
+                
+                // move left or right
+                if (input_right)
+                    {
+                    // climb wall to the right
+                    var inst = instance_place(x+1,y,par_climb);
+                    if (!input_down) // and (yspeed >= -2)
+                    and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
+                        {
+                        move_state = mState.climb;
+                        yspeed = 0;
+                        }
+                    
+                    // aim
+                    if (input_up)
+                        aim = 45;
+                    else
+                        {
+                        if (input_down)
+                            aim = 315;
+                        else
+                            aim = 0;
+                        }
+                    }
+                if (input_left)
+                    {
+                    // climb wall to the left
+                    var inst = instance_place(x-1,y,par_climb);
+                    if (!input_down) // and (yspeed >= -2)
+                    and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
+                        {
+                        move_state = mState.climb;
+                        yspeed = 0;
+                        }
+                    
+                    // aim
+                    if (input_up)
+                        aim = 135;
+                    else
+                        {
+                        if (input_down)
+                            aim = 225;
+                        else
+                            aim = 180;
+                        }
+                    }
                 }
-            }
-        
-        // climb wall above the player
-        if (!on_ground) and (input_up)
-            {
-            var inst = instance_place(x,y-1,par_climb);
-            if (!input_down) and (yspeed <= 0)
-            and (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
+            else
                 {
-                move_state = mState.climb;
-                yspeed = 0;
+                // aim
+                if (input_up)
+                    aim = 90;
+                else if (input_down)
+                    {
+                    if (!on_ground)
+                        aim = 270;
+                    }
+                else if (dir > 0)
+                    aim = 0;
+                else if (dir < 0)
+                    aim = 180;
+                
+                // friction
+                if (xspeed > 0)
+                    xspeed = max(0,xspeed-fric);
+                else if (xspeed < 0)
+                    xspeed = min(0,xspeed+fric);
+                }
+            
+            // duck
+            if (input_down) and (on_ground)
+                {
+                if (h_dir == 0)
+                    {
+                    // stop walking and duck
+                    move_state = mState.duck;
+                    mask_index = msk_player_duck;
+                    }
+                }
+            
+            // climb wall above the player
+            if (!on_ground) and (input_up)
+                {
+                var inst = instance_place(x,y-1,par_climb);
+                if (!input_down) and (yspeed <= 0)
+                and (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
+                    {
+                    move_state = mState.climb;
+                    yspeed = 0;
+                    }
                 }
             }
         
@@ -116,53 +136,16 @@ switch(move_state)
             fire_weapon();
         break;
     
-    case mState.lock:
-        if (!input_lock)
+    case mState.duck:
+        lock = (input_lock) and (on_ground);
+        
+        if (lock)
             {
-            // exit lock, start walking
-            if (!input_down)
-                move_state = mState.walk;
-            else
-                {
-                // exit lock, start ducking
-                move_state = mState.duck;
-                mask_index = msk_player_duck;
-                }
+            move_state = mState.walk;
+            mask_index = msk_player;
             break;
             }
         
-        // aim
-        if (h_dir != 0)
-            dir = h_dir;
-        if (h_dir == 0 and v_dir == 0)
-            {
-            if (dir > 0)
-                aim = 0;
-            else if (dir < 0)
-                aim = 180;
-            }
-        else
-            aim = point_direction(0,0,h_dir,v_dir);
-        
-        // exit lock, jump
-        if (on_ground) and (input_jump_pressed)
-            jump();
-        
-        // fire weapon
-        if (input_fire)
-            fire_weapon();
-        
-        if (on_ground)
-            {
-            // friction
-            if (xspeed > 0)
-                xspeed = max(0,xspeed-fric);
-            else if (xspeed < 0)
-                xspeed = min(0,xspeed+fric);
-            }
-        break;
-    
-    case mState.duck:
         if (dir > 0)
             aim = 0;
         else if (dir < 0)
@@ -310,16 +293,23 @@ switch(move_state)
                 if (!input_lock)
                     {
                     move_state = mState.walk;
-                    no_hang_time = 12;
+                    // drop
                     drop = true;
+                    // no hang
+                    no_hang = true;
                     }
                 }
             else
                 {
                 move_state = mState.walk;
-                no_hang_time = 4;
-                drop = false;
-                jump();
+                if (!place_meeting(x,y-10,par_solid))
+                    {
+                    // drop
+                    drop = false;
+                    jump();
+                    }
+                else
+                    drop = true;
                 }
             }
         break;
@@ -470,14 +460,6 @@ switch(move_state)
                         move_state = mState.walk;
                         aim = point_direction(0,0,dir,0);
                         drop = true;
-                        
-                        if (!on_ground)
-                        and (input_up or ((climb_side & tile_side.right == tile_side.right) and input_right and !input_left) or ((climb_side & tile_side.left == tile_side.left) and input_left and !input_right))
-                        and (!input_down) and (!place_meeting(x,y-1,par_solid))
-                            {
-                            drop = false;
-                            jump();
-                            }
                         }
                     }
                 else if (climb_side == tile_side.bottom)
@@ -518,69 +500,87 @@ switch(move_state)
         break;
     
     case mState.moto:
-        /*
-        if (input_lock) and (on_moto)
-            {
-            move_state = mState.lock;
-            break;
-            }
-        */
+        lock = (input_lock) and (on_moto);
         
-        // horizontal movement input
-        var move_speed = moto_speed;
-        if (h_dir != 0)
-            {
-            xspeed = move_speed*h_dir;
-            dir = h_dir;
-            
-            // move left or right
-            if (input_right)
-                {
-                // aim
-                if (input_up)
-                    aim = 45;
-                else
-                    {
-                    if (input_down)
-                        aim = 315;
-                    else
-                        aim = 0;
-                    }
-                }
-            if (input_left)
-                {
-                // aim
-                if (input_up)
-                    aim = 135;
-                else
-                    {
-                    if (input_down)
-                        aim = 225;
-                    else
-                        aim = 180;
-                    }
-                }
-            }
-        else
+        if (lock)
             {
             // aim
-            if (input_up)
-                aim = 90;
-            else if (input_down)
+            if (h_dir != 0)
+                dir = h_dir;
+            if (h_dir == 0 and v_dir == 0)
                 {
-                if (!on_ground)
-                    aim = 270;
+                if (dir > 0)
+                    aim = 0;
+                else if (dir < 0)
+                    aim = 180;
                 }
-            else if (dir > 0)
-                aim = 0;
-            else if (dir < 0)
-                aim = 180;
+            else
+                aim = point_direction(0,0,h_dir,v_dir);
             
             // friction
             if (xspeed > 0)
                 xspeed = max(0,xspeed-fric);
             else if (xspeed < 0)
                 xspeed = min(0,xspeed+fric);
+            }
+        else
+            {
+            // horizontal movement input
+            var move_speed = moto_speed;
+            if (h_dir != 0)
+                {
+                xspeed = move_speed*h_dir;
+                dir = h_dir;
+                
+                // move left or right
+                if (input_right)
+                    {
+                    // aim
+                    if (input_up)
+                        aim = 45;
+                    else
+                        {
+                        if (input_down)
+                            aim = 315;
+                        else
+                            aim = 0;
+                        }
+                    }
+                if (input_left)
+                    {
+                    // aim
+                    if (input_up)
+                        aim = 135;
+                    else
+                        {
+                        if (input_down)
+                            aim = 225;
+                        else
+                            aim = 180;
+                        }
+                    }
+                }
+            else
+                {
+                dir = 1;
+                
+                // aim
+                if (input_up)
+                    aim = 90;
+                else if (input_down)
+                    {
+                    if (!on_ground)
+                        aim = 270;
+                    }
+                else
+                    aim = 0;
+                
+                // friction
+                if (xspeed > 0)
+                    xspeed = max(0,xspeed-fric);
+                else if (xspeed < 0)
+                    xspeed = min(0,xspeed+fric);
+                }
             }
         
         // jump

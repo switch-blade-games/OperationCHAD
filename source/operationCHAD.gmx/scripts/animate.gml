@@ -3,7 +3,6 @@ switch(move_state)
     {
     case mState.idle:
     case mState.walk:
-    case mState.lock:
         if (on_ground)
             {
             if (abs(xspeed) > 0)

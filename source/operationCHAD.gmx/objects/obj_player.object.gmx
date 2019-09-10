@@ -37,7 +37,6 @@ enum mState
     {
     idle,
     walk,
-    lock,
     duck,
     hang,
     climb,
@@ -141,6 +140,7 @@ move_state = mState.walk;
 on_ground = false;
 on_ramp = false;
 on_moto = false;
+lock = false;
 drop = false;
 invulnerable = false;
 invulnerable_flash = false;
@@ -149,7 +149,7 @@ invulnerable_rate = 3; // higher = slower
 ramp_slope = 1;
 climb_side = tile_side.none;
 grace_jump = 0; // 6
-no_hang_time = 0; // 12
+no_hang = false;
 moto_y = 0;
 moto_yspeed = 0;
 moto_shake = 0;

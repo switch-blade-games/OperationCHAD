@@ -72,7 +72,6 @@ sText[skin_spr.extra_moto]     = "extra_moto";
 
 mText[mState.idle]  = "idle";
 mText[mState.walk]  = "walk";
-mText[mState.lock]  = "lock";
 mText[mState.duck]  = "duck";
 mText[mState.hang]  = "hang";
 mText[mState.climb] = "climb";

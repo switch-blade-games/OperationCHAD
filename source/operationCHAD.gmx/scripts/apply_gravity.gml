@@ -2,7 +2,6 @@ switch(move_state)
     {
     case mState.walk:
     case mState.duck:
-    case mState.lock:
     
         // detect if we're standing on ground
         on_ground = false;
@@ -16,6 +15,8 @@ switch(move_state)
             grace_jump = 8;
             // drop
             drop = false;
+            // no hang
+            no_hang = false;
             }
         
         // gravity
@@ -34,7 +35,7 @@ switch(move_state)
             }
         else
             {
-            if (yspeed > 0) and (!input_down) and (no_hang_time == 0)
+            if (yspeed > 0) and (!no_hang)
                 {
                 var i = 0;
                 var inst = noone;
@@ -76,6 +77,8 @@ switch(move_state)
             {
             // on the ground
             on_ground = true;
+            // no hang
+            no_hang = false;
             }
         break;
     
@@ -87,9 +90,39 @@ switch(move_state)
             on_moto = true;
             y = moto_y;
             yspeed = 0;
+            // no hang
+            no_hang = false;
             }
         else
-            yspeed += grav;
+            {
+            if (yspeed > 0) and (!no_hang)
+                {
+                var i = 0;
+                var inst = noone;
+                while(inst == noone and i<=12)
+                    {
+                    inst = instance_position(x,(y-30)+i,par_mb);
+                    i += 2;
+                    }
+                
+                if (inst != noone)
+                    {
+                    if (y >= inst.y)
+                        {
+                        var yh = floor(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+40;
+                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-40,par_mb))
+                        and (abs(y-yh) <= 16)
+                            {
+                            move_state = mState.hang;
+                            yspeed = 0;
+                            y = yh;
+                            }
+                        }
+                    }
+                }
+            if (yspeed < 10)
+                yspeed += grav;
+            }
         
         // moto gravity
         if (moto_y >= global.moto_floor)
@@ -98,7 +131,10 @@ switch(move_state)
             moto_yspeed = 0;
             }
         else
-            moto_yspeed += grav;
+            {
+            if (moto_yspeed < 10)
+                moto_yspeed += grav;
+            }
         
         moto_y += moto_yspeed;
         break;
@@ -122,7 +158,5 @@ switch(move_state)
         break;
     }
 
-if (no_hang_time > 0)
-    no_hang_time--;
 if (grace_jump > 0)
     grace_jump--;
