@@ -432,10 +432,14 @@
         <sprite>sprites\china_star_spr</sprite>
         <sprite>sprites\star_blast_spr</sprite>
         <sprite>sprites\xi_front_spr</sprite>
+        <sprite>sprites\xi_hammer_swing_spr</sprite>
+        <sprite>sprites\xi_hammer_spr</sprite>
+        <sprite>sprites\xi_make_hammer_spr</sprite>
       </sprites>
       <sprites name="pooh_stage">
         <sprite>sprites\pooh_torch_spr</sprite>
       </sprites>
+      <sprite>sprites\dream_paint_spr</sprite>
     </sprites>
     <sprites name="painters">
       <sprite>sprites\fent_P1_spr</sprite>
@@ -612,6 +616,7 @@
       </objects>
       <objects name="painters">
         <object>objects\blank_painter</object>
+        <object>objects\dream_painter</object>
         <object>objects\fent_painter</object>
       </objects>
       <objects name="fent">
@@ -632,6 +637,10 @@
         <object>objects\star_shooter</object>
         <object>objects\xi_bot</object>
         <object>objects\star_shot</object>
+        <object>objects\xi_hammer_attack</object>
+      </objects>
+      <objects name="dream">
+        <object>objects\dream_controller</object>
       </objects>
     </objects>
     <objects name="parents">
@@ -895,7 +904,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\open_cutscene_room</room>
+        <room>rooms\xi_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -908,10 +917,10 @@
       <room>rooms\internet_vert_room</room>
     </rooms>
     <rooms name="1-Planned Parenthood">
-      <room>rooms\fryguy_room</room>
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
+      <room>rooms\fryguy_room</room>
     </rooms>
     <rooms name="4-Clown World">
       <room>rooms\circle_room</room>
@@ -937,8 +946,8 @@
       <room>rooms\pooh_room</room>
       <room>rooms\fent_room</room>
       <room>rooms\final_room</room>
+      <room>rooms\dream_room</room>
       <room>rooms\pooh_stage</room>
-      <room>rooms\xi_room</room>
     </rooms>
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
@@ -946,6 +955,7 @@
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
       <room>rooms\game_over_room</room>
+      <room>rooms\open_cutscene_room</room>
     </rooms>
   </rooms>
   <help>
