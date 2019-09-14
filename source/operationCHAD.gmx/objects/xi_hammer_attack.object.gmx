@@ -132,19 +132,7 @@ state=HAMMERback
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=MAKEhammer){
-
-    if(instance_number(xi_hammer)=1){
-    
-        //2=READY
-        if(xi_hammer.state=2){
-            
-            state=HOLDhammer
-            
-            alarm[1]=HOLDtime
-        }
-    }
-}
+            <string>
 
 if(state=HAMMERback){
 
