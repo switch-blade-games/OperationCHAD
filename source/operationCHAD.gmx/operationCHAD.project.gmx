@@ -428,13 +428,20 @@
       </sprites>
       <sprites name="xi_battle">
         <sprite>sprites\xi_bot_spr</sprite>
-        <sprite>sprites\xi_spin_spr</sprite>
-        <sprite>sprites\china_star_spr</sprite>
-        <sprite>sprites\star_blast_spr</sprite>
         <sprite>sprites\xi_front_spr</sprite>
+        <sprite>sprites\xi_spin_spr</sprite>
+        <sprite>sprites\xi_hammer_make_spr</sprite>
+        <sprite>sprites\xi_hammer_back_spr</sprite>
         <sprite>sprites\xi_hammer_swing_spr</sprite>
-        <sprite>sprites\xi_hammer_spr</sprite>
-        <sprite>sprites\xi_make_hammer_spr</sprite>
+        <sprite>sprites\xi_hammer_jump_spr</sprite>
+        <sprite>sprites\xi_hammer_fade_spr</sprite>
+        <sprite>sprites\debris_spr</sprite>
+        <sprite>sprites\hammer_ball_spr</sprite>
+        <sprite>sprites\hammer_wave_spr</sprite>
+        <sprite>sprites\big_sickle_spr</sprite>
+        <sprite>sprites\xi_hunny_blast_spr</sprite>
+        <sprite>sprites\hunny_blast_spr</sprite>
+        <sprite>sprites\hunny_pooh_spr</sprite>
       </sprites>
       <sprites name="pooh_stage">
         <sprite>sprites\pooh_torch_spr</sprite>
@@ -582,6 +589,7 @@
       <script>scripts\blend_sub.gml</script>
       <script>scripts\random_col_set.gml</script>
       <script>scripts\blend_zero.gml</script>
+      <script>scripts\hunny_shuffle.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
@@ -633,11 +641,23 @@
         <object>objects\pooh_cam_1</object>
       </objects>
       <objects name="xi_battle">
-        <object>objects\star_controller</object>
-        <object>objects\star_shooter</object>
-        <object>objects\xi_bot</object>
-        <object>objects\star_shot</object>
-        <object>objects\xi_hammer_attack</object>
+        <objects name="hammer">
+          <object>objects\hammer_sur</object>
+          <object>objects\xi_hammer_attack</object>
+          <object>objects\hammer_ball</object>
+        </objects>
+        <object>objects\big_sickle</object>
+        <objects name="hunny">
+          <object>objects\xi_hunny_blast</object>
+          <object>objects\hunny_pooh</object>
+          <object>objects\hunny_node_controller</object>
+          <object>objects\hunny_node</object>
+          <object>objects\hunny_blast</object>
+          <object>objects\hunny_pre</object>
+        </objects>
+        <objects name="controller">
+          <object>objects\xi_between</object>
+        </objects>
       </objects>
       <objects name="dream">
         <object>objects\dream_controller</object>

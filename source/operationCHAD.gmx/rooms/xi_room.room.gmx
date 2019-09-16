@@ -3,7 +3,7 @@
   <caption></caption>
   <width>400</width>
   <height>240</height>
-  <vsnap>5</vsnap>
+  <vsnap>20</vsnap>
   <hsnap>20</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
@@ -69,7 +69,7 @@ with(par_climb)
   </views>
   <instances>
     <instance objName="obj_wall" x="0" y="220" name="inst_295960AF" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="80" y="190" name="inst_AA8DDFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="320" y="120" name="inst_AA8DDFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_r" x="340" y="200" name="inst_6845954A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_l" x="20" y="200" name="inst_77250E33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="0" y="10" name="inst_B0553B83" locked="0" code="" scaleX="1" scaleY="9.5" colour="4294967295" rotation="0"/>
@@ -90,7 +90,15 @@ with(par_climb)
     <instance objName="obj_mb" x="280" y="15" name="inst_3C5DA0EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="300" y="15" name="inst_D30E8833" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="320" y="15" name="inst_CE9BCDD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="xi_hammer_attack" x="300" y="220" name="inst_39E011B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="300" y="20" name="inst_224749FD" locked="0" code="SET=8&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="200" y="20" name="inst_4839FDB5" locked="0" code="SET=7&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="100" y="20" name="inst_A95E9668" locked="0" code="SET=6&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="200" y="220" name="inst_AE18BDC7" locked="0" code="SET=3&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="300" y="220" name="inst_6402077D" locked="0" code="SET=2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="100" y="220" name="inst_C8BFDAB8" locked="0" code="SET=4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="20" y="120" name="inst_3E1663EA" locked="0" code="SET=5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hunny_node" x="380" y="120" name="inst_4E37C90A" locked="0" code="SET=1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="xi_hammer_attack" x="80" y="220" name="inst_497EF48C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
