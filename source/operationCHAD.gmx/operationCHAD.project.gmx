@@ -442,6 +442,8 @@
         <sprite>sprites\xi_hunny_blast_spr</sprite>
         <sprite>sprites\hunny_blast_spr</sprite>
         <sprite>sprites\hunny_pooh_spr</sprite>
+        <sprite>sprites\xi_wall_spr</sprite>
+        <sprite>sprites\hunny_mask_spr</sprite>
       </sprites>
       <sprites name="pooh_stage">
         <sprite>sprites\pooh_torch_spr</sprite>
@@ -590,6 +592,7 @@
       <script>scripts\random_col_set.gml</script>
       <script>scripts\blend_zero.gml</script>
       <script>scripts\hunny_shuffle.gml</script>
+      <script>scripts\hunny_bank.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
@@ -641,12 +644,19 @@
         <object>objects\pooh_cam_1</object>
       </objects>
       <objects name="xi_battle">
+        <objects name="wall">
+          <object>objects\xi_wall_attack</object>
+          <object>objects\hunny_lob</object>
+          <object>objects\hunny_bounce</object>
+        </objects>
+        <objects name="controller">
+          <object>objects\xi_between</object>
+        </objects>
         <objects name="hammer">
           <object>objects\hammer_sur</object>
           <object>objects\xi_hammer_attack</object>
           <object>objects\hammer_ball</object>
         </objects>
-        <object>objects\big_sickle</object>
         <objects name="hunny">
           <object>objects\xi_hunny_blast</object>
           <object>objects\hunny_pooh</object>
@@ -655,8 +665,8 @@
           <object>objects\hunny_blast</object>
           <object>objects\hunny_pre</object>
         </objects>
-        <objects name="controller">
-          <object>objects\xi_between</object>
+        <objects name="sickle">
+          <object>objects\big_sickle</object>
         </objects>
       </objects>
       <objects name="dream">
