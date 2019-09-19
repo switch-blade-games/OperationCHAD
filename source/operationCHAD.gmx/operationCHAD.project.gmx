@@ -449,6 +449,19 @@
         <sprite>sprites\pooh_torch_spr</sprite>
       </sprites>
       <sprite>sprites\dream_paint_spr</sprite>
+      <sprite>sprites\dream_circle_spr</sprite>
+      <sprites name="camera">
+        <sprite>sprites\camera_BG_spr</sprite>
+        <sprite>sprites\diag_cam_spr</sprite>
+        <sprite>sprites\cam_range_spr</sprite>
+        <sprite>sprites\cam_part_spr</sprite>
+        <sprite>sprites\cam_bullet_spr</sprite>
+        <sprite>sprites\cam_range_1_spr</sprite>
+        <sprite>sprites\cam_range_2_spr</sprite>
+        <sprite>sprites\cam_gun_spr</sprite>
+        <sprite>sprites\cam_hoard_spr</sprite>
+        <sprite>sprites\cam_laz_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="painters">
       <sprite>sprites\fent_P1_spr</sprite>
@@ -517,6 +530,7 @@
     <background>background\NPC_boss_BG</background>
     <background>background\pooh_tiles</background>
     <background>background\xi_BG</background>
+    <background>background\cam_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -671,6 +685,20 @@
       </objects>
       <objects name="dream">
         <object>objects\dream_controller</object>
+        <object>objects\dream_circle</object>
+        <object>objects\dream_circle_controller</object>
+      </objects>
+      <objects name="cam">
+        <object>objects\cam_battle_controller</object>
+        <object>objects\diag_cam</object>
+        <object>objects\cam_laz</object>
+        <object>objects\screen_drawer</object>
+        <object>objects\cam_part</object>
+        <object>objects\diag_blast_drawer</object>
+        <object>objects\cam_gun</object>
+        <object>objects\cam_range_1</object>
+        <object>objects\cam_range_2</object>
+        <object>objects\cam_xi</object>
       </objects>
     </objects>
     <objects name="parents">
@@ -934,6 +962,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\cam_room</room>
         <room>rooms\xi_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
