@@ -461,6 +461,7 @@
         <sprite>sprites\cam_gun_spr</sprite>
         <sprite>sprites\cam_hoard_spr</sprite>
         <sprite>sprites\cam_laz_spr</sprite>
+        <sprite>sprites\cam_overlay_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="painters">
@@ -699,6 +700,7 @@
         <object>objects\cam_range_1</object>
         <object>objects\cam_range_2</object>
         <object>objects\cam_xi</object>
+        <object>objects\cam_overlay</object>
       </objects>
     </objects>
     <objects name="parents">

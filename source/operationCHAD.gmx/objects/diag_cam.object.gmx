@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SPIN=false
+            <string>SPEmax=0.4
+ADDspe=0.01
+
+
+SPIN=false
 
 LAZson=-1
 
@@ -33,6 +37,7 @@ R1=-1
 R2=-1
 
 ATTACK=false
+
 
 TRIG=false
 
@@ -237,9 +242,14 @@ alarm[1]=TRIGtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(SPIN=true)
+            <string>if(SPIN=true){
 
     image_angle-=SPINspe
+    
+    motion_add(point_direction(x,y,200,120)+10,ADDspe)
+    if(speed&gt;SPEmax)
+        speed=SPEmax
+}
 
 if(BACK=true){
 

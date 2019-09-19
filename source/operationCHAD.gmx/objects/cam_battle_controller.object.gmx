@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>DIR=choose(0,180)
+            <string>instance_create(0,0,cam_overlay)
+
+DIR=choose(0,180)
 
 
 with(diag_cam){
