@@ -27,7 +27,7 @@ with(par_climb)
     visible=false
     
     
-instance_create(0,0,dream_circle_controller)
+//instance_create(0,0,dream_circle_controller)
 
     
 //instance_create(200,120,star_controller)</code>
