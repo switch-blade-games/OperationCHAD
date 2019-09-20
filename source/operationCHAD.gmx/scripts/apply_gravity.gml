@@ -69,7 +69,36 @@ switch(move_state)
         break;
     
     case mState.hang:
-        if (!instance_exists(hang_id)) or (hang_offset < hang_id.x1) or (hang_offset > hang_id.x2)
+        var fall = false;
+        if (!instance_exists(hang_id))
+            fall = true;
+        else if (hang_offset < hang_id.x1) or (hang_offset > hang_id.x2)
+            {
+            var temp_x = x;
+            if (hang_offset < hang_id.x1) and (!place_meeting(x-2,y,par_solid))
+                temp_x -= 2;
+            if (hang_offset > hang_id.x2) and (!place_meeting(x+2,y,par_solid))
+                temp_x += 2;
+            
+            var inst = instance_position(temp_x,y-40,par_mb);
+            if (inst != noone) and (inst != hang_id)
+                {
+                var xh = round(x-(inst.x));
+                var yh = round(inst.y)+floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
+                if (!place_meeting(x,yh,par_solid) and abs(y-yh) <= 16)
+                    {
+                    move_state = mState.hang;
+                    hang_id = inst;
+                    yspeed = 0;
+                    hang_offset = xh;
+                    y = yh;
+                    }
+                }
+            else
+                fall = true;
+            }
+        
+        if (fall)
             {
             move_state = mState.walk;
             hang_id = noone;

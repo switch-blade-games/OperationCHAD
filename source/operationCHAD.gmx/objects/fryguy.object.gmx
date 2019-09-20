@@ -504,9 +504,9 @@ state=JUMP
 //make ghost ropes
 instance_create(0,100,ghost_rope)
 
-var ROPE=instance_create(400,100,ghost_rope);
+var ROPE=instance_create(300,100,ghost_rope);
 
-ROPE.image_xscale=-1
+//ROPE.image_xscale=-1
 
 motion_set(90,JUMPspe)
 }
