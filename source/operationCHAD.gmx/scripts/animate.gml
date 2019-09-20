@@ -136,8 +136,9 @@ switch(move_state)
         break;
     
     case mState.hang:
-        if (abs(xspeed) > 0)
+        if (hang_offset != old_hang_offset)
             {
+            old_hang_offset = hang_offset;
             if (anim_state != aState.hang_move)
                 {
                 anim_state = aState.hang_move;

@@ -226,19 +226,13 @@ switch(move_state)
                 }
             else
                 aim = point_direction(0,0,h_dir,v_dir);
-            
-            // friction
-            if (xspeed > 0)
-                xspeed = max(0,xspeed-fric);
-            else if (xspeed < 0)
-                xspeed = min(0,xspeed+fric);
             }
         else
             {
             // horizontal movement input
             if (h_dir != 0)
                 {
-                xspeed = hang_speed*h_dir;
+                hang_offset += hang_speed*h_dir;
                 dir = h_dir;
                 
                 // move left or right
@@ -247,43 +241,6 @@ switch(move_state)
                 if (input_left)
                     aim = 180;
                 }
-            else
-                {
-                // friction
-                if (xspeed > 0)
-                    xspeed = max(0,xspeed-fric);
-                else if (xspeed < 0)
-                    xspeed = min(0,xspeed+fric);
-                }
-            }
-        
-        grace_jump = 0;
-        yspeed = 0;
-        
-        var i = 0;
-        var inst = noone;
-        while(inst == noone and i<=12)
-            {
-            inst = instance_position(x,(y-46)+i,par_mb);
-            i += 2;
-            }
-        
-        if (inst != noone)
-            {
-            if (!place_meeting(round(x+xspeed),y,par_solid))
-                var xh = round(x+xspeed);
-            else
-                var xh = x;
-            
-            var yh = floor(lerp(inst.y1,inst.y2,(xh-inst.x1)/(inst.x2-inst.x1)))+40;
-            if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-40,par_mb))
-            and (abs(y-yh) <= 16)
-                y = yh;
-            }
-        else
-            {
-            move_state = mState.walk;
-            drop = true;
             }
         
         if (input_jump_pressed)
@@ -295,6 +252,7 @@ switch(move_state)
                     move_state = mState.walk;
                     // drop
                     drop = true;
+                    hang_id = noone;
                     // no hang
                     no_hang = true;
                     }
@@ -302,6 +260,7 @@ switch(move_state)
             else
                 {
                 move_state = mState.walk;
+                hang_id = noone;
                 if (!place_meeting(x,y-10,par_solid))
                     {
                     // drop

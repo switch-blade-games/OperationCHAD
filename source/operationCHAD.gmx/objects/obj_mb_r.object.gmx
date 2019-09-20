@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x1 = x;
-y1 = y+20;
-x2 = x+40;
-y2 = y;
+            <string>x1 = 0;
+y1 = 20;
+x2 = 40;
+y2 = 0;
 </string>
           </argument>
         </arguments>

@@ -35,7 +35,8 @@ switch(move_state)
             }
         else
             {
-            if (yspeed > 0) and (!no_hang)
+            // start hanging
+            if (yspeed > 0) and (!no_hang) and (hang_id = noone)
                 {
                 var i = 0;
                 var inst = noone;
@@ -49,12 +50,14 @@ switch(move_state)
                     {
                     if (y >= inst.y)
                         {
-                        var yh = floor(lerp(inst.y1,inst.y2,(x-inst.x1)/(inst.x2-inst.x1)))+40;
-                        if (!place_meeting(x,yh,par_solid) and position_meeting(x,yh-40,par_mb))
-                        and (abs(y-yh) <= 16)
+                        var xh = (x-(inst.x));
+                        var yh = round(inst.y)+floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
+                        if (!place_meeting(x,yh,par_solid) and abs(y-yh) <= 16)
                             {
                             move_state = mState.hang;
+                            hang_id = inst;
                             yspeed = 0;
+                            hang_offset = xh;
                             y = yh;
                             }
                         }
@@ -66,6 +69,15 @@ switch(move_state)
         break;
     
     case mState.hang:
+        if (!instance_exists(hang_id)) or (hang_offset < hang_id.x1) or (hang_offset > hang_id.x2)
+            {
+            move_state = mState.walk;
+            hang_id = noone;
+            drop = true;
+            }
+        
+        yspeed = 0;
+        grace_jump = 0;
         on_ground = false;
         break;
     

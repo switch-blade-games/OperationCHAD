@@ -149,6 +149,9 @@ invulnerable_rate = 3; // higher = slower
 ramp_slope = 1;
 climb_side = tile_side.none;
 grace_jump = 0; // 6
+hang_id = noone;
+hang_offset = 0;
+old_hang_offset = 0;
 no_hang = false;
 moto_y = 0;
 moto_yspeed = 0;
@@ -237,6 +240,7 @@ walk_y[9] = -2;
 input();
 apply_gravity();
 apply_input();
+apply_force();
 animate();
 collide();
 

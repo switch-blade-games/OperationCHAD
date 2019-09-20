@@ -571,6 +571,7 @@
       <script>scripts\input.gml</script>
       <script>scripts\apply_gravity.gml</script>
       <script>scripts\apply_input.gml</script>
+      <script>scripts\apply_force.gml</script>
       <script>scripts\animate.gml</script>
       <script>scripts\collide.gml</script>
       <script>scripts\fire_weapon.gml</script>
@@ -722,6 +723,7 @@
       <object>objects\par_jt</object>
       <object>objects\par_move</object>
       <object>objects\par_mb</object>
+      <object>objects\par_mb_move</object>
       <object>objects\par_ramp</object>
       <object>objects\par_climb</object>
       <object>objects\par_shootable</object>
@@ -969,6 +971,7 @@
     </objects>
     <objects name="demo">
       <object>objects\NPC_dummy</object>
+      <object>objects\monkeybar_move</object>
     </objects>
   </objects>
   <rooms name="rooms">
