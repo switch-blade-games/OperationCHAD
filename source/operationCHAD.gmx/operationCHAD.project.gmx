@@ -980,7 +980,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\forest_room</room>
+        <room>rooms\might_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -1009,7 +1009,6 @@
       <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="99-mini_games">
-      <room>rooms\might_room</room>
       <room>rooms\mario_room</room>
       <room>rooms\FF_room</room>
     </rooms>
@@ -1020,6 +1019,7 @@
     </rooms>
     <rooms name="pooh">
       <room>rooms\pooh_room</room>
+      <room>rooms\forest_room</room>
       <room>rooms\fent_room</room>
       <room>rooms\final_room</room>
       <room>rooms\dream_room</room>
