@@ -35,10 +35,10 @@ y2 = 0;
 
 // just assign a path or speed/direction here
 // it will take care of everything else by itself
-new_path = path_add();
-path_add_point(new_path,-20,-10,100);
-path_add_point(new_path,20,10,100);
-path_start(new_path,1,path_action_reverse,false);
+direction = 90;
+speed = 1;
+timer_init = room_speed*1;
+timer = timer_init;
 </string>
           </argument>
         </arguments>

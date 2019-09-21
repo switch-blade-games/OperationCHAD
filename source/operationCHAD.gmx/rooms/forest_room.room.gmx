@@ -67,6 +67,7 @@ with(obj_wall)
     <instance objName="obj_wall" x="260" y="220" name="inst_23067759" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="xi_bamboo" x="100" y="300" name="inst_B3E6DBD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="monkeybar_move" x="280" y="120" name="inst_2E959F38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="monkeybar_path" x="180" y="160" name="inst_12476D21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

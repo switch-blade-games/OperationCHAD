@@ -972,6 +972,7 @@
     <objects name="demo">
       <object>objects\NPC_dummy</object>
       <object>objects\monkeybar_move</object>
+      <object>objects\monkeybar_path</object>
     </objects>
   </objects>
   <rooms name="rooms">
