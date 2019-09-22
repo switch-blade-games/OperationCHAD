@@ -76,12 +76,6 @@
       <sprite>sprites\motor_nazi_spr</sprite>
       <sprite>sprites\tank_spr</sprite>
       <sprite>sprites\foreground_branch_spr</sprite>
-      <sprites name="hitler">
-        <sprite>sprites\hitler_stand_spr</sprite>
-        <sprite>sprites\hitler_shoot_spr</sprite>
-        <sprite>sprites\hitler_duck_spr</sprite>
-        <sprite>sprites\hitler_slash_spr</sprite>
-      </sprites>
       <sprite>sprites\nazi_truck_spr</sprite>
       <sprite>sprites\back_shot_spr</sprite>
       <sprite>sprites\floor_shot_spr</sprite>
@@ -110,6 +104,12 @@
         <sprite>sprites\S_grenade_spr</sprite>
       </sprites>
       <sprites name="zepplin">
+        <sprites name="hitler">
+          <sprite>sprites\hitler_paint_spr</sprite>
+          <sprite>sprites\hitler_shoot_spr</sprite>
+          <sprite>sprites\hitler_duck_spr</sprite>
+          <sprite>sprites\hitler_slash_spr</sprite>
+        </sprites>
         <sprite>sprites\zeplin_spr</sprite>
         <sprite>sprites\zyklon_spr</sprite>
         <sprite>sprites\sketch_spr</sprite>
@@ -124,6 +124,10 @@
         <sprite>sprites\flamer_big_spr</sprite>
         <sprite>sprites\flamer_huge_spr</sprite>
         <sprite>sprites\flamer_ash_spr</sprite>
+        <sprite>sprites\hitler_bullet_spr</sprite>
+        <sprite>sprites\hitler_bullet_mega_spr</sprite>
+        <sprite>sprites\hitler_bullet_mask_spr</sprite>
+        <sprite>sprites\hitler_flame_mask_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -928,6 +932,8 @@
         <object>objects\flamer</object>
         <object>objects\flamer_remain</object>
         <object>objects\flamer_ash</object>
+        <object>objects\hitler_shoot_controller</object>
+        <object>objects\hitler_bullet</object>
       </objects>
       <objects name="submarine">
         <object>objects\sub_controller</object>

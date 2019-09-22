@@ -68,6 +68,11 @@ alarm[0]=rate+random(ratenoise)
             <string>if(instance_number(hitler)=0)
 exit
 
+
+//2=shoot
+if(hitler.state=2)
+exit
+
 if(ds_list_empty(CANlist)=true){
 
 var INSERTlist=CANlist;
