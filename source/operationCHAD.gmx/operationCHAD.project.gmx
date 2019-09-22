@@ -109,6 +109,22 @@
         <sprite>sprites\grenade_tracer_spr</sprite>
         <sprite>sprites\S_grenade_spr</sprite>
       </sprites>
+      <sprites name="zepplin">
+        <sprite>sprites\zeplin_spr</sprite>
+        <sprite>sprites\zyklon_spr</sprite>
+        <sprite>sprites\sketch_spr</sprite>
+        <sprite>sprites\gas_cloud_spr</sprite>
+        <sprite>sprites\zep_canvas_spr</sprite>
+        <sprite>sprites\toy_plane_spr</sprite>
+        <sprite>sprites\war_balloon_spr</sprite>
+        <sprite>sprites\drop_bomb_spr</sprite>
+        <sprite>sprites\zepplin_under_spr</sprite>
+        <sprite>sprites\flamer_46_spr</sprite>
+        <sprite>sprites\flamer_small_spr</sprite>
+        <sprite>sprites\flamer_big_spr</sprite>
+        <sprite>sprites\flamer_huge_spr</sprite>
+        <sprite>sprites\flamer_ash_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -538,6 +554,8 @@
     <background>background\xi_BG</background>
     <background>background\cam_BG</background>
     <background>background\pollution_BG</background>
+    <background>background\hitler_clouds_BG</background>
+    <background>background\moto_frame_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -549,6 +567,7 @@
     <path>paths\shot_path_1</path>
     <path>paths\grenade_path</path>
     <path>paths\sickle_path</path>
+    <path>paths\toy_plane_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -746,6 +765,8 @@
       <object>objects\obj_mb_r</object>
       <object>objects\obj_wall_move</object>
       <object>objects\death_block</object>
+      <object>objects\monkeybar_move</object>
+      <object>objects\monkeybar_path</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
@@ -893,7 +914,20 @@
         <object>objects\projectile_test</object>
       </objects>
       <objects name="hitler">
+        <object>objects\zeplin_controller</object>
+        <object>objects\zepplin</object>
         <object>objects\hitler</object>
+        <object>objects\zyclon</object>
+        <object>objects\gas_cloud</object>
+        <object>objects\zep_canvas</object>
+        <object>objects\toy_plane</object>
+        <object>objects\war_balloon</object>
+        <object>objects\zepplin_under</object>
+        <object>objects\drop_bomb</object>
+        <object>objects\flamer_46</object>
+        <object>objects\flamer</object>
+        <object>objects\flamer_remain</object>
+        <object>objects\flamer_ash</object>
       </objects>
       <objects name="submarine">
         <object>objects\sub_controller</object>
@@ -971,8 +1005,6 @@
     </objects>
     <objects name="demo">
       <object>objects\NPC_dummy</object>
-      <object>objects\monkeybar_move</object>
-      <object>objects\monkeybar_path</object>
     </objects>
   </objects>
   <rooms name="rooms">
@@ -980,7 +1012,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\might_room</room>
+        <room>rooms\zepplin_room</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -1009,6 +1041,7 @@
       <room>rooms\ball_buster_room</room>
     </rooms>
     <rooms name="99-mini_games">
+      <room>rooms\might_room</room>
       <room>rooms\mario_room</room>
       <room>rooms\FF_room</room>
     </rooms>
@@ -1018,14 +1051,14 @@
       <room>rooms\sub_room</room>
     </rooms>
     <rooms name="pooh">
-      <room>rooms\pooh_room</room>
-      <room>rooms\forest_room</room>
       <room>rooms\fent_room</room>
+      <room>rooms\pooh_room</room>
       <room>rooms\final_room</room>
       <room>rooms\dream_room</room>
       <room>rooms\pooh_stage</room>
       <room>rooms\xi_room</room>
       <room>rooms\cam_room</room>
+      <room>rooms\forest_room</room>
     </rooms>
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
