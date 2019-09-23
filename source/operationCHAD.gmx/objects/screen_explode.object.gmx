@@ -25,32 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=true
-
-alarm[0]=60
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>BUFFER=false
+            <string>MAX=40
 </string>
           </argument>
         </arguments>
@@ -73,34 +48,11 @@ alarm[0]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(BUFFER=true)
-exit
-
-var MARGIN=100;
-
-instance_deactivate_all(true)
-
-
-instance_activate_region(view_xview[0]-MARGIN,view_yview[0]-MARGIN,400+(MARGIN*2),240+(MARGIN*2),true)
-
-
-
-//list of instances that should always be activated
-instance_activate_object(obj_player)
-instance_activate_object(obj_control)
-instance_activate_object(obj_camera)
-instance_activate_object(obj_shader)
-instance_activate_object(obj_menu)
-instance_activate_object(obj_editor)
-
-instance_activate_object(dev_cheater)
-
-instance_activate_object(player_mockup)
-
-instance_activate_object(screen_explode)
-
-instance_activate_object(explode_parent)
-
+            <string>
+    if(instance_number(explode_parent)&lt;MAX)
+        instance_create(view_xview[0]-40+random(480),view_yview[0]-40+random(320),explode_big)
+        
+        
 </string>
           </argument>
         </arguments>

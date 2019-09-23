@@ -118,7 +118,6 @@
         <sprite>sprites\toy_plane_spr</sprite>
         <sprite>sprites\war_balloon_spr</sprite>
         <sprite>sprites\drop_bomb_spr</sprite>
-        <sprite>sprites\zepplin_under_spr</sprite>
         <sprite>sprites\flamer_46_spr</sprite>
         <sprite>sprites\flamer_small_spr</sprite>
         <sprite>sprites\flamer_big_spr</sprite>
@@ -128,6 +127,9 @@
         <sprite>sprites\hitler_bullet_mega_spr</sprite>
         <sprite>sprites\hitler_bullet_mask_spr</sprite>
         <sprite>sprites\hitler_flame_mask_spr</sprite>
+        <sprite>sprites\zeplin_frame_spr</sprite>
+        <sprite>sprites\zeplin_under_spr</sprite>
+        <sprite>sprites\zeplin_under_explode_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -493,6 +495,9 @@
       <sprite>sprites\fent_P1_spr</sprite>
       <sprite>sprites\fent_P2_spr</sprite>
     </sprites>
+    <sprites name="effects">
+      <sprite>sprites\explode_bg_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -783,6 +788,9 @@
       <object>objects\obj_dust</object>
       <object>objects\obj_particle</object>
       <object>objects\small_explode</object>
+      <object>objects\explode_big</object>
+      <object>objects\explode_parent</object>
+      <object>objects\screen_explode</object>
     </objects>
     <objects name="editor">
       <object>objects\obj_editor</object>
@@ -1019,8 +1027,8 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\zepplin_room</room>
-        <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
+        <room>rooms\demo_room</room>
       </rooms>
     </rooms>
     <rooms name="2-Internet">

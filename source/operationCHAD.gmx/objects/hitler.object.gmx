@@ -89,6 +89,13 @@ with(flamer)
     
 with(flamer_remain)
     instance_destroy()
+    
+    
+with(hitler_bullet)
+    instance_destroy()
+    
+with(zepplin)
+    alarm[1]=120
 </string>
           </argument>
         </arguments>

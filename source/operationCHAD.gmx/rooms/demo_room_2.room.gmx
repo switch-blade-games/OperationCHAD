@@ -18,6 +18,8 @@ obj_camera.cam_state = camState.free;
 
 instance_create(0,0,cam_deactivator)
 
+
+
 /*
 
 enum camState {

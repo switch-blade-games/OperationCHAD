@@ -18,6 +18,8 @@ obj_camera.cam_state = camState.free;
 
 instance_create(0,0,cam_deactivator)
 
+
+
 //instance_create(0,0,internet_controller)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

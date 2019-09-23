@@ -25,7 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>UNDER=instance_create(x,y,zepplin_under)
+            <string>NORMAL=1
+
+EXPLODE=2
+
+EXPLODEdone=3
+
+
+state=NORMAL
+
+TOPsur=surface_create(800,480)
+
+
+EXPLODEadd=10
+
+
+EXPLODEfade=0
+
+EXPLODEmax=24
+
+EXPLODErate=10
+
+EXPLODEx=0
+
+EXPLODEnoise=20
+
+UNDER=instance_create(x,y,zepplin_under)
 
 LEFT=1
 RIGHT=2
@@ -82,6 +107,87 @@ instance_create(0,0,zeplin_controller)
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///start explode sequence
+
+state=EXPLODE
+
+with(zepplin_under)
+    sprite_index=zeplin_under_explode_spr
+    
+with(zep_canvas)
+    alarm[1]=2
+    
+
+alarm[0]=2
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if not(state=EXPLODE)
+exit
+
+EXPLODEfade+=1
+
+EXPLODEx=EXPLODEfade*EXPLODEadd
+
+
+var i=0;
+
+repeat(14){
+
+instance_create(x+400+EXPLODEx+random(EXPLODEnoise)-random(EXPLODEnoise),y+(20*i)+random(EXPLODEnoise)-random(EXPLODEnoise),explode_big)
+
+instance_create(x+400-EXPLODEx+random(EXPLODEnoise)-random(EXPLODEnoise),y+(20*i)+random(EXPLODEnoise)-random(EXPLODEnoise),explode_big)
+
+i+=1
+}
+
+if(EXPLODEfade&gt;=EXPLODEmax)
+    state=EXPLODEdone
+
+
+
+alarm[0]=EXPLODErate
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -99,7 +205,28 @@ instance_create(0,0,zeplin_controller)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>surface_set_target(TOPsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite(zeplin_spr,-1,0,0)
+
+if state=EXPLODE
+or
+state=EXPLODEdone{
+
+blend_sub()
+draw_set_color(c_white)
+
+draw_rectangle(400,0,400+EXPLODEx,280,false)
+
+draw_rectangle(400,0,400-EXPLODEx,280,false)
+
+blend_normal()
+
+}
+
+surface_reset_target()
 
 
 if(Hstate=RIGHT){
@@ -141,6 +268,9 @@ if(Vstate=DOWN){
 x=xstart+Hfade
 y=ystart+Vfade
 
+
+//place monkey-bar
+
 var i=0;
 
 repeat(NUM){
@@ -154,15 +284,56 @@ i+=1
 
 i=0;
 
+
+//place canvases
+
+if not(state=EXPLODE)
+
 repeat(4){
+
+if(instance_number(CAN[1])=1){
 
 CAN[i].x=x+270+(i*90)
 CAN[i].y=y+200
+}
+
 i+=1
 }
 
+
+
 UNDER.x=x
 UNDER.y=y
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+
+
+draw_sprite(zeplin_frame_spr,-1,x,y)
+
+draw_surface_ext(TOPsur,x,y,1,1,0,c_white,1)
+
+
 </string>
           </argument>
         </arguments>
