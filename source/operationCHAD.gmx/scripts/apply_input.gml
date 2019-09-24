@@ -128,7 +128,7 @@ switch(move_state)
             }
         
         // jump
-        if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed) and (!input_down)
+        if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
             jump();
         
         // fire weapon
