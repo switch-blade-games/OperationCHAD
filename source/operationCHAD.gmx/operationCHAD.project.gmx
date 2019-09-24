@@ -130,6 +130,11 @@
         <sprite>sprites\zeplin_frame_spr</sprite>
         <sprite>sprites\zeplin_under_spr</sprite>
         <sprite>sprites\zeplin_under_explode_spr</sprite>
+        <sprite>sprites\canvas_big_spr</sprite>
+        <sprite>sprites\big_sketch_spr</sprite>
+        <sprite>sprites\can_tank_spr</sprite>
+        <sprite>sprites\can_tank_bullet_spr</sprite>
+        <sprite>sprites\can_tank_shot_mask_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -942,6 +947,12 @@
         <object>objects\flamer_ash</object>
         <object>objects\hitler_shoot_controller</object>
         <object>objects\hitler_bullet</object>
+        <objects name="P2">
+          <object>objects\zeplin_P2_controller</object>
+          <object>objects\can_tank</object>
+          <object>objects\big_canvas</object>
+          <object>objects\can_tank_shot</object>
+        </objects>
       </objects>
       <objects name="submarine">
         <object>objects\sub_controller</object>
