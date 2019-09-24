@@ -266,6 +266,10 @@ if (move_state == mState.dead)
         or (instance_exists(sub_controller))
             dead_moto = true;
         
+        yspeed = 0;
+        no_hang = false;
+        hang_id = noone;
+        
         if (dead_moto)
             {
             move_state = mState.moto;
@@ -331,6 +335,9 @@ if (move_state != mState.dead)
     xspeed = sign(x-other.x)*2;
     yspeed = -8;
     
+    if (instance_exists(obj_shader))
+        obj_shader.flash = 3;
+    
     //with(other)
     //    instance_destroy();
     }
@@ -365,6 +372,9 @@ if (move_state != mState.dead)
     on_ground = false;
     xspeed = sign(x-other.x)*2;
     yspeed = -8;
+    
+    if (instance_exists(obj_shader))
+        obj_shader.flash = 3;
     }
 </string>
           </argument>

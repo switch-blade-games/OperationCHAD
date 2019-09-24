@@ -34,8 +34,7 @@ EXPLODEdone=3
 
 state=NORMAL
 
-TOPsur=surface_create(800,480)
-
+TOPsur=-1;
 
 EXPLODEadd=10
 
@@ -52,26 +51,25 @@ EXPLODEnoise=20
 
 UNDER=instance_create(x,y,zepplin_under)
 
-LEFT=1
-RIGHT=2
+//LEFT=1
+//RIGHT=2
 
 Hmax=8
 Hfade=0
+Hrate=0.03
+Hrad = 0;
 
-Hrate=0.3
+//Hstate=choose(LEFT,RIGHT)
 
+//UP=1
+//DOWN=2
 
-Hstate=choose(LEFT,RIGHT)
-
-UP=1
-DOWN=2
-
-Vstate=choose(UP,DOWN)
+//Vstate=choose(UP,DOWN)
 
 Vmax=8
 Vfade=0
-Vrate=0.1
-
+Vrate=0.01
+Vrad = 0;
 
 //make monkey-bars
 
@@ -207,105 +205,89 @@ alarm[0]=EXPLODErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(TOPsur)
+            <string>// recreate surface if it doesn't exist
+if (!surface_exists(TOPsur))
+    TOPsur = surface_create(800,480);
 
+// draw top surface
+surface_set_target(TOPsur);
 draw_clear_alpha(c_white,0)
 
 draw_sprite(zeplin_spr,-1,0,0)
 
-if state=EXPLODE
-or
-state=EXPLODEdone{
-
-blend_sub()
-draw_set_color(c_white)
-
-draw_rectangle(400,0,400+EXPLODEx,280,false)
-
-draw_rectangle(400,0,400-EXPLODEx,280,false)
-
-blend_normal()
-
-}
-
-surface_reset_target()
-
-
-if(Hstate=RIGHT){
-
-    Hfade+=Hrate
+if (state=EXPLODE or state=EXPLODEdone)
+    {
+    blend_sub()
+    draw_set_color(c_white)
     
+    draw_rectangle(400,0,400+EXPLODEx,280,false)
+    draw_rectangle(400,0,400-EXPLODEx,280,false)
+    
+    blend_normal()
+    }
+
+surface_reset_target();
+
+// OLD SHIP SWAYING
+
+/*
+if(Hstate=RIGHT){
+    Hfade+=Hrate
     if(Hfade&gt;Hmax)
         Hstate=LEFT
-        
 }
-
 if(Hstate=LEFT){
-    
     Hfade-=Hrate
-    
     if(Hfade&lt;-Hmax)
         Hstate=RIGHT
 }
-
-
 if(Vstate=UP){
-
     Vfade+=Vrate
-    
     if(Vfade&gt;Hmax)
         Vstate=DOWN
-        
 }
-
 if(Vstate=DOWN){
-    
     Vfade-=Vrate
-    
     if(Vfade&lt;-Vmax)
         Vstate=UP
 }
+*/
+
+// ship swaying
+Hrad += Hrate;
+if (Hrad &gt; 2*pi)
+    Hrad = 0;
+Hfade = +cos(Hrad)*Hmax;
+Vrad += Vrate;
+if (Vrad &gt; 2*pi)
+    Vrad = 0;
+Vfade = -sin(Vrad)*Vmax;
+
+x=round(xstart+Hfade);
+y=round(ystart+Vfade);
+
+// move monkeybars
+for(var i=0; i&lt;NUM; i++;)
+    {
+    BAR[i].x=round(x+240+(16*i));
+    BAR[i].y=round(y+320);
+    }
 
 
-x=xstart+Hfade
-y=ystart+Vfade
-
-
-//place monkey-bar
-
-var i=0;
-
-repeat(NUM){
-
-
-BAR[i].x=x+240+(16*i)
-BAR[i].y=y+320
-
-i+=1
-}
-
-i=0;
-
-
-//place canvases
-
+// move canvases
 if not(state=EXPLODE)
+for(var i=0; i&lt;4; i++;)
+    {
+    if (instance_number(CAN[1])=1)
+        {
+        CAN[i].x=round(x+270+(i*90));
+        CAN[i].y=round(y+200);
+        }
+    }
 
-repeat(4){
-
-if(instance_number(CAN[1])=1){
-
-CAN[i].x=round(x+270+(i*90))
-CAN[i].y=round(y+200)
-}
-
-i+=1
-}
-
-
-
-UNDER.x=x
-UNDER.y=y
+// ship background
+UNDER.x=round(xstart+Hfade*0.75);
+UNDER.y=round(ystart+Vfade);
 </string>
           </argument>
         </arguments>
@@ -328,14 +310,9 @@ UNDER.y=y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-
-draw_sprite(zeplin_frame_spr,-1,x,y)
+            <string>draw_sprite(zeplin_frame_spr,-1,x,y)
 
 draw_surface_ext(TOPsur,x,y,1,1,0,c_white,1)
-
-
 </string>
           </argument>
         </arguments>

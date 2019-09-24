@@ -51,6 +51,9 @@ x_freq = 0.75;
 x_amp = 0.02*2;
 y_freq = 1.95;
 y_amp = 0.02*5;
+
+// death flash
+flash = 0;
 </string>
           </argument>
         </arguments>
@@ -160,6 +163,14 @@ else
     shader_set_uniform_f(u_scan,global.scan);
     draw_surface(last,0,0);
     shader_reset();
+    }
+
+if (flash &gt; 0)
+    {
+    flash--;
+    draw_set_color($FFFFFF);
+    draw_rectangle(0,0,view_wview[0],view_hview[0],0);
+    draw_set_color($000000);
     }
 </string>
           </argument>
