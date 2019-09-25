@@ -28,6 +28,12 @@
             <string>debug = false;
 mockup = false;
 event_user(0);
+
+fps_num = 60;
+fps_ind = 0;
+for(var i=fps_num-1; i&gt;=0; i--;)
+    fps_avg[i] = 0;
+avg_fps = 0;
 </string>
           </argument>
         </arguments>
@@ -50,7 +56,14 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// toggle debug mode
+            <string>fps_avg[fps_ind] = fps_real;
+avg_fps += fps_avg[fps_ind];
+fps_ind++;
+if (fps_ind &gt;= fps_num)
+    fps_ind = 0;
+avg_fps -= fps_avg[fps_ind];
+
+// toggle debug mode
 if (keyboard_check_pressed(vk_f1))
     debug = !debug;
 // toggle player mockup mode
@@ -220,7 +233,7 @@ file_text_close(file);
         {
         draw_set_halign(0);
         draw_set_valign(0);
-        draw_text_outline(vx+4,vy+4+000,"FPS: "+string(fps_real));
+        draw_text_outline(vx+4,vy+4+000,"FPS: "+string(round(avg_fps/fps_num)));
         draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
         draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
         draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
