@@ -1041,8 +1041,9 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\zepplin_room</room>
         <room>rooms\demo_room_2</room>
+        <room>rooms\sub_room</room>
+        <room>rooms\xi_room</room>
         <room>rooms\demo_room</room>
       </rooms>
     </rooms>
@@ -1075,9 +1076,9 @@
       <room>rooms\FF_room</room>
     </rooms>
     <rooms name="germany">
-      <room>rooms\hitler_room</room>
+      <room>rooms\zepplin_room</room>
       <room>rooms\germany_motor_room</room>
-      <room>rooms\sub_room</room>
+      <room>rooms\hitler_room</room>
     </rooms>
     <rooms name="pooh">
       <room>rooms\fent_room</room>
@@ -1085,7 +1086,6 @@
       <room>rooms\final_room</room>
       <room>rooms\dream_room</room>
       <room>rooms\pooh_stage</room>
-      <room>rooms\xi_room</room>
       <room>rooms\cam_room</room>
       <room>rooms\forest_room</room>
     </rooms>

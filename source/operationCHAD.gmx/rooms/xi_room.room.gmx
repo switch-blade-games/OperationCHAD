@@ -78,8 +78,6 @@ with(par_climb)
     <instance objName="obj_climb_r" x="0" y="10" name="inst_B0553B83" locked="0" code="" scaleX="1" scaleY="9.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="380" y="10" name="inst_2376CCCB" locked="0" code="" scaleX="1" scaleY="9.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb_l" x="340" y="15" name="inst_329BE1B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_r" x="20" y="15" name="inst_467AC53D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="60" y="15" name="inst_D2E0D05E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="80" y="15" name="inst_AD0847A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="100" y="15" name="inst_8CAEF4C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="120" y="15" name="inst_25DB734F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
