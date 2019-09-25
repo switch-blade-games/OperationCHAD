@@ -56,6 +56,15 @@
         <sprite>sprites\flame_part_spr</sprite>
         <sprite>sprites\ghost_baby_spr</sprite>
       </sprites>
+      <sprites name="embro">
+        <sprite>sprites\baby_jump_spr</sprite>
+        <sprite>sprites\baby_crawl_spr</sprite>
+        <sprite>sprites\cooler_spr</sprite>
+        <sprite>sprites\embro_spr</sprite>
+        <sprite>sprites\embro_case_spr</sprite>
+        <sprite>sprites\embro_case_bottom_spr</sprite>
+        <sprite>sprites\embro_overlay_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="2-Internet">
       <sprite>sprites\internet_horizon_spr</sprite>
@@ -280,15 +289,6 @@
       <sprite>sprites\spr_heat_seeker</sprite>
       <sprite>sprites\spr_flamethrower_flame</sprite>
     </sprites>
-    <sprites name="embro">
-      <sprite>sprites\baby_jump_spr</sprite>
-      <sprite>sprites\baby_crawl_spr</sprite>
-      <sprite>sprites\cooler_spr</sprite>
-      <sprite>sprites\embro_spr</sprite>
-      <sprite>sprites\embro_case_spr</sprite>
-      <sprite>sprites\embro_case_bottom_spr</sprite>
-      <sprite>sprites\embro_overlay_spr</sprite>
-    </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
       <sprite>sprites\block_spr</sprite>
@@ -315,6 +315,7 @@
       <sprite>sprites\sjw_10_spr</sprite>
     </sprites>
     <sprites name="effects">
+      <sprite>sprites\explode_bg_spr</sprite>
       <sprite>sprites\small_explode_spr</sprite>
       <sprite>sprites\flame_ball_spr</sprite>
       <sprite>sprites\small_flame_ball_spr</sprite>
@@ -455,6 +456,10 @@
         <sprite>sprites\fent_hand_spr</sprite>
         <sprite>sprites\fent_BG_2_spr</sprite>
         <sprite>sprites\fent_needle_spr</sprite>
+        <sprites name="painters">
+          <sprite>sprites\fent_P1_spr</sprite>
+          <sprite>sprites\fent_P2_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="xi_battle">
         <sprite>sprites\xi_bot_spr</sprite>
@@ -498,13 +503,6 @@
         <sprite>sprites\forest_BG_spr</sprite>
         <sprite>sprites\xi_bamboo_spr</sprite>
       </sprites>
-    </sprites>
-    <sprites name="painters">
-      <sprite>sprites\fent_P1_spr</sprite>
-      <sprite>sprites\fent_P2_spr</sprite>
-    </sprites>
-    <sprites name="effects">
-      <sprite>sprites\explode_bg_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -764,6 +762,7 @@
       <object>objects\par_climb</object>
       <object>objects\par_shootable</object>
       <object>objects\par_projectile</object>
+      <object>objects\par_explode</object>
       <object>objects\par_actor_projectile</object>
       <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
@@ -797,7 +796,6 @@
       <object>objects\obj_particle</object>
       <object>objects\small_explode</object>
       <object>objects\explode_big</object>
-      <object>objects\explode_parent</object>
       <object>objects\screen_explode</object>
     </objects>
     <objects name="editor">

@@ -83,8 +83,6 @@ instance_deactivate_all(true)
 
 instance_activate_region(view_xview[0]-MARGIN,view_yview[0]-MARGIN,400+(MARGIN*2),240+(MARGIN*2),true)
 
-
-
 //list of instances that should always be activated
 instance_activate_object(obj_player)
 instance_activate_object(obj_control)
@@ -92,15 +90,12 @@ instance_activate_object(obj_camera)
 instance_activate_object(obj_shader)
 instance_activate_object(obj_menu)
 instance_activate_object(obj_editor)
-
 instance_activate_object(dev_cheater)
-
 instance_activate_object(player_mockup)
 
+// test
 instance_activate_object(screen_explode)
-
-instance_activate_object(explode_parent)
-
+instance_activate_object(par_explode)
 </string>
           </argument>
         </arguments>
