@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>debug = false;
+            <string>global.vtime = 0;
+global.ctime = 0;
+
+debug = false;
 mockup = false;
 event_user(0);
 
@@ -216,6 +219,9 @@ file_text_close(file);
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
     with(par_mb)
         draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+    draw_set_color(c_lime);
+    with(par_verlet)
+        draw_point(x,y);
     
     var inst_num = 0;
     inst_num += instance_number(par_solid);
@@ -229,6 +235,9 @@ file_text_close(file);
     var part_num = 0;
     part_num += instance_number(par_effect);
     
+    var rope_num = 0;
+    rope_num += instance_number(par_verlet);
+    
     if (!instance_exists(player_mockup))
         {
         draw_set_halign(0);
@@ -237,7 +246,8 @@ file_text_close(file);
         draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
         draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
         draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
-        draw_text_outline(vx+4,vy+4+048,"CamPos: "+string(vx)+"/"+string(vy));
+        draw_text_outline(vx+4,vy+4+048,"Segments: "+string(rope_num)+" ["+string(round(global.vtime))+"ms]");
+        draw_text_outline(vx+4,vy+4+060,"CamPos: "+string(vx)+"/"+string(vy)+" ["+string(round(global.ctime))+"ms]");
         draw_set_color($000000);
         }
     }

@@ -650,6 +650,12 @@
       <script>scripts\hunny_shuffle.gml</script>
       <script>scripts\hunny_bank.gml</script>
     </scripts>
+    <scripts name="verlet">
+      <script>scripts\verlet_init.gml</script>
+      <script>scripts\verlet_update.gml</script>
+      <script>scripts\verlet_link_add.gml</script>
+      <script>scripts\verlet_link_remove.gml</script>
+    </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
     <script>scripts\projectile.gml</script>
@@ -766,6 +772,7 @@
       <object>objects\par_actor_projectile</object>
       <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
+      <object>objects\par_verlet</object>
     </objects>
     <objects name="colliders">
       <object>objects\obj_wall</object>
@@ -1032,6 +1039,8 @@
     </objects>
     <objects name="demo">
       <object>objects\NPC_dummy</object>
+      <object>objects\obj_rope</object>
+      <object>objects\obj_rope_segment</object>
     </objects>
   </objects>
   <rooms name="rooms">

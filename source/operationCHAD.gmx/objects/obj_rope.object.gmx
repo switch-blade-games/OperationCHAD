@@ -25,9 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=true
+            <string>// modify these
 
-alarm[0]=60
+obj = obj_rope_segment;
+len = 120; // length of the rope (in pixels)
+seg = 12;  // how many segments (must be at least 1)
+
+width = 3;
+color = $000000;
+
+// stuff to make sure creation order is correct
+
+ready = false;
+alarm[0] = 1;
 </string>
           </argument>
         </arguments>
@@ -50,7 +60,25 @@ alarm[0]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=false
+            <string>// DON'T MODIFY ANYTHING BELOW!!!
+
+link = array_create(seg);
+var seg_len = len/seg;
+var pos = 0;
+
+link[pos] = instance_create(x,y+pos*seg_len,obj);
+link[pos].static = true;
+pos++;
+
+for(var i=0; i&lt;seg-1; i++;)
+    {
+    link[pos] = instance_create(x,y+pos*seg_len,obj);
+    pos++;
+    
+    verlet_link_add(link[i],link[i+1],seg_len);
+    }
+
+ready = true;
 </string>
           </argument>
         </arguments>
@@ -73,31 +101,57 @@ alarm[0]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(BUFFER=true)
-exit
+            <string>if (!ready) or (!instance_exists(obj_player))
+    exit;
 
-var MARGIN=100;
+var px = obj_player.x;
+var py = obj_player.y;
+var x1 = obj_player.bbox_left;
+var y1 = obj_player.bbox_top;
+var x2 = obj_player.bbox_right;
+var y2 = obj_player.bbox_bottom;
 
-var time = get_timer();
+for(var i=0; i&lt;seg; i++;)
+    {
+    var inst = link[@i];
+    if (point_in_rectangle(inst.x,inst.y,x1,y1,x2,y2))
+        {
+        var dir = point_direction(px,py,inst.x,inst.y);
+        inst.x += lengthdir_x(1,dir);
+        inst.y += lengthdir_y(1,dir);
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!ready)
+    exit;
 
-instance_deactivate_all(true);
-instance_activate_region(view_xview[0]-MARGIN,view_yview[0]-MARGIN,view_wview[0]+(MARGIN*2),view_hview[0]+(MARGIN*2),true);
+draw_set_color(color);
 
-//list of instances that should always be activated
-instance_activate_object(obj_player);
-instance_activate_object(obj_control);
-instance_activate_object(obj_camera);
-instance_activate_object(obj_shader);
-instance_activate_object(obj_menu);
-instance_activate_object(obj_editor);
-instance_activate_object(dev_cheater);
-instance_activate_object(player_mockup);
+for(var i=0; i&lt;seg-1; i++;)
+    draw_line_width(link[@i].x,link[@i].y,link[@i+1].x,link[@i+1].y,width);
 
-// test
-instance_activate_object(screen_explode);
-instance_activate_object(par_explode);
-
-global.ctime = get_timer()-time;
+draw_set_color($000000);
 </string>
           </argument>
         </arguments>
