@@ -25,10 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(zepplin)
-    alarm[1]=30
+            <string>//with(zepplin)
+    //alarm[1]=30
 
-exit
+//exit
 
 instance_create(0,0,hitler)
 

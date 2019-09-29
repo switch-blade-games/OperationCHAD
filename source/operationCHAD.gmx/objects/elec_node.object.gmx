@@ -43,9 +43,11 @@ MOVE=3
 
 HANG=4
 
-PREelec=5
+PREshock=5
 
-ELEC=6
+TWIST=6
+
+ELEC=7
 
 state=SPAWN
 
@@ -72,6 +74,35 @@ HANGtime=60
 WAITtime=60
 
 side=1
+
+
+SHOCKset=choose(1,1)
+
+PRESHOCKtime=60
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//if(SHOCKset=1)
+
 </string>
           </argument>
         </arguments>
@@ -154,12 +185,7 @@ alarm[2]=WAITtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///I just chose "side1" for where the rope should be anchored but it doesn't really matter since the rope goes from side 1 to side 2
-
-//after being created obj rope should follow, I attempted this in the step event
-if(side=1)
-    ROPEson=instance_create(x,y,obj_rope)
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -223,11 +249,65 @@ if(state=MOVE){
 
 
 if(state=HANG){
-    x=DESTobj.x
+    
+    
+    if(id=elec_node_controller.Lson)
+    if(elec_node_controller.Rson.state=2){
+        state=PREshock
+        alarm[3]=PREshocktime
+    }
+    
+}
+
+if(state=HANG)
+or
+state=PREshock
+or
+state=SHOCK{
+x=DESTobj.x
     y=DESTobj.y
 }
     
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(instance_number(elec_node_controller)=0){
+
+    with(elec_node)
+        instance_destroy()
+        
+exit
+}
+
+if(elec_node_controller.Rson&gt;-1)
+if(side=1){
+
+    draw_set_color(global.WHITE)
+    draw_line_width(x,y,elec_node_controller.Rson.x,elec_node_controller.Rson.y,3)
+    draw_set_color(c_white)
+}
+
+draw_self()
 </string>
           </argument>
         </arguments>

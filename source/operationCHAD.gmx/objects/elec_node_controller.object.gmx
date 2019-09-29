@@ -42,6 +42,11 @@ alarm[1]=rate
 
 alarm[2]=SPAWNtime
 
+SPAWN=1
+WAIT=2
+
+state=SPAWN
+
 
 
 </string>
@@ -71,8 +76,10 @@ alarm[2]=SPAWNtime
     
     Rson.visible=true
     Rson.alarm[1]=2
+    
+state=WAIT
 
-instance_destroy()
+
 </string>
           </argument>
         </arguments>
@@ -96,6 +103,11 @@ instance_destroy()
           <argument>
             <kind>1</kind>
             <string>
+if not(state=SPAWN){
+ON=true
+exit
+}
+
 if(ON=true)
 ON=false
 else

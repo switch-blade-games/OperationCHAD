@@ -32,7 +32,7 @@ facing=choose(LEFT,RIGHT)
 
 
 
-alarm[0]=120
+alarm[0]=10
 
 SIDEdist=80
 

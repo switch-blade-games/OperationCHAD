@@ -147,6 +147,8 @@
           <sprite>sprites\canvas_big_spr</sprite>
           <sprite>sprites\can_mortar_spr</sprite>
           <sprite>sprites\elec_node_spr</sprite>
+          <sprite>sprites\rope_zag_spr</sprite>
+          <sprite>sprites\rope_shock_spr</sprite>
         </sprites>
       </sprites>
     </sprites>

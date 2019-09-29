@@ -48,7 +48,7 @@ SLIDE=3
 state=DOWN
 
 
-WAITtime=65
+WAITtime=20
 
 
 
@@ -83,12 +83,12 @@ RESTtime=30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//var SON=instance_create(x,y,choose(can_tank,can_mortar));
+            <string>var SON=instance_create(x,y,choose(can_tank,can_tank));
 
 
 
 
-var SON=instance_create(x,y,choose(elec_node_controller));
+//var SON=instance_create(x,y,choose(elec_node_controller));
 
 SON.dad=id
 </string>
@@ -126,6 +126,9 @@ if(x&lt;zepplin.x+400)
 motion_set(SLIDEdir,SLIDEspe)
 
 state=SLIDE
+
+with(zeplin_P2_controller)
+        alarm[0]=2
 </string>
           </argument>
         </arguments>
@@ -188,8 +191,7 @@ x&lt;=view_xview[0]-300
 
     instance_destroy()
     
-    with(zeplin_P2_controller)
-        alarm[0]=2
+    
 }
 </string>
           </argument>
