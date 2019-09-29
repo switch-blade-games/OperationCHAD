@@ -27,18 +27,18 @@
             <kind>1</kind>
             <string>event_inherited();
 
-image_xscale = 2;
+//image_xscale = 2;
 x1 = 0;
 y1 = 0;
-x2 = 20*image_xscale;
+x2 = 20//*image_xscale;
 y2 = 0;
 
 // just assign a path or speed/direction here
 // it will take care of everything else by itself
-direction = 90;
-speed = 1;
-timer_init = room_speed*1;
-timer = timer_init;
+//direction = 90;
+//speed = 1;
+//timer_init = room_speed*1;
+//timer = timer_init;
 </string>
           </argument>
         </arguments>

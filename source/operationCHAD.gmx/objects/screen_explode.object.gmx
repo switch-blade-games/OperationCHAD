@@ -48,11 +48,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-    if(instance_number(explode_parent)&lt;MAX)
-        instance_create(view_xview[0]-40+random(480),view_yview[0]-40+random(320),explode_big)
-        
-        
+            <string>if(instance_number(object_index)&lt;MAX)
+    instance_create(view_xview[0]-40+random(480),view_yview[0]-40+random(320),explode_big)  
 </string>
           </argument>
         </arguments>

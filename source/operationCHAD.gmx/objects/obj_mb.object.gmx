@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x1 = 0;
-y1 = 0;
-x2 = 20;
-y2 = 0;
+            <string>event_inherited();
 </string>
           </argument>
         </arguments>

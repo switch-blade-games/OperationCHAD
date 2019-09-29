@@ -75,7 +75,7 @@ Vrad = 0;
 
 var i=0;
 
-NUM=18;
+NUM=16;
 
 repeat(NUM){
 
@@ -278,7 +278,7 @@ y=round(ystart+Vfade);
 // move monkeybars
 for(var i=0; i&lt;NUM; i++;)
     {
-    BAR[i].x=round(x+240+(16*i));
+    BAR[i].x=round(x+240+(20*i));
     BAR[i].y=round(y+320);
     }
 

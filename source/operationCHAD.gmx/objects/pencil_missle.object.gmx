@@ -25,14 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>event_inherited();
 
-image_xscale=1
+x1 = 0;
+y1 = 0;
+x2 = sprite_get_width(sprite_index);
+y2 = 0;
 
-motion_set(0,1+random(0.5))
+image_xscale=1;
 
-
-
+motion_set(0,1+random(0.5));
 </string>
           </argument>
         </arguments>
@@ -56,7 +58,7 @@ motion_set(0,1+random(0.5))
           <argument>
             <kind>1</kind>
             <string>if(x&gt;view_xview[0]+400+100)
-    instance_destroy()
+    instance_destroy();
 </string>
           </argument>
         </arguments>
