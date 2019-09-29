@@ -98,6 +98,14 @@ i+=1
 instance_create(0,0,zeplin_controller)
 
 
+//make nodes for elec attack
+
+Lnode=instance_create(x,y,elec_place)
+Rnode=instance_create(x,y,elec_place)
+
+
+
+
 
 
 </string>
@@ -284,6 +292,13 @@ for(var i=0; i&lt;4; i++;)
         CAN[i].y=round(y+200);
         }
     }
+    
+//elec node placement
+Lnode.x=round(x+240)
+Lnode.y=round(y+320)
+
+Rnode.x=round(x+320+240)
+Rnode.y=round(y+320)
 
 // ship background
 UNDER.x=round(xstart+Hfade*0.75);

@@ -146,6 +146,7 @@
           <sprite>sprites\big_sketch_spr</sprite>
           <sprite>sprites\canvas_big_spr</sprite>
           <sprite>sprites\can_mortar_spr</sprite>
+          <sprite>sprites\elec_node_spr</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -961,6 +962,9 @@
           <object>objects\can_mortar</object>
           <object>objects\big_canvas</object>
           <object>objects\can_tank_shot</object>
+          <object>objects\elec_node_controller</object>
+          <object>objects\elec_node</object>
+          <object>objects\elec_place</object>
         </objects>
       </objects>
       <objects name="submarine">
@@ -1048,9 +1052,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\zepplin_room</room>
         <room>rooms\demo_room_2</room>
-        <room>rooms\sub_room</room>
-        <room>rooms\xi_room</room>
         <room>rooms\demo_room</room>
       </rooms>
     </rooms>
@@ -1083,12 +1086,13 @@
       <room>rooms\FF_room</room>
     </rooms>
     <rooms name="germany">
-      <room>rooms\zepplin_room</room>
       <room>rooms\germany_motor_room</room>
       <room>rooms\hitler_room</room>
+      <room>rooms\sub_room</room>
     </rooms>
     <rooms name="pooh">
       <room>rooms\fent_room</room>
+      <room>rooms\xi_room</room>
       <room>rooms\pooh_room</room>
       <room>rooms\final_room</room>
       <room>rooms\dream_room</room>
