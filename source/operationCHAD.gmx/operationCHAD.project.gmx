@@ -151,6 +151,14 @@
           <sprite>sprites\rope_shock_spr</sprite>
         </sprites>
       </sprites>
+      <sprites name="P3">
+        <sprite>sprites\hitler_paint_1_spr</sprite>
+        <sprite>sprites\hitler_paint_3_spr</sprite>
+        <sprite>sprites\hitler_paint_2_spr</sprite>
+        <sprite>sprites\big_brush_spr</sprite>
+        <sprite>sprites\pencil_missle_spr</sprite>
+        <sprite>sprites\pencil_mask_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="4-Clown World">
       <sprites name="circle_ride">
@@ -968,6 +976,11 @@
           <object>objects\elec_node</object>
           <object>objects\elec_place</object>
         </objects>
+        <objects name="P3">
+          <object>objects\paint_painter</object>
+          <object>objects\pencil_missle</object>
+          <object>objects\zeplin_P3_controller</object>
+        </objects>
       </objects>
       <objects name="submarine">
         <object>objects\sub_controller</object>
@@ -1054,6 +1067,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\paint_room</room>
         <room>rooms\zepplin_room</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
