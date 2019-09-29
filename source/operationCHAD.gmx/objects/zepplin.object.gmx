@@ -104,7 +104,8 @@ Lnode=instance_create(x,y,elec_place)
 Rnode=instance_create(x,y,elec_place)
 
 
-
+with(monkeybar_move)
+visible=false
 
 
 

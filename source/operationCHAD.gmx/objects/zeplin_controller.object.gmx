@@ -30,6 +30,8 @@
 
 //exit
 
+
+
 instance_create(0,0,hitler)
 
 CANlist=ds_list_create()
@@ -98,6 +100,8 @@ with(PICK)
 alarm[0]=2
 
 alarm[0]=rate+random(ratenoise)
+
+
 
 
 </string>
