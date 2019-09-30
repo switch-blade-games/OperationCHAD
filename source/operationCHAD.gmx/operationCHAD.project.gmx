@@ -158,6 +158,15 @@
         <sprite>sprites\big_brush_spr</sprite>
         <sprite>sprites\pencil_missle_spr</sprite>
         <sprite>sprites\pencil_mask_spr</sprite>
+        <sprite>sprites\black_paint_spr</sprite>
+        <sprite>sprites\snow_spr</sprite>
+        <sprite>sprites\hitler_final_spr</sprite>
+        <sprite>sprites\over_brush_spr</sprite>
+        <sprite>sprites\swas_big_spr</sprite>
+        <sprite>sprites\over_brush_mask_spr</sprite>
+        <sprite>sprites\anvil_spr</sprite>
+        <sprite>sprites\chain_ceiling_spr</sprite>
+        <sprite>sprites\balloon_up_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -582,6 +591,8 @@
     <background>background\pollution_BG</background>
     <background>background\hitler_clouds_BG</background>
     <background>background\moto_frame_BG</background>
+    <background>background\painting_final_BG</background>
+    <background>background\painting_tile_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -594,6 +605,7 @@
     <path>paths\grenade_path</path>
     <path>paths\sickle_path</path>
     <path>paths\toy_plane_path</path>
+    <path>paths\brush_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -977,9 +989,17 @@
           <object>objects\elec_place</object>
         </objects>
         <objects name="P3">
+          <object>objects\zeplin_P3_controller</object>
           <object>objects\paint_painter</object>
           <object>objects\pencil_missle</object>
-          <object>objects\zeplin_P3_controller</object>
+          <object>objects\hitler_brush</object>
+          <object>objects\swas_controller</object>
+          <object>objects\hitler_final</object>
+          <object>objects\over_brush</object>
+          <object>objects\black_paint</object>
+          <object>objects\swas_big</object>
+          <object>objects\over_brush_2</object>
+          <object>objects\chain_ceiling</object>
         </objects>
       </objects>
       <objects name="submarine">
@@ -1067,6 +1087,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\paint_2_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\zepplin_room</room>
         <room>rooms\demo_room_2</room>

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>100</depth>
+  <depth>120</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -261,7 +261,7 @@ draw_rectangle(view_xview[0]-BORDER,view_yview[0]-BORDER,view_xview[0]+400+BORDE
 
 draw_set_color(c_white)
 
-draw_surface(MYsur,0,0)
+draw_surface(MYsur,view_xview[0],view_yview[0])
 </string>
           </argument>
         </arguments>

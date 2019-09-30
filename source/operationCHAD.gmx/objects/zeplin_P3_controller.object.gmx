@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,7 +29,7 @@
 
 var i=0;
 
-repeat(4){
+repeat(3){
 
     ds_list_insert(PENlist,i,i)
     
@@ -43,6 +43,13 @@ rate=60
 alarm[0]=rate
 
 instance_create(0,0,paint_painter)
+
+SNOWx=0
+SNOWy=0
+
+SNOWsur=surface_create(400,240)
+
+SNOWspe=1
 </string>
           </argument>
         </arguments>
@@ -65,11 +72,15 @@ instance_create(0,0,paint_painter)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(ds_list_empty(PENlist)=true){
+            <string>if(instance_number(over_brush_2)=1)
+exit
+
+
+if(ds_list_empty(PENlist)=true){
 
 var i=0;
 
-repeat(4){
+repeat(3){
 
     ds_list_insert(PENlist,i,i)
     
@@ -84,9 +95,90 @@ var PENplace=ds_list_find_value(PENlist,0);
 
 ds_list_delete(PENlist,0)
 
-instance_create(view_xview[0]-120,60+(40*PENplace),pencil_missle)
+instance_create(view_xview[0]-120,60+(60*PENplace),pencil_missle)
 
 alarm[0]=rate
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SNOWx-=SNOWspe
+SNOWy+=SNOWspe
+
+surface_set_target(SNOWsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(snow_spr,-1,SNOWx,SNOWy)
+
+surface_reset_target()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(0,0,over_brush_2)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//view_xview[0]=0
+
+//draw_surface(SNOWsur,view_xview[0],view_yview[0])
+
 </string>
           </argument>
         </arguments>
