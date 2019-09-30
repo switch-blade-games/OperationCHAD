@@ -29,14 +29,20 @@
 global.ctime = 0;
 
 debug = false;
+debugMode = 0; // 0=detail; 1=simple; 2=extra;
 mockup = false;
 event_user(0);
 
+surf_graph = -1;
+graph_w = 120;
+graph_h = 40;
+graph_ind = 0;
 fps_num = 60;
 fps_ind = 0;
 for(var i=fps_num-1; i&gt;=0; i--;)
     fps_avg[i] = 0;
 avg_fps = 0;
+max_fps = 1;
 </string>
           </argument>
         </arguments>
@@ -59,7 +65,10 @@ avg_fps = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fps_avg[fps_ind] = fps_real;
+            <string>// smooth fps stats
+if (fps_real &gt; max_fps)
+    max_fps = fps_real;
+fps_avg[fps_ind] = fps_real;
 avg_fps += fps_avg[fps_ind];
 fps_ind++;
 if (fps_ind &gt;= fps_num)
@@ -68,7 +77,17 @@ avg_fps -= fps_avg[fps_ind];
 
 // toggle debug mode
 if (keyboard_check_pressed(vk_f1))
-    debug = !debug;
+    {
+    debugMode++;
+    if (debugMode &gt; 2)
+        debugMode = -1;
+    debug = (debugMode &gt; -1);
+    if (!debug)
+        {
+        with(par_actor)
+            nohit = false;
+        }
+    }
 // toggle player mockup mode
 if (keyboard_check_pressed(vk_f2))
     {
@@ -84,11 +103,6 @@ if (debug)
     {
     with(par_actor)
         nohit = true;
-    }
-else
-    {
-    with(par_actor)
-        nohit = false;
     }
 
 // next room
@@ -203,52 +217,96 @@ file_text_close(file);
     var vx = view_xview[0];
     var vy = view_yview[0];
     
-    draw_set_color(c_blue);
-    with(par_actor)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    draw_set_color(c_red);
-    with(par_enemy)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    draw_set_color(c_yellow);
-    with(par_projectile)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    draw_set_color(c_fuchsia);
-    with(par_solid)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    with(par_jt)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    with(par_mb)
-        draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-    draw_set_color(c_lime);
-    with(par_verlet)
-        draw_point(x,y);
-    
-    var inst_num = 0;
-    inst_num += instance_number(par_solid);
-    inst_num += instance_number(par_jt);
-    inst_num += instance_number(par_mb);
-    inst_num += instance_number(par_actor);
-    inst_num += instance_number(par_enemy);
-    inst_num += instance_number(par_shootable);
-    inst_num += instance_number(par_projectile);
-    
-    var part_num = 0;
-    part_num += instance_number(par_effect);
-    
-    var rope_num = 0;
-    rope_num += instance_number(par_verlet);
-    
-    if (!instance_exists(player_mockup))
+    // smooth fps graph
+    if (surface_exists(surf_graph))
+        surface_set_target(surf_graph);
+    else
         {
-        draw_set_halign(0);
-        draw_set_valign(0);
-        draw_text_outline(vx+4,vy+4+000,"FPS: "+string(round(avg_fps/fps_num)));
-        draw_text_outline(vx+4,vy+4+012,"Version: "+string(global.version));
-        draw_text_outline(vx+4,vy+4+024,"Instances: "+string(inst_num));
-        draw_text_outline(vx+4,vy+4+036,"Particles: "+string(part_num));
-        draw_text_outline(vx+4,vy+4+048,"Segments: "+string(rope_num)+" ["+string(round(global.vtime))+"ms]");
-        draw_text_outline(vx+4,vy+4+060,"CamPos: "+string(vx)+"/"+string(vy)+" ["+string(round(global.ctime))+"ms]");
+        surf_graph = surface_create(graph_w,graph_h);
+        surface_set_target(surf_graph);
+        draw_clear($000000);
+        }
+    
+    // fade to black
+    if (graph_ind &amp; 7 == 4)
+        {
         draw_set_color($000000);
+        draw_set_alpha(1/8);
+        draw_rectangle(0,0,graph_w,graph_h,0);
+        draw_set_alpha(1);
+        }
+    
+    // draw current graph line
+    draw_set_color($FFFFFF);
+    draw_line(graph_ind,graph_h,graph_ind,graph_h-(max(0,1500-fps_avg[graph_ind mod 60])/3000)*graph_h);
+    graph_ind++;
+    if (graph_ind &gt; graph_w)
+        graph_ind = 0;
+    
+    surface_reset_target();
+    
+    switch(debugMode)
+        {
+        case 0: // hitboxes
+            draw_set_color(c_blue);
+            with(par_actor)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_red);
+            with(par_enemy)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_yellow);
+            with(par_projectile)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_fuchsia);
+            with(par_solid)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            with(par_jt)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            with(par_mb)
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_lime);
+            with(par_verlet)
+                draw_point(x,y);
+            break;
+        
+        case 1: // simple
+            draw_set_color($000000);
+            draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
+            draw_surface(surf_graph,vx+400-(graph_w+4),vy+4);
+            draw_text((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
+            break;
+            
+        case 2: // detailed
+            var inst_num = 0;
+            inst_num += instance_number(par_solid);
+            inst_num += instance_number(par_jt);
+            inst_num += instance_number(par_mb);
+            inst_num += instance_number(par_actor);
+            inst_num += instance_number(par_enemy);
+            inst_num += instance_number(par_shootable);
+            inst_num += instance_number(par_projectile);
+            
+            var part_num = 0;
+            part_num += instance_number(par_effect);
+            
+            var rope_num = 0;
+            rope_num += instance_number(par_verlet);
+            
+            if (!instance_exists(player_mockup))
+                {
+                draw_set_halign(0);
+                draw_set_valign(0);
+                draw_text_outline(vx+4,vy+4+00,"Version: "+string(global.version));
+                draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
+                draw_text_outline(vx+4,vy+4+24,"Particles: "+string(part_num));
+                draw_text_outline(vx+4,vy+4+36,"Segments: "+string(rope_num)+" ["+string(round(global.vtime))+"ms]");
+                draw_text_outline(vx+4,vy+4+48,"CamPos: "+string(vx)+"/"+string(vy)+" ["+string(round(global.ctime))+"ms]");
+                draw_set_color($000000);
+                draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
+                draw_surface(surf_graph,(vx+400)-(graph_w+4),vy+4);
+                draw_text_outline((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
+                }
+            break;
         }
     }
 </string>

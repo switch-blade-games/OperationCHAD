@@ -64,7 +64,7 @@ if (active)
 // handle links
 if (links_removed > 0)
     {
-    var temp = array_create(max_links);
+    var temp = array_create(links_max);
     var j = 0;
     
     for(var i=0; i<links; i++;)

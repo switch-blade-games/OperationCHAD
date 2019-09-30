@@ -40,9 +40,9 @@ ONEtime=30
 TWOtime=10
 THREEtime=20
 
-ONEspr=china_star_spr
-TWOspr=china_star_spr
-THREEspr=china_star_spr
+ONEspr=xi_spin_spr;//china_star_spr;
+TWOspr=xi_spin_spr;//china_star_spr;
+THREEspr=xi_spin_spr;//china_star_spr;
 
 alarm[0]=ONEtime
 alarm[1]=TWOtime
