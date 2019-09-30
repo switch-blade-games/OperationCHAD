@@ -51,6 +51,8 @@ ELEC=7
 
 state=SPAWN
 
+SHOCK=8
+
 
 ON=false
 
@@ -78,7 +80,7 @@ side=1
 
 SHOCKset=choose(1,1)
 
-PRESHOCKtime=60
+PREshocktime=60
 </string>
           </argument>
         </arguments>

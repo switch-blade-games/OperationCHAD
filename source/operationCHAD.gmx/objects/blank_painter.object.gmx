@@ -40,9 +40,9 @@ ONEtime=30
 TWOtime=10
 THREEtime=20
 
-ONEspr=white_paint_spr
-TWOspr=green_paint_spr
-THREEspr=orange_paint_spr
+ONEspr=hitler_paint_1_spr;//white_paint_spr;
+TWOspr=hitler_paint_2_spr;//green_paint_spr;
+THREEspr=hitler_paint_3_spr;//orange_paint_spr;
 
 alarm[0]=ONEtime
 alarm[1]=TWOtime
