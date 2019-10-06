@@ -26,11 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>path_start(brush_path,22,path_action_stop,true)
-
-with(pencil_missle)
-    speed=0
-    
-instance_create(0,20,chain_ceiling)
 </string>
           </argument>
         </arguments>

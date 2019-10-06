@@ -3,9 +3,9 @@
   <spriteName>pencil_missle_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>90</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>monkeybar_move</parentName>
+  <parentName>par_mb_move</parentName>
   <maskName>pencil_mask_spr</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,47 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>event_inherited()
+
 
 x1 = 0;
 y1 = 0;
 x2 = sprite_get_width(sprite_index);
 y2 = 0;
 
+
 image_xscale=1;
 
-motion_set(0,1+random(0.5));
+SPEnoise=0.5
 
-DROP=false
+spe=1
 
-UPspe=1
 
-grav=0.1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>DROP=true
-
-motion_set(90,UPspe)
 </string>
           </argument>
         </arguments>
@@ -88,18 +63,14 @@ motion_set(90,UPspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x&gt;view_xview[0]+400+100)
-    instance_destroy();
-    
-    
-if(DROP=true)
-motion_add(270,grav)
+            <string>if(x&gt;600)
+    instance_destroy()
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="over_brush_2">
+    <event eventtype="4" ename="pencil_sharpener">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -116,7 +87,7 @@ motion_add(270,grav)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sprite_index=anvil_spr
+            <string>//instance_destroy()
 </string>
           </argument>
         </arguments>

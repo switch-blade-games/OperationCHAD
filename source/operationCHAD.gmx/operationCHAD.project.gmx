@@ -155,18 +155,31 @@
         <sprite>sprites\hitler_paint_1_spr</sprite>
         <sprite>sprites\hitler_paint_3_spr</sprite>
         <sprite>sprites\hitler_paint_2_spr</sprite>
-        <sprite>sprites\big_brush_spr</sprite>
         <sprite>sprites\pencil_missle_spr</sprite>
         <sprite>sprites\pencil_mask_spr</sprite>
-        <sprite>sprites\black_paint_spr</sprite>
-        <sprite>sprites\snow_spr</sprite>
-        <sprite>sprites\hitler_final_spr</sprite>
         <sprite>sprites\over_brush_spr</sprite>
-        <sprite>sprites\swas_big_spr</sprite>
         <sprite>sprites\over_brush_mask_spr</sprite>
         <sprite>sprites\anvil_spr</sprite>
         <sprite>sprites\chain_ceiling_spr</sprite>
         <sprite>sprites\balloon_up_spr</sprite>
+        <sprite>sprites\paint_swas_spr</sprite>
+        <sprite>sprites\balloon_pencil_spr</sprite>
+        <sprite>sprites\paint_rail_spr</sprite>
+        <sprite>sprites\pencil_balloon_spr</sprite>
+        <sprite>sprites\paint_ride_mask_spr</sprite>
+        <sprite>sprites\paint_tnt_spr</sprite>
+        <sprite>sprites\paint_mask_spr</sprite>
+        <sprite>sprites\mini_swas_spr</sprite>
+        <sprite>sprites\mini_swas_tracer_spr</sprite>
+        <sprite>sprites\kite_spr</sprite>
+        <sprite>sprites\paint_blimp_spr</sprite>
+        <sprite>sprites\paint_missle_spr</sprite>
+        <sprite>sprites\pencil_sharpener_spr</sprite>
+        <sprite>sprites\turp_spr</sprite>
+        <sprite>sprites\rag_spr</sprite>
+        <sprite>sprites\turp_drop_spr</sprite>
+        <sprite>sprites\turp_wave_spr</sprite>
+        <sprite>sprites\over_eraser_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -428,6 +441,21 @@
         <sprite>sprites\open_7_spr</sprite>
         <sprite>sprites\open_8_spr</sprite>
       </sprites>
+      <sprites name="no_boss">
+        <sprite>sprites\no_boss_1_spr</sprite>
+        <sprite>sprites\no_boss_2_spr</sprite>
+        <sprite>sprites\no_boss_3_spr</sprite>
+        <sprite>sprites\no_boss_4_spr</sprite>
+        <sprite>sprites\no_boss_5_spr</sprite>
+        <sprite>sprites\no_boss_6_spr</sprite>
+        <sprite>sprites\no_boss_7_spr</sprite>
+        <sprite>sprites\no_boss_8_spr</sprite>
+        <sprite>sprites\no_boss_9_spr</sprite>
+        <sprite>sprites\no_boss_10_spr</sprite>
+        <sprite>sprites\no_boss_11_spr</sprite>
+        <sprite>sprites\no_boss_12_spr</sprite>
+        <sprite>sprites\no_boss_13_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="99-mini_games">
       <sprite>sprites\might_wood_spr</sprite>
@@ -606,6 +634,8 @@
     <path>paths\sickle_path</path>
     <path>paths\toy_plane_path</path>
     <path>paths\brush_path</path>
+    <path>paths\h_paint_path</path>
+    <path>paths\missle_paint_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="gamepad">
@@ -797,28 +827,28 @@
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
     </objects>
-    <objects name="colliders">
-      <object>objects\obj_wall</object>
-      <object>objects\obj_jt</object>
-      <object>objects\obj_ramp_r</object>
-      <object>objects\obj_ramp_l</object>
-      <object>objects\obj_climb</object>
-      <object>objects\obj_climb_r</object>
-      <object>objects\obj_climb_l</object>
-      <object>objects\obj_climb_b</object>
-      <object>objects\obj_mb</object>
-      <object>objects\obj_mb_l</object>
-      <object>objects\obj_mb_r</object>
-      <object>objects\obj_wall_move</object>
-      <object>objects\death_block</object>
-      <object>objects\monkeybar_move</object>
-      <object>objects\monkeybar_path</object>
-    </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
       <object>objects\obj_pellet</object>
       <object>objects\obj_heat_seeker</object>
       <object>objects\obj_flamethrower_flame</object>
+      <objects name="colliders">
+        <object>objects\obj_wall</object>
+        <object>objects\obj_jt</object>
+        <object>objects\obj_ramp_r</object>
+        <object>objects\obj_ramp_l</object>
+        <object>objects\obj_climb</object>
+        <object>objects\obj_climb_r</object>
+        <object>objects\obj_climb_l</object>
+        <object>objects\obj_climb_b</object>
+        <object>objects\obj_mb</object>
+        <object>objects\obj_mb_l</object>
+        <object>objects\obj_mb_r</object>
+        <object>objects\obj_wall_move</object>
+        <object>objects\death_block</object>
+        <object>objects\monkeybar_move</object>
+        <object>objects\monkeybar_path</object>
+      </objects>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>
@@ -827,6 +857,7 @@
       <object>objects\small_explode</object>
       <object>objects\explode_big</object>
       <object>objects\screen_explode</object>
+      <object>objects\mini_exploder</object>
     </objects>
     <objects name="editor">
       <object>objects\obj_editor</object>
@@ -990,16 +1021,21 @@
         </objects>
         <objects name="P3">
           <object>objects\zeplin_P3_controller</object>
+          <object>objects\paint_ride</object>
           <object>objects\paint_painter</object>
+          <object>objects\paint_swas</object>
+          <object>objects\up_brush</object>
+          <object>objects\down_brush</object>
+          <object>objects\missle_brush</object>
+          <object>objects\missle_erase</object>
+          <object>objects\paint_tnt</object>
+          <object>objects\white_paint</object>
+          <object>objects\mini_swas</object>
+          <object>objects\mini_swas_tracer</object>
           <object>objects\pencil_missle</object>
-          <object>objects\hitler_brush</object>
-          <object>objects\swas_controller</object>
-          <object>objects\hitler_final</object>
-          <object>objects\over_brush</object>
-          <object>objects\black_paint</object>
-          <object>objects\swas_big</object>
-          <object>objects\over_brush_2</object>
-          <object>objects\chain_ceiling</object>
+          <object>objects\pencil_sharpener</object>
+          <object>objects\turp_hand</object>
+          <object>objects\turp_drop</object>
         </objects>
       </objects>
       <objects name="submarine">
@@ -1053,6 +1089,7 @@
       <object>objects\white_knight</object>
     </objects>
     <objects name="cutscene">
+      <object>objects\no_boss_cutscene</object>
       <object>objects\opening_cutscene</object>
       <object>objects\time_cutscene</object>
       <object>objects\ending_cutscene</object>
@@ -1088,6 +1125,7 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\paint_2_room</room>
+        <room>rooms\no_boss_cutscene_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\zepplin_room</room>
         <room>rooms\demo_room_2</room>
