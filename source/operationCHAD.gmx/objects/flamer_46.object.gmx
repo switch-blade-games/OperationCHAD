@@ -123,6 +123,10 @@ repeat(FLAMEnum){
     i+=1
 }
 
+
+if(instance_number(flamer)=0)
+audio_stop_sound(zep_flame_snd)
+
 motion_set(90,UPspe)
 
 state=DROP
@@ -162,6 +166,8 @@ repeat(FLAMEnum){
     i+=1
 }
 
+
+play_snd(zep_flame_snd,true)
 
 state=FLAME
 

@@ -117,6 +117,9 @@ FLYspe=3
             <kind>1</kind>
             <string>path_start(MYpath,FLYspe,path_action_stop,false)
 
+
+play_snd(mini_plane_snd,false)
+
 state=FLY
 </string>
           </argument>

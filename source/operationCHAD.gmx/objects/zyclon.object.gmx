@@ -189,6 +189,9 @@ if(state=DROP){
         instance_create(x+GASrange,y,gas_cloud)
         instance_create(x,y,gas_cloud)
         instance_destroy()
+        
+        play_snd(gas_snd,false)
+        
         }
 }
 

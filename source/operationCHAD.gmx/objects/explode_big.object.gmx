@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0.3+random(0.3)
+            <string>
+snd_pitch(explode_snd,0.5)
+play_snd(explode_snd,false)
+
+image_speed=0.3+random(0.3)
 </string>
           </argument>
         </arguments>

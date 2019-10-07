@@ -2,7 +2,7 @@
 <object>
   <spriteName>zep_canvas_spr</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>102</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ACTIVE=false
+            <string>SUMMON=false
+SUMMONson=-1
+
+ACTIVE=false
 
 ZYC=false
 
@@ -43,6 +46,33 @@ UPspe=1+random(0.5)
 grav=0.1
 
 
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>SUMMON=true
+
+SUMMONson=instance_create(x,y,summon_node)
 </string>
           </argument>
         </arguments>
@@ -160,7 +190,7 @@ with(zep_canvas)
 ACTIVE=false
 
 
-if(instance_number(hitler)=0)
+if(instance_number(hitler_X)=0)
 exit
 
 ACTIVE=true
@@ -169,7 +199,7 @@ ACTIVE=true
 
 
 
-var SON=instance_create(x,y,choose(toy_plane,zyclon,war_balloon,flamer_46, hitler_shoot_controller));
+var SON=instance_create(x,y,choose(toy_plane,zyclon,war_balloon,flamer_46));
 
 //var SON=instance_create(x,y,choose(flamer_46));
 
@@ -177,6 +207,9 @@ with(SON)
     event_perform(ev_create,0)
 
     SON.dad=id
+    
+    
+
     
 </string>
           </argument>
@@ -200,7 +233,28 @@ with(SON)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(EXPLODE=true){
+            <string>if(SUMMON=true){
+
+
+    //node gets destroyed when hitler reaches it
+
+    if(instance_number(SUMMONson)=1){
+    SUMMONson.x=x
+    SUMMONson.y=y
+    }
+    
+    
+    //initiate attack
+    if(instance_number(SUMMONson)=0){
+    
+    alarm[0]=2
+    SUMMON=false
+    }
+    
+}
+
+
+if(EXPLODE=true){
 
 motion_add(270,grav)
 

@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>
+snd_pitch(bullet_snd,0.5)
+play_snd(bullet_snd,false)
+
+event_inherited();
 
 image_speed = 0.5;
 image_index = 0;

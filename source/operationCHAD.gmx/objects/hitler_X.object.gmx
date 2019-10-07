@@ -3,10 +3,10 @@
   <spriteName>hitler_paint_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>101</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>par_enemy</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>hitler_mask_spr</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,26 +25,58 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_init(260)
+            <string>DROP=0
 
-PAINT=1
+WAIT=1
 
-SHOOT=2
+LAUGH=2
 
-ROLL=3
+SEEK=3
+
+ROLL=4
+PAINTING=5
+
+BOMB=6
 
 
-state=PAINT
+flip=1
 
-SHOTtime=60
+event_inherited()
 
-FINALnoise=120
+enemy_init(400)
 
-SHOTspe=2.1
 
-FINALspe=4.1
+LAUGHtime=60
 
-SHOTwobble=20
+state=DROP
+
+motion_set(90,1)
+
+grav=0.1
+
+
+Xdist=400
+Ydist=240
+
+Xplace=round(zepplin.x+Xdist)
+
+Yplace=round(zepplin.y+Ydist)
+
+WAITtime=60
+
+
+side=1
+
+ROLLspe=3
+
+FALLsnd=false
+
+PAINTlen=40
+
+PAINTtime=120
+
+
+//alarm[0]=LAUGHtime
 
 
 </string>
@@ -96,9 +128,6 @@ with(flamer_remain)
     
 with(hitler_bullet)
     instance_destroy()
-    
-with(zepplin)
-    alarm[1]=120
 </string>
           </argument>
         </arguments>
@@ -121,22 +150,13 @@ with(zepplin)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// second shot
+            <string>///finish painting, create new attack
 
-var SHOTson=instance_create(x,y,hitler_bullet);
+///tell controller to make another painting
 
-var SONspe=FINALspe;
+state=SEEK
 
-SHOTson.sprite_index=hitler_bullet_mega_spr
-
-with(SHOTson)
-    motion_set(point_direction(x,y,obj_player.x,obj_player.y),SONspe)
-    
-state=PAINT
-
-
-with(zeplin_controller)
-    alarm[0]=rate+random(ratenoise)
+zeplin_controller.alarm[0]=60
 </string>
           </argument>
         </arguments>
@@ -159,19 +179,10 @@ with(zeplin_controller)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// second shot
-
-var SHOTson=instance_create(x,y,hitler_bullet);
-
-var SONspe=SHOTspe;
-
-var WOB=SHOTwobble;
-
-with(SHOTson)
-    motion_set(point_direction(x,y,obj_player.x,obj_player.y)+random(WOB)-random(WOB),SONspe)
+            <string>state=SEEK
 
 
-alarm[2]=SHOTtime+random(FINALnoise)
+play_snd(flight_of_bumblebee_snd,true)
 </string>
           </argument>
         </arguments>
@@ -194,20 +205,13 @@ alarm[2]=SHOTtime+random(FINALnoise)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// first shot
+            <string>state=LAUGH
 
-var SHOTson=instance_create(x,y,hitler_bullet);
+zeplin_controller.alarm[1]=60
 
-var SONspe=SHOTspe;
+play_snd(hitler_laugh_snd,false)
 
-var WOB=SHOTwobble;
-
-with(SHOTson)
-    motion_set(point_direction(x,y,obj_player.x,obj_player.y)+random(WOB)-random(WOB),SONspe)
-
-
-alarm[1]=SHOTtime
-
+alarm[1]=LAUGHtime
 </string>
           </argument>
         </arguments>
@@ -230,7 +234,139 @@ alarm[1]=SHOTtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>Xplace=round(zepplin.x+Xdist)
+
+Yplace=round(zepplin.y+Ydist)
+
+
+if(state=DROP){
+
+
+    if(FALLsnd=false)
+    if(y&gt;Yplace-80){
+        play_snd(can_fall_snd,false)
+        FALLsnd=true
+    }
+
+    motion_add(270,grav)
+    x=Xplace
+    
+    if(y&gt;Yplace){
+        state=WAIT
+        speed=0
+        alarm[0]=WAITtime
+        
+        play_snd(can_thump_snd,false)
+        
+        audio_stop_sound(pre_fight_snd)
+        
+    }
+}
+
+
+if(state=WAIT){
+
+    x=Xplace
+    y=Yplace
+    
+}
+
+if(state=LAUGH){
+
+    x=Xplace
+        y=Yplace
+}
+
+if(state=SEEK){
+
+    x=Xplace
+    y=Yplace
+
+    if(instance_number(summon_node)=1){
+    
+        if(summon_node.x&gt;x)
+            flip=1
+        else
+            flip=-1
+            
+        state=ROLL
+    }
+}
+
+if(state=ROLL){
+
+    
+        
+    y=Yplace
+    
+    
+    
+    //setup for determining what x to "snap" to and start painting
+    var NODEside=1;
+    
+    var SNAP=false;
+    
+    
+    //figuring wout where node is
+    if(summon_node.x&lt;zepplin.x+400)
+    NODEside=-1
+    
+    
+    
+    
+    
+    //determining what x to go for if on right side
+    if(NODEside=1){
+    
+        
+        x+=ROLLspe
+    
+        
+    if(x&gt;summon_node.x+(PAINTlen*NODEside))
+    SNAP=true
+    
+    }
+    
+    
+    //determining what x to go for if on left side
+    if(NODEside=-1){
+    
+    x-=ROLLspe
+    
+    if(x&lt;summon_node.x+(PAINTlen*NODEside))
+    SNAP=true
+    
+    }
+    
+    
+    
+    if(SNAP=true){
+    
+    //assigning new x dist
+    Xdist=summon_node.x+(PAINTlen*side)
+    
+    alarm[2]=PAINTtime
+    state=PAINTING
+    }
+    
+}
+
+
+if(state=PAINTING){
+
+    with(summon_node)
+        instance_destroy()
+
+    x=Xplace
+    y=Yplace
+    
+}
+
+
+    
+    
+    
+</string>
           </argument>
         </arguments>
       </action>
@@ -252,11 +388,42 @@ alarm[1]=SHOTtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=PAINT)
-    sprite_index=hitler_paint_spr
+            <string>if(x&gt;zepplin.x+400)
+    side=1
+else
+    side=-1
+
     
-if(state=SHOOT)
-    sprite_index=hitler_shoot_spr
+    //when painting, hitler follows a different set of rules governing flip, instead is side
+if not(state=PAINTING)
+image_xscale=flip
+
+if(state=PAINTING)
+image_xscale=-side
+
+if(state=SEEK){
+    //flip=1
+    sprite_index=hitler_roll_spr
+}
+
+
+if(state=DROP)
+sprite_index=hitler_laugh_spr
+
+if(state=WAIT)
+sprite_index=hitler_roll_spr
+
+if(state=LAUGH)
+sprite_index=hitler_laugh_spr
+
+if(state=ROLL)
+sprite_index=hitler_roll_spr
+
+if(state=PAINTING)
+sprite_index=hitler_paint_spr
+
+
+
 
 draw_enemy_self()
 </string>
