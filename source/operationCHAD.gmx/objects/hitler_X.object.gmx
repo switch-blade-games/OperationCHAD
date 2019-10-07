@@ -75,6 +75,12 @@ PAINTlen=40
 
 PAINTtime=120
 
+xspeed = 0;
+xnode = false;
+xsign = 1;
+xdist = 0;
+xfrom = x;
+xto = x;
 
 //alarm[0]=LAUGHtime
 
@@ -290,55 +296,44 @@ if(state=SEEK){
             flip=-1
             
         state=ROLL
+        xnode = false;
     }
 }
 
 if(state=ROLL){
-
     
-        
     y=Yplace
-    
-    
-    
-    //setup for determining what x to "snap" to and start painting
-    var NODEside=1;
     
     var SNAP=false;
     
-    
+    //setup for determining what x to "snap" to and start painting
+    var NODEside=1;
     //figuring wout where node is
     if(summon_node.x&lt;zepplin.x+400)
     NODEside=-1
     
+    if (!xnode)
+        {
+        xnode = true;
+        xdest = summon_node.x+(PAINTlen*NODEside);
+        xsign = sign(xdest-x);
+        }
     
+    if (abs(xdest-x) &lt; 80)
+        {
+        x += xspeed;
+        xspeed = (0.1+abs(xdest-x)/80)*ROLLspe*xsign;
+        }
+    else
+        {
+        x += xspeed;
+        xspeed += 0.1*ROLLspe*xsign;
+        xspeed = clamp(xspeed,-ROLLspe,+ROLLspe);
+        }
     
-    
-    
-    //determining what x to go for if on right side
-    if(NODEside=1){
-    
-        
-        x+=ROLLspe
-    
-        
-    if(x&gt;summon_node.x+(PAINTlen*NODEside))
-    SNAP=true
-    
-    }
-    
-    
-    //determining what x to go for if on left side
-    if(NODEside=-1){
-    
-    x-=ROLLspe
-    
-    if(x&lt;summon_node.x+(PAINTlen*NODEside))
-    SNAP=true
-    
-    }
-    
-    
+    if (x &gt; xdest and xsign &gt; 0)
+    or (x &lt; xdest and xsign &lt; 0)
+        SNAP = true;
     
     if(SNAP=true){
     
