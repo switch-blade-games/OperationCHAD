@@ -48,6 +48,9 @@ if (shoot_timer == 0)
         inst.image_index = weapon_case[cur_weapon];
         }
     
+    // sound
+    snd_play_3d(x,y,bullet_snd,0.5,1);
+    
     // smoke
     repeat(3)
         {

@@ -187,8 +187,7 @@ zeplin_controller.alarm[0]=60
             <kind>1</kind>
             <string>state=SEEK
 
-
-play_snd(flight_of_bumblebee_snd,true)
+mus_loop(flight_of_bumblebee_snd);
 </string>
           </argument>
         </arguments>
@@ -215,7 +214,7 @@ play_snd(flight_of_bumblebee_snd,true)
 
 zeplin_controller.alarm[1]=60
 
-play_snd(hitler_laugh_snd,false)
+snd_play(hitler_laugh_snd);
 
 alarm[1]=LAUGHtime
 </string>
@@ -250,7 +249,7 @@ if(state=DROP){
 
     if(FALLsnd=false)
     if(y&gt;Yplace-80){
-        play_snd(can_fall_snd,false)
+        snd_play(can_fall_snd);
         FALLsnd=true
     }
 
@@ -262,10 +261,8 @@ if(state=DROP){
         speed=0
         alarm[0]=WAITtime
         
-        play_snd(can_thump_snd,false)
-        
-        audio_stop_sound(pre_fight_snd)
-        
+        audio_stop_sound(pre_fight_snd);
+        snd_play(can_thump_snd);
     }
 }
 

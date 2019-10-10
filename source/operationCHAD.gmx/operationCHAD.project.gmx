@@ -721,14 +721,18 @@
       <script>scripts\blend_zero.gml</script>
       <script>scripts\hunny_shuffle.gml</script>
       <script>scripts\hunny_bank.gml</script>
-      <script>scripts\snd_pitch.gml</script>
-      <script>scripts\play_snd.gml</script>
     </scripts>
     <scripts name="verlet">
       <script>scripts\verlet_init.gml</script>
       <script>scripts\verlet_update.gml</script>
       <script>scripts\verlet_link_add.gml</script>
       <script>scripts\verlet_link_remove.gml</script>
+    </scripts>
+    <scripts name="audio">
+      <script>scripts\snd_play.gml</script>
+      <script>scripts\snd_play_3d.gml</script>
+      <script>scripts\snd_loop.gml</script>
+      <script>scripts\mus_loop.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>

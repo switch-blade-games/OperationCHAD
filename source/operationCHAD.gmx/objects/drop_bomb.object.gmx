@@ -32,7 +32,7 @@ motion_set(90,0.1)
 grav=0.3
 
 
-play_snd(drop_bomb_snd,false)
+snd_play(drop_bomb_snd);
 </string>
           </argument>
         </arguments>
