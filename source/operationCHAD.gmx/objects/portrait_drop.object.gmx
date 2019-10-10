@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>play_snd(pre_fight_snd,true)
+            <string>snd_loop(pre_fight_snd);
 
 FALLsnd=false
 
@@ -155,7 +155,7 @@ image_angle+=speed*1.5
 if(vspeed&gt;0)
 if(FALLsnd=false){
 
-    //play_snd(can_fall_snd,false)
+    //snd_play(can_fall_snd);
     
     FALLsnd=true
 }

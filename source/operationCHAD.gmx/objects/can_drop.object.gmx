@@ -110,8 +110,7 @@ Xset=round(zepplin.x+270+Xdist)
 
 if(FALLsnd=false)
 if(y&gt;Yset-80){
-
-    play_snd(can_fall_snd,false)
+    snd_play(can_fall_snd);
     FALLsnd=true
 }
 
@@ -126,8 +125,7 @@ if(state=DROP){
         Y=Yset
         state=LAND
         
-        play_snd(can_thump_snd,false)    
-        
+        snd_play(can_thump_snd);
         
         //alarm[0]=LANDtime
     }

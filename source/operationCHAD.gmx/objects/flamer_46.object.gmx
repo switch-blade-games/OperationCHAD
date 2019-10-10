@@ -167,7 +167,7 @@ repeat(FLAMEnum){
 }
 
 
-play_snd(zep_flame_snd,true)
+snd_loop(zep_flame_snd);
 
 state=FLAME
 
