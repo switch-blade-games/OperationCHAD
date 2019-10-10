@@ -28,6 +28,11 @@
             <string>x = view_wview[0]/2;
 y = view_hview[0]/2;
 
+audio_falloff_set_model(audio_falloff_exponent_distance);
+audio_listener_position(x,y,0);
+audio_listener_orientation(x,y,1000,0,-1,0);
+audio_listener_velocity(0,0,0);
+
 enum camState
     {
     static = 0,
@@ -40,6 +45,9 @@ enum camState
 
 cam_state = camState.right;
 target = par_actor;
+
+sfx_x = 0;
+sfx_y = 0;
 </string>
           </argument>
         </arguments>
@@ -62,7 +70,16 @@ target = par_actor;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var cx = x - view_wview[0]/2;
+            <string>/*
+if (keyboard_check_pressed(ord("L")))
+    {
+    sfx_x = mouse_x;
+    sfx_y = mouse_y;
+    snd_play_3d(mouse_x,mouse_y,bullet_snd,0.5,1);
+    }
+*/
+
+var cx = x - view_wview[0]/2;
 var cy = y - view_hview[0]/2;
 cx += global.xnudge;
 cy += global.ynudge;
@@ -81,7 +98,9 @@ global.ynudge *= 0.8;
 global.xshake *= 0.8;
 global.yshake *= 0.8;
 
-//disabling screenshake for now
+audio_listener_position(x,y,0);
+audio_listener_orientation(x,y,1000,0,-1,0);
+audio_listener_velocity(0,0,0);
 
 if (!instance_exists(par_actor)) or (cam_state == camState.static)
     exit;
@@ -135,6 +154,43 @@ if (inst != noone) and (instance_exists(inst))
             }
         }
     }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*
+draw_set_halign(0);
+draw_set_valign(0);
+
+draw_set_color($0000FF);
+draw_circle(x,y,global.FODmin,1);
+draw_set_color($000077);
+draw_circle(x,y,global.FODmax,1);
+draw_text_outline(x+16,y+16,"("+string(x)+","+string(y)+")");
+
+draw_set_color($00FF00);
+draw_circle(sfx_x,sfx_y,16,1);
+draw_text_outline(sfx_x+16,sfx_y+16,"("+string(x)+","+string(y)+")");
+
+draw_set_color($000000);
 </string>
           </argument>
         </arguments>

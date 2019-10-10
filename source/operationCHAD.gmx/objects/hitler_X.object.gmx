@@ -187,7 +187,7 @@ zeplin_controller.alarm[0]=60
             <kind>1</kind>
             <string>state=SEEK
 
-mus_play(flight_of_bumblebee_snd);
+mus_loop(flight_of_bumblebee_snd);
 </string>
           </argument>
         </arguments>

@@ -58,6 +58,8 @@ gamepad_init();
 
 // game globals
 global.music = -1;
+global.FODmin = 160;
+global.FODmax = 256;
 global.pause = false;
 global.xnudge = 0;
 global.ynudge = 0;

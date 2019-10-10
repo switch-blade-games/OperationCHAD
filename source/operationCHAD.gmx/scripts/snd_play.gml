@@ -10,9 +10,9 @@ var _pit = 0;
 var _vol = 1;
 var _snd = argument[0];
 if (argument_count > 1)
-    var _pit = argument[1];
+    _pit = argument[1];
 if (argument_count > 2)
-    var _vol = argument[2];
+    _vol = argument[2];
 
 audio_stop_sound(_snd);
 var _aud = audio_play_sound(_snd,0,false);

@@ -49,7 +49,7 @@ if (shoot_timer == 0)
         }
     
     // sound
-    snd_play(bullet_snd,0.5,1);
+    snd_play_3d(x,y,bullet_snd,0.5,1);
     
     // smoke
     repeat(3)

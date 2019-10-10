@@ -729,8 +729,9 @@
     </scripts>
     <scripts name="audio">
       <script>scripts\snd_play.gml</script>
+      <script>scripts\snd_play_3d.gml</script>
       <script>scripts\snd_loop.gml</script>
-      <script>scripts\mus_play.gml</script>
+      <script>scripts\mus_loop.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>

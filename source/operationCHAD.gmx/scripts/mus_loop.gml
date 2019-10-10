@@ -1,4 +1,4 @@
-/// mus_play(snd);
+/// mus_loop(snd);
 
 // argument[0] = sound id
 
