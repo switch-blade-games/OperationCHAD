@@ -55,9 +55,9 @@ enum aState
     roll,
     duck,
     hang,
-    hang_move,
+    hang_fire,
     climb,
-    climb_move,
+    climb_fire,
     moto,
     moto_fire,
     dead,
@@ -162,6 +162,7 @@ walk_speed = 2;
 moto_speed = 3;
 hang_speed = 2;
 climb_speed = 2;
+fall_speed = 10;
 grav = 0.4;
 fric = 1;
 xspeed = 0;

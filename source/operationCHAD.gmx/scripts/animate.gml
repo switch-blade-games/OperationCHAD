@@ -136,98 +136,110 @@ switch(move_state)
         break;
     
     case mState.hang:
-        if (hang_offset != old_hang_offset)
+        // hanging and shooting
+        if (input_fire)
             {
-            old_hang_offset = hang_offset;
-            if (anim_state != aState.hang_move)
+            if (anim_state != aState.hang_fire)
                 {
-                anim_state = aState.hang_move;
-                img_index[doll.full] = 0;
+                anim_state = aState.hang_fire;
+                img_index[doll.arms] = 0;
                 }
             
-            img_index[doll.full] += 0.2;
-            if (img_index[doll.full] >= 4)
-                img_index[doll.full] = 0;
-            else if (img_index[doll.full] < 0)
-                img_index[doll.full] = 3;
+            img_index[doll.arms] += 0.2;
+            if (img_index[doll.arms] >= 2)
+                img_index[doll.arms] = 0;
             }
         else
             {
+            // hanging but not shooting
             if (anim_state != aState.hang)
-                anim_state = aState.hang;
-            
-            if (input_fire)
                 {
-                img_index[doll.arms] += 0.2;
-                if (img_index[doll.arms] >= 2)
-                    img_index[doll.arms] = 0;
+                anim_state = aState.hang;
+                img_index[doll.full] = 0;
                 }
-            else
-                img_index[doll.arms] = 0;
+            
+            // hanging and moving
+            if (hang_offset != old_hang_offset)
+                {
+                img_index[doll.full] += 0.2;
+                if (img_index[doll.full] >= 4)
+                    img_index[doll.full] = 0;
+                else if (img_index[doll.full] < 0)
+                    img_index[doll.full] = 3;
+                }
             }
+        old_hang_offset = hang_offset;
         break;
     
     case mState.climb:
         if (climb_side == tile_side.bottom)
             {
-            if (abs(xspeed) > 0)
+            // hanging and shooting
+            if (input_fire)
                 {
-                if (anim_state != aState.hang_move)
+                if (anim_state != aState.hang_fire)
                     {
-                    anim_state = aState.hang_move;
-                    img_index[doll.full] = 0;
+                    anim_state = aState.hang_fire;
+                    img_index[doll.arms] = 0;
                     }
                 
-                img_index[doll.full] += 0.2;
-                if (img_index[doll.full] >= 4)
-                    img_index[doll.full] = 0;
-                else if (img_index[doll.full] < 0)
-                    img_index[doll.full] = 3;
+                img_index[doll.arms] += 0.2;
+                if (img_index[doll.arms] >= 2)
+                    img_index[doll.arms] = 0;
                 }
             else
                 {
+                // hanging but not shooting
                 if (anim_state != aState.hang)
-                    anim_state = aState.hang;
-                
-                if (input_fire)
                     {
-                    img_index[doll.arms] += 0.2;
-                    if (img_index[doll.arms] >= 2)
-                        img_index[doll.arms] = 0;
+                    anim_state = aState.hang;
+                    img_index[doll.full] = 0;
                     }
-                else
-                    img_index[doll.arms] = 0;
+                
+                // hanging and moving
+                if (abs(xspeed) > 0)
+                    {
+                    img_index[doll.full] += 0.2;
+                    if (img_index[doll.full] >= 4)
+                        img_index[doll.full] = 0;
+                    else if (img_index[doll.full] < 0)
+                        img_index[doll.full] = 3;
+                    }
                 }
             }
         else
             {
-            if (abs(yspeed) > 0)
+            // climbing and firing
+            if (input_fire)
                 {
-                if (anim_state != aState.climb_move)
+                if (anim_state != aState.climb_fire)
                     {
-                    anim_state = aState.climb_move;
-                    img_index[doll.full] = 0;
+                    anim_state = aState.climb_fire;
+                    img_index[doll.arms] = 0;
                     }
                 
-                img_index[doll.full] += 0.2;
-                if (img_index[doll.full] >= 4)
-                    img_index[doll.full] = 0;
-                else if (img_index[doll.full] < 0)
-                    img_index[doll.full] = 3;
+                img_index[doll.arms] += 0.2;
+                if (img_index[doll.arms] >= 2)
+                    img_index[doll.arms] = 0;
                 }
             else
                 {
+                // climbing but not shooting
                 if (anim_state != aState.climb)
-                    anim_state = aState.climb;
-                
-                if (input_fire)
                     {
-                    img_index[doll.arms] += 0.2;
-                    if (img_index[doll.arms] >= 2)
-                        img_index[doll.arms] = 0;
+                    anim_state = aState.climb;
+                    img_index[doll.full] = 0;
                     }
-                else
-                    img_index[doll.arms] = 0;
+                
+                // climbing and moving
+                if (abs(yspeed) > 0)
+                    {
+                    img_index[doll.full] += 0.2;
+                    if (img_index[doll.full] >= 4)
+                        img_index[doll.full] = 0;
+                    else if (img_index[doll.full] < 0)
+                        img_index[doll.full] = 3;
+                    }
                 }
             }
         break;
@@ -409,17 +421,21 @@ switch(anim_state)
         break;
     
     case aState.hang:
+        paperdoll(doll.full,skin_spr.full_hang,dir);
+        break;
+    
+    case aState.hang_fire:
         gun_y = -22;
         
         paperdoll(doll.legs,skin_spr.leg_hang,dir);
         paperdoll(doll.arms,skin_spr.arm_single_0 + floor(aim/45),dir);
         break;
     
-    case aState.hang_move:
-        paperdoll(doll.full,skin_spr.full_hang,dir);
+    case aState.climb:
+        paperdoll(doll.full,skin_spr.full_climb,dir);
         break;
     
-    case aState.climb:
+    case aState.climb_fire:
         gun_y = -18;
         
         paperdoll(doll.legs,skin_spr.leg_climb,dir);
@@ -428,10 +444,6 @@ switch(anim_state)
             paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),-1);
         else
             paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),+1);
-        break;
-    
-    case aState.climb_move:
-        paperdoll(doll.full,skin_spr.full_climb,dir);
         break;
     
     case aState.moto:
