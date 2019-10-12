@@ -135,6 +135,7 @@
           <sprite>sprites\hitler_portrait_spr</sprite>
           <sprite>sprites\hitler_laugh_spr</sprite>
           <sprite>sprites\hitler_mask_spr</sprite>
+          <sprite>sprites\hitler_hurt_spr</sprite>
         </sprites>
         <sprite>sprites\zeplin_spr</sprite>
         <sprite>sprites\zyklon_spr</sprite>
@@ -167,6 +168,7 @@
           <sprite>sprites\elec_node_spr</sprite>
           <sprite>sprites\rope_zag_spr</sprite>
           <sprite>sprites\rope_shock_spr</sprite>
+          <sprite>sprites\toy_tank_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="P3">
@@ -1024,7 +1026,9 @@
           <object>objects\can_drop</object>
           <object>objects\zep_canvas</object>
           <object>objects\hitler_X</object>
+          <object>objects\flamer_46</object>
           <object>objects\flamer</object>
+          <object>objects\flamer_remain</object>
           <object>objects\zepplin_under</object>
           <object>objects\hitler_portrait</object>
           <object>objects\portrait_drop</object>
@@ -1034,22 +1038,25 @@
           <object>objects\toy_plane</object>
           <object>objects\war_balloon</object>
           <object>objects\drop_bomb</object>
-          <object>objects\flamer_46</object>
-          <object>objects\flamer_remain</object>
           <object>objects\flamer_ash</object>
           <object>objects\hitler_shoot_controller</object>
           <object>objects\hitler_bullet</object>
           <object>objects\summon_node</object>
         </objects>
         <objects name="P2">
+          <object>objects\hitler_hurt</object>
+          <object>objects\hitler_X2</object>
+          <object>objects\zep_P2_controller_X</object>
           <object>objects\zeplin_P2_controller</object>
-          <object>objects\can_tank</object>
+          <object>objects\toy_tank</object>
           <object>objects\can_mortar</object>
           <object>objects\big_canvas</object>
           <object>objects\can_tank_shot</object>
           <object>objects\elec_node_controller</object>
           <object>objects\elec_node</object>
           <object>objects\elec_place</object>
+          <object>objects\elec_worm</object>
+          <object>objects\elec_body</object>
         </objects>
         <objects name="P3">
           <object>objects\zeplin_P3_controller</object>
@@ -1159,8 +1166,8 @@
         <room>rooms\zepplin_room</room>
         <room>rooms\paint_2_room</room>
         <room>rooms\no_boss_cutscene_room</room>
-        <room>rooms\paint_room</room>
         <room>rooms\demo_room_2</room>
+        <room>rooms\paint_room</room>
         <room>rooms\demo_room</room>
       </rooms>
     </rooms>

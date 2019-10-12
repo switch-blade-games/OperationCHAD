@@ -43,7 +43,7 @@ flip=1
 
 event_inherited()
 
-enemy_init(400)
+enemy_init(300)
 
 
 LAUGHtime=60
@@ -134,6 +134,14 @@ with(flamer_remain)
     
 with(hitler_bullet)
     instance_destroy()
+    
+    
+var SON=instance_create(x,y,hitler_hurt);
+
+with(SON)
+    event_perform(ev_create,0)
+    
+SON.facing=flip
 </string>
           </argument>
         </arguments>
