@@ -40,10 +40,10 @@ switch(move_state)
                 {
                 var i = 0;
                 var inst = noone;
-                while(inst == noone and i<=12)
+                while(inst == noone and i<=yspeed)
                     {
-                    inst = instance_position(x,(y-30)+i,par_mb);
-                    i += 2;
+                    inst = instance_position(x,(y-42)+i,par_mb);
+                    i++;
                     }
                 
                 if (inst != noone)
@@ -63,7 +63,7 @@ switch(move_state)
                         }
                     }
                 }
-            if (yspeed < 10)
+            if (yspeed < fall_speed)
                 yspeed += grav;
             }
         break;
@@ -141,10 +141,10 @@ switch(move_state)
                 {
                 var i = 0;
                 var inst = noone;
-                while(inst == noone and i<=12)
+                while(inst == noone and i<=yspeed)
                     {
-                    inst = instance_position(x,(y-30)+i,par_mb);
-                    i += 2;
+                    inst = instance_position(x,(y-42)+i,par_mb);
+                    i++;
                     }
                 
                 if (inst != noone)
@@ -164,7 +164,7 @@ switch(move_state)
                         }
                     }
                 }
-            if (yspeed < 10)
+            if (yspeed < fall_speed)
                 yspeed += grav;
             }
         
@@ -176,7 +176,7 @@ switch(move_state)
             }
         else
             {
-            if (moto_yspeed < 10)
+            if (moto_yspeed < fall_speed)
                 moto_yspeed += grav;
             }
         
@@ -197,7 +197,7 @@ switch(move_state)
             }
         
         // gravity
-        if (!on_ground) and (yspeed < 10)
+        if (!on_ground) and (yspeed < fall_speed)
             yspeed += grav;
         break;
     }
