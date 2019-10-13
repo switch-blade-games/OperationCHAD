@@ -337,7 +337,7 @@ UNDER.y=round(ystart+Vfade);
 
 draw_surface_ext(TOPsur,x,y,1,1,0,c_white,1)
 
-draw_text(view_xview[0]+20,view_yview[0]+20,state)
+//draw_text(view_xview[0]+20,view_yview[0]+20,state)
 </string>
           </argument>
         </arguments>

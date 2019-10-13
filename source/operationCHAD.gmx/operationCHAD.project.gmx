@@ -169,6 +169,10 @@
           <sprite>sprites\rope_zag_spr</sprite>
           <sprite>sprites\rope_shock_spr</sprite>
           <sprite>sprites\toy_tank_spr</sprite>
+          <sprite>sprites\gussfuss_spr</sprite>
+          <sprite>sprites\gussfuss_bullet_spr</sprite>
+          <sprite>sprites\nebel_spr</sprite>
+          <sprite>sprites\nebel_bullet_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="P3">
@@ -572,6 +576,13 @@
         <sprite>sprites\forest_BG_spr</sprite>
         <sprite>sprites\xi_bamboo_spr</sprite>
       </sprites>
+    </sprites>
+    <sprites name="HUD">
+      <sprite>sprites\yolo_head_spr</sprite>
+      <sprite>sprites\hit_rate_spr</sprite>
+      <sprite>sprites\yolo_weps_spr</sprite>
+      <sprite>sprites\wep_select_spr</sprite>
+      <sprite>sprites\HUD_under_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -1057,6 +1068,10 @@
           <object>objects\elec_place</object>
           <object>objects\elec_worm</object>
           <object>objects\elec_body</object>
+          <object>objects\gussfuss</object>
+          <object>objects\nebel</object>
+          <object>objects\nebel_bullet</object>
+          <object>objects\gussfuss_bullet</object>
         </objects>
         <objects name="P3">
           <object>objects\zeplin_P3_controller</object>
@@ -1156,6 +1171,9 @@
       <object>objects\NPC_dummy</object>
       <object>objects\obj_rope</object>
       <object>objects\obj_rope_segment</object>
+    </objects>
+    <objects name="HUD">
+      <object>objects\HUD</object>
     </objects>
   </objects>
   <rooms name="rooms">

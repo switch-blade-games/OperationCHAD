@@ -43,7 +43,7 @@ flip=1
 
 event_inherited()
 
-enemy_init(300)
+enemy_init(100)
 
 
 LAUGHtime=60
