@@ -105,59 +105,46 @@
       <sprite>sprites\back_shot_spr</sprite>
       <sprite>sprites\floor_shot_spr</sprite>
       <sprite>sprites\nazi_gunner_spr</sprite>
-      <sprite>sprites\nazi_missle_spr</sprite>
-      <sprite>sprites\flame_point_spr</sprite>
+      <sprite>sprites\grenade_spr</sprite>
       <sprite>sprites\nazi_plane_spr</sprite>
+      <sprite>sprites\flame_point_spr</sprite>
+      <sprite>sprites\front_plane_spr</sprite>
+      <sprite>sprites\nazi_missle_spr</sprite>
       <sprite>sprites\para_man_spr</sprite>
       <sprite>sprites\parachute_spr</sprite>
-      <sprite>sprites\grenade_spr</sprite>
-      <sprite>sprites\front_plane_spr</sprite>
-      <sprites name="sub_sequence">
-        <sprite>sprites\sub_ground_spr</sprite>
-        <sprite>sprites\sub_part_spr</sprite>
-        <sprite>sprites\sub_missle_part_spr</sprite>
-        <sprite>sprites\sub_missle_spr</sprite>
-        <sprite>sprites\twin_turret_spr</sprite>
-        <sprite>sprites\twin_bullet_spr</sprite>
-        <sprite>sprites\twin_turret_place_spr</sprite>
-        <sprite>sprites\scuba_man_spr</sprite>
-        <sprite>sprites\sub_water_spr</sprite>
-        <sprite>sprites\naval_mine_spr</sprite>
-        <sprite>sprites\mine_holder_spr</sprite>
-        <sprite>sprites\mine_smoke_spr</sprite>
-        <sprite>sprites\grenade_tracer_spr</sprite>
-        <sprite>sprites\S_grenade_spr</sprite>
-      </sprites>
-      <sprites name="zepplin">
-        <sprites name="hitler">
+      <sprites name="hitler">
+        <sprites name="hitler_character">
           <sprite>sprites\hitler_paint_spr</sprite>
           <sprite>sprites\hitler_roll_spr</sprite>
           <sprite>sprites\hitler_portrait_spr</sprite>
           <sprite>sprites\hitler_laugh_spr</sprite>
           <sprite>sprites\hitler_mask_spr</sprite>
           <sprite>sprites\hitler_hurt_spr</sprite>
+          <sprite>sprites\hitler_big_paint_spr</sprite>
         </sprites>
-        <sprite>sprites\zeplin_spr</sprite>
-        <sprite>sprites\zyklon_spr</sprite>
-        <sprite>sprites\sketch_spr</sprite>
-        <sprite>sprites\gas_cloud_spr</sprite>
-        <sprite>sprites\zep_canvas_land_spr</sprite>
-        <sprite>sprites\zep_canvas_spr</sprite>
-        <sprite>sprites\toy_plane_spr</sprite>
-        <sprite>sprites\war_balloon_spr</sprite>
-        <sprite>sprites\drop_bomb_spr</sprite>
-        <sprite>sprites\flamer_46_spr</sprite>
-        <sprite>sprites\flamer_small_spr</sprite>
-        <sprite>sprites\flamer_big_spr</sprite>
-        <sprite>sprites\flamer_huge_spr</sprite>
-        <sprite>sprites\flamer_ash_spr</sprite>
-        <sprite>sprites\hitler_bullet_spr</sprite>
-        <sprite>sprites\hitler_bullet_mega_spr</sprite>
-        <sprite>sprites\hitler_bullet_mask_spr</sprite>
-        <sprite>sprites\hitler_flame_mask_spr</sprite>
-        <sprite>sprites\zeplin_frame_spr</sprite>
-        <sprite>sprites\zeplin_under_spr</sprite>
-        <sprite>sprites\zeplin_under_explode_spr</sprite>
+        <sprites name="P1">
+          <sprite>sprites\zeplin_spr</sprite>
+          <sprite>sprites\zeplin_under_spr</sprite>
+          <sprite>sprites\zeplin_under_explode_spr</sprite>
+          <sprite>sprites\zeplin_frame_spr</sprite>
+          <sprite>sprites\flamer_ash_spr</sprite>
+          <sprite>sprites\flamer_huge_spr</sprite>
+          <sprite>sprites\flamer_big_spr</sprite>
+          <sprite>sprites\flamer_small_spr</sprite>
+          <sprite>sprites\flamer_46_spr</sprite>
+          <sprite>sprites\drop_bomb_spr</sprite>
+          <sprite>sprites\war_balloon_spr</sprite>
+          <sprite>sprites\toy_plane_spr</sprite>
+          <sprite>sprites\zep_canvas_spr</sprite>
+          <sprite>sprites\zep_canvas_land_spr</sprite>
+          <sprite>sprites\zyklon_spr</sprite>
+          <sprite>sprites\sketch_spr</sprite>
+          <sprite>sprites\gas_cloud_spr</sprite>
+          <sprite>sprites\hitler_bullet_spr</sprite>
+          <sprite>sprites\hitler_bullet_mega_spr</sprite>
+          <sprite>sprites\hitler_bullet_mask_spr</sprite>
+          <sprite>sprites\hitler_flame_mask_spr</sprite>
+        </sprites>
         <sprites name="P2">
           <sprite>sprites\can_tank_shot_mask_spr</sprite>
           <sprite>sprites\can_tank_bullet_spr</sprite>
@@ -174,37 +161,54 @@
           <sprite>sprites\nebel_spr</sprite>
           <sprite>sprites\nebel_bullet_spr</sprite>
         </sprites>
+        <sprites name="P3">
+          <sprite>sprites\paint_blob_spr</sprite>
+          <sprite>sprites\hitler_paint_1_spr</sprite>
+          <sprite>sprites\hitler_paint_3_spr</sprite>
+          <sprite>sprites\hitler_paint_2_spr</sprite>
+          <sprite>sprites\pencil_missle_spr</sprite>
+          <sprite>sprites\pencil_mask_spr</sprite>
+          <sprite>sprites\over_brush_spr</sprite>
+          <sprite>sprites\over_brush_mask_spr</sprite>
+          <sprite>sprites\anvil_spr</sprite>
+          <sprite>sprites\chain_ceiling_spr</sprite>
+          <sprite>sprites\balloon_up_spr</sprite>
+          <sprite>sprites\paint_swas_spr</sprite>
+          <sprite>sprites\balloon_pencil_spr</sprite>
+          <sprite>sprites\paint_rail_spr</sprite>
+          <sprite>sprites\pencil_balloon_spr</sprite>
+          <sprite>sprites\paint_ride_mask_spr</sprite>
+          <sprite>sprites\paint_tnt_spr</sprite>
+          <sprite>sprites\paint_mask_spr</sprite>
+          <sprite>sprites\mini_swas_spr</sprite>
+          <sprite>sprites\mini_swas_tracer_spr</sprite>
+          <sprite>sprites\kite_spr</sprite>
+          <sprite>sprites\paint_blimp_spr</sprite>
+          <sprite>sprites\paint_missle_spr</sprite>
+          <sprite>sprites\pencil_sharpener_spr</sprite>
+          <sprite>sprites\turp_spr</sprite>
+          <sprite>sprites\rag_spr</sprite>
+          <sprite>sprites\turp_drop_spr</sprite>
+          <sprite>sprites\turp_wave_spr</sprite>
+          <sprite>sprites\over_eraser_spr</sprite>
+          <sprite>sprites\mini_tank_spr</sprite>
+        </sprites>
       </sprites>
-      <sprites name="P3">
-        <sprite>sprites\hitler_paint_1_spr</sprite>
-        <sprite>sprites\hitler_paint_3_spr</sprite>
-        <sprite>sprites\hitler_paint_2_spr</sprite>
-        <sprite>sprites\pencil_missle_spr</sprite>
-        <sprite>sprites\pencil_mask_spr</sprite>
-        <sprite>sprites\over_brush_spr</sprite>
-        <sprite>sprites\over_brush_mask_spr</sprite>
-        <sprite>sprites\anvil_spr</sprite>
-        <sprite>sprites\chain_ceiling_spr</sprite>
-        <sprite>sprites\balloon_up_spr</sprite>
-        <sprite>sprites\paint_swas_spr</sprite>
-        <sprite>sprites\balloon_pencil_spr</sprite>
-        <sprite>sprites\paint_rail_spr</sprite>
-        <sprite>sprites\pencil_balloon_spr</sprite>
-        <sprite>sprites\paint_ride_mask_spr</sprite>
-        <sprite>sprites\paint_tnt_spr</sprite>
-        <sprite>sprites\paint_mask_spr</sprite>
-        <sprite>sprites\mini_swas_spr</sprite>
-        <sprite>sprites\mini_swas_tracer_spr</sprite>
-        <sprite>sprites\kite_spr</sprite>
-        <sprite>sprites\paint_blimp_spr</sprite>
-        <sprite>sprites\paint_missle_spr</sprite>
-        <sprite>sprites\pencil_sharpener_spr</sprite>
-        <sprite>sprites\turp_spr</sprite>
-        <sprite>sprites\rag_spr</sprite>
-        <sprite>sprites\turp_drop_spr</sprite>
-        <sprite>sprites\turp_wave_spr</sprite>
-        <sprite>sprites\over_eraser_spr</sprite>
-        <sprite>sprites\mini_tank_spr</sprite>
+      <sprites name="sub_sequence">
+        <sprite>sprites\sub_ground_spr</sprite>
+        <sprite>sprites\sub_part_spr</sprite>
+        <sprite>sprites\sub_missle_part_spr</sprite>
+        <sprite>sprites\sub_missle_spr</sprite>
+        <sprite>sprites\twin_turret_spr</sprite>
+        <sprite>sprites\twin_bullet_spr</sprite>
+        <sprite>sprites\twin_turret_place_spr</sprite>
+        <sprite>sprites\scuba_man_spr</sprite>
+        <sprite>sprites\sub_water_spr</sprite>
+        <sprite>sprites\naval_mine_spr</sprite>
+        <sprite>sprites\mine_holder_spr</sprite>
+        <sprite>sprites\mine_smoke_spr</sprite>
+        <sprite>sprites\grenade_tracer_spr</sprite>
+        <sprite>sprites\S_grenade_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="4-Clown World">
@@ -653,6 +657,7 @@
     <background>background\moto_frame_BG</background>
     <background>background\painting_final_BG</background>
     <background>background\painting_tile_BG</background>
+    <background>background\hitler_finish_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -1032,8 +1037,8 @@
       </objects>
       <objects name="hitler">
         <objects name="P1">
-          <object>objects\zeplin_controller</object>
           <object>objects\zepplin</object>
+          <object>objects\zeplin_controller</object>
           <object>objects\can_drop</object>
           <object>objects\zep_canvas</object>
           <object>objects\hitler_X</object>
@@ -1056,6 +1061,7 @@
         </objects>
         <objects name="P2">
           <object>objects\hitler_hurt</object>
+          <object>objects\hitler_big_paint</object>
           <object>objects\hitler_X2</object>
           <object>objects\zep_P2_controller_X</object>
           <object>objects\zeplin_P2_controller</object>
@@ -1075,6 +1081,9 @@
         </objects>
         <objects name="P3">
           <object>objects\zeplin_P3_controller</object>
+          <object>objects\hitler_trans_painter</object>
+          <object>objects\paint_spawner</object>
+          <object>objects\paint_blob</object>
           <object>objects\paint_ride</object>
           <object>objects\paint_painter</object>
           <object>objects\paint_swas</object>
@@ -1090,6 +1099,10 @@
           <object>objects\pencil_sharpener</object>
           <object>objects\turp_hand</object>
           <object>objects\turp_drop</object>
+        </objects>
+        <objects name="finish">
+          <object>objects\zepplin_finish</object>
+          <object>objects\hitler_finish_controller</object>
         </objects>
       </objects>
       <objects name="submarine">
@@ -1175,6 +1188,7 @@
     <objects name="HUD">
       <object>objects\HUD</object>
     </objects>
+    <object>objects\stage_finish</object>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
@@ -1182,8 +1196,6 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\zepplin_room</room>
-        <room>rooms\paint_2_room</room>
-        <room>rooms\no_boss_cutscene_room</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\paint_room</room>
         <room>rooms\demo_room</room>
@@ -1219,7 +1231,8 @@
     </rooms>
     <rooms name="germany">
       <room>rooms\germany_motor_room</room>
-      <room>rooms\hitler_room</room>
+      <room>rooms\paint_2_room</room>
+      <room>rooms\hitler_finish_room</room>
       <room>rooms\sub_room</room>
     </rooms>
     <rooms name="pooh">
@@ -1234,6 +1247,7 @@
     </rooms>
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
+      <room>rooms\no_boss_cutscene_room</room>
       <room>rooms\time_cutscene_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>

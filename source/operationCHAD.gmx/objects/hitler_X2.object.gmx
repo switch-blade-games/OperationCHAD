@@ -43,7 +43,7 @@ flip=1
 
 event_inherited()
 
-enemy_init(400)
+enemy_init(260)
 
 
 LAUGHtime=60
@@ -143,6 +143,8 @@ with(SON)
     event_perform(ev_create,0)
     
 SON.facing=flip
+
+SON.MAKEpaint=true
 </string>
           </argument>
         </arguments>

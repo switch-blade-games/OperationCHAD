@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///ONE=
+            <string>if not(room=paint_2_room)
+ACTIVE=false
+else
+ACTIVE=true
+
+///ONE=
 ///TWO=
 ///THREE=
 
@@ -252,7 +257,10 @@ surface_reset_target()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(global.WHITE)
+            <string>if(ACTIVE=false)
+exit
+
+draw_set_color(global.WHITE)
 
 var BORDER=20;
 
