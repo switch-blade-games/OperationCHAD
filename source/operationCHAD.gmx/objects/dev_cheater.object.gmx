@@ -354,7 +354,12 @@ file_text_close(file);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>exit
+            <string>if(instance_number(stage_finish)=1)
+exit
+
+room_goto_next()
+
+exit
 
 if(instance_number(screen_explode)=0){
 

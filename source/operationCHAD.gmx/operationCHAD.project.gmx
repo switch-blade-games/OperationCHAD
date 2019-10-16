@@ -588,6 +588,11 @@
       <sprite>sprites\wep_select_spr</sprite>
       <sprite>sprites\HUD_under_spr</sprite>
     </sprites>
+    <sprites name="panels">
+      <sprite>sprites\stage_1_panel_spr</sprite>
+      <sprite>sprites\stage_3_panel_spr</sprite>
+      <sprite>sprites\stage_4_panel_spr</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\title_BG</background>
@@ -1189,15 +1194,21 @@
       <object>objects\HUD</object>
     </objects>
     <object>objects\stage_finish</object>
+    <objects name="panel">
+      <object>objects\panel_controller</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\panel</room>
+        <room>rooms\germany_motor_room</room>
+        <room>rooms\sub_room</room>
         <room>rooms\zepplin_room</room>
-        <room>rooms\demo_room_2</room>
         <room>rooms\paint_room</room>
+        <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
       </rooms>
     </rooms>
@@ -1230,10 +1241,8 @@
       <room>rooms\FF_room</room>
     </rooms>
     <rooms name="germany">
-      <room>rooms\germany_motor_room</room>
       <room>rooms\paint_2_room</room>
       <room>rooms\hitler_finish_room</room>
-      <room>rooms\sub_room</room>
     </rooms>
     <rooms name="pooh">
       <room>rooms\final_room</room>
