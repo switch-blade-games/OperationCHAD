@@ -3,7 +3,7 @@
 var file = argument[0];
 if (file_exists(file))
     {
-    show_debug_message("LOADING OFFSETS...");
+    //show_debug_message("LOADING OFFSETS...");
     var _o = 0;
     
     // load
@@ -47,7 +47,7 @@ if (file_exists(file))
             }
         }
     
-    show_debug_message("LOADED "+string(_o)+" OFFSETS!");
+    //show_debug_message("LOADED "+string(_o)+" OFFSETS!");
     
     buffer_delete(buff);
     }

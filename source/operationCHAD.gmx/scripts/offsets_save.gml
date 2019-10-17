@@ -3,7 +3,7 @@
 var file = argument[0];
 if (file != "")
     {
-    show_debug_message("SAVING OFFSETS...");
+    //show_debug_message("SAVING OFFSETS...");
     var _o = 0;
     
     // save
@@ -24,7 +24,7 @@ if (file != "")
             }
         }
     
-    show_debug_message("SAVED "+string(_o)+" OFFSETS!");
+    //show_debug_message("SAVED "+string(_o)+" OFFSETS!");
     
     var bytes = buffer_tell(buff);
     buffer_save_ext(buff,file,0,bytes);

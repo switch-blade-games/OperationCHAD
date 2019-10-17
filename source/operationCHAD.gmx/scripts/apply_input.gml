@@ -267,9 +267,9 @@ switch(move_state)
     case mState.climb:
         if (detect_climb)
             {
-            climb_l = (climb_side & tile_side.left == tile_side.left);
-            climb_r = (climb_side & tile_side.right == tile_side.right);
-            climb_b = (climb_side & tile_side.bottom == tile_side.bottom);
+            var climb_l = (climb_side & tile_side.left == tile_side.left);
+            var climb_r = (climb_side & tile_side.right == tile_side.right);
+            var climb_b = (climb_side & tile_side.bottom == tile_side.bottom);
             
             // hanging from ceiling takes priority
             if (((!climb_l) and input_right) or ((!climb_r) and input_left))

@@ -27,10 +27,6 @@
             <kind>1</kind>
             <string>// instance is created in room creation code
 
-// view/window/gui
-gui_w = view_wview[0];
-gui_h = view_hview[0];
-
 enum tile_side
     {
     none = 0,
@@ -41,6 +37,12 @@ enum tile_side
     full = 15
     }
 
+// view/window/gui
+gui_w = view_wview[0];
+gui_h = view_hview[0];
+
+last_gpcount = global.gpcount;
+last_pause = global.pause;
 surf_pause = -1;
 
 verlet_init();
@@ -66,7 +68,8 @@ verlet_init();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepad_update();
+            <string>last_gpcount = global.gpcount;
+gamepad_update();
 
 var time = get_timer();
 verlet_update();
@@ -95,8 +98,18 @@ global.vtime = get_timer()-time;
             <kind>1</kind>
             <string>if (keyboard_check_pressed(ord("P")))
 or (gamepad_check_pressed_all(gpinput.start))
-    {
     global.pause = !global.pause;
+
+if (global.gpcount &lt; last_gpcount) and (!global.pause)
+    {
+    global.pause = true;
+    var inst = instance_create(0,0,obj_gamepad_disconnect);
+    inst.gpcount = global.gpcount;
+    }
+
+if (global.pause != last_pause)
+    {
+    last_pause = global.pause;
     if (global.pause)
         {
         surf_pause = surface_create(view_wview[0],view_hview[0]);
@@ -107,6 +120,7 @@ or (gamepad_check_pressed_all(gpinput.start))
         surface_reset_target();
         
         instance_deactivate_all(true);
+        instance_activate_object(obj_gamepad_disconnect);
         }
     else
         {
@@ -136,14 +150,17 @@ if (global.pause and surface_exists(surf_pause))
     draw_rectangle(0,0,view_wview[0],view_hview[0],0);
     draw_set_alpha(1.0);
     
-    draw_set_font(global.fnt_joystix);
-    draw_set_color($FFFFFF);
-    draw_set_halign(1);
-    draw_set_valign(1);
-    draw_text_outline(view_wview[0]/2,view_hview[0]/3,"PAUSED");
-    draw_set_valign(0);
-    draw_set_halign(0);
-    draw_set_color($000000);
+    if (!instance_exists(obj_gamepad_disconnect))
+        {
+        draw_set_font(global.fnt_joystix);
+        draw_set_color($FFFFFF);
+        draw_set_halign(1);
+        draw_set_valign(1);
+        draw_text_outline(view_wview[0]/2,view_hview[0]/3,"PAUSED");
+        draw_set_valign(0);
+        draw_set_halign(0);
+        draw_set_color($000000);
+        }
     }
 </string>
           </argument>

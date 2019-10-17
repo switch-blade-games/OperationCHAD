@@ -1198,6 +1198,7 @@
     <objects name="panel">
       <object>objects\panel_controller</object>
     </objects>
+    <object>objects\obj_gamepad_disconnect</object>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
