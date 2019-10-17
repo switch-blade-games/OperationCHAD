@@ -717,6 +717,7 @@
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
+      <script>scripts\detect.gml</script>
       <script>scripts\apply_gravity.gml</script>
       <script>scripts\apply_input.gml</script>
       <script>scripts\apply_force.gml</script>
