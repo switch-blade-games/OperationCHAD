@@ -19,6 +19,19 @@
     <sounds name="MUSIC">
       <sound>sound\pre_fight_snd</sound>
       <sound>sound\flight_of_bumblebee_snd</sound>
+      <sound>sound\ride_of_valk_snd</sound>
+    </sounds>
+    <sounds name="yolo">
+      <sound>sound\disconnect_1_snd</sound>
+      <sound>sound\disconnect_2_snd</sound>
+      <sound>sound\disconnect_3_snd</sound>
+      <sound>sound\disconnect_4_snd</sound>
+      <sound>sound\disconnect_5_snd</sound>
+      <sound>sound\reconnect_1_snd</sound>
+      <sound>sound\reconnect_2_snd</sound>
+      <sound>sound\reconnect_3_snd</sound>
+      <sound>sound\reconnect_4_snd</sound>
+      <sound>sound\reconnect_5_snd</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -592,6 +605,12 @@
       <sprite>sprites\stage_1_panel_spr</sprite>
       <sprite>sprites\stage_3_panel_spr</sprite>
       <sprite>sprites\stage_4_panel_spr</sprite>
+      <sprite>sprites\stage_5_panel_spr</sprite>
+      <sprite>sprites\stage_6_panel_spr</sprite>
+      <sprite>sprites\stage_7_panel_spr</sprite>
+    </sprites>
+    <sprites name="gags">
+      <sprite>sprites\controller_gag_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -1205,7 +1224,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\panel</room>
+        <room>rooms\time_cutscene_room</room>
+        <room>rooms\panel_room</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
         <room>rooms\zepplin_room</room>
@@ -1259,7 +1279,6 @@
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
       <room>rooms\no_boss_cutscene_room</room>
-      <room>rooms\time_cutscene_room</room>
       <room>rooms\cine_room</room>
       <room>rooms\ep_room</room>
       <room>rooms\game_over_room</room>

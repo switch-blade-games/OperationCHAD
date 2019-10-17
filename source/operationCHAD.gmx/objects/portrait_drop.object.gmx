@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>snd_loop(pre_fight_snd);
+            <string>audio_stop_all()
+
+snd_loop(pre_fight_snd);
 
 FALLsnd=false
 
