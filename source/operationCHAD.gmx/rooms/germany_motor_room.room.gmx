@@ -23,8 +23,7 @@ background_color=global.LIGHTgrey;
 
 global.moto_floor=180
 
-
-audio_play_sound(ride_of_valk_snd,0,true)</code>
+mus_loop(ride_of_valk_snd);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

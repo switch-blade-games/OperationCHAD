@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-1</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,41 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = 30;
+            <string>gpcount = global.gpcount;
+reconnect = false;
+unpause = false;
+
+alarm[0] = 45;
+
+if (global.music &gt; -1)
+    audio_sound_gain(global.music,global.bgm_gain*0.2,750);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// unpause the game
+global.pause = false;
+if (global.music &gt; -1)
+    audio_sound_gain(global.music,global.bgm_gain,750);
+instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -48,7 +82,82 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>// play audio when controller is disconnected
+var aud_id = asset_get_index("disconnect_"+string(1+irandom(4))+"_snd");
+snd_play(aud_id);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// player plugs controller back in
+if (!reconnect) and (global.gpcount &gt; gpcount)
+    {
+    reconnect = true;
+    
+    var aud_id = asset_get_index("reconnect_"+string(1+irandom(4))+"_snd");
+    snd_play(aud_id);
+    }
+
+if (reconnect) and (!unpause)
+    {
+    // audio is done playing
+    if (gamepad_check_all(gpinput.face1))
+        {
+        unpause = true;
+        alarm[1] = 45;
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_font(global.fnt_joystix);
+draw_set_halign(1);
+draw_set_valign(1);
+if (reconnect)
+    draw_text_outline(view_wview[0]/2,view_hview[0]/3,"PRESS X TO RESUME");
+else
+    draw_text_outline(view_wview[0]/2,view_hview[0]/3,"GAMEPAD DISCONNECTED");
+draw_set_valign(0);
+draw_set_halign(0);
+draw_set_color($000000);
+</string>
           </argument>
         </arguments>
       </action>

@@ -30,7 +30,14 @@
 debug_draw = -1;
 debug_freeze = false;
 
-gamepad_slot = 0;
+for(var i=0; i&lt;4; i++;)
+    {
+    if (global.gp[i,gpinfo.connected])
+        {
+        gamepad_slot = i;
+        break;
+        }
+    }
 
 // player move states
 enum mState

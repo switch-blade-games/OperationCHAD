@@ -109,13 +109,19 @@ if (debug)
 if (keyboard_check_pressed(vk_pageup))
     {
     if (room_exists(room_next(room)))
+        {
         room_goto(room_next(room));
+        mus_stop();
+        }
     }
 // previous room
 if (keyboard_check_pressed(vk_pagedown))
     {
     if (room_exists(room_previous(room))) and (room != menu_room)
+        {
         room_goto(room_previous(room));
+        mus_stop();
+        }
     }
 
 // change weapons
@@ -131,6 +137,7 @@ for(var i=0; i&lt;10; i++;)
 // restart
 if (keyboard_check_pressed(ord("R")))
     {
+    mus_stop();
     with(obj_shader)
         instance_destroy();
     instance_destroy();
@@ -322,7 +329,9 @@ file_text_close(file);
                 draw_text_outline(vx+4,vy+4+00,"Version: "+string(global.version));
                 draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
                 draw_text_outline(vx+4,vy+4+24,"Particles: "+string(part_num));
-                draw_text_outline(vx+4,vy+4+36,"Segments: "+string(rope_num)+" ["+string(round(global.vtime))+"ms]");
+                if (instance_exists(obj_player))
+                    draw_text_outline(vx+4,vy+4+36,"Gamepad Slot: "+string(obj_player.gamepad_slot));
+                //draw_text_outline(vx+4,vy+4+36,"Segments: "+string(rope_num)+" ["+string(round(global.vtime))+"ms]");
                 draw_text_outline(vx+4,vy+4+48,"CamPos: "+string(vx)+"/"+string(vy)+" ["+string(round(global.ctime))+"ms]");
                 draw_set_color($000000);
                 draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>audio_stop_all()
 
-snd_loop(pre_fight_snd);
+mus_loop(pre_fight_snd);
 
 FALLsnd=false
 

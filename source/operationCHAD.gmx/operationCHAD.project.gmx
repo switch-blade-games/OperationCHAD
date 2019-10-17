@@ -776,6 +776,7 @@
       <script>scripts\snd_play_3d.gml</script>
       <script>scripts\snd_loop.gml</script>
       <script>scripts\mus_loop.gml</script>
+      <script>scripts\mus_stop.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
@@ -950,6 +951,7 @@
         <object>objects\paint_parent</object>
       </objects>
       <object>objects\ep_warning</object>
+      <object>objects\obj_gamepad_disconnect</object>
     </objects>
     <objects name="1- Planned Parenthood">
       <objects name="tong_boss">
@@ -1217,7 +1219,6 @@
     <objects name="panel">
       <object>objects\panel_controller</object>
     </objects>
-    <object>objects\obj_gamepad_disconnect</object>
   </objects>
   <rooms name="rooms">
     <rooms name="0- Front End">
