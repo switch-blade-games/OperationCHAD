@@ -29,42 +29,32 @@
 PAINTMISSLE=2
 DONE=5
 
-
 MISSLEx=0
 MISSLEy=0
 
 spe=20
-
 state=GOMISSLE
-
 PAINTspe=spe
 
-motion_set(point_direction(x,y,MISSLEx,MISSLEy),spe)
-
-MISSLEsur=surface_create(400,240)
-
-PAINTsur=surface_create(400,240)
-
+// clipping mask for paint effect
+mask_surf = -1;
+clip_surf = -1;
+last_x = x;
+last_y = y;
 
 //make missles
+for(var i=0; i&lt;3; i++;)
+    instance_create(view_xview[0]+20,60+(60*i),pencil_missle);
+// make pencil sharpeners
+for(var i=0; i&lt;3; i++;)
+    instance_create(340,20+(i*60),pencil_sharpener);
 
-var i=0;
+with(pencil_missle)
+    visible = false;
+with(pencil_sharpener)
+    visible = false;
 
-repeat(3){
-
-    instance_create(view_xview[0]+20,60+(60*i),pencil_missle)
-    i+=1
-}
-
-i=0;
-
-repeat(3){
-
-    instance_create(340,20+(i*60),pencil_sharpener)
-    
-    i+=1
-}
-
+motion_set(point_direction(x,y,MISSLEx,MISSLEy),spe);
 </string>
           </argument>
         </arguments>
@@ -87,72 +77,56 @@ repeat(3){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw the black and white onto the PAINTsur
-
-surface_set_target(PAINTsur)
-
-draw_set_color(c_black)
-
-draw_rectangle(0,0,400,240,false)
-
-draw_set_color(c_white)
-
-with(white_paint)
-    draw_sprite(sprite_index,-1,x,y)
-    //draw_circle(x,y,20,false)
-
-surface_reset_target()
-
-
-//now draw the actual TNT barrels, and the PAINTsur should be "revealing" them
-
-surface_set_target(MISSLEsur)
-
-var i=0;
-
-
-
-
-//if you remove this blend mode, you can see that the black and white parts of the PAINTsur are being applied correctly
-
-
-draw_set_blend_mode(bm_subtract)
-
-draw_surface_ext(PAINTsur,0,0,1,1,0,c_white,1)
-
-surface_reset_target()
-
-blend_normal()
-
-
-
-if(state=GOMISSLE){
-
-    if(point_distance(x,y,MISSLEx,MISSLEy)&lt;speed){
-        speed=0
-        x=MISSLEx
-        y=MISSLEy
-        
-        state=PAINTMISSLE
-        
-        path_start(missle_paint_path,PAINTspe,path_action_stop,false)
-        
+            <string>switch(state)
+    {
+    case GOMISSLE:
+        if (point_distance(x,y,MISSLEx,MISSLEy) &lt; speed)
+            {
+            state = PAINTMISSLE;
+            
+            x = MISSLEx;
+            y = MISSLEy;
+            speed = 0;
+            path_start(missle_paint_path,PAINTspe,path_action_stop,false)
+            }
+        break;
     
+    case PAINTMISSLE:
+        if (surface_exists(mask_surf))
+            {
+            var dir = point_direction(last_x,last_y,x,y);
+            var len = point_distance(last_x,last_y,x,y);
+            var ldx = lengthdir_x(10,dir);
+            var ldy = lengthdir_y(10,dir);
+            var scl = clamp(len/10,1,2.5);
+            
+            surface_set_target(mask_surf);
+            draw_set_blend_mode(bm_subtract);
+            for(var i=0; i&lt;ceil(len/10); i++;)
+                draw_sprite_ext(paint_mask_spr,irandom(3),last_x+ldx*i,last_y+ldy*i,scl,scl,dir,$FFFFFF,1);
+            draw_set_blend_mode(bm_normal);
+            surface_reset_target();
+            
+            last_x = x;
+            last_y = y;
+            }
+        break;
+    
+    case DONE:
+        if (point_distance(x,y,xstart,ystart) &lt; spe)
+            {
+            if (surface_exists(mask_surf))
+                surface_free(mask_surf);
+            if (surface_exists(clip_surf))
+                surface_free(clip_surf);
+            with(pencil_missle)
+                visible = true;
+            with(pencil_sharpener)
+                visible = true;
+            instance_destroy();
+            }
+        break;
     }
-}
-
-
-if(state=PAINTMISSLE)
-    instance_create(x,y,white_paint)
-    
-
-
-if(state=DONE){
-
-    if(point_distance(x,y,xstart,ystart)&lt;spe)
-        instance_destroy()
-}
-
 </string>
           </argument>
         </arguments>
@@ -175,32 +149,20 @@ if(state=DONE){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=PAINTMISSLE){
-
-
-
-    motion_set(point_direction(x,y,xstart,ystart),spe)
-    
-    state=DONE
-    
-    with(paint_ride){
-        instance_destroy()
-        instance_create(x,y,pencil_missle)
-    }
-    
-    with(pencil_missle){
-    
-        motion_set(0,spe+random(SPEnoise))
-    }
-    
-    
-    
+            <string>if (state == PAINTMISSLE)
+    {
+    state = DONE;
+    with(paint_ride)
+        {
+        instance_destroy();
+        instance_create(x,y,pencil_missle);
+        }
+    with(pencil_missle)
+        motion_set(0,spe+random(SPEnoise));
     with(zeplin_P3_controller)
-        alarm[0]=rate
-    
-}
-
-
+        alarm[0] = rate;
+    motion_set(point_direction(x,y,xstart,ystart),spe);
+    }
 </string>
           </argument>
         </arguments>
@@ -223,10 +185,33 @@ if(state=DONE){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(MISSLEsur,0,0)
+            <string>if (!surface_exists(mask_surf))
+    {
+    mask_surf = surface_create(view_wview[0],view_hview[0]);
+    surface_set_target(mask_surf);
+    draw_clear(c_black);
+    surface_reset_target();
+    }
+if (!surface_exists(clip_surf))
+    clip_surf = surface_create(view_wview[0],view_hview[0]);
 
+// start drawing
+surface_set_target(clip_surf);
+draw_clear_alpha(c_black,0);
+// draw things to clip surface
+with(pencil_missle)
+    draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+with(pencil_sharpener)
+    draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+// draw clip mask
+draw_set_blend_mode(bm_subtract);
+draw_surface(mask_surf,0,0);
+draw_set_blend_mode(bm_normal);
+surface_reset_target();
 
-draw_self()
+// draw the clip-masked surface
+draw_surface(clip_surf,view_xview[0],view_yview[0]);
+draw_self();
 </string>
           </argument>
         </arguments>

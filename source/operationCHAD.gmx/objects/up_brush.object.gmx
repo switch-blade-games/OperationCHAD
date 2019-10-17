@@ -31,7 +31,6 @@ GORIDE=3
 PAINTRIDE=4
 DONE=5
 
-
 TNTx=paint_ride.x
 TNTy=0
 
@@ -43,22 +42,17 @@ PAINTspe=spe
 
 motion_set(point_direction(x,y,TNTx,TNTy),spe)
 
-TNTsur=surface_create(400,240)
-
-PAINTsur=surface_create(400,240)
-
+// clipping mask for paint effect
+mask_surf = -1;
+clip_surf = -1;
+last_x = x;
+last_y = y;
 
 //make tnt
-
-var i=0;
-
-repeat(4){
-
-    instance_create(paint_ride.x+(i*40),TNTy,paint_tnt)
-    i+=1
-}
-
-
+for(var i=0; i&lt;4; i++;)
+    instance_create(paint_ride.x+(i*40),TNTy,paint_tnt);
+with(paint_tnt)
+    visible = false;
 </string>
           </argument>
         </arguments>
@@ -81,85 +75,62 @@ repeat(4){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw the black and white onto the PAINTsur
-
-surface_set_target(PAINTsur)
-
-draw_set_color(c_black)
-
-draw_rectangle(0,0,400,240,false)
-
-draw_set_color(c_white)
-
-with(white_paint)
-    draw_sprite(sprite_index,-1,x,y)
-    //draw_circle(x,y,20,false)
-
-surface_reset_target()
-
-
-//now draw the actual TNT barrels, and the PAINTsur should be "revealing" them
-
-surface_set_target(TNTsur)
-
-var i=0;
-
-repeat(4){
-
-    draw_sprite(paint_tnt_spr,-1,TNTx+(i*40),TNTy)
+            <string>switch(state)
+    {
+    case GOTNT:
+        if (point_distance(x,y,TNTx,TNTy) &lt; speed)
+            {
+            state = PAINTTNT;
+            x = TNTx;
+            y = TNTy;
+            speed = 0;
+            path_start(h_paint_path,PAINTspe,path_action_stop,false);
+            }
+        break;
     
-    i+=1
-}
-
-
-//if you remove this blend mode, you can see that the black and white parts of the PAINTsur are being applied correctly
-
-
-draw_set_blend_mode(bm_subtract)
-
-draw_surface_ext(PAINTsur,0,0,1,1,0,c_white,1)
-
-surface_reset_target()
-
-blend_normal()
-
-
-
-if(state=GOTNT){
-
-    if(point_distance(x,y,TNTx,TNTy)&lt;speed){
-        speed=0
-        x=TNTx
-        y=TNTy
-        
-        state=PAINTTNT
-        
-        path_start(h_paint_path,PAINTspe,path_action_stop,false)
-        
+    case PAINTTNT:
+        if (surface_exists(mask_surf))
+            {
+            var dir = point_direction(last_x,last_y,x,y);
+            var len = point_distance(last_x,last_y,x,y);
+            var ldx = lengthdir_x(10,dir);
+            var ldy = lengthdir_y(10,dir);
+            var scl = clamp(len/10,1,2.5);
+            
+            surface_set_target(mask_surf);
+            draw_set_blend_mode(bm_subtract);
+            for(var i=0; i&lt;ceil(len/10); i++;)
+                draw_sprite_ext(paint_mask_spr,irandom(3),last_x+ldx*i,last_y+ldy*i,scl,scl,dir,$FFFFFF,1);
+            draw_set_blend_mode(bm_normal);
+            surface_reset_target();
+            
+            last_x = x;
+            last_y = y;
+            }
+        break;
     
+    case GORIDE:
+        if (point_distance(x,y,paint_ride.x,paint_ride.y) &lt; spe)
+            {
+            state = PAINTRIDE;
+            path_start(h_paint_path,PAINTspe,path_action_stop,false);
+            }
+        break;
+    
+    case DONE:
+        if (point_distance(x,y,xstart,ystart) &lt; spe)
+            {
+            if (surface_exists(mask_surf))
+                surface_free(mask_surf);
+            if (surface_exists(clip_surf))
+                surface_free(clip_surf);
+            with(paint_tnt)
+                visible = true;
+            instance_destroy();
+            }
+        break;
     }
-}
 
-
-if(state=PAINTTNT)
-    instance_create(x,y,white_paint)
-    
-    
-if(state=GORIDE){
-
-    if(point_distance(x,y,paint_ride.x,paint_ride.y)&lt;spe){
-    
-        state=PAINTRIDE
-        path_start(h_paint_path,PAINTspe,path_action_stop,false)
-    }
-}
-
-
-if(state=DONE){
-
-    if(point_distance(x,y,xstart,ystart)&lt;spe)
-        instance_destroy()
-}
 
 </string>
           </argument>
@@ -183,36 +154,24 @@ if(state=DONE){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=PAINTTNT){
+            <string>if (state == PAINTTNT)
+    {
+    state = GORIDE;
     with(paint_tnt)
-        ACTIVE=true
-        
-state=GORIDE
-
-with(white_paint)
-    instance_destroy()
-
-motion_set(point_direction(x,y,paint_ride.x,paint_ride.y),spe)
-
-}
-
-if(state=PAINTRIDE){
-
-    motion_set(point_direction(x,y,xstart,ystart),spe)
-    
-    state=DONE
-    
-    with(paint_ride){
-    
-        CURRENTspr=paint_blimp_spr
-        state=UP
-        
-        motion_set(270,UPpush)
+        ACTIVE = true;
+    motion_set(point_direction(x,y,paint_ride.x,paint_ride.y),spe);
+    }
+else if (state == PAINTRIDE)
+    {
+    state = DONE;
+    with(paint_ride)
+        {
+        CURRENTspr = paint_blimp_spr;
+        state = UP;
+        motion_set(270,UPpush);
         }
-    
-}
-
-
+    motion_set(point_direction(x,y,xstart,ystart),spe);
+    }
 </string>
           </argument>
         </arguments>
@@ -235,10 +194,31 @@ if(state=PAINTRIDE){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(TNTsur,0,0)
+            <string>if (!surface_exists(mask_surf))
+    {
+    mask_surf = surface_create(view_wview[0],view_hview[0]);
+    surface_set_target(mask_surf);
+    draw_clear(c_black);
+    surface_reset_target();
+    }
+if (!surface_exists(clip_surf))
+    clip_surf = surface_create(view_wview[0],view_hview[0]);
 
+// start drawing
+surface_set_target(clip_surf);
+draw_clear_alpha(c_black,0);
+// draw things to clip surface
+with(paint_tnt)
+    draw_sprite_ext(sprite_index,image_index,x-view_xview[0],y-view_yview[0],image_xscale,image_yscale,image_angle,image_blend,image_alpha);
+// draw clip mask
+draw_set_blend_mode(bm_subtract);
+draw_surface(mask_surf,0,0);
+draw_set_blend_mode(bm_normal);
+surface_reset_target();
 
-draw_self()
+// draw the clip-masked surface
+draw_surface(clip_surf,view_xview[0],view_yview[0]);
+draw_self();
 </string>
           </argument>
         </arguments>
