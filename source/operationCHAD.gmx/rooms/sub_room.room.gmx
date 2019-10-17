@@ -21,7 +21,7 @@ instance_create(0,0,sub_controller)
 
 background_color=global.LIGHTgrey
 
-global.moto_floor = 100;</code>
+global.moto_floor = 70;</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

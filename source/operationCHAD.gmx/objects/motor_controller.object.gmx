@@ -43,8 +43,6 @@ PLANErate=300
 PLANEshots=0
 
 MEN=false
-
-global.moto_floor = 210;
 </string>
           </argument>
         </arguments>
@@ -117,7 +115,9 @@ PLANEshots=-1000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>PLANEshots+=1
+            <string>
+
+PLANEshots+=1
 
 
 instance_create(200,10,front_plane)
@@ -165,7 +165,7 @@ if(MEN=true){
 
 if(instance_number(motor_nazi)=0)
 if(random(200)&lt;1)
-    instance_create(440,210,motor_nazi)
+    instance_create(440,global.moto_floor,motor_nazi)
     
     
 if(instance_number(para_man)&lt;3)
