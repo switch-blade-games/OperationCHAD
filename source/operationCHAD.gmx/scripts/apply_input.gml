@@ -39,9 +39,8 @@ switch(move_state)
                 if (input_right)
                     {
                     // climb wall to the right
-                    var inst = instance_place(x+1,y,par_climb);
-                    if (!input_down) // and (yspeed >= -2)
-                    and (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
+                    if (detect_climb) and (climb_side == tile_side.left)
+                    and (!input_down)
                         {
                         move_state = mState.climb;
                         yspeed = 0;
@@ -50,20 +49,16 @@ switch(move_state)
                     // aim
                     if (input_up)
                         aim = 45;
+                    else if (input_down)
+                        aim = 315;
                     else
-                        {
-                        if (input_down)
-                            aim = 315;
-                        else
-                            aim = 0;
-                        }
+                        aim = 0;
                     }
                 if (input_left)
                     {
                     // climb wall to the left
-                    var inst = instance_place(x-1,y,par_climb);
-                    if (!input_down) // and (yspeed >= -2)
-                    and (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
+                    if (detect_climb) and (climb_side == tile_side.right)
+                    and (!input_down)
                         {
                         move_state = mState.climb;
                         yspeed = 0;
@@ -72,13 +67,10 @@ switch(move_state)
                     // aim
                     if (input_up)
                         aim = 135;
+                    else if (input_down)
+                        aim = 225;
                     else
-                        {
-                        if (input_down)
-                            aim = 225;
-                        else
-                            aim = 180;
-                        }
+                        aim = 180;
                     }
                 }
             else
@@ -117,9 +109,8 @@ switch(move_state)
             // climb wall above the player
             if (!on_ground) and (input_up)
                 {
-                var inst = instance_place(x,y-1,par_climb);
-                if (!input_down) and (yspeed <= 0)
-                and (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
+                if (detect_climb) and (climb_side == tile_side.bottom)
+                and (!input_down)
                     {
                     move_state = mState.climb;
                     yspeed = 0;
@@ -274,41 +265,23 @@ switch(move_state)
         break;
     
     case mState.climb:
-        climb_side = tile_side.none;
-        var inst = instance_place(x-1,y,par_climb);
-        if (inst != noone) and (inst.sides & tile_side.right == tile_side.right)
-            climb_side += tile_side.right;
-        var inst = instance_place(x+1,y,par_climb);
-        if (inst != noone) and (inst.sides & tile_side.left == tile_side.left)
-            climb_side += tile_side.left;
-        var inst = instance_place(x,y-1,par_climb);
-        if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom)
-            climb_side += tile_side.bottom;
-        
-        if ((climb_side & tile_side.bottom == tile_side.bottom) and (!input_fire)
-        and ((climb_side & tile_side.left == 0 and input_right) or (climb_side & tile_side.right == 0 and input_left)))
-            climb_side = tile_side.bottom;
-        
-        if (climb_side == tile_side.none) // no longer climbing on a wall
+        if (detect_climb)
             {
-            /*
-             // jump up onto ledge
-            if (!place_meeting(x+face,y,par_solid))
-            and (input_up)
-                x += face;
-            */
+            climb_l = (climb_side & tile_side.left == tile_side.left);
+            climb_r = (climb_side & tile_side.right == tile_side.right);
+            climb_b = (climb_side & tile_side.bottom == tile_side.bottom);
             
-            move_state = mState.walk;
-            drop = true;
-            }
-        else
-            {
+            // hanging from ceiling takes priority
+            if (((!climb_l) and input_right) or ((!climb_r) and input_left))
+            and (climb_b and (!input_fire))
+                climb_side = tile_side.bottom;
+            
             // face away from wall you are climbing on
-            if (climb_side & tile_side.right == tile_side.right)
+            if (climb_r)
                 dir = -1;
-            else if (climb_side & tile_side.left == tile_side.left)
-                dir = 1;
-            else if (climb_side == tile_side.bottom)
+            else if (climb_l)
+                dir = +1;
+            else if (climb_b) // ONLY CLIMB BOTTOM?
                 {
                 // face in direction of movement
                 if (h_dir != 0)
@@ -328,55 +301,23 @@ switch(move_state)
                     yspeed = min(0,yspeed+fric);
                 
                 // aim
-                if (climb_side & tile_side.right == tile_side.right)
+                if (climb_r)
                     {
                     dir = -1;
                     if (h_dir == 0 and v_dir == 0)
                         aim = 0;
                     else
                         aim = point_direction(0,0,h_dir,v_dir);
-                    
-                    /* only aim away from wall
-                    if (input_up) or (input_down)
-                        {
-                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
-                        if (climb_side & tile_side.bottom == tile_side.bottom)
-                            {
-                            if (aim < 180)
-                                aim = 0;
-                            else if (aim >= 180) and (aim < 270)
-                                aim = 270;
-                            }
-                        else
-                            {
-                            if (aim > 90) and (aim <= 180)
-                                aim = 90;
-                            if (aim > 180) and (aim <= 270)
-                                aim = 270;
-                            }
-                        }
-                    */
                     }
-                else if (climb_side & tile_side.left == tile_side.left)
+                else if (climb_l)
                     {
                     dir = 1;
                     if (h_dir == 0 and v_dir == 0)
                         aim = 180;
                     else
                         aim = point_direction(0,0,h_dir,v_dir);
-                    
-                    /* only aim away from wall
-                    if (input_up) or (input_down)
-                        {
-                        aim = point_direction(0,0,input_right-input_left,input_down-input_up);
-                        if (climb_side & tile_side.bottom == tile_side.bottom)
-                            aim = clamp(aim,180,270);
-                        else
-                            aim = clamp(aim,90,270);
-                        }
-                    */
                     }
-                else if (climb_side == tile_side.bottom)
+                else if (climb_b)
                     {
                     aim = point_direction(0,0,dir,0);
                     if (h_dir != 0) or (input_down)
@@ -389,16 +330,16 @@ switch(move_state)
             else
                 {
                 // move and aim
-                if (climb_side & tile_side.right == tile_side.right)
-                or (climb_side & tile_side.left == tile_side.left)
+                if (climb_l)
+                or (climb_r)
                     {
                     xspeed = 0;
                     
                     // aim
-                    if (climb_side & tile_side.right == tile_side.right)
-                        aim = 0;
-                    else if (climb_side & tile_side.left == tile_side.left)
+                    if (climb_l)
                         aim = 180;
+                    else if (climb_r)
+                        aim = 0;
                     
                     // vertical movement
                     if (v_dir == 0)
@@ -414,14 +355,14 @@ switch(move_state)
                     
                     // jump/fall off
                     if (input_jump_pressed)
-                    or (on_ground and (input_down or ((climb_side & tile_side.right == tile_side.right) and input_right) or ((climb_side & tile_side.left == tile_side.left) and input_left)))
+                    or (on_ground and (input_down or (climb_r and input_right) or (climb_l and input_left)))
                         {
                         move_state = mState.walk;
                         aim = point_direction(0,0,dir,0);
                         drop = true;
                         }
                     }
-                else if (climb_side == tile_side.bottom)
+                else if (climb_b)
                     {
                     yspeed = 0;
                     
@@ -454,8 +395,11 @@ switch(move_state)
                     }
                 }
             }
-        
-        grace_jump = 0;
+        else
+            {
+            move_state = mState.walk;
+            drop = true;
+            }
         break;
     
     case mState.moto:
@@ -497,26 +441,20 @@ switch(move_state)
                     // aim
                     if (input_up)
                         aim = 45;
+                    else if (input_down)
+                        aim = 315;
                     else
-                        {
-                        if (input_down)
-                            aim = 315;
-                        else
-                            aim = 0;
-                        }
+                        aim = 0;
                     }
                 if (input_left)
                     {
                     // aim
                     if (input_up)
                         aim = 135;
+                    else if (input_down)
+                        aim = 225;
                     else
-                        {
-                        if (input_down)
-                            aim = 225;
-                        else
-                            aim = 180;
-                        }
+                        aim = 180;
                     }
                 }
             else

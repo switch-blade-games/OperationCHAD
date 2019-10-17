@@ -239,6 +239,7 @@ walk_y[9] = -2;
     exit;
 
 input();
+detect();
 apply_gravity();
 apply_input();
 apply_force();

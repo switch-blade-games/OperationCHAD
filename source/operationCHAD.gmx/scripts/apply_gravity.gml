@@ -5,9 +5,7 @@ switch(move_state)
     
         // detect if we're standing on ground
         on_ground = false;
-        if (place_meeting(x,y+1,par_solid))
-        or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
-        and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)) and yspeed >= 0)
+        if (detect_ground)
             {
             // on the ground
             on_ground = true;
@@ -21,45 +19,23 @@ switch(move_state)
         
         // gravity
         if (on_ground)
-            {
-            if (place_meeting(x,y+1,par_ramp))
-                {
-                on_ramp = true;
-                ramp_slope = 1;
-                var inst = instance_place(x,y+1,par_ramp);
-                if (inst != noone)
-                    ramp_slope = inst.slope;
-                }
-            else
-                on_ramp = false;
-            }
+            on_ramp = detect_ramp;
         else
             {
             // start hanging
             if (yspeed > 0) and (!no_hang) and (hang_id = noone)
                 {
-                var i = 0;
-                var inst = noone;
-                while(inst == noone and i<=yspeed)
+                if (detect_mb) and (y >= mb_id.y)
                     {
-                    inst = instance_position(x,(y-42)+i,par_mb);
-                    i++;
-                    }
-                
-                if (inst != noone)
-                    {
-                    if (y >= inst.y)
+                    var xh = (x-(mb_id.x));
+                    var yh = round(mb_id.y)+floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
+                    if (!place_meeting(x,yh,par_solid) and (abs(y-yh) <= 16))
                         {
-                        var xh = (x-(inst.x));
-                        var yh = round(inst.y)+floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
-                        if (!place_meeting(x,yh,par_solid) and (abs(y-yh) <= 16))
-                            {
-                            move_state = mState.hang;
-                            hang_id = inst;
-                            yspeed = 0;
-                            hang_offset = xh;
-                            y = yh;
-                            }
+                        move_state = mState.hang;
+                        hang_id = mb_id;
+                        hang_offset = xh;
+                        y = yh;
+                        yspeed = 0;
                         }
                     }
                 }
@@ -139,28 +115,17 @@ switch(move_state)
             // start hanging
             if (yspeed > 0) and (!no_hang) and (hang_id = noone)
                 {
-                var i = 0;
-                var inst = noone;
-                while(inst == noone and i<=yspeed)
+                if (detect_mb) and (y >= mb_id.y)
                     {
-                    inst = instance_position(x,(y-42)+i,par_mb);
-                    i++;
-                    }
-                
-                if (inst != noone)
-                    {
-                    if (y >= inst.y)
+                    var xh = (x-(mb_id.x));
+                    var yh = round(mb_id.y)+floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
+                    if (!place_meeting(x,yh,par_solid) and (abs(y-yh) <= 16))
                         {
-                        var xh = (x-(inst.x));
-                        var yh = round(inst.y)+floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
-                        if (!place_meeting(x,yh,par_solid) and (abs(y-yh) <= 16))
-                            {
-                            move_state = mState.hang;
-                            hang_id = inst;
-                            yspeed = 0;
-                            hang_offset = xh;
-                            y = yh;
-                            }
+                        move_state = mState.hang;
+                        hang_id = mb_id;
+                        hang_offset = xh;
+                        y = yh;
+                        yspeed = 0;
                         }
                     }
                 }
@@ -186,9 +151,7 @@ switch(move_state)
     case mState.dead:
         // detect if we're standing on ground
         on_ground = false;
-        if (place_meeting(x,y+1,par_solid))
-        or ((position_meeting(bbox_left,bbox_bottom+1,par_jt) or position_meeting(bbox_right,bbox_bottom+1,par_jt))
-        and (!position_meeting(bbox_left,bbox_bottom,par_jt) and !position_meeting(bbox_right,bbox_bottom,par_jt)) and yspeed >= 0)
+        if (detect_ground)
             {
             // on the ground
             on_ground = true;
