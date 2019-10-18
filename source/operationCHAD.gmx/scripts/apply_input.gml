@@ -244,8 +244,8 @@ switch(move_state)
                     // drop
                     drop = true;
                     hang_id = noone;
-                    // no hang
-                    no_hang = true;
+                    //no_hang = true;
+                    no_hang_time = 12;
                     }
                 }
             else
@@ -259,7 +259,10 @@ switch(move_state)
                     jump();
                     }
                 else
+                    {
                     drop = true;
+                    no_hang_time = 12;
+                    }
                 }
             }
         break;

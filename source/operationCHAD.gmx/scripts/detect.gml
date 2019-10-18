@@ -25,7 +25,7 @@ detect_mb = false;
 mb_id = noone;
 if (move_state != mState.hang)
     {
-    mb_id = collision_line(x,y-32,x,y-40,par_mb,true,true);
+    mb_id = collision_line(x,y-36,x,y-42,par_mb,true,true);
     if (mb_id != noone)
         detect_mb = true;
     }
