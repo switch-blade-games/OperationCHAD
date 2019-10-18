@@ -25,13 +25,12 @@
       <sound>sound\disconnect_1_snd</sound>
       <sound>sound\disconnect_2_snd</sound>
       <sound>sound\disconnect_3_snd</sound>
-      <sound>sound\disconnect_4_snd</sound>
-      <sound>sound\disconnect_5_snd</sound>
       <sound>sound\reconnect_1_snd</sound>
       <sound>sound\reconnect_2_snd</sound>
-      <sound>sound\reconnect_3_snd</sound>
-      <sound>sound\reconnect_4_snd</sound>
-      <sound>sound\reconnect_5_snd</sound>
+    </sounds>
+    <sounds name="sfx">
+      <sound>sound\controller_alarm_snd</sound>
+      <sound>sound\controller_reconnect_snd</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -611,6 +610,7 @@
     </sprites>
     <sprites name="gags">
       <sprite>sprites\controller_gag_spr</sprite>
+      <sprite>sprites\controller_good_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">

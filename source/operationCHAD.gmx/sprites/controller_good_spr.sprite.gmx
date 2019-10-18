@@ -7,10 +7,10 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>45</bbox_left>
-  <bbox_right>366</bbox_right>
-  <bbox_top>29</bbox_top>
-  <bbox_bottom>233</bbox_bottom>
+  <bbox_left>89</bbox_left>
+  <bbox_right>312</bbox_right>
+  <bbox_top>40</bbox_top>
+  <bbox_bottom>181</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -20,6 +20,6 @@
   <width>400</width>
   <height>240</height>
   <frames>
-    <frame index="0">images\controller_gag_spr_0.png</frame>
+    <frame index="0">images\controller_good_spr_0.png</frame>
   </frames>
 </sprite>
