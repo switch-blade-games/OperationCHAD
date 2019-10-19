@@ -160,6 +160,7 @@ hang_id = noone;
 hang_offset = 0;
 old_hang_offset = 0;
 no_hang = false;
+no_hang_time = false;
 moto_y = 0;
 moto_yspeed = 0;
 moto_shake = 0;
@@ -253,6 +254,9 @@ apply_force();
 animate();
 collide();
 
+// hang time
+if (no_hang_time &gt; 0)
+    no_hang_time--;
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;

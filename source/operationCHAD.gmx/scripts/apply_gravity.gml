@@ -23,7 +23,8 @@ switch(move_state)
         else
             {
             // start hanging
-            if (yspeed > 0) and (!no_hang) and (hang_id = noone)
+            if (yspeed > 0) and (hang_id = noone)
+            and (!no_hang) and (no_hang_time <= 0)
                 {
                 if (detect_mb) and (y >= mb_id.y)
                     {
@@ -113,7 +114,8 @@ switch(move_state)
         else
             {
             // start hanging
-            if (yspeed > 0) and (!no_hang) and (hang_id = noone)
+            if (yspeed > 0) and (hang_id = noone)
+            and (!no_hang) and (no_hang_time <= 0)
                 {
                 if (detect_mb) and (y >= mb_id.y)
                     {
