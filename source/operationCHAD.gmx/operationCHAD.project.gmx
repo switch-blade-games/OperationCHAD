@@ -1226,7 +1226,6 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\time_cutscene_room</room>
-        <room>rooms\panel_room</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
         <room>rooms\zepplin_room</room>
