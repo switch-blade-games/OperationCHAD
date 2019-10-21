@@ -1225,10 +1225,10 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\zepplin_room</room>
         <room>rooms\time_cutscene_room</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
-        <room>rooms\zepplin_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
