@@ -33,6 +33,9 @@ nohit = false;
 flash = 0;
 
 killOnContact = false;
+
+target_id = noone;
+target_num = 0;
 </string>
           </argument>
         </arguments>

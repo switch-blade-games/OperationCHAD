@@ -79,6 +79,7 @@ switch(move_state)
             {
             move_state = mState.walk;
             hang_id = noone;
+            no_hang_time = 12;
             drop = true;
             }
         
