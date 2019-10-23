@@ -29,7 +29,22 @@
 reconnect = false;
 unpause = false;
 
-alarm[0] = 130;
+TIMEfade=0
+
+
+//seconds until disconnect VA
+TIMEmax=2.1
+
+PLAYsnd=false
+
+SNDid=-1
+
+P2=false
+
+//seconds until reconnect VA
+TIMEmax2=1
+
+//alarm[0] = 130;
 
 snd_play(controller_alarm_snd,false)
 
@@ -38,7 +53,7 @@ if (global.music &gt; -1)
     audio_sound_gain(global.music,global.bgm_gain*0.2,750);
     
 */
-    
+ 
     
 audio_sound_gain(global.music,0,0)
 
@@ -73,9 +88,7 @@ state=DOWN
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var aud_id = asset_get_index("reconnect_"+string(1+irandom(1))+"_snd");
-    snd_play(aud_id);
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -124,10 +137,7 @@ instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// play audio when controller is disconnected
-var aud_id = asset_get_index("disconnect_"+string(1+irandom(2))+"_snd");
-snd_play(aud_id);
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -149,7 +159,36 @@ snd_play(aud_id);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=DOWN){
+            <string>TIMEfade+=((1*delta_time)/1000000);
+
+if(TIMEfade&gt;=TIMEmax)
+if(PLAYsnd=false){
+
+// play audio when controller is disconnected
+var aud_id = asset_get_index("disconnect_"+string(1+irandom(2))+"_snd");
+snd_play(aud_id);
+
+SNDid=aud_id
+
+PLAYsnd=true
+}
+
+
+
+if(reconnect=true)
+if(TIMEfade&gt;=TIMEmax2)
+if(P2=false)
+{
+
+var aud_id = asset_get_index("reconnect_"+string(1+irandom(1))+"_snd");
+    snd_play(aud_id);
+    
+    P2=true
+}
+
+
+
+if(state=DOWN){
 
     fade-=faderate
     
@@ -171,10 +210,16 @@ if (!reconnect) and (global.gpcount &gt; gpcount)
     {
     reconnect = true;
     
-    alarm[2]=60
+    
+    //just in case the player reconnects while yolo is talking
+    audio_stop_sound(SNDid)
+    audio_stop_sound(controller_alarm_snd)
+    
     
     
     snd_play(controller_reconnect_snd,false)
+    
+    TIMEfade=0
     }
 
 if (reconnect) and (!unpause)
@@ -183,7 +228,7 @@ if (reconnect) and (!unpause)
     if (gamepad_check_all(gpinput.face1))
         {
         unpause = true;
-        alarm[1] = 45;
+        alarm[1] = 10;
         }
     }
 </string>
@@ -254,7 +299,9 @@ draw_sprite(controller_good_spr,01,view_xview[0],view_yview[0])
 
 
 
+//draw_set_color(c_white)
 
+//draw_text_transformed(60,60,TIMEfade,3,3,0)
 
 
     

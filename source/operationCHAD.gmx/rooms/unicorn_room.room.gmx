@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,obj_control)
 
-instance_create(0,0,unicorn_controller)</code>
+//instance_create(0,0,unicorn_controller)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -33,8 +33,8 @@ instance_create(0,0,unicorn_controller)</code>
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="cloud_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="0" foreground="0" name="cloud_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="-1" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="unicorn_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="cloud_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -56,22 +56,10 @@ instance_create(0,0,unicorn_controller)</code>
     <instance objName="obj_wall" x="400" y="0" name="inst_678D347F" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="-80" name="inst_A7CB1C69" locked="0" code="" scaleX="22" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="0" name="inst_3F0E4699" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
-    <instance objName="unicorn" x="110" y="130" name="inst_01701CAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_wall" x="-20" y="240" name="inst_DA0FEA1D" locked="0" code="" scaleX="22" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="-20" y="220" name="inst_DA0FEA1D" locked="0" code="" scaleX="22" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="220" name="inst_D2BC1DE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="-60" name="inst_9EAA003A" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="-60" name="inst_D7EE956B" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="260" y="220" name="inst_93C36261" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="380" y="180" name="inst_C45DB99E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="300" y="180" name="inst_7052A085" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="360" y="180" name="inst_BC3CD254" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="340" y="180" name="inst_4FE437DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="320" y="180" name="inst_4342A57A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="300" y="180" name="inst_82BB268A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="280" y="180" name="inst_AD5D1C33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="260" y="180" name="inst_47588CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="240" y="180" name="inst_098B1DAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="220" y="180" name="inst_528DF818" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="church_plat" x="220" y="120" name="inst_F6E26229" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="church_plat" x="240" y="120" name="inst_65098CEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="church_plat" x="260" y="120" name="inst_DDFB2164" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -80,16 +68,22 @@ instance_create(0,0,unicorn_controller)</code>
     <instance objName="church_plat" x="320" y="120" name="inst_9A89C04A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="church_plat" x="340" y="120" name="inst_6015A2F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="church_plat" x="360" y="120" name="inst_8BAD6867" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="380" y="120" name="inst_2093D8E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="380" y="60" name="inst_3CE604AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="360" y="60" name="inst_D43DE67C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="340" y="60" name="inst_2B911FB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="320" y="60" name="inst_2DA0F500" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="300" y="60" name="inst_2AA9D57B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="280" y="60" name="inst_D52EF39E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="260" y="60" name="inst_64645A33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="240" y="60" name="inst_76EB7D1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="church_plat" x="220" y="60" name="inst_B0E68393" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="320" y="60" name="inst_38293523" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_horse_mockup" x="100" y="100" name="inst_A0EB7D39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="260" y="140" name="inst_EE2D67E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="280" y="140" name="inst_7B2F04C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="300" y="140" name="inst_CB367751" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="320" y="140" name="inst_2DE5A8E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="340" y="140" name="inst_8C8AE418" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="360" y="140" name="inst_269196D3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="380" y="140" name="inst_E0BC82AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="380" y="80" name="inst_5BF806F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="360" y="80" name="inst_3B42CBDB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="340" y="80" name="inst_8D03C291" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="320" y="80" name="inst_7AC082A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="300" y="80" name="inst_BC216052" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="280" y="80" name="inst_BE0C6416" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_jt" x="260" y="80" name="inst_8CE4220C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

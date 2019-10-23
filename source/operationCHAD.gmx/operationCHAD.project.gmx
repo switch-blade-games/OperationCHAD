@@ -31,6 +31,8 @@
     <sounds name="sfx">
       <sound>sound\controller_alarm_snd</sound>
       <sound>sound\controller_reconnect_snd</sound>
+      <sound>sound\turn_page_snd</sound>
+      <sound>sound\turn_page_back_snd</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -241,6 +243,7 @@
         <sprite>sprites\rainbow_obj_spr</sprite>
         <sprite>sprites\plat_mask_spr</sprite>
         <sprite>sprites\plat_spr</sprite>
+        <sprite>sprites\unicorn_rail_spr</sprite>
       </sprites>
       <sprites name="unicorn">
         <sprite>sprites\spr_unicorn_body</sprite>
@@ -781,7 +784,7 @@
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
     <script>scripts\projectile.gml</script>
-    <script>scripts\target.gml</script>
+    <script>scripts\target_player.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
@@ -790,6 +793,23 @@
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <objects name="objects">
+    <objects name="colliders">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_jt</object>
+      <object>objects\obj_ramp_r</object>
+      <object>objects\obj_ramp_l</object>
+      <object>objects\obj_climb</object>
+      <object>objects\obj_climb_r</object>
+      <object>objects\obj_climb_l</object>
+      <object>objects\obj_climb_b</object>
+      <object>objects\obj_mb</object>
+      <object>objects\obj_mb_l</object>
+      <object>objects\obj_mb_r</object>
+      <object>objects\obj_wall_move</object>
+      <object>objects\death_block</object>
+      <object>objects\monkeybar_move</object>
+      <object>objects\monkeybar_path</object>
+    </objects>
     <objects name="pooh">
       <objects name="mech_battle">
         <object>objects\pooh_controller</object>
@@ -902,23 +922,6 @@
       <object>objects\obj_pellet</object>
       <object>objects\obj_heat_seeker</object>
       <object>objects\obj_flamethrower_flame</object>
-      <objects name="colliders">
-        <object>objects\obj_wall</object>
-        <object>objects\obj_jt</object>
-        <object>objects\obj_ramp_r</object>
-        <object>objects\obj_ramp_l</object>
-        <object>objects\obj_climb</object>
-        <object>objects\obj_climb_r</object>
-        <object>objects\obj_climb_l</object>
-        <object>objects\obj_climb_b</object>
-        <object>objects\obj_mb</object>
-        <object>objects\obj_mb_l</object>
-        <object>objects\obj_mb_r</object>
-        <object>objects\obj_wall_move</object>
-        <object>objects\death_block</object>
-        <object>objects\monkeybar_move</object>
-        <object>objects\monkeybar_path</object>
-      </objects>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>
@@ -1159,7 +1162,6 @@
         <object>objects\circle_cam</object>
       </objects>
       <objects name="unicorn">
-        <object>objects\unicorn_controller</object>
         <object>objects\pink_triangle</object>
         <object>objects\unicorn</object>
         <object>objects\tri_tracer</object>
@@ -1169,6 +1171,8 @@
         <object>objects\cross</object>
         <object>objects\rainbow_beam</object>
         <object>objects\rainbow_obj</object>
+        <object>objects\unicorn_controller</object>
+        <object>objects\unicorn_rail</object>
       </objects>
     </objects>
     <objects name="5-Island of NPCs">
@@ -1226,11 +1230,12 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\zepplin_room</room>
-        <room>rooms\time_cutscene_room</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
+        <room>rooms\zepplin_room</room>
+        <room>rooms\time_cutscene_room</room>
         <room>rooms\paint_room</room>
+        <room>rooms\merry_room</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
       </rooms>
@@ -1250,7 +1255,6 @@
     </rooms>
     <rooms name="4-Clown World">
       <room>rooms\circle_room</room>
-      <room>rooms\unicorn_room</room>
       <room>rooms\cloud_room</room>
     </rooms>
     <rooms name="5- Island of NPCs">

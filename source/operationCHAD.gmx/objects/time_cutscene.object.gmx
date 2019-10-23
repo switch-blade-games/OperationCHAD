@@ -110,6 +110,9 @@ TURN=1
 
 TURN+=1
 
+if not(TURN=MAX-1)
+snd_play(turn_page_snd,false)
+
 if(TURN&gt;MAX-1)
 TURN=MAX-1
 
@@ -126,6 +129,9 @@ TURN-=1
 if(TURN&lt;=1)
 TURN=1
 
+
+if not(TURN=1)
+snd_play(turn_page_back_snd,false)
 
 }
 
@@ -157,9 +163,11 @@ room_goto_next()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(PAGE[TURN],-1,0,0)
+            <string>
 
-draw_text(10,10,gamepad_check_pressed(0,global.pad_jump[0]))
+draw_sprite(PAGE[TURN],-1,0,0)
+
+//draw_text(10,10,gamepad_check_pressed(0,global.pad_jump[0]))
 </string>
           </argument>
         </arguments>
@@ -182,7 +190,9 @@ draw_text(10,10,gamepad_check_pressed(0,global.pad_jump[0]))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TURN-=1
+            <string>exit
+
+TURN-=1
 
 if(TURN&lt;=1)
 TURN=1
@@ -208,7 +218,9 @@ TURN=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TURN+=1
+            <string>exit
+
+TURN+=1
 
 if(TURN&gt;MAX-1)
 TURN=MAX-1
