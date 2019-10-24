@@ -40,7 +40,6 @@ switch(move_state)
                     {
                     // climb wall to the right
                     if (detect_climb) and (climb_side == tile_side.left)
-                    and (!input_down)
                         {
                         move_state = mState.climb;
                         yspeed = 0;
@@ -58,7 +57,6 @@ switch(move_state)
                     {
                     // climb wall to the left
                     if (detect_climb) and (climb_side == tile_side.right)
-                    and (!input_down)
                         {
                         move_state = mState.climb;
                         yspeed = 0;
@@ -354,7 +352,24 @@ switch(move_state)
                             yspeed = min(0,yspeed+fric);
                         }
                     else
+                        {
                         yspeed = climb_speed*v_dir;
+                        
+                        if (detect_mb) and (hang_id == noone) and (input_up) 
+                            {
+                            var xh = x-mb_id.x;
+                            var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
+                            if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
+                                {
+                                move_state = mState.hang;
+                                x = mb_id.x + xh;
+                                y = mb_id.y + yh;
+                                hang_id = mb_id;
+                                hang_offset = xh;
+                                yspeed = 0;
+                                }
+                            }
+                        }
                     
                     // jump/fall off
                     if (input_jump_pressed)

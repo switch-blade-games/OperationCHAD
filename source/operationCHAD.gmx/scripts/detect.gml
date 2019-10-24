@@ -23,17 +23,20 @@ if (detect_ground)
 // detect monkey bar
 detect_mb = false;
 mb_id = noone;
-if (move_state != mState.hang)
+if (!no_hang) and (no_hang_time <= 0)
     {
-    mb_id = collision_line(x,y-36,x,y-42,par_mb,true,true);
-    if (mb_id != noone)
-        detect_mb = true;
-    }
-else
-    {
-    mb_id = instance_position(x,y-40,par_mb);
-    if (mb_id != noone)
-        detect_mb = true;
+    if (move_state == mState.hang)
+        {
+        mb_id = instance_position(x,y-40,par_mb);
+        if (mb_id != noone)
+            detect_mb = true;
+        }
+    else
+        {
+        mb_id = collision_line(x,y-36,x,y-42,par_mb,true,true);
+        if (mb_id != noone)
+            detect_mb = true;
+        }
     }
 
 // detect climbable walls
