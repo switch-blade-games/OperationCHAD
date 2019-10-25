@@ -524,14 +524,10 @@ switch(menu)
             <kind>1</kind>
             <string>var alpha = round(bg_alpha*5)/5;
 draw_background_ext(title_BG,0,0,1,1,0,-1,alpha);
-
-CLOUDx+=CLOUDspe
-
-draw_background_tiled(title_clouds_BG,CLOUDx,0)
-
-draw_background(title_front_BG,0,0)
-
-draw_background(title_banner_BG,0,0)
+draw_background_tiled_ext(title_clouds_BG,CLOUDx,0,1,1,-1,alpha);
+draw_background_ext(title_front_BG,0,0,1,1,0,-1,alpha);
+draw_background_ext(title_banner_BG,0,0,1,1,0,-1,alpha);
+CLOUDx += CLOUDspe;
 
 switch(menu)
     {

@@ -19,9 +19,6 @@ switch(move_state)
             y = hang_id.y + yh;
             }
         else
-            {
-            show_debug_message("FAILHERE");
             hang_id = noone;
-            }
         break;
     }
