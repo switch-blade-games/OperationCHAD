@@ -95,6 +95,9 @@
         <sprite>sprites\embro_case_bottom_spr</sprite>
         <sprite>sprites\embro_overlay_spr</sprite>
       </sprites>
+      <sprite>sprites\abortion_light_BG_spr</sprite>
+      <sprite>sprites\pop_served_spr</sprite>
+      <sprite>sprites\conveyor_spr</sprite>
     </sprites>
     <sprites name="2-Internet">
       <sprite>sprites\internet_horizon_spr</sprite>
@@ -685,6 +688,8 @@
     <background>background\painting_final_BG</background>
     <background>background\painting_tile_BG</background>
     <background>background\hitler_finish_BG</background>
+    <background>background\abortion_BG</background>
+    <background>background\abortion_TS</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -1028,6 +1033,9 @@
         <object>objects\letter_spawner</object>
         <object>objects\letter_enemy</object>
       </objects>
+      <object>objects\abortion_factory_drawer</object>
+      <object>objects\pop_served</object>
+      <object>objects\conveyor</object>
     </objects>
     <objects name="2-Internet">
       <object>objects\G_eye</object>
@@ -1230,6 +1238,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\abortion_stage</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
         <room>rooms\zepplin_room</room>
