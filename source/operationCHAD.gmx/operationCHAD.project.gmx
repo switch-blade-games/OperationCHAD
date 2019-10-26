@@ -5,38 +5,40 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sounds name="hitler">
-      <sound>sound\hitler_laugh_snd</sound>
-      <sound>sound\explode_snd</sound>
-      <sound>sound\bullet_snd</sound>
-      <sound>sound\can_thump_snd</sound>
-      <sound>sound\can_fall_snd</sound>
-      <sound>sound\gas_snd</sound>
-      <sound>sound\mini_plane_snd</sound>
-      <sound>sound\zep_flame_snd</sound>
-      <sound>sound\drop_bomb_snd</sound>
+    <sounds name="0-FrontEnd">
+      <sound>sound\controller_alarm_snd</sound>
+      <sound>sound\controller_reconnect_snd</sound>
+      <sound>sound\turn_page_snd</sound>
+      <sound>sound\turn_page_back_snd</sound>
     </sounds>
-    <sounds name="MUSIC">
+    <sounds name="3-Germany">
+      <sounds name="Hitler">
+        <sound>sound\hitler_laugh_snd</sound>
+        <sound>sound\explode_snd</sound>
+        <sound>sound\bullet_snd</sound>
+        <sound>sound\can_thump_snd</sound>
+        <sound>sound\can_fall_snd</sound>
+        <sound>sound\gas_snd</sound>
+        <sound>sound\mini_plane_snd</sound>
+        <sound>sound\zep_flame_snd</sound>
+        <sound>sound\drop_bomb_snd</sound>
+      </sounds>
+    </sounds>
+    <sounds name="Music">
       <sound>sound\pre_fight_snd</sound>
       <sound>sound\flight_of_bumblebee_snd</sound>
       <sound>sound\ride_of_valk_snd</sound>
     </sounds>
-    <sounds name="yolo">
+    <sounds name="Player">
       <sound>sound\disconnect_1_snd</sound>
       <sound>sound\disconnect_2_snd</sound>
       <sound>sound\disconnect_3_snd</sound>
       <sound>sound\reconnect_1_snd</sound>
       <sound>sound\reconnect_2_snd</sound>
     </sounds>
-    <sounds name="sfx">
-      <sound>sound\controller_alarm_snd</sound>
-      <sound>sound\controller_reconnect_snd</sound>
-      <sound>sound\turn_page_snd</sound>
-      <sound>sound\turn_page_back_snd</sound>
-    </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="0-Front End">
+    <sprites name="0-FrontEnd">
       <sprites name="cine">
         <sprite>sprites\gang_colors_spr</sprite>
         <sprite>sprites\yolo_cine_spr</sprite>
@@ -44,14 +46,53 @@
         <sprite>sprites\pumpkin_cine_spr</sprite>
         <sprite>sprites\stone_cine_spr</sprite>
       </sprites>
+      <sprites name="engine">
+        <sprite>sprites\joystix_font_spr</sprite>
+        <sprite>sprites\node_spr</sprite>
+        <sprite>sprites\msk_particle</sprite>
+        <sprite>sprites\spr_particle</sprite>
+        <sprites name="colliders">
+          <sprite>sprites\msk_wall</sprite>
+          <sprite>sprites\msk_jt</sprite>
+          <sprite>sprites\msk_ramp_half_r</sprite>
+          <sprite>sprites\msk_ramp_half_l</sprite>
+          <sprite>sprites\msk_mb</sprite>
+          <sprite>sprites\msk_mb_r</sprite>
+          <sprite>sprites\msk_mb_l</sprite>
+          <sprite>sprites\spr_wall_move</sprite>
+          <sprite>sprites\text_platform_mask_spr</sprite>
+        </sprites>
+        <sprites name="gamepad">
+          <sprite>sprites\spr_buttons_xbox</sprite>
+          <sprite>sprites\spr_buttons_ps</sprite>
+        </sprites>
+        <sprites name="editor">
+          <sprite>sprites\spr_player_spawn</sprite>
+          <sprite>sprites\spr_camera</sprite>
+          <sprite>sprites\spr_camera_arrow</sprite>
+          <sprite>sprites\spr_arrow_h</sprite>
+        </sprites>
+      </sprites>
     </sprites>
-    <sprites name="1-Planned Parenthood">
+    <sprites name="1-PlannedParenthood">
       <sprites name="tong">
         <sprite>sprites\needle_spr</sprite>
         <sprite>sprites\needle_bubble_spr</sprite>
         <sprite>sprites\spr_acid_mask</sprite>
         <sprite>sprites\acid_spr</sprite>
         <sprite>sprites\drill_spr</sprite>
+        <sprites name="SJWs">
+          <sprite>sprites\sjw_1_spr</sprite>
+          <sprite>sprites\sjw_2_spr</sprite>
+          <sprite>sprites\sjw_3_spr</sprite>
+          <sprite>sprites\sjw_4_spr</sprite>
+          <sprite>sprites\sjw_5_spr</sprite>
+          <sprite>sprites\sjw_6_spr</sprite>
+          <sprite>sprites\sjw_7_spr</sprite>
+          <sprite>sprites\sjw_8_spr</sprite>
+          <sprite>sprites\sjw_9_spr</sprite>
+          <sprite>sprites\sjw_10_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="megaphone">
         <sprite>sprites\megaphone_spr</sprite>
@@ -228,7 +269,7 @@
         <sprite>sprites\S_grenade_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="4-Clown World">
+    <sprites name="4-ClownWorld">
       <sprites name="circle_ride">
         <sprite>sprites\circle_frame_spr</sprite>
         <sprite>sprites\circle_text_spr</sprite>
@@ -260,8 +301,103 @@
         <sprite>sprites\spr_unicorn_hoof</sprite>
       </sprites>
     </sprites>
-    <sprites name="5-Island of NPCs">
+    <sprites name="5-IslandOfNPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
+    </sprites>
+    <sprites name="6-Pooh">
+      <sprites name="pooh_mech">
+        <sprite>sprites\pooh_spr</sprite>
+        <sprite>sprites\pooh_BG_spr</sprite>
+        <sprite>sprites\pooh_ground_spr</sprite>
+        <sprite>sprites\donkey_sock_spr</sprite>
+        <sprite>sprites\pooh_flags_spr</sprite>
+        <sprite>sprites\pooh_shit_spr</sprite>
+        <sprite>sprites\spear_spr</sprite>
+        <sprite>sprites\gas_light_spr</sprite>
+        <sprite>sprites\pooh_rocket_spr</sprite>
+        <sprite>sprites\sickle_spin_spr</sprite>
+        <sprite>sprites\wheat_spr</sprite>
+        <sprite>sprites\wheat_harvest_spr</sprite>
+      </sprites>
+      <sprites name="final">
+        <sprite>sprites\final_circle_spr</sprite>
+        <sprite>sprites\pooh_octo_spr</sprite>
+      </sprites>
+      <sprites name="fent">
+        <sprite>sprites\fent_BG_spr</sprite>
+        <sprite>sprites\fent_hand_spr</sprite>
+        <sprite>sprites\fent_BG_2_spr</sprite>
+        <sprite>sprites\fent_needle_spr</sprite>
+        <sprites name="painters">
+          <sprite>sprites\fent_P1_spr</sprite>
+          <sprite>sprites\fent_P2_spr</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="xi_battle">
+        <sprite>sprites\xi_bot_spr</sprite>
+        <sprite>sprites\xi_front_spr</sprite>
+        <sprite>sprites\xi_spin_spr</sprite>
+        <sprite>sprites\xi_hammer_make_spr</sprite>
+        <sprite>sprites\xi_hammer_back_spr</sprite>
+        <sprite>sprites\xi_hammer_swing_spr</sprite>
+        <sprite>sprites\xi_hammer_jump_spr</sprite>
+        <sprite>sprites\xi_hammer_fade_spr</sprite>
+        <sprite>sprites\debris_spr</sprite>
+        <sprite>sprites\hammer_ball_spr</sprite>
+        <sprite>sprites\hammer_wave_spr</sprite>
+        <sprite>sprites\big_sickle_spr</sprite>
+        <sprite>sprites\xi_hunny_blast_spr</sprite>
+        <sprite>sprites\hunny_blast_spr</sprite>
+        <sprite>sprites\hunny_pooh_spr</sprite>
+        <sprite>sprites\xi_wall_spr</sprite>
+        <sprite>sprites\hunny_mask_spr</sprite>
+      </sprites>
+      <sprites name="pooh_stage">
+        <sprite>sprites\pooh_torch_spr</sprite>
+      </sprites>
+      <sprite>sprites\dream_paint_spr</sprite>
+      <sprite>sprites\dream_circle_spr</sprite>
+      <sprites name="camera">
+        <sprite>sprites\camera_BG_spr</sprite>
+        <sprite>sprites\diag_cam_spr</sprite>
+        <sprite>sprites\cam_range_spr</sprite>
+        <sprite>sprites\cam_part_spr</sprite>
+        <sprite>sprites\cam_bullet_spr</sprite>
+        <sprite>sprites\cam_range_1_spr</sprite>
+        <sprite>sprites\cam_range_2_spr</sprite>
+        <sprite>sprites\cam_gun_spr</sprite>
+        <sprite>sprites\cam_hoard_spr</sprite>
+        <sprite>sprites\cam_laz_spr</sprite>
+        <sprite>sprites\cam_overlay_spr</sprite>
+      </sprites>
+      <sprites name="forest">
+        <sprite>sprites\pollution_BG_spr</sprite>
+        <sprite>sprites\forest_BG_spr</sprite>
+        <sprite>sprites\xi_bamboo_spr</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="99-Misc">
+      <sprite>sprites\might_wood_spr</sprite>
+      <sprite>sprites\might_wood_break_spr</sprite>
+      <sprite>sprites\might_hehe_spr</sprite>
+      <sprite>sprites\might_HUD_spr</sprite>
+      <sprite>sprites\might_block_spr</sprite>
+      <sprite>sprites\might_meter_spr</sprite>
+      <sprites name="stone">
+        <sprite>sprites\stone_might_start_spr</sprite>
+        <sprite>sprites\stone_might_up_spr</sprite>
+        <sprite>sprites\stone_might_strike_spr</sprite>
+        <sprite>sprites\stone_might_win_spr</sprite>
+        <sprite>sprites\stone_might_lose_spr</sprite>
+        <sprite>sprites\stone_angry_spr</sprite>
+        <sprite>sprites\stone_might_shake_spr</sprite>
+      </sprites>
+      <sprites name="diverse">
+        <sprite>sprites\diverse_might_start_spr</sprite>
+        <sprite>sprites\diverse_strike_spr</sprite>
+        <sprite>sprites\diverse_up_spr</sprite>
+        <sprite>sprites\diverse_win_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="player">
       <sprite>sprites\msk_player</sprite>
@@ -382,18 +518,6 @@
       <sprite>sprites\platform_spr</sprite>
       <sprite>sprites\death_block_spr</sprite>
     </sprites>
-    <sprites name="SJWs">
-      <sprite>sprites\sjw_1_spr</sprite>
-      <sprite>sprites\sjw_2_spr</sprite>
-      <sprite>sprites\sjw_3_spr</sprite>
-      <sprite>sprites\sjw_4_spr</sprite>
-      <sprite>sprites\sjw_5_spr</sprite>
-      <sprite>sprites\sjw_6_spr</sprite>
-      <sprite>sprites\sjw_7_spr</sprite>
-      <sprite>sprites\sjw_8_spr</sprite>
-      <sprite>sprites\sjw_9_spr</sprite>
-      <sprite>sprites\sjw_10_spr</sprite>
-    </sprites>
     <sprites name="effects">
       <sprite>sprites\explode_bg_spr</sprite>
       <sprite>sprites\small_explode_spr</sprite>
@@ -404,34 +528,7 @@
       <sprite>sprites\spr_casings</sprite>
       <sprite>sprites\spr_dust</sprite>
     </sprites>
-    <sprites name="engine">
-      <sprite>sprites\joystix_font_spr</sprite>
-      <sprite>sprites\node_spr</sprite>
-      <sprite>sprites\msk_particle</sprite>
-      <sprite>sprites\spr_particle</sprite>
-      <sprites name="colliders">
-        <sprite>sprites\msk_wall</sprite>
-        <sprite>sprites\msk_jt</sprite>
-        <sprite>sprites\msk_ramp_half_r</sprite>
-        <sprite>sprites\msk_ramp_half_l</sprite>
-        <sprite>sprites\msk_mb</sprite>
-        <sprite>sprites\msk_mb_r</sprite>
-        <sprite>sprites\msk_mb_l</sprite>
-        <sprite>sprites\spr_wall_move</sprite>
-        <sprite>sprites\text_platform_mask_spr</sprite>
-      </sprites>
-      <sprites name="gamepad">
-        <sprite>sprites\spr_buttons_xbox</sprite>
-        <sprite>sprites\spr_buttons_ps</sprite>
-      </sprites>
-      <sprites name="editor">
-        <sprite>sprites\spr_player_spawn</sprite>
-        <sprite>sprites\spr_camera</sprite>
-        <sprite>sprites\spr_camera_arrow</sprite>
-        <sprite>sprites\spr_arrow_h</sprite>
-      </sprites>
-    </sprites>
-    <sprites name="cutscenes">
+    <sprites name="Cutscene">
       <sprites name="ending">
         <sprite>sprites\end_1_spr</sprite>
         <sprite>sprites\end_2_spr</sprite>
@@ -504,101 +601,6 @@
         <sprite>sprites\no_boss_13_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="99-mini_games">
-      <sprite>sprites\might_wood_spr</sprite>
-      <sprite>sprites\might_wood_break_spr</sprite>
-      <sprite>sprites\might_hehe_spr</sprite>
-      <sprite>sprites\might_HUD_spr</sprite>
-      <sprite>sprites\might_block_spr</sprite>
-      <sprite>sprites\might_meter_spr</sprite>
-      <sprites name="stone">
-        <sprite>sprites\stone_might_start_spr</sprite>
-        <sprite>sprites\stone_might_up_spr</sprite>
-        <sprite>sprites\stone_might_strike_spr</sprite>
-        <sprite>sprites\stone_might_win_spr</sprite>
-        <sprite>sprites\stone_might_lose_spr</sprite>
-        <sprite>sprites\stone_angry_spr</sprite>
-        <sprite>sprites\stone_might_shake_spr</sprite>
-      </sprites>
-      <sprites name="diverse">
-        <sprite>sprites\diverse_might_start_spr</sprite>
-        <sprite>sprites\diverse_strike_spr</sprite>
-        <sprite>sprites\diverse_up_spr</sprite>
-        <sprite>sprites\diverse_win_spr</sprite>
-      </sprites>
-    </sprites>
-    <sprites name="pooh">
-      <sprites name="pooh_mech">
-        <sprite>sprites\pooh_spr</sprite>
-        <sprite>sprites\pooh_BG_spr</sprite>
-        <sprite>sprites\pooh_ground_spr</sprite>
-        <sprite>sprites\donkey_sock_spr</sprite>
-        <sprite>sprites\pooh_flags_spr</sprite>
-        <sprite>sprites\pooh_shit_spr</sprite>
-        <sprite>sprites\spear_spr</sprite>
-        <sprite>sprites\gas_light_spr</sprite>
-        <sprite>sprites\pooh_rocket_spr</sprite>
-        <sprite>sprites\sickle_spin_spr</sprite>
-        <sprite>sprites\wheat_spr</sprite>
-        <sprite>sprites\wheat_harvest_spr</sprite>
-      </sprites>
-      <sprites name="final">
-        <sprite>sprites\final_circle_spr</sprite>
-        <sprite>sprites\pooh_octo_spr</sprite>
-      </sprites>
-      <sprites name="fent">
-        <sprite>sprites\fent_BG_spr</sprite>
-        <sprite>sprites\fent_hand_spr</sprite>
-        <sprite>sprites\fent_BG_2_spr</sprite>
-        <sprite>sprites\fent_needle_spr</sprite>
-        <sprites name="painters">
-          <sprite>sprites\fent_P1_spr</sprite>
-          <sprite>sprites\fent_P2_spr</sprite>
-        </sprites>
-      </sprites>
-      <sprites name="xi_battle">
-        <sprite>sprites\xi_bot_spr</sprite>
-        <sprite>sprites\xi_front_spr</sprite>
-        <sprite>sprites\xi_spin_spr</sprite>
-        <sprite>sprites\xi_hammer_make_spr</sprite>
-        <sprite>sprites\xi_hammer_back_spr</sprite>
-        <sprite>sprites\xi_hammer_swing_spr</sprite>
-        <sprite>sprites\xi_hammer_jump_spr</sprite>
-        <sprite>sprites\xi_hammer_fade_spr</sprite>
-        <sprite>sprites\debris_spr</sprite>
-        <sprite>sprites\hammer_ball_spr</sprite>
-        <sprite>sprites\hammer_wave_spr</sprite>
-        <sprite>sprites\big_sickle_spr</sprite>
-        <sprite>sprites\xi_hunny_blast_spr</sprite>
-        <sprite>sprites\hunny_blast_spr</sprite>
-        <sprite>sprites\hunny_pooh_spr</sprite>
-        <sprite>sprites\xi_wall_spr</sprite>
-        <sprite>sprites\hunny_mask_spr</sprite>
-      </sprites>
-      <sprites name="pooh_stage">
-        <sprite>sprites\pooh_torch_spr</sprite>
-      </sprites>
-      <sprite>sprites\dream_paint_spr</sprite>
-      <sprite>sprites\dream_circle_spr</sprite>
-      <sprites name="camera">
-        <sprite>sprites\camera_BG_spr</sprite>
-        <sprite>sprites\diag_cam_spr</sprite>
-        <sprite>sprites\cam_range_spr</sprite>
-        <sprite>sprites\cam_part_spr</sprite>
-        <sprite>sprites\cam_bullet_spr</sprite>
-        <sprite>sprites\cam_range_1_spr</sprite>
-        <sprite>sprites\cam_range_2_spr</sprite>
-        <sprite>sprites\cam_gun_spr</sprite>
-        <sprite>sprites\cam_hoard_spr</sprite>
-        <sprite>sprites\cam_laz_spr</sprite>
-        <sprite>sprites\cam_overlay_spr</sprite>
-      </sprites>
-      <sprites name="forest">
-        <sprite>sprites\pollution_BG_spr</sprite>
-        <sprite>sprites\forest_BG_spr</sprite>
-        <sprite>sprites\xi_bamboo_spr</sprite>
-      </sprites>
-    </sprites>
     <sprites name="HUD">
       <sprite>sprites\yolo_head_spr</sprite>
       <sprite>sprites\hit_rate_spr</sprite>
@@ -620,60 +622,93 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\title_BG</background>
-    <background>background\title_clouds_BG</background>
-    <background>background\title_banner_BG</background>
-    <background>background\title_front_BG</background>
-    <backgrounds name="embro">
-      <background>background\embro_BG</background>
+    <backgrounds name="0-FrontEnd">
+      <background>background\title_BG</background>
+      <background>background\title_clouds_BG</background>
+      <background>background\title_banner_BG</background>
+      <background>background\title_front_BG</background>
+      <background>background\checker_BG</background>
+      <background>background\grid_tile_BG</background>
     </backgrounds>
-    <backgrounds name="npc">
-      <background>background\NPC_BG</background>
-      <background>background\NPC_foreground_top</background>
-      <background>background\NPC_foreground_bot</background>
-      <background>background\NPC_floor_BG</background>
-      <background>background\NPC_pillars_BG</background>
+    <backgrounds name="1-PlannedParenthood">
+      <backgrounds name="tongs">
+        <background>background\tong_BG</background>
+        <background>background\VG_tileset</background>
+      </backgrounds>
+      <backgrounds name="fryguy">
+        <background>background\fryguy_BG</background>
+      </backgrounds>
+      <backgrounds name="embro">
+        <background>background\embro_BG</background>
+      </backgrounds>
+      <backgrounds name="megaphone">
+        <background>background\protest_BG</background>
+      </backgrounds>
     </backgrounds>
-    <backgrounds name="clown">
-      <background>background\clown_BG</background>
-      <background>background\unicorn_BG</background>
-    </backgrounds>
-    <backgrounds name="fryguy">
-      <background>background\fryguy_BG</background>
-    </backgrounds>
-    <backgrounds name="tongs">
-      <background>background\tong_BG</background>
-      <background>background\VG_tileset</background>
-    </backgrounds>
-    <backgrounds name="germany">
-      <background>background\road_BG</background>
-      <background>background\mountains_BG</background>
-      <background>background\hills_1_BG</background>
-      <background>background\hills_2_BG</background>
-      <background>background\motor_foreground_BG</background>
-      <background>background\motor_sky_BG</background>
-      <background>background\hitler_BG</background>
-      <background>background\grass_BG</background>
-      <background>background\treeline_BG</background>
-    </backgrounds>
-    <background>background\cloud_BG</background>
-    <background>background\cloud_tile_BG</background>
-    <background>background\moon_man_BG</background>
-    <background>background\checker_BG</background>
-    <background>background\protest_BG</background>
-    <backgrounds name="internet">
+    <backgrounds name="2-Internet">
       <background>background\internet_TS</background>
       <background>background\grid_BG</background>
       <background>background\glow_BG</background>
       <background>background\overton_BG</background>
       <background>background\octo_battle_BG</background>
     </backgrounds>
-    <background>background\ball_buster_BG</background>
-    <background>background\thot_BG</background>
-    <background>background\sub_clouds_BG</background>
-    <backgrounds name="99-mini_games">
-      <background>background\might_BG</background>
+    <backgrounds name="3-Germany">
+      <backgrounds name="moto">
+        <background>background\motor_foreground_BG</background>
+        <background>background\treeline_BG</background>
+        <background>background\grass_BG</background>
+        <background>background\road_BG</background>
+        <background>background\hills_1_BG</background>
+        <background>background\hills_2_BG</background>
+        <background>background\mountains_BG</background>
+        <background>background\motor_sky_BG</background>
+      </backgrounds>
+      <backgrounds name="hitler">
+        <background>background\hitler_clouds_BG</background>
+        <background>background\hitler_BG</background>
+        <background>background\painting_final_BG</background>
+        <background>background\painting_tile_BG</background>
+        <background>background\hitler_finish_BG</background>
+      </backgrounds>
+      <backgrounds name="submarine">
+        <background>background\sub_clouds_BG</background>
+      </backgrounds>
     </backgrounds>
+    <backgrounds name="4-ClownWorld">
+      <background>background\clown_BG</background>
+      <background>background\unicorn_BG</background>
+    </backgrounds>
+    <backgrounds name="5-IslandOfNPCs">
+      <background>background\NPC_BG</background>
+      <background>background\NPC_foreground_top</background>
+      <background>background\NPC_foreground_bot</background>
+      <background>background\NPC_floor_BG</background>
+      <background>background\NPC_pillars_BG</background>
+      <background>background\NPC_game_BG</background>
+      <background>background\NPC_boss_BG</background>
+    </backgrounds>
+    <backgrounds name="6-Pooh">
+      <background>background\xi_BG</background>
+      <background>background\cam_BG</background>
+      <background>background\pooh_tiles</background>
+      <background>background\pollution_BG</background>
+    </backgrounds>
+    <backgrounds name="99-Misc">
+      <backgrounds name="Flying">
+        <background>background\thot_BG</background>
+      </backgrounds>
+      <backgrounds name="Minigames">
+        <background>background\might_BG</background>
+        <background>background\FF_BG</background>
+        <background>background\mario_BG</background>
+        <background>background\ball_buster_BG</background>
+      </backgrounds>
+      <background>background\moon_man_BG</background>
+      <background>background\cloud_BG</background>
+      <background>background\cloud_tile_BG</background>
+      <background>background\moto_frame_BG</background>
+    </backgrounds>
+<<<<<<< HEAD
     <background>background\FF_BG</background>
     <background>background\mario_BG</background>
     <background>background\grid_tile_BG</background>
@@ -690,6 +725,8 @@
     <background>background\hitler_finish_BG</background>
     <background>background\abortion_BG</background>
     <background>background\abortion_TS</background>
+=======
+>>>>>>> e9ac24b9e7d868d702301bf4bd6277a25f3bbd6e
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -707,6 +744,24 @@
     <path>paths\missle_paint_path</path>
   </paths>
   <scripts name="scripts">
+    <scripts name="unused">
+      <scripts name="verlet">
+        <script>scripts\verlet_init.gml</script>
+        <script>scripts\verlet_update.gml</script>
+        <script>scripts\verlet_link_add.gml</script>
+        <script>scripts\verlet_link_remove.gml</script>
+      </scripts>
+      <scripts name="editor">
+        <script>scripts\editor_clear.gml</script>
+        <script>scripts\editor_save.gml</script>
+        <script>scripts\editor_load.gml</script>
+        <script>scripts\editor_play.gml</script>
+        <script>scripts\editor_edit.gml</script>
+        <script>scripts\offsets_save.gml</script>
+        <script>scripts\offsets_load.gml</script>
+        <script>scripts\offsets_clear.gml</script>
+      </scripts>
+    </scripts>
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>
       <script>scripts\gamepad_update.gml</script>
@@ -738,16 +793,6 @@
       <script>scripts\paperdoll.gml</script>
       <script>scripts\paperdoll_clear.gml</script>
     </scripts>
-    <scripts name="editor">
-      <script>scripts\editor_clear.gml</script>
-      <script>scripts\editor_save.gml</script>
-      <script>scripts\editor_load.gml</script>
-      <script>scripts\editor_play.gml</script>
-      <script>scripts\editor_edit.gml</script>
-      <script>scripts\offsets_save.gml</script>
-      <script>scripts\offsets_load.gml</script>
-      <script>scripts\offsets_clear.gml</script>
-    </scripts>
     <scripts name="settings">
       <script>scripts\settings_save.gml</script>
       <script>scripts\settings_load.gml</script>
@@ -773,12 +818,6 @@
       <script>scripts\hunny_shuffle.gml</script>
       <script>scripts\hunny_bank.gml</script>
     </scripts>
-    <scripts name="verlet">
-      <script>scripts\verlet_init.gml</script>
-      <script>scripts\verlet_update.gml</script>
-      <script>scripts\verlet_link_add.gml</script>
-      <script>scripts\verlet_link_remove.gml</script>
-    </scripts>
     <scripts name="audio">
       <script>scripts\snd_play.gml</script>
       <script>scripts\snd_play_3d.gml</script>
@@ -798,112 +837,6 @@
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <objects name="objects">
-    <objects name="colliders">
-      <object>objects\obj_wall</object>
-      <object>objects\obj_jt</object>
-      <object>objects\obj_ramp_r</object>
-      <object>objects\obj_ramp_l</object>
-      <object>objects\obj_climb</object>
-      <object>objects\obj_climb_r</object>
-      <object>objects\obj_climb_l</object>
-      <object>objects\obj_climb_b</object>
-      <object>objects\obj_mb</object>
-      <object>objects\obj_mb_l</object>
-      <object>objects\obj_mb_r</object>
-      <object>objects\obj_wall_move</object>
-      <object>objects\death_block</object>
-      <object>objects\monkeybar_move</object>
-      <object>objects\monkeybar_path</object>
-    </objects>
-    <objects name="pooh">
-      <objects name="mech_battle">
-        <object>objects\pooh_controller</object>
-        <object>objects\pooh</object>
-        <object>objects\gas_light</object>
-        <object>objects\pooh_BG_drawer</object>
-        <object>objects\pooh_shit</object>
-        <object>objects\donkey_puppet</object>
-        <object>objects\pooh_ground_drawer</object>
-        <object>objects\spear</object>
-        <object>objects\sickle</object>
-        <object>objects\pooh_rocket</object>
-        <object>objects\wheat</object>
-        <object>objects\wheat_maker</object>
-        <object>objects\sickle_2</object>
-      </objects>
-      <objects name="final">
-        <object>objects\final_spiral</object>
-        <object>objects\final_controller</object>
-      </objects>
-      <objects name="painters">
-        <object>objects\blank_painter</object>
-        <object>objects\dream_painter</object>
-        <object>objects\fent_painter</object>
-      </objects>
-      <objects name="fent">
-        <object>objects\fent_controller_2</object>
-        <object>objects\fent_BG_drawer</object>
-        <object>objects\fent_BG_drawer_2</object>
-        <object>objects\fent_hand</object>
-        <object>objects\fent_needle</object>
-        <object>objects\fent_controller</object>
-      </objects>
-      <objects name="pooh_stage">
-        <object>objects\pooh_torch</object>
-        <object>objects\pooh_cam_2</object>
-        <object>objects\pooh_cam_1</object>
-      </objects>
-      <objects name="xi_battle">
-        <objects name="wall">
-          <object>objects\xi_wall_attack</object>
-          <object>objects\hunny_lob</object>
-          <object>objects\hunny_bounce</object>
-        </objects>
-        <objects name="controller">
-          <object>objects\xi_between</object>
-        </objects>
-        <objects name="hammer">
-          <object>objects\hammer_sur</object>
-          <object>objects\xi_hammer_attack</object>
-          <object>objects\hammer_ball</object>
-        </objects>
-        <objects name="hunny">
-          <object>objects\xi_hunny_blast</object>
-          <object>objects\hunny_pooh</object>
-          <object>objects\hunny_node_controller</object>
-          <object>objects\hunny_node</object>
-          <object>objects\hunny_blast</object>
-          <object>objects\hunny_pre</object>
-        </objects>
-        <objects name="sickle">
-          <object>objects\big_sickle</object>
-        </objects>
-      </objects>
-      <objects name="dream">
-        <object>objects\dream_controller</object>
-        <object>objects\dream_circle</object>
-        <object>objects\dream_circle_controller</object>
-      </objects>
-      <objects name="cam">
-        <object>objects\cam_battle_controller</object>
-        <object>objects\diag_cam</object>
-        <object>objects\cam_laz</object>
-        <object>objects\screen_drawer</object>
-        <object>objects\cam_part</object>
-        <object>objects\diag_blast_drawer</object>
-        <object>objects\cam_gun</object>
-        <object>objects\cam_range_1</object>
-        <object>objects\cam_range_2</object>
-        <object>objects\cam_xi</object>
-        <object>objects\cam_overlay</object>
-      </objects>
-      <objects name="forest">
-        <object>objects\forest_controller</object>
-        <object>objects\forest_panel</object>
-        <object>objects\xi_bamboo</object>
-        <object>objects\xi_swing</object>
-      </objects>
-    </objects>
     <objects name="parents">
       <object>objects\par_actor</object>
       <object>objects\par_enemy</object>
@@ -921,6 +854,23 @@
       <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
+    </objects>
+    <objects name="colliders">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_jt</object>
+      <object>objects\obj_ramp_r</object>
+      <object>objects\obj_ramp_l</object>
+      <object>objects\obj_climb</object>
+      <object>objects\obj_climb_r</object>
+      <object>objects\obj_climb_l</object>
+      <object>objects\obj_climb_b</object>
+      <object>objects\obj_mb</object>
+      <object>objects\obj_mb_l</object>
+      <object>objects\obj_mb_r</object>
+      <object>objects\obj_wall_move</object>
+      <object>objects\death_block</object>
+      <object>objects\monkeybar_move</object>
+      <object>objects\monkeybar_path</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
@@ -952,7 +902,7 @@
       <object>objects\practice_target</object>
       <object>objects\cam_deactivator</object>
     </objects>
-    <objects name="0-Front End">
+    <objects name="0-FrontEnd">
       <objects name="cine">
         <object>objects\cine_controller</object>
         <object>objects\cine_obj</object>
@@ -962,7 +912,7 @@
       <object>objects\ep_warning</object>
       <object>objects\obj_gamepad_disconnect</object>
     </objects>
-    <objects name="1- Planned Parenthood">
+    <objects name="1-PlannedParenthood">
       <objects name="tong_boss">
         <object>objects\tong_controller</object>
         <object>objects\needle</object>
@@ -1162,7 +1112,7 @@
         <object>objects\grenade_tracer</object>
       </objects>
     </objects>
-    <objects name="4-Clown World">
+    <objects name="4-ClownWorld">
       <objects name="circle_ride">
         <object>objects\circle_ride</object>
         <object>objects\circle_sign</object>
@@ -1183,19 +1133,130 @@
         <object>objects\unicorn_rail</object>
       </objects>
     </objects>
-    <objects name="5-Island of NPCs">
+    <objects name="5-IslandOfNPCs">
       <object>objects\NPC_enemy</object>
       <object>objects\NPC_spawner</object>
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
     </objects>
-    <objects name="flying">
+    <objects name="6-Pooh">
+      <objects name="mech_battle">
+        <object>objects\pooh_controller</object>
+        <object>objects\pooh</object>
+        <object>objects\gas_light</object>
+        <object>objects\pooh_BG_drawer</object>
+        <object>objects\pooh_shit</object>
+        <object>objects\donkey_puppet</object>
+        <object>objects\pooh_ground_drawer</object>
+        <object>objects\spear</object>
+        <object>objects\sickle</object>
+        <object>objects\pooh_rocket</object>
+        <object>objects\wheat</object>
+        <object>objects\wheat_maker</object>
+        <object>objects\sickle_2</object>
+      </objects>
+      <objects name="final">
+        <object>objects\final_spiral</object>
+        <object>objects\final_controller</object>
+      </objects>
+      <objects name="painters">
+        <object>objects\blank_painter</object>
+        <object>objects\dream_painter</object>
+        <object>objects\fent_painter</object>
+      </objects>
+      <objects name="fent">
+        <object>objects\fent_controller_2</object>
+        <object>objects\fent_BG_drawer</object>
+        <object>objects\fent_BG_drawer_2</object>
+        <object>objects\fent_hand</object>
+        <object>objects\fent_needle</object>
+        <object>objects\fent_controller</object>
+      </objects>
+      <objects name="pooh_stage">
+        <object>objects\pooh_torch</object>
+        <object>objects\pooh_cam_2</object>
+        <object>objects\pooh_cam_1</object>
+      </objects>
+      <objects name="xi_battle">
+        <objects name="wall">
+          <object>objects\xi_wall_attack</object>
+          <object>objects\hunny_lob</object>
+          <object>objects\hunny_bounce</object>
+        </objects>
+        <objects name="controller">
+          <object>objects\xi_between</object>
+        </objects>
+        <objects name="hammer">
+          <object>objects\hammer_sur</object>
+          <object>objects\xi_hammer_attack</object>
+          <object>objects\hammer_ball</object>
+        </objects>
+        <objects name="hunny">
+          <object>objects\xi_hunny_blast</object>
+          <object>objects\hunny_pooh</object>
+          <object>objects\hunny_node_controller</object>
+          <object>objects\hunny_node</object>
+          <object>objects\hunny_blast</object>
+          <object>objects\hunny_pre</object>
+        </objects>
+        <objects name="sickle">
+          <object>objects\big_sickle</object>
+        </objects>
+      </objects>
+      <objects name="dream">
+        <object>objects\dream_controller</object>
+        <object>objects\dream_circle</object>
+        <object>objects\dream_circle_controller</object>
+      </objects>
+      <objects name="cam">
+        <object>objects\cam_battle_controller</object>
+        <object>objects\diag_cam</object>
+        <object>objects\cam_laz</object>
+        <object>objects\screen_drawer</object>
+        <object>objects\cam_part</object>
+        <object>objects\diag_blast_drawer</object>
+        <object>objects\cam_gun</object>
+        <object>objects\cam_range_1</object>
+        <object>objects\cam_range_2</object>
+        <object>objects\cam_xi</object>
+        <object>objects\cam_overlay</object>
+      </objects>
+      <objects name="forest">
+        <object>objects\forest_controller</object>
+        <object>objects\forest_panel</object>
+        <object>objects\xi_bamboo</object>
+        <object>objects\xi_swing</object>
+      </objects>
+    </objects>
+    <objects name="99-Misc">
+      <objects name="Minigames">
+        <objects name="test_your_might">
+          <object>objects\might_controller</object>
+          <object>objects\P1_might</object>
+          <object>objects\might_wood</object>
+          <object>objects\might_draw_over</object>
+          <object>objects\might_score</object>
+          <object>objects\might_hehe</object>
+          <object>objects\diverse_man</object>
+          <object>objects\might_block</object>
+        </objects>
+        <objects name="FF">
+          <object>objects\FF_controller</object>
+        </objects>
+      </objects>
+      <objects name="Demo">
+        <object>objects\NPC_dummy</object>
+        <object>objects\obj_rope</object>
+        <object>objects\obj_rope_segment</object>
+      </objects>
+    </objects>
+    <objects name="Flying">
       <object>objects\PC_fly</object>
       <object>objects\flying_cam</object>
       <object>objects\flying_shot</object>
       <object>objects\white_knight</object>
     </objects>
-    <objects name="cutscene">
+    <objects name="Cutscene">
       <object>objects\no_boss_cutscene</object>
       <object>objects\opening_cutscene</object>
       <object>objects\time_cutscene</object>
@@ -1204,26 +1265,6 @@
       <objects name="game_over">
         <object>objects\game_over_controller</object>
       </objects>
-    </objects>
-    <objects name="99-mini_games">
-      <objects name="test_your_might">
-        <object>objects\might_controller</object>
-        <object>objects\P1_might</object>
-        <object>objects\might_wood</object>
-        <object>objects\might_draw_over</object>
-        <object>objects\might_score</object>
-        <object>objects\might_hehe</object>
-        <object>objects\diverse_man</object>
-        <object>objects\might_block</object>
-      </objects>
-      <objects name="FF">
-        <object>objects\FF_controller</object>
-      </objects>
-    </objects>
-    <objects name="demo">
-      <object>objects\NPC_dummy</object>
-      <object>objects\obj_rope</object>
-      <object>objects\obj_rope_segment</object>
     </objects>
     <objects name="HUD">
       <object>objects\HUD</object>
@@ -1234,7 +1275,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <rooms name="0- Front End">
+    <rooms name="0-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
@@ -1256,31 +1297,31 @@
       <room>rooms\internet_room</room>
       <room>rooms\internet_vert_room</room>
     </rooms>
-    <rooms name="1-Planned Parenthood">
+    <rooms name="1-PlannedParenthood">
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
       <room>rooms\fryguy_room</room>
     </rooms>
-    <rooms name="4-Clown World">
+    <rooms name="4-ClownWorld">
       <room>rooms\circle_room</room>
       <room>rooms\cloud_room</room>
     </rooms>
-    <rooms name="5- Island of NPCs">
+    <rooms name="5-IslandOfNPCs">
       <room>rooms\NPC_room</room>
       <room>rooms\NPC_game_room</room>
       <room>rooms\ball_buster_room</room>
     </rooms>
-    <rooms name="99-mini_games">
+    <rooms name="99-Misc">
       <room>rooms\might_room</room>
       <room>rooms\mario_room</room>
       <room>rooms\FF_room</room>
     </rooms>
-    <rooms name="germany">
+    <rooms name="3-Germany">
       <room>rooms\paint_2_room</room>
       <room>rooms\hitler_finish_room</room>
     </rooms>
-    <rooms name="pooh">
+    <rooms name="6-Pooh">
       <room>rooms\final_room</room>
       <room>rooms\pooh_room</room>
       <room>rooms\xi_room</room>

@@ -222,7 +222,7 @@ mus_loop(flight_of_bumblebee_snd);
 
 zeplin_controller.alarm[1]=60
 
-snd_play(hitler_laugh_snd);
+//snd_play(hitler_laugh_snd);
 
 alarm[1]=LAUGHtime
 </string>
