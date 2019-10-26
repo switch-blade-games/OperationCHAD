@@ -644,6 +644,8 @@
       <backgrounds name="megaphone">
         <background>background\protest_BG</background>
       </backgrounds>
+      <background>background\abortion_BG</background>
+      <background>background\abortion_TS</background>
     </backgrounds>
     <backgrounds name="2-Internet">
       <background>background\internet_TS</background>
@@ -708,22 +710,6 @@
       <background>background\cloud_tile_BG</background>
       <background>background\moto_frame_BG</background>
     </backgrounds>
-    <background>background\FF_BG</background>
-    <background>background\mario_BG</background>
-    <background>background\grid_tile_BG</background>
-    <background>background\NPC_game_BG</background>
-    <background>background\NPC_boss_BG</background>
-    <background>background\pooh_tiles</background>
-    <background>background\xi_BG</background>
-    <background>background\cam_BG</background>
-    <background>background\pollution_BG</background>
-    <background>background\hitler_clouds_BG</background>
-    <background>background\moto_frame_BG</background>
-    <background>background\painting_final_BG</background>
-    <background>background\painting_tile_BG</background>
-    <background>background\hitler_finish_BG</background>
-    <background>background\abortion_BG</background>
-    <background>background\abortion_TS</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
