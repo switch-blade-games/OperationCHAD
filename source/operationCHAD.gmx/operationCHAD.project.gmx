@@ -708,7 +708,6 @@
       <background>background\cloud_tile_BG</background>
       <background>background\moto_frame_BG</background>
     </backgrounds>
-<<<<<<< HEAD
     <background>background\FF_BG</background>
     <background>background\mario_BG</background>
     <background>background\grid_tile_BG</background>
@@ -725,8 +724,6 @@
     <background>background\hitler_finish_BG</background>
     <background>background\abortion_BG</background>
     <background>background\abortion_TS</background>
-=======
->>>>>>> e9ac24b9e7d868d702301bf4bd6277a25f3bbd6e
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
