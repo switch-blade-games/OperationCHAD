@@ -153,7 +153,6 @@
       <sprite>sprites\echo_mask_spr</sprite>
     </sprites>
     <sprites name="3-Germany">
-      <sprite>sprites\motor_player_spr</sprite>
       <sprite>sprites\motor_shadow_spr</sprite>
       <sprite>sprites\nazi_moto_under_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
@@ -254,6 +253,7 @@
       </sprites>
       <sprites name="sub_sequence">
         <sprite>sprites\sub_ground_spr</sprite>
+        <sprite>sprites\sub_water_spr</sprite>
         <sprite>sprites\sub_part_spr</sprite>
         <sprite>sprites\sub_missle_part_spr</sprite>
         <sprite>sprites\sub_missle_spr</sprite>
@@ -261,13 +261,14 @@
         <sprite>sprites\twin_bullet_spr</sprite>
         <sprite>sprites\twin_turret_place_spr</sprite>
         <sprite>sprites\scuba_man_spr</sprite>
-        <sprite>sprites\sub_water_spr</sprite>
         <sprite>sprites\naval_mine_spr</sprite>
         <sprite>sprites\mine_holder_spr</sprite>
         <sprite>sprites\mine_smoke_spr</sprite>
         <sprite>sprites\grenade_tracer_spr</sprite>
         <sprite>sprites\S_grenade_spr</sprite>
+        <sprite>sprites\rain_spr</sprite>
       </sprites>
+      <sprite>sprites\german_sky_spr</sprite>
     </sprites>
     <sprites name="4-ClownWorld">
       <sprites name="circle_ride">
@@ -675,6 +676,7 @@
       <backgrounds name="submarine">
         <background>background\sub_clouds_BG</background>
       </backgrounds>
+      <background>background\meta_road_BG</background>
     </backgrounds>
     <backgrounds name="4-ClownWorld">
       <background>background\clown_BG</background>
@@ -1262,9 +1264,9 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\abortion_stage</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\sub_room</room>
+        <room>rooms\abortion_stage</room>
         <room>rooms\zepplin_room</room>
         <room>rooms\time_cutscene_room</room>
         <room>rooms\paint_room</room>

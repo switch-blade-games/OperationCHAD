@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>RAINx=0
+RAINy=0
+
+RAINspe=5
 
 //set up stuff for sub hover
 SUBup=1
@@ -47,10 +50,12 @@ global.SUBy=160
 
 global.SUBpostfade=global.SUBy
 
-global.SUBspe=-0.5
+global.SUBspe=-1
+
+//0.5
 
 
-rate=120
+rate=60
 
 alarm[0]=rate
 
@@ -58,7 +63,7 @@ global.GROUNDy=100
 
 GROUNDx=0
 
-global.GROUNDspe=-4
+global.GROUNDspe=-6
 
 GROUNDsur=surface_create(400,240)
 
@@ -325,6 +330,11 @@ draw_clear_alpha(c_white,0)
 
 draw_sprite_tiled(sub_ground_spr,-1,GROUNDx,0)
 
+RAINx-=RAINspe
+RAINy+=RAINspe
+
+draw_sprite_tiled(rain_spr,-1,RAINx,RAINy)
+
 surface_reset_target()
 
 exit
@@ -355,7 +365,7 @@ if (mouse_check_button_pressed(mb_left))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(GROUNDsur,0,global.GROUNDy)
+            <string>draw_surface(GROUNDsur,0,0)
 </string>
           </argument>
         </arguments>
