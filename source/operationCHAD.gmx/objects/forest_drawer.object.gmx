@@ -25,74 +25,88 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Xdest=0
+            <string>CAMfade=0
 
-Xrate=8
+CAMmax=3
+
+CAMrate=0.1
+
+UP=1
+DOWN=2
+
+CAMstate=UP
 
 instance_create(0,0,motor_foreground)
 
-//instance_create(0,0,nazi_missle_maker)
+BRANCHbuffer=false
+BRANCHtime=180
+
+//the sprite assosiated with the surface
+
+PARspr[0]=forest_block_spr
+PARspr[1]=forest_block_spr
+PARspr[2]=forest_floor_spr
+PARspr[3]=forest_floor_spr
+PARspr[4]=road_bottom_spr
+PARspr[5]=road_mid_spr
+PARspr[6]=road_top_spr
+PARspr[7]=forest_floor_spr
+PARspr[8]=forest_floor_2_spr
+PARspr[9]=forest_floor_3_spr
+PARspr[10]=forest_block_spr
+PARspr[11]=blank_spot_spr
+PARspr[12]=blank_spot_spr
+PARspr[13]=forest_cloud_spr
+PARspr[14]=forest_cloud_spr
+PARspr[15]=forest_cloud_spr
+PARspr[16]=forest_cloud_spr
+
+//this y is the height of the surface, ie the height of the assosiated sprite above
+PARh[0]=20
+PARh[1]=20
+PARh[2]=20
+PARh[3]=20
+PARh[4]=20
+PARh[5]=20
+PARh[6]=20
+PARh[7]=20
+PARh[8]=20
+PARh[9]=20
+PARh[10]=20
+PARh[11]=20
+PARh[12]=20
+PARh[13]=20
+PARh[14]=20
+PARh[15]=20
+PARh[16]=20
+PARh[17]=20
 
 
-//instance_create(0,0,nazi_missle_maker)
+var i=0;
 
-alarm[0]=60
+repeat(16){
 
-PLANErate=300
+PARsur[i]=surface_create(420,PARh[i])
+i+=1
+}
 
-PLANEshots=0
 
-MEN=false
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>MEN=true
+BASEspe=40
 
-alarm[0]=PLANErate
 
-PLANEshots=-1000
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>instance_create(view_xview[0]-100,140,nazi_truck)
+BASEx=0
+
+
+//special surfaces
+
+MOUNTsur=surface_create(420,60)
+
+TREEsur=surface_create(420,180)
+
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -115,23 +129,7 @@ PLANEshots=-1000
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-
-PLANEshots+=1
-
-
-instance_create(200,10,front_plane)
-
-if(PLANEshots=2){
-    
-    alarm[1]=120
-    exit
-}
-
-alarm[0]=PLANErate
-
-
-
+            <string>BRANCHbuffer=false
 </string>
           </argument>
         </arguments>
@@ -154,27 +152,74 @@ alarm[0]=PLANErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_number(foreground_branch)=0)
-if(random(200)&lt;1)
-    instance_create(400,0+random(-20),foreground_branch)
-
-
-
-if(MEN=true){
-
-
-if(instance_number(motor_nazi)=0)
-if(random(200)&lt;1)
-    instance_create(440,global.moto_floor,motor_nazi)
-    
-    
-if(instance_number(para_man)&lt;3)
-if(random(200)&lt;1)
-    instance_create(200+random(200),-40,para_man)                                    
-    
-
-    
+            <string>if(CAMstate=UP){
+    CAMfade-=CAMrate
+    if(CAMfade&lt;-CAMmax)
+        CAMstate=DOWN
 }
+
+if(CAMstate=DOWN){
+
+    CAMfade+=CAMrate
+    
+    if(CAMfade&gt;=CAMmax)
+        CAMstate=UP
+}
+
+if(global.yshake&lt;1)
+view_yview[0]=round(CAMfade)
+
+
+if(BRANCHbuffer=false)
+if(random(200)&lt;1){
+    instance_create(420,-10,foreground_branch)
+    BRANCHbuffer=true
+    alarm[0]=BRANCHtime
+}
+
+
+BASEx-=BASEspe
+
+
+var i=0;
+
+repeat(16){
+
+    surface_set_target(PARsur[i])
+    
+    draw_clear_alpha(c_white,0)
+    
+    draw_sprite_tiled(PARspr[i],-1,round(BASEx/i),0)
+    
+    draw_text(20,6,i)
+    
+    surface_reset_target()
+    
+    i+=1
+}
+
+
+//special surfaces
+
+//mountain
+surface_set_target(MOUNTsur)
+draw_clear_alpha(c_white,0)
+draw_sprite_tiled(mountains_spr,-1,BASEx/12,0)
+
+surface_reset_target()
+
+
+//tall tree
+
+surface_set_target(TREEsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(tall_tree_spr,-1,BASEx/7,0)
+
+surface_reset_target()
+
+
 </string>
           </argument>
         </arguments>
@@ -197,33 +242,28 @@ if(random(200)&lt;1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//draw everything except foreground
+            <string>var i=15;
 
-Xdest-=Xrate
+var Yplace=0;
 
-draw_background_tiled(motor_sky_BG,0,0)
+draw_sprite(big_sun_spr,-1,-10,-10)
 
+//draw_surface(PARsur[4],-10,200)
 
-/*
-draw_background_tiled(mountains_BG,Xdest/8,0)
+//exit
 
-//hills
-draw_background_tiled(hills_2_BG,Xdest/6,0)
+repeat(16){
 
-draw_background_tiled(hills_1_BG,Xdest/4,0)
+    draw_surface(PARsur[i],-10,-10+(Yplace*20))
+    
+    i-=1
+    
+    Yplace+=1
+}
 
-//treeline
-draw_background_tiled(treeline_BG,Xdest/2,0)
+draw_surface(MOUNTsur,-10,50)
 
-
-//grass
-draw_background_tiled(grass_BG,Xdest/1.5,0)
-
-
-*/
-
-//road
-draw_background_tiled(meta_road_BG,Xdest,0)
+draw_surface(TREEsur,-10,-10)
 </string>
           </argument>
         </arguments>

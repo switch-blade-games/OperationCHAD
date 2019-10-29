@@ -14,7 +14,7 @@
 var inst = instance_create(0,0,obj_camera);
 inst.cam_state = camState.static;
 
-instance_create(0,0,motor_controller);
+instance_create(0,0,motor_controller_2);
 
 var player = instance_create(90,180,obj_player);
 player.move_state = mState.moto;
@@ -25,7 +25,9 @@ global.moto_floor=180
 
 mus_loop(ride_of_valk_snd);
 
-instance_create(0,0,HUD)</code>
+instance_create(0,0,HUD)
+
+instance_create(0,0,forest_drawer)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

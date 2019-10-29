@@ -269,6 +269,28 @@
         <sprite>sprites\rain_spr</sprite>
       </sprites>
       <sprite>sprites\german_sky_spr</sprite>
+      <sprites name="forest">
+        <sprite>sprites\forest_block_spr</sprite>
+        <sprite>sprites\mountains_spr</sprite>
+        <sprite>sprites\tall_tree_spr</sprite>
+        <sprite>sprites\forest_cloud_spr</sprite>
+        <sprite>sprites\road_top_spr</sprite>
+        <sprite>sprites\road_mid_spr</sprite>
+        <sprite>sprites\road_bottom_spr</sprite>
+        <sprite>sprites\forest_floor_spr</sprite>
+        <sprite>sprites\forest_floor_2_spr</sprite>
+        <sprite>sprites\forest_floor_3_spr</sprite>
+        <sprite>sprites\big_sun_spr</sprite>
+        <sprite>sprites\blank_spot_spr</sprite>
+        <sprite>sprites\moving_wall_spr</sprite>
+        <sprite>sprites\fly_boy_spr</sprite>
+        <sprite>sprites\fly_shot_spr</sprite>
+        <sprite>sprites\flame_bomb_spr</sprite>
+        <sprite>sprites\flame_pillar_spr</sprite>
+        <sprite>sprites\tank_man_spr</sprite>
+        <sprite>sprites\tank_man_mask_spr</sprite>
+        <sprite>sprites\tank_bullet_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="4-ClownWorld">
       <sprites name="circle_ride">
@@ -518,6 +540,8 @@
       <sprite>sprites\climb_L_spr</sprite>
       <sprite>sprites\platform_spr</sprite>
       <sprite>sprites\death_block_spr</sprite>
+      <sprite>sprites\monkey_ramp_L_spr</sprite>
+      <sprite>sprites\monkey_ramp_R_spr</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\explode_bg_spr</sprite>
@@ -856,6 +880,7 @@
       <object>objects\death_block</object>
       <object>objects\monkeybar_move</object>
       <object>objects\monkeybar_path</object>
+      <object>objects\monkey_ramp_L</object>
     </objects>
     <objects name="projectiles">
       <object>objects\obj_bullet</object>
@@ -983,12 +1008,11 @@
     </objects>
     <objects name="3-Germany">
       <objects name="germany_motor">
+        <object>objects\motor_foreground</object>
         <object>objects\motor_controller</object>
         <object>objects\nazi_missle_maker</object>
-        <object>objects\motor_foreground</object>
         <object>objects\motor_nazi</object>
         <object>objects\tank</object>
-        <object>objects\foreground_branch</object>
         <object>objects\nazi_truck</object>
         <object>objects\truck_shooter</object>
         <object>objects\truck_flame_man</object>
@@ -1008,6 +1032,18 @@
         <object>objects\front_plane</object>
         <object>objects\para_leave</object>
         <object>objects\projectile_test</object>
+        <objects name="forest">
+          <object>objects\motor_controller_2</object>
+          <object>objects\forest_drawer</object>
+          <object>objects\moving_wall</object>
+          <object>objects\foreground_branch</object>
+          <object>objects\fly_boy</object>
+          <object>objects\fly_shot</object>
+          <object>objects\flame_bomb</object>
+          <object>objects\flame_pillar</object>
+          <object>objects\tank_man</object>
+          <object>objects\tank_bullet</object>
+        </objects>
       </objects>
       <objects name="hitler">
         <objects name="P1">
@@ -1265,13 +1301,13 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\germany_motor_room</room>
+        <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
         <room>rooms\abortion_stage</room>
         <room>rooms\zepplin_room</room>
         <room>rooms\time_cutscene_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\merry_room</room>
-        <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
       </rooms>
     </rooms>

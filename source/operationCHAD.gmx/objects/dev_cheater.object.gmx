@@ -169,7 +169,7 @@ if (keyboard_check_pressed(vk_escape))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto_next()
+            <string>global.yshake=20
 </string>
           </argument>
         </arguments>
