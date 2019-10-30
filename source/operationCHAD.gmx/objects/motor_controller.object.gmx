@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Xdest=0
+            <string>exit
+
+Xdest=0
 
 Xrate=8
 

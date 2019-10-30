@@ -169,7 +169,9 @@ if(CAMstate=DOWN){
 if(global.yshake&lt;1)
 view_yview[0]=round(CAMfade)
 
+//create forground branches
 
+if(instance_number(tunnel)=0)
 if(BRANCHbuffer=false)
 if(random(200)&lt;1){
     instance_create(420,-10,foreground_branch)

@@ -38,7 +38,7 @@
     </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprites name="0-FrontEnd">
+    <sprites name="000-Front End">
       <sprites name="cine">
         <sprite>sprites\gang_colors_spr</sprite>
         <sprite>sprites\yolo_cine_spr</sprite>
@@ -74,7 +74,7 @@
         </sprites>
       </sprites>
     </sprites>
-    <sprites name="1-PlannedParenthood">
+    <sprites name="001-Abortion Factory">
       <sprites name="tong">
         <sprite>sprites\needle_spr</sprite>
         <sprite>sprites\needle_bubble_spr</sprite>
@@ -140,7 +140,7 @@
       <sprite>sprites\pop_served_spr</sprite>
       <sprite>sprites\conveyor_spr</sprite>
     </sprites>
-    <sprites name="2-Internet">
+    <sprites name="002-Internet">
       <sprite>sprites\internet_horizon_spr</sprite>
       <sprite>sprites\G_eye_spr</sprite>
       <sprite>sprites\G_pupil_spr</sprite>
@@ -152,7 +152,39 @@
       <sprite>sprites\echo_spr</sprite>
       <sprite>sprites\echo_mask_spr</sprite>
     </sprites>
-    <sprites name="3-Germany">
+    <sprites name="003-Clown World">
+      <sprites name="circle_ride">
+        <sprite>sprites\circle_frame_spr</sprite>
+        <sprite>sprites\circle_text_spr</sprite>
+        <sprite>sprites\circle_sign_spr</sprite>
+        <sprite>sprites\circle_cart_spr</sprite>
+        <sprite>sprites\cam_icon_spr</sprite>
+      </sprites>
+      <sprites name="Unicorn">
+        <sprite>sprites\unicorn_spr</sprite>
+        <sprite>sprites\pink_triangle_spr</sprite>
+        <sprite>sprites\candle_spr</sprite>
+        <sprite>sprites\church_plat_spr</sprite>
+        <sprite>sprites\cross_spr</sprite>
+        <sprite>sprites\rainbow_beam_spr</sprite>
+        <sprite>sprites\rainbow_obj_spr</sprite>
+        <sprite>sprites\plat_mask_spr</sprite>
+        <sprite>sprites\plat_spr</sprite>
+        <sprite>sprites\unicorn_rail_spr</sprite>
+      </sprites>
+      <sprites name="unicorn">
+        <sprite>sprites\spr_unicorn_body</sprite>
+        <sprite>sprites\spr_unicorn_neck</sprite>
+        <sprite>sprites\spr_unicorn_head</sprite>
+        <sprite>sprites\spr_unicorn_tail</sprite>
+        <sprite>sprites\spr_unicorn_leg_ft</sprite>
+        <sprite>sprites\spr_unicorn_leg_fb</sprite>
+        <sprite>sprites\spr_unicorn_leg_bt</sprite>
+        <sprite>sprites\spr_unicorn_leg_bb</sprite>
+        <sprite>sprites\spr_unicorn_hoof</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="004-Germany">
       <sprite>sprites\motor_shadow_spr</sprite>
       <sprite>sprites\nazi_moto_under_spr</sprite>
       <sprite>sprites\motor_nazi_spr</sprite>
@@ -286,48 +318,25 @@
         <sprite>sprites\fly_boy_spr</sprite>
         <sprite>sprites\fly_shot_spr</sprite>
         <sprite>sprites\flame_bomb_spr</sprite>
+        <sprite>sprites\flame_bomb_tracer_spr</sprite>
         <sprite>sprites\flame_pillar_spr</sprite>
         <sprite>sprites\tank_man_spr</sprite>
         <sprite>sprites\tank_man_mask_spr</sprite>
         <sprite>sprites\tank_bullet_spr</sprite>
+        <sprite>sprites\tank_spin_shot_spr</sprite>
+        <sprite>sprites\tank_spin_gun_spr</sprite>
+      </sprites>
+      <sprites name="tunnel">
+        <sprite>sprites\tunnel_under_spr</sprite>
+        <sprite>sprites\tunnel_over_spr</sprite>
+        <sprite>sprites\tunnel_sur_spr</sprite>
+        <sprite>sprites\tunnel_end_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="4-ClownWorld">
-      <sprites name="circle_ride">
-        <sprite>sprites\circle_frame_spr</sprite>
-        <sprite>sprites\circle_text_spr</sprite>
-        <sprite>sprites\circle_sign_spr</sprite>
-        <sprite>sprites\circle_cart_spr</sprite>
-        <sprite>sprites\cam_icon_spr</sprite>
-      </sprites>
-      <sprites name="Unicorn">
-        <sprite>sprites\unicorn_spr</sprite>
-        <sprite>sprites\pink_triangle_spr</sprite>
-        <sprite>sprites\candle_spr</sprite>
-        <sprite>sprites\church_plat_spr</sprite>
-        <sprite>sprites\cross_spr</sprite>
-        <sprite>sprites\rainbow_beam_spr</sprite>
-        <sprite>sprites\rainbow_obj_spr</sprite>
-        <sprite>sprites\plat_mask_spr</sprite>
-        <sprite>sprites\plat_spr</sprite>
-        <sprite>sprites\unicorn_rail_spr</sprite>
-      </sprites>
-      <sprites name="unicorn">
-        <sprite>sprites\spr_unicorn_body</sprite>
-        <sprite>sprites\spr_unicorn_neck</sprite>
-        <sprite>sprites\spr_unicorn_head</sprite>
-        <sprite>sprites\spr_unicorn_tail</sprite>
-        <sprite>sprites\spr_unicorn_leg_ft</sprite>
-        <sprite>sprites\spr_unicorn_leg_fb</sprite>
-        <sprite>sprites\spr_unicorn_leg_bt</sprite>
-        <sprite>sprites\spr_unicorn_leg_bb</sprite>
-        <sprite>sprites\spr_unicorn_hoof</sprite>
-      </sprites>
-    </sprites>
-    <sprites name="5-IslandOfNPCs">
+    <sprites name="006- Island of NPCs">
       <sprite>sprites\NPC_enemy_spr</sprite>
     </sprites>
-    <sprites name="6-Pooh">
+    <sprites name="007-Pooh">
       <sprites name="pooh_mech">
         <sprite>sprites\pooh_spr</sprite>
         <sprite>sprites\pooh_BG_spr</sprite>
@@ -399,7 +408,7 @@
         <sprite>sprites\xi_bamboo_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="99-Misc">
+    <sprites name="099-Misc">
       <sprite>sprites\might_wood_spr</sprite>
       <sprite>sprites\might_wood_break_spr</sprite>
       <sprite>sprites\might_hehe_spr</sprite>
@@ -625,6 +634,14 @@
         <sprite>sprites\no_boss_12_spr</sprite>
         <sprite>sprites\no_boss_13_spr</sprite>
       </sprites>
+      <sprites name="panels">
+        <sprite>sprites\stage_1_panel_spr</sprite>
+        <sprite>sprites\stage_3_panel_spr</sprite>
+        <sprite>sprites\stage_4_panel_spr</sprite>
+        <sprite>sprites\stage_5_panel_spr</sprite>
+        <sprite>sprites\stage_6_panel_spr</sprite>
+        <sprite>sprites\stage_7_panel_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\yolo_head_spr</sprite>
@@ -632,14 +649,6 @@
       <sprite>sprites\yolo_weps_spr</sprite>
       <sprite>sprites\wep_select_spr</sprite>
       <sprite>sprites\HUD_under_spr</sprite>
-    </sprites>
-    <sprites name="panels">
-      <sprite>sprites\stage_1_panel_spr</sprite>
-      <sprite>sprites\stage_3_panel_spr</sprite>
-      <sprite>sprites\stage_4_panel_spr</sprite>
-      <sprite>sprites\stage_5_panel_spr</sprite>
-      <sprite>sprites\stage_6_panel_spr</sprite>
-      <sprite>sprites\stage_7_panel_spr</sprite>
     </sprites>
     <sprites name="gags">
       <sprite>sprites\controller_gag_spr</sprite>
@@ -846,24 +855,6 @@
     <shader type="GLSLES">shaders\shd_flash.shader</shader>
   </shaders>
   <objects name="objects">
-    <objects name="parents">
-      <object>objects\par_actor</object>
-      <object>objects\par_enemy</object>
-      <object>objects\par_solid</object>
-      <object>objects\par_jt</object>
-      <object>objects\par_move</object>
-      <object>objects\par_mb</object>
-      <object>objects\par_mb_move</object>
-      <object>objects\par_ramp</object>
-      <object>objects\par_climb</object>
-      <object>objects\par_shootable</object>
-      <object>objects\par_projectile</object>
-      <object>objects\par_explode</object>
-      <object>objects\par_actor_projectile</object>
-      <object>objects\par_enemy_projectile</object>
-      <object>objects\par_effect</object>
-      <object>objects\par_verlet</object>
-    </objects>
     <objects name="colliders">
       <object>objects\obj_wall</object>
       <object>objects\obj_jt</object>
@@ -882,37 +873,25 @@
       <object>objects\monkeybar_path</object>
       <object>objects\monkey_ramp_L</object>
     </objects>
-    <objects name="projectiles">
-      <object>objects\obj_bullet</object>
-      <object>objects\obj_pellet</object>
-      <object>objects\obj_heat_seeker</object>
-      <object>objects\obj_flamethrower_flame</object>
+    <objects name="parents">
+      <object>objects\par_actor</object>
+      <object>objects\par_enemy</object>
+      <object>objects\par_solid</object>
+      <object>objects\par_jt</object>
+      <object>objects\par_move</object>
+      <object>objects\par_mb</object>
+      <object>objects\par_mb_move</object>
+      <object>objects\par_ramp</object>
+      <object>objects\par_climb</object>
+      <object>objects\par_shootable</object>
+      <object>objects\par_projectile</object>
+      <object>objects\par_explode</object>
+      <object>objects\par_actor_projectile</object>
+      <object>objects\par_enemy_projectile</object>
+      <object>objects\par_effect</object>
+      <object>objects\par_verlet</object>
     </objects>
-    <objects name="effects">
-      <object>objects\obj_casing</object>
-      <object>objects\obj_dust</object>
-      <object>objects\obj_particle</object>
-      <object>objects\small_explode</object>
-      <object>objects\explode_big</object>
-      <object>objects\screen_explode</object>
-      <object>objects\mini_exploder</object>
-    </objects>
-    <objects name="editor">
-      <object>objects\obj_editor</object>
-      <object>objects\obj_horse_mockup</object>
-      <object>objects\player_mockup</object>
-    </objects>
-    <object>objects\obj_menu</object>
-    <object>objects\obj_control</object>
-    <object>objects\obj_shader</object>
-    <object>objects\obj_camera</object>
-    <object>objects\obj_player</object>
-    <objects name="JB_stuff">
-      <object>objects\dev_cheater</object>
-      <object>objects\practice_target</object>
-      <object>objects\cam_deactivator</object>
-    </objects>
-    <objects name="0-FrontEnd">
+    <objects name="000-Front End">
       <objects name="cine">
         <object>objects\cine_controller</object>
         <object>objects\cine_obj</object>
@@ -922,7 +901,7 @@
       <object>objects\ep_warning</object>
       <object>objects\obj_gamepad_disconnect</object>
     </objects>
-    <objects name="1-PlannedParenthood">
+    <objects name="001-Abortion Factory">
       <objects name="tong_boss">
         <object>objects\tong_controller</object>
         <object>objects\needle</object>
@@ -997,7 +976,7 @@
       <object>objects\pop_served</object>
       <object>objects\conveyor</object>
     </objects>
-    <objects name="2-Internet">
+    <objects name="002-Internet">
       <object>objects\G_eye</object>
       <object>objects\sock_puppet</object>
       <object>objects\internet_controller</object>
@@ -1006,7 +985,28 @@
       <object>objects\twitter_bird</object>
       <object>objects\echo</object>
     </objects>
-    <objects name="3-Germany">
+    <objects name="003-Clown World">
+      <objects name="circle_ride">
+        <object>objects\circle_ride</object>
+        <object>objects\circle_sign</object>
+        <object>objects\circle_cart</object>
+        <object>objects\circle_cam</object>
+      </objects>
+      <objects name="unicorn">
+        <object>objects\pink_triangle</object>
+        <object>objects\unicorn</object>
+        <object>objects\tri_tracer</object>
+        <object>objects\plat</object>
+        <object>objects\candle</object>
+        <object>objects\church_plat</object>
+        <object>objects\cross</object>
+        <object>objects\rainbow_beam</object>
+        <object>objects\rainbow_obj</object>
+        <object>objects\unicorn_controller</object>
+        <object>objects\unicorn_rail</object>
+      </objects>
+    </objects>
+    <objects name="004-Germany">
       <objects name="germany_motor">
         <object>objects\motor_foreground</object>
         <object>objects\motor_controller</object>
@@ -1032,18 +1032,6 @@
         <object>objects\front_plane</object>
         <object>objects\para_leave</object>
         <object>objects\projectile_test</object>
-        <objects name="forest">
-          <object>objects\motor_controller_2</object>
-          <object>objects\forest_drawer</object>
-          <object>objects\moving_wall</object>
-          <object>objects\foreground_branch</object>
-          <object>objects\fly_boy</object>
-          <object>objects\fly_shot</object>
-          <object>objects\flame_bomb</object>
-          <object>objects\flame_pillar</object>
-          <object>objects\tank_man</object>
-          <object>objects\tank_bullet</object>
-        </objects>
       </objects>
       <objects name="hitler">
         <objects name="P1">
@@ -1132,35 +1120,44 @@
         <object>objects\mine_smoke</object>
         <object>objects\grenade_tracer</object>
       </objects>
-    </objects>
-    <objects name="4-ClownWorld">
-      <objects name="circle_ride">
-        <object>objects\circle_ride</object>
-        <object>objects\circle_sign</object>
-        <object>objects\circle_cart</object>
-        <object>objects\circle_cam</object>
+      <objects name="tunnel">
+        <object>objects\tunnel</object>
+        <object>objects\tunnel_over</object>
+        <object>objects\tunnel_dark</object>
       </objects>
-      <objects name="unicorn">
-        <object>objects\pink_triangle</object>
-        <object>objects\unicorn</object>
-        <object>objects\tri_tracer</object>
-        <object>objects\plat</object>
-        <object>objects\candle</object>
-        <object>objects\church_plat</object>
-        <object>objects\cross</object>
-        <object>objects\rainbow_beam</object>
-        <object>objects\rainbow_obj</object>
-        <object>objects\unicorn_controller</object>
-        <object>objects\unicorn_rail</object>
+      <objects name="storm">
+        <object>objects\rain_sur</object>
+        <object>objects\storm_controller</object>
+      </objects>
+      <objects name="forest">
+        <object>objects\motor_controller_2</object>
+        <object>objects\forest_drawer</object>
+        <object>objects\moving_wall</object>
+        <object>objects\foreground_branch</object>
+        <object>objects\fly_boy</object>
+        <object>objects\fly_shot</object>
+        <object>objects\flame_bomb</object>
+        <object>objects\flame_bomb_tracer</object>
+        <object>objects\flame_pillar</object>
+        <object>objects\tank_man</object>
+        <object>objects\tank_bullet</object>
+        <object>objects\tank_spin_gun</object>
+        <object>objects\tank_spin_shot</object>
       </objects>
     </objects>
-    <objects name="5-IslandOfNPCs">
+    <objects name="005-Thot Paradise">
+      <object>objects\PC_fly</object>
+      <object>objects\flying_cam</object>
+      <object>objects\flying_shot</object>
+      <object>objects\white_knight</object>
+    </objects>
+    <objects name="006- Island of NPCs">
       <object>objects\NPC_enemy</object>
       <object>objects\NPC_spawner</object>
       <object>objects\NPC_controller</object>
       <object>objects\NPC_BG_drawer</object>
     </objects>
-    <objects name="6-Pooh">
+    <objects name="007-Pooh">
       <objects name="mech_battle">
         <object>objects\pooh_controller</object>
         <object>objects\pooh</object>
@@ -1249,7 +1246,7 @@
         <object>objects\xi_swing</object>
       </objects>
     </objects>
-    <objects name="99-Misc">
+    <objects name="099-Misc">
       <objects name="Minigames">
         <objects name="test_your_might">
           <object>objects\might_controller</object>
@@ -1271,11 +1268,35 @@
         <object>objects\obj_rope_segment</object>
       </objects>
     </objects>
-    <objects name="Flying">
-      <object>objects\PC_fly</object>
-      <object>objects\flying_cam</object>
-      <object>objects\flying_shot</object>
-      <object>objects\white_knight</object>
+    <objects name="projectiles">
+      <object>objects\obj_bullet</object>
+      <object>objects\obj_pellet</object>
+      <object>objects\obj_heat_seeker</object>
+      <object>objects\obj_flamethrower_flame</object>
+    </objects>
+    <objects name="effects">
+      <object>objects\obj_casing</object>
+      <object>objects\obj_dust</object>
+      <object>objects\obj_particle</object>
+      <object>objects\small_explode</object>
+      <object>objects\explode_big</object>
+      <object>objects\screen_explode</object>
+      <object>objects\mini_exploder</object>
+    </objects>
+    <objects name="editor">
+      <object>objects\obj_editor</object>
+      <object>objects\obj_horse_mockup</object>
+      <object>objects\player_mockup</object>
+    </objects>
+    <object>objects\obj_menu</object>
+    <object>objects\obj_control</object>
+    <object>objects\obj_shader</object>
+    <object>objects\obj_camera</object>
+    <object>objects\obj_player</object>
+    <objects name="JB_stuff">
+      <object>objects\dev_cheater</object>
+      <object>objects\practice_target</object>
+      <object>objects\cam_deactivator</object>
     </objects>
     <objects name="Cutscene">
       <object>objects\no_boss_cutscene</object>
@@ -1291,9 +1312,6 @@
       <object>objects\HUD</object>
     </objects>
     <object>objects\stage_finish</object>
-    <objects name="panel">
-      <object>objects\panel_controller</object>
-    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="0-FrontEnd">

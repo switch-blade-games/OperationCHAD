@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion_set(180,4)
+            <string>event_inherited()
+
+motion_set(180,4)
 </string>
           </argument>
         </arguments>

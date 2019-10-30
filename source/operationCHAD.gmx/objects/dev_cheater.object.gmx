@@ -169,7 +169,9 @@ if (keyboard_check_pressed(vk_escape))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.yshake=20
+            <string>//global.yshake=20
+
+instance_create(420,-10,tunnel)
 </string>
           </argument>
         </arguments>
