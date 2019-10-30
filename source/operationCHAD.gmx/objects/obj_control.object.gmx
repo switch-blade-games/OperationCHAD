@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-100000</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -46,6 +46,15 @@ last_pause = global.pause;
 surf_pause = -1;
 
 verlet_init();
+
+global.echo_num = 0;
+global.echo_list = ds_list_create();
+
+snd = bullet_snd;
+decay = 0.1;
+delay = 0.1 * 1000000;
+pitch = 0.1;
+gain = 1;
 </string>
           </argument>
         </arguments>
@@ -70,6 +79,41 @@ verlet_init();
             <kind>1</kind>
             <string>last_gpcount = global.gpcount;
 gamepad_update();
+
+var time = get_timer();
+
+if (global.echo_num &gt; 0)
+    {
+    for(var i=0; i&lt;global.echo_num; i++;)
+        {
+        var snd_id      = global.echo_list[|i*6+0];
+        var snd_gain    = global.echo_list[|i*6+1];
+        var snd_time    = global.echo_list[|i*6+2];
+        var snd_decay   = global.echo_list[|i*6+3];
+        var snd_delay   = global.echo_list[|i*6+4];
+        var snd_pitch   = global.echo_list[|i*6+5];
+        
+        if (time &gt;= snd_time)
+            {
+            snd_gain -= snd_decay;
+            snd_time += snd_delay;
+            if (snd_gain &gt; 0)
+                {
+                global.echo_list[|i*5+1] = snd_gain;
+                global.echo_list[|i*5+2] = snd_time;
+                
+                snd_play(snd_id,snd_pitch,snd_gain);
+                }
+            else
+                {
+                repeat(6)
+                    ds_list_delete(global.echo_list,i*6+0);
+                global.echo_num--;
+                i--;
+                }
+            }
+        }
+    }
 
 // controller disconnected
 if (global.gpcount &lt; last_gpcount) and (!global.pause)
@@ -107,6 +151,21 @@ if (global.pause != last_pause)
         instance_activate_all();
         }
     }
+
+if (keyboard_check(vk_numpad1))
+    decay = max(0.01,decay-0.01);
+if (keyboard_check(vk_numpad3))
+    decay = min(1.00,decay+0.01);
+if (keyboard_check(vk_numpad4))
+    delay = max(0.01*1000000,delay - 0.01*1000000);
+if (keyboard_check(vk_numpad6))
+    delay = min(0.50*1000000,delay + 0.01*1000000);
+if (keyboard_check(vk_numpad7))
+    pitch = max(0.00,pitch-0.01);
+if (keyboard_check(vk_numpad9))
+    pitch = min(0.50,pitch+0.01);
+if (keyboard_check_pressed(vk_numpad0))
+    snd_play_echo(snd,decay,delay,pitch,gain);
 
 // verlet "physics"
 var time = get_timer();
@@ -164,6 +223,14 @@ global.vtime = get_timer()-time;
         draw_set_color($000000);
         }
     }
+
+draw_set_valign(0);
+draw_set_halign(0);
+draw_text(12,12,"snd:" +string(snd));
+draw_text(12,24,"decay:" +string(decay));
+draw_text(12,36,"delay:" +string(delay));
+draw_text(12,48,"pitch:" +string(pitch));
+draw_text(12,60,"gain:" +string(gain));
 </string>
           </argument>
         </arguments>

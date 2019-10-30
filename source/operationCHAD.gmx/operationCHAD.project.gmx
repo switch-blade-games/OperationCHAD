@@ -842,6 +842,7 @@
       <script>scripts\snd_loop.gml</script>
       <script>scripts\mus_loop.gml</script>
       <script>scripts\mus_stop.gml</script>
+      <script>scripts\snd_play_echo.gml</script>
     </scripts>
     <script>scripts\key_last.gml</script>
     <script>scripts\bezier.gml</script>
