@@ -747,6 +747,7 @@
       <background>background\cloud_tile_BG</background>
       <background>background\moto_frame_BG</background>
     </backgrounds>
+    <background>background\factory_mockup_spr</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -1321,6 +1322,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\room44</room>
         <room>rooms\germany_motor_room</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
