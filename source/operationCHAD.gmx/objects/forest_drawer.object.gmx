@@ -43,52 +43,15 @@ BRANCHtime=180
 
 //the sprite assosiated with the surface
 
-PARspr[0]=forest_block_spr
-PARspr[1]=forest_block_spr
-PARspr[2]=forest_floor_spr
-PARspr[3]=forest_floor_spr
-PARspr[4]=road_bottom_spr
-PARspr[5]=road_mid_spr
-PARspr[6]=road_top_spr
-PARspr[7]=forest_floor_spr
-PARspr[8]=forest_floor_spr
-PARspr[9]=forest_floor_spr
-PARspr[10]=forest_block_spr
-PARspr[11]=blank_spot_spr
-PARspr[12]=blank_spot_spr
-PARspr[13]=forest_cloud_spr
-PARspr[14]=forest_cloud_spr
-PARspr[15]=forest_cloud_spr
-PARspr[16]=forest_cloud_spr
-
-//this y is the height of the surface, ie the height of the assosiated sprite above
-PARh[0]=20
-PARh[1]=20
-PARh[2]=20
-PARh[3]=20
-PARh[4]=20
-PARh[5]=20
-PARh[6]=20
-PARh[7]=20
-PARh[8]=20
-PARh[9]=20
-PARh[10]=20
-PARh[11]=20
-PARh[12]=20
-PARh[13]=20
-PARh[14]=20
-PARh[15]=20
-PARh[16]=20
-PARh[17]=20
 
 
-var i=0;
 
-repeat(16){
+//mountains
 
-PARsur[i]=surface_create(420,PARh[i])
-i+=1
-}
+PARsur[0]=surface_create(420,260)
+PARsur[1]=surface_create(420,260)
+PARsur[2]=surface_create(420,260)
+PARsur[3]=surface_create(420,260)
 
 
 BASEspe=40
@@ -97,11 +60,18 @@ BASEspe=40
 BASEx=0
 
 
-//special surfaces
+BACKcloudsur=surface_create(420,80)
 
-MOUNTsur=surface_create(420,60)
+MIDcloudsur=surface_create(420,80)
 
-TREEsur=surface_create(420,180)
+//trees
+
+FRONTtreesur=surface_create(420,260)
+
+
+///ROAD
+
+ROADsur=surface_create(420,260)
 
 
 
@@ -182,44 +152,82 @@ if(random(200)&lt;1){
 
 BASEx-=BASEspe
 
+//back mountains
+surface_set_target(PARsur[0])
 
-var i=0;
-
-repeat(16){
-
-    surface_set_target(PARsur[i])
-    
-    draw_clear_alpha(c_white,0)
-    
-    draw_sprite_tiled(PARspr[i],-1,round(BASEx/i),0)
-    
-    draw_text(20,6,i)
-    
-    surface_reset_target()
-    
-    i+=1
-}
-
-
-//special surfaces
-
-//mountain
-surface_set_target(MOUNTsur)
 draw_clear_alpha(c_white,0)
-draw_sprite_tiled(mountains_spr,-1,BASEx/12,0)
+
+draw_sprite_tiled(back_mountain_spr,-1,BASEx/10,0)
 
 surface_reset_target()
 
 
-//tall tree
-
-surface_set_target(TREEsur)
+//mid mountains
+surface_set_target(PARsur[1])
 
 draw_clear_alpha(c_white,0)
 
-draw_sprite_tiled(tall_tree_spr,-1,BASEx/7,0)
+draw_sprite_tiled(mid_mountain_spr,-1,BASEx/8,0)
 
 surface_reset_target()
+
+
+//front mountains
+surface_set_target(PARsur[2])
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(front_mountain_spr,-1,BASEx/6,0)
+
+surface_reset_target()
+
+
+////CLOUDS
+
+//back_clouds
+surface_set_target(BACKcloudsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(back_cloud_spr,-1,BASEx/10,0)
+
+surface_reset_target()
+
+
+//mid_clouds
+surface_set_target(MIDcloudsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(mid_cloud_spr,-1,BASEx/8,0)
+
+surface_reset_target()
+
+
+//front_tree
+surface_set_target(FRONTtreesur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(front_tree_spr,-1,BASEx/4,0)
+
+surface_reset_target()
+
+
+
+
+//road
+
+surface_set_target(ROADsur)
+
+draw_clear_alpha(c_white,0)
+
+draw_sprite_tiled(new_road_spr,-1,BASEx/2,0)
+
+surface_reset_target()
+
+
+
 
 
 </string>
@@ -244,7 +252,7 @@ surface_reset_target()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i=15;
+            <string>var i=0;
 
 var Yplace=0;
 
@@ -254,18 +262,34 @@ draw_sprite(big_sun_spr,-1,-10,-10)
 
 //exit
 
-repeat(16){
 
-    draw_surface(PARsur[i],-10,-10+(Yplace*20))
+
+    //back mountain
+    draw_surface(PARsur[0],-10,110)
     
-    i-=1
+    //mid mountain
+    draw_surface(PARsur[1],-10,110)
     
-    Yplace+=1
-}
+    //mid mountain
+    draw_surface(PARsur[2],-10,130)
+    
+    //front_tree
+    draw_surface(PARsur[3],-10,40)
+    
+    
+    //////CLOUDS
+    draw_surface(BACKcloudsur,-10,-40)
+    
+    draw_surface(MIDcloudsur,-10,-50)
+    
+    
+    //trees
+    draw_surface(FRONTtreesur,-10,-70)
+    
 
-draw_surface(MOUNTsur,-10,50)
+///ROAD
 
-draw_surface(TREEsur,-10,-10)
+draw_surface(ROADsur,-10,-10)
 </string>
           </argument>
         </arguments>

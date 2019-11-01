@@ -14,8 +14,6 @@
     <sounds name="3-Germany">
       <sounds name="Hitler">
         <sound>sound\hitler_laugh_snd</sound>
-        <sound>sound\explode_snd</sound>
-        <sound>sound\bullet_snd</sound>
         <sound>sound\can_thump_snd</sound>
         <sound>sound\can_fall_snd</sound>
         <sound>sound\gas_snd</sound>
@@ -29,12 +27,18 @@
       <sound>sound\flight_of_bumblebee_snd</sound>
       <sound>sound\ride_of_valk_snd</sound>
     </sounds>
-    <sounds name="Player">
+    <sounds name="controller gag">
       <sound>sound\disconnect_1_snd</sound>
       <sound>sound\disconnect_2_snd</sound>
       <sound>sound\disconnect_3_snd</sound>
       <sound>sound\reconnect_1_snd</sound>
       <sound>sound\reconnect_2_snd</sound>
+    </sounds>
+    <sounds name="Player">
+      <sound>sound\bullet_snd</sound>
+    </sounds>
+    <sounds name="effects">
+      <sound>sound\explode_snd</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -302,18 +306,6 @@
       </sprites>
       <sprite>sprites\german_sky_spr</sprite>
       <sprites name="forest">
-        <sprite>sprites\forest_block_spr</sprite>
-        <sprite>sprites\mountains_spr</sprite>
-        <sprite>sprites\tall_tree_spr</sprite>
-        <sprite>sprites\forest_cloud_spr</sprite>
-        <sprite>sprites\road_top_spr</sprite>
-        <sprite>sprites\road_mid_spr</sprite>
-        <sprite>sprites\road_bottom_spr</sprite>
-        <sprite>sprites\forest_floor_spr</sprite>
-        <sprite>sprites\forest_floor_2_spr</sprite>
-        <sprite>sprites\forest_floor_3_spr</sprite>
-        <sprite>sprites\big_sun_spr</sprite>
-        <sprite>sprites\blank_spot_spr</sprite>
         <sprite>sprites\moving_wall_spr</sprite>
         <sprite>sprites\fly_boy_spr</sprite>
         <sprite>sprites\fly_shot_spr</sprite>
@@ -325,6 +317,16 @@
         <sprite>sprites\tank_bullet_spr</sprite>
         <sprite>sprites\tank_spin_shot_spr</sprite>
         <sprite>sprites\tank_spin_gun_spr</sprite>
+        <sprites name="paralax">
+          <sprite>sprites\big_sun_spr</sprite>
+          <sprite>sprites\back_mountain_spr</sprite>
+          <sprite>sprites\mid_mountain_spr</sprite>
+          <sprite>sprites\front_mountain_spr</sprite>
+          <sprite>sprites\new_road_spr</sprite>
+          <sprite>sprites\front_tree_spr</sprite>
+          <sprite>sprites\back_cloud_spr</sprite>
+          <sprite>sprites\mid_cloud_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="tunnel">
         <sprite>sprites\tunnel_under_spr</sprite>
@@ -664,7 +666,7 @@
       <background>background\checker_BG</background>
       <background>background\grid_tile_BG</background>
     </backgrounds>
-    <backgrounds name="1-PlannedParenthood">
+    <backgrounds name="001- Abortion Factory">
       <backgrounds name="tongs">
         <background>background\tong_BG</background>
         <background>background\VG_tileset</background>
@@ -681,14 +683,14 @@
       <background>background\abortion_BG</background>
       <background>background\abortion_TS</background>
     </backgrounds>
-    <backgrounds name="2-Internet">
+    <backgrounds name="002">
       <background>background\internet_TS</background>
       <background>background\grid_BG</background>
       <background>background\glow_BG</background>
       <background>background\overton_BG</background>
       <background>background\octo_battle_BG</background>
     </backgrounds>
-    <backgrounds name="3-Germany">
+    <backgrounds name="004-Germany">
       <backgrounds name="moto">
         <background>background\motor_foreground_BG</background>
         <background>background\treeline_BG</background>
@@ -711,11 +713,11 @@
       </backgrounds>
       <background>background\meta_road_BG</background>
     </backgrounds>
-    <backgrounds name="4-ClownWorld">
+    <backgrounds name="003-Clown World">
       <background>background\clown_BG</background>
       <background>background\unicorn_BG</background>
     </backgrounds>
-    <backgrounds name="5-IslandOfNPCs">
+    <backgrounds name="006-NPC Island">
       <background>background\NPC_BG</background>
       <background>background\NPC_foreground_top</background>
       <background>background\NPC_foreground_bot</background>
@@ -724,7 +726,7 @@
       <background>background\NPC_game_BG</background>
       <background>background\NPC_boss_BG</background>
     </backgrounds>
-    <backgrounds name="6-Pooh">
+    <backgrounds name="007-Pooh">
       <background>background\xi_BG</background>
       <background>background\cam_BG</background>
       <background>background\pooh_tiles</background>
