@@ -224,8 +224,12 @@ global.vtime = get_timer()-time;
         }
     }
 
+    
+    
 draw_set_valign(0);
 draw_set_halign(0);
+
+exit
 draw_text(12,12,"snd:" +string(snd));
 draw_text(12,24,"decay:" +string(decay));
 draw_text(12,36,"delay:" +string(delay));

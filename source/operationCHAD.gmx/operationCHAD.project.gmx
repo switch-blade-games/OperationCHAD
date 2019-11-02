@@ -5,13 +5,11 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
-    <sounds name="0-FrontEnd">
-      <sound>sound\controller_alarm_snd</sound>
-      <sound>sound\controller_reconnect_snd</sound>
+    <sounds name="000-FrontEnd">
       <sound>sound\turn_page_snd</sound>
       <sound>sound\turn_page_back_snd</sound>
     </sounds>
-    <sounds name="3-Germany">
+    <sounds name="004-Germany">
       <sounds name="Hitler">
         <sound>sound\hitler_laugh_snd</sound>
         <sound>sound\can_thump_snd</sound>
@@ -20,12 +18,12 @@
         <sound>sound\mini_plane_snd</sound>
         <sound>sound\zep_flame_snd</sound>
         <sound>sound\drop_bomb_snd</sound>
+        <sound>sound\flight_of_bumblebee_snd</sound>
       </sounds>
+      <sound>sound\ride_of_valk_snd</sound>
     </sounds>
     <sounds name="Music">
       <sound>sound\pre_fight_snd</sound>
-      <sound>sound\flight_of_bumblebee_snd</sound>
-      <sound>sound\ride_of_valk_snd</sound>
     </sounds>
     <sounds name="controller gag">
       <sound>sound\disconnect_1_snd</sound>
@@ -33,6 +31,8 @@
       <sound>sound\disconnect_3_snd</sound>
       <sound>sound\reconnect_1_snd</sound>
       <sound>sound\reconnect_2_snd</sound>
+      <sound>sound\controller_alarm_snd</sound>
+      <sound>sound\controller_reconnect_snd</sound>
     </sounds>
     <sounds name="Player">
       <sound>sound\bullet_snd</sound>
@@ -143,18 +143,16 @@
       <sprite>sprites\abortion_light_BG_spr</sprite>
       <sprite>sprites\pop_served_spr</sprite>
       <sprite>sprites\conveyor_spr</sprite>
-    </sprites>
-    <sprites name="002-Internet">
-      <sprite>sprites\internet_horizon_spr</sprite>
-      <sprite>sprites\G_eye_spr</sprite>
-      <sprite>sprites\G_pupil_spr</sprite>
-      <sprite>sprites\sock_puppet_spr</sprite>
-      <sprite>sprites\internet_overlay_spr</sprite>
-      <sprite>sprites\text_platform_spr</sprite>
-      <sprite>sprites\twitter_bird_spr</sprite>
-      <sprite>sprites\twitter_bird_mask_spr</sprite>
-      <sprite>sprites\echo_spr</sprite>
-      <sprite>sprites\echo_mask_spr</sprite>
+      <sprite>sprites\abort_bot_spr</sprite>
+      <sprite>sprites\baby_parts_spr</sprite>
+      <sprite>sprites\factory_works_spr</sprite>
+      <sprite>sprites\factory_frame_spr</sprite>
+      <sprite>sprites\over_tube_spr</sprite>
+      <sprite>sprites\baby_scale_spr</sprite>
+      <sprite>sprites\abort_sign_spr</sprite>
+      <sprite>sprites\factory_wheel_spr</sprite>
+      <sprite>sprites\hand_ball_spr</sprite>
+      <sprite>sprites\hand_hold_spr</sprite>
     </sprites>
     <sprites name="003-Clown World">
       <sprites name="circle_ride">
@@ -410,7 +408,7 @@
         <sprite>sprites\xi_bamboo_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="099-Misc">
+    <sprites name="009-Misc">
       <sprite>sprites\might_wood_spr</sprite>
       <sprite>sprites\might_wood_break_spr</sprite>
       <sprite>sprites\might_hehe_spr</sprite>
@@ -747,7 +745,9 @@
       <background>background\cloud_tile_BG</background>
       <background>background\moto_frame_BG</background>
     </backgrounds>
-    <background>background\factory_mockup_spr</background>
+    <background>background\factory_mockup_3</background>
+    <background>background\factory_mockup_2</background>
+    <background>background\factory_base_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -763,6 +763,7 @@
     <path>paths\brush_path</path>
     <path>paths\h_paint_path</path>
     <path>paths\missle_paint_path</path>
+    <path>paths\baby_part_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="unused">
@@ -977,10 +978,21 @@
         <object>objects\letter_enemy</object>
       </objects>
       <object>objects\abortion_factory_drawer</object>
+      <object>objects\abort_enemy_controller</object>
       <object>objects\pop_served</object>
       <object>objects\conveyor</object>
+      <object>objects\abort_bot</object>
+      <object>objects\over_tube</object>
+      <object>objects\baby_scale</object>
+      <object>objects\factory_works_1</object>
+      <object>objects\factory_wheel</object>
+      <object>objects\factory_frame</object>
+      <object>objects\abort_sign</object>
+      <object>objects\baby_part</object>
+      <object>objects\arm_base</object>
+      <object>objects\hand_ball</object>
     </objects>
-    <objects name="002-Internet">
+    <objects name="002-Public School">
       <object>objects\G_eye</object>
       <object>objects\sock_puppet</object>
       <object>objects\internet_controller</object>
@@ -1318,54 +1330,43 @@
     <object>objects\stage_finish</object>
   </objects>
   <rooms name="rooms">
-    <rooms name="0-FrontEnd">
+    <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\room44</room>
-        <room>rooms\germany_motor_room</room>
         <room>rooms\demo_room_2</room>
-        <room>rooms\sub_room</room>
-        <room>rooms\abortion_stage</room>
-        <room>rooms\zepplin_room</room>
-        <room>rooms\time_cutscene_room</room>
+        <room>rooms\demo_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\merry_room</room>
-        <room>rooms\demo_room</room>
       </rooms>
     </rooms>
-    <rooms name="2-Internet">
-      <room>rooms\thot_room</room>
-      <room>rooms\octo_room</room>
-      <room>rooms\internet_twitter_room</room>
-      <room>rooms\internet_room</room>
-      <room>rooms\internet_vert_room</room>
-    </rooms>
-    <rooms name="1-PlannedParenthood">
+    <rooms name="001-Abortion Factory">
       <room>rooms\embro_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
       <room>rooms\fryguy_room</room>
     </rooms>
-    <rooms name="4-ClownWorld">
+    <rooms name="003-Clown World">
       <room>rooms\circle_room</room>
       <room>rooms\cloud_room</room>
     </rooms>
-    <rooms name="5-IslandOfNPCs">
+    <rooms name="004-Germany">
+      <room>rooms\germany_motor_room</room>
+      <room>rooms\sub_room</room>
+      <room>rooms\paint_2_room</room>
+      <room>rooms\hitler_finish_room</room>
+      <room>rooms\zepplin_room</room>
+    </rooms>
+    <rooms name="005-Thot Paradise">
+      <room>rooms\thot_room</room>
+    </rooms>
+    <rooms name="006- NPC Island">
       <room>rooms\NPC_room</room>
       <room>rooms\NPC_game_room</room>
       <room>rooms\ball_buster_room</room>
     </rooms>
-    <rooms name="99-Misc">
-      <room>rooms\might_room</room>
-      <room>rooms\mario_room</room>
-      <room>rooms\FF_room</room>
-    </rooms>
-    <rooms name="3-Germany">
-      <room>rooms\paint_2_room</room>
-      <room>rooms\hitler_finish_room</room>
-    </rooms>
-    <rooms name="6-Pooh">
+    <rooms name="007-Pooh">
       <room>rooms\final_room</room>
       <room>rooms\pooh_room</room>
       <room>rooms\xi_room</room>
@@ -1375,6 +1376,11 @@
       <room>rooms\cam_room</room>
       <room>rooms\forest_room</room>
     </rooms>
+    <rooms name="009-Misc">
+      <room>rooms\might_room</room>
+      <room>rooms\mario_room</room>
+      <room>rooms\FF_room</room>
+    </rooms>
     <rooms name="cutscenes and gags">
       <room>rooms\end_cutscene_room</room>
       <room>rooms\no_boss_cutscene_room</room>
@@ -1382,6 +1388,7 @@
       <room>rooms\ep_room</room>
       <room>rooms\game_over_room</room>
       <room>rooms\open_cutscene_room</room>
+      <room>rooms\time_cutscene_room</room>
     </rooms>
   </rooms>
   <help>

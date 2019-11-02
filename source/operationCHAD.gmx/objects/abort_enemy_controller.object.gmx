@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>par_enemy</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,34 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FLIP=-1
+            <string>if(instance_number(abort_bot)&lt;3)
+if(random(100)&lt;1)
+instance_create(view_xview[0]+440,210,abort_bot)
 
-enemy_init(20)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_xscale=FLIP
 
-draw_enemy_self()
+if(instance_number(abort_bot)&lt;3)
+if(random(100)&lt;1){
+var Lson=instance_create(view_xview[0]+-40,210,abort_bot);
+
+Lson.direction=0
+Lson.image_xscale=-1
+}
 </string>
           </argument>
         </arguments>
