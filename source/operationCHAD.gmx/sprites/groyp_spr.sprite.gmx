@@ -9,8 +9,8 @@
   <bboxmode>0</bboxmode>
   <bbox_left>10</bbox_left>
   <bbox_right>611</bbox_right>
-  <bbox_top>0</bbox_top>
-  <bbox_bottom>111</bbox_bottom>
+  <bbox_top>11</bbox_top>
+  <bbox_bottom>92</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -18,7 +18,7 @@
   </TextureGroups>
   <For3D>0</For3D>
   <width>620</width>
-  <height>120</height>
+  <height>100</height>
   <frames>
     <frame index="0">images\groyp_spr_0.png</frame>
   </frames>

@@ -155,9 +155,12 @@
       <sprite>sprites\hand_hold_spr</sprite>
       <sprites name="new_factory">
         <sprite>sprites\factory_back_spr</sprite>
-        <sprite>sprites\railing_spr</sprite>
         <sprite>sprites\factory_mid_spr</sprite>
         <sprite>sprites\factory_front_spr</sprite>
+        <sprite>sprites\rail_over_spr</sprite>
+        <sprite>sprites\rail_under_spr</sprite>
+        <sprite>sprites\factory_claw_spr</sprite>
+        <sprite>sprites\new_robot_spr</sprite>
       </sprites>
       <sprite>sprites\groyp_spr</sprite>
     </sprites>
@@ -1004,6 +1007,10 @@
         <object>objects\new_factory_drawer</object>
         <object>objects\railing_drawer</object>
         <object>objects\groyp_gag</object>
+        <object>objects\rail_drawer</object>
+        <object>objects\rail_under_drawer</object>
+        <object>objects\factory_claw_maker</object>
+        <object>objects\factory_claw</object>
       </objects>
     </objects>
     <objects name="002-Public School">
