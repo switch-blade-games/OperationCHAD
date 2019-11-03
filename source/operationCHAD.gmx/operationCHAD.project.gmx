@@ -153,6 +153,13 @@
       <sprite>sprites\factory_wheel_spr</sprite>
       <sprite>sprites\hand_ball_spr</sprite>
       <sprite>sprites\hand_hold_spr</sprite>
+      <sprites name="new_factory">
+        <sprite>sprites\factory_back_spr</sprite>
+        <sprite>sprites\railing_spr</sprite>
+        <sprite>sprites\factory_mid_spr</sprite>
+        <sprite>sprites\factory_front_spr</sprite>
+      </sprites>
+      <sprite>sprites\groyp_spr</sprite>
     </sprites>
     <sprites name="003-Clown World">
       <sprites name="circle_ride">
@@ -748,6 +755,8 @@
     <background>background\factory_mockup_3</background>
     <background>background\factory_mockup_2</background>
     <background>background\factory_base_BG</background>
+    <background>background\background58</background>
+    <background>background\tileset_20_BG</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -991,6 +1000,11 @@
       <object>objects\baby_part</object>
       <object>objects\arm_base</object>
       <object>objects\hand_ball</object>
+      <objects name="new_factory">
+        <object>objects\new_factory_drawer</object>
+        <object>objects\railing_drawer</object>
+        <object>objects\groyp_gag</object>
+      </objects>
     </objects>
     <objects name="002-Public School">
       <object>objects\G_eye</object>
@@ -1334,6 +1348,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\new_factory</room>
         <room>rooms\room44</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
