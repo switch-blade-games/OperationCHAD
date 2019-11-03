@@ -1356,6 +1356,7 @@
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\new_factory</room>
+        <room>rooms\embro_room</room>
         <room>rooms\room44</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
@@ -1364,10 +1365,9 @@
       </rooms>
     </rooms>
     <rooms name="001-Abortion Factory">
-      <room>rooms\embro_room</room>
+      <room>rooms\fryguy_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
-      <room>rooms\fryguy_room</room>
     </rooms>
     <rooms name="003-Clown World">
       <room>rooms\circle_room</room>
