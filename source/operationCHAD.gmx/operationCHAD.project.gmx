@@ -165,6 +165,11 @@
         <sprite>sprites\hanger_pile_spr</sprite>
       </sprites>
       <sprite>sprites\groyp_spr</sprite>
+      <sprite>sprites\pipe_under_1_spr</sprite>
+      <sprite>sprites\pipe_over_1_spr</sprite>
+      <sprite>sprites\pipe_stuff_spr</sprite>
+      <sprite>sprites\pipe_under_2_spr</sprite>
+      <sprite>sprites\pipe_over_2_spr</sprite>
     </sprites>
     <sprites name="003-Clown World">
       <sprites name="circle_ride">
@@ -785,6 +790,8 @@
     <path>paths\h_paint_path</path>
     <path>paths\missle_paint_path</path>
     <path>paths\baby_part_path</path>
+    <path>paths\BG_pipe_1_path</path>
+    <path>paths\BG_pipe_2_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="unused">
@@ -1024,6 +1031,12 @@
         <object>objects\hanger_pile</object>
         <object>objects\hanger_bomb</object>
         <object>objects\cam_diag_up</object>
+        <objects name="BG_elements">
+          <object>objects\BG_pipe_1</object>
+          <object>objects\BG_pipe_2</object>
+          <object>objects\BG_pipe_stuff</object>
+          <object>objects\BG_pipe_over</object>
+        </objects>
       </objects>
     </objects>
     <objects name="002-Public School">
