@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>par_enemy</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>new_robot_spr</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,9 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_init(4)
+            <string>enemy_init(3)
 
 motion_set(180,2+random(0.5))
+
+image_speed=0.1+random(0.1)
+
+
 
 
 </string>
