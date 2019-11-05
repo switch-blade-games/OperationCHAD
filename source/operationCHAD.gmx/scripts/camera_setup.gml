@@ -18,9 +18,12 @@ if (argument_count > 3)
 
 var inst = instance_create(_cx,_cy,obj_camera);
 
+if (_state == camState.static)
+    exit;
+
 with(inst)
     {
-    cam_state = _state;
+    cam_state = camState.free;
     target = _target;
     
     var _temp_lerp = cam_lerp;
@@ -28,4 +31,6 @@ with(inst)
     event_user(0);
     event_user(1);
     cam_lerp = _temp_lerp;
+    
+    cam_state = _state;
     }
