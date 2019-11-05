@@ -4,7 +4,7 @@ if (shoot_timer == 0)
     {
     shoot_timer = weapon_time[cur_weapon];
     
-    if (cur_weapon == 3)
+    if (cur_weapon == weapon.flame)
         var ang = flame_ang;
     else
         {
@@ -49,10 +49,8 @@ if (shoot_timer == 0)
         }
     
     // sound
-    
     if(instance_number(tunnel)=0)
     snd_play_3d(x,y,bullet_snd,0.5,1);
-    
     
     // smoke
     repeat(3)

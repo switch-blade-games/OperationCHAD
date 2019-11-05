@@ -53,7 +53,7 @@ target = instance_nearest(x,y,par_enemy);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(target_player))
+            <string>if (instance_exists(target))
     {
     xto = (target.bbox_right+target.bbox_left)/2;
     yto = (target.bbox_top+target.bbox_bottom)/2;

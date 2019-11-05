@@ -261,7 +261,7 @@ if (no_hang_time &gt; 0)
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
-if (cur_weapon == 3) and (flame_ang != aim)
+if (cur_weapon == weapon.flame) and (flame_ang != aim)
     flame_ang -= clamp(angle_difference(flame_ang,aim),-10,10);
 
 // dead

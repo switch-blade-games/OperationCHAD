@@ -518,3 +518,11 @@ switch(move_state)
             }
         break;
     }
+
+// swap weapons
+if (input_swap_pressed)
+    {
+    cur_weapon++;
+    if (cur_weapon >= weapons)
+        cur_weapon = 0;
+    }

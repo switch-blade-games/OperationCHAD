@@ -25,38 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_halign(fa_left)
-
-draw_set_color(global.WHITE)
-
-//under
-draw_sprite(HUD_under_spr,-1,view_xview[0]+40,view_yview[0])
-
-//p1
-draw_sprite(yolo_head_spr,0,view_xview[0],view_yview[0])
-
-draw_text(view_xview[0]+25,view_yview[0]+2,"="+string(9))
-
-
-//weapons
-draw_sprite(yolo_weps_spr,0,view_xview[0]+40,view_yview[0])
-
-draw_sprite(yolo_weps_spr,1,view_xview[0]+40+20,view_yview[0])
-
-draw_sprite(yolo_weps_spr,2,view_xview[0]+40+40,view_yview[0])
-
-draw_sprite(yolo_weps_spr,3,view_xview[0]+40+60,view_yview[0])
-
-draw_sprite(wep_select_spr,-1,view_xview[0]+40,view_yview[0])
-
-
-draw_set_halign(fa_center)
-
-draw_set_valign(fa_top)
-
-draw_text_transformed(view_xview[0]+200,view_yview[0]-6,"100%",2,2,0)
-
-draw_set_color(c_white)
+            <string>if (instance_exists(obj_player))
+    {
+    //under
+    draw_sprite(HUD_under_spr,-1,view_xview[0]+40,view_yview[0]);
+    //p1
+    draw_sprite(yolo_head_spr,0,view_xview[0],view_yview[0]);
+    draw_set_halign(fa_left);
+    draw_set_color(global.WHITE);
+    draw_text(view_xview[0]+25,view_yview[0]+2,"="+string(9));
+    
+    //weapons
+    draw_sprite(wep_select_spr,-1,view_xview[0]+40 + obj_player.cur_weapon*20,view_yview[0]);
+    for(var i=0; i&lt;4; i++;)
+        draw_sprite(yolo_weps_spr,i,view_xview[0]+40 + i*20,view_yview[0])
+    
+    draw_set_halign(fa_center)
+    draw_set_valign(fa_top)
+    draw_text_transformed(view_xview[0]+200,view_yview[0]-6,"100%",2,2,0)
+    }
 </string>
           </argument>
         </arguments>
