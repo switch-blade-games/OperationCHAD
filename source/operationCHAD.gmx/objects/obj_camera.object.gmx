@@ -25,15 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = view_wview[0]/2;
-y = view_hview[0]/2;
-
-audio_falloff_set_model(audio_falloff_exponent_distance);
-audio_listener_position(x,y,0);
-audio_listener_orientation(x,y,1000,0,-1,0);
-audio_listener_velocity(0,0,0);
-
-enum camState
+            <string>enum camState
     {
     static = 0,
     right = 1,
@@ -43,11 +35,28 @@ enum camState
     free = 15
     }
 
-cam_state = camState.right;
-target = par_actor;
+xstart = x;
+ystart = y;
+cam_x = x;
+cam_y = y;
+cam_w = view_wview[0]; // camera width
+cam_h = view_hview[0]; // camera height
+cam_ox = -cam_w/2; // cam x-offset
+cam_oy = -cam_h/2; // cam y-offset
+cam_x1 = 0;
+cam_y1 = 0;
+cam_x2 = room_width;
+cam_y2 = room_height;
 
-sfx_x = 0;
-sfx_y = 0;
+cam_state = camState.static;
+target = par_actor;
+cam_lerp = 0.8;
+
+// audio listener
+audio_falloff_set_model(audio_falloff_exponent_distance);
+audio_listener_position(x,y,0);
+audio_listener_orientation(x,y,1000,0,-1,0);
+audio_listener_velocity(0,0,0);
 </string>
           </argument>
         </arguments>
@@ -70,46 +79,95 @@ sfx_y = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if (keyboard_check_pressed(ord("L")))
-    {
-    sfx_x = mouse_x;
-    sfx_y = mouse_y;
-    snd_play_3d(mouse_x,mouse_y,bullet_snd,0.5,1);
-    }
-*/
+            <string>// follow target
+event_user(0);
 
-var cx = x - view_wview[0]/2;
-var cy = y - view_hview[0]/2;
-cx += global.xnudge;
-cy += global.ynudge;
+// apply screenshake
+cam_x += global.xnudge;
+cam_y += global.ynudge;
 if (global.xshake &gt; 1)
-    cx += random_range(-global.xshake,global.xshake);
+    cam_x += random_range(-global.xshake,global.xshake);
 if (global.yshake &gt; 1)
-    cy += random_range(-global.yshake,global.yshake);
+    cam_y += random_range(-global.yshake,global.yshake);
 
-view_xview[0] += (cx-view_xview[0])*0.8;
-view_yview[0] += (cy-view_yview[0])*0.8;
-view_xview[0] = round(view_xview[0]);
-view_yview[0] = round(view_yview[0]);
+// move camera
+event_user(1);
 
+// decay screenshake values
 global.xnudge *= 0.8;
 global.ynudge *= 0.8;
 global.xshake *= 0.8;
 global.yshake *= 0.8;
 
+// move audio listener to camera position
 audio_listener_position(x,y,0);
 audio_listener_orientation(x,y,1000,0,-1,0);
 audio_listener_velocity(0,0,0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// MOVE CAMERA
 
-if (!instance_exists(par_actor)) or (cam_state == camState.static)
+// camera bounds
+cam_x = clamp(cam_x,cam_x1+cam_w/2,cam_x2-cam_w/2);
+cam_y = clamp(cam_y,cam_y1+cam_h/2,cam_y2-cam_h/2);
+
+// move the camera
+view_xview[0] += ((cam_x+cam_ox)-view_xview[0])*cam_lerp;
+view_yview[0] += ((cam_y+cam_oy)-view_yview[0])*cam_lerp;
+view_xview[0] = round(view_xview[0]);
+view_yview[0] = round(view_yview[0]);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// FOLLOW TARGET
+
+if (cam_state == camState.static) or (!instance_exists(target))
     exit;
 
 var target_xmin = +9999;
 var target_ymin = +9999;
 var target_xmax = -9999;
 var target_ymax = -9999;
-with(par_actor)
+with(target)
     {
     if (x &lt; target_xmin)
         target_xmin = x;
@@ -136,61 +194,8 @@ if (cam_state &amp; camState.down == camState.down)
 and (target_ymax &gt; y) and (target_ymin &gt; y - view_hview[0]/2 + 20)
     y = target_ymax;
 
-/*
-var inst = instance_nearest(x,y,obj_camera_path);
-if (inst != noone) and (instance_exists(inst))
-    {
-    if (inst.active)
-        {
-        if ((cam_state &amp; camState.right == camState.right) and x &gt;= inst.x and xprevious &lt; inst.x)
-        or ((cam_state &amp; camState.up == camState.up) and y &lt;= inst.y and yprevious &gt; inst.y)
-        or ((cam_state &amp; camState.left == camState.left) and x &lt;= inst.x and xprevious &gt; inst.x)
-        or ((cam_state &amp; camState.down == camState.down) and y &lt;= inst.y and yprevious &lt; inst.y)
-            {
-            cam_state = ds_map_find_value(inst.propmap,"cam_state");
-            inst.active = false;
-            x = inst.x;
-            y = inst.y;
-            }
-        }
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-draw_set_halign(0);
-draw_set_valign(0);
-
-draw_set_color($0000FF);
-draw_circle(x,y,global.FODmin,1);
-draw_set_color($000077);
-draw_circle(x,y,global.FODmax,1);
-draw_text_outline(x+16,y+16,"("+string(x)+","+string(y)+")");
-
-draw_set_color($00FF00);
-draw_circle(sfx_x,sfx_y,16,1);
-draw_text_outline(sfx_x+16,sfx_y+16,"("+string(x)+","+string(y)+")");
-
-draw_set_color($000000);
+cam_x = x;
+cam_y = y;
 </string>
           </argument>
         </arguments>

@@ -11,13 +11,9 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,obj_control);
-var inst = instance_create(0,0,obj_camera);
-inst.cam_state = camState.static;
-inst.x += 200; // view x
-inst.y += 120; // view y
+camera_setup(400,240,camState.static);
 
-background_visible[1]=false
-
+background_visible[1]=false;
 
 instance_create(0,0,HUD)</code>
   <enableViews>-1</enableViews>

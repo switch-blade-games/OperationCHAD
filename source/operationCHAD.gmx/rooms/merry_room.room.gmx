@@ -11,8 +11,9 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,obj_control)
+instance_create(0,0,unicorn_controller)
 
-instance_create(0,0,unicorn_controller)</code>
+camera_setup();</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
