@@ -93,6 +93,8 @@ instance_activate_object(obj_editor);
 instance_activate_object(dev_cheater);
 instance_activate_object(player_mockup);
 
+instance_activate_object(BG_drawer_parent);
+
 // test
 instance_activate_object(screen_explode);
 instance_activate_object(par_explode);

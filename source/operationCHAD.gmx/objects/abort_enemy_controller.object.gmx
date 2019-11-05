@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>BG_drawer_parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="3" enumb="0">
@@ -25,14 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_number(abort_bot)&lt;3)
+            <string>if(view_xview[0]&lt;800)
+exit
+
+if(instance_number(abort_bot)&lt;3)
 if(random(100)&lt;1)
-instance_create(view_xview[0]+440,210,abort_bot)
+instance_create(view_xview[0]+500,200,abort_bot)
 
 
 if(instance_number(abort_bot)&lt;3)
 if(random(100)&lt;1){
-var Lson=instance_create(view_xview[0]+-40,210,abort_bot);
+var Lson=instance_create(view_xview[0]+-100,200,abort_bot);
 
 Lson.direction=0
 Lson.image_xscale=-1

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x=(view_xview[0]/4)+800
+            <string>x=(view_xview[0]/10)+xstart
 </string>
           </argument>
         </arguments>

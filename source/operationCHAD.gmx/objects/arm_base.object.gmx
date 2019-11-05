@@ -32,6 +32,14 @@ var i=0;
 repeat(NUM){
 
     BALL[i]=instance_create(x,y,hand_ball)
+    
+    if(i=NUM-1){
+    
+    BALL[i].sprite_index=hand_hanger_spr
+    }
+    
+    BALL[i].dad=id
+    
     i+=1
 }
 LEN=0
@@ -44,13 +52,21 @@ REACH=3
 
 state=WAIT
 
-WAITtime=60
 
-alarm[0]=WAIT
 
 LENadd=0.1
 
-DIR=270
+DIR=90
+
+LEFT=1
+RIGHT=2
+
+SWAYstate=LEFT
+
+SWAYfade=0
+SWAYrate=1
+
+SWAYmax=45
 
 
 
@@ -99,22 +115,48 @@ DIR=270
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=OUT){
+            <string>if(x&lt;view_xview[0]+400-10)
+if(state=WAIT)
+state=OUT
+
+
+if(state=OUT){
 
     LEN+=LENadd
     if(LEN&gt;=LENmax)
         state=REACH
 }
 
-if(state=REACH)
-DIR+=2
+if(state=REACH){
+
+    if(SWAYstate=LEFT){
+
+        SWAYfade+=SWAYrate
+        if(SWAYfade&gt;=SWAYmax)
+            SWAYstate=RIGHT
+    
+    }
+
+    if(SWAYstate=RIGHT){
+
+        SWAYfade-=SWAYrate
+        
+        
+        if(SWAYfade&lt;=-SWAYmax)
+            SWAYstate=LEFT
+    }
+}
+
+
+
+DIR+=0
 
 var i=0;
 
 repeat(NUM){
 
-    BALL[i].x=x+lengthdir_x(LEN*i,DIR)
-    BALL[i].y=y+lengthdir_y(LEN*i,DIR)
+    BALL[i].x=x+lengthdir_x(LEN*i,DIR+SWAYfade)
+    BALL[i].y=y+lengthdir_y(LEN*i,DIR+SWAYfade)
     
     i+=1
 }

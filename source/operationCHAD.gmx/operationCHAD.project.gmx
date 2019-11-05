@@ -140,10 +140,8 @@
         <sprite>sprites\embro_case_bottom_spr</sprite>
         <sprite>sprites\embro_overlay_spr</sprite>
       </sprites>
-      <sprite>sprites\abortion_light_BG_spr</sprite>
       <sprite>sprites\pop_served_spr</sprite>
       <sprite>sprites\conveyor_spr</sprite>
-      <sprite>sprites\abort_bot_spr</sprite>
       <sprite>sprites\baby_parts_spr</sprite>
       <sprite>sprites\factory_works_spr</sprite>
       <sprite>sprites\factory_frame_spr</sprite>
@@ -151,8 +149,27 @@
       <sprite>sprites\baby_scale_spr</sprite>
       <sprite>sprites\abort_sign_spr</sprite>
       <sprite>sprites\factory_wheel_spr</sprite>
-      <sprite>sprites\hand_ball_spr</sprite>
-      <sprite>sprites\hand_hold_spr</sprite>
+      <sprites name="new_factory">
+        <sprite>sprites\factory_back_spr</sprite>
+        <sprite>sprites\factory_mid_spr</sprite>
+        <sprite>sprites\factory_front_spr</sprite>
+        <sprite>sprites\rail_over_spr</sprite>
+        <sprite>sprites\rail_under_spr</sprite>
+        <sprite>sprites\factory_claw_spr</sprite>
+        <sprite>sprites\hand_ball_spr</sprite>
+        <sprite>sprites\hand_hanger_spr</sprite>
+        <sprite>sprites\new_robot_spr</sprite>
+        <sprite>sprites\new_robo_mask_spr</sprite>
+        <sprite>sprites\abort_light_spr</sprite>
+        <sprite>sprites\hanger_bullet_spr</sprite>
+        <sprite>sprites\hanger_pile_spr</sprite>
+      </sprites>
+      <sprite>sprites\groyp_spr</sprite>
+      <sprite>sprites\pipe_under_1_spr</sprite>
+      <sprite>sprites\pipe_over_1_spr</sprite>
+      <sprite>sprites\pipe_stuff_spr</sprite>
+      <sprite>sprites\pipe_under_2_spr</sprite>
+      <sprite>sprites\pipe_over_2_spr</sprite>
     </sprites>
     <sprites name="003-Clown World">
       <sprites name="circle_ride">
@@ -654,6 +671,11 @@
       <sprite>sprites\controller_gag_spr</sprite>
       <sprite>sprites\controller_good_spr</sprite>
     </sprites>
+    <sprites name="powerups">
+      <sprite>sprites\red_pill_spr</sprite>
+      <sprite>sprites\c_powerup_spr</sprite>
+    </sprites>
+    <sprite>sprites\cam_diag_up_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="0-FrontEnd">
@@ -748,6 +770,10 @@
     <background>background\factory_mockup_3</background>
     <background>background\factory_mockup_2</background>
     <background>background\factory_base_BG</background>
+    <background>background\background58</background>
+    <background>background\tileset_20_BG</background>
+    <background>background\big_TS</background>
+    <background>background\background61</background>
   </backgrounds>
   <paths name="paths">
     <path>paths\fry_U_path</path>
@@ -764,6 +790,8 @@
     <path>paths\h_paint_path</path>
     <path>paths\missle_paint_path</path>
     <path>paths\baby_part_path</path>
+    <path>paths\BG_pipe_1_path</path>
+    <path>paths\BG_pipe_2_path</path>
   </paths>
   <scripts name="scripts">
     <scripts name="unused">
@@ -897,6 +925,7 @@
       <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
+      <object>objects\BG_drawer_parent</object>
     </objects>
     <objects name="000-Front End">
       <objects name="cine">
@@ -980,19 +1009,37 @@
         <object>objects\letter_enemy</object>
       </objects>
       <object>objects\abortion_factory_drawer</object>
-      <object>objects\abort_enemy_controller</object>
       <object>objects\pop_served</object>
-      <object>objects\conveyor</object>
-      <object>objects\abort_bot</object>
       <object>objects\over_tube</object>
+      <object>objects\over_light</object>
       <object>objects\baby_scale</object>
       <object>objects\factory_works_1</object>
       <object>objects\factory_wheel</object>
       <object>objects\factory_frame</object>
       <object>objects\abort_sign</object>
       <object>objects\baby_part</object>
-      <object>objects\arm_base</object>
-      <object>objects\hand_ball</object>
+      <objects name="new_factory">
+        <object>objects\abort_enemy_controller</object>
+        <object>objects\abort_bot</object>
+        <object>objects\new_factory_drawer</object>
+        <object>objects\railing_drawer</object>
+        <object>objects\groyp_gag</object>
+        <object>objects\rail_drawer</object>
+        <object>objects\rail_under_drawer</object>
+        <object>objects\factory_claw_maker</object>
+        <object>objects\factory_claw</object>
+        <object>objects\hand_ball</object>
+        <object>objects\arm_base</object>
+        <object>objects\hanger_pile</object>
+        <object>objects\hanger_bomb</object>
+        <object>objects\cam_diag_up</object>
+        <objects name="BG_elements">
+          <object>objects\BG_pipe_1</object>
+          <object>objects\BG_pipe_2</object>
+          <object>objects\BG_pipe_stuff</object>
+          <object>objects\BG_pipe_over</object>
+        </objects>
+      </objects>
     </objects>
     <objects name="002-Public School">
       <object>objects\G_eye</object>
@@ -1330,12 +1377,19 @@
       <object>objects\HUD</object>
     </objects>
     <object>objects\stage_finish</object>
+    <objects name="powerups">
+      <object>objects\red_pill</object>
+      <object>objects\C_powerup</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\final_factory</room>
+        <room>rooms\new_factory</room>
+        <room>rooms\embro_room</room>
         <room>rooms\room44</room>
         <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
@@ -1344,10 +1398,9 @@
       </rooms>
     </rooms>
     <rooms name="001-Abortion Factory">
-      <room>rooms\embro_room</room>
+      <room>rooms\fryguy_room</room>
       <room>rooms\megaphone_room</room>
       <room>rooms\tong_room</room>
-      <room>rooms\fryguy_room</room>
     </rooms>
     <rooms name="003-Clown World">
       <room>rooms\circle_room</room>
