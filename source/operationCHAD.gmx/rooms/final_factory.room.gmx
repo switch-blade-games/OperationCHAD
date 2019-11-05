@@ -14,8 +14,11 @@
 
 instance_create(0,0,HUD)
 
+<<<<<<< HEAD
 var inst = instance_create(0,0,obj_camera);
 
+=======
+>>>>>>> 53c4e86bf1e24db64e1120f4e9698aa06dab46de
 camera_setup(0,0,camState.right,par_actor);
 
 //instance_create(0,0,new_factory_drawer)
