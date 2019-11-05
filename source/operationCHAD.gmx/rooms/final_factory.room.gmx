@@ -15,7 +15,8 @@
 instance_create(0,0,HUD)
 
 var inst = instance_create(0,0,obj_camera);
-inst.cam_state = camState.right;
+
+camera_setup(0,0,camState.right,par_actor);
 
 //instance_create(0,0,new_factory_drawer)
 
@@ -73,7 +74,7 @@ instance_create(0,0,cam_deactivator)</code>
     <instance objName="obj_wall" x="20" y="1680" name="inst_4AABBE83" locked="0" code="" scaleX="23" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="1420" name="inst_46300697" locked="0" code="" scaleX="1" scaleY="14" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="1400" name="inst_ABF83368" locked="0" code="" scaleX="35" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="20" y="1640" name="inst_018F04E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="40" y="1660" name="inst_018F04E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="480" y="1680" name="inst_D9FAFEDB" locked="0" code="" scaleX="30" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="680" y="1400" name="inst_E8639A95" locked="0" code="" scaleX="41" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1080" y="1680" name="inst_000CAE09" locked="0" code="" scaleX="33" scaleY="1" colour="4294967295" rotation="0"/>
