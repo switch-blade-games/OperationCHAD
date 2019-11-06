@@ -512,19 +512,80 @@
             <sprite>sprites\yolo_legs_climb_spr</sprite>
           </sprites>
         </sprites>
-        <sprites name="full">
-          <sprite>sprites\yolo_duck_spr</sprite>
-          <sprite>sprites\yolo_jump_spr</sprite>
-          <sprite>sprites\yolo_moto_spr</sprite>
-          <sprite>sprites\yolo_hang_move_spr</sprite>
-          <sprite>sprites\yolo_climb_move_spr</sprite>
-          <sprite>sprites\yolo_dead_down_spr</sprite>
-          <sprite>sprites\yolo_dead_fly_spr</sprite>
-          <sprite>sprites\yolo_dead_stand_spr</sprite>
-        </sprites>
         <sprites name="special">
           <sprite>sprites\yolo_vehicle_moto_spr</sprite>
           <sprite>sprites\yolo_moto_back_spr</sprite>
+        </sprites>
+        <sprites name="new_yolo">
+          <sprites name="stand">
+            <sprite>sprites\yolo_stand_0_spr</sprite>
+            <sprite>sprites\yolo_stand_45_spr</sprite>
+            <sprite>sprites\yolo_stand_90_spr</sprite>
+            <sprite>sprites\yolo_stand_270_spr</sprite>
+            <sprite>sprites\yolo_stand_315_spr</sprite>
+          </sprites>
+          <sprites name="walk">
+            <sprite>sprites\yolo_walk_0_spr</sprite>
+            <sprite>sprites\yolo_walk_fire_0_spr</sprite>
+            <sprite>sprites\yolo_walk_45_spr</sprite>
+            <sprite>sprites\yolo_walk_315_spr</sprite>
+          </sprites>
+          <sprites name="full">
+            <sprite>sprites\yolo_duck_spr</sprite>
+            <sprite>sprites\yolo_jump_spr</sprite>
+            <sprite>sprites\yolo_moto_spr</sprite>
+            <sprite>sprites\yolo_dead_down_spr</sprite>
+            <sprite>sprites\yolo_dead_fly_spr</sprite>
+            <sprite>sprites\yolo_dead_stand_spr</sprite>
+          </sprites>
+          <sprites name="Uramp">
+            <sprite>sprites\yolo_Uramp_0_spr</sprite>
+            <sprite>sprites\yolo_Uramp_45</sprite>
+            <sprite>sprites\yolo_Uramp_90</sprite>
+            <sprite>sprites\yolo_Uramp_315</sprite>
+            <sprites name="Uramp_duck">
+              <sprite>sprites\yolo_Uramp_duck_0_spr</sprite>
+              <sprite>sprites\yolo_Uramp_duck_45_spr</sprite>
+              <sprite>sprites\yolo_Uramp_duck_90_spr</sprite>
+              <sprite>sprites\yolo_Uramp_duck_270_spr</sprite>
+              <sprite>sprites\yolo_Uramp_duck_315_spr</sprite>
+            </sprites>
+          </sprites>
+          <sprites name="Dramp">
+            <sprite>sprites\yolo_Dramp_0_spr</sprite>
+            <sprite>sprites\yolo_Dramp_45_spr</sprite>
+            <sprite>sprites\yolo_Dramp_90_spr</sprite>
+            <sprite>sprites\yolo_Dramp_270_spr</sprite>
+            <sprite>sprites\yolo_Dramp_315_spr</sprite>
+            <sprites name="Dramp_duck">
+              <sprite>sprites\yolo_Dramp_duck_0_spr</sprite>
+              <sprite>sprites\yolo_Dramp_duck_45_spr</sprite>
+              <sprite>sprites\yolo_Dramp_duck_90_spr</sprite>
+              <sprite>sprites\yolo_Dramp_duck_270_spr</sprite>
+              <sprite>sprites\yolo_Dramp_duck_315_spr</sprite>
+            </sprites>
+          </sprites>
+          <sprites name="wall">
+            <sprite>sprites\yolo_wall_0_spr</sprite>
+            <sprite>sprites\yolo_wall_45_spr</sprite>
+            <sprite>sprites\yolo_wall_90_spr</sprite>
+            <sprite>sprites\yolo_wall_135_spr</sprite>
+            <sprite>sprites\yolo_wall_180_spr</sprite>
+            <sprite>sprites\yolo_wall_225_spr</sprite>
+            <sprite>sprites\yolo_wall_270_spr</sprite>
+            <sprite>sprites\yolo_wall_315_spr</sprite>
+            <sprite>sprites\yolo_wall_climb_spr</sprite>
+          </sprites>
+          <sprites name="monkey">
+            <sprite>sprites\yolo_monkey_0_spr</sprite>
+            <sprite>sprites\yolo_monkey_45_spr</sprite>
+            <sprite>sprites\yolo_monkey_90_spr</sprite>
+            <sprite>sprites\yolo_monkey_135_spr</sprite>
+            <sprite>sprites\yolo_monkey_180_spr</sprite>
+            <sprite>sprites\yolo_monkey_225_spr</sprite>
+            <sprite>sprites\yolo_monkey_315_spr</sprite>
+            <sprite>sprites\yolo_monkey_move_spr</sprite>
+          </sprites>
         </sprites>
       </sprites>
       <sprites name="stone">
