@@ -1,244 +1,120 @@
 /// animation();
+
 switch(move_state)
     {
     case mState.idle:
-    case mState.walk:
-        if (on_ground)
+        if (on_ramp)
             {
-            if (abs(xspeed) > 0)
+            if (anim_state != aState.idle_ramp)
                 {
-                if (on_ramp)
-                    {
-                    if (anim_state != aState.ramp_walk)
-                        {
-                        anim_state = aState.ramp_walk;
-                        img_index[doll.legs] = 0;
-                        }
-                    }
-                else
-                    {
-                    if (anim_state != aState.walk)
-                        {
-                        anim_state = aState.walk;
-                        img_index[doll.legs] = 0;
-                        }
-                    }
-                
-                img_index[doll.legs] += 0.2;
-                if (img_index[doll.legs] >= 10)
-                    img_index[doll.legs] = 0;
-                else if (img_index[doll.legs] < 0)
-                    img_index[doll.legs] = 9;
+                anim_state = aState.idle_ramp;
+                img_index = 0;
                 }
-            else
-                {
-                if (on_ramp)
-                    {
-                    if (anim_state != aState.ramp_idle)
-                        {
-                        anim_state = aState.ramp_idle;
-                        img_index[doll.legs] = 0;
-                        }
-                    }
-                else
-                    {
-                    if (anim_state != aState.idle)
-                        {
-                        anim_state = aState.idle;
-                        img_index[doll.legs] = 0;
-                        }
-                    }
-                }
-            
-            if (input_fire)
-                {
-                img_index[doll.arms] += 0.2;
-                if (img_index[doll.arms] >= 2)
-                    img_index[doll.arms] = 0;
-                }
-            else
-                img_index[doll.arms] = 0;
             }
         else
             {
-            if (drop)
+            if (anim_state != aState.idle)
                 {
-                if (anim_state != aState.drop)
-                    {
-                    anim_state = aState.drop;
-                    img_index[doll.legs] = 0;
-                    }
+                anim_state = aState.idle;
+                img_index = 0;
                 }
-            else
+            }
+        break;
+    
+    case mState.walk:
+        if (on_ground)
+            {
+            if (anim_state != aState.walk)
                 {
-                if (anim_state != aState.roll)
-                    {
-                    anim_state = aState.roll
-                    img_index[doll.full] = 0;
-                    }
+                anim_state = aState.walk;
+                img_index = 0;
                 }
-            
-            if (anim_state == aState.drop)
+            }
+        else
+            {
+            if (anim_state != aState.roll)
                 {
-                if (input_fire)
-                    {
-                    img_index[doll.arms] += 0.2;
-                    if (img_index[doll.arms] >= 2)
-                        img_index[doll.arms] = 0;
-                    }
-                else
-                    img_index[doll.arms] = 0;
-                }
-            if (anim_state == aState.roll)
-                {
-                img_index[doll.full] += 0.3;
-                if (img_index[doll.full] >= 4)
-                    img_index[doll.full] = 0;
-                else if (img_index[doll.full] < 0)
-                    img_index[doll.full] = 3;
+                anim_state = aState.roll;
+                img_index = 0;
                 }
             }
         break;
     
     case mState.duck:
-        if (anim_state != aState.duck)
-            {
-            anim_state = aState.duck;
-            
-            if (on_ramp)
-                img_index[doll.legs] = 0;
-            else
-                img_index[doll.full] = 0;
-            }
-        
         if (on_ramp)
             {
-            if (input_fire)
+            if (anim_state != aState.duck_ramp)
                 {
-                img_index[doll.arms] += 0.2;
-                if (img_index[doll.arms] >= 2)
-                    img_index[doll.arms] = 0;
+                anim_state = aState.duck_ramp;
+                img_index = 0;
                 }
-            else
-                img_index[doll.arms] = 0;
             }
         else
             {
-            if (input_fire)
+            if (anim_state != aState.duck)
                 {
-                img_index[doll.full] += 0.2;
-                if (img_index[doll.full] >= 2)
-                    img_index[doll.full] = 0;
+                anim_state = aState.duck;
+                img_index = 0;
                 }
-            else
-                img_index[doll.full] = 0;
             }
         break;
     
-    case mState.hang:
-        // hanging and shooting
+    case mState.mb:
         if (input_fire)
             {
-            if (anim_state != aState.hang_fire)
+            if (anim_state != aState.mb_fire)
                 {
-                anim_state = aState.hang_fire;
-                img_index[doll.arms] = 0;
+                anim_state = aState.mb_fire;
+                img_index = 0;
                 }
-            
-            img_index[doll.arms] += 0.2;
-            if (img_index[doll.arms] >= 2)
-                img_index[doll.arms] = 0;
             }
         else
             {
-            // hanging but not shooting
-            if (anim_state != aState.hang)
+            if (anim_state != aState.mb)
                 {
-                anim_state = aState.hang;
-                img_index[doll.full] = 0;
-                }
-            
-            // hanging and moving
-            if (hang_offset != old_hang_offset)
-                {
-                img_index[doll.full] += 0.2;
-                if (img_index[doll.full] >= 4)
-                    img_index[doll.full] = 0;
-                else if (img_index[doll.full] < 0)
-                    img_index[doll.full] = 3;
+                anim_state = aState.mb;
+                img_index = 0;
                 }
             }
-        old_hang_offset = hang_offset;
         break;
     
-    case mState.climb:
-        if (climb_side == tile_side.bottom)
+    case mState.wc:
+        if (wc_side == tile_side.bottom)
             {
-            // hanging and shooting
             if (input_fire)
                 {
-                if (anim_state != aState.hang_fire)
+                if (anim_state != aState.mb_fire)
                     {
-                    anim_state = aState.hang_fire;
-                    img_index[doll.arms] = 0;
+                    anim_state = aState.mb_fire;
+                    img_index = 0;
                     }
-                
-                img_index[doll.arms] += 0.2;
-                if (img_index[doll.arms] >= 2)
-                    img_index[doll.arms] = 0;
                 }
             else
                 {
-                // hanging but not shooting
-                if (anim_state != aState.hang)
+                if (anim_state != aState.mb)
                     {
-                    anim_state = aState.hang;
-                    img_index[doll.full] = 0;
-                    }
-                
-                // hanging and moving
-                if (abs(xspeed) > 0)
-                    {
-                    img_index[doll.full] += 0.2;
-                    if (img_index[doll.full] >= 4)
-                        img_index[doll.full] = 0;
-                    else if (img_index[doll.full] < 0)
-                        img_index[doll.full] = 3;
+                    anim_state = aState.mb;
+                    img_index = 0;
                     }
                 }
             }
         else
             {
-            // climbing and firing
             if (input_fire)
                 {
-                if (anim_state != aState.climb_fire)
+                if (anim_state != aState.wc_fire)
                     {
-                    anim_state = aState.climb_fire;
-                    img_index[doll.arms] = 0;
+                    anim_state = aState.wc_fire;
+                    img_index = 0;
                     }
-                
-                img_index[doll.arms] += 0.2;
-                if (img_index[doll.arms] >= 2)
-                    img_index[doll.arms] = 0;
                 }
             else
                 {
                 // climbing but not shooting
-                if (anim_state != aState.climb)
+                if (anim_state != aState.wc)
                     {
-                    anim_state = aState.climb;
-                    img_index[doll.full] = 0;
-                    }
-                
-                // climbing and moving
-                if (abs(yspeed) > 0)
-                    {
-                    img_index[doll.full] += 0.2;
-                    if (img_index[doll.full] >= 4)
-                        img_index[doll.full] = 0;
-                    else if (img_index[doll.full] < 0)
-                        img_index[doll.full] = 3;
+                    anim_state = aState.wc;
+                    img_index = 0;
                     }
                 }
             }
@@ -247,19 +123,19 @@ switch(move_state)
     case mState.moto:
         if (on_moto)
             {
+            if (anim_state != aState.moto)
+                {
+                anim_state = aState.moto;
+                img_index = 0;
+                }
+            
+            /*
             if (input_fire)
                 {
                 if (anim_state != aState.moto_fire)
                     {
                     anim_state = aState.moto_fire;
-                    img_index[doll.arms] = 0;
-                    }
-                
-                if (anim_state == aState.moto_fire)
-                    {
-                    img_index[doll.arms] += 0.2;
-                    if (img_index[doll.arms] >= 2)
-                        img_index[doll.arms] = 0;
+                    img_index = 0;
                     }
                 }
             else
@@ -267,62 +143,40 @@ switch(move_state)
                 if (anim_state != aState.moto)
                     {
                     anim_state = aState.moto;
-                    img_index[doll.full] = 0;
-                    }
-                
-                if (anim_state == aState.moto)
-                    {
-                    img_index[doll.full] += 0.2;
-                    if (img_index[doll.full] >= 2)
-                        img_index[doll.full] = 0;
+                    img_index = 0;
                     }
                 }
+            */
             }
         else
             {
             if (anim_state != aState.roll)
                 {
                 anim_state = aState.roll
-                img_index[doll.full] = 0;
-                }
-            
-            if (anim_state == aState.roll)
-                {
-                img_index[doll.full] += 0.3;
-                if (img_index[doll.full] >= 4)
-                    img_index[doll.full] = 0;
-                else if (img_index[doll.full] < 0)
-                    img_index[doll.full] = 3;
+                img_index = 0;
                 }
             }
-        
-        img_index[doll.back] = 0;
-        img_index[doll.moto] += 0.2;
-        if (img_index[doll.moto] >= 2)
-            img_index[doll.moto] = 0;
         break;
     
     case mState.dead:
-        if (anim_state != aState.dead)
-            {
-            anim_state = aState.dead;
-            img_index[doll.full] = 0;
-            }
-        
         if (on_ground)
-            img_index[doll.full] = 0;
+            {
+            if (anim_state != aState.dead)
+                {
+                anim_state = aState.dead;
+                img_index = 0;
+                }
+            }
         else
             {
-            img_index[doll.full] += 0.3;
-            if (img_index[doll.full] >= 4)
-                img_index[doll.full] = 0;
-            else if (img_index[doll.full] < 0)
-                img_index[doll.full] = 3;
+            if (anim_state != aState.dead_roll)
+                {
+                anim_state = aState.dead_roll;
+                img_index = 0;
+                }
             }
         break;
     }
-
-paperdoll_clear();
 
 switch(anim_state)
     {

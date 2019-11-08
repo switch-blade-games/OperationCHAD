@@ -39,9 +39,9 @@ switch(move_state)
                 if (input_right)
                     {
                     // climb wall to the right
-                    if (detect_climb) and (climb_side == tile_side.left)
+                    if (detect_wc) and (wc_side & tile_side.left == tile_side.left)
                         {
-                        move_state = mState.climb;
+                        move_state = mState.wc;
                         yspeed = 0;
                         }
                     
@@ -56,9 +56,9 @@ switch(move_state)
                 if (input_left)
                     {
                     // climb wall to the left
-                    if (detect_climb) and (climb_side == tile_side.right)
+                    if (detect_wc) and (wc_side & tile_side.right == tile_side.right)
                         {
-                        move_state = mState.climb;
+                        move_state = mState.wc;
                         yspeed = 0;
                         }
                     
@@ -107,10 +107,10 @@ switch(move_state)
             // climb wall above the player
             if (!on_ground) and (input_up)
                 {
-                if (detect_climb) and (climb_side == tile_side.bottom)
+                if (detect_wc) and (wc_side & tile_side.bottom == tile_side.bottom)
                 and (!input_down)
                     {
-                    move_state = mState.climb;
+                    move_state = mState.wc;
                     yspeed = 0;
                     }
                 }
@@ -197,7 +197,7 @@ switch(move_state)
             fire_weapon();
         break;
     
-    case mState.hang:
+    case mState.mb:
         if (input_fire) or (input_lock)
             {
             if (input_fire)
@@ -221,7 +221,7 @@ switch(move_state)
             // horizontal movement input
             if (h_dir != 0)
                 {
-                hang_offset += hang_speed*h_dir;
+                mb_offset += mb_speed*h_dir;
                 dir = h_dir;
                 
                 // move left or right
@@ -241,15 +241,14 @@ switch(move_state)
                     move_state = mState.walk;
                     // drop
                     drop = true;
-                    hang_id = noone;
-                    //no_hang = true;
-                    no_hang_time = 12;
+                    mb_id = noone;
+                    no_mb_time = 12;
                     }
                 }
             else
                 {
                 move_state = mState.walk;
-                hang_id = noone;
+                mb_id = noone;
                 if (!place_meeting(x,y-10,par_solid))
                     {
                     // drop
@@ -259,30 +258,30 @@ switch(move_state)
                 else
                     {
                     drop = true;
-                    no_hang_time = 12;
+                    no_mb_time = 12;
                     }
                 }
             }
         break;
     
-    case mState.climb:
-        if (detect_climb)
+    case mState.wc:
+        if (detect_wc)
             {
-            var climb_l = (climb_side & tile_side.left == tile_side.left);
-            var climb_r = (climb_side & tile_side.right == tile_side.right);
-            var climb_b = (climb_side & tile_side.bottom == tile_side.bottom);
+            var wc_l = (wc_side & tile_side.left == tile_side.left);
+            var wc_r = (wc_side & tile_side.right == tile_side.right);
+            var wc_b = (wc_side & tile_side.bottom == tile_side.bottom);
             
             // hanging from ceiling takes priority
-            if (((!climb_l) and input_right) or ((!climb_r) and input_left))
-            and (climb_b and (!input_fire))
-                climb_side = tile_side.bottom;
+            if (((!wc_l) and input_right) or ((!wc_r) and input_left))
+            and (wc_b and (!input_fire))
+                wc_side = tile_side.bottom;
             
             // face away from wall you are climbing on
-            if (climb_r)
+            if (wc_r)
                 dir = -1;
-            else if (climb_l)
+            else if (wc_l)
                 dir = +1;
-            else if (climb_b) // ONLY CLIMB BOTTOM?
+            else if (wc_b) // ONLY CLIMB BOTTOM?
                 {
                 // face in direction of movement
                 if (h_dir != 0)
@@ -302,7 +301,7 @@ switch(move_state)
                     yspeed = min(0,yspeed+fric);
                 
                 // aim
-                if (climb_r)
+                if (wc_r)
                     {
                     dir = -1;
                     if (h_dir == 0 and v_dir == 0)
@@ -310,7 +309,7 @@ switch(move_state)
                     else
                         aim = point_direction(0,0,h_dir,v_dir);
                     }
-                else if (climb_l)
+                else if (wc_l)
                     {
                     dir = 1;
                     if (h_dir == 0 and v_dir == 0)
@@ -318,7 +317,7 @@ switch(move_state)
                     else
                         aim = point_direction(0,0,h_dir,v_dir);
                     }
-                else if (climb_b)
+                else if (wc_b)
                     {
                     aim = point_direction(0,0,dir,0);
                     if (h_dir != 0) or (input_down)
@@ -331,15 +330,15 @@ switch(move_state)
             else
                 {
                 // move and aim
-                if (climb_l)
-                or (climb_r)
+                if (wc_l)
+                or (wc_r)
                     {
                     xspeed = 0;
                     
                     // aim
-                    if (climb_l)
+                    if (wc_l)
                         aim = 180;
-                    else if (climb_r)
+                    else if (wc_r)
                         aim = 0;
                     
                     // vertical movement
@@ -353,19 +352,20 @@ switch(move_state)
                         }
                     else
                         {
-                        yspeed = climb_speed*v_dir;
+                        yspeed = wc_speed*v_dir;
                         
-                        if (detect_mb) and (hang_id == noone) and (input_up) 
+                        if (detect_mb) and (mb_id == noone) and (input_up) 
                             {
-                            var xh = x-mb_id.x;
-                            var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
-                            if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
+                            var temp_mb = detect_mb_id;
+                            var xh = x-temp_mb.x;
+                            var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
+                            if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
                                 {
-                                move_state = mState.hang;
-                                x = mb_id.x + xh;
-                                y = mb_id.y + yh;
-                                hang_id = mb_id;
-                                hang_offset = xh;
+                                move_state = mState.mb;
+                                x = temp_mb.x + xh;
+                                y = temp_mb.y + yh;
+                                mb_id = temp_mb;
+                                mb_offset = xh;
                                 yspeed = 0;
                                 }
                             }
@@ -373,14 +373,14 @@ switch(move_state)
                     
                     // jump/fall off
                     if (input_jump_pressed)
-                    or (on_ground and (input_down or (climb_r and input_right) or (climb_l and input_left)))
+                    or (on_ground and (input_down or (wc_r and input_right) or (wc_l and input_left)))
                         {
                         move_state = mState.walk;
                         aim = point_direction(0,0,dir,0);
                         drop = true;
                         }
                     }
-                else if (climb_b)
+                else if (wc_b)
                     {
                     yspeed = 0;
                     
@@ -395,7 +395,7 @@ switch(move_state)
                         }
                     else
                         {
-                        xspeed = hang_speed*h_dir;
+                        xspeed = mb_speed*h_dir;
                         if (dir > 0)
                             aim = 0;
                         else if (dir < 0)
@@ -447,10 +447,9 @@ switch(move_state)
         else
             {
             // horizontal movement input
-            var move_speed = moto_speed;
             if (h_dir != 0)
                 {
-                xspeed = move_speed*h_dir;
+                xspeed = moto_speed*h_dir;
                 dir = h_dir;
                 
                 // move left or right

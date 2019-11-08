@@ -1,90 +1,95 @@
-/// update_skin(skin_index);
+/// update_skin();
 
-// added more comments, hopefully that helps
-switch(argument[0])
+switch(skin_id)
     {
     case skin.yoloswag:
-        // === LEGS ===
-        
-        // idle
-        sprite[skin_spr.leg_idle] = yolo_legs_idle_spr; // no slope
-        // ramp_idle
-        sprite[skin_spr.leg_idle_r] = yolo_legs_ramp_idle_R_spr; // right slope
-        sprite[skin_spr.leg_idle_l] = yolo_legs_ramp_idle_L_spr; // left slope
-        // ramp_duck
-        sprite[skin_spr.leg_duck_r] = yolo_legs_ramp_duck_R_spr; // right slope duck
-        sprite[skin_spr.leg_duck_l] = yolo_legs_ramp_duck_L_spr; // left slope duck
-        // walk
-        sprite[skin_spr.leg_walk] = yolo_legs_walk_spr;
-        // drop
-        sprite[skin_spr.leg_drop] = yolo_legs_drop_spr;
-        // hang
-        sprite[skin_spr.leg_hang] = yolo_legs_hang_spr;
-        // climb
-        sprite[skin_spr.leg_climb] = yolo_legs_climb_spr;
-        // moto
-        sprite[skin_spr.leg_moto] = yolo_legs_moto_spr;
-        
-        // === ARMS ===
-        
-        // normal
-        sprite[skin_spr.arm_0] = yolo_arms_0_spr;
-        sprite[skin_spr.arm_45] = yolo_arms_45_spr;
-        sprite[skin_spr.arm_90] = yolo_arms_90_spr;
-        sprite[skin_spr.arm_135] = yolo_arms_45_spr;
-        sprite[skin_spr.arm_180] = yolo_arms_0_spr;
-        sprite[skin_spr.arm_225] = yolo_arms_315_spr;
-        sprite[skin_spr.arm_270] = yolo_arms_270_spr;
-        sprite[skin_spr.arm_315] = yolo_arms_315_spr;
-        // single
-        sprite[skin_spr.arm_single_0] = yolo_arms_single_0_spr;
-        sprite[skin_spr.arm_single_45] = yolo_arms_single_45_spr;
-        sprite[skin_spr.arm_single_90] = yolo_arms_single_90_spr;
-        sprite[skin_spr.arm_single_135] = yolo_arms_single_45_spr;
-        sprite[skin_spr.arm_single_180] = yolo_arms_single_0_spr;
-        sprite[skin_spr.arm_single_225] = yolo_arms_single_315_spr;
-        sprite[skin_spr.arm_single_270] = yolo_arms_single_270_spr;
-        sprite[skin_spr.arm_single_315] = yolo_arms_single_315_spr;
-        // climb
-        sprite[skin_spr.arm_climb_0] = yolo_arms_climb_0_spr;
-        sprite[skin_spr.arm_climb_45] = yolo_arms_climb_45_spr;
-        sprite[skin_spr.arm_climb_90] = yolo_arms_climb_90_spr;
-        sprite[skin_spr.arm_climb_135] = yolo_arms_climb_135_spr;
-        sprite[skin_spr.arm_climb_180] = yolo_arms_climb_180_spr;
-        sprite[skin_spr.arm_climb_225] = yolo_arms_climb_225_spr;
-        sprite[skin_spr.arm_climb_270] = yolo_arms_climb_270_spr;
-        sprite[skin_spr.arm_climb_315] = yolo_arms_climb_315_spr;
-        
-        // === FULL ===
-        
-        // roll
-        sprite[skin_spr.full_roll] = yolo_jump_spr;
-        // duck
-        sprite[skin_spr.full_duck] = yolo_duck_spr;
-        // hang
-        sprite[skin_spr.full_hang] = yolo_monkey_move_spr;
-        // climb
-        sprite[skin_spr.full_climb] = yolo_wall_move_spr;
-        // moto
-        sprite[skin_spr.full_moto] = yolo_moto_spr;
-        // dead idle
-        sprite[skin_spr.full_dead_idle] = yolo_dead_stand_spr;
-        // dead roll
-        sprite[skin_spr.full_dead_roll] = yolo_dead_fly_spr;
-        // dead down
-        sprite[skin_spr.full_dead_down] = yolo_dead_down_spr;
-        
-        // === EXTRA ===
-        
-        // back arm on moto
-        sprite[skin_spr.extra_arm_moto] = yolo_moto_back_spr;
-        // motorcycle sprite
-        sprite[skin_spr.extra_moto] = yolo_vehicle_moto_spr;
-        
-        // sprite offset path
-        offset_path = working_directory+"spriteOffsetsYolo.sof";
+        var skin_prefix = "yolo_";
+        break;
+    default:
+        var skin_prefix = "yolo_";
         break;
     }
 
-offsets_clear();
-offsets_load(offset_path);
+// idle
+skin_idle[0] = asset_get_index(string(skin_prefix)+"stand_0_spr");
+skin_idle[1] = asset_get_index(string(skin_prefix)+"stand_45_spr");
+skin_idle[2] = asset_get_index(string(skin_prefix)+"stand_90_spr");
+skin_idle[3] = asset_get_index(string(skin_prefix)+"stand_45_spr");
+skin_idle[4] = asset_get_index(string(skin_prefix)+"stand_0_spr");
+skin_idle[5] = asset_get_index(string(skin_prefix)+"stand_315_spr");
+skin_idle[6] = asset_get_index(string(skin_prefix)+"stand_270_spr");
+skin_idle[7] = asset_get_index(string(skin_prefix)+"stand_315_spr");
+// idle + ramp up
+skin_idle_ramp_u[0] = asset_get_index(string(skin_prefix)+"Uramp_0_spr");
+skin_idle_ramp_u[1] = asset_get_index(string(skin_prefix)+"Uramp_45_spr");
+skin_idle_ramp_u[2] = asset_get_index(string(skin_prefix)+"Uramp_90_spr");
+skin_idle_ramp_u[3] = asset_get_index(string(skin_prefix)+"Uramp_45_spr");
+skin_idle_ramp_u[4] = asset_get_index(string(skin_prefix)+"Uramp_0_spr");
+skin_idle_ramp_u[5] = asset_get_index(string(skin_prefix)+"Uramp_315_spr");
+skin_idle_ramp_u[6] = asset_get_index(string(skin_prefix)+"Uramp_270_spr");
+skin_idle_ramp_u[7] = asset_get_index(string(skin_prefix)+"Uramp_315_spr");
+// idle + ramp down
+skin_idle_ramp_d[0] = asset_get_index(string(skin_prefix)+"Dramp_0_spr");
+skin_idle_ramp_d[1] = asset_get_index(string(skin_prefix)+"Dramp_45_spr");
+skin_idle_ramp_d[2] = asset_get_index(string(skin_prefix)+"Dramp_90_spr");
+skin_idle_ramp_d[3] = asset_get_index(string(skin_prefix)+"Dramp_45_spr");
+skin_idle_ramp_d[4] = asset_get_index(string(skin_prefix)+"Dramp_0_spr");
+skin_idle_ramp_d[5] = asset_get_index(string(skin_prefix)+"Dramp_315_spr");
+skin_idle_ramp_d[6] = asset_get_index(string(skin_prefix)+"Dramp_270_spr");
+skin_idle_ramp_d[7] = asset_get_index(string(skin_prefix)+"Dramp_315_spr");
+
+// walk
+skin_walk = asset_get_index(string(skin_prefix)+"walk_spr");
+// walk + fire
+skin_walk_fire[0] = asset_get_index(string(skin_prefix)+"walk_0_spr");
+skin_walk_fire[1] = asset_get_index(string(skin_prefix)+"walk_45_spr");
+skin_walk_fire[2] = asset_get_index(string(skin_prefix)+"stand_90_spr");
+skin_walk_fire[3] = asset_get_index(string(skin_prefix)+"walk_45_spr");
+skin_walk_fire[4] = asset_get_index(string(skin_prefix)+"walk_0_spr");
+skin_walk_fire[5] = asset_get_index(string(skin_prefix)+"walk_315_spr");
+skin_walk_fire[6] = asset_get_index(string(skin_prefix)+"stand_270_spr");
+skin_walk_fire[7] = asset_get_index(string(skin_prefix)+"walk_315_spr");
+
+// roll
+skin_roll = asset_get_index(string(skin_prefix)+"roll_spr");
+
+// duck
+skin_duck = asset_get_index(string(skin_prefix)+"duck_spr");
+// duck + ramp up
+skin_duck_ramp_u = asset_get_index(string(skin_prefix)+"Uramp_duck_spr");
+// duck + ramp down
+skin_duck_ramp_d = asset_get_index(string(skin_prefix)+"Dramp_duck_spr");
+
+// monkey bar
+skin_mb = asset_get_index(string(skin_prefix)+"monkey_move_spr");
+// monkey bar + fire
+skin_mb_fire[0] = asset_get_index(string(skin_prefix)+"monkey_0_spr");
+skin_mb_fire[1] = asset_get_index(string(skin_prefix)+"monkey_45_spr");
+skin_mb_fire[2] = asset_get_index(string(skin_prefix)+"monkey_90_spr");
+skin_mb_fire[3] = asset_get_index(string(skin_prefix)+"monkey_135_spr");
+skin_mb_fire[4] = asset_get_index(string(skin_prefix)+"monkey_180_spr");
+skin_mb_fire[5] = asset_get_index(string(skin_prefix)+"monkey_225_spr");
+skin_mb_fire[6] = asset_get_index(string(skin_prefix)+"monkey_270_spr");
+skin_mb_fire[7] = asset_get_index(string(skin_prefix)+"monkey_315_spr");
+
+// wall-climb
+skin_wc = asset_get_index(string(skin_prefix)+"wall_move_spr");
+// wall-climb + fire
+skin_wc_fire[0] = asset_get_index(string(skin_prefix)+"wall_0_spr");
+skin_wc_fire[1] = asset_get_index(string(skin_prefix)+"wall_45_spr");
+skin_wc_fire[2] = asset_get_index(string(skin_prefix)+"wall_90_spr");
+skin_wc_fire[3] = asset_get_index(string(skin_prefix)+"wall_135_spr");
+skin_wc_fire[4] = asset_get_index(string(skin_prefix)+"wall_180_spr");
+skin_wc_fire[5] = asset_get_index(string(skin_prefix)+"wall_225_spr");
+skin_wc_fire[6] = asset_get_index(string(skin_prefix)+"wall_270_spr");
+skin_wc_fire[7] = asset_get_index(string(skin_prefix)+"wall_315_spr");
+
+// moto
+skin_moto = asset_get_index(string(skin_prefix)+"moto_spr");
+
+// dead
+skin_dead = asset_get_index(string(skin_prefix)+"dead_spr");
+// dead lean
+skin_dead_lean = asset_get_index(string(skin_prefix)+"dead_lean_spr");
+// dead roll
+skin_dead_roll = asset_get_index(string(skin_prefix)+"dead_roll_spr");

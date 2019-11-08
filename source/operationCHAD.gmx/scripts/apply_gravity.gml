@@ -14,7 +14,7 @@ switch(move_state)
             // drop
             drop = false;
             // no hang
-            no_hang = false;
+            no_mb = false;
             }
         
         // gravity
@@ -23,17 +23,18 @@ switch(move_state)
         else
             {
             // start hanging
-            if (detect_mb) and (hang_id == noone) and (yspeed > 0)
+            if (detect_mb) and (mb_id == noone) and (yspeed > 0)
                 {
-                var xh = x-mb_id.x;
-                var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
-                if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
+                var temp_mb = detect_mb_id;
+                var xh = x-temp_mb.x;
+                var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
+                if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
                     {
-                    move_state = mState.hang;
-                    x = mb_id.x + xh;
-                    y = mb_id.y + yh;
-                    hang_id = mb_id;
-                    hang_offset = xh;
+                    move_state = mState.mb;
+                    x = temp_mb.x + xh;
+                    y = temp_mb.y + yh;
+                    mb_id = temp_mb;
+                    mb_offset = xh;
                     yspeed = 0;
                     }
                 }
@@ -42,14 +43,14 @@ switch(move_state)
             }
         break;
     
-    case mState.hang:
+    case mState.mb:
         var fall = false;
-        if (!instance_exists(hang_id))
+        if (!instance_exists(mb_id))
             fall = true;
-        else if (hang_offset < hang_id.x1) or (hang_offset > hang_id.x2)
+        else if (mb_offset < mb_id.x1) or (mb_offset > mb_id.x2)
             {
             fall = true;
-            var temp_x = hang_id.x+hang_offset;
+            var temp_x = mb_id.x+mb_offset;
             var inst = collision_line(temp_x,y-36,temp_x,y-42,par_mb,true,true);
             if (inst != noone)
                 {
@@ -57,11 +58,11 @@ switch(move_state)
                 var yh = floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
                 if (!place_meeting(inst.x+xh,inst.y+yh,par_solid))
                     {
-                    move_state = mState.hang;
+                    move_state = mState.mb;
                     x = inst.x + xh;
                     y = inst.y + yh;
-                    hang_id = inst;
-                    hang_offset = xh;
+                    mb_id = inst;
+                    mb_offset = xh;
                     yspeed = 0;
                     
                     fall = false;
@@ -73,8 +74,8 @@ switch(move_state)
         if (fall)
             {
             move_state = mState.walk;
-            hang_id = noone;
-            no_hang_time = 12;
+            mb_id = noone;
+            no_mb_time = 12;
             drop = true;
             }
         
@@ -83,7 +84,7 @@ switch(move_state)
         on_ground = false;
         break;
     
-    case mState.climb:
+    case mState.wc:
         on_ground = false;
         if (place_meeting(x,y+1,par_solid))
         or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
@@ -92,7 +93,7 @@ switch(move_state)
             // on the ground
             on_ground = true;
             // no hang
-            no_hang = false;
+            no_mb = false;
             }
         break;
     
@@ -105,22 +106,23 @@ switch(move_state)
             y = moto_y;
             yspeed = 0;
             // no hang
-            no_hang = false;
+            no_mb = false;
             }
         else
             {
             // start hanging
-            if (detect_mb) and (hang_id = noone) and (yspeed > 0)
+            if (detect_mb) and (mb_id = noone) and (yspeed > 0)
                 {
-                var xh = x-(mb_id.x);
-                var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
-                if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
+                var temp_mb = detect_mb_id;
+                var xh = x-(temp_mb.x);
+                var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
+                if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
                     {
-                    move_state = mState.hang;
-                    x = mb_id.x + xh;
-                    y = mb_id.y + yh;
-                    hang_id = mb_id;
-                    hang_offset = xh;
+                    move_state = mState.mb;
+                    x = temp_mb.x + xh;
+                    y = temp_mb.y + yh;
+                    mb_id = temp_mb;
+                    mb_offset = xh;
                     yspeed = 0;
                     }
                 }

@@ -525,18 +525,18 @@
             <sprite>sprites\yolo_stand_315_spr</sprite>
           </sprites>
           <sprites name="walk">
+            <sprite>sprites\yolo_walk_spr</sprite>
             <sprite>sprites\yolo_walk_0_spr</sprite>
-            <sprite>sprites\yolo_walk_fire_0_spr</sprite>
             <sprite>sprites\yolo_walk_45_spr</sprite>
             <sprite>sprites\yolo_walk_315_spr</sprite>
           </sprites>
           <sprites name="full">
             <sprite>sprites\yolo_duck_spr</sprite>
-            <sprite>sprites\yolo_jump_spr</sprite>
+            <sprite>sprites\yolo_roll_spr</sprite>
             <sprite>sprites\yolo_moto_spr</sprite>
-            <sprite>sprites\yolo_dead_down_spr</sprite>
-            <sprite>sprites\yolo_dead_fly_spr</sprite>
-            <sprite>sprites\yolo_dead_stand_spr</sprite>
+            <sprite>sprites\yolo_dead_spr</sprite>
+            <sprite>sprites\yolo_dead_roll_spr</sprite>
+            <sprite>sprites\yolo_dead_lean_spr</sprite>
           </sprites>
           <sprites name="Uramp">
             <sprite>sprites\yolo_Uramp_0_spr</sprite>
@@ -554,6 +554,16 @@
             <sprite>sprites\yolo_Dramp_315_spr</sprite>
             <sprite>sprites\yolo_Dramp_duck_spr</sprite>
           </sprites>
+          <sprites name="monkey">
+            <sprite>sprites\yolo_monkey_0_spr</sprite>
+            <sprite>sprites\yolo_monkey_45_spr</sprite>
+            <sprite>sprites\yolo_monkey_90_spr</sprite>
+            <sprite>sprites\yolo_monkey_135_spr</sprite>
+            <sprite>sprites\yolo_monkey_180_spr</sprite>
+            <sprite>sprites\yolo_monkey_225_spr</sprite>
+            <sprite>sprites\yolo_monkey_315_spr</sprite>
+            <sprite>sprites\yolo_monkey_move_spr</sprite>
+          </sprites>
           <sprites name="wall">
             <sprite>sprites\yolo_wall_0_spr</sprite>
             <sprite>sprites\yolo_wall_45_spr</sprite>
@@ -564,16 +574,6 @@
             <sprite>sprites\yolo_wall_270_spr</sprite>
             <sprite>sprites\yolo_wall_315_spr</sprite>
             <sprite>sprites\yolo_wall_move_spr</sprite>
-          </sprites>
-          <sprites name="monkey">
-            <sprite>sprites\yolo_monkey_0_spr</sprite>
-            <sprite>sprites\yolo_monkey_45_spr</sprite>
-            <sprite>sprites\yolo_monkey_90_spr</sprite>
-            <sprite>sprites\yolo_monkey_135_spr</sprite>
-            <sprite>sprites\yolo_monkey_180_spr</sprite>
-            <sprite>sprites\yolo_monkey_225_spr</sprite>
-            <sprite>sprites\yolo_monkey_315_spr</sprite>
-            <sprite>sprites\yolo_monkey_move_spr</sprite>
           </sprites>
         </sprites>
       </sprites>
@@ -862,6 +862,19 @@
         <script>scripts\offsets_clear.gml</script>
       </scripts>
     </scripts>
+    <scripts name="player">
+      <script>scripts\input.gml</script>
+      <script>scripts\detect.gml</script>
+      <script>scripts\apply_gravity.gml</script>
+      <script>scripts\apply_input.gml</script>
+      <script>scripts\apply_force.gml</script>
+      <script>scripts\collide.gml</script>
+      <script>scripts\animate.gml</script>
+      <script>scripts\weapon_stats.gml</script>
+      <script>scripts\fire_weapon.gml</script>
+      <script>scripts\jump.gml</script>
+      <script>scripts\update_skin.gml</script>
+    </scripts>
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>
       <script>scripts\gamepad_update.gml</script>
@@ -877,21 +890,6 @@
       <script>scripts\gamepad_value.gml</script>
       <script>scripts\gamepad_last.gml</script>
       <script>scripts\gamepad_lastvalue.gml</script>
-    </scripts>
-    <scripts name="player">
-      <script>scripts\input.gml</script>
-      <script>scripts\detect.gml</script>
-      <script>scripts\apply_gravity.gml</script>
-      <script>scripts\apply_input.gml</script>
-      <script>scripts\apply_force.gml</script>
-      <script>scripts\animate.gml</script>
-      <script>scripts\collide.gml</script>
-      <script>scripts\fire_weapon.gml</script>
-      <script>scripts\jump.gml</script>
-      <script>scripts\weapon_stats.gml</script>
-      <script>scripts\update_skin.gml</script>
-      <script>scripts\paperdoll.gml</script>
-      <script>scripts\paperdoll_clear.gml</script>
     </scripts>
     <scripts name="settings">
       <script>scripts\settings_save.gml</script>

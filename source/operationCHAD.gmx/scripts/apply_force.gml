@@ -2,23 +2,23 @@
 
 switch(move_state)
     {
-    case mState.hang:
-        if (!instance_exists(hang_id))
+    case mState.mb:
+        if (!instance_exists(mb_id))
             {
             move_state = mState.walk;
-            hang_id = noone;
+            mb_id = noone;
             drop = true;
             break;
             }
         
-        var xh = hang_offset;
-        var yh = floor(lerp(hang_id.y1,hang_id.y2,xh/(hang_id.x2-hang_id.x1)))+40;
-        if (!place_meeting(hang_id.x+xh,hang_id.y+yh,par_solid))
+        var xh = mb_offset;
+        var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
+        if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
             {
-            x = hang_id.x + xh;
-            y = hang_id.y + yh;
+            x = mb_id.x + xh;
+            y = mb_id.y + yh;
             }
         else
-            hang_id = noone;
+            mb_id = noone;
         break;
     }
