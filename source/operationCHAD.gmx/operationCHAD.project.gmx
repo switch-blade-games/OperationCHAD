@@ -542,6 +542,7 @@
             <sprite>sprites\yolo_Uramp_0_spr</sprite>
             <sprite>sprites\yolo_Uramp_45</sprite>
             <sprite>sprites\yolo_Uramp_90</sprite>
+            <sprite>sprites\yolo_Uramp_270</sprite>
             <sprite>sprites\yolo_Uramp_315</sprite>
             <sprites name="Uramp_duck">
               <sprite>sprites\yolo_Uramp_duck_0_spr</sprite>
@@ -1448,11 +1449,11 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\demo_room_2</room>
         <room>rooms\final_factory</room>
         <room>rooms\new_factory</room>
         <room>rooms\embro_room</room>
         <room>rooms\room44</room>
-        <room>rooms\demo_room_2</room>
         <room>rooms\demo_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\merry_room</room>
