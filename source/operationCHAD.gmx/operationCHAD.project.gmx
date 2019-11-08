@@ -572,6 +572,7 @@
             <sprite>sprites\yolo_monkey_135_spr</sprite>
             <sprite>sprites\yolo_monkey_180_spr</sprite>
             <sprite>sprites\yolo_monkey_225_spr</sprite>
+            <sprite>sprites\yolo_monkey_270_spr</sprite>
             <sprite>sprites\yolo_monkey_315_spr</sprite>
             <sprite>sprites\yolo_monkey_move_spr</sprite>
           </sprites>
