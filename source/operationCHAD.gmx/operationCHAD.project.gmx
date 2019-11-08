@@ -540,17 +540,11 @@
           </sprites>
           <sprites name="Uramp">
             <sprite>sprites\yolo_Uramp_0_spr</sprite>
-            <sprite>sprites\yolo_Uramp_45</sprite>
-            <sprite>sprites\yolo_Uramp_90</sprite>
-            <sprite>sprites\yolo_Uramp_270</sprite>
-            <sprite>sprites\yolo_Uramp_315</sprite>
-            <sprites name="Uramp_duck">
-              <sprite>sprites\yolo_Uramp_duck_0_spr</sprite>
-              <sprite>sprites\yolo_Uramp_duck_45_spr</sprite>
-              <sprite>sprites\yolo_Uramp_duck_90_spr</sprite>
-              <sprite>sprites\yolo_Uramp_duck_270_spr</sprite>
-              <sprite>sprites\yolo_Uramp_duck_315_spr</sprite>
-            </sprites>
+            <sprite>sprites\yolo_Uramp_45_spr</sprite>
+            <sprite>sprites\yolo_Uramp_90_spr</sprite>
+            <sprite>sprites\yolo_Uramp_270_spr</sprite>
+            <sprite>sprites\yolo_Uramp_315_spr</sprite>
+            <sprite>sprites\yolo_Uramp_duck_spr</sprite>
           </sprites>
           <sprites name="Dramp">
             <sprite>sprites\yolo_Dramp_0_spr</sprite>
@@ -558,13 +552,7 @@
             <sprite>sprites\yolo_Dramp_90_spr</sprite>
             <sprite>sprites\yolo_Dramp_270_spr</sprite>
             <sprite>sprites\yolo_Dramp_315_spr</sprite>
-            <sprites name="Dramp_duck">
-              <sprite>sprites\yolo_Dramp_duck_0_spr</sprite>
-              <sprite>sprites\yolo_Dramp_duck_45_spr</sprite>
-              <sprite>sprites\yolo_Dramp_duck_90_spr</sprite>
-              <sprite>sprites\yolo_Dramp_duck_270_spr</sprite>
-              <sprite>sprites\yolo_Dramp_duck_315_spr</sprite>
-            </sprites>
+            <sprite>sprites\yolo_Dramp_duck_spr</sprite>
           </sprites>
           <sprites name="wall">
             <sprite>sprites\yolo_wall_0_spr</sprite>
@@ -575,7 +563,7 @@
             <sprite>sprites\yolo_wall_225_spr</sprite>
             <sprite>sprites\yolo_wall_270_spr</sprite>
             <sprite>sprites\yolo_wall_315_spr</sprite>
-            <sprite>sprites\yolo_wall_climb_spr</sprite>
+            <sprite>sprites\yolo_wall_move_spr</sprite>
           </sprites>
           <sprites name="monkey">
             <sprite>sprites\yolo_monkey_0_spr</sprite>
@@ -929,6 +917,7 @@
       <script>scripts\blend_zero.gml</script>
       <script>scripts\hunny_shuffle.gml</script>
       <script>scripts\hunny_bank.gml</script>
+      <script>scripts\origin_init.gml</script>
     </scripts>
     <scripts name="audio">
       <script>scripts\snd_play.gml</script>
