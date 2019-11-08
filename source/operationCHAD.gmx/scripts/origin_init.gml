@@ -57,6 +57,7 @@ sprite_set_offset(yolo_monkey_0_spr,40,52)
 sprite_set_offset(yolo_monkey_45_spr,40,52)
 sprite_set_offset(yolo_monkey_90_spr,40,52)
 sprite_set_offset(yolo_monkey_225_spr,40,52)
+sprite_set_offset(yolo_monkey_270_spr,40,52)
 sprite_set_offset(yolo_monkey_315_spr,40,52)
 sprite_set_offset(yolo_monkey_move_spr,40,52)
 

@@ -451,72 +451,8 @@
     <sprites name="player">
       <sprite>sprites\msk_player</sprite>
       <sprite>sprites\msk_player_duck</sprite>
-      <sprites name="pepe">
-        <sprites name="legs">
-          <sprite>sprites\pepe_legs_walk_spr</sprite>
-          <sprite>sprites\pepe_legs_stand_spr</sprite>
-        </sprites>
-        <sprites name="arms">
-          <sprite>sprites\pepe_arms_90_spr</sprite>
-          <sprite>sprites\pepe_arms_45_spr</sprite>
-          <sprite>sprites\pepe_arms_0_spr</sprite>
-          <sprite>sprites\pepe_arms_315_spr</sprite>
-          <sprite>sprites\pepe_arms_270_spr</sprite>
-        </sprites>
-        <sprites name="full">
-          <sprite>sprites\pepe_jump_spr</sprite>
-          <sprite>sprites\pepe_duck_spr</sprite>
-          <sprite>sprites\pepe_place_spr</sprite>
-        </sprites>
-      </sprites>
       <sprites name="yolo">
-        <sprites name="arms">
-          <sprites name="regular_arms">
-            <sprite>sprites\yolo_arms_270_spr</sprite>
-            <sprite>sprites\yolo_arms_315_spr</sprite>
-            <sprite>sprites\yolo_arms_90_spr</sprite>
-            <sprite>sprites\yolo_arms_45_spr</sprite>
-            <sprite>sprites\yolo_arms_0_spr</sprite>
-          </sprites>
-          <sprites name="single_arms">
-            <sprite>sprites\yolo_arms_single_0_spr</sprite>
-            <sprite>sprites\yolo_arms_single_45_spr</sprite>
-            <sprite>sprites\yolo_arms_single_90_spr</sprite>
-            <sprite>sprites\yolo_arms_single_270_spr</sprite>
-            <sprite>sprites\yolo_arms_single_315_spr</sprite>
-          </sprites>
-          <sprites name="climb_arms">
-            <sprite>sprites\yolo_arms_climb_0_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_45_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_90_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_135_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_180_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_225_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_270_spr</sprite>
-            <sprite>sprites\yolo_arms_climb_315_spr</sprite>
-          </sprites>
-        </sprites>
-        <sprites name="legs">
-          <sprite>sprites\yolo_legs_walk_spr</sprite>
-          <sprite>sprites\yolo_legs_idle_spr</sprite>
-          <sprite>sprites\yolo_legs_drop_spr</sprite>
-          <sprite>sprites\yolo_legs_moto_spr</sprite>
-          <sprites name="ramp">
-            <sprite>sprites\yolo_legs_ramp_duck_R_spr</sprite>
-            <sprite>sprites\yolo_legs_ramp_duck_L_spr</sprite>
-            <sprite>sprites\yolo_legs_ramp_idle_R_spr</sprite>
-            <sprite>sprites\yolo_legs_ramp_idle_L_spr</sprite>
-          </sprites>
-          <sprites name="climb">
-            <sprite>sprites\yolo_legs_hang_spr</sprite>
-            <sprite>sprites\yolo_legs_climb_spr</sprite>
-          </sprites>
-        </sprites>
-        <sprites name="special">
-          <sprite>sprites\yolo_vehicle_moto_spr</sprite>
-          <sprite>sprites\yolo_moto_back_spr</sprite>
-        </sprites>
-        <sprites name="new_yolo">
+        <sprites name="player">
           <sprites name="stand">
             <sprite>sprites\yolo_stand_0_spr</sprite>
             <sprite>sprites\yolo_stand_45_spr</sprite>
@@ -530,29 +466,23 @@
             <sprite>sprites\yolo_walk_45_spr</sprite>
             <sprite>sprites\yolo_walk_315_spr</sprite>
           </sprites>
-          <sprites name="full">
-            <sprite>sprites\yolo_duck_spr</sprite>
-            <sprite>sprites\yolo_roll_spr</sprite>
-            <sprite>sprites\yolo_moto_spr</sprite>
-            <sprite>sprites\yolo_dead_spr</sprite>
-            <sprite>sprites\yolo_dead_roll_spr</sprite>
-            <sprite>sprites\yolo_dead_lean_spr</sprite>
-          </sprites>
-          <sprites name="Uramp">
-            <sprite>sprites\yolo_Uramp_0_spr</sprite>
-            <sprite>sprites\yolo_Uramp_45_spr</sprite>
-            <sprite>sprites\yolo_Uramp_90_spr</sprite>
-            <sprite>sprites\yolo_Uramp_270_spr</sprite>
-            <sprite>sprites\yolo_Uramp_315_spr</sprite>
-            <sprite>sprites\yolo_Uramp_duck_spr</sprite>
-          </sprites>
-          <sprites name="Dramp">
-            <sprite>sprites\yolo_Dramp_0_spr</sprite>
-            <sprite>sprites\yolo_Dramp_45_spr</sprite>
-            <sprite>sprites\yolo_Dramp_90_spr</sprite>
-            <sprite>sprites\yolo_Dramp_270_spr</sprite>
-            <sprite>sprites\yolo_Dramp_315_spr</sprite>
-            <sprite>sprites\yolo_Dramp_duck_spr</sprite>
+          <sprites name="ramp">
+            <sprites name="up">
+              <sprite>sprites\yolo_Uramp_0_spr</sprite>
+              <sprite>sprites\yolo_Uramp_45_spr</sprite>
+              <sprite>sprites\yolo_Uramp_90_spr</sprite>
+              <sprite>sprites\yolo_Uramp_270_spr</sprite>
+              <sprite>sprites\yolo_Uramp_315_spr</sprite>
+              <sprite>sprites\yolo_Uramp_duck_spr</sprite>
+            </sprites>
+            <sprites name="down">
+              <sprite>sprites\yolo_Dramp_0_spr</sprite>
+              <sprite>sprites\yolo_Dramp_45_spr</sprite>
+              <sprite>sprites\yolo_Dramp_90_spr</sprite>
+              <sprite>sprites\yolo_Dramp_270_spr</sprite>
+              <sprite>sprites\yolo_Dramp_315_spr</sprite>
+              <sprite>sprites\yolo_Dramp_duck_spr</sprite>
+            </sprites>
           </sprites>
           <sprites name="monkey">
             <sprite>sprites\yolo_monkey_0_spr</sprite>
@@ -561,6 +491,7 @@
             <sprite>sprites\yolo_monkey_135_spr</sprite>
             <sprite>sprites\yolo_monkey_180_spr</sprite>
             <sprite>sprites\yolo_monkey_225_spr</sprite>
+            <sprite>sprites\yolo_monkey_270_spr</sprite>
             <sprite>sprites\yolo_monkey_315_spr</sprite>
             <sprite>sprites\yolo_monkey_move_spr</sprite>
           </sprites>
@@ -575,17 +506,19 @@
             <sprite>sprites\yolo_wall_315_spr</sprite>
             <sprite>sprites\yolo_wall_move_spr</sprite>
           </sprites>
+          <sprites name="moto">
+            <sprite>sprites\yolo_moto_spr</sprite>
+            <sprite>sprites\yolo_vehicle_moto_spr</sprite>
+            <sprite>sprites\yolo_moto_back_spr</sprite>
+          </sprites>
+          <sprites name="dead">
+            <sprite>sprites\yolo_dead_lean_spr</sprite>
+            <sprite>sprites\yolo_dead_roll_spr</sprite>
+            <sprite>sprites\yolo_dead_spr</sprite>
+          </sprites>
+          <sprite>sprites\yolo_duck_spr</sprite>
+          <sprite>sprites\yolo_roll_spr</sprite>
         </sprites>
-      </sprites>
-      <sprites name="stone">
-        <sprite>sprites\spr_player_idle</sprite>
-        <sprite>sprites\spr_player_walk</sprite>
-        <sprite>sprites\spr_player_jump</sprite>
-        <sprite>sprites\spr_player_duck</sprite>
-        <sprite>sprites\spr_player_hang</sprite>
-        <sprite>sprites\spr_player_climb</sprite>
-        <sprite>sprites\spr_player_up</sprite>
-        <sprite>sprites\spr_player_dead</sprite>
       </sprites>
       <sprites name="flying">
         <sprite>sprites\stone_fly_spr</sprite>
