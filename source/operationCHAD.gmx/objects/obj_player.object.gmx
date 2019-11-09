@@ -46,29 +46,30 @@ enum mState
     idle,
     walk,
     duck,
-    hang,
-    climb,
+    mb,
+    wc,
     moto,
-    dead
+    dead,
+    size
     }
 
-// animation state
 enum aState
     {
     idle,
+    idle_ramp,
     walk,
-    ramp_idle,
-    ramp_walk,
-    drop,
+    walk_fire,
     roll,
     duck,
-    hang,
-    hang_fire,
-    climb,
-    climb_fire,
+    duck_ramp,
+    mb,
+    mb_fire,
+    wc,
+    wc_fire,
     moto,
-    moto_fire,
     dead,
+    dead_lean,
+    dead_roll,
     size
     }
 
@@ -79,66 +80,7 @@ enum skin
     stonetoss,
     foxford,
     yoloswag,
-    pumpkinhead
-    }
-
-// player skin sprites
-enum skin_spr
-    {
-    leg_idle,
-    leg_idle_r,
-    leg_idle_l,
-    leg_duck_r,
-    leg_duck_l,
-    leg_walk,
-    leg_drop,
-    leg_hang,
-    leg_climb,
-    leg_moto,
-    arm_0,
-    arm_45,
-    arm_90,
-    arm_135,
-    arm_180,
-    arm_225,
-    arm_270,
-    arm_315,
-    arm_single_0,
-    arm_single_45,
-    arm_single_90,
-    arm_single_135,
-    arm_single_180,
-    arm_single_225,
-    arm_single_270,
-    arm_single_315,
-    arm_climb_0,
-    arm_climb_45,
-    arm_climb_90,
-    arm_climb_135,
-    arm_climb_180,
-    arm_climb_225,
-    arm_climb_270,
-    arm_climb_315,
-    full_roll,
-    full_duck,
-    full_hang,
-    full_climb,
-    full_moto,
-    full_dead_idle,
-    full_dead_roll,
-    full_dead_down,
-    extra_arm_moto,
-    extra_moto,
-    size
-    }
-
-enum doll
-    {
-    full,
-    arms,
-    legs,
-    back,
-    moto,
+    pumpkinhead,
     size
     }
 
@@ -154,14 +96,14 @@ invulnerable = false;
 invulnerable_flash = false;
 invulnerable_time = 0; // set to 180 when respawn
 invulnerable_rate = 3; // higher = slower
-ramp_slope = 1;
-climb_side = tile_side.none;
 grace_jump = 0; // 6
-hang_id = noone;
-hang_offset = 0;
-old_hang_offset = 0;
-no_hang = false;
-no_hang_time = false;
+ramp_slope = 1;
+wc_side = tile_side.none;
+mb_id = noone;
+mb_offset = 0;
+mb_offset_old = 0;
+no_mb = false;
+no_mb_time = false;
 moto_y = 0;
 moto_yspeed = 0;
 moto_shake = 0;
@@ -169,8 +111,8 @@ moto_shake = 0;
 // player position/physics
 walk_speed = 2;
 moto_speed = 3;
-hang_speed = 2;
-climb_speed = 2;
+mb_speed = 2;
+wc_speed = 2;
 fall_speed = 10;
 grav = 0.4;
 fric = 1;
@@ -184,6 +126,7 @@ ypre = y;
 // player orientation
 aim = 0;
 dir = 1;
+face = 1;
 
 // player weapon
 weapon_stats();
@@ -199,29 +142,14 @@ xstart = x;
 ystart = y;
 
 // player animation
-player_skin = skin.yoloswag;
+skin_id = skin.yoloswag;
 anim_state = aState.idle;
-anim_slope = 0;
+anim_angle = 0;
 
-for(var i=0; i&lt;doll.size; i++;)
-    {
-    img_index[i] = 0;
-    spr_ox[i] = 0;
-    spr_oy[i] = 0;
-    }
-paperdoll_clear();
-update_skin(player_skin);
+update_skin();
 
-walk_y[0] = 0;
-walk_y[1] = -1;
-walk_y[2] = -3;
-walk_y[3] = -3;
-walk_y[4] = -2;
-walk_y[5] = 0;
-walk_y[6] = -1;
-walk_y[7] = -3;
-walk_y[8] = -3;
-walk_y[9] = -2;
+spr_index = skin_idle[anim_angle];
+img_index = 0;
 </string>
           </argument>
         </arguments>
@@ -244,20 +172,20 @@ walk_y[9] = -2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (debug_freeze)
-    exit;
+            <string>//if (debug_freeze)
+//    exit;
 
 input();
 detect();
 apply_gravity();
 apply_input();
 apply_force();
-animate();
 collide();
+animate();
 
 // hang time
-if (no_hang_time &gt; 0)
-    no_hang_time--;
+if (no_mb_time &gt; 0)
+    no_mb_time--;
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
@@ -281,8 +209,8 @@ if (move_state == mState.dead)
             dead_moto = true;
         
         yspeed = 0;
-        no_hang = false;
-        hang_id = noone;
+        no_mb = false;
+        mb_id = noone;
         
         if (dead_moto)
             {
@@ -412,7 +340,12 @@ if (move_state != mState.dead)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (invulnerable)
+            <string>if (on_moto)
+    var mShake = moto_shake;
+else
+    var mShake = 0;
+
+if (invulnerable)
     {
     if (invulnerable_time &gt; 0)
         {
@@ -430,21 +363,7 @@ if (move_state != mState.dead)
         shader_set(shd_flash);
     }
 
-if (on_moto)
-    var mShake = moto_shake;
-else
-    var mShake = 0;
-
-if (draw[doll.back])
-    draw_sprite_ext(spr_id[doll.back],img_index[doll.back],x+spr_ox[doll.back]*spr_dir[doll.back],y+spr_oy[doll.back]+mShake,spr_dir[doll.back],1,0,-1,1);
-if (draw[doll.moto])
-    draw_sprite_ext(spr_id[doll.moto],img_index[doll.moto],x+spr_ox[doll.moto]*spr_dir[doll.moto],moto_y+spr_oy[doll.moto]+mShake,spr_dir[doll.moto],1,0,-1,1);
-if (draw[doll.full])
-    draw_sprite_ext(spr_id[doll.full],img_index[doll.full],x+spr_ox[doll.full]*spr_dir[doll.full],y+spr_oy[doll.full]+mShake,spr_dir[doll.full],1,0,-1,1);
-if (draw[doll.legs])
-    draw_sprite_ext(spr_id[doll.legs],img_index[doll.legs],x+spr_ox[doll.legs]*spr_dir[doll.legs],y+spr_oy[doll.legs]+mShake,spr_dir[doll.legs],1,0,-1,1);
-if (draw[doll.arms])
-    draw_sprite_ext(spr_id[doll.arms],img_index[doll.arms],x+spr_ox[doll.arms]*spr_dir[doll.arms],y+spr_oy[doll.arms]+mShake+walk_y[img_index[doll.legs]],spr_dir[doll.arms],1,0,-1,1);
+draw_sprite_ext(spr_index,img_index,x,y+mShake,face,1,0,-1,1);
 
 if (invulnerable)
     {

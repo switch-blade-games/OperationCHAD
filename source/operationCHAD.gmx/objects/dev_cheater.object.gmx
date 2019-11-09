@@ -30,7 +30,6 @@ global.ctime = 0;
 
 debug = false;
 debugMode = 0; // 0=detail; 1=simple; 2=extra;
-mockup = false;
 event_user(0);
 
 surf_graph = -1;
@@ -87,15 +86,6 @@ if (keyboard_check_pressed(vk_f1))
         with(par_actor)
             nohit = false;
         }
-    }
-// toggle player mockup mode
-if (keyboard_check_pressed(vk_f2))
-    {
-    mockup = !mockup;
-    if (mockup) and (!instance_exists(player_mockup))
-        instance_create(0,0,player_mockup);
-    else if (!mockup) and (instance_exists(player_mockup))
-        instance_destroy(player_mockup);
     }
 
 // don't hurt player in debug mode

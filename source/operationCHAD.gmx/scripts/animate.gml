@@ -178,6 +178,8 @@ switch(move_state)
         break;
     }
 
+/*
+
 switch(anim_state)
     {
     case aState.idle:
@@ -186,12 +188,14 @@ switch(anim_state)
         
         // legs
         if (anim_state == aState.idle)
-            paperdoll(doll.legs,skin_spr.leg_idle,dir);
+            {}
+            //paperdoll(doll.legs,skin_spr.leg_idle,dir);
         else if (anim_state == aState.walk)
-            paperdoll(doll.legs,skin_spr.leg_walk,dir);
+            {}
+            //paperdoll(doll.legs,skin_spr.leg_walk,dir);
         
         // arms
-        paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
+        //paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
         break;
     
     case aState.ramp_idle:
@@ -204,41 +208,46 @@ switch(anim_state)
             if (dir > 0)
                 {
                 if (ramp_slope > 0)
-                    paperdoll(doll.legs,skin_spr.leg_idle_r,1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_idle_r,1);
                 else if (ramp_slope < 0)
-                    paperdoll(doll.legs,skin_spr.leg_idle_l,-1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_idle_l,-1);
                 }
             else if (dir < 0)
                 {
                 if (ramp_slope > 0)
-                    paperdoll(doll.legs,skin_spr.leg_idle_l,1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_idle_l,1);
                 else if (ramp_slope < 0)
-                    paperdoll(doll.legs,skin_spr.leg_idle_r,-1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_idle_r,-1);
                 }
             }
         else if (anim_state == aState.ramp_walk)
-            paperdoll(doll.legs,skin_spr.leg_walk,dir);
+            //paperdoll(doll.legs,skin_spr.leg_walk,dir);
         
         // arms
-        paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
+        //paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
         break;
     
     case aState.drop:
         gun_y = -18;
         
-        paperdoll(doll.legs,skin_spr.leg_drop,dir);
-        paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
+        //paperdoll(doll.legs,skin_spr.leg_drop,dir);
+        //paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
         break;
     
     case aState.roll:
         gun_y = -18;
         
-        paperdoll(doll.full,skin_spr.full_roll,dir);
+        //paperdoll(doll.full,skin_spr.full_roll,dir);
         if (move_state == mState.moto)
             {
             if (on_moto)
-                paperdoll(doll.back,skin_spr.extra_arm_moto,1);
-            paperdoll(doll.moto,skin_spr.extra_moto,1);
+                {}
+                //paperdoll(doll.back,skin_spr.extra_arm_moto,1);
+            //paperdoll(doll.moto,skin_spr.extra_moto,1);
             }
         break;
     
@@ -251,73 +260,83 @@ switch(anim_state)
             if (dir > 0)
                 {
                 if (ramp_slope > 0)
-                    paperdoll(doll.legs,skin_spr.leg_duck_r,1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_duck_r,1);
                 else if (ramp_slope < 0)
-                    paperdoll(doll.legs,skin_spr.leg_duck_l,-1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_duck_l,-1);
                 }
             else if (dir < 0)
                 {
                 if (ramp_slope > 0)
-                    paperdoll(doll.legs,skin_spr.leg_duck_l,1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_duck_l,1);
                 else if (ramp_slope < 0)
-                    paperdoll(doll.legs,skin_spr.leg_duck_r,-1);
+                    {}
+                    //paperdoll(doll.legs,skin_spr.leg_duck_r,-1);
                 }
             
             // arms
-            paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
+            //paperdoll(doll.arms,skin_spr.arm_0 + floor(aim/45),dir);
             }
         else
             {
             gun_y = -6;
             
-            paperdoll(doll.full,skin_spr.full_duck,dir);
+            //paperdoll(doll.full,skin_spr.full_duck,dir);
             }
         break;
     
     case aState.hang:
-        paperdoll(doll.full,skin_spr.full_hang,dir);
+        //paperdoll(doll.full,skin_spr.full_hang,dir);
         break;
     
     case aState.hang_fire:
         gun_y = -22;
         
-        paperdoll(doll.legs,skin_spr.leg_hang,dir);
-        paperdoll(doll.arms,skin_spr.arm_single_0 + floor(aim/45),dir);
+        //paperdoll(doll.legs,skin_spr.leg_hang,dir);
+        //paperdoll(doll.arms,skin_spr.arm_single_0 + floor(aim/45),dir);
         break;
     
     case aState.climb:
-        paperdoll(doll.full,skin_spr.full_climb,dir);
+        //paperdoll(doll.full,skin_spr.full_climb,dir);
         break;
     
     case aState.climb_fire:
         gun_y = -18;
         
-        paperdoll(doll.legs,skin_spr.leg_climb,dir);
+        //paperdoll(doll.legs,skin_spr.leg_climb,dir);
         if ((aim == 90) and (dir == -1))
         or ((aim == 270) and (dir == 1))
-            paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),-1);
+            {}
+            //paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),-1);
         else
-            paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),+1);
+            {}
+            //paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),+1);
         break;
     
     case aState.moto:
-        paperdoll(doll.full,skin_spr.full_moto,1);
-        paperdoll(doll.back,skin_spr.extra_arm_moto,1);
-        paperdoll(doll.moto,skin_spr.extra_moto,1);
+        //paperdoll(doll.full,skin_spr.full_moto,1);
+        //paperdoll(doll.back,skin_spr.extra_arm_moto,1);
+        //paperdoll(doll.moto,skin_spr.extra_moto,1);
         break;
     
     case aState.moto_fire:
         gun_y = -18;
         
-        paperdoll(doll.legs,skin_spr.leg_moto,1);
-        paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),1);
-        paperdoll(doll.moto,skin_spr.extra_moto,1);
+        //paperdoll(doll.legs,skin_spr.leg_moto,1);
+        //paperdoll(doll.arms,skin_spr.arm_climb_0 + floor(aim/45),1);
+        //paperdoll(doll.moto,skin_spr.extra_moto,1);
         break;
     
     case aState.dead:
         if (on_ground)
-            paperdoll(doll.full,skin_spr.full_dead_down,dir);
+            {}
+            //paperdoll(doll.full,skin_spr.full_dead_down,dir);
         else
-            paperdoll(doll.full,skin_spr.full_dead_roll,dir);
+            {}
+            //paperdoll(doll.full,skin_spr.full_dead_roll,dir);
         break;
     }
+
+*/
