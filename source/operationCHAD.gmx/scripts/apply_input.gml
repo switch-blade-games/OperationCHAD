@@ -204,8 +204,6 @@ switch(move_state)
                 fire_weapon();
             
             // aim
-            if (h_dir != 0)
-                dir = h_dir;
             if (h_dir == 0 and v_dir == 0)
                 {
                 if (dir > 0)

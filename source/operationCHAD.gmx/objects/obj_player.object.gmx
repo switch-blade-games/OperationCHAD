@@ -43,7 +43,6 @@ for(var i=0; i&lt;4; i++;)
 // player move states
 enum mState
     {
-    idle,
     walk,
     duck,
     mb,
@@ -63,8 +62,10 @@ enum aState
     duck,
     duck_ramp,
     mb,
+    mb_move,
     mb_fire,
     wc,
+    wc_move,
     wc_fire,
     moto,
     dead,
@@ -143,6 +144,7 @@ ystart = y;
 
 // player animation
 skin_id = skin.yoloswag;
+anim_update = false;
 anim_state = aState.idle;
 anim_angle = 0;
 

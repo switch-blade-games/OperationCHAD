@@ -805,6 +805,7 @@
       <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
       <script>scripts\update_skin.gml</script>
+      <script>scripts\update_sprite.gml</script>
     </scripts>
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>

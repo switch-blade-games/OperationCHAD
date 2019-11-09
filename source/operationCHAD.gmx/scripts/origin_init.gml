@@ -31,11 +31,12 @@ sprite_set_offset(yolo_Dramp_duck_spr,30,52)
 sprite_set_offset(yolo_monkey_0_spr,40,52)
 sprite_set_offset(yolo_monkey_45_spr,40,52)
 sprite_set_offset(yolo_monkey_90_spr,40,52)
+sprite_set_offset(yolo_monkey_135_spr,40,52)
+sprite_set_offset(yolo_monkey_180_spr,40,52)
 sprite_set_offset(yolo_monkey_225_spr,40,52)
 sprite_set_offset(yolo_monkey_270_spr,40,52)
 sprite_set_offset(yolo_monkey_315_spr,40,52)
 sprite_set_offset(yolo_monkey_move_spr,40,52)
-
 
 // wall
 sprite_set_offset(yolo_wall_0_spr,40,52)
@@ -44,6 +45,7 @@ sprite_set_offset(yolo_wall_90_spr,40,52)
 sprite_set_offset(yolo_wall_135_spr,40,52)
 sprite_set_offset(yolo_wall_180_spr,40,52)
 sprite_set_offset(yolo_wall_225_spr,40,52)
+sprite_set_offset(yolo_wall_270_spr,40,52)
 sprite_set_offset(yolo_wall_315_spr,40,52)
 sprite_set_offset(yolo_wall_move_spr,40,52)
 
