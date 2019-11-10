@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_stay_active</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.FRYlife=300
+            <string>if(room=final_factory)
+instance_create(3840,2760,fryguy)
+
+global.FRYlife=300
 
 global.FRYlist=ds_list_create();
 
@@ -33,36 +36,19 @@ var i=0;
 
 repeat(3){
 
-    ds_list_insert(global.FRYlist,i,i)
+    ds_list_insert(global.FRYlist,i,2)
     i+=1
 }
 
 ds_list_shuffle(global.FRYlist)
 
 
-instance_create(0,0,fryguy_BG_drawer)
+//instance_create(0,0,fryguy_BG_drawer)
 
 
-global.FLAMEsys=part_system_create()
-
-global.FLAMEtype=part_type_create()
-
-part_type_direction(global.FLAMEtype,90,90,0,0)
-
-part_type_speed(global.FLAMEtype,1,2,0,0.5)
-
-part_type_life(global.FLAMEtype,20,40)
-
-part_type_sprite(global.FLAMEtype,flame_part_spr,true,true,false)
-
-part_type_size(global.FLAMEtype,0.5,1,-0.01,0.05)
-
-part_type_orientation(global.FLAMEtype,0,360,0,1,true)
-
-part_system_depth(global.FLAMEsys,5)
+global.FRYGUYLIFE=500
 
 
-instance_create(fryguy.x,fryguy.y,flame_part_node)
 
 
 

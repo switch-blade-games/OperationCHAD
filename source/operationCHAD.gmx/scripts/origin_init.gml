@@ -12,12 +12,13 @@ sprite_set_offset(yolo_walk_45_spr,30,52)
 sprite_set_offset(yolo_walk_315_spr,30,52)
 
 // ramp up
-sprite_set_offset(yolo_Uramp_0_spr,30,52)
-sprite_set_offset(yolo_Uramp_45_spr,30,52)
-sprite_set_offset(yolo_Uramp_90_spr,30,52)
-sprite_set_offset(yolo_Uramp_270_spr,30,52)
-sprite_set_offset(yolo_Uramp_315_spr,30,52)
-sprite_set_offset(yolo_Uramp_duck_spr,30,52)
+var Urampset=45;
+sprite_set_offset(yolo_Uramp_0_spr,30,Urampset)
+sprite_set_offset(yolo_Uramp_45_spr,30,Urampset)
+sprite_set_offset(yolo_Uramp_90_spr,30,Urampset)
+sprite_set_offset(yolo_Uramp_270_spr,30,Urampset)
+sprite_set_offset(yolo_Uramp_315_spr,30,Urampset)
+sprite_set_offset(yolo_Uramp_duck_spr,30,Urampset-3)
 
 // ramp down
 sprite_set_offset(yolo_Dramp_0_spr,30,52)
@@ -25,18 +26,20 @@ sprite_set_offset(yolo_Dramp_45_spr,30,52)
 sprite_set_offset(yolo_Dramp_90_spr,30,52)
 sprite_set_offset(yolo_Dramp_270_spr,30,52)
 sprite_set_offset(yolo_Dramp_315_spr,30,52)
-sprite_set_offset(yolo_Dramp_duck_spr,30,52)
+sprite_set_offset(yolo_Dramp_duck_spr,30,52-6)
 
 // monkey
-sprite_set_offset(yolo_monkey_0_spr,40,52)
-sprite_set_offset(yolo_monkey_45_spr,40,52)
-sprite_set_offset(yolo_monkey_90_spr,40,52)
-sprite_set_offset(yolo_monkey_135_spr,40,52)
-sprite_set_offset(yolo_monkey_180_spr,40,52)
-sprite_set_offset(yolo_monkey_225_spr,40,52)
-sprite_set_offset(yolo_monkey_270_spr,40,52)
-sprite_set_offset(yolo_monkey_315_spr,40,52)
-sprite_set_offset(yolo_monkey_move_spr,40,52)
+
+var MONy=59;
+sprite_set_offset(yolo_monkey_0_spr,40,MONy)
+sprite_set_offset(yolo_monkey_45_spr,40,MONy)
+sprite_set_offset(yolo_monkey_90_spr,40,MONy)
+sprite_set_offset(yolo_monkey_135_spr,40,MONy)
+sprite_set_offset(yolo_monkey_180_spr,40,MONy)
+sprite_set_offset(yolo_monkey_225_spr,40,MONy)
+sprite_set_offset(yolo_monkey_270_spr,40,MONy)
+sprite_set_offset(yolo_monkey_315_spr,40,MONy)
+sprite_set_offset(yolo_monkey_move_spr,40,MONy)
 
 // wall
 sprite_set_offset(yolo_wall_0_spr,40,52)

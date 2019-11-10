@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>4</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>par_active_enemy</parentName>
+  <maskName>fry_guy_mask_spr</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>enemy_init(1000)
 
 ATTACK=choose(1,2)
 
@@ -481,7 +481,7 @@ var i=0;
 
 repeat(3){
 
-    ds_list_insert(global.FRYlist,i,i)
+    ds_list_insert(global.FRYlist,i,2)
     i+=1
 }
 
@@ -720,7 +720,7 @@ TEMPspit=true
 
 //draw_enemy_self();
 
-draw_self()
+draw_enemy_self()
 
 
 

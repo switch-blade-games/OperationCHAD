@@ -10,7 +10,18 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>randomize();
+  <code>//just for reference
+/*
+global.pad_left
+global.pad_right
+global.pad_up
+global.pad_down
+global.pad_jump
+global.pad_fire
+global.pad_lock
+*/
+
+randomize();
 
 // joystix font
 global.fnt_joystix = font_add_sprite(joystix_font_spr,ord('!'),true,1);

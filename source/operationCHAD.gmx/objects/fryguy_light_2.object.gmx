@@ -5,8 +5,8 @@
   <visible>-1</visible>
   <depth>4</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <parentName>par_active_enemy</parentName>
+  <maskName>fry_guy_mask_spr</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>enemy_init(1000)
 
 
 Hflip=choose(1,-1)
@@ -90,7 +90,9 @@ BACKspe=1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,light_drawer)
+            <string>///create light
+
+instance_create(0,0,light_drawer)
 
 alarm[0]=WAITtime
 </string>
@@ -320,7 +322,7 @@ if(state=BACK){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_enemy_self()
 </string>
           </argument>
         </arguments>

@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>2</depth>
+  <depth>3</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_stay_active</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -127,7 +127,7 @@ draw_set_alpha(AL-(i*ALrate))
 
 
 with(fryguy_light_2)
-draw_circle(x,y,BASE+(i*DIST)+random(NOISE),false)
+draw_circle(x-view_xview[0],y-view_yview[0],BASE+(i*DIST)+random(NOISE),false)
 
 i+=1
 
@@ -163,7 +163,7 @@ surface_reset_target()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_surface(LIGHTsur,0,0)
+            <string>draw_surface(LIGHTsur,view_xview[0],view_yview[0])
 
 </string>
           </argument>

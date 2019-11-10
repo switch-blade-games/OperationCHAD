@@ -89,8 +89,11 @@ instance_activate_object(obj_control);
 instance_activate_object(obj_camera);
 instance_activate_object(obj_shader);
 
-instance_activate_object(BG_drawer_parent);
 instance_activate_object(par_actor);
+
+instance_activate_object(par_stay_active);
+instance_activate_object(par_actor);
+instance_activate_object(par_active_projectile);
 
 // test
 instance_activate_object(screen_explode);
