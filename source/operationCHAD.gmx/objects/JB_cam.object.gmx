@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>BUFFER=true
 
-alarm[0]=60
+alarm[0]=2
 
 /*
 //state list
