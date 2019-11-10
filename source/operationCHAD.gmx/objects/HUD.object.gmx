@@ -33,7 +33,7 @@
     draw_sprite(yolo_head_spr,0,view_xview[0],view_yview[0]);
     draw_set_halign(fa_left);
     draw_set_color(global.WHITE);
-    draw_text(view_xview[0]+25,view_yview[0]+2,"="+string(9));
+    draw_text(view_xview[0]+25,view_yview[0]+2,"="+string(global.P1LIVES-1));
     
     //weapons
     draw_sprite(wep_select_spr,-1,view_xview[0]+40 + obj_player.cur_weapon*20,view_yview[0]);

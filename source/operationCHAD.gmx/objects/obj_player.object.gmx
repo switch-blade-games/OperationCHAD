@@ -226,8 +226,12 @@ if (move_state == mState.dead)
             move_state = mState.walk;
             drop = true;
             
-            if (instance_exists(obj_camera))
+            if (instance_exists(JB_cam))
                 {
+                
+                if(global.P1LIVES&lt;=0)
+                room_goto(game_over_room)
+                
                 if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
                     {
                     x = xstart;
@@ -246,6 +250,46 @@ if (move_state == mState.dead)
                 }
             }
         }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_death">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+
+if (move_state != mState.dead)
+    {
+    
+    global.P1LIVES-=1
+    
+    move_state = mState.dead;
+    on_ground = false;
+    xspeed = sign(x-other.x)*2;
+    yspeed = -8;
+    
+    if (instance_exists(obj_shader))
+        obj_shader.flash = 3;
+    
+    //with(other)
+    //    instance_destroy();
     }
 </string>
           </argument>
@@ -274,6 +318,9 @@ if (move_state == mState.dead)
 
 if (move_state != mState.dead)
     {
+    
+    global.P1LIVES-=1
+    
     move_state = mState.dead;
     on_ground = false;
     xspeed = sign(x-other.x)*2;
@@ -312,6 +359,9 @@ if (move_state != mState.dead)
 
 if (move_state != mState.dead)
     {
+    
+    global.P1LIVES-=1
+    
     move_state = mState.dead;
     on_ground = false;
     xspeed = sign(x-other.x)*2;

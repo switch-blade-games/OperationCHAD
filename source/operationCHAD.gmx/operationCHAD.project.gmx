@@ -926,6 +926,7 @@
       <object>objects\par_active_enemy</object>
       <object>objects\par_active_projectile</object>
       <object>objects\par_cam_obj</object>
+      <object>objects\par_death</object>
     </objects>
     <objects name="000-Front End">
       <objects name="cine">

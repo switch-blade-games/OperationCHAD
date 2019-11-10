@@ -21,6 +21,10 @@ global.pad_fire
 global.pad_lock
 */
 
+global.P1LIVES=4;
+
+global.CHECKPOINT=1
+
 randomize();
 
 // joystix font

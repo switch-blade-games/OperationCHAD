@@ -80,7 +80,7 @@ instance_create(x,y-40,explode_big)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>outside_view(100)
+            <string>outside_view(200)
 </string>
           </argument>
         </arguments>

@@ -33,7 +33,7 @@ instance_create(0,0,obj_player)
 
 instance_create(0,0,JB_cam)
 
-global.CHECKPOINT=1
+global.CHECKPOINT=3
 
 checkpoint_check()
 
@@ -858,6 +858,7 @@ obj_wall.visible=true</code>
     <instance objName="hanger_pile" x="6400" y="2860" name="inst_BD700D01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hanger_pile" x="6760" y="2860" name="inst_B3833FD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7580" y="2600" name="inst_B6A8E1D7" locked="0" code="" scaleX="1" scaleY="13" colour="4294967295" rotation="0"/>
+    <instance objName="R_lock" x="7180" y="2640" name="inst_4761F1D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

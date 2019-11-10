@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>BUFFER=true
 
-alarm[0]=6
+alarm[0]=60
 
 /*
 //state list
@@ -256,7 +256,7 @@ draw_text(view_xview[0]+40,view_yview[0]+50,instance_number(dev_cheater))
 
 draw_text(view_xview[0]+40,view_yview[0]+60,Yfactory[Ycurrent])
 
-draw_text(view_xview[0]+40,view_yview[0]+70,state)
+draw_text(view_xview[0]+40,view_yview[0]+70,global.CHECKPOINT)
 
 
 if(BUFFER=true){
