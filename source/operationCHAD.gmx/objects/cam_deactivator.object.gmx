@@ -95,6 +95,8 @@ instance_activate_object(par_stay_active);
 instance_activate_object(par_actor);
 instance_activate_object(par_active_projectile);
 
+instance_activate_object(par_actor_projectile);
+
 // test
 instance_activate_object(screen_explode);
 instance_activate_object(par_explode);

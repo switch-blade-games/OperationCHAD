@@ -3,7 +3,7 @@
   <spriteName>pipe_stuff_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>59</depth>
+  <depth>119</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>

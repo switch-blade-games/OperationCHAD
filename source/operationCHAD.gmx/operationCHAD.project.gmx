@@ -164,6 +164,7 @@
         <sprite>sprites\abort_light_spr</sprite>
         <sprite>sprites\hanger_bullet_spr</sprite>
         <sprite>sprites\hanger_pile_spr</sprite>
+        <sprite>sprites\hanger_pipe_spr</sprite>
       </sprites>
       <sprite>sprites\groyp_spr</sprite>
       <sprite>sprites\pipe_under_1_spr</sprite>
@@ -667,6 +668,9 @@
       <sprite>sprites\D_cam_spr</sprite>
       <sprite>sprites\cam_D_lock_spr</sprite>
       <sprite>sprites\checkpoint_spr</sprite>
+      <sprite>sprites\enemy_L_spr</sprite>
+      <sprite>sprites\enemy_R_spr</sprite>
+      <sprite>sprites\enemy_X_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -1011,9 +1015,6 @@
         <object>objects\letter_enemy</object>
       </objects>
       <object>objects\abortion_factory_drawer</object>
-      <object>objects\pop_served</object>
-      <object>objects\over_tube</object>
-      <object>objects\over_light</object>
       <object>objects\baby_scale</object>
       <object>objects\factory_works_1</object>
       <object>objects\factory_wheel</object>
@@ -1040,8 +1041,14 @@
           <object>objects\BG_pipe_2</object>
           <object>objects\BG_pipe_stuff</object>
           <object>objects\BG_pipe_over</object>
+          <object>objects\coat_pipe</object>
         </objects>
         <object>objects\med_waste</object>
+      </objects>
+      <objects name="gags">
+        <object>objects\pop_served</object>
+        <object>objects\over_tube</object>
+        <object>objects\over_light</object>
       </objects>
     </objects>
     <objects name="002-Public School">
@@ -1394,6 +1401,10 @@
       <object>objects\R_lock</object>
       <object>objects\D_lock</object>
       <object>objects\checkpoint_obj</object>
+      <object>objects\enemy_L</object>
+      <object>objects\enemy_R</object>
+      <object>objects\enemy_X</object>
+      <object>objects\enemy_spawn_parent</object>
     </objects>
   </objects>
   <rooms name="rooms">

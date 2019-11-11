@@ -3,7 +3,7 @@
   <spriteName>pop_served_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>10</depth>
+  <depth>99</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -60,13 +60,16 @@ NUM2+=0.015
 
 NUM3+=6
 
+var Xset=104;
+var Yset=134;
+
 draw_set_color(global.WHITE)
 
-draw_text(x+64,y+22,floor(NUM1))
+draw_text(x+Xset,y+Yset,floor(NUM1))
 
-draw_text(x+64,y+22+20,floor(NUM2))
+draw_text(x+Xset,y+Yset+13,floor(NUM2))
 
-draw_text(x+64,y+22+40,floor(NUM3))
+draw_text(x+Xset,y+Yset+26,floor(NUM3))
 
 draw_set_color(c_white)
 </string>

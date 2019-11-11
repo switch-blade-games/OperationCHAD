@@ -25,12 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_init(3)
+            <string>enemy_init(5)
 
-motion_set(180,2+random(0.5))
+speed=2+random(0.5)
 
 image_speed=0.1+random(0.1)
 
+
+ACTIVE=false
+
+FLIP=1
+
+
+MARGIN=100
 
 
 
@@ -80,7 +87,12 @@ instance_create(x,y-40,explode_big)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>outside_view(200)
+            <string>if(x&gt;view_xview[0])
+if(x&lt;view_xview[0]+400)
+ACTIVE=true
+
+if(ACTIVE=true)
+outside_view(MARGIN)
 </string>
           </argument>
         </arguments>
@@ -103,7 +115,9 @@ instance_create(x,y-40,explode_big)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_enemy_self()
+            <string>image_xscale=FLIP
+
+draw_enemy_self()
 </string>
           </argument>
         </arguments>
