@@ -450,22 +450,88 @@
         <sprite>sprites\diverse_win_spr</sprite>
       </sprites>
     </sprites>
-    <sprites name="player">
+    <sprites name="100-Characters">
       <sprite>sprites\msk_player</sprite>
       <sprite>sprites\msk_player_duck</sprite>
-      <sprites name="yolo">
+      <sprite>sprites\spr_guns</sprite>
+      <sprites name="101-Stone">
+        <sprites name="walk">
+          <sprite>sprites\stone_walk_spr</sprite>
+          <sprite>sprites\stone_walk_0_spr</sprite>
+          <sprite>sprites\stone_walk_45_spr</sprite>
+          <sprite>sprites\stone_walk_315_spr</sprite>
+        </sprites>
+        <sprites name="stand">
+          <sprite>sprites\stone_0_stand_spr</sprite>
+          <sprite>sprites\stone_stand_45_spr</sprite>
+          <sprite>sprites\stone_stand_90_spr</sprite>
+          <sprite>sprites\stone_stand_270_spr</sprite>
+          <sprite>sprites\stone_stand_315_spr</sprite>
+        </sprites>
+        <sprites name="ramp">
+          <sprites name="up">
+            <sprite>sprites\stone_Uramp_0_spr</sprite>
+            <sprite>sprites\stone_Uramp_45_spr</sprite>
+            <sprite>sprites\stone_Uramp_90_spr</sprite>
+            <sprite>sprites\stone_Uramp_270_spr</sprite>
+            <sprite>sprites\stone_Uramp_315_spr</sprite>
+            <sprite>sprites\stone_Dramp_duck_spr</sprite>
+          </sprites>
+          <sprites name="down">
+            <sprite>sprites\stone_Dramp_0_spr</sprite>
+            <sprite>sprites\stone_Dramp_45_spr</sprite>
+            <sprite>sprites\stone_Dramp_90_spr</sprite>
+            <sprite>sprites\stone_Dramp_270_spr</sprite>
+            <sprite>sprites\stone_Dramp_315_spr</sprite>
+          </sprites>
+        </sprites>
+        <sprites name="monkey">
+          <sprite>sprites\stone_monkey_0_spr</sprite>
+          <sprite>sprites\stone_monkey_45_spr</sprite>
+          <sprite>sprites\stone_monkey_90_spr</sprite>
+          <sprite>sprites\stone_monkey_135_spr</sprite>
+          <sprite>sprites\stone_monkey_180_spr</sprite>
+          <sprite>sprites\stone_monkey_225_spr</sprite>
+          <sprite>sprites\stone_monkey_270_spr</sprite>
+          <sprite>sprites\stone_monkey_315_spr</sprite>
+          <sprite>sprites\stone_monkey_move_spr</sprite>
+        </sprites>
+        <sprites name="wall">
+          <sprite>sprites\stone_wall_move_spr</sprite>
+          <sprite>sprites\stone_wall_0_spr</sprite>
+          <sprite>sprites\stone_wall_45_spr</sprite>
+          <sprite>sprites\stone_wall_90_spr</sprite>
+          <sprite>sprites\stone_wall_135_spr</sprite>
+          <sprite>sprites\stone_wall_180_spr</sprite>
+          <sprite>sprites\stone_wall_225_spr</sprite>
+          <sprite>sprites\stone_wall_270_spr</sprite>
+          <sprite>sprites\stone_wall_315_spr</sprite>
+        </sprites>
+        <sprites name="dead">
+          <sprite>sprites\stone_dead_roll_spr</sprite>
+          <sprite>sprites\stone_dead_lean_spr</sprite>
+          <sprite>sprites\stone_dead_spr</sprite>
+        </sprites>
+        <sprites name="flying">
+          <sprite>sprites\stone_fly_spr</sprite>
+          <sprite>sprites\stone_shot_spr</sprite>
+        </sprites>
+        <sprite>sprites\stone_duck_spr</sprite>
+        <sprite>sprites\stone_roll_spr</sprite>
+      </sprites>
+      <sprites name="102-Yolo">
+        <sprites name="walk">
+          <sprite>sprites\yolo_walk_spr</sprite>
+          <sprite>sprites\yolo_walk_0_spr</sprite>
+          <sprite>sprites\yolo_walk_45_spr</sprite>
+          <sprite>sprites\yolo_walk_315_spr</sprite>
+        </sprites>
         <sprites name="stand">
           <sprite>sprites\yolo_stand_0_spr</sprite>
           <sprite>sprites\yolo_stand_45_spr</sprite>
           <sprite>sprites\yolo_stand_90_spr</sprite>
           <sprite>sprites\yolo_stand_270_spr</sprite>
           <sprite>sprites\yolo_stand_315_spr</sprite>
-        </sprites>
-        <sprites name="walk">
-          <sprite>sprites\yolo_walk_spr</sprite>
-          <sprite>sprites\yolo_walk_0_spr</sprite>
-          <sprite>sprites\yolo_walk_45_spr</sprite>
-          <sprite>sprites\yolo_walk_315_spr</sprite>
         </sprites>
         <sprites name="ramp">
           <sprites name="up">
@@ -517,19 +583,22 @@
           <sprite>sprites\yolo_dead_lean_spr</sprite>
           <sprite>sprites\yolo_dead_roll_spr</sprite>
         </sprites>
-        <sprite>sprites\yolo_duck_spr</sprite>
+        <sprites name="flying">
+          <sprite>sprites\yolo_fly_spr</sprite>
+          <sprite>sprites\yolo_shot_spr</sprite>
+        </sprites>
         <sprite>sprites\yolo_roll_spr</sprite>
+        <sprite>sprites\yolo_duck_spr</sprite>
+      </sprites>
+      <sprites name="103-Pumpkin">
+        <sprite>sprites\pumpkin_fly_spr</sprite>
+      </sprites>
+      <sprites name="104-Fox">
+        <sprite>sprites\fox_fly_spr</sprite>
       </sprites>
       <sprites name="flying">
-        <sprite>sprites\stone_fly_spr</sprite>
-        <sprite>sprites\fox_fly_spr</sprite>
-        <sprite>sprites\yolo_fly_spr</sprite>
-        <sprite>sprites\pumpkin_fly_spr</sprite>
-        <sprite>sprites\stone_shot_spr</sprite>
         <sprite>sprites\white_knight_spr</sprite>
-        <sprite>sprites\yolo_shot_spr</sprite>
       </sprites>
-      <sprite>sprites\spr_guns</sprite>
     </sprites>
     <sprites name="projectiles">
       <sprite>sprites\spr_bullet</sprite>
