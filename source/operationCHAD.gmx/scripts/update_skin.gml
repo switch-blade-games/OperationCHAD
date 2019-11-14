@@ -1,95 +1,183 @@
 /// update_skin();
 
+img_index = 0;
 switch(skin_id)
     {
-    case skin.yoloswag:
-        var skin_prefix = "yolo_";
+    case skin.stonetoss:
+        skin_sprite = stone_master_spr;
         break;
+    case skin.yoloswag:
     default:
-        var skin_prefix = "yolo_";
+        skin_sprite = yolo_master_spr;
         break;
     }
 
-// idle
-skin_idle[0] = asset_get_index(string(skin_prefix)+"stand_0_spr");
-skin_idle[1] = asset_get_index(string(skin_prefix)+"stand_45_spr");
-skin_idle[2] = asset_get_index(string(skin_prefix)+"stand_90_spr");
-skin_idle[3] = asset_get_index(string(skin_prefix)+"stand_45_spr");
-skin_idle[4] = asset_get_index(string(skin_prefix)+"stand_0_spr");
-skin_idle[5] = asset_get_index(string(skin_prefix)+"stand_315_spr");
-skin_idle[6] = asset_get_index(string(skin_prefix)+"stand_270_spr");
-skin_idle[7] = asset_get_index(string(skin_prefix)+"stand_315_spr");
-// idle + ramp up
-skin_idle_ramp_u[0] = asset_get_index(string(skin_prefix)+"Uramp_0_spr");
-skin_idle_ramp_u[1] = asset_get_index(string(skin_prefix)+"Uramp_45_spr");
-skin_idle_ramp_u[2] = asset_get_index(string(skin_prefix)+"Uramp_90_spr");
-skin_idle_ramp_u[3] = asset_get_index(string(skin_prefix)+"Uramp_45_spr");
-skin_idle_ramp_u[4] = asset_get_index(string(skin_prefix)+"Uramp_0_spr");
-skin_idle_ramp_u[5] = asset_get_index(string(skin_prefix)+"Uramp_315_spr");
-skin_idle_ramp_u[6] = asset_get_index(string(skin_prefix)+"Uramp_270_spr");
-skin_idle_ramp_u[7] = asset_get_index(string(skin_prefix)+"Uramp_315_spr");
-// idle + ramp down
-skin_idle_ramp_d[0] = asset_get_index(string(skin_prefix)+"Dramp_0_spr");
-skin_idle_ramp_d[1] = asset_get_index(string(skin_prefix)+"Dramp_45_spr");
-skin_idle_ramp_d[2] = asset_get_index(string(skin_prefix)+"Dramp_90_spr");
-skin_idle_ramp_d[3] = asset_get_index(string(skin_prefix)+"Dramp_45_spr");
-skin_idle_ramp_d[4] = asset_get_index(string(skin_prefix)+"Dramp_0_spr");
-skin_idle_ramp_d[5] = asset_get_index(string(skin_prefix)+"Dramp_315_spr");
-skin_idle_ramp_d[6] = asset_get_index(string(skin_prefix)+"Dramp_270_spr");
-skin_idle_ramp_d[7] = asset_get_index(string(skin_prefix)+"Dramp_315_spr");
+for(var i=0; i<anim.size; i++;)
+    {
+    anim_group_len[i] = 0;
+    anim_group_pos[i] = 0;
+    anim_group_ox[i] = 0;
+    anim_group_oy[i] = 0;
+    }
 
-// walk
-skin_walk = asset_get_index(string(skin_prefix)+"walk_spr");
-// walk + fire
-skin_walk_fire[0] = asset_get_index(string(skin_prefix)+"walk_0_spr");
-skin_walk_fire[1] = asset_get_index(string(skin_prefix)+"walk_45_spr");
-skin_walk_fire[2] = asset_get_index(string(skin_prefix)+"stand_90_spr");
-skin_walk_fire[3] = asset_get_index(string(skin_prefix)+"walk_45_spr");
-skin_walk_fire[4] = asset_get_index(string(skin_prefix)+"walk_0_spr");
-skin_walk_fire[5] = asset_get_index(string(skin_prefix)+"walk_315_spr");
-skin_walk_fire[6] = asset_get_index(string(skin_prefix)+"stand_270_spr");
-skin_walk_fire[7] = asset_get_index(string(skin_prefix)+"walk_315_spr");
+////////////////////////////////////////////////////////////////////////
 
-// roll
-skin_roll = asset_get_index(string(skin_prefix)+"roll_spr");
+// animation group lengths
+anim_group_len[anim.walk] = 30;
+anim_group_len[anim.walk_fire] = 30;
+anim_group_len[anim.idle] = 10;
+anim_group_len[anim.duck] = 2;
+anim_group_len[anim.idle_ramp_d] = 10;
+anim_group_len[anim.duck_ramp_d] = 2;
+anim_group_len[anim.idle_ramp_u] = 10;
+anim_group_len[anim.duck_ramp_u] = 2;
+anim_group_len[anim.wc_fire] = 16;
+anim_group_len[anim.wc] = 4;
+anim_group_len[anim.mb_fire] = 10;
+anim_group_len[anim.mb] = 4;
+anim_group_len[anim.moto_fire] = 16;
+anim_group_len[anim.moto] = 2;
+anim_group_len[anim.roll] = 4;
+anim_group_len[anim.dead_roll] = 4;
+anim_group_len[anim.dead] = 2;
 
-// duck
-skin_duck = asset_get_index(string(skin_prefix)+"duck_spr");
-// duck + ramp up
-skin_duck_ramp_u = asset_get_index(string(skin_prefix)+"Uramp_duck_spr");
-// duck + ramp down
-skin_duck_ramp_d = asset_get_index(string(skin_prefix)+"Dramp_duck_spr");
+// animation group positions
+var _index = 0;
+for(var i=0; i<anim.size; i++;)
+    {
+    anim_group_pos[i] = _index;
+    _index += anim_group_len[i];
+    }
 
-// monkey bar
-skin_mb = asset_get_index(string(skin_prefix)+"monkey_move_spr");
-// monkey bar + fire
-skin_mb_fire[0] = asset_get_index(string(skin_prefix)+"monkey_0_spr");
-skin_mb_fire[1] = asset_get_index(string(skin_prefix)+"monkey_45_spr");
-skin_mb_fire[2] = asset_get_index(string(skin_prefix)+"monkey_90_spr");
-skin_mb_fire[3] = asset_get_index(string(skin_prefix)+"monkey_135_spr");
-skin_mb_fire[4] = asset_get_index(string(skin_prefix)+"monkey_180_spr");
-skin_mb_fire[5] = asset_get_index(string(skin_prefix)+"monkey_225_spr");
-skin_mb_fire[6] = asset_get_index(string(skin_prefix)+"monkey_270_spr");
-skin_mb_fire[7] = asset_get_index(string(skin_prefix)+"monkey_315_spr");
+// animation group offsets
+anim_group_oy[anim.duck_ramp_d] = -6;
+anim_group_oy[anim.idle_ramp_u] = -7;
+anim_group_oy[anim.duck_ramp_u] = -10;
+anim_group_oy[anim.mb_fire] = 7;
+anim_group_oy[anim.mb] = 7;
 
-// wall-climb
-skin_wc = asset_get_index(string(skin_prefix)+"wall_move_spr");
-// wall-climb + fire
-skin_wc_fire[0] = asset_get_index(string(skin_prefix)+"wall_0_spr");
-skin_wc_fire[1] = asset_get_index(string(skin_prefix)+"wall_45_spr");
-skin_wc_fire[2] = asset_get_index(string(skin_prefix)+"wall_90_spr");
-skin_wc_fire[3] = asset_get_index(string(skin_prefix)+"wall_135_spr");
-skin_wc_fire[4] = asset_get_index(string(skin_prefix)+"wall_180_spr");
-skin_wc_fire[5] = asset_get_index(string(skin_prefix)+"wall_225_spr");
-skin_wc_fire[6] = asset_get_index(string(skin_prefix)+"wall_270_spr");
-skin_wc_fire[7] = asset_get_index(string(skin_prefix)+"wall_315_spr");
+////////////////////////////////////////////////////////////////////////
 
-// moto
-skin_moto = asset_get_index(string(skin_prefix)+"moto_spr");
+var _anim_id = anim.walk;
+anim_len[_anim_id] = 10;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = 0;
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 225
+anim_pos[_anim_id,6] = 0;
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 315
 
-// dead
-skin_dead = asset_get_index(string(skin_prefix)+"dead_spr");
-// dead lean
-skin_dead_lean = asset_get_index(string(skin_prefix)+"dead_lean_spr");
-// dead roll
-skin_dead_roll = asset_get_index(string(skin_prefix)+"dead_roll_spr");
+var _anim_id = anim.walk_fire;
+anim_len[_anim_id] = 10;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = 0;
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 225
+anim_pos[_anim_id,6] = 0;
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 315
+
+var _anim_id = anim.idle;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
+
+var _anim_id = anim.duck;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.idle_ramp_d;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
+
+var _anim_id = anim.duck_ramp_d;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.idle_ramp_u;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
+
+var _anim_id = anim.duck_ramp_u;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.wc_fire;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*5; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*6; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*7; // 315
+
+var _anim_id = anim.wc;
+anim_len[_anim_id] = 4;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.mb_fire;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
+
+var _anim_id = anim.mb;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.moto_fire;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
+anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
+anim_pos[_anim_id,2] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 90
+anim_pos[_anim_id,3] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 135
+anim_pos[_anim_id,4] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 180
+anim_pos[_anim_id,5] = anim_group_pos[_anim_id] + anim_len[_anim_id]*5; // 225
+anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*6; // 270
+anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*7; // 315
+
+var _anim_id = anim.moto;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.roll;
+anim_len[_anim_id] = 4;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.dead_roll;
+anim_len[_anim_id] = 4;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];
+
+var _anim_id = anim.dead;
+anim_len[_anim_id] = 2;
+anim_pos[_anim_id] = anim_group_pos[_anim_id];

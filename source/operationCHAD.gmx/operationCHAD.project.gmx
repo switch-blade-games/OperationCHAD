@@ -3,6 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="000-FrontEnd">
@@ -456,144 +457,22 @@
       <sprite>sprites\spr_guns</sprite>
       <sprites name="101-Stone">
         <sprite>sprites\stone_master_spr</sprite>
-        <sprites name="Stone_Legacy">
-          <sprites name="walk">
-            <sprite>sprites\stone_walk_spr</sprite>
-            <sprite>sprites\stone_walk_0_spr</sprite>
-            <sprite>sprites\stone_walk_45_spr</sprite>
-            <sprite>sprites\stone_walk_315_spr</sprite>
-          </sprites>
-          <sprites name="stand">
-            <sprite>sprites\stone_0_stand_spr</sprite>
-            <sprite>sprites\stone_stand_45_spr</sprite>
-            <sprite>sprites\stone_stand_90_spr</sprite>
-            <sprite>sprites\stone_stand_270_spr</sprite>
-            <sprite>sprites\stone_stand_315_spr</sprite>
-          </sprites>
-          <sprites name="ramp">
-            <sprites name="up">
-              <sprite>sprites\stone_Uramp_0_spr</sprite>
-              <sprite>sprites\stone_Uramp_45_spr</sprite>
-              <sprite>sprites\stone_Uramp_90_spr</sprite>
-              <sprite>sprites\stone_Uramp_270_spr</sprite>
-              <sprite>sprites\stone_Uramp_315_spr</sprite>
-              <sprite>sprites\stone_Dramp_duck_spr</sprite>
-            </sprites>
-            <sprites name="down">
-              <sprite>sprites\stone_Dramp_0_spr</sprite>
-              <sprite>sprites\stone_Dramp_45_spr</sprite>
-              <sprite>sprites\stone_Dramp_90_spr</sprite>
-              <sprite>sprites\stone_Dramp_270_spr</sprite>
-              <sprite>sprites\stone_Dramp_315_spr</sprite>
-            </sprites>
-          </sprites>
-          <sprites name="monkey">
-            <sprite>sprites\stone_monkey_0_spr</sprite>
-            <sprite>sprites\stone_monkey_45_spr</sprite>
-            <sprite>sprites\stone_monkey_90_spr</sprite>
-            <sprite>sprites\stone_monkey_135_spr</sprite>
-            <sprite>sprites\stone_monkey_180_spr</sprite>
-            <sprite>sprites\stone_monkey_225_spr</sprite>
-            <sprite>sprites\stone_monkey_270_spr</sprite>
-            <sprite>sprites\stone_monkey_315_spr</sprite>
-            <sprite>sprites\stone_monkey_move_spr</sprite>
-          </sprites>
-          <sprites name="wall">
-            <sprite>sprites\stone_wall_move_spr</sprite>
-            <sprite>sprites\stone_wall_0_spr</sprite>
-            <sprite>sprites\stone_wall_45_spr</sprite>
-            <sprite>sprites\stone_wall_90_spr</sprite>
-            <sprite>sprites\stone_wall_135_spr</sprite>
-            <sprite>sprites\stone_wall_180_spr</sprite>
-            <sprite>sprites\stone_wall_225_spr</sprite>
-            <sprite>sprites\stone_wall_270_spr</sprite>
-            <sprite>sprites\stone_wall_315_spr</sprite>
-          </sprites>
-          <sprites name="dead">
-            <sprite>sprites\stone_dead_roll_spr</sprite>
-            <sprite>sprites\stone_dead_lean_spr</sprite>
-            <sprite>sprites\stone_dead_spr</sprite>
-          </sprites>
-          <sprites name="flying">
-            <sprite>sprites\stone_fly_spr</sprite>
-            <sprite>sprites\stone_shot_spr</sprite>
-          </sprites>
-          <sprite>sprites\stone_duck_spr</sprite>
-          <sprite>sprites\stone_roll_spr</sprite>
+        <sprites name="flying">
+          <sprite>sprites\stone_fly_spr</sprite>
+          <sprite>sprites\stone_shot_spr</sprite>
+        </sprites>
+        <sprites name="moto">
+          <sprite>sprites\stone_vehicle_moto_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="102-Yolo">
         <sprite>sprites\yolo_master_spr</sprite>
-        <sprites name="yolo_legacy">
-          <sprites name="walk">
-            <sprite>sprites\yolo_walk_spr</sprite>
-            <sprite>sprites\yolo_walk_0_spr</sprite>
-            <sprite>sprites\yolo_walk_45_spr</sprite>
-            <sprite>sprites\yolo_walk_315_spr</sprite>
-          </sprites>
-          <sprites name="stand">
-            <sprite>sprites\yolo_stand_0_spr</sprite>
-            <sprite>sprites\yolo_stand_45_spr</sprite>
-            <sprite>sprites\yolo_stand_90_spr</sprite>
-            <sprite>sprites\yolo_stand_270_spr</sprite>
-            <sprite>sprites\yolo_stand_315_spr</sprite>
-          </sprites>
-          <sprites name="ramp">
-            <sprites name="up">
-              <sprite>sprites\yolo_Uramp_0_spr</sprite>
-              <sprite>sprites\yolo_Uramp_45_spr</sprite>
-              <sprite>sprites\yolo_Uramp_90_spr</sprite>
-              <sprite>sprites\yolo_Uramp_270_spr</sprite>
-              <sprite>sprites\yolo_Uramp_315_spr</sprite>
-              <sprite>sprites\yolo_Uramp_duck_spr</sprite>
-            </sprites>
-            <sprites name="down">
-              <sprite>sprites\yolo_Dramp_0_spr</sprite>
-              <sprite>sprites\yolo_Dramp_45_spr</sprite>
-              <sprite>sprites\yolo_Dramp_90_spr</sprite>
-              <sprite>sprites\yolo_Dramp_270_spr</sprite>
-              <sprite>sprites\yolo_Dramp_315_spr</sprite>
-              <sprite>sprites\yolo_Dramp_duck_spr</sprite>
-            </sprites>
-          </sprites>
-          <sprites name="monkey">
-            <sprite>sprites\yolo_monkey_0_spr</sprite>
-            <sprite>sprites\yolo_monkey_45_spr</sprite>
-            <sprite>sprites\yolo_monkey_90_spr</sprite>
-            <sprite>sprites\yolo_monkey_135_spr</sprite>
-            <sprite>sprites\yolo_monkey_180_spr</sprite>
-            <sprite>sprites\yolo_monkey_225_spr</sprite>
-            <sprite>sprites\yolo_monkey_270_spr</sprite>
-            <sprite>sprites\yolo_monkey_315_spr</sprite>
-            <sprite>sprites\yolo_monkey_move_spr</sprite>
-          </sprites>
-          <sprites name="wall">
-            <sprite>sprites\yolo_wall_0_spr</sprite>
-            <sprite>sprites\yolo_wall_45_spr</sprite>
-            <sprite>sprites\yolo_wall_90_spr</sprite>
-            <sprite>sprites\yolo_wall_135_spr</sprite>
-            <sprite>sprites\yolo_wall_180_spr</sprite>
-            <sprite>sprites\yolo_wall_225_spr</sprite>
-            <sprite>sprites\yolo_wall_270_spr</sprite>
-            <sprite>sprites\yolo_wall_315_spr</sprite>
-            <sprite>sprites\yolo_wall_move_spr</sprite>
-          </sprites>
-          <sprites name="moto">
-            <sprite>sprites\yolo_moto_spr</sprite>
-            <sprite>sprites\yolo_vehicle_moto_spr</sprite>
-            <sprite>sprites\yolo_moto_back_spr</sprite>
-          </sprites>
-          <sprites name="flying">
-            <sprite>sprites\yolo_fly_spr</sprite>
-            <sprite>sprites\yolo_shot_spr</sprite>
-          </sprites>
-          <sprites name="dead">
-            <sprite>sprites\yolo_dead_spr</sprite>
-            <sprite>sprites\yolo_dead_lean_spr</sprite>
-            <sprite>sprites\yolo_dead_roll_spr</sprite>
-          </sprites>
-          <sprite>sprites\yolo_roll_spr</sprite>
-          <sprite>sprites\yolo_duck_spr</sprite>
+        <sprites name="flying">
+          <sprite>sprites\yolo_fly_spr</sprite>
+          <sprite>sprites\yolo_shot_spr</sprite>
+        </sprites>
+        <sprites name="moto">
+          <sprite>sprites\yolo_vehicle_moto_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="103-Pumpkin">
@@ -895,7 +774,7 @@
       <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
       <script>scripts\update_skin.gml</script>
-      <script>scripts\update_sprite.gml</script>
+      <script>scripts\update_anim.gml</script>
     </scripts>
     <scripts name="gamepad">
       <script>scripts\gamepad_init.gml</script>
@@ -937,7 +816,6 @@
       <script>scripts\blend_zero.gml</script>
       <script>scripts\hunny_shuffle.gml</script>
       <script>scripts\hunny_bank.gml</script>
-      <script>scripts\origin_init.gml</script>
       <script>scripts\Yfollow.gml</script>
       <script>scripts\Rfollow.gml</script>
       <script>scripts\checkpoint_check.gml</script>

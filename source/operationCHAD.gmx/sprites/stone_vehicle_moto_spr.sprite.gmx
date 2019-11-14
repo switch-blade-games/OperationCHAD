@@ -20,6 +20,6 @@
   <width>80</width>
   <height>60</height>
   <frames>
-    <frame index="0">images\yolo_vehicle_moto_spr_0.png</frame>
+    <frame index="0">images\stone_vehicle_moto_spr_0.png</frame>
   </frames>
 </sprite>

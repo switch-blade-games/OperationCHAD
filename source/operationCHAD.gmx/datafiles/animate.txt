@@ -225,7 +225,6 @@ switch(move_state)
         break;
     }
 
-// determine animation angle index
 switch(anim_state)
     {
     case aState.mb_fire:
@@ -241,28 +240,6 @@ switch(anim_state)
         break;
     }
 
-// determine start/end frame of animation
-switch(anim_index)
-    {
-    case anim.walk:
-    case anim.walk_fire:
-    case anim.idle:
-    case anim.idle_ramp_d:
-    case anim.idle_ramp_u:
-    case anim.wc_fire:
-    case anim.mb_fire:
-    case anim.moto_fire:
-        var _anim_start = anim_pos[anim_index,anim_angle];
-        var _anim_end   = _anim_start + anim_len[anim_index];
-        break;
-    
-    default:
-        var _anim_start = anim_pos[anim_index];
-        var _anim_end   = _anim_start + anim_len[anim_index];
-        break;
-    }
-
-// update animation
 switch(anim_state)
     {
     case aState.idle:
@@ -272,7 +249,7 @@ switch(anim_state)
         if (input_fire)
             img_index += 0.2;
         else
-            img_index = _anim_start;
+            img_index = 0;
         break;
     
     case aState.idle_ramp:
@@ -295,7 +272,7 @@ switch(anim_state)
         if (input_fire)
             img_index += 0.2;
         else
-            img_index = _anim_start;
+            img_index = 0;
         break;
     
     case aState.walk:
@@ -327,7 +304,7 @@ switch(anim_state)
         if (input_fire)
             img_index += 0.2;
         else
-            img_index = _anim_start;
+            img_index = 0;
         break;
     
     case aState.duck_ramp:
@@ -350,12 +327,12 @@ switch(anim_state)
         if (input_fire)
             img_index += 0.2;
         else
-            img_index = _anim_start;
+            img_index = 0;
         break;
     
     case aState.mb:
         update_anim(anim.mb,dir);
-        img_index = _anim_start;
+        img_index = 0;
         break;
     
     case aState.mb_move:
@@ -374,7 +351,7 @@ switch(anim_state)
     
     case aState.wc:
         update_anim(anim.wc,dir);
-        img_index = _anim_start;
+        img_index = 0;
         break;
     
     case aState.wc_move:
@@ -406,11 +383,31 @@ switch(anim_state)
     
     case aState.dead:
         update_anim(anim.dead,dir);
-        img_index = _anim_start;
+        img_index = 0;
         break;
     }
 
-if (img_index >= _anim_end)
+switch(anim_index)
+    {
+    case anim.walk:
+    case anim.walk_fire:
+    case anim.idle:
+    case anim.idle_ramp_d:
+    case anim.idle_ramp_u:
+    case anim.wc_fire:
+    case anim.mb_fire:
+    case anim.moto_fire:
+        var _anim_start = anim_pos[anim_index,anim_angle];
+        var _anim_end   = _anim_start + anim_len[anim_index];
+        break;
+    
+    default:
+        var _anim_start = anim_pos[anim_index];
+        var _anim_end   = _anim_start + anim_len[anim_index];
+        break;
+    }
+
+if (img_index > _anim_end)
     img_index = _anim_start;
 else if (img_index < _anim_start)
     img_index = _anim_end-1;

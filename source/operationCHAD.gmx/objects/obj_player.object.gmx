@@ -85,6 +85,28 @@ enum skin
     size
     }
 
+enum anim
+    {
+    walk,
+    walk_fire,
+    idle,
+    duck,
+    idle_ramp_d,
+    duck_ramp_d,
+    idle_ramp_u,
+    duck_ramp_u,
+    wc_fire,
+    wc,
+    mb_fire,
+    mb,
+    moto_fire,
+    moto,
+    roll,
+    dead_roll,
+    dead,
+    size
+    }
+
 // player motion state/flags
 no_clip = false;
 move_state = mState.walk;
@@ -143,15 +165,12 @@ xstart = x;
 ystart = y;
 
 // player animation
-skin_id = skin.yoloswag;
-anim_update = false;
+skin_id = skin.stonetoss;
 anim_state = aState.idle;
+anim_index = anim.idle;
 anim_angle = 0;
 
 update_skin();
-
-spr_index = skin_idle[anim_angle];
-img_index = 0;
 </string>
           </argument>
         </arguments>
@@ -415,7 +434,9 @@ if (invulnerable)
         shader_set(shd_flash);
     }
 
-draw_sprite_ext(spr_index,img_index,x,y+mShake,face,1,0,-1,1);
+var ox = -anim_group_ox[anim_index];
+var oy = -anim_group_oy[anim_index];
+draw_sprite_ext(skin_sprite,img_index,x+ox,y+oy+mShake,face,1,0,-1,1);
 
 if (invulnerable)
     {
