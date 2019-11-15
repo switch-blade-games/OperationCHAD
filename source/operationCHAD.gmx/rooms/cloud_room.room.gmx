@@ -59,7 +59,7 @@ instance_create(0,0,obj_camera);
     <instance objName="obj_wall" x="0" y="200" name="inst_13F1DA29" locked="0" code="" scaleX="60" scaleY="1.75" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="-80" name="inst_B9A98F22" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="-80" name="inst_32EA92A5" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="40" y="180" name="inst_FBBE463F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="160" y="140" name="inst_FBBE463F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="circle_ride" x="800" y="120" name="inst_387D2155" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="680" y="160" name="inst_C6482695" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="circle_sign" x="520" y="20" name="inst_ED83D6C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
