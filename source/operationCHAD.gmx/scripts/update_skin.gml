@@ -16,8 +16,11 @@ for(var i=0; i<anim.size; i++;)
     {
     anim_group_len[i] = 0;
     anim_group_pos[i] = 0;
-    anim_group_ox[i] = 0;
-    anim_group_oy[i] = 0;
+    
+    anim_aim[i] = false;
+    anim_len[i] = 0;
+    for(var j=0; j<8; j++;)
+        anim_pos[i,j] = 0;
     }
 
 ////////////////////////////////////////////////////////////////////////
@@ -49,16 +52,10 @@ for(var i=0; i<anim.size; i++;)
     _index += anim_group_len[i];
     }
 
-// animation group offsets
-anim_group_oy[anim.duck_ramp_d] = -6;
-anim_group_oy[anim.idle_ramp_u] = -7;
-anim_group_oy[anim.duck_ramp_u] = -10;
-anim_group_oy[anim.mb_fire] = 7;
-anim_group_oy[anim.mb] = 7;
-
 ////////////////////////////////////////////////////////////////////////
 
 var _anim_id = anim.walk;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 10;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -70,6 +67,7 @@ anim_pos[_anim_id,6] = 0;
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 315
 
 var _anim_id = anim.walk_fire;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 10;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -81,6 +79,7 @@ anim_pos[_anim_id,6] = 0;
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*2; // 315
 
 var _anim_id = anim.idle;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -92,10 +91,12 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
 
 var _anim_id = anim.duck;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.idle_ramp_d;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -107,10 +108,12 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
 
 var _anim_id = anim.duck_ramp_d;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.idle_ramp_u;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -122,10 +125,12 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
 
 var _anim_id = anim.duck_ramp_u;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.wc_fire;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -137,10 +142,12 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*6; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*7; // 315
 
 var _anim_id = anim.wc;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 4;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.mb_fire;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -152,10 +159,12 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*3; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*4; // 315
 
 var _anim_id = anim.mb;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.moto_fire;
+anim_aim[_anim_id] = true;
 anim_len[_anim_id] = 2;
 anim_pos[_anim_id,0] = anim_group_pos[_anim_id] + anim_len[_anim_id]*0; // 0
 anim_pos[_anim_id,1] = anim_group_pos[_anim_id] + anim_len[_anim_id]*1; // 45
@@ -167,17 +176,21 @@ anim_pos[_anim_id,6] = anim_group_pos[_anim_id] + anim_len[_anim_id]*6; // 270
 anim_pos[_anim_id,7] = anim_group_pos[_anim_id] + anim_len[_anim_id]*7; // 315
 
 var _anim_id = anim.moto;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.roll;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 4;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.dead_roll;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 4;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
 
 var _anim_id = anim.dead;
+anim_aim[_anim_id] = false;
 anim_len[_anim_id] = 2;
-anim_pos[_anim_id] = anim_group_pos[_anim_id];
+anim_pos[_anim_id,0] = anim_group_pos[_anim_id];
