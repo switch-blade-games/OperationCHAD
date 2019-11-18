@@ -198,6 +198,8 @@ switch(move_state)
         break;
     
     case mState.mb:
+        if (h_dir != 0)
+            dir = h_dir;
         if (input_fire) or (input_lock)
             {
             if (input_fire)
@@ -220,7 +222,6 @@ switch(move_state)
             if (h_dir != 0)
                 {
                 mb_offset += mb_speed*h_dir;
-                dir = h_dir;
                 
                 // move left or right
                 if (input_right)

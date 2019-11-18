@@ -162,7 +162,6 @@ switch(move_state)
 // determine animation angle index
 switch(anim_state)
     {
-    case aState.mb_fire:
     case aState.wc_fire:
         if (dir > 0)
             anim_angle = floor(aim/45);
@@ -278,9 +277,19 @@ switch(anim_state)
     
     case aState.mb_fire:
         if (dir > 0)
-            update_anim(anim.mb_fire,+1);
-        else
-            update_anim(anim.mb_fire,-1);
+            {
+            if (anim_angle <= 2) or (anim_angle >= 6)
+                update_anim(anim.mb_fire,dir);
+            else
+                update_anim(anim.mb_fire,-dir);
+            }
+        else if (dir < 0)
+            {
+            if (anim_angle >= 2) and (anim_angle <= 6)
+                update_anim(anim.mb_fire,dir);
+            else
+                update_anim(anim.mb_fire,-dir);
+            }
         gun_y = -18;
         img_index += 0.2;
         break;
@@ -296,10 +305,7 @@ switch(anim_state)
         break;
     
     case aState.wc_fire:
-        if (dir > 0)
-            update_anim(anim.wc_fire,+1);
-        else
-            update_anim(anim.wc_fire,-1);
+        update_anim(anim.wc_fire,dir);
         gun_y = -18;
         img_index += 0.2;
         break;
