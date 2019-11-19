@@ -45,16 +45,8 @@ last_gpcount = global.gpcount;
 last_pause = global.pause;
 surf_pause = -1;
 
-verlet_init();
-
-global.echo_num = 0;
-global.echo_list = ds_list_create();
-
-snd = bullet_snd;
-decay = 0.1;
-delay = 0.1 * 1000000;
-pitch = 0.1;
-gain = 1;
+last_actors = 0;
+actors = 0;
 </string>
           </argument>
         </arguments>
@@ -80,39 +72,11 @@ gain = 1;
             <string>last_gpcount = global.gpcount;
 gamepad_update();
 
-var time = get_timer();
-
-if (global.echo_num &gt; 0)
+actors = instance_number(par_actor);
+if (last_actors != actors)
     {
-    for(var i=0; i&lt;global.echo_num; i++;)
-        {
-        var snd_id      = global.echo_list[|i*6+0];
-        var snd_gain    = global.echo_list[|i*6+1];
-        var snd_time    = global.echo_list[|i*6+2];
-        var snd_decay   = global.echo_list[|i*6+3];
-        var snd_delay   = global.echo_list[|i*6+4];
-        var snd_pitch   = global.echo_list[|i*6+5];
-        
-        if (time &gt;= snd_time)
-            {
-            snd_gain -= snd_decay;
-            snd_time += snd_delay;
-            if (snd_gain &gt; 0)
-                {
-                global.echo_list[|i*5+1] = snd_gain;
-                global.echo_list[|i*5+2] = snd_time;
-                
-                snd_play(snd_id,snd_pitch,snd_gain);
-                }
-            else
-                {
-                repeat(6)
-                    ds_list_delete(global.echo_list,i*6+0);
-                global.echo_num--;
-                i--;
-                }
-            }
-        }
+    last_actors = actors;
+    event_user(0);
     }
 
 // controller disconnected
@@ -123,8 +87,9 @@ if (global.gpcount &lt; last_gpcount) and (!global.pause)
     }
 
 // pausing
-if (keyboard_check_pressed(ord("P")))
-or (gamepad_check_pressed_all(gpinput.start))
+if ((keyboard_check_pressed(ord("P")))
+or (gamepad_check_pressed_all(gpinput.start)))
+and (!instance_exists(obj_gamepad_disconnect))
     global.pause = !global.pause;
 
 if (global.pause != last_pause)
@@ -151,26 +116,59 @@ if (global.pause != last_pause)
         instance_activate_all();
         }
     }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// assign gamepads to players
 
-if (keyboard_check(vk_numpad1))
-    decay = max(0.01,decay-0.01);
-if (keyboard_check(vk_numpad3))
-    decay = min(1.00,decay+0.01);
-if (keyboard_check(vk_numpad4))
-    delay = max(0.01*1000000,delay - 0.01*1000000);
-if (keyboard_check(vk_numpad6))
-    delay = min(0.50*1000000,delay + 0.01*1000000);
-if (keyboard_check(vk_numpad7))
-    pitch = max(0.00,pitch-0.01);
-if (keyboard_check(vk_numpad9))
-    pitch = min(0.50,pitch+0.01);
-if (keyboard_check_pressed(vk_numpad0))
-    snd_play_echo(snd,decay,delay,pitch,gain);
+// check available slots
+var _slot;
+for(var i=0; i&lt;global.gpmax; i++;)
+    _slot[i] = global.gp[i,gpinfo.connected];
 
-// verlet "physics"
-var time = get_timer();
-verlet_update();
-global.vtime = get_timer()-time;
+// check which players have assigned slots
+var _player;
+var _players = 0;
+with(par_actor)
+    {
+    if (gamepad_slot &gt;= 0) and (gamepad_slot &lt; global.gpmax)
+        _slot[gamepad_slot] = false;
+    else
+        {
+        _player[_players] = id;
+        _players++;
+        }
+    }
+
+// assign remaining players the available slots
+var _index = 0;
+for(var i=0; i&lt;global.gpmax; i++;)
+    {
+    if (_slot[i])
+        {
+        _player[_index].gamepad_slot = i;
+        _index++;
+        }
+    }
 </string>
           </argument>
         </arguments>
@@ -223,18 +221,6 @@ global.vtime = get_timer()-time;
         draw_set_color($000000);
         }
     }
-
-    
-    
-draw_set_valign(0);
-draw_set_halign(0);
-
-exit
-draw_text(12,12,"snd:" +string(snd));
-draw_text(12,24,"decay:" +string(decay));
-draw_text(12,36,"delay:" +string(delay));
-draw_text(12,48,"pitch:" +string(pitch));
-draw_text(12,60,"gain:" +string(gain));
 </string>
           </argument>
         </arguments>

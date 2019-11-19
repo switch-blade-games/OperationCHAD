@@ -1,6 +1,6 @@
 /// gamepad_update();
 
-for(var i=0; i<4; i++;)
+for(var i=0; i<global.gpmax; i++;)
     {
     if (gamepad_is_connected(i))
         {
@@ -25,7 +25,7 @@ for(var i=0; i<4; i++;)
             global.gp_ilast[i,j] = global.gp_input[i,j];
         
         // update current inputs
-        for(var j=0; j<=gpinput.padr; j++;)
+        for(var j=global.gp_button_pos; j<=global.gp_button_end; j++;)
             global.gp_input[i,gpinput.face1+j] = gamepad_button_check(i,gp_face1+j);
         global.gp_input[i,gpinput.lsu] = gamepad_axis_value(i,gp_axislv) < -global.gp[i,gpinfo.dead];
         global.gp_input[i,gpinput.lsd] = gamepad_axis_value(i,gp_axislv) > +global.gp[i,gpinfo.dead];
@@ -46,9 +46,9 @@ for(var i=0; i<4; i++;)
             if (global.gp_input[i,j] and !global.gp_ilast[i,j])
                 {
                 global.gp[i,gpinfo.last] = j;
-                if (j <= gpinput.padr)
+                if (j >= global.gp_button_pos) and (j <= global.gp_button_end)
                     global.gp[i,gpinfo.lastval] = gamepad_button_value(i,gp_face1+j);
-                else if (j >= gpinput.lsu)
+                if (j >= global.gp_axis_pos) and (j <= global.gp_axis_end)
                     global.gp[i,gpinfo.lastval] = gamepad_axis_value(i,gp_face1+j);
                 break;
                 }

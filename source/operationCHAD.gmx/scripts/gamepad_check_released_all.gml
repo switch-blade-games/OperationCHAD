@@ -5,7 +5,7 @@ var _func = argument[0];
 if (global.gpcount == 0)
     return(false);
 
-for(var i=0; i<4; i++;)
+for(var i=0; i<global.gpmax; i++;)
     {
     if (!global.gp[i,gpinfo.connected])
         continue;
