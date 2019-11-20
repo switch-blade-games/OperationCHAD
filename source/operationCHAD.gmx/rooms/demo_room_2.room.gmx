@@ -1189,6 +1189,12 @@ instance_create(0,0,cam_deactivator);</code>
     <instance objName="monkey_ramp_L" x="7460" y="4940" name="inst_CDB1CE66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7440" y="4940" name="inst_D06ADB41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7480" y="4920" name="inst_CEBB023F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="260" y="7720" name="inst_3C0FE2D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="580" y="7660" name="inst_4689F521" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="720" y="7600" name="inst_99D38023" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="900" y="7680" name="inst_A9E2174A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="1360" y="7620" name="inst_07D22C17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="3300" y="6020" name="inst_563A7851" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
