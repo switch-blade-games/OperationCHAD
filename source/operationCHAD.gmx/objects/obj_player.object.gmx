@@ -31,14 +31,6 @@ debug_draw = -1;
 debug_freeze = false;
 
 gamepad_slot = -1;
-for(var i=0; i&lt;4; i++;)
-    {
-    if (global.gp[i,gpinfo.connected])
-        {
-        gamepad_slot = i;
-        break;
-        }
-    }
 
 // player move states
 enum mState
@@ -169,6 +161,8 @@ skin_id = skin.stonetoss;
 anim_state = aState.idle;
 anim_index = anim.idle;
 anim_angle = 0;
+anim_start = 0;
+anim_end = 0;
 
 update_skin();
 </string>
@@ -434,9 +428,7 @@ if (invulnerable)
         shader_set(shd_flash);
     }
 
-var ox = -anim_group_ox[anim_index];
-var oy = -anim_group_oy[anim_index];
-draw_sprite_ext(skin_sprite,img_index,x+ox,y+oy+mShake,face,1,0,-1,1);
+draw_sprite_ext(skin_sprite,img_index,x,y+mShake,face,1,0,-1,1);
 
 if (invulnerable)
     {

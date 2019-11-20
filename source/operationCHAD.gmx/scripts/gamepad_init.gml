@@ -40,8 +40,16 @@ enum gpinput
     size
     }
 
+global.gp_button_pos = gpinput.face1;
+global.gp_button_end = gpinput.padr;
+global.gp_button_len = (global.gp_button_end-global.gp_button_pos)+1;
+global.gp_axis_pos = gpinput.lsu;
+global.gp_axis_end = gpinput.rsr;
+global.gp_axis_len = (global.gp_axis_end-global.gp_axis_pos)+1;
+
 global.gpcount = 0;
-for(var i=0; i<4; i++;)
+global.gpmax = 4;
+for(var i=0; i<global.gpmax; i++;)
     {
     global.gp[i,gpinfo.connected] = false;
     global.gp[i,gpinfo.name] = "";
@@ -60,7 +68,7 @@ for(var i=0; i<4; i++;)
 
 if (gamepad_is_supported())
     {
-    for(i=0; i<4; i++;)
+    for(i=0; i<global.gpmax; i++;)
         {
         if (gamepad_is_connected(i))
             {

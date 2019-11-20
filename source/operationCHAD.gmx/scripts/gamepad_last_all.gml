@@ -3,7 +3,7 @@
 if (global.gpcount == 0)
     return(-1);
 
-for(var i=0; i<4; i++;)
+for(var i=0; i<global.gpmax; i++;)
     {
     if (!global.gp[i,gpinfo.connected])
     or (global.gp[i,gpinfo.last] == -1)
