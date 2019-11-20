@@ -329,8 +329,7 @@ switch(move_state)
             else
                 {
                 // move and aim
-                if (wc_l)
-                or (wc_r)
+                if (wc_l) or (wc_r)
                     {
                     xspeed = 0;
                     
@@ -353,7 +352,9 @@ switch(move_state)
                         {
                         yspeed = wc_speed*v_dir;
                         
-                        if (detect_mb) and (mb_id == noone) and (input_up) 
+                        // transition from wall climb to monkey bar
+                        if ((input_right and wc_r) or (input_left and wc_l))
+                        and (detect_mb) and (mb_id == noone) and (input_up)
                             {
                             var temp_mb = detect_mb_id;
                             var xh = x-temp_mb.x;
