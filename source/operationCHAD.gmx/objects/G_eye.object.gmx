@@ -27,8 +27,9 @@
             <kind>1</kind>
             <string>enemy_init(20)
 
-DIR=0
+G_pupil_spr = -1;
 
+DIR=0
 LEN=7
 </string>
           </argument>

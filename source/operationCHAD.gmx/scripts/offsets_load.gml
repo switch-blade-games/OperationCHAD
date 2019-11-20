@@ -1,5 +1,7 @@
 /// offsets_load(path);
 
+/*
+
 var file = argument[0];
 if (file_exists(file))
     {
@@ -53,3 +55,5 @@ if (file_exists(file))
     }
 
 return(true);
+
+*/
