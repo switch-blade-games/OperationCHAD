@@ -464,6 +464,7 @@
         <sprites name="moto">
           <sprite>sprites\stone_vehicle_moto_spr</sprite>
         </sprites>
+        <sprite>sprites\stone_idle_spr</sprite>
       </sprites>
       <sprites name="102-Yolo">
         <sprite>sprites\yolo_master_spr</sprite>
@@ -1360,6 +1361,7 @@
       <object>objects\enemy_X</object>
       <object>objects\enemy_spawn_parent</object>
     </objects>
+    <object>objects\ani_tester</object>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
