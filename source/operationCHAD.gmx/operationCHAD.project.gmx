@@ -465,6 +465,7 @@
           <sprite>sprites\stone_vehicle_moto_spr</sprite>
         </sprites>
         <sprite>sprites\stone_idle_spr</sprite>
+        <sprite>sprites\stone_walk_test_spr</sprite>
       </sprites>
       <sprites name="102-Yolo">
         <sprite>sprites\yolo_master_spr</sprite>
@@ -478,6 +479,8 @@
       </sprites>
       <sprites name="103-Pumpkin">
         <sprite>sprites\pumpkin_fly_spr</sprite>
+        <sprite>sprites\pumpkin_idle_test_spr</sprite>
+        <sprite>sprites\pumpkin_walk_test_spr</sprite>
       </sprites>
       <sprites name="104-Fox">
         <sprite>sprites\fox_fly_spr</sprite>
