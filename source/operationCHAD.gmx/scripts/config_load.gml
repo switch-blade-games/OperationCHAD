@@ -28,7 +28,6 @@ or (ds_map_size(_map) < config.size-1)
 var _key = ds_map_find_first(_map);
 while(ds_map_exists(_map,_key))
     {
-    show_debug_message("KEY: "+string(_key)+" / val: "+string(_map[?_key]));
     if (ds_map_exists(global.CFGmap,_key))
         {
         var _index = global.CFGmap[?_key];

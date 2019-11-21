@@ -41,6 +41,8 @@
     <sounds name="effects">
       <sound>sound\explode_snd</sound>
     </sounds>
+    <sound>sound\snd_menu_hover</sound>
+    <sound>sound\snd_menu_select</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="000-Front End">
@@ -793,7 +795,7 @@
       <script>scripts\gamepad_last.gml</script>
       <script>scripts\gamepad_lastvalue.gml</script>
     </scripts>
-    <scripts name="settings">
+    <scripts name="config">
       <script>scripts\config_init.gml</script>
       <script>scripts\config_default.gml</script>
       <script>scripts\config_save.gml</script>

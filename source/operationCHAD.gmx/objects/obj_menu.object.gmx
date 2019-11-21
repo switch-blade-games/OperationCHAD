@@ -25,31 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_color = global.DARKpurple;
+            <string>// view/window/gui
+view_xview[0] = 0;
+view_yview[0] = 0;
+view_wview[0] = 400;
+view_hview[0] = 240;
+
+// background
+background_color = global.DARKpurple;
 
 // init settings
 config_init();
 // load settings if they exist or save them if they don't
 config_load();
 config_save();
-
-// view/window/gui
-view_xview[0] = 0;
-view_yview[0] = 0;
-view_wview[0] = 400;
-view_hview[0] = 240;
-
-display_reset(0,global.CFG[config.vsync]);
-if (global.CFG[config.fullscreen])
-    window_set_fullscreen(true);
-else
-    {
-    var _scl = global.CFG[config.windowScale];
-    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
-    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
-    }
-surface_resize(application_surface,view_wview[0],view_hview[0]);
-display_set_gui_size(view_wview[0],view_hview[0]);
+config_action(config.fullscreen);
 
 // gamepad
 gamepad_init();
@@ -70,8 +60,17 @@ if (!instance_exists(obj_shader))
 
 menu = 0;
 select = 0;
+select_min = 0;
+select_max = 0;
+select_enable = false;
 selectx = 0;
+selectx_min = 0;
+selectx_max = 0;
+selectx_enable = false;
 selecty = 0;
+selecty_min = 0;
+selecty_max = 0;
+selecty_enable = false;
 rebind = false;
 
 bg_alpha = 1;
@@ -102,6 +101,15 @@ CLOUDspe = -3;
             <kind>1</kind>
             <string>gamepad_update();
 
+var input_left = keyboard_check_pressed(vk_left) or gamepad_check_pressed_all(gpinput.padl);
+var input_right = keyboard_check_pressed(vk_right) or gamepad_check_pressed_all(gpinput.padr);
+var input_up = keyboard_check_pressed(vk_up) or gamepad_check_pressed_all(gpinput.padu);
+var input_down = keyboard_check_pressed(vk_down) or gamepad_check_pressed_all(gpinput.padd);
+
+select_enable = false;
+selectx_enable = false;
+selecty_enable = false;
+
 var pressed = false;
 if (keyboard_check_pressed(ord("Z")))
 or (keyboard_check_pressed(ord("X")))
@@ -130,12 +138,8 @@ switch(menu)
                 game_end();
             }
         
-        if (keyboard_check_pressed(vk_up))
-        or (gamepad_check_pressed_all(gpinput.padu))
-            select = max(0,select-1);
-        if (keyboard_check_pressed(vk_down))
-        or (gamepad_check_pressed_all(gpinput.padd))
-            select = min(3,select+1);
+        select_enable = true;
+        select_max = 3;
         break;
     
     case 2: // settings
@@ -171,12 +175,8 @@ switch(menu)
                 }
             }
         
-        if (keyboard_check_pressed(vk_up))
-        or (gamepad_check_pressed_all(gpinput.padu))
-            select = max(0,select-1);
-        if (keyboard_check_pressed(vk_down))
-        or (gamepad_check_pressed_all(gpinput.padd))
-            select = min(4,select+1);
+        select_enable = true;
+        select_max = 4;
         break;
     
     case 3: // video settings
@@ -185,75 +185,46 @@ switch(menu)
             if (select == 0)
                 {
                 global.CFG[config.fullscreen] = !global.CFG[config.fullscreen];
-                window_set_fullscreen(global.CFG[config.fullscreen]);
-                if (!global.CFG[config.fullscreen])
-                    {
-                    var _scl = global.CFG[config.windowScale];
-                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
-                    }
+                config_action(config.fullscreen);
                 }
             else if (select == 1)
                 {
                 global.CFG[config.windowScale]++;
-                
-                var dw = display_get_width();
-                var dh = display_get_height();
-                if (view_wview[0]*global.CFG[config.windowScale] &gt; dw)
-                or (view_hview[0]*global.CFG[config.windowScale] &gt; dh)
-                    global.CFG[config.windowScale] = 1;
-                
-                if (!global.CFG[config.fullscreen])
-                    {
-                    var _scl = global.CFG[config.windowScale];
-                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
-                    }
+                config_action(config.windowScale);
                 }
             else if (select == 2) // vsync
                 {
                 global.CFG[config.vsync] = !global.CFG[config.vsync];
+                config_action(config.vsync);
                 }
             else if (select == 3)
                 {
                 global.CFG[config.CRTwarp] += 0.25;
                 if (global.CFG[config.CRTwarp] &gt; 1)
                     global.CFG[config.CRTwarp] = 0;
+                config_action(config.CRTwarp);
                 }
             else if (select == 4)
                 {
                 global.CFG[config.CRTscan] += 0.25;
                 if (global.CFG[config.CRTscan] &gt; 1)
                     global.CFG[config.CRTscan] = 0;
+                config_action(config.CRTscan);
                 }
             else if (select == 5)
+                {
                 global.CFG[config.particles] = !global.CFG[config.particles];
+                config_action(config.particles);
+                }
             else if (select == 6)
                 {
-                display_reset(0,global.CFG[config.vsync]);
-                
-                if (global.CFG[config.fullscreen])
-                    window_set_fullscreen(true);
-                else
-                    {
-                    var _scl = global.CFG[config.windowScale];
-                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
-                    }
-                surface_resize(application_surface,view_wview[0],view_hview[0]);
-                display_set_gui_size(view_wview[0],view_hview[0]);
-                
                 menu = 2;
                 select = 0;
                 }
             }
         
-        if (keyboard_check_pressed(vk_up))
-        or (gamepad_check_pressed_all(gpinput.padu))
-            select = max(0,select-1);
-        if (keyboard_check_pressed(vk_down))
-        or (gamepad_check_pressed_all(gpinput.padd))
-            select = min(7,select+1);
+        select_enable = true;
+        select_max = 7;
         break;
     
     case 4: // audio settings
@@ -278,12 +249,8 @@ switch(menu)
                 }
             }
         
-        if (keyboard_check_pressed(vk_up))
-        or (gamepad_check_pressed_all(gpinput.padu))
-            select = max(0,select-1);
-        if (keyboard_check_pressed(vk_down))
-        or (gamepad_check_pressed_all(gpinput.padd))
-            select = min(2,select+1);
+        select_enable = true;
+        select_max = 2;
         break;
     
     case 5: // keyboard controls
@@ -334,12 +301,8 @@ switch(menu)
                     }
                 }
             
-            if (keyboard_check_pressed(vk_up))
-            or (gamepad_check_pressed_all(gpinput.padu))
-                selecty = max(0,selecty-1);
-            if (keyboard_check_pressed(vk_down))
-            or (gamepad_check_pressed_all(gpinput.padd))
-                selecty = min(selecty+1,7);
+            selecty_enable = true;
+            selecty_max = 7;
             }
         break;
     
@@ -404,20 +367,52 @@ switch(menu)
                     }
                 }
             
-            if (keyboard_check_pressed(vk_left))
-            or (gamepad_check_pressed_all(gpinput.padl))
-                selectx = max(0,selectx-1);
-            if (keyboard_check_pressed(vk_right))
-            or (gamepad_check_pressed_all(gpinput.padr))
-                selectx = min(selectx+1,1);
-            if (keyboard_check_pressed(vk_up))
-            or (gamepad_check_pressed_all(gpinput.padu))
-                selecty = max(0,selecty-1);
-            if (keyboard_check_pressed(vk_down))
-            or (gamepad_check_pressed_all(gpinput.padd))
-                selecty = min(selecty+1,7);
+            selectx_enable = true;
+            selectx_max = 1;
+            selecty_enable = true;
+            selecty_max = 7;
             }
         break;
+    }
+
+if (pressed)
+    snd_play(snd_menu_select);
+
+if (select_enable)
+    {
+    if (input_up xor input_down)
+        {
+        select += input_down-input_up;
+        snd_play(snd_menu_hover);
+        }
+    if (select &lt; select_min)
+        select = select_max;
+    else if (select &gt; select_max)
+        select = select_min;
+    }
+if (selectx_enable)
+    {
+    if (input_left xor input_right)
+        {
+        selectx += input_right-input_left;
+        snd_play(snd_menu_hover);
+        }
+    if (selectx &lt; selectx_min)
+        selectx = selectx_max;
+    else if (selectx &gt; selectx_max)
+        selectx = selectx_min;
+    }
+if (selecty_enable)
+    {
+    if (input_up xor input_down)
+        {
+        selecty += input_down-input_up;
+        snd_play(snd_menu_hover);
+        }
+    if (selecty &lt; selecty_min)
+        selecty = selecty_max;
+    else if (selecty &gt; selecty_max)
+        selecty = selecty_min;
     }
 </string>
           </argument>
