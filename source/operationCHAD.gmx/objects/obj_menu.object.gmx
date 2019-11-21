@@ -28,12 +28,10 @@
             <string>background_color = global.DARKpurple;
 
 // init settings
-settings_init();
+config_init();
 // load settings if they exist or save them if they don't
-settings_path = working_directory+"settings.ini";
-if (file_exists(settings_path))
-    settings_load(settings_path);
-settings_save(settings_path);
+config_load();
+config_save();
 
 // view/window/gui
 view_xview[0] = 0;
@@ -41,14 +39,14 @@ view_yview[0] = 0;
 view_wview[0] = 400;
 view_hview[0] = 240;
 
-display_reset(global.aa,global.vsync);
-texture_set_interpolation(global.aa &gt; 0);
-if (global.fullscreen)
+display_reset(0,global.CFG[config.vsync]);
+if (global.CFG[config.fullscreen])
     window_set_fullscreen(true);
 else
     {
-    window_set_size(view_wview[0]*global.scale,view_hview[0]*global.scale);
-    window_set_position(display_get_width()/2-(view_wview[0]/2)*global.scale,display_get_height()/2-(view_hview[0]/2)*global.scale);
+    var _scl = global.CFG[config.windowScale];
+    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
+    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
     }
 surface_resize(application_surface,view_wview[0],view_hview[0]);
 display_set_gui_size(view_wview[0],view_hview[0]);
@@ -57,10 +55,10 @@ display_set_gui_size(view_wview[0],view_hview[0]);
 gamepad_init();
 
 // game globals
+global.pause = false;
 global.music = -1;
 global.FODmin = 160;
 global.FODmax = 256;
-global.pause = false;
 global.xnudge = 0;
 global.ynudge = 0;
 global.xshake = 0;
@@ -165,11 +163,11 @@ switch(menu)
                 selectx = 0;
                 selecty = 0;
                 }
-            else if (select == 4)
+            else if (select == 4) // back
                 {
                 menu = 1;
                 select = 0;
-                settings_save(settings_path);
+                config_save();
                 }
             }
         
@@ -186,74 +184,64 @@ switch(menu)
             {
             if (select == 0)
                 {
-                global.fullscreen = !global.fullscreen;
-                window_set_fullscreen(global.fullscreen);
-                if (!global.fullscreen)
+                global.CFG[config.fullscreen] = !global.CFG[config.fullscreen];
+                window_set_fullscreen(global.CFG[config.fullscreen]);
+                if (!global.CFG[config.fullscreen])
                     {
-                    window_set_size(view_wview[0]*global.scale,view_hview[0]*global.scale);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*global.scale,display_get_height()/2-(view_hview[0]/2)*global.scale);
+                    var _scl = global.CFG[config.windowScale];
+                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
+                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
                     }
                 }
             else if (select == 1)
                 {
-                global.scale++;
+                global.CFG[config.windowScale]++;
                 
                 var dw = display_get_width();
                 var dh = display_get_height();
-                if (view_wview[0]*global.scale &gt; dw)
-                or (view_hview[0]*global.scale &gt; dh)
-                    global.scale = 1;
+                if (view_wview[0]*global.CFG[config.windowScale] &gt; dw)
+                or (view_hview[0]*global.CFG[config.windowScale] &gt; dh)
+                    global.CFG[config.windowScale] = 1;
                 
-                if (!global.fullscreen)
+                if (!global.CFG[config.fullscreen])
                     {
-                    window_set_size(view_wview[0]*global.scale,view_hview[0]*global.scale);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*global.scale,display_get_height()/2-(view_hview[0]/2)*global.scale);
+                    var _scl = global.CFG[config.windowScale];
+                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
+                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
                     }
                 }
             else if (select == 2) // vsync
                 {
-                global.vsync = !global.vsync;
+                global.CFG[config.vsync] = !global.CFG[config.vsync];
                 }
-            else if (select == 3) // anti-aliasing
+            else if (select == 3)
                 {
-                if (global.aa == 0) and (display_aa &amp; 2 == 2)
-                    global.aa = 2;
-                else if (global.aa == 2) and (display_aa &amp; 4 == 4)
-                    global.aa = 4;
-                else if (global.aa == 4) and (display_aa &amp; 8 == 8)
-                    global.aa = 8;
-                else if (global.aa == 8)
-                    global.aa = 0;
+                global.CFG[config.CRTwarp] += 0.25;
+                if (global.CFG[config.CRTwarp] &gt; 1)
+                    global.CFG[config.CRTwarp] = 0;
                 }
             else if (select == 4)
                 {
-                global.curve += 0.25;
-                if (global.curve &gt; 1)
-                    global.curve = 0;
+                global.CFG[config.CRTscan] += 0.25;
+                if (global.CFG[config.CRTscan] &gt; 1)
+                    global.CFG[config.CRTscan] = 0;
                 }
             else if (select == 5)
-                {
-                global.scan += 0.25;
-                if (global.scan &gt; 1)
-                    global.scan = 0;
-                }
+                global.CFG[config.particles] = !global.CFG[config.particles];
             else if (select == 6)
-                global.particles = !global.particles;
-            else if (select == 7)
                 {
-                display_reset(global.aa,global.vsync);
+                display_reset(0,global.CFG[config.vsync]);
                 
-                if (global.fullscreen)
+                if (global.CFG[config.fullscreen])
                     window_set_fullscreen(true);
                 else
                     {
-                    window_set_size(view_wview[0]*global.scale,view_hview[0]*global.scale);
-                    window_set_position(display_get_width()/2-(view_wview[0]/2)*global.scale,display_get_height()/2-(view_hview[0]/2)*global.scale);
+                    var _scl = global.CFG[config.windowScale];
+                    window_set_size(view_wview[0]*_scl,view_hview[0]*_scl);
+                    window_set_position(display_get_width()/2-(view_wview[0]/2)*_scl,display_get_height()/2-(view_hview[0]/2)*_scl);
                     }
                 surface_resize(application_surface,view_wview[0],view_hview[0]);
                 display_set_gui_size(view_wview[0],view_hview[0]);
-                
-                texture_set_interpolation(true);
                 
                 menu = 2;
                 select = 0;
@@ -273,15 +261,15 @@ switch(menu)
             {
             if (select == 0)
                 {
-                global.bgm_gain += 0.25;
-                if (global.bgm_gain &gt; 1)
-                    global.bgm_gain = 0;
+                global.CFG[config.BGMgain] += 0.25;
+                if (global.CFG[config.BGMgain] &gt; 1)
+                    global.CFG[config.BGMgain] = 0;
                 }
             else if (select == 1)
                 {
-                global.sfx_gain += 0.25;
-                if (global.sfx_gain &gt; 1)
-                    global.sfx_gain = 0;
+                global.CFG[config.SFXgain] += 0.25;
+                if (global.CFG[config.SFXgain] &gt; 1)
+                    global.CFG[config.SFXgain] = 0;
                 }
             else if (select == 2)
                 {
@@ -299,6 +287,8 @@ switch(menu)
         break;
     
     case 5: // keyboard controls
+        var _start  = config.keyL1;
+        var _end    = config.keySwap1;
         if (rebind)
             {
             var newkey = key_last();
@@ -306,74 +296,36 @@ switch(menu)
                 {
                 rebind = false;
                 
-                // unbind from other existing keys
-                if (global.key_left[0] == newkey)
-                    global.key_left[0] = -2;
-                if (global.key_right[0] == newkey)
-                    global.key_right[0] = -2;
-                if (global.key_up[0] == newkey)
-                    global.key_up[0] = -2;
-                if (global.key_down[0] == newkey)
-                    global.key_down[0] = -2;
-                if (global.key_jump[0] == newkey)
-                    global.key_jump[0] = -2;
-                if (global.key_fire[0] == newkey)
-                    global.key_fire[0] = -2;
-                if (global.key_lock[0] == newkey)
-                    global.key_lock[0] = -2;
-                
+                // resolve conflict by unbinding existing keybind
+                for(var i=_start; i&lt;=_end; i++;)
+                    {
+                    if (global.CFG[i] == newkey)
+                        global.CFG[i] = -2;
+                    }
                 // bind to new key
-                if (selecty == 0)
-                    global.key_left[0] = newkey;
-                else if (selecty == 1)
-                    global.key_right[0] = newkey;
-                else if (selecty == 2)
-                    global.key_up[0] = newkey;
-                else if (selecty == 3)
-                    global.key_down[0] = newkey;
-                else if (selecty == 4)
-                    global.key_jump[0] = newkey;
-                else if (selecty == 5)
-                    global.key_fire[0] = newkey;
-                else if (selecty == 6)
-                    global.key_lock[0] = newkey;
+                if (selecty &gt;= 0) and (selecty &lt;= 6)
+                    global.CFG[_start+selecty] = newkey;
                 }
             }
         else
             {
             if (pressed)
                 {
-                if (selecty &lt;= 6)
+                if (selecty &gt;= 0) and (selecty &lt;= 6)
                     {
                     rebind = true;
-                    if (selecty == 0)
-                        global.key_left[0] = -1;
-                    else if (selecty == 1)
-                        global.key_right[0] = -1;
-                    else if (selecty == 2)
-                        global.key_up[0] = -1;
-                    else if (selecty == 3)
-                        global.key_down[0] = -1;
-                    else if (selecty == 4)
-                        global.key_jump[0] = -1;
-                    else if (selecty == 5)
-                        global.key_fire[0] = -1;
-                    else if (selecty == 6)
-                        global.key_lock[0] = -1;
+                    // temp unset keybind
+                    global.CFG[_start+selecty] = -1;
                     }
                 else
                     {
-                    var ready = true;
-                    if (global.key_up[0] &lt; 0)
-                    or (global.key_down[0] &lt; 0)
-                    or (global.key_left[0] &lt; 0)
-                    or (global.key_right[0] &lt; 0)
-                    or (global.key_jump[0] &lt; 0)
-                    or (global.key_fire[0] &lt; 0)
-                    or (global.key_lock[0] &lt; 0)
-                        ready = false;
-                    
                     // return to settings menu
+                    var ready = true;
+                    for(var i=_start; i&lt;=_end; i++;)
+                        {
+                        if (global.CFG[i] &lt; 0)
+                            ready = false;
+                        }
                     if (ready)
                         {
                         menu = 2;
@@ -381,6 +333,7 @@ switch(menu)
                         }
                     }
                 }
+            
             if (keyboard_check_pressed(vk_up))
             or (gamepad_check_pressed_all(gpinput.padu))
                 selecty = max(0,selecty-1);
@@ -391,90 +344,55 @@ switch(menu)
         break;
     
     case 6: // gamepad controls
+        if (selectx == 0)
+            {
+            var _start  = config.padL1;
+            var _end    = config.padSwap1;
+            }
+        else
+            {
+            var _start  = config.padL2;
+            var _end    = config.padSwap2;
+            }
+        
         if (rebind)
             {
             var newpad = gamepad_last_all();
             if (newpad &gt; -1)
                 {
                 rebind = false;
-                
-                // unbind from other existing keys
-                if (global.pad_left[selectx] == newpad)
-                    global.pad_left[selectx] = -2;
-                if (global.pad_right[selectx] == newpad)
-                    global.pad_right[selectx] = -2;
-                if (global.pad_up[selectx] == newpad)
-                    global.pad_up[selectx] = -2;
-                if (global.pad_down[selectx] == newpad)
-                    global.pad_down[selectx] = -2;
-                if (global.pad_jump[selectx] == newpad)
-                    global.pad_jump[selectx] = -2;
-                if (global.pad_fire[selectx] == newpad)
-                    global.pad_fire[selectx] = -2;
-                if (global.pad_lock[selectx] == newpad)
-                    global.pad_lock[selectx] = -2;
-                
+                // resolve conflict by unbinding existing keybind
+                for(var i=_start; i&lt;=_end; i++;)
+                    {
+                    if (global.CFG[i] == newpad)
+                        global.CFG[i] = -2;
+                    }
                 // bind to new key
-                if (selecty == 0)
-                    global.pad_left[selectx] = newpad;
-                else if (selecty == 1)
-                    global.pad_right[selectx] = newpad;
-                else if (selecty == 2)
-                    global.pad_up[selectx] = newpad;
-                else if (selecty == 3)
-                    global.pad_down[selectx] = newpad;
-                else if (selecty == 4)
-                    global.pad_jump[selectx] = newpad;
-                else if (selecty == 5)
-                    global.pad_fire[selectx] = newpad;
-                else if (selecty == 6)
-                    global.pad_lock[selectx] = newpad;
+                if (selecty &gt;= 0) and (selecty &lt;= 6)
+                    global.CFG[_start+selecty] = newpad;
                 }
             }
         else
             {
             if (pressed)
                 {
-                if (selecty &lt;= 6)
+                if (selecty &gt;= 0) and (selecty &lt;= 6)
                     {
                     rebind = true;
-                    if (selecty == 0)
-                        global.pad_left[selectx] = -1;
-                    else if (selecty == 1)
-                        global.pad_right[selectx] = -1;
-                    else if (selecty == 2)
-                        global.pad_up[selectx] = -1;
-                    else if (selecty == 3)
-                        global.pad_down[selectx] = -1;
-                    else if (selecty == 4)
-                        global.pad_jump[selectx] = -1;
-                    else if (selecty == 5)
-                        global.pad_fire[selectx] = -1;
-                    else if (selecty == 6)
-                        global.pad_lock[selectx] = -1;
+                    // temp unset keybind
+                    global.CFG[_start+selecty] = -1;
                     }
                 else
                     {
+                    // return to settings menu
                     if (selectx == 0)
                         {
                         var ready = true;
-                        if (global.pad_up[0] &lt; 0)
-                        or (global.pad_down[0] &lt; 0)
-                        or (global.pad_left[0] &lt; 0)
-                        or (global.pad_right[0] &lt; 0)
-                        or (global.pad_jump[0] &lt; 0)
-                        or (global.pad_fire[0] &lt; 0)
-                        or (global.pad_lock[0] &lt; 0)
-                        or (global.pad_up[1] &lt; 0)
-                        or (global.pad_down[1] &lt; 0)
-                        or (global.pad_left[1] &lt; 0)
-                        or (global.pad_right[1] &lt; 0)
-                        or (global.pad_jump[1] &lt; 0)
-                        or (global.pad_fire[1] &lt; 0)
-                        or (global.pad_lock[1] &lt; 0)
-                            ready = false;
-                        
-                        // return to settings menu
+                        for(var i=config.padL1; i&lt;=config.padSwap2; i++;)
+                            {
+                            if (global.CFG[i] &lt; 0)
+                                ready = false;
+                            }
                         if (ready)
                             {
                             menu = 2;
@@ -482,9 +400,10 @@ switch(menu)
                             }
                         }
                     else if (selectx == 1)
-                        global.btnstyle = !global.btnstyle;
+                        global.CFG[config.padType] = !global.CFG[config.padType];
                     }
                 }
+            
             if (keyboard_check_pressed(vk_left))
             or (gamepad_check_pressed_all(gpinput.padl))
                 selectx = max(0,selectx-1);
@@ -541,7 +460,7 @@ switch(menu)
             else
                 {
                 draw_text_outline(view_wview[0]/2,230," -  or  - to Start!");
-                if (global.btnstyle)
+                if (global.CFG[config.padType])
                     {
                     draw_sprite(spr_buttons_xbox,0,view_wview[0]/2-64,230);
                     draw_sprite(spr_buttons_xbox,2,view_wview[0]/2-18,230);
@@ -583,16 +502,15 @@ switch(menu)
     
     case 3: // video settings
         var i = 0;
-        draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.fullscreen));
-        draw_text_outline(60,64+i++*18,"WINDOW SCALE: "+string(global.scale)+"X");
-        draw_text_outline(60,64+i++*18,"VSYNC: "+val_to_text(0,global.vsync));
-        draw_text_outline(60,64+i++*18,"ANTI-ALIASING: "+val_to_text(3,global.aa));
-        draw_text_outline(60,64+i++*18,"CRT WARP: "+val_to_text(1,global.curve));
-        draw_text_outline(60,64+i++*18,"CRT SCANLINES: "+val_to_text(1,global.scan));
-        draw_text_outline(60,64+i++*18,"PARTICLES: "+val_to_text(0,global.particles));
+        draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.CFG[config.fullscreen]));
+        draw_text_outline(60,64+i++*18,"WINDOW SCALE: "+string(global.CFG[config.windowScale])+"X");
+        draw_text_outline(60,64+i++*18,"VSYNC: "+val_to_text(0,global.CFG[config.vsync]));
+        draw_text_outline(60,64+i++*18,"CRT WARP: "+val_to_text(1,global.CFG[config.CRTwarp]));
+        draw_text_outline(60,64+i++*18,"CRT SCANLINES: "+val_to_text(1,global.CFG[config.CRTscan]));
+        draw_text_outline(60,64+i++*18,"PARTICLES: "+val_to_text(0,global.CFG[config.particles]));
         draw_text_outline(60,202,"BACK");
         
-        if (select &lt; 7)
+        if (select &lt; 6)
             draw_sprite(spr_camera_arrow,1,40,72+select*18);
         else
             draw_sprite(spr_camera_arrow,1,40,210);
@@ -600,8 +518,8 @@ switch(menu)
     
     case 4: // audio settings
         var i = 0;
-        draw_text_outline(60,64+i++*18,"MUSIC VOLUME: "+val_to_text(1,global.bgm_gain));
-        draw_text_outline(60,64+i++*18,"SFX VOLUME: "+val_to_text(1,global.sfx_gain));
+        draw_text_outline(60,64+i++*18,"MUSIC VOLUME: "+val_to_text(1,global.CFG[config.BGMgain]));
+        draw_text_outline(60,64+i++*18,"SFX VOLUME: "+val_to_text(1,global.CFG[config.SFXgain]));
         draw_text_outline(60,202,"BACK");
         
         if (select &lt; 2)
@@ -617,19 +535,19 @@ switch(menu)
         draw_text_outline(60,64+i++*18,"RIGHT");
         draw_text_outline(60,64+i++*18,"UP");
         draw_text_outline(60,64+i++*18,"DOWN");
-        draw_text_outline(60,64+i++*18,"JUMP");
         draw_text_outline(60,64+i++*18,"FIRE");
+        draw_text_outline(60,64+i++*18,"JUMP");
         draw_text_outline(60,64+i++*18,"LOCK");
         
         var i = 0;
         draw_text_outline(160,38,"KEYBOARD",$AAAAAA);
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_left[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_right[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_up[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_down[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_jump[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_fire[0])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.key_lock[0])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyL1])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyR1])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyU1])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyD1])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyFire1])))
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyJump1])));
+        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyLock1])));
         
         draw_text_outline(60,202,"BACK");
         
@@ -646,34 +564,34 @@ switch(menu)
         draw_text_outline(60,64+i++*18,"RIGHT");
         draw_text_outline(60,64+i++*18,"UP");
         draw_text_outline(60,64+i++*18,"DOWN");
-        draw_text_outline(60,64+i++*18,"JUMP");
         draw_text_outline(60,64+i++*18,"FIRE");
+        draw_text_outline(60,64+i++*18,"JUMP");
         draw_text_outline(60,64+i++*18,"LOCK");
         
-        if (global.btnstyle)
-            var btnspr = spr_buttons_xbox;
+        if (global.CFG[config.padType])
+            var pad_spr = spr_buttons_xbox;
         else
-            var btnspr = spr_buttons_ps;
+            var pad_spr = spr_buttons_ps;
         
         var i = 0;
         draw_text_outline(160,38,"GAMEPAD 1",$AAAAAA);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_left[0]),160,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_right[0]),160,72+i++*18)
-        draw_sprite(btnspr,pad_to_sprite(global.pad_up[0]),160,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_down[0]),160,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_jump[0]),160,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_fire[0]),160,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_lock[0]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL1]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR1]),160,72+i++*18)
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU1]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD1]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire1]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump1]),160,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock1]),160,72+i++*18);
         
         var i = 0;
         draw_text_outline(284,38,"GAMEPAD 2",$AAAAAA);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_left[1]),284,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_right[1]),284,72+i++*18)
-        draw_sprite(btnspr,pad_to_sprite(global.pad_up[1]),284,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_down[1]),284,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_jump[1]),284,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_fire[1]),284,72+i++*18);
-        draw_sprite(btnspr,pad_to_sprite(global.pad_lock[1]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL2]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR2]),284,72+i++*18)
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU2]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD2]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire2]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump2]),284,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock2]),284,72+i++*18);
         
         draw_text_outline(60,202,"BACK");
         draw_text_outline(170,202,"TOGGLE STYLE");

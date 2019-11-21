@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i=0;
+            <string>WALK = 0;
+
+var i=0;
 
 NUM=5;
 

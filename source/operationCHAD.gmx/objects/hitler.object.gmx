@@ -253,10 +253,9 @@ alarm[1]=SHOTtime
           <argument>
             <kind>1</kind>
             <string>if(state=PAINT)
-    sprite_index=hitler_paint_spr
-    
-if(state=SHOOT)
-    sprite_index=hitler_shoot_spr
+    sprite_index=hitler_paint_spr;
+else if(state=SHOOT)
+    sprite_index=hitler_paint_spr; // hitler_shoot_spr
 
 draw_enemy_self()
 </string>

@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0.1
+            <string>abortion_light_BG_spr = -1;
+image_speed=0.1
 </string>
           </argument>
         </arguments>
@@ -48,8 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_tiled(abortion_light_BG_spr,-1,view_xview[0]/3,0)
-
+            <string>draw_sprite_tiled(abortion_light_BG_spr,-1,view_xview[0]/3,0);
 </string>
           </argument>
         </arguments>

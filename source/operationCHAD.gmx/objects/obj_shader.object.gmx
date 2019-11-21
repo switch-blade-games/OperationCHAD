@@ -159,8 +159,8 @@ if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],v
 else
     {
     shader_set(shd_crt);
-    shader_set_uniform_f(u_curve,global.curve);
-    shader_set_uniform_f(u_scan,global.scan);
+    shader_set_uniform_f(u_curve,global.CFG[config.CRTwarp]);
+    shader_set_uniform_f(u_scan,global.CFG[config.CRTscan]);
     draw_surface(last,0,0);
     shader_reset();
     }

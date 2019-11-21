@@ -21,6 +21,6 @@ if (argument_count > 4)
 
 audio_stop_sound(_snd);
 var _aud = audio_play_sound_at(_snd,_sx,_sy,0,global.FODmin,global.FODmax,1,false,0);
-audio_sound_gain(_aud,global.sfx_gain*_vol,0);
+audio_sound_gain(_aud,global.CFG[config.SFXgain]*_vol,0);
 audio_sound_pitch(_aud,1+random_range(-_pit,+_pit));
 return(_aud);

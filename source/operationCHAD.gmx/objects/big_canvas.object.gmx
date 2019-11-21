@@ -61,6 +61,8 @@ ydest=zepplin.y+latchy
 UPspe=1
 
 RESTtime=30
+
+can_tank = 0
 </string>
           </argument>
         </arguments>

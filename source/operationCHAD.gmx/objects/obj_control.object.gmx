@@ -150,8 +150,8 @@ var _player;
 var _players = 0;
 with(par_actor)
     {
-    if (gamepad_slot &gt;= 0) and (gamepad_slot &lt; global.gpmax)
-        _slot[gamepad_slot] = false;
+    if (slot &gt;= 0) and (slot &lt; global.gpmax)
+        _slot[slot] = false;
     else
         {
         _player[_players] = id;
@@ -165,7 +165,7 @@ for(var i=0; i&lt;global.gpmax; i++;)
     {
     if (_slot[i])
         {
-        _player[_index].gamepad_slot = i;
+        _player[_index].slot = i;
         _index++;
         }
     }

@@ -1,5 +1,7 @@
 /// offsets_save(path);
 
+/*
+
 var file = argument[0];
 if (file != "")
     {
@@ -30,3 +32,5 @@ if (file != "")
     buffer_save_ext(buff,file,0,bytes);
     buffer_delete(buff);
     }
+
+*/

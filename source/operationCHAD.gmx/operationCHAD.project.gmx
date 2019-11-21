@@ -797,9 +797,11 @@
       <script>scripts\gamepad_lastvalue.gml</script>
     </scripts>
     <scripts name="settings">
-      <script>scripts\settings_save.gml</script>
-      <script>scripts\settings_load.gml</script>
-      <script>scripts\settings_init.gml</script>
+      <script>scripts\config_init.gml</script>
+      <script>scripts\config_default.gml</script>
+      <script>scripts\config_save.gml</script>
+      <script>scripts\config_load.gml</script>
+      <script>scripts\config_action.gml</script>
     </scripts>
     <scripts name="enemies">
       <script>scripts\enemy_init.gml</script>
@@ -1327,8 +1329,8 @@
     <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
     <objects name="JB_stuff">
-      <object>objects\factory_1_trigger</object>
       <object>objects\dev_cheater</object>
+      <object>objects\factory_1_trigger</object>
       <object>objects\practice_target</object>
     </objects>
     <objects name="Cutscene">
