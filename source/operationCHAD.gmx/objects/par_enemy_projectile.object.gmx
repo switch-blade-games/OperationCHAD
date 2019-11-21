@@ -51,7 +51,7 @@
             <string>if (team == other.team) or (other.nohit)
     exit;
 
-if (global.particles)
+if (global.CFG[config.particles])
     {
     var spr = other.sprite_index;
     var ind = other.image_index;
@@ -84,73 +84,6 @@ if (!other.invulnerable)
     }
 
 instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_jt">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// bullets pass through walls
-
-/*
-if (direction &gt; 180) and (direction &lt; 360)
-    instance_destroy();
-*/
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_solid">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// bullets pass through walls
-
-/*
-var dir = point_direction(other.x,other.y,x,y);
-var ldx = lengthdir_x(1,dir);
-var ldy = lengthdir_y(1,dir);
-repeat(5)
-    {
-    var hit_x = other.x+ldx*24 + random_range(-2,2);
-    var hit_y = other.y+ldy*24 + random_range(-2,2);
-    var inst = instance_create(hit_x,hit_y,obj_dust);
-    inst.direction = dir+random_range(-15,15);
-    inst.speed = 2+random(2);
-    }
-
-instance_destroy();
-*/
 </string>
           </argument>
         </arguments>
