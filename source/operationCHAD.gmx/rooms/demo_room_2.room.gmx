@@ -1173,7 +1173,6 @@ instance_create(0,0,cam_deactivator);</code>
     <instance objName="obj_mb" x="200" y="7540" name="inst_74D8DE6B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="220" y="7540" name="inst_4A511DA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="240" y="7540" name="inst_73FC8131" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="7300" y="5100" name="inst_22456F71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7500" y="4920" name="inst_68D5F9B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7520" y="4920" name="inst_DB2CDAAD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7540" y="4920" name="inst_ADE5343F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -1189,12 +1188,15 @@ instance_create(0,0,cam_deactivator);</code>
     <instance objName="monkey_ramp_L" x="7460" y="4940" name="inst_CDB1CE66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7440" y="4940" name="inst_D06ADB41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7480" y="4920" name="inst_CEBB023F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ani_tester" x="260" y="7720" name="inst_3C0FE2D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ani_tester" x="580" y="7660" name="inst_4689F521" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="520" y="7660" name="inst_3C0FE2D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="600" y="7660" name="inst_4689F521" locked="0" code="sprite_index=stone_walk_test_spr&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="720" y="7600" name="inst_99D38023" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="900" y="7680" name="inst_A9E2174A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="1360" y="7620" name="inst_07D22C17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="3300" y="6020" name="inst_563A7851" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="60" y="7640" name="inst_8708BAF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="160" y="7720" name="inst_CE006BB7" locked="0" code="sprite_index=pumpkin_idle_test_spr&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="220" y="7720" name="inst_E7626487" locked="0" code="sprite_index=pumpkin_walk_test_spr&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
