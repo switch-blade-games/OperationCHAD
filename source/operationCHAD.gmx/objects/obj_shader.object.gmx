@@ -35,7 +35,7 @@ surf_temp_c = -1;
 
 // wavy shader uniforms
 u_time = shader_get_uniform(shd_wavy,"time");
-u_warp = shader_get_uniform(shd_wavy,"warp");
+u_wavy = shader_get_uniform(shd_wavy,"wavy");
 u_xFreq = shader_get_uniform(shd_wavy,"xFreq");
 u_xAmp = shader_get_uniform(shd_wavy,"xAmp");
 u_yFreq = shader_get_uniform(shd_wavy,"yFreq");
@@ -43,10 +43,10 @@ u_yAmp = shader_get_uniform(shd_wavy,"yAmp");
 
 // crt shader uniforms
 u_scan = shader_get_uniform(shd_crt,"scan");
-u_curve = shader_get_uniform(shd_crt,"curve");
+u_warp = shader_get_uniform(shd_crt,"warp");
 
 // wavy shader variables
-warp = 0;
+wavy = 0;
 x_freq = 0.75;
 x_amp = 0.02*2;
 y_freq = 1.95;
@@ -115,17 +115,19 @@ if (!surface_exists(surf_temp_b))
 
 var last;
 
+// initial draw
 surface_set_target(surf_temp_a);
 draw_clear(background_color);
 draw_surface(application_surface,0,0);
 surface_reset_target();
 last = surf_temp_a;
 
+// apply wavy shader
 surface_set_target(surf_temp_b);
 draw_clear(background_color);
 shader_set(shd_wavy);
 shader_set_uniform_f(u_time,get_timer()/1000000);
-shader_set_uniform_f(u_warp,warp);
+shader_set_uniform_f(u_wavy,wavy);
 shader_set_uniform_f(u_xFreq,x_freq);
 shader_set_uniform_f(u_xAmp,x_amp);
 shader_set_uniform_f(u_yFreq,y_freq);
@@ -135,6 +137,7 @@ shader_reset();
 surface_reset_target();
 last = surf_temp_b;
 
+// crt shader
 if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
     {
     if (!surface_exists(surf_temp_c))
@@ -151,7 +154,7 @@ if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],v
     draw_set_color($342444);
     draw_rectangle(20,20,220,220,0);
     shader_set(shd_crt);
-    shader_set_uniform_f(u_curve,0.5);
+    shader_set_uniform_f(u_warp,0.5);
     shader_set_uniform_f(u_scan,0.5);
     draw_surface(surf_temp_c,20,20);
     shader_reset();
@@ -159,12 +162,13 @@ if (room == tong_room) and (rectangle_in_rectangle(20,20,220,220,view_xview[0],v
 else
     {
     shader_set(shd_crt);
-    shader_set_uniform_f(u_curve,global.CFG[config.CRTwarp]);
+    shader_set_uniform_f(u_warp,global.CFG[config.CRTwarp]);
     shader_set_uniform_f(u_scan,global.CFG[config.CRTscan]);
     draw_surface(last,0,0);
     shader_reset();
     }
 
+// screen flash
 if (flash &gt; 0)
     {
     flash--;

@@ -637,7 +637,6 @@
     <backgrounds name="0-FrontEnd">
       <background>background\title_BG</background>
       <background>background\title_clouds_BG</background>
-      <background>background\title_banner_BG</background>
       <background>background\title_front_BG</background>
       <background>background\checker_BG</background>
       <background>background\grid_tile_BG</background>

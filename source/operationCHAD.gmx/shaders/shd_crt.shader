@@ -14,35 +14,31 @@ void main()
     v_vTexcoord = in_TextureCoord;
     }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float scan;
-uniform float curve;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float warp;
+uniform float scan;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
 void main()
     {
-    vec2 tc = vec2(v_vTexcoord.x,v_vTexcoord.y);
+    // squared distance from the center
+    vec2 uv = vec2(v_vTexcoord.x,v_vTexcoord.y);
+    vec2 dc = abs(0.5-uv);
+    dc *= dc;
     
-    // distance from the center
-    float dx = abs(0.5-tc.x);
-    float dy = abs(0.5-tc.y);
-    // square it to smooth the edges
-    dx *= dx;
-    dy *= dy;
+    // warp the fragment coordinates
+    uv.x -= 0.5; uv.x *= 1.0+(dc.y*(0.3*warp)); uv.x += 0.5;
+    uv.y -= 0.5; uv.y *= 1.0+(dc.x*(0.4*warp)); uv.y += 0.5;
     
-    tc.x -= 0.5; tc.x *= 1.0+(dy*(0.3*curve)); tc.x += 0.5;
-    tc.y -= 0.5; tc.y *= 1.0+(dx*(0.4*curve)); tc.y += 0.5;
-    
-    // get texel and add in scanline
-    vec4 cta = texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
-    
-    // cutoff
-    float val = abs(sin(v_vTexcoord.y*480.0)*0.6*scan);
-    if(tc.y > 1.0 || tc.x < 0.0 || tc.x > 1.0 || tc.y < 0.0)
-        cta = vec4(0.0,0.0,0.0,val);
-    cta.rgb = mix(cta.rgb,vec3(0.0),val);
-    
-    // apply
-    gl_FragColor = v_vColour*cta;
+    // sample inside boundaries, otherwise set to black
+    if (uv.y > 1.0 || uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0)
+        gl_FragColor = vec4(0.0,0.0,0.0,1.0);
+    else
+        {
+        // determine if we are drawing in a scanline
+        float apply = abs(sin(v_vTexcoord.y*240.0)*0.5*scan);
+        // sample the texture
+        gl_FragColor = vec4(mix(texture2D(gm_BaseTexture,uv).rgb,vec3(0.0),apply),1.0);
+        }
     }

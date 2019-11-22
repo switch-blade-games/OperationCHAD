@@ -15,7 +15,7 @@ void main()
     }
 
 //######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float time;
-uniform float warp;
+uniform float wavy;
 uniform float xAmp;
 uniform float xFreq;
 uniform float yAmp;
@@ -26,10 +26,11 @@ varying vec4 v_vColour;
 
 void main()
     {
+    // warp fragment coordinates
     vec2 tc = vec2(v_vTexcoord.x,v_vTexcoord.y);
-    tc.x += cos(tc.y + time*xFreq)*(xAmp*warp);
-    tc.y += sin(tc.x + time*yFreq)*(yAmp*warp);
+    tc.x += cos(tc.y + time*xFreq)*(xAmp*wavy);
+    tc.y += sin(tc.x + time*yFreq)*(yAmp*wavy);
     
     // apply
-    gl_FragColor = v_vColour*texture2D(gm_BaseTexture,vec2(tc.x,tc.y));
+    gl_FragColor = texture2D(gm_BaseTexture,tc);
     }
