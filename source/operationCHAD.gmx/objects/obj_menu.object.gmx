@@ -59,6 +59,7 @@ if (!instance_exists(obj_shader))
     instance_create(0,0,obj_shader);
 
 menu = 0;
+menu_x = 40;
 select = 0;
 select_min = 0;
 select_max = 0;
@@ -116,6 +117,8 @@ or (keyboard_check_pressed(ord("X")))
 or (gamepad_check_pressed_all(gpinput.face1))
 or (gamepad_check_pressed_all(gpinput.face3))
     pressed = true;
+
+var menu_old = menu;
 
 switch(menu)
     {
@@ -254,8 +257,17 @@ switch(menu)
         break;
     
     case 5: // keyboard controls
-        var _start  = config.keyL1;
-        var _end    = config.keySwap1;
+        if (selectx == 0)
+            {
+            var _start  = config.keyL1;
+            var _end    = config.keySwap1;
+            }
+        else
+            {
+            var _start  = config.keyL2;
+            var _end    = config.keySwap2;
+            }
+        
         if (rebind)
             {
             var newkey = key_last();
@@ -301,6 +313,8 @@ switch(menu)
                     }
                 }
             
+            selectx_enable = true;
+            selectx_max = 1;
             selecty_enable = true;
             selecty_max = 7;
             }
@@ -377,6 +391,9 @@ switch(menu)
 
 if (pressed)
     snd_play(snd_menu_select);
+if (menu != menu_old)
+    menu_x = 32;
+menu_x += (40-menu_x)*0.25;
 
 if (select_enable)
     {
@@ -443,6 +460,10 @@ draw_background_ext(title_front_BG,0,0,1,1,0,-1,alpha);
 draw_background_ext(title_banner_BG,0,0,1,1,0,-1,alpha);
 CLOUDx += CLOUDspe;
 
+menux = round(menu_x);
+col1x = 88;
+col2x = 224;
+
 switch(menu)
     {
     case 0: // title screen
@@ -473,95 +494,105 @@ switch(menu)
         break;
     
     case 1: // main menu
-        draw_text_outline(60,120+00,"1 PLAYER START");
-        draw_text_outline(60,120+20,"2 PLAYER START");
-        draw_text_outline(60,120+40,"OPTIONS");
-        draw_text_outline(60,120+60,"QUIT TO DESKTOP");
+        draw_text_outline(menux,120+00,"1 PLAYER START");
+        draw_text_outline(menux,120+20,"2 PLAYER START");
+        draw_text_outline(menux,120+40,"OPTIONS");
+        draw_text_outline(menux,120+60,"QUIT TO DESKTOP");
         
-        draw_sprite(spr_camera_arrow,1,32,126+select*20);
+        draw_sprite(spr_camera_arrow,1,menux-20,126+select*20);
         break;
     
     case 2: // settings
         var i = 0;
-        draw_text_outline(60,64+i++*18,"VIDEO");
-        draw_text_outline(60,64+i++*18,"AUDIO");
-        draw_text_outline(60,64+i++*18,"KEYBOARD");
-        draw_text_outline(60,64+i++*18,"GAMEPAD");
-        draw_text_outline(60,202,"BACK");
+        draw_text_outline(menux,64+i++*18,"VIDEO");
+        draw_text_outline(menux,64+i++*18,"AUDIO");
+        draw_text_outline(menux,64+i++*18,"KEYBOARD");
+        draw_text_outline(menux,64+i++*18,"GAMEPAD");
+        draw_text_outline(menux,202,"BACK");
         
         if (select &lt;= 3)
-            draw_sprite(spr_camera_arrow,1,40,72+select*18);
+            draw_sprite(spr_camera_arrow,1,menux-20,72+select*18);
         else
-            draw_sprite(spr_camera_arrow,1,40,210);
+            draw_sprite(spr_camera_arrow,1,menux-20,210);
         break;
     
     case 3: // video settings
         var i = 0;
-        draw_text_outline(60,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.CFG[config.fullscreen]));
-        draw_text_outline(60,64+i++*18,"WINDOW SCALE: "+string(global.CFG[config.windowScale])+"X");
-        draw_text_outline(60,64+i++*18,"VSYNC: "+val_to_text(0,global.CFG[config.vsync]));
-        draw_text_outline(60,64+i++*18,"CRT WARP: "+val_to_text(1,global.CFG[config.CRTwarp]));
-        draw_text_outline(60,64+i++*18,"CRT SCANLINES: "+val_to_text(1,global.CFG[config.CRTscan]));
-        draw_text_outline(60,64+i++*18,"PARTICLES: "+val_to_text(0,global.CFG[config.particles]));
-        draw_text_outline(60,202,"BACK");
+        draw_text_outline(menux,64+i++*18,"FULLSCREEN: "+val_to_text(0,global.CFG[config.fullscreen]));
+        draw_text_outline(menux,64+i++*18,"WINDOW SCALE: "+string(global.CFG[config.windowScale])+"X");
+        draw_text_outline(menux,64+i++*18,"VSYNC: "+val_to_text(0,global.CFG[config.vsync]));
+        draw_text_outline(menux,64+i++*18,"CRT WARP: "+val_to_text(1,global.CFG[config.CRTwarp]));
+        draw_text_outline(menux,64+i++*18,"CRT SCANLINES: "+val_to_text(1,global.CFG[config.CRTscan]));
+        draw_text_outline(menux,64+i++*18,"PARTICLES: "+val_to_text(0,global.CFG[config.particles]));
+        draw_text_outline(menux,202,"BACK");
         
         if (select &lt; 6)
-            draw_sprite(spr_camera_arrow,1,40,72+select*18);
+            draw_sprite(spr_camera_arrow,1,menux-20,72+select*18);
         else
-            draw_sprite(spr_camera_arrow,1,40,210);
+            draw_sprite(spr_camera_arrow,1,menux-20,210);
         break;
     
     case 4: // audio settings
         var i = 0;
-        draw_text_outline(60,64+i++*18,"MUSIC VOLUME: "+val_to_text(1,global.CFG[config.BGMgain]));
-        draw_text_outline(60,64+i++*18,"SFX VOLUME: "+val_to_text(1,global.CFG[config.SFXgain]));
-        draw_text_outline(60,202,"BACK");
+        draw_text_outline(menux,64+i++*18,"MUSIC VOLUME: "+val_to_text(1,global.CFG[config.BGMgain]));
+        draw_text_outline(menux,64+i++*18,"SFX VOLUME: "+val_to_text(1,global.CFG[config.SFXgain]));
+        draw_text_outline(menux,202,"BACK");
         
         if (select &lt; 2)
-            draw_sprite(spr_camera_arrow,1,40,72+select*18);
+            draw_sprite(spr_camera_arrow,1,menux-20,72+select*18);
         else
-            draw_sprite(spr_camera_arrow,1,40,210);
+            draw_sprite(spr_camera_arrow,1,menux-20,210);
         break;
     
     case 5: // keyboard controls
         var i = 0;
-        draw_text_outline(60,38,"ACTION",$AAAAAA);
-        draw_text_outline(60,64+i++*18,"LEFT");
-        draw_text_outline(60,64+i++*18,"RIGHT");
-        draw_text_outline(60,64+i++*18,"UP");
-        draw_text_outline(60,64+i++*18,"DOWN");
-        draw_text_outline(60,64+i++*18,"FIRE");
-        draw_text_outline(60,64+i++*18,"JUMP");
-        draw_text_outline(60,64+i++*18,"LOCK");
+        draw_text_outline(menux,38,"ACTION",$AAAAAA);
+        draw_text_outline(menux,64+i++*18,"LEFT");
+        draw_text_outline(menux,64+i++*18,"RIGHT");
+        draw_text_outline(menux,64+i++*18,"UP");
+        draw_text_outline(menux,64+i++*18,"DOWN");
+        draw_text_outline(menux,64+i++*18,"FIRE");
+        draw_text_outline(menux,64+i++*18,"JUMP");
+        draw_text_outline(menux,64+i++*18,"LOCK");
         
         var i = 0;
-        draw_text_outline(160,38,"KEYBOARD",$AAAAAA);
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyL1])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyR1])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyU1])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyD1])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyFire1])))
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyJump1])));
-        draw_text_outline(160,64+i++*18,string(key_to_text(global.CFG[config.keyLock1])));
+        draw_text_outline(menux+col1x,38,"P1 KEYBOARD",$AAAAAA);
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyL1])));
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyR1])));
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyU1])));
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyD1])));
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyFire1])))
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyJump1])));
+        draw_text_outline(menux+col1x,64+i++*18,string(key_to_text(global.CFG[config.keyLock1])));
         
-        draw_text_outline(60,202,"BACK");
+        var i = 0;
+        draw_text_outline(menux+col2x,38,"P2 KEYBOARD",$AAAAAA);
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyL2])));
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyR2])));
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyU2])));
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyD2])));
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyFire2])))
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyJump2])));
+        draw_text_outline(menux+col2x,64+i++*18,string(key_to_text(global.CFG[config.keyLock2])));
+        
+        draw_text_outline(menux+col1x,202,"BACK");
         
         if (selecty &lt; 7)
-            draw_sprite(spr_camera_arrow,1-rebind,140,72+selecty*18);
+            draw_sprite(spr_camera_arrow,1-rebind,menux+col1x-20+selectx*(col2x-col1x),72+selecty*18);
         else
-            draw_sprite(spr_camera_arrow,1,40,210);
+            draw_sprite(spr_camera_arrow,1,menux+col1x-20,210);
         break;
     
     case 6: // gamepad controls
         var i = 0;
-        draw_text_outline(60,38,"ACTION",$AAAAAA);
-        draw_text_outline(60,64+i++*18,"LEFT");
-        draw_text_outline(60,64+i++*18,"RIGHT");
-        draw_text_outline(60,64+i++*18,"UP");
-        draw_text_outline(60,64+i++*18,"DOWN");
-        draw_text_outline(60,64+i++*18,"FIRE");
-        draw_text_outline(60,64+i++*18,"JUMP");
-        draw_text_outline(60,64+i++*18,"LOCK");
+        draw_text_outline(menux,38,"ACTION",$AAAAAA);
+        draw_text_outline(menux,64+i++*18,"LEFT");
+        draw_text_outline(menux,64+i++*18,"RIGHT");
+        draw_text_outline(menux,64+i++*18,"UP");
+        draw_text_outline(menux,64+i++*18,"DOWN");
+        draw_text_outline(menux,64+i++*18,"FIRE");
+        draw_text_outline(menux,64+i++*18,"JUMP");
+        draw_text_outline(menux,64+i++*18,"LOCK");
         
         if (global.CFG[config.padType])
             var pad_spr = spr_buttons_xbox;
@@ -569,32 +600,32 @@ switch(menu)
             var pad_spr = spr_buttons_ps;
         
         var i = 0;
-        draw_text_outline(160,38,"GAMEPAD 1",$AAAAAA);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL1]),160,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR1]),160,72+i++*18)
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU1]),160,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD1]),160,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire1]),160,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump1]),160,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock1]),160,72+i++*18);
+        draw_text_outline(menux+col1x,38,"P1 GAMEPAD",$AAAAAA);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL1]),menux+col1x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR1]),menux+col1x,72+i++*18)
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU1]),menux+col1x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD1]),menux+col1x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire1]),menux+col1x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump1]),menux+col1x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock1]),menux+col1x,72+i++*18);
         
         var i = 0;
-        draw_text_outline(284,38,"GAMEPAD 2",$AAAAAA);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL2]),284,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR2]),284,72+i++*18)
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU2]),284,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD2]),284,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire2]),284,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump2]),284,72+i++*18);
-        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock2]),284,72+i++*18);
+        draw_text_outline(menux+col2x,38,"P2 GAMEPAD",$AAAAAA);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padL2]),menux+col2x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padR2]),menux+col2x,72+i++*18)
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padU2]),menux+col2x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padD2]),menux+col2x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padFire2]),menux+col2x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padJump2]),menux+col2x,72+i++*18);
+        draw_sprite(pad_spr,pad_to_sprite(global.CFG[config.padLock2]),menux+col2x,72+i++*18);
         
-        draw_text_outline(60,202,"BACK");
-        draw_text_outline(170,202,"TOGGLE STYLE");
+        draw_text_outline(menux+col1x,202,"BACK");
+        draw_text_outline(menux+col2x,202,"TOGGLE STYLE");
         
         if (selecty &lt; 7)
-            draw_sprite(spr_camera_arrow,1-rebind,140+selectx*124,72+selecty*18);
+            draw_sprite(spr_camera_arrow,1-rebind,menux+col1x-20+selectx*(col2x-col1x),72+selecty*18);
         else
-            draw_sprite(spr_camera_arrow,1,40+selectx*110,210);
+            draw_sprite(spr_camera_arrow,1,menux+col1x-20+selectx*(col2x-col1x),210);
         break;
     }
 
