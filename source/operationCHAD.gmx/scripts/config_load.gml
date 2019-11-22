@@ -8,32 +8,36 @@ else
 if (!file_exists(_filepath))
     return(false);
 
-_map = ds_map_create();
+var _time = get_timer();
+
+log("Attempting to load configuration...","["+string(_filepath)+"]");
 
 var _file = file_text_open_read(_filepath);
-var _version = file_text_read_string(_file);
+var _version = file_text_read_real(_file);
 file_text_readln(_file);
-var _enc = file_text_read_string(_file);
-file_text_close(_file);
-
-ds_map_read(_map,_enc);
 
 if (_version != global.CFGversion)
-or (ds_map_size(_map) < config.size-1)
     {
-    ds_map_destroy(_map);
+    log("ERROR: Corrupt/Invalid configuration file!");
     return(false);
     }
 
-var _key = ds_map_find_first(_map);
-while(ds_map_exists(_map,_key))
+var _eof = file_text_eof(_file);
+while(!_eof)
     {
+    var _key = file_text_read_string(_file);
+    file_text_readln(_file);
+    var _val = file_text_read_real(_file);
+    file_text_readln(_file);
+    
     if (ds_map_exists(global.CFGmap,_key))
         {
         var _index = global.CFGmap[?_key];
-        global.CFG[_index] = _map[?_key];
+        global.CFG[_index] = _val;
         }
-    var _key = ds_map_find_next(_map,_key);
+    
+    _eof = file_text_eof(_file);
     }
 
+log("Configuration loaded! ["+string(get_timer()-_time)+"ms]");
 return(true);

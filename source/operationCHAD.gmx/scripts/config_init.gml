@@ -1,7 +1,8 @@
 /// config_init();
 
-global.CFGversion = "v7";
+global.CFGversion = 8;
 global.CFGfile = working_directory+"config.ini";
+global.OUTPUT = true;
 
 ////////////////////////////////////////////////////////
 

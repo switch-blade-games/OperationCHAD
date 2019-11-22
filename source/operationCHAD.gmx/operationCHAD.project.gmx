@@ -750,6 +750,11 @@
     <path>paths\BG_pipe_2_path</path>
   </paths>
   <scripts name="scripts">
+    <scripts name="core">
+      <script>scripts\log.gml</script>
+      <script>scripts\dec_to_hex.gml</script>
+      <script>scripts\hex_to_dec.gml</script>
+    </scripts>
     <scripts name="unused">
       <scripts name="verlet">
         <script>scripts\verlet_init.gml</script>
