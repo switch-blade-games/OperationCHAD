@@ -27,10 +27,10 @@ varying vec4 v_vColour;
 void main()
     {
     // warp fragment coordinates
-    vec2 tc = vec2(v_vTexcoord.x,v_vTexcoord.y);
-    tc.x += cos(tc.y + time*xFreq)*(xAmp*wavy);
-    tc.y += sin(tc.x + time*yFreq)*(yAmp*wavy);
+    vec2 uv = v_vTexcoord;
+    uv.x += cos(uv.y + time*xFreq)*xAmp*wavy;
+    uv.y += sin(uv.x + time*yFreq)*yAmp*wavy;
     
     // apply
-    gl_FragColor = texture2D(gm_BaseTexture,tc);
+    gl_FragColor = texture2D(gm_BaseTexture,uv);
     }

@@ -28,7 +28,7 @@
             <string>var target = obj_player;
 if (instance_exists(target))
     {
-    projectile(x,y,target.x,target.y,8,0.4);
+    //projectile(x,y,target.x,target.y,8,0.4);
     image_angle = point_direction(x,y,x+hspeed,y+vspeed+gravity);
     }
 else

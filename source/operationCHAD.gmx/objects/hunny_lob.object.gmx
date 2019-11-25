@@ -29,11 +29,7 @@
 
 image_speed=0.3+random(0.3)
 
-projectile(x,y,80,200,0,0.5)
-
-
-
-
+//projectile(x,y,80,200,0,0.5)
 </string>
           </argument>
         </arguments>

@@ -442,6 +442,9 @@ draw_background_ext(title_BG,0,0,1,1,0,fade_col,1);
 draw_background_tiled_ext(title_clouds_BG,CLOUDx,0,1,1,fade_col,1);
 draw_background_ext(title_front_BG,0,0,1,1,0,-1,fade_zero);
 
+draw_set_halign(0);
+draw_set_valign(0);
+
 switch(menu)
     {
     case 0: // title screen
