@@ -2,6 +2,7 @@
 
 global.CFGversion = 8;
 global.CFGfile = working_directory+"config.ini";
+global.CFGsurf = working_directory+"pause.dat";
 global.OUTPUT = true;
 
 ////////////////////////////////////////////////////////
