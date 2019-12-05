@@ -1,5 +1,18 @@
 /// animate();
 
+// capture old variables
+skin_id_old = skin_id;
+spr_index_old = spr_index;
+img_index_old = img_index;
+
+anim_group_old = anim_group[anim_index];
+anim_index_old = anim_index;
+anim_start_old = anim_start;
+anim_end_old = anim_end;
+anim_len_old = anim_end_old-anim_start_old;
+anim_angle_old = anim_angle;
+
+// determine appropriate animation state
 switch(move_state)
     {
     case mState.walk:
@@ -160,6 +173,7 @@ switch(move_state)
     }
 
 // determine animation angle index
+anim_angle_old = anim_angle;
 switch(anim_state)
     {
     case aState.wc_fire:
@@ -177,12 +191,33 @@ switch(anim_state)
 // update animation
 switch(anim_state)
     {
+    case aState.walk:
+        update_anim(anim.walk,dir);
+        img_index += img_speed[anim_state];
+        break;
+    
+    case aState.walk_fire:
+        update_anim(anim.walk_fire,dir);
+        gun_y = -18;
+        img_index += img_speed[anim_state];
+        break;
+    
     case aState.idle:
         update_anim(anim.idle,dir);
         gun_y = -18;
         
         if (input_fire)
-            img_index += 0.2;
+            img_index += img_speed[anim_state];
+        else
+            img_index = anim_start;
+        break;
+    
+    case aState.duck:
+        update_anim(anim.duck,dir);
+        gun_y = -6;
+        
+        if (input_fire)
+            img_index += img_speed[anim_state];
         else
             img_index = anim_start;
         break;
@@ -205,39 +240,7 @@ switch(anim_state)
         gun_y = -18;
         
         if (input_fire)
-            img_index += 0.2;
-        else
-            img_index = anim_start;
-        break;
-    
-    case aState.walk:
-        update_anim(anim.walk,dir);
-        img_index += 0.2;
-        break;
-    
-    case aState.walk_fire:
-        update_anim(anim.walk_fire,dir);
-        gun_y = -18;
-        img_index += 0.2;
-        break;
-    
-    /*
-    case aState.drop:
-        break;
-    */
-    
-    case aState.roll:
-        update_anim(anim.roll,dir);
-        gun_y = -18;
-        img_index += 0.3;
-        break;
-    
-    case aState.duck:
-        update_anim(anim.duck,dir);
-        gun_y = -6;
-        
-        if (input_fire)
-            img_index += 0.2;
+            img_index += img_speed[anim_state];
         else
             img_index = anim_start;
         break;
@@ -260,9 +263,25 @@ switch(anim_state)
         gun_y = -12;
         
         if (input_fire)
-            img_index += 0.2;
+            img_index += img_speed[anim_state];
         else
             img_index = anim_start;
+        break;
+    
+    case aState.wc:
+        update_anim(anim.wc,dir);
+        img_index = anim_start;
+        break;
+    
+    case aState.wc_move:
+        update_anim(anim.wc,dir);
+        img_index += img_speed[anim_state];
+        break;
+    
+    case aState.wc_fire:
+        update_anim(anim.wc_fire,dir);
+        gun_y = -18;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.mb:
@@ -272,7 +291,7 @@ switch(anim_state)
     
     case aState.mb_move:
         update_anim(anim.mb,dir);
-        img_index += 0.2;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.mb_fire:
@@ -291,36 +310,26 @@ switch(anim_state)
                 update_anim(anim.mb_fire,-dir);
             }
         gun_y = -18;
-        img_index += 0.2;
+        img_index += img_speed[anim_state];
         break;
     
-    case aState.wc:
-        update_anim(anim.wc,dir);
-        img_index = anim_start;
-        break;
-    
-    case aState.wc_move:
-        update_anim(anim.wc,dir);
-        img_index += 0.2;
-        break;
-    
-    case aState.wc_fire:
-        update_anim(anim.wc_fire,dir);
+    case aState.roll:
+        update_anim(anim.roll,dir);
         gun_y = -18;
-        img_index += 0.2;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.moto:
         update_anim(anim.moto,+1);
         gun_y = -18;
-        img_index += 0.2;
+        img_index += img_speed[anim_state];
         break;
     
     //case aState.moto_fire:
     
     case aState.dead_roll:
         update_anim(anim.dead_roll,dir);
-        img_index += 0.3;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.dead:
@@ -329,6 +338,7 @@ switch(anim_state)
         break;
     }
 
+// animation bounds
 if (img_index >= anim_end)
     img_index = anim_start;
 else if (img_index < anim_start)

@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.vtime = 0;
-global.ctime = 0;
+            <string>global.BUILDversion = "v0.10";
 
 debug = false;
 debugMode = 0; // 0=detail; 1=simple; 2=extra;
@@ -302,12 +301,10 @@ file_text_close(file);
             
             draw_set_halign(0);
             draw_set_valign(0);
-            draw_text_outline(vx+4,vy+4+00,"Version: "+string(global.CFGversion));
+            draw_text_outline(vx+4,vy+4+00,"Version: BUILD["+string(global.BUILDversion)+"] CFG["+string(global.CFGversion)+"]");
             draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
             draw_text_outline(vx+4,vy+4+24,"Particles: "+string(part_num));
-            if (instance_exists(obj_player))
-                draw_text_outline(vx+4,vy+4+36,"Gamepad Slot: "+string(obj_player.slot));
-            draw_text_outline(vx+4,vy+4+48,"CamPos: "+string(vx)+"/"+string(vy)+" ["+string(round(global.ctime))+"ms]");
+            draw_text_outline(vx+4,vy+4+36,"CamPos: "+string(vx)+"/"+string(vy));
             draw_set_color($000000);
             draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
             draw_surface(surf_graph,(vx+400)-(graph_w+4),vy+4);

@@ -23,7 +23,7 @@ varying vec4 v_vColour;
 void main()
     {
     // squared distance from the center
-    vec2 uv = vec2(v_vTexcoord.x,v_vTexcoord.y);
+    vec2 uv = v_vTexcoord;
     vec2 dc = abs(0.5-uv);
     dc *= dc;
     

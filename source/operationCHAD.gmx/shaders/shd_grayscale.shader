@@ -1,6 +1,6 @@
-attribute vec3 in_Position;                  // (x,y,z)
-attribute vec4 in_Colour;                    // (r,g,b,a)
-attribute vec2 in_TextureCoord;              // (u,v)
+attribute vec3 in_Position;
+attribute vec4 in_Colour;
+attribute vec2 in_TextureCoord;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
@@ -18,8 +18,8 @@ varying vec4 v_vColour;
 
 void main()
     {
-    vec4 col = v_vColour*texture2D(gm_BaseTexture,v_vTexcoord);
-    float val = sqrt(.241*col.r*col.r + .691*col.g*col.g + 0.068*col.b*col.b);
+    vec4 col = texture2D(gm_BaseTexture,v_vTexcoord);
+    float val = sqrt(0.241*col.r*col.r + 0.691*col.g*col.g + 0.068*col.b*col.b);
     
     gl_FragColor = vec4(val,val,val,col.a);
     }

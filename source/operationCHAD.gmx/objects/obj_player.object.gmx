@@ -46,23 +46,23 @@ enum mState
 
 enum aState
     {
-    idle,
-    idle_ramp,
     walk,
     walk_fire,
-    roll,
+    idle,
     duck,
+    idle_ramp,
     duck_ramp,
-    mb,
-    mb_move,
-    mb_fire,
     wc,
     wc_move,
     wc_fire,
+    mb,
+    mb_move,
+    mb_fire,
+    roll,
     moto,
-    dead,
     dead_lean,
     dead_roll,
+    dead,
     size
     }
 
@@ -428,7 +428,7 @@ if (invulnerable)
         shader_set(shd_flash);
     }
 
-draw_sprite_ext(skin_sprite,img_index,x,y+mShake,face,1,0,-1,1);
+draw_sprite_ext(spr_index,img_index,x,y+mShake,face,1,0,-1,1);
 
 if (invulnerable)
     {

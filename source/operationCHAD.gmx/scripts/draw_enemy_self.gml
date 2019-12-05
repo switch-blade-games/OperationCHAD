@@ -1,7 +1,5 @@
 /// draw_enemy_self();
 
-
-
 var _spr = sprite_index;
 var _ind = image_index;
 var _x = x;
@@ -25,8 +23,6 @@ if (argument_count == 9)
     _alpha = argument[8];
     }
 
-draw_sprite_ext(_spr,_ind,_x,_y,_xscl,_yscl,_ang,_col,_alpha);
-
 if (flash > 0)
     {
     shader_set(shd_flash);
@@ -34,3 +30,5 @@ if (flash > 0)
     shader_reset();
     flash = max(0,flash-0.5);
     }
+else
+    draw_sprite_ext(_spr,_ind,_x,_y,_xscl,_yscl,_ang,_col,_alpha);

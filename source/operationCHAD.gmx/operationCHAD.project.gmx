@@ -755,6 +755,28 @@
       <script>scripts\log.gml</script>
       <script>scripts\dec_to_hex.gml</script>
       <script>scripts\hex_to_dec.gml</script>
+      <script>scripts\bezier.gml</script>
+    </scripts>
+    <scripts name="input">
+      <scripts name="gamepad">
+        <script>scripts\gamepad_init.gml</script>
+        <script>scripts\gamepad_update.gml</script>
+        <script>scripts\gamepad_check_all.gml</script>
+        <script>scripts\gamepad_check_pressed_all.gml</script>
+        <script>scripts\gamepad_check_released_all.gml</script>
+        <script>scripts\gamepad_value_all.gml</script>
+        <script>scripts\gamepad_last_all.gml</script>
+        <script>scripts\gamepad_lastvalue_all.gml</script>
+        <script>scripts\gamepad_check.gml</script>
+        <script>scripts\gamepad_check_pressed.gml</script>
+        <script>scripts\gamepad_check_released.gml</script>
+        <script>scripts\gamepad_value.gml</script>
+        <script>scripts\gamepad_last.gml</script>
+        <script>scripts\gamepad_lastvalue.gml</script>
+      </scripts>
+      <script>scripts\key_last.gml</script>
+      <script>scripts\key_to_text.gml</script>
+      <script>scripts\pad_to_sprite.gml</script>
     </scripts>
     <scripts name="unused">
       <scripts name="verlet">
@@ -787,22 +809,7 @@
       <script>scripts\jump.gml</script>
       <script>scripts\update_skin.gml</script>
       <script>scripts\update_anim.gml</script>
-    </scripts>
-    <scripts name="gamepad">
-      <script>scripts\gamepad_init.gml</script>
-      <script>scripts\gamepad_update.gml</script>
-      <script>scripts\gamepad_check_all.gml</script>
-      <script>scripts\gamepad_check_pressed_all.gml</script>
-      <script>scripts\gamepad_check_released_all.gml</script>
-      <script>scripts\gamepad_value_all.gml</script>
-      <script>scripts\gamepad_last_all.gml</script>
-      <script>scripts\gamepad_lastvalue_all.gml</script>
-      <script>scripts\gamepad_check.gml</script>
-      <script>scripts\gamepad_check_pressed.gml</script>
-      <script>scripts\gamepad_check_released.gml</script>
-      <script>scripts\gamepad_value.gml</script>
-      <script>scripts\gamepad_last.gml</script>
-      <script>scripts\gamepad_lastvalue.gml</script>
+      <script>scripts\create_anim.gml</script>
     </scripts>
     <scripts name="config">
       <script>scripts\config_init.gml</script>
@@ -811,15 +818,14 @@
       <script>scripts\config_load.gml</script>
       <script>scripts\config_action.gml</script>
     </scripts>
-    <scripts name="enemies">
+    <scripts name="enemy">
       <script>scripts\enemy_init.gml</script>
       <script>scripts\draw_enemy_self.gml</script>
+      <script>scripts\target_player.gml</script>
     </scripts>
     <scripts name="ui">
       <script>scripts\draw_text_outline.gml</script>
       <script>scripts\val_to_text.gml</script>
-      <script>scripts\key_to_text.gml</script>
-      <script>scripts\pad_to_sprite.gml</script>
     </scripts>
     <scripts name="JB_scripts">
       <script>scripts\outside_view.gml</script>
@@ -842,10 +848,8 @@
       <script>scripts\mus_loop.gml</script>
       <script>scripts\mus_stop.gml</script>
     </scripts>
-    <script>scripts\key_last.gml</script>
-    <script>scripts\bezier.gml</script>
-    <script>scripts\projectile.gml</script>
-    <script>scripts\target_player.gml</script>
+    <script>scripts\projectile_init.gml</script>
+    <script>scripts\projectile_step.gml</script>
     <script>scripts\camera_setup.gml</script>
     <script>scripts\camera_bounds.gml</script>
   </scripts>

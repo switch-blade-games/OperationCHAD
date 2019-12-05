@@ -48,6 +48,17 @@ global.PURPLE = make_color_rgb(68,38,52);
 global.BROWN = make_color_rgb(133,76,48);
 global.ORANGE = make_color_rgb(210,125,44);
 
+// game enums
+enum tile_side
+    {
+    none = 0,
+    right = 1,
+    top = 2,
+    left = 4,
+    bottom = 8,
+    full = 15
+    }
+
 // game variables
 global.moto_floor = 210;
 
