@@ -1281,6 +1281,8 @@ instance_create(0,0,HUD)</code>
     <instance objName="ani_tester" x="140" y="7500" name="inst_DA473DAB" locked="0" code="sprite_index=foxford_idle_spr&#xA;&#xA;image_speed=0.2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="200" y="7500" name="inst_CA730BF7" locked="0" code="sprite_index=foxford_walk_spr&#xA;image_speed=0.2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ani_tester" x="260" y="7500" name="inst_03E15187" locked="0" code="sprite_index=fox_fly_spr&#xA;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="140" y="7420" name="inst_B97272AE" locked="0" code="sprite_index=yolo_stand_spr&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ani_tester" x="260" y="7420" name="inst_82AB9739" locked="0" code="sprite_index=yolo_fly_spr&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

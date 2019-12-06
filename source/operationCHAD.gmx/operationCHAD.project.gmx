@@ -478,6 +478,7 @@
         <sprites name="moto">
           <sprite>sprites\yolo_vehicle_moto_spr</sprite>
         </sprites>
+        <sprite>sprites\yolo_stand_spr</sprite>
       </sprites>
       <sprites name="103-Pumpkin">
         <sprite>sprites\pumpkin_fly_spr</sprite>
