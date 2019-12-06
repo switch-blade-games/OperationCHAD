@@ -13,6 +13,7 @@ for(var i=0; i<anim.size; i++;)
     }
 
 img_index = 0;
+/*
 switch(skin_id)
     {
     case skin.stonetoss:
@@ -23,8 +24,15 @@ switch(skin_id)
         spr_index = yolo_master_spr;
         break;
     }
+*/
 
 ////////////////////////////////////////////////////////////////////////
+
+// TEST
+
+load_skin();
+
+/*
 
 // animation group lengths
 switch(skin_id)
@@ -58,6 +66,8 @@ for(var i=0; i<anim.size; i++;)
     anim_group_pos[i] = _index;
     _index += anim_group_len[i];
     }
+
+*/
 
 ////////////////////////////////////////////////////////////////////////
 

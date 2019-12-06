@@ -807,9 +807,10 @@
       <script>scripts\weapon_stats.gml</script>
       <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
-      <script>scripts\update_skin.gml</script>
-      <script>scripts\update_anim.gml</script>
-      <script>scripts\create_anim.gml</script>
+      <script>scripts\anim_init.gml</script>
+      <script>scripts\anim_load_skin.gml</script>
+      <script>scripts\anim_create.gml</script>
+      <script>scripts\anim_update.gml</script>
     </scripts>
     <scripts name="config">
       <script>scripts\config_init.gml</script>

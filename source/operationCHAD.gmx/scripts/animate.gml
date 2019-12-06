@@ -5,11 +5,11 @@ skin_id_old = skin_id;
 spr_index_old = spr_index;
 img_index_old = img_index;
 
-anim_group_old = anim_group[anim_index];
+anim_group_old = EXP_GROUP[anim_index];
 anim_index_old = anim_index;
 anim_start_old = anim_start;
 anim_end_old = anim_end;
-anim_len_old = anim_end_old-anim_start_old;
+anim_len_old = anim_len;
 anim_angle_old = anim_angle;
 
 // determine appropriate animation state
@@ -192,18 +192,18 @@ switch(anim_state)
 switch(anim_state)
     {
     case aState.walk:
-        update_anim(anim.walk,dir);
+        anim_update(anim.walk,dir);
         img_index += img_speed[anim_state];
         break;
     
     case aState.walk_fire:
-        update_anim(anim.walk_fire,dir);
+        anim_update(anim.walk_fire,dir);
         gun_y = -18;
         img_index += img_speed[anim_state];
         break;
     
     case aState.idle:
-        update_anim(anim.idle,dir);
+        anim_update(anim.idle,dir);
         gun_y = -18;
         
         if (input_fire)
@@ -213,7 +213,7 @@ switch(anim_state)
         break;
     
     case aState.duck:
-        update_anim(anim.duck,dir);
+        anim_update(anim.duck,dir);
         gun_y = -6;
         
         if (input_fire)
@@ -226,16 +226,16 @@ switch(anim_state)
         if (dir > 0)
             {
             if (ramp_slope > 0)
-                update_anim(anim.idle_ramp_u,+1);
+                anim_update(anim.idle_ramp_u,+1);
             else if (ramp_slope < 0)
-                update_anim(anim.idle_ramp_d,+1);
+                anim_update(anim.idle_ramp_d,+1);
             }
         else if (dir < 0)
             {
             if (ramp_slope > 0)
-                update_anim(anim.idle_ramp_d,-1);
+                anim_update(anim.idle_ramp_d,-1);
             else if (ramp_slope < 0)
-                update_anim(anim.idle_ramp_u,-1);
+                anim_update(anim.idle_ramp_u,-1);
             }
         gun_y = -18;
         
@@ -249,16 +249,16 @@ switch(anim_state)
         if (dir > 0)
             {
             if (ramp_slope > 0)
-                update_anim(anim.duck_ramp_u,+1);
+                anim_update(anim.duck_ramp_u,+1);
             else if (ramp_slope < 0)
-                update_anim(anim.duck_ramp_d,+1);
+                anim_update(anim.duck_ramp_d,+1);
             }
         else if (dir < 0)
             {
             if (ramp_slope > 0)
-                update_anim(anim.duck_ramp_d,-1);
+                anim_update(anim.duck_ramp_d,-1);
             else if (ramp_slope < 0)
-                update_anim(anim.duck_ramp_u,-1);
+                anim_update(anim.duck_ramp_u,-1);
             }
         gun_y = -12;
         
@@ -269,28 +269,28 @@ switch(anim_state)
         break;
     
     case aState.wc:
-        update_anim(anim.wc,dir);
+        anim_update(anim.wc,dir);
         img_index = anim_start;
         break;
     
     case aState.wc_move:
-        update_anim(anim.wc,dir);
+        anim_update(anim.wc,dir);
         img_index += img_speed[anim_state];
         break;
     
     case aState.wc_fire:
-        update_anim(anim.wc_fire,dir);
+        anim_update(anim.wc_fire,dir);
         gun_y = -18;
         img_index += img_speed[anim_state];
         break;
     
     case aState.mb:
-        update_anim(anim.mb,dir);
+        anim_update(anim.mb,dir);
         img_index = anim_start;
         break;
     
     case aState.mb_move:
-        update_anim(anim.mb,dir);
+        anim_update(anim.mb,dir);
         img_index += img_speed[anim_state];
         break;
     
@@ -298,29 +298,29 @@ switch(anim_state)
         if (dir > 0)
             {
             if (anim_angle <= 2) or (anim_angle >= 6)
-                update_anim(anim.mb_fire,dir);
+                anim_update(anim.mb_fire,dir);
             else
-                update_anim(anim.mb_fire,-dir);
+                anim_update(anim.mb_fire,-dir);
             }
         else if (dir < 0)
             {
             if (anim_angle >= 2) and (anim_angle <= 6)
-                update_anim(anim.mb_fire,dir);
+                anim_update(anim.mb_fire,dir);
             else
-                update_anim(anim.mb_fire,-dir);
+                anim_update(anim.mb_fire,-dir);
             }
         gun_y = -18;
         img_index += img_speed[anim_state];
         break;
     
     case aState.roll:
-        update_anim(anim.roll,dir);
+        anim_update(anim.roll,dir);
         gun_y = -18;
         img_index += img_speed[anim_state];
         break;
     
     case aState.moto:
-        update_anim(anim.moto,+1);
+        anim_update(anim.moto,+1);
         gun_y = -18;
         img_index += img_speed[anim_state];
         break;
@@ -328,18 +328,17 @@ switch(anim_state)
     //case aState.moto_fire:
     
     case aState.dead_roll:
-        update_anim(anim.dead_roll,dir);
+        anim_update(anim.dead_roll,dir);
         img_index += img_speed[anim_state];
         break;
     
     case aState.dead:
-        update_anim(anim.dead,dir);
+        anim_update(anim.dead,dir);
         img_index = anim_start;
         break;
     }
 
-// animation bounds
-if (img_index >= anim_end)
+if (img_index > anim_end)
     img_index = anim_start;
 else if (img_index < anim_start)
-    img_index = anim_end-1;
+    img_index = anim_end;

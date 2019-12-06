@@ -87,12 +87,12 @@ enum anim
     duck_ramp_d,
     idle_ramp_u,
     duck_ramp_u,
-    wc_fire,
     wc,
-    mb_fire,
+    wc_fire,
     mb,
-    moto_fire,
+    mb_fire,
     moto,
+    moto_fire,
     roll,
     dead_roll,
     dead,
@@ -156,15 +156,12 @@ dead_moto = false;
 xstart = x;
 ystart = y;
 
-// player animation
-skin_id = skin.stonetoss;
-anim_state = aState.idle;
-anim_index = anim.idle;
-anim_angle = 0;
-anim_start = 0;
-anim_end = 0;
+anim_init();
 
-update_skin();
+skin_id = skin.stonetoss
+var tex_path  = get_open_filename("Image Files|*.png","");
+var json_path = get_open_filename("JSON Files|*.json","");
+anim_load_skin(tex_path,json_path);
 </string>
           </argument>
         </arguments>
@@ -428,13 +425,21 @@ if (invulnerable)
         shader_set(shd_flash);
     }
 
-draw_sprite_ext(spr_index,img_index,x,y+mShake,face,1,0,-1,1);
+var _f = floor(img_index);
+var tx = frame_info[_f,FRAME_TEX_X];
+var ty = frame_info[_f,FRAME_TEX_Y];
+var tw = frame_info[_f,FRAME_TEX_W];
+var th = frame_info[_f,FRAME_TEX_H];
+
+draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face,y+mShake-th,face,1,-1,1);
 
 if (invulnerable)
     {
     if (invulnerable_flash)
         shader_reset();
     }
+
+draw_text(x-32,y-64,"X/Y["+string(tx)+","+string(ty)+"]#W/H["+string(tw)+","+string(th)+"]");
 </string>
           </argument>
         </arguments>
