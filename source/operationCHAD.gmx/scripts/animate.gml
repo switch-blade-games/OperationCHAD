@@ -338,7 +338,7 @@ switch(anim_state)
         break;
     }
 
-if (img_index > anim_end)
+if (img_index >= anim_end)
     img_index = anim_start;
 else if (img_index < anim_start)
-    img_index = anim_end;
+    img_index = anim_end-0.1;
