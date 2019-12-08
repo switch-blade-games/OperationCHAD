@@ -158,9 +158,31 @@ ystart = y;
 
 anim_init();
 
-skin_id = skin.stonetoss
-var tex_path  = get_open_filename("Image Files|*.png","");
-var json_path = get_open_filename("JSON Files|*.json","");
+skin_id = skin.stonetoss;
+
+autosprite_timer = 60;
+
+tex_path = working_directory+"sheet.png";
+json_path = working_directory+"sheetinfo.json";
+
+if (!file_exists(tex_path))
+    {
+    var path = "";
+    while(!file_exists(path))
+        path = get_open_filename("Image Files|*.png","");
+    file_copy(path,tex_path);
+    }
+if (!file_exists(json_path))
+    {
+    var path = "";
+    while(!file_exists(path))
+        path = get_open_filename("JSON Files|*.json","");
+    file_copy(path,json_path);
+    }
+
+tex_sha1 = sha1_file(tex_path);
+json_sha1 = sha1_file(json_path);
+
 anim_load_skin(tex_path,json_path);
 </string>
           </argument>
@@ -184,7 +206,33 @@ anim_load_skin(tex_path,json_path);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if (debug_freeze)
+            <string>// autosprite
+if (autosprite_timer &gt; 0)
+    autosprite_timer--;
+else
+    {
+    autosprite_timer = 60;
+    if (file_exists(tex_path)) and (file_exists(json_path))
+        {
+        var tex_sha1_new = sha1_file(tex_path);
+        var json_sha1_new = sha1_file(json_path);
+        
+        if (tex_sha1_new != tex_sha1)
+        or (json_sha1_new != json_sha1)
+            {
+            tex_sha1 = tex_sha1_new;
+            json_sha1 = json_sha1_new;
+            
+            if (sprite_exists(spr_index))
+                sprite_delete(spr_index);
+            spr_index = -1;
+            
+            anim_load_skin(tex_path,json_path);
+            }
+        }
+    }
+
+//if (debug_freeze)
 //    exit;
 
 input();
@@ -438,8 +486,6 @@ if (invulnerable)
     if (invulnerable_flash)
         shader_reset();
     }
-
-draw_text(x-32,y-64,"X/Y["+string(tx)+","+string(ty)+"]#W/H["+string(tw)+","+string(th)+"]");
 </string>
           </argument>
         </arguments>

@@ -7,6 +7,8 @@ ds_map_clear(tag_map);
 // tag/frame data
 tag_info = -1;
 frame_info = -1;
+anim_info = -1;
+img_speed = -1;
 
 if (file_exists(argument[0])) and (file_exists(argument[1]))
     {
@@ -151,7 +153,6 @@ anim_create(anim.dead_roll);
 anim_create(anim.dead);
 
 // define animation state speeds
-img_speed = -1;
 switch(skin_id)
     {
     case skin.stonetoss:
