@@ -27,9 +27,6 @@
             <kind>1</kind>
             <string>event_inherited();
 
-debug_draw = -1;
-debug_freeze = false;
-
 slot = -1;
 
 // player move states
@@ -160,8 +157,8 @@ anim_init();
 
 skin_id = skin.stonetoss;
 
+// load skin
 autosprite_timer = 60;
-
 tex_path = working_directory+"sheet.png";
 json_path = working_directory+"sheetinfo.json";
 
