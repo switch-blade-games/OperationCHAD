@@ -43,8 +43,7 @@ u_yFreq = shader_get_uniform(shd_wavy,"yFreq");
 u_yAmp = shader_get_uniform(shd_wavy,"yAmp");
 
 // crt shader uniforms
-u_scan = shader_get_uniform(shd_crt,"scan");
-u_warp = shader_get_uniform(shd_crt,"warp");
+u_crt = shader_get_uniform(shd_crt,"strength");
 
 // wavy shader variables
 wavy = 0;
@@ -200,8 +199,7 @@ else
     surface_set_target(surf_final);
     draw_clear($000000);
     shader_set(shd_crt);
-    shader_set_uniform_f(u_warp,global.CFG[config.CRTwarp]);
-    shader_set_uniform_f(u_scan,global.CFG[config.CRTscan]);
+    shader_set_uniform_f(u_crt,global.CFG[config.CRTeffect]);
     draw_surface(last,0,0);
     shader_reset();
     surface_reset_target();
@@ -216,8 +214,7 @@ if (!surface_exists(surf_final))
 surface_set_target(surf_final);
 draw_clear($000000);
 shader_set(shd_crt);
-shader_set_uniform_f(u_warp,global.CFG[config.CRTwarp]);
-shader_set_uniform_f(u_scan,global.CFG[config.CRTscan]);
+shader_set_uniform_f(u_crt,global.CFG[config.CRTeffect]);
 draw_surface(last,0,0);
 shader_reset();
 surface_reset_target();

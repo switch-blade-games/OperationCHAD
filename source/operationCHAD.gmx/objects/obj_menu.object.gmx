@@ -179,29 +179,22 @@ switch(menu)
                 }
             else if (select_y == 3)
                 {
-                global.CFG[config.CRTwarp] += 0.25;
-                if (global.CFG[config.CRTwarp] &gt; 1)
-                    global.CFG[config.CRTwarp] = 0;
-                config_action(config.CRTwarp);
+                global.CFG[config.CRTeffect] += 0.25;
+                if (global.CFG[config.CRTeffect] &gt; 1)
+                    global.CFG[config.CRTeffect] = 0;
+                config_action(config.CRTeffect);
                 }
             else if (select_y == 4)
-                {
-                global.CFG[config.CRTscan] += 0.25;
-                if (global.CFG[config.CRTscan] &gt; 1)
-                    global.CFG[config.CRTscan] = 0;
-                config_action(config.CRTscan);
-                }
-            else if (select_y == 5)
                 {
                 global.CFG[config.particles] = !global.CFG[config.particles];
                 config_action(config.particles);
                 }
-            else if (select_y == 6)
+            else if (select_y == 5)
                 menu = 2;
             }
         
         sy_enable = true;
-        sy_max = 6;
+        sy_max = 5;
         break;
     
     case 4: // audio settings
@@ -506,12 +499,11 @@ switch(menu)
         draw_text_outline(mx,my+i++*18,"FULLSCREEN: "+val_to_text(0,global.CFG[config.fullscreen]));
         draw_text_outline(mx,my+i++*18,"WINDOW SCALE: "+string(global.CFG[config.windowScale])+"X");
         draw_text_outline(mx,my+i++*18,"VSYNC: "+val_to_text(0,global.CFG[config.vsync]));
-        draw_text_outline(mx,my+i++*18,"CRT WARP: "+val_to_text(1,global.CFG[config.CRTwarp]));
-        draw_text_outline(mx,my+i++*18,"CRT SCANLINES: "+val_to_text(1,global.CFG[config.CRTscan]));
+        draw_text_outline(mx,my+i++*18,"RETRO: "+val_to_text(1,global.CFG[config.CRTeffect]));
         draw_text_outline(mx,my+i++*18,"PARTICLES: "+val_to_text(0,global.CFG[config.particles]));
         draw_text_outline(mx,my+138,"BACK");
         
-        if (select_y &lt; 6)
+        if (select_y &lt; 5)
             draw_sprite(spr_camera_arrow,1,mx-20,my+8+select_y*18);
         else
             draw_sprite(spr_camera_arrow,1,mx-20,my+8+138);

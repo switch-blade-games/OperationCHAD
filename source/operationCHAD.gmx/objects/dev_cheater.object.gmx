@@ -283,7 +283,9 @@ file_text_close(file);
             draw_set_color($000000);
             draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
             draw_surface(surf_graph,vx+400-(graph_w+4),vy+4);
-            draw_text((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
+            draw_set_halign(0);
+            draw_set_valign(0);
+            draw_text_outline((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
             break;
             
         case 2: // detailed

@@ -4,8 +4,7 @@
 global.CFG[config.fullscreen] = false;
 global.CFG[config.windowScale] = 2;
 global.CFG[config.vsync] = 0;
-global.CFG[config.CRTwarp] = 0.25;
-global.CFG[config.CRTscan] = 0.25;
+global.CFG[config.CRTeffect] = 0;
 global.CFG[config.particles] = false;
 // audio
 global.CFG[config.BGMgain] = 0.75;

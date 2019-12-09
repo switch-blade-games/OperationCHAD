@@ -14,8 +14,7 @@ void main()
     v_vTexcoord = in_TextureCoord;
     }
 
-//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float warp;
-uniform float scan;
+//######################_==_YOYO_SHADER_MARKER_==_######################@~uniform float strength;
 
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
@@ -28,17 +27,20 @@ void main()
     dc *= dc;
     
     // warp the fragment coordinates
-    uv.x -= 0.5; uv.x *= 1.0+(dc.y*(0.3*warp)); uv.x += 0.5;
-    uv.y -= 0.5; uv.y *= 1.0+(dc.x*(0.4*warp)); uv.y += 0.5;
+    uv.x -= 0.5; uv.x *= 1.0+(dc.y*(0.3*strength)); uv.x += 0.5;
+    uv.y -= 0.5; uv.y *= 1.0+(dc.x*(0.4*strength)); uv.y += 0.5;
     
     // sample inside boundaries, otherwise set to black
     if (uv.y > 1.0 || uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0)
-        gl_FragColor = vec4(0.0,0.0,0.0,1.0);
-    else
-        {
-        // determine if we are drawing in a scanline
-        float apply = abs(sin(v_vTexcoord.y*240.0)*0.5*scan);
-        // sample the texture
-        gl_FragColor = vec4(mix(texture2D(gm_BaseTexture,uv).rgb,vec3(0.0),apply),1.0);
-        }
+        discard;
+    
+    // color reduction
+    float col = 16.0-(strength*12.0);
+    // sample the texture
+    vec3 frag = floor(texture2D(gm_BaseTexture,uv).rgb*col)/col;
+    
+    // determine if we are drawing in a scanline
+    float scan = abs(sin(v_vTexcoord.y*240.0)*0.25*strength);
+    // fragment output
+    gl_FragColor = vec4(mix(frag,vec3(0.0),scan),1.0);
     }

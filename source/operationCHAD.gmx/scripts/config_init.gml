@@ -1,6 +1,6 @@
 /// config_init();
 
-global.CFGversion = 8;
+global.CFGversion = 9;
 global.CFGfile = working_directory+"config.ini";
 global.CFGsurf = working_directory+"pause.dat";
 global.OUTPUT = true;
@@ -15,8 +15,7 @@ enum config
     fullscreen,
     windowScale,
     vsync,
-    CRTwarp,
-    CRTscan,
+    CRTeffect,
     particles,
     // audio
     BGMgain,
@@ -66,8 +65,7 @@ enum config
 global.CFGtag[config.fullscreen] = "fullscreen";
 global.CFGtag[config.windowScale] = "windowScale";
 global.CFGtag[config.vsync] = "vsync";
-global.CFGtag[config.CRTwarp] = "CRTwarp";
-global.CFGtag[config.CRTscan] = "CRTscan";
+global.CFGtag[config.CRTeffect] = "CRTeffect";
 global.CFGtag[config.particles] = "particles";
 // audio
 global.CFGtag[config.BGMgain] = "BGMgain";
