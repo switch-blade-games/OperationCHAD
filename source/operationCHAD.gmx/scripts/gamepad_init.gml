@@ -48,7 +48,7 @@ global.gp_axis_end = gpinput.rsr;
 global.gp_axis_len = (global.gp_axis_end-global.gp_axis_pos)+1;
 
 global.gpcount = 0;
-global.gpmax = 4;
+global.gpmax = 12;
 for(var i=0; i<global.gpmax; i++;)
     {
     global.gp[i,gpinfo.connected] = false;

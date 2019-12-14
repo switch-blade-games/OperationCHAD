@@ -2,6 +2,18 @@
 
 // player skin
 skin_id = -1;
+skin_tag[skin.stone] = "stone";
+skin_tag[skin.foxford] = "foxford";
+skin_tag[skin.yolo] = "yolo";
+skin_tag[skin.pumpkin] = "pumpkin";
+
+// sheet/json paths
+for(var i=skin.stone; i<skin.size; i++;)
+    {
+    sheet_path[i] = working_directory+string(skin_tag[i])+"sheet.png";
+    json_path[i]  = working_directory+string(skin_tag[i])+"info.json";
+    }
+
 spr_index = -1;
 img_index = 0;
 

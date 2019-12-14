@@ -428,7 +428,7 @@ var fade_s = sign((menu == 0)-bg_fade);
 bg_fade = clamp(bg_fade + fade_s*0.05,0,1);
 var fade_min  = round(max(0.2,bg_fade)*5)/5;
 var fade_zero = round(bg_fade*5)/5;
-var fade_col  = merge_color($000000,$FFFFFF,fade_min);
+var fade_col  = merge_color($444444,$FFFFFF,fade_min);
 // draw bg art
 CLOUDx += CLOUDspe;
 draw_background_ext(title_BG,0,0,1,1,0,fade_col,1);

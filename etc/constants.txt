@@ -1,0 +1,11 @@
+red=$5641B1
+orange=$587BEE
+yellow=$79D0FF
+lime=$72F0A0
+green=$6EB838
+teal=$7B6E27
+blue=$D05B40
+aqua=$F7A44F
+ltgray=$C1B693
+gray=$857155
+dkgray=$564032

@@ -1,4 +1,4 @@
-/// anim_load_skin(texpath,jsonpath);
+/// anim_load_skin(sheetpath,jsonpath);
 
 // tag lookup
 if (!ds_exists(tag_map,ds_type_map))
@@ -155,7 +155,7 @@ anim_create(anim.dead);
 // define animation state speeds
 switch(skin_id)
     {
-    case skin.stonetoss:
+    default:
         img_speed[aState.walk] = 0.2;
         img_speed[aState.walk_fire] = 0.2;
         img_speed[aState.idle] = 0.2;

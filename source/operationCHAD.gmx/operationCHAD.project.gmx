@@ -839,6 +839,7 @@
         <script>scripts\anim_load_skin.gml</script>
         <script>scripts\anim_create.gml</script>
         <script>scripts\anim_update.gml</script>
+        <script>scripts\anim_find_skin.gml</script>
       </scripts>
     </scripts>
     <scripts name="enemy">
