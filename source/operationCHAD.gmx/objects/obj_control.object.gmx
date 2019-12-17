@@ -441,35 +441,35 @@ if (global.pause != pause_old)
             <kind>1</kind>
             <string>/// assign gamepads to players
 
+var _gamepad_q = ds_queue_create();
+var _player_q = ds_queue_create();
+
 // check available slots
-var _slot;
 for(var i=0; i&lt;global.gpmax; i++;)
-    _slot[i] = global.gp[i,gpinfo.connected];
+    {
+    if (global.gp[i,gpinfo.connected])
+        ds_queue_enqueue(_gamepad_q,i);
+    }
 
 // check which players have assigned slots
-var _player;
-var _players = 0;
 with(par_actor)
-    {
-    if (slot &gt;= 0) and (slot &lt; global.gpmax)
-        _slot[slot] = false;
-    else
-        {
-        _player[_players] = id;
-        _players++;
-        }
-    }
+    ds_queue_enqueue(_player_q,id);
 
 // assign remaining players the available slots
-var _index = 0;
-for(var i=0; i&lt;global.gpmax; i++;)
+var _size = min(ds_queue_size(_gamepad_q),ds_queue_size(_player_q));
+while(_size &gt; 0)
     {
-    if (_slot[i])
-        {
-        _player[_index].slot = i;
-        _index++;
-        }
+    var _gamepad = ds_queue_dequeue(_gamepad_q);
+    var _player = ds_queue_dequeue(_player_q);
+    
+    if (instance_exists(_player)) and (global.gp[_gamepad,gpinfo.connected])
+        _player.slot = _gamepad;
+    
+    _size = min(ds_queue_size(_gamepad_q),ds_queue_size(_player_q));
     }
+
+ds_queue_destroy(_gamepad_q);
+ds_queue_destroy(_player_q);
 </string>
           </argument>
         </arguments>
