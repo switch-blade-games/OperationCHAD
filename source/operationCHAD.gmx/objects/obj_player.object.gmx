@@ -466,7 +466,7 @@ var ty = frame_info[_f,FRAME_TEX_Y];
 var tw = frame_info[_f,FRAME_TEX_W];
 var th = frame_info[_f,FRAME_TEX_H];
 
-draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face,y+mShake-th,face,1,-1,1);
+draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
 
 if (invulnerable)
     {

@@ -155,7 +155,72 @@ anim_create(anim.dead);
 // define animation state speeds
 switch(skin_id)
     {
-    default:
+    case skin.stone:
+        off_x = 0;
+        off_y = 0;
+        img_speed[aState.walk] = 0.2;
+        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.idle] = 0.2;
+        img_speed[aState.duck] = 0.2;
+        img_speed[aState.idle_ramp] = 0.2;
+        img_speed[aState.duck_ramp] = 0.2;
+        img_speed[aState.wc] = 0.2;
+        img_speed[aState.wc_move] = 0.2;
+        img_speed[aState.wc_fire] = 0.2;
+        img_speed[aState.mb] = 0.2;
+        img_speed[aState.mb_move] = 0.2;
+        img_speed[aState.mb_fire] = 0.2;
+        img_speed[aState.roll] = 0.3;
+        img_speed[aState.moto] = 0.2;
+        img_speed[aState.dead_lean] = 0.2;
+        img_speed[aState.dead_roll] = 0.3;
+        img_speed[aState.dead] = 0.2;
+        break;
+    case skin.foxford:
+        off_x = 0;
+        off_y = 0;
+        img_speed[aState.walk] = 0.2;
+        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.idle] = 0.2;
+        img_speed[aState.duck] = 0.2;
+        img_speed[aState.idle_ramp] = 0.2;
+        img_speed[aState.duck_ramp] = 0.2;
+        img_speed[aState.wc] = 0.2;
+        img_speed[aState.wc_move] = 0.2;
+        img_speed[aState.wc_fire] = 0.2;
+        img_speed[aState.mb] = 0.2;
+        img_speed[aState.mb_move] = 0.2;
+        img_speed[aState.mb_fire] = 0.2;
+        img_speed[aState.roll] = 0.3;
+        img_speed[aState.moto] = 0.2;
+        img_speed[aState.dead_lean] = 0.2;
+        img_speed[aState.dead_roll] = 0.3;
+        img_speed[aState.dead] = 0.2;
+        break;
+    case skin.yolo:
+        off_x = 0;
+        off_y = 0;
+        img_speed[aState.walk] = 0.2;
+        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.idle] = 0.2;
+        img_speed[aState.duck] = 0.2;
+        img_speed[aState.idle_ramp] = 0.2;
+        img_speed[aState.duck_ramp] = 0.2;
+        img_speed[aState.wc] = 0.2;
+        img_speed[aState.wc_move] = 0.2;
+        img_speed[aState.wc_fire] = 0.2;
+        img_speed[aState.mb] = 0.2;
+        img_speed[aState.mb_move] = 0.2;
+        img_speed[aState.mb_fire] = 0.2;
+        img_speed[aState.roll] = 0.3;
+        img_speed[aState.moto] = 0.2;
+        img_speed[aState.dead_lean] = 0.2;
+        img_speed[aState.dead_roll] = 0.3;
+        img_speed[aState.dead] = 0.2;
+        break;
+    case skin.pumpkin:
+        off_x = 0;
+        off_y = 0;
         img_speed[aState.walk] = 0.2;
         img_speed[aState.walk_fire] = 0.2;
         img_speed[aState.idle] = 0.2;
