@@ -157,9 +157,9 @@ switch(skin_id)
     {
     case skin.stone:
         off_x = 0;
-        off_y = 0;
-        img_speed[aState.walk] = 0.2;
-        img_speed[aState.walk_fire] = 0.2;
+        off_y = 36;
+        img_speed[aState.walk] = 0.22;
+        img_speed[aState.walk_fire] = 0.22;
         img_speed[aState.idle] = 0.2;
         img_speed[aState.duck] = 0.2;
         img_speed[aState.idle_ramp] = 0.2;
