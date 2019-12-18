@@ -40,8 +40,16 @@ switch(move_state)
                     }
                 else
                     {
-                    if (anim_state != aState.idle)
-                        anim_state = aState.idle;
+                    if (input_fire)
+                        {
+                        if (anim_state != aState.idle_fire)
+                            anim_state = aState.idle_fire;
+                        }
+                    else
+                        {
+                        if (anim_state != aState.idle)
+                            anim_state = aState.idle;
+                        }
                     }
                 }
             }
@@ -204,12 +212,14 @@ switch(anim_state)
     
     case aState.idle:
         anim_update(anim.idle,dir);
+        img_index += img_speed[anim_state];
+        break;
+    
+    case aState.idle_fire:
+        anim_update(anim.idle_fire,dir);
         gun_y = -18;
         
-        if (input_fire)
-            img_index += img_speed[anim_state];
-        else
-            img_index = anim_start;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.duck:
