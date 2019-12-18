@@ -136,7 +136,8 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
 // define animations
 anim_create(anim.walk,0,1,0,1,0,2,0,2);
 anim_create(anim.walk_fire,0,1,0,1,0,2,0,2);
-anim_create(anim.idle,0,1,2,1,0,4,3,4);
+anim_create(anim.idle);
+anim_create(anim.idle_fire,0,1,2,1,0,4,3,4);
 anim_create(anim.duck);
 anim_create(anim.idle_ramp_d,0,1,2,1,0,4,3,4);
 anim_create(anim.duck_ramp_d);
@@ -161,6 +162,7 @@ switch(skin_id)
         img_speed[aState.walk] = 0.22;
         img_speed[aState.walk_fire] = 0.22;
         img_speed[aState.idle] = 0.2;
+        img_speed[aState.idle_fire] = 0.2;
         img_speed[aState.duck] = 0.2;
         img_speed[aState.idle_ramp] = 0.2;
         img_speed[aState.duck_ramp] = 0.2;
@@ -182,6 +184,7 @@ switch(skin_id)
         img_speed[aState.walk] = 0.2;
         img_speed[aState.walk_fire] = 0.2;
         img_speed[aState.idle] = 0.2;
+        img_speed[aState.idle_fire] = 0.2;
         img_speed[aState.duck] = 0.2;
         img_speed[aState.idle_ramp] = 0.2;
         img_speed[aState.duck_ramp] = 0.2;
@@ -203,6 +206,7 @@ switch(skin_id)
         img_speed[aState.walk] = 0.2;
         img_speed[aState.walk_fire] = 0.2;
         img_speed[aState.idle] = 0.2;
+        img_speed[aState.idle_fire] = 0.2;
         img_speed[aState.duck] = 0.2;
         img_speed[aState.idle_ramp] = 0.2;
         img_speed[aState.duck_ramp] = 0.2;
@@ -224,6 +228,7 @@ switch(skin_id)
         img_speed[aState.walk] = 0.2;
         img_speed[aState.walk_fire] = 0.2;
         img_speed[aState.idle] = 0.2;
+        img_speed[aState.idle_fire] = 0.2;
         img_speed[aState.duck] = 0.2;
         img_speed[aState.idle_ramp] = 0.2;
         img_speed[aState.duck_ramp] = 0.2;
