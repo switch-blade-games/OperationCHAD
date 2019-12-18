@@ -301,12 +301,18 @@ file_text_close(file);
             var part_num = 0;
             part_num += instance_number(par_effect);
             
+            if (instance_exists(obj_player))
+                txt = obj_player.skin_tag[obj_player.skin_id];
+            else
+                txt = "";
+            
             draw_set_halign(0);
             draw_set_valign(0);
             draw_text_outline(vx+4,vy+4+00,"Version: BUILD["+string(global.BUILDversion)+"] CFG["+string(global.CFGversion)+"]");
             draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
             draw_text_outline(vx+4,vy+4+24,"Particles: "+string(part_num));
             draw_text_outline(vx+4,vy+4+36,"CamPos: "+string(vx)+"/"+string(vy));
+            draw_text_outline(vx+4,vy+4+48,"Character: "+string(txt));
             draw_set_color($000000);
             draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
             draw_surface(surf_graph,(vx+400)-(graph_w+4),vy+4);
