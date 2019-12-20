@@ -127,30 +127,62 @@ switch(move_state)
     case mState.duck:
         if (on_ramp)
             {
-            if (dir > 0)
+            if (input_fire)
                 {
-                if (ramp_slope > 0)
+                if (dir > 0)
                     {
-                    if (anim_state != aState.ramp_u_duck)
-                        anim_state = aState.ramp_u_duck; // +1
+                    if (ramp_slope > 0)
+                        {
+                        if (anim_state != aState.ramp_u_duck_idle)
+                            anim_state = aState.ramp_u_duck_idle;
+                        }
+                    else if (ramp_slope < 0)
+                        {
+                        if (anim_state != aState.ramp_d_duck_idle)
+                            anim_state = aState.ramp_d_duck_idle;
+                        }
                     }
-                else if (ramp_slope < 0)
+                else if (dir < 0)
                     {
-                    if (anim_state != aState.ramp_d_duck)
-                        anim_state = aState.ramp_d_duck; // +1
+                    if (ramp_slope > 0)
+                        {
+                        if (anim_state != aState.ramp_d_duck_idle)
+                            anim_state = aState.ramp_d_duck_idle;
+                        }
+                    else if (ramp_slope < 0)
+                        {
+                        if (anim_state != aState.ramp_u_duck_idle)
+                            anim_state = aState.ramp_u_duck_idle;
+                        }
                     }
                 }
-            else if (dir < 0)
+            else
                 {
-                if (ramp_slope > 0)
+                if (dir > 0)
                     {
-                    if (anim_state != aState.ramp_d_duck)
-                        anim_state = aState.ramp_d_duck; // -1
+                    if (ramp_slope > 0)
+                        {
+                        if (anim_state != aState.ramp_u_duck_fire)
+                            anim_state = aState.ramp_u_duck_fire;
+                        }
+                    else if (ramp_slope < 0)
+                        {
+                        if (anim_state != aState.ramp_d_duck_fire)
+                            anim_state = aState.ramp_d_duck_fire;
+                        }
                     }
-                else if (ramp_slope < 0)
+                else if (dir < 0)
                     {
-                    if (anim_state != aState.ramp_u_duck)
-                        anim_state = aState.ramp_u_duck; // -1
+                    if (ramp_slope > 0)
+                        {
+                        if (anim_state != aState.ramp_d_duck_fire)
+                            anim_state = aState.ramp_d_duck_fire;
+                        }
+                    else if (ramp_slope < 0)
+                        {
+                        if (anim_state != aState.ramp_u_duck_fire)
+                            anim_state = aState.ramp_u_duck_fire;
+                        }
                     }
                 }
             }
@@ -158,13 +190,13 @@ switch(move_state)
             {
             if (input_fire)
                 {
-                if (anim_state != aState.duck_fire)
-                    anim_state = aState.duck_fire;
+                if (anim_state != aState.flat_duck_fire)
+                    anim_state = aState.flat_duck_fire;
                 }
             else
                 {
-                if (anim_state != aState.duck_idle)
-                    anim_state = aState.duck_idle;
+                if (anim_state != aState.flat_duck_idle)
+                    anim_state = aState.flat_duck_idle;
                 }
             }
         break;
@@ -308,21 +340,6 @@ switch(anim_state)
     case aState.walk_fire:
     case aState.ramp_u_idle:
     case aState.ramp_d_idle:
-        anim_update();
-        img_index += img_speed[anim_state];
-        gun_y = -18;
-        break;
-    
-    case aState.ramp_u_duck:
-    case aState.ramp_d_duck:
-        anim_update();
-        if (input_fire)
-            img_index += img_speed[anim_state];
-        else
-            img_index = anim_start;
-        gun_y = -12;
-        break;
-    
     case aState.ramp_u_fire:
     case aState.ramp_d_fire:
         anim_update();
@@ -330,8 +347,17 @@ switch(anim_state)
         gun_y = -18;
         break;
     
-    case aState.duck_idle:
-    case aState.duck_fire:
+    case aState.ramp_u_duck_idle:
+    case aState.ramp_d_duck_idle:
+    case aState.ramp_u_duck_fire:
+    case aState.ramp_d_duck_fire:
+        anim_update();
+        img_index += img_speed[anim_state];
+        gun_y = -12;
+        break;
+    
+    case aState.flat_duck_idle:
+    case aState.flat_duck_fire:
         anim_update();
         img_index += img_speed[anim_state];
         gun_y = -6;
