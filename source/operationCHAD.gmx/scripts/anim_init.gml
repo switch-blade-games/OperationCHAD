@@ -46,35 +46,39 @@ FRAME_TEX_W = 2;
 FRAME_TEX_H = 3;
 // group enums
 
-EXP_GROUP[aState.flat_idle] = 0;
-EXP_GROUP[aState.flat_fire] = 1;
-EXP_GROUP[aState.walk_move] = 2;
-EXP_GROUP[aState.walk_fire] = 2;
-EXP_GROUP[aState.ramp_u_idle] = 3;
-EXP_GROUP[aState.ramp_u_duck] = 4;
-EXP_GROUP[aState.ramp_u_fire] = 5;
-EXP_GROUP[aState.ramp_d_idle] = 6;
-EXP_GROUP[aState.ramp_d_duck] = 7;
-EXP_GROUP[aState.ramp_d_fire] = 8;
-EXP_GROUP[aState.duck_idle] = 9;
-EXP_GROUP[aState.duck_fire] = 10;
-EXP_GROUP[aState.wc_idle] = 11;
-EXP_GROUP[aState.wc_move] = 12;
-EXP_GROUP[aState.wc_fire] = 13;
-EXP_GROUP[aState.mb_idle] = 14;
-EXP_GROUP[aState.mb_move] = 15;
-EXP_GROUP[aState.mb_fire] = 16;
-EXP_GROUP[aState.moto_idle] = 17;
-EXP_GROUP[aState.roll] = 18;
-EXP_GROUP[aState.dead_roll] = 19;
-EXP_GROUP[aState.dead] = 20;
+var _g = 0;
+EXP_GROUP[aState.flat_idle] = _g++;
+EXP_GROUP[aState.flat_wait] = _g++;
+EXP_GROUP[aState.flat_fire] = _g++;
+EXP_GROUP[aState.walk_move] = _g;
+EXP_GROUP[aState.walk_fire] = _g++;
+EXP_GROUP[aState.ramp_u_idle] = _g++;
+EXP_GROUP[aState.ramp_u_duck] = _g++;
+EXP_GROUP[aState.ramp_u_fire] = _g++;
+EXP_GROUP[aState.ramp_d_idle] = _g++;
+EXP_GROUP[aState.ramp_d_duck] = _g++;
+EXP_GROUP[aState.ramp_d_fire] = _g++;
+EXP_GROUP[aState.duck_idle] = _g++;
+EXP_GROUP[aState.duck_fire] = _g++;
+EXP_GROUP[aState.wc_idle] = _g++;
+EXP_GROUP[aState.wc_move] = _g++;
+EXP_GROUP[aState.wc_fire] = _g++;
+EXP_GROUP[aState.mb_idle] = _g++;
+EXP_GROUP[aState.mb_move] = _g++;
+EXP_GROUP[aState.mb_fire] = _g++;
+EXP_GROUP[aState.moto_idle] = _g++;
+EXP_GROUP[aState.roll] = _g++;
+EXP_GROUP[aState.dead_roll] = _g++;
+EXP_GROUP[aState.dead] = _g++;
 // expected tags
 for(var i=0; i<aState.size; i++;)
     {
     for(var j=0; j<8; j++;)
         EXP_TAG[i,j] = "";
     }
+
 EXP_TAG[aState.flat_idle,0]     = "idle";
+EXP_TAG[aState.flat_wait,0]     = "wait";
 EXP_TAG[aState.flat_fire,0]     = "F_0";
 EXP_TAG[aState.flat_fire,1]     = "F_45";
 EXP_TAG[aState.flat_fire,2]     = "F_90";
@@ -131,6 +135,7 @@ EXP_TAG[aState.moto_fire,7]     = "B_315";
 EXP_TAG[aState.roll,0]          = "jump";
 EXP_TAG[aState.dead_roll,0]     = "dead_fly";
 EXP_TAG[aState.dead,0]          = "dead";
+EXP_TAG[aState.victory,0]       = "victory";
 // anim enums
 ANIM_LEN   = 0;
 ANIM_AIM   = 1;

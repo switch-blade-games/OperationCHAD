@@ -103,8 +103,16 @@ switch(move_state)
                         }
                     else
                         {
-                        if (anim_state != aState.flat_idle)
-                            anim_state = aState.flat_idle;
+                        if (wait > 15*room_speed)
+                            {
+                            if (anim_state != aState.flat_wait)
+                                anim_state = aState.flat_wait;
+                            }
+                        else
+                            {
+                            if (anim_state != aState.flat_idle)
+                                anim_state = aState.flat_idle;
+                            }
                         }
                     }
                 }
@@ -287,6 +295,13 @@ switch(anim_state)
 // update animation
 switch(anim_state)
     {
+    case aState.flat_wait:
+        anim_update();
+        img_index += img_speed[anim_state];
+        if (img_index >= anim_end)
+            wait = 0;
+        break;
+    
     case aState.flat_idle:
     case aState.flat_fire:
     case aState.walk_move:
@@ -370,6 +385,12 @@ switch(anim_state)
     case aState.dead:
         anim_update();
         img_index = anim_start;
+        break;
+    
+    case aState.victory:
+        anim_update();
+        if (img_index >= anim_end)
+            img_index = anim_end-0.1;
         break;
     }
 
