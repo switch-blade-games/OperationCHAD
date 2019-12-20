@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.BUILDversion = "v0.11";
+            <string>global.BUILDversion = "v0.12";
 
 debug = false;
 debugMode = 0; // 0=detail; 1=simple; 2=extra;

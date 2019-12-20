@@ -43,22 +43,27 @@ enum mState
 
 enum aState
     {
-    walk,
+    flat_idle,
+    flat_fire,
+    walk_move,
     walk_fire,
-    idle,
-    idle_fire,
-    duck,
-    idle_ramp,
-    duck_ramp,
-    wc,
+    ramp_u_idle,
+    ramp_u_duck,
+    ramp_u_fire,
+    ramp_d_idle,
+    ramp_d_duck,
+    ramp_d_fire,
+    duck_idle,
+    duck_fire,
+    wc_idle,
     wc_move,
     wc_fire,
-    mb,
+    mb_idle,
     mb_move,
     mb_fire,
+    moto_idle,
+    moto_fire,
     roll,
-    moto,
-    dead_lean,
     dead_roll,
     dead,
     size
@@ -71,29 +76,6 @@ enum skin
     foxford,
     yolo,
     pumpkin,
-    size
-    }
-
-enum anim
-    {
-    walk,
-    walk_fire,
-    idle,
-    idle_fire,
-    duck,
-    idle_ramp_d,
-    duck_ramp_d,
-    idle_ramp_u,
-    duck_ramp_u,
-    wc,
-    wc_fire,
-    mb,
-    mb_fire,
-    moto,
-    moto_fire,
-    roll,
-    dead_roll,
-    dead,
     size
     }
 
