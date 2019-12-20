@@ -135,6 +135,7 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
 
 // define animations
 anim_create(aState.flat_idle);
+anim_create(aState.flat_wait);
 anim_create(aState.flat_fire,0,1,2,1,0,4,3,4);
 anim_create(aState.walk_move,0,1,0,1,0,2,0,2);
 anim_create(aState.walk_fire,0,1,0,1,0,2,0,2);
@@ -157,6 +158,7 @@ anim_create(aState.moto_fire,0,1,2,3,4,5,6,7);
 anim_create(aState.roll);
 anim_create(aState.dead_roll);
 anim_create(aState.dead);
+anim_create(aState.victory);
 
 // define animation state speeds
 switch(skin_id)
@@ -165,6 +167,7 @@ switch(skin_id)
         off_x = 0;
         off_y = 36;
         img_speed[aState.flat_idle] = 0.2;
+        img_speed[aState.flat_wait] = 0.2;
         img_speed[aState.flat_fire] = 0.2;
         img_speed[aState.walk_move] = 0.22;
         img_speed[aState.walk_fire] = 0.22;
@@ -187,14 +190,16 @@ switch(skin_id)
         img_speed[aState.roll] = 0.3;
         img_speed[aState.dead_roll] = 0.3;
         img_speed[aState.dead] = 0.2;
+        img_speed[aState.victory] = 0.2;
         break;
     case skin.foxford:
         off_x = 0;
-        off_y = 0;
+        off_y = 36;
         img_speed[aState.flat_idle] = 0.2;
+        img_speed[aState.flat_wait] = 0.2;
         img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.2;
-        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.walk_move] = 0.22;
+        img_speed[aState.walk_fire] = 0.22;
         img_speed[aState.ramp_u_idle] = 0.2;
         img_speed[aState.ramp_u_duck] = 0.2;
         img_speed[aState.ramp_u_fire] = 0.2;
@@ -214,14 +219,16 @@ switch(skin_id)
         img_speed[aState.roll] = 0.3;
         img_speed[aState.dead_roll] = 0.3;
         img_speed[aState.dead] = 0.2;
+        img_speed[aState.victory] = 0.2;
         break;
     case skin.yolo:
         off_x = 0;
-        off_y = 0;
+        off_y = 36;
         img_speed[aState.flat_idle] = 0.2;
+        img_speed[aState.flat_wait] = 0.2;
         img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.2;
-        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.walk_move] = 0.22;
+        img_speed[aState.walk_fire] = 0.22;
         img_speed[aState.ramp_u_idle] = 0.2;
         img_speed[aState.ramp_u_duck] = 0.2;
         img_speed[aState.ramp_u_fire] = 0.2;
@@ -241,14 +248,16 @@ switch(skin_id)
         img_speed[aState.roll] = 0.3;
         img_speed[aState.dead_roll] = 0.3;
         img_speed[aState.dead] = 0.2;
+        img_speed[aState.victory] = 0.2;
         break;
     case skin.pumpkin:
         off_x = 0;
-        off_y = 0;
+        off_y = 36;
         img_speed[aState.flat_idle] = 0.2;
+        img_speed[aState.flat_wait] = 0.2;
         img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.2;
-        img_speed[aState.walk_fire] = 0.2;
+        img_speed[aState.walk_move] = 0.22;
+        img_speed[aState.walk_fire] = 0.22;
         img_speed[aState.ramp_u_idle] = 0.2;
         img_speed[aState.ramp_u_duck] = 0.2;
         img_speed[aState.ramp_u_fire] = 0.2;
@@ -268,5 +277,7 @@ switch(skin_id)
         img_speed[aState.roll] = 0.3;
         img_speed[aState.dead_roll] = 0.3;
         img_speed[aState.dead] = 0.2;
+        img_speed[aState.victory] = 0.2;
         break;
     }
+

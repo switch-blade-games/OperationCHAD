@@ -77,23 +77,28 @@ input_jump_pressed  = keyboard_check_pressed(_keyJump);
 input_lock_pressed  = keyboard_check_pressed(_keyLock);
 input_swap_pressed  = keyboard_check_pressed(_keySwap);
 
-if (slot < 0) or (slot > 1)
-    exit;
+if (slot >= 0) and (slot <= 1)
+    {
+    input_left  = input_left    or gamepad_check(slot,_padL);
+    input_right = input_right   or gamepad_check(slot,_padR);
+    input_up    = input_up      or gamepad_check(slot,_padU);
+    input_down  = input_down    or gamepad_check(slot,_padD);
+    input_fire  = input_fire    or gamepad_check(slot,_padFire);
+    input_jump  = input_jump    or gamepad_check(slot,_padJump);
+    input_lock  = input_lock    or gamepad_check(slot,_padLock);
+    input_swap  = input_swap    or gamepad_check(slot,_padSwap);
+    
+    input_left_pressed  = input_left_pressed    or gamepad_check_pressed(slot,_padL);
+    input_right_pressed = input_right_pressed   or gamepad_check_pressed(slot,_padR);
+    input_up_pressed    = input_up_pressed      or gamepad_check_pressed(slot,_padU);
+    input_down_pressed  = input_down_pressed    or gamepad_check_pressed(slot,_padD);
+    input_fire_pressed  = input_fire_pressed    or gamepad_check_pressed(slot,_padFire);
+    input_jump_pressed  = input_jump_pressed    or gamepad_check_pressed(slot,_padJump);
+    input_lock_pressed  = input_lock_pressed    or gamepad_check_pressed(slot,_padLock);
+    input_swap_pressed  = input_swap_pressed    or gamepad_check_pressed(slot,_padSwap);
+    }
 
-input_left  = input_left    or gamepad_check(slot,_padL);
-input_right = input_right   or gamepad_check(slot,_padR);
-input_up    = input_up      or gamepad_check(slot,_padU);
-input_down  = input_down    or gamepad_check(slot,_padD);
-input_fire  = input_fire    or gamepad_check(slot,_padFire);
-input_jump  = input_jump    or gamepad_check(slot,_padJump);
-input_lock  = input_lock    or gamepad_check(slot,_padLock);
-input_swap  = input_swap    or gamepad_check(slot,_padSwap);
-
-input_left_pressed  = input_left_pressed    or gamepad_check_pressed(slot,_padL);
-input_right_pressed = input_right_pressed   or gamepad_check_pressed(slot,_padR);
-input_up_pressed    = input_up_pressed      or gamepad_check_pressed(slot,_padU);
-input_down_pressed  = input_down_pressed    or gamepad_check_pressed(slot,_padD);
-input_fire_pressed  = input_fire_pressed    or gamepad_check_pressed(slot,_padFire);
-input_jump_pressed  = input_jump_pressed    or gamepad_check_pressed(slot,_padJump);
-input_lock_pressed  = input_lock_pressed    or gamepad_check_pressed(slot,_padLock);
-input_swap_pressed  = input_swap_pressed    or gamepad_check_pressed(slot,_padSwap);
+if (input_left+input_right+input_up+input_down+input_fire+input_swap+input_jump == 0)
+    wait++;
+else
+    wait = 0;

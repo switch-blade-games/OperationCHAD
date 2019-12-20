@@ -44,6 +44,7 @@ enum mState
 enum aState
     {
     flat_idle,
+    flat_wait,
     flat_fire,
     walk_move,
     walk_fire,
@@ -66,6 +67,7 @@ enum aState
     roll,
     dead_roll,
     dead,
+    victory,
     size
     }
 
@@ -87,6 +89,7 @@ on_ramp = false;
 on_moto = false;
 lock = false;
 drop = false;
+wait = 0;
 invulnerable = false;
 invulnerable_flash = false;
 invulnerable_time = 0; // set to 180 when respawn
