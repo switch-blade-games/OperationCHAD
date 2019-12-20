@@ -1326,6 +1326,86 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
     "sourceSize": { "w": 100, "h": 100 },
     "duration": 100
+   },
+   "100-Stone_test 166.aseprite": {
+    "frame": { "x": 600, "y": 1600, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 167.aseprite": {
+    "frame": { "x": 700, "y": 1600, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 168.aseprite": {
+    "frame": { "x": 800, "y": 1600, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 169.aseprite": {
+    "frame": { "x": 900, "y": 1600, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 170.aseprite": {
+    "frame": { "x": 0, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 171.aseprite": {
+    "frame": { "x": 100, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 172.aseprite": {
+    "frame": { "x": 200, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 173.aseprite": {
+    "frame": { "x": 300, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 174.aseprite": {
+    "frame": { "x": 400, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   },
+   "100-Stone_test 175.aseprite": {
+    "frame": { "x": 500, "y": 1700, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
    }
  },
  "meta": {
@@ -1333,7 +1413,7 @@
   "version": "1.2.9-x64",
   "image": "STONE_TEST.png",
   "format": "RGBA8888",
-  "size": { "w": 1000, "h": 1700 },
+  "size": { "w": 1000, "h": 1800 },
   "scale": "1",
   "frameTags": [
    { "name": "W_0", "from": 0, "to": 9, "direction": "forward" },
@@ -1373,27 +1453,27 @@
    { "name": "C_270", "from": 108, "to": 109, "direction": "forward" },
    { "name": "C_315", "from": 110, "to": 111, "direction": "forward" },
    { "name": "C_move", "from": 112, "to": 115, "direction": "forward" },
-   { "name": "Monkey", "from": 116, "to": 129, "direction": "forward" },
+   { "name": "Monkey", "from": 116, "to": 135, "direction": "forward" },
    { "name": "M_0", "from": 116, "to": 117, "direction": "forward" },
    { "name": "M_45", "from": 118, "to": 119, "direction": "forward" },
    { "name": "M_90", "from": 120, "to": 121, "direction": "forward" },
    { "name": "M_270", "from": 122, "to": 123, "direction": "forward" },
    { "name": "M_315", "from": 124, "to": 125, "direction": "forward" },
-   { "name": "M_move", "from": 126, "to": 129, "direction": "forward" },
-   { "name": "Bike", "from": 130, "to": 147, "direction": "forward" },
-   { "name": "B_0", "from": 130, "to": 131, "direction": "forward" },
-   { "name": "B_45", "from": 132, "to": 133, "direction": "forward" },
-   { "name": "B_90", "from": 134, "to": 135, "direction": "forward" },
-   { "name": "B_135", "from": 136, "to": 137, "direction": "forward" },
-   { "name": "B_180", "from": 138, "to": 139, "direction": "forward" },
-   { "name": "B_225", "from": 140, "to": 141, "direction": "forward" },
-   { "name": "B_270", "from": 142, "to": 143, "direction": "forward" },
-   { "name": "B_315", "from": 144, "to": 145, "direction": "forward" },
-   { "name": "B_rest", "from": 146, "to": 147, "direction": "forward" },
-   { "name": "jump", "from": 148, "to": 151, "direction": "forward" },
-   { "name": "dead_fly", "from": 152, "to": 155, "direction": "forward" },
-   { "name": "dead", "from": 156, "to": 157, "direction": "forward" },
-   { "name": "idle", "from": 158, "to": 165, "direction": "forward" }
+   { "name": "M_move", "from": 126, "to": 135, "direction": "forward" },
+   { "name": "Bike", "from": 136, "to": 153, "direction": "forward" },
+   { "name": "B_0", "from": 136, "to": 137, "direction": "forward" },
+   { "name": "B_45", "from": 138, "to": 139, "direction": "forward" },
+   { "name": "B_90", "from": 140, "to": 141, "direction": "forward" },
+   { "name": "B_135", "from": 142, "to": 143, "direction": "forward" },
+   { "name": "B_180", "from": 144, "to": 145, "direction": "forward" },
+   { "name": "B_225", "from": 146, "to": 147, "direction": "forward" },
+   { "name": "B_270", "from": 148, "to": 149, "direction": "forward" },
+   { "name": "B_315", "from": 150, "to": 151, "direction": "forward" },
+   { "name": "B_rest", "from": 152, "to": 153, "direction": "forward" },
+   { "name": "jump", "from": 154, "to": 161, "direction": "forward" },
+   { "name": "dead_fly", "from": 162, "to": 165, "direction": "forward" },
+   { "name": "dead", "from": 166, "to": 167, "direction": "forward" },
+   { "name": "idle", "from": 168, "to": 175, "direction": "forward" }
   ]
  }
 }
