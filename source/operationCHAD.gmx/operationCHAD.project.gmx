@@ -606,6 +606,7 @@
       <sprite>sprites\spr_pellet</sprite>
       <sprite>sprites\spr_heat_seeker</sprite>
       <sprite>sprites\spr_flamethrower_flame</sprite>
+      <sprite>sprites\smug_ball_spr</sprite>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\explode_bg_spr</sprite>
