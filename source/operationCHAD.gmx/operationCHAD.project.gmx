@@ -575,6 +575,13 @@
           <sprite>sprites\stage_6_panel_spr</sprite>
           <sprite>sprites\stage_7_panel_spr</sprite>
         </sprites>
+        <sprites name="player_select">
+          <sprite>sprites\player_select_under_spr</sprite>
+          <sprite>sprites\yolo_select_spr</sprite>
+          <sprite>sprites\fox_select_spr</sprite>
+          <sprite>sprites\stone_select_spr</sprite>
+          <sprite>sprites\pumpkin_select_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="gags">
         <sprite>sprites\controller_gag_spr</sprite>
@@ -882,6 +889,9 @@
         </objects>
         <object>objects\ep_warning</object>
         <object>objects\obj_gamepad_disconnect</object>
+        <objects name="player_select">
+          <object>objects\player_select_controller</object>
+        </objects>
       </objects>
       <objects name="001-Abortion Factory">
         <objects name="tong_boss">
@@ -1402,6 +1412,7 @@
         <room>rooms\new_factory</room>
         <room>rooms\demo_room</room>
       </rooms>
+      <room>rooms\player_select_room</room>
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
