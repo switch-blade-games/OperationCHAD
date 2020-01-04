@@ -613,7 +613,13 @@
       <sprite>sprites\spr_pellet</sprite>
       <sprite>sprites\spr_heat_seeker</sprite>
       <sprite>sprites\spr_flamethrower_flame</sprite>
-      <sprite>sprites\smug_ball_spr</sprite>
+      <sprite>sprites\sprite468</sprite>
+      <sprite>sprites\sprite469</sprite>
+      <sprites name="weapons">
+        <sprite>sprites\AA_rolling_stone_spr</sprite>
+        <sprite>sprites\A_rolling_cutter_spr</sprite>
+        <sprite>sprites\C_buckshot_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="effects">
       <sprite>sprites\explode_bg_spr</sprite>
@@ -631,6 +637,7 @@
       <sprite>sprites\yolo_weps_spr</sprite>
       <sprite>sprites\wep_select_spr</sprite>
       <sprite>sprites\HUD_under_spr</sprite>
+      <sprite>sprites\HUD_heads_spr</sprite>
     </sprites>
     <sprites name="camera">
       <sprite>sprites\cam_icon_spr</sprite>
@@ -1373,6 +1380,7 @@
       <object>objects\dev_cheater</object>
       <object>objects\factory_1_trigger</object>
       <object>objects\practice_target</object>
+      <object>objects\weapon_test_controller</object>
     </objects>
     <objects name="HUD">
       <object>objects\HUD</object>
