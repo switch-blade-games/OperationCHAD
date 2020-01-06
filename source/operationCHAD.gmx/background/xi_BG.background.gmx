@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>400</width>
-  <height>240</height>
+  <width>440</width>
+  <height>280</height>
   <data>images\xi_BG.png</data>
 </background>

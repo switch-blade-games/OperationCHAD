@@ -446,6 +446,8 @@
           <sprite>sprites\forest_BG_spr</sprite>
           <sprite>sprites\xi_bamboo_spr</sprite>
         </sprites>
+        <sprite>sprites\xi_pic_spr</sprite>
+        <sprite>sprites\xi_dark_spr</sprite>
       </sprites>
       <sprites name="009-Misc">
         <sprite>sprites\might_wood_spr</sprite>
@@ -1276,6 +1278,7 @@
           <objects name="controller">
             <object>objects\xi_between</object>
             <object>objects\xi_tracker</object>
+            <object>objects\xi_dark</object>
           </objects>
           <object>objects\xi_return</object>
           <objects name="sickle_shot">
@@ -1308,6 +1311,8 @@
           <object>objects\xi_bamboo</object>
           <object>objects\xi_swing</object>
         </objects>
+        <object>objects\xi_intro</object>
+        <object>objects\xi_pic</object>
       </objects>
       <objects name="008-Ending">
         <object>objects\credits_drawer</object>
