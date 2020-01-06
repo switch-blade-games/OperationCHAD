@@ -391,8 +391,12 @@
           </sprites>
         </sprites>
         <sprites name="xi_battle">
-          <sprite>sprites\xi_bot_spr</sprite>
-          <sprite>sprites\xi_front_spr</sprite>
+          <sprites name="xi_character">
+            <sprite>sprites\xi_bot_spr</sprite>
+            <sprite>sprites\xi_front_spr</sprite>
+            <sprite>sprites\xi_grap_spr</sprite>
+            <sprite>sprites\xi_hang_spr</sprite>
+          </sprites>
           <sprite>sprites\xi_spin_spr</sprite>
           <sprite>sprites\xi_hammer_make_spr</sprite>
           <sprite>sprites\xi_hammer_back_spr</sprite>
@@ -408,6 +412,16 @@
           <sprite>sprites\hunny_pooh_spr</sprite>
           <sprite>sprites\xi_wall_spr</sprite>
           <sprite>sprites\hunny_mask_spr</sprite>
+          <sprite>sprites\arm_part_spr</sprite>
+          <sprite>sprites\arm_part_hand_spr</sprite>
+          <sprite>sprites\xi_rolling_elec_spr</sprite>
+          <sprite>sprites\china_star_spr</sprite>
+          <sprite>sprites\china_star_little_spr</sprite>
+          <sprite>sprites\hunny_pot_spr</sprite>
+          <sprite>sprites\hunny_flame_spr</sprite>
+          <sprite>sprites\hammer_dust_spr</sprite>
+          <sprite>sprites\sickle_shot_spr</sprite>
+          <sprite>sprites\sickle_tracer_spr</sprite>
         </sprites>
         <sprites name="pooh_stage">
           <sprite>sprites\pooh_torch_spr</sprite>
@@ -1234,13 +1248,10 @@
             <object>objects\hunny_lob</object>
             <object>objects\hunny_bounce</object>
           </objects>
-          <objects name="controller">
-            <object>objects\xi_between</object>
-          </objects>
           <objects name="hammer">
-            <object>objects\hammer_sur</object>
             <object>objects\xi_hammer_attack</object>
             <object>objects\hammer_ball</object>
+            <object>objects\hammer_dust</object>
           </objects>
           <objects name="hunny">
             <object>objects\xi_hunny_blast</object>
@@ -1252,6 +1263,25 @@
           </objects>
           <objects name="sickle">
             <object>objects\big_sickle</object>
+          </objects>
+          <objects name="grapple">
+            <object>objects\xi_grapple</object>
+            <object>objects\grap_arm</object>
+            <object>objects\rolling_elec_ball</object>
+            <object>objects\china_star_center</object>
+            <object>objects\china_star</object>
+            <object>objects\hunny_bomb</object>
+            <object>objects\hunny_flame</object>
+          </objects>
+          <objects name="controller">
+            <object>objects\xi_between</object>
+            <object>objects\xi_tracker</object>
+          </objects>
+          <object>objects\xi_return</object>
+          <objects name="sickle_shot">
+            <object>objects\xi_sickle</object>
+            <object>objects\sickle_shot</object>
+            <object>objects\sickle_tracer</object>
           </objects>
         </objects>
         <objects name="dream">
@@ -1414,6 +1444,16 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <rooms name="007-Pooh">
+        <room>rooms\pooh_stage</room>
+        <room>rooms\xi_room</room>
+        <room>rooms\fent_room</room>
+        <room>rooms\dream_room</room>
+        <room>rooms\forest_room</room>
+        <room>rooms\pooh_room</room>
+        <room>rooms\final_room</room>
+        <room>rooms\cam_room</room>
+      </rooms>
       <rooms name="demo_rooms">
         <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
@@ -1450,16 +1490,6 @@
         <room>rooms\NPC_room</room>
         <room>rooms\NPC_game_room</room>
         <room>rooms\ball_buster_room</room>
-      </rooms>
-      <rooms name="007-Pooh">
-        <room>rooms\final_room</room>
-        <room>rooms\pooh_room</room>
-        <room>rooms\xi_room</room>
-        <room>rooms\fent_room</room>
-        <room>rooms\dream_room</room>
-        <room>rooms\pooh_stage</room>
-        <room>rooms\cam_room</room>
-        <room>rooms\forest_room</room>
       </rooms>
       <rooms name="009-Misc">
         <room>rooms\might_room</room>

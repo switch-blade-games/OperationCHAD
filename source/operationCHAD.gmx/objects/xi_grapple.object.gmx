@@ -3,9 +3,9 @@
   <spriteName>xi_bot_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>3</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,63 +25,140 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FACING=1
-
-
-if(x&gt;=200)
-FACING=-1
-
-image_speed=0
-
-FLOORy=230
+            <string>FLIP=1
 
 WAIT=1
-HAMMERmake=2
-POSTmake=3
-HAMMERback=4
-HAMMERjump=5
-HAMMERsmash=6
-HAMMERfade=7
+GRAPOUT=2
+GRAPWAIT=3
 
+GRAPSHOTS=3
+
+GRAPSHOTrate=60
+GRAPSHOTnoise=60
+
+GRAPGO=4
+
+GOspe=6
+
+GRAPHANG=5
 
 state=WAIT
 
-WAITtime=60
+STARrate=120
+STARnoise=60
+
+HUNNYrate=180
+
+HUNNYnum=4
+
+alarm[0]=2
+
+//pull from list
+GRAPtarget=ds_list_find_value(global.GRAPlist,0)
 
 
+var GRAPfindx=0;
+var GRAPfindy=0;
 
-alarm[0]=WAITtime
+var CONVERT=0;
 
-image_xscale=FACING
+if(GRAPtarget=0)
+CONVERT=6
 
+if(GRAPtarget=1)
+CONVERT=7
 
+if(GRAPtarget=2)
+CONVERT=8
 
+with(hunny_node){
 
-JUMPspe=2
+    if(SET=CONVERT){
+        GRAPfindx=x
+        GRAPfindy=y
+    }
+}
 
-GRAV=0.05
+//now xi knows where to go
+GRAPx=GRAPfindx
+GRAPy=GRAPfindy
+        
 
-MAKEtime=180
+ds_list_delete(global.GRAPlist,0)
 
-POSTtime=30
+//if list is empty, replenish via xi_tracker
+if(ds_list_empty(global.GRAPlist)=true)
+    with(xi_tracker)
+        alarm[0]=2
+        
+  
 
+        
+//placement of the arm
+ARMx=-10
+ARMy=-40
+    
+//variables related to the grapple arm
+GRAPdir=point_direction(x+ARMx,y+ARMy,GRAPx,GRAPy);
+GRAPlen=0
+GRAPlenmax=point_distance(x+ARMx,y+ARMy,GRAPx,GRAPy);
+GRAPnum=12;
 
-//back 
-BACKspe=0.3
-BACKtrig=false
-BACKtime=30
+ARMBACKspe=3
+ARMdecayspe=0.2
+ARMOUTspe=6
+//
 
-//SWING
-SWINGspe=0.3
-SWINGtrig=false
-SWINGtime=60
+var i=0;
 
-BALLspe=2
+var ME=id;
 
-//FADE
+//create arm
+repeat(GRAPnum){
 
-FADEspe=0.3
-FADEtime=60
+    GRAPson[i]=instance_create(ARMx*FLIP,ARMy,grap_arm);
+    with(GRAPson[i])
+        event_perform(ev_create,0)
+    GRAPson[i].dad=ME
+    GRAPson[i].set=i
+    if(i=(GRAPnum-1))
+        GRAPson[i].hand=true
+        
+    i+=1
+}
+    
+    
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var i=0;
+    
+    repeat(GRAPnum){
+    
+        with(GRAPson[i])
+            instance_destroy()
+        i+=1
+    }
 </string>
           </argument>
         </arguments>
@@ -104,17 +181,32 @@ FADEtime=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///finish
+            <string>///hunny bomb ///finish attack!!!
 
-instance_destroy()
+HUNNYnum-=1
 
+if(HUNNYnum&lt;=0){
 
     
+
+    instance_create(x,y,xi_return)
+    with(xi_return)
+        motion_set(270,1)
+    instance_destroy()
     
+    with(china_star_center)
+        instance_destroy()
+    
+    exit
+}
 
-instance_create(x,y,xi_between)
+instance_create(x,y,hunny_bomb)
 
-xi_between.image_xscale=image_xscale
+alarm[5]=HUNNYrate
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -137,20 +229,11 @@ xi_between.image_xscale=image_xscale
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///finish attack &amp; make dust
+            <string>///china star blast
 
-var i=0;
+instance_create(x,y,china_star_center)
 
-var DIST=20;
-
-repeat(12){
-    instance_create(x+((i*DIST))*FACING,y-40,hammer_dust)
-    i+=1
-}
-
-state=HAMMERfade
-
-alarm[5]=FADEtime
+alarm[4]=STARrate+random(STARnoise)
 </string>
           </argument>
         </arguments>
@@ -173,15 +256,13 @@ alarm[5]=FADEtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///jump
+            <string>///GRAP GO
 
-state=HAMMERjump
+state=GRAPGO
 
-if(FACING=-1)
-motion_set(100,JUMPspe)
+motion_set(point_direction(x,y,GRAPx,GRAPy),GOspe)
 
-if(FACING=1)
-motion_set(80,JUMPspe)
+
 </string>
           </argument>
         </arguments>
@@ -204,9 +285,25 @@ motion_set(80,JUMPspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//pull hammer back
+            <string>///GRAP shots
 
-state=HAMMERback
+if(GRAPSHOTS&gt;0){
+
+var HANDson=GRAPson[GRAPnum-1];
+        
+        var ELECr=instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
+        ELECr.direction=0
+        var ELECl=instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
+        ELECr.direction=180
+        
+        
+GRAPSHOTS-=1
+
+if(GRAPSHOTS&gt;0)
+alarm[2]=GRAPSHOTrate+random(GRAPSHOTnoise)
+else
+alarm[3]=60
+}
 </string>
           </argument>
         </arguments>
@@ -229,11 +326,7 @@ state=HAMMERback
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///finish making hammer
-
-state=POSTmake
-
-alarm[2]=POSTtime
+            <string>state=GRAPOUT
 </string>
           </argument>
         </arguments>
@@ -256,11 +349,11 @@ alarm[2]=POSTtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///make hammer
+            <string>state=GRAPOUT
 
-state=HAMMERmake
+ARMspe=ARMBACKspe
 
-alarm[1]=MAKEtime
+//alarm[1]=60
 
 </string>
           </argument>
@@ -284,67 +377,56 @@ alarm[1]=MAKEtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>var i=0;
 
+var SLICE=GRAPlenmax/GRAPnum;
 
+repeat(GRAPnum){
 
-if(state=HAMMERjump){
-
-    motion_add(270,GRAV)
+    GRAPson[i].x=((x+ARMx)*FLIP)+lengthdir_x(GRAPlen*(SLICE*(i+1))/GRAPlenmax,GRAPdir)
+    GRAPson[i].y=((y+ARMy))+lengthdir_y(GRAPlen*(SLICE*(i+1))/GRAPlenmax,GRAPdir)
     
-    if(y&gt;=FLOORy){
+    i+=1
+}
+
+
+if(state=GRAPOUT){
+
+    GRAPlen-=ARMBACKspe
+    
+    ARMBACKspe-=ARMdecayspe
+    
+    if(GRAPlen&gt;=GRAPlenmax){
+        GRAPlen=GRAPlenmax
+        state=GRAPWAIT
+        
+        alarm[2]=30
+        }
+    
+    
+}
+
+if(state=GRAPGO){
+
+    GRAPlen=point_distance(x,y,GRAPx,GRAPy)
+    
+    if(point_distance(x,y,GRAPx,GRAPy)&lt;speed){
         speed=0
-        y=FLOORy
-        state=HAMMERsmash
+        x=GRAPx
+        y=GRAPy+40
+        state=GRAPHANG
+        
+        
+        //china star cycle
+        alarm[4]=30
+        
+        //hunny bomb cycle
+        alarm[5]=HUNNYrate
+    
+        
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(BACKtrig=false)
-if(state=HAMMERback){
 
-    image_index=image_number-1
-    image_speed=0
-    
-    BACKtrig=true
-    
-    alarm[3]=BACKtime
-}
-
-
-if(SWINGtrig=false)
-if(state=HAMMERsmash){
-
-    image_index=image_number-1
-    image_speed=0
-    
-    SWINGtrig=true
-    
-    global.yshake=20
-
-    
-    alarm[4]=SWINGtime
-}
 </string>
           </argument>
         </arguments>
@@ -367,50 +449,34 @@ if(state=HAMMERsmash){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=HAMMERmake){
+            <string>draw_self()
 
-    sprite_index=xi_hammer_make_spr
-    image_speed=0.3
+if(state=GRAPGO){
+
+    sprite_index=xi_grap_spr
+    image_angle=direction
+    image_yscale=FLIP
 }
 
-if(state=POSTmake){
+if(state=WAIT)
+or
+state=GRAPOUT
+or
+state=GRAPWAIT{
+    sprite_index=xi_bot_spr
 
-    sprite_index=xi_hammer_make_spr
-    image_speed=0
-    image_index=0
+    image_angle=0
+    image_xscale=FLIP
 }
-
-if(state=HAMMERback){
-
-    sprite_index=xi_hammer_back_spr
-    if(BACKtrig=false)
-    image_speed=BACKspe
-}
-
-if(state=HAMMERjump){
-
-    sprite_index=xi_hammer_jump_spr
     
+if(state=GRAPHANG){
+    image_angle=0
+    sprite_index=xi_hang_spr
+    image_xscale=FLIP
 }
-
-if(state=HAMMERsmash){
-
-    sprite_index=xi_hammer_swing_spr
-
     
-    if(SWINGtrig=false)
-    image_speed=SWINGspe
-}
 
-if(state=HAMMERfade){
-
-    sprite_index=xi_hammer_fade_spr
-    
-    image_speed=FADEspe
-    
-}
-
-draw_self()
+//draw_text(x,y-40,GRAPSHOTS)
 </string>
           </argument>
         </arguments>

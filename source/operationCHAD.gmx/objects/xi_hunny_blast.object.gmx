@@ -30,6 +30,8 @@ PREspin=2
 BLAST=3
 POSTblast=4
 
+ALLdone=5
+
 state=PREblast
 
 PREtime=60
@@ -41,7 +43,7 @@ PREspintime=180
 
 SPINfade=0
 
-SPINmax=1
+SPINmax=1.2
 
 SPINadd=0.01
 
@@ -53,7 +55,69 @@ PREspe=3
 
 BLASTspe=6
 
-BLASTtime=240
+BLASTtime=1000
+
+SPINdecay=0.05
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// xi between / end of attack
+
+with(hunny_pooh)
+    instance_destroy()
+
+var SON=instance_create(x,y,xi_return);
+
+with(SON)
+    motion_set(90,2)
+    
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///attack finished, next alarm is to change back
+
+state=POSTblast
+
+alarm[4]=60
 </string>
           </argument>
         </arguments>
@@ -126,6 +190,9 @@ SON.speed=BLASTspe
             <string>state=BLAST
 
 instance_create(0,0,hunny_node_controller)
+
+
+alarm[3]=BLASTtime
 </string>
           </argument>
         </arguments>
@@ -191,6 +258,15 @@ if(SPINfade&lt;SPINmax)
     
 }
 
+
+if(state=POSTblast){
+    SPINfade-=SPINdecay
+    
+    if(SPINfade&lt;=0){
+        state=ALLdone
+    }
+}
+    
 
 
 </string>
