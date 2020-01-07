@@ -25,28 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ATTACK=1
+            <string>alarm[0]=60
 
+SHOTS=3
 
-REST=1
+READY=1
+THROW=2
+WAIT=3
 
-THINK=2
-
-GO=3
-
-state=REST
-
-
-RESTtime=60
-
-alarm[0]=RESTtime
-
-DESTx=0
-DESTy=0
-
-spe=2
-
-THINKtime=60
+state=READY
 </string>
           </argument>
         </arguments>
@@ -69,60 +56,15 @@ THINKtime=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-state=THINK
-
-ATTACK=ds_list_find_value(global.XIlist,0)
-
-ds_list_delete(global.XIlist,0)
-
-if(ds_list_empty(global.XIlist))
-    xi_tracker.alarm[1]=2
+            <string>instance_create(x,y,xi_spear)
 
 
-    
-if(ATTACK=0){
+SHOTS-=1
 
-    DESTx=200
-    DESTy=120
-    
-}
-
-if(ATTACK=1){
-
-    instance_destroy()
-    instance_create(x,y,xi_grapple)
-}
-
-
-if(ATTACK=2){
-
-    instance_destroy()
-    instance_create(x,y,xi_sickle)
-}
-
-
-if(ATTACK=3){
-
-    instance_destroy()
-    instance_create(x,y,xi_spear_attack)
-}
-
-
-if(ATTACK=4){
-
-    instance_destroy()
-    instance_create(x,y,xi_gummi_attack)
-}
-
-if(ATTACK=5){
-
-    instance_destroy()
-    instance_create(x,y,hunny_arm_blaster)
-}
-    
-
-
+if(SHOTS&gt;0)
+alarm[0]=120
+else
+state=WAIT
 </string>
           </argument>
         </arguments>
@@ -145,49 +87,12 @@ if(ATTACK=5){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(ATTACK=0){
+            <string>if(state=WAIT)
+if(instance_number(xi_spear)=0){
 
-    motion_set(point_direction(x,y,DESTx,DESTy),spe)
-    
-    if(point_distance(x,y,DESTx,DESTy)&lt;spe){
-        x=DESTx
-        y=DESTy
-        speed=0
-        
-        {
-        
-            instance_destroy()
-            instance_create(x,y,xi_hunny_blast)
-            
-        }
-    }
+    instance_create(x,y,xi_return)
+    instance_destroy()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(state=GO)
-    sprite_index=xi_front_spr
-    
-draw_self()
 </string>
           </argument>
         </arguments>

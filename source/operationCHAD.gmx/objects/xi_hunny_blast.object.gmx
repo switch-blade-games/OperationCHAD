@@ -34,11 +34,11 @@ ALLdone=5
 
 state=PREblast
 
-PREtime=60
+PREtime=30
 
 alarm[0]=PREtime
 
-PREspintime=180
+PREspintime=60
 
 
 SPINfade=0
@@ -55,9 +55,9 @@ PREspe=3
 
 BLASTspe=6
 
-BLASTtime=1000
+BLASTtime=800
 
-SPINdecay=0.05
+SPINdecay=0.1
 </string>
           </argument>
         </arguments>

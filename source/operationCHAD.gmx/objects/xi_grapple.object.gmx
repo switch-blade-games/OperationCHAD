@@ -287,7 +287,7 @@ motion_set(point_direction(x,y,GRAPx,GRAPy),GOspe)
             <kind>1</kind>
             <string>///GRAP shots
 
-if(GRAPSHOTS&gt;0){
+
 
 var HANDson=GRAPson[GRAPnum-1];
         
@@ -297,13 +297,9 @@ var HANDson=GRAPson[GRAPnum-1];
         ELECr.direction=180
         
         
-GRAPSHOTS-=1
 
-if(GRAPSHOTS&gt;0)
-alarm[2]=GRAPSHOTrate+random(GRAPSHOTnoise)
-else
-alarm[3]=60
-}
+alarm[3]=2
+
 </string>
           </argument>
         </arguments>
@@ -400,7 +396,7 @@ if(state=GRAPOUT){
         GRAPlen=GRAPlenmax
         state=GRAPWAIT
         
-        alarm[2]=30
+        alarm[2]=2
         }
     
     
@@ -418,7 +414,7 @@ if(state=GRAPGO){
         
         
         //china star cycle
-        alarm[4]=30
+        alarm[4]=60
         
         //hunny bomb cycle
         alarm[5]=HUNNYrate

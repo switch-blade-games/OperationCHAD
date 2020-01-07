@@ -422,6 +422,10 @@
           <sprite>sprites\hammer_dust_spr</sprite>
           <sprite>sprites\sickle_shot_spr</sprite>
           <sprite>sprites\sickle_tracer_spr</sprite>
+          <sprite>sprites\honey_ball_spr</sprite>
+          <sprite>sprites\xi_spear_spr</sprite>
+          <sprite>sprites\blade_shot_spr</sprite>
+          <sprite>sprites\gummi_bear_spr</sprite>
         </sprites>
         <sprites name="pooh_stage">
           <sprite>sprites\pooh_torch_spr</sprite>
@@ -786,6 +790,7 @@
       <path>paths\baby_part_path</path>
       <path>paths\BG_pipe_1_path</path>
       <path>paths\BG_pipe_2_path</path>
+      <path>paths\hunny_arm_path</path>
     </paths>
   </paths>
   <scripts name="scripts">
@@ -1263,9 +1268,6 @@
             <object>objects\hunny_blast</object>
             <object>objects\hunny_pre</object>
           </objects>
-          <objects name="sickle">
-            <object>objects\big_sickle</object>
-          </objects>
           <objects name="grapple">
             <object>objects\xi_grapple</object>
             <object>objects\grap_arm</object>
@@ -1285,6 +1287,24 @@
             <object>objects\xi_sickle</object>
             <object>objects\sickle_shot</object>
             <object>objects\sickle_tracer</object>
+          </objects>
+          <objects name="hunny_ball">
+            <object>objects\hunny_ball</object>
+          </objects>
+          <objects name="xi_spear">
+            <object>objects\xi_spear</object>
+            <object>objects\xi_spear_attack</object>
+          </objects>
+          <objects name="xi_gummi">
+            <object>objects\xi_gummi_attack</object>
+            <object>objects\gummi</object>
+            <object>objects\gummi_config_1</object>
+            <object>objects\gummi_config_2</object>
+          </objects>
+          <objects name="hunny_blast">
+            <object>objects\hunny_arm_blaster</object>
+            <object>objects\hunny_arm</object>
+            <object>objects\hunny_arm_ball</object>
           </objects>
         </objects>
         <objects name="dream">
@@ -1313,6 +1333,7 @@
         </objects>
         <object>objects\xi_intro</object>
         <object>objects\xi_pic</object>
+        <object>objects\blade_shot</object>
       </objects>
       <objects name="008-Ending">
         <object>objects\credits_drawer</object>
@@ -1450,8 +1471,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="007-Pooh">
-        <room>rooms\pooh_stage</room>
         <room>rooms\xi_room</room>
+        <room>rooms\pooh_stage</room>
         <room>rooms\fent_room</room>
         <room>rooms\dream_room</room>
         <room>rooms\forest_room</room>
