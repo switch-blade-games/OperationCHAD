@@ -2,16 +2,16 @@
 
 // player skin
 skin_id = -1;
-skin_tag[skin.stone] = "stone";
-skin_tag[skin.foxford] = "foxford";
-skin_tag[skin.yolo] = "yolo";
-skin_tag[skin.pumpkin] = "pumpkin";
+skin_tag[skin.stone] = "101-Stone";
+skin_tag[skin.pumpkin] = "102-Pumpkin";
+skin_tag[skin.foxford] = "103-Fox";
+skin_tag[skin.yolo] = "104-Yolo";
 
 // sheet/json paths
 for(var i=skin.stone; i<skin.size; i++;)
     {
-    sheet_path[i] = working_directory+string(skin_tag[i])+"sheet.png";
-    json_path[i]  = working_directory+string(skin_tag[i])+"info.json";
+    sheet_path[i] = working_directory+"skins\"+string(skin_tag[i])+"_sheet.png";
+    json_path[i]  = working_directory+"skins\"+string(skin_tag[i])+"_info.json";
     }
 
 spr_index = -1;
@@ -52,14 +52,6 @@ EXP_GROUP[aState.flat_wait]         = _g++;
 EXP_GROUP[aState.flat_fire]         = _g++;
 EXP_GROUP[aState.walk_move]         = _g;
 EXP_GROUP[aState.walk_fire]         = _g++;
-EXP_GROUP[aState.ramp_u_idle]       = _g++;
-EXP_GROUP[aState.ramp_u_fire]       = _g++;
-EXP_GROUP[aState.ramp_u_duck_idle]  = _g++;
-EXP_GROUP[aState.ramp_u_duck_fire]  = _g++;
-EXP_GROUP[aState.ramp_d_idle]       = _g++;
-EXP_GROUP[aState.ramp_d_fire]       = _g++;
-EXP_GROUP[aState.ramp_d_duck_idle]  = _g++;
-EXP_GROUP[aState.ramp_d_duck_fire]  = _g++;
 EXP_GROUP[aState.flat_duck_idle]    = _g++;
 EXP_GROUP[aState.flat_duck_fire]    = _g++;
 EXP_GROUP[aState.wc_idle]           = _g++;
@@ -92,22 +84,6 @@ EXP_TAG[aState.walk_move,2]         = "W_315";
 EXP_TAG[aState.walk_fire,0]         = "W_shoot_0";
 EXP_TAG[aState.walk_fire,1]         = "W_shoot_45";
 EXP_TAG[aState.walk_fire,2]         = "W_shoot_315";
-EXP_TAG[aState.ramp_u_idle,0]       = "UR_idle";
-EXP_TAG[aState.ramp_u_fire,0]       = "UR_0";
-EXP_TAG[aState.ramp_u_fire,1]       = "UR_45";
-EXP_TAG[aState.ramp_u_fire,2]       = "UR_90";
-EXP_TAG[aState.ramp_u_fire,3]       = "UR_270";
-EXP_TAG[aState.ramp_u_fire,4]       = "UR_315";
-EXP_TAG[aState.ramp_u_duck_idle,0]  = "UR_duck_idle";
-EXP_TAG[aState.ramp_u_duck_fire,0]  = "UR_duck_fire";
-EXP_TAG[aState.ramp_d_idle,0]       = "DR_idle";
-EXP_TAG[aState.ramp_d_fire,0]       = "DR_0";
-EXP_TAG[aState.ramp_d_fire,1]       = "DR_45";
-EXP_TAG[aState.ramp_d_fire,2]       = "DR_90";
-EXP_TAG[aState.ramp_d_fire,3]       = "DR_270";
-EXP_TAG[aState.ramp_d_fire,4]       = "DR_315";
-EXP_TAG[aState.ramp_d_duck_idle,0]  = "DR_duck_idle";
-EXP_TAG[aState.ramp_d_duck_fire,0]  = "DR_duck_fire";
 EXP_TAG[aState.flat_duck_idle,0]    = "F_duck_idle";
 EXP_TAG[aState.flat_duck_fire,0]    = "F_duck_fire";
 EXP_TAG[aState.wc_idle,0]           = "C_idle";
@@ -139,7 +115,7 @@ EXP_TAG[aState.moto_fire,7]         = "B_315";
 EXP_TAG[aState.roll,0]              = "jump";
 EXP_TAG[aState.dead_roll,0]         = "dead_fly";
 EXP_TAG[aState.dead,0]              = "dead";
-EXP_TAG[aState.victory,0]           = "victory";
+EXP_TAG[aState.victory,0]           = "V_pose";
 // anim enums
 ANIM_LEN   = 0;
 ANIM_AIM   = 1;

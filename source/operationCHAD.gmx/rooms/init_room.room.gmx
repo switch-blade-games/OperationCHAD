@@ -21,9 +21,9 @@ global.pad_fire
 global.pad_lock
 */
 
+global.OUTPUT = true;
 global.P1LIVES=4;
-
-global.CHECKPOINT=1
+global.CHECKPOINT=1;
 
 randomize();
 
@@ -64,6 +64,17 @@ global.moto_floor = 210;
 
 if (!instance_exists(dev_cheater))
     instance_create(0,0,dev_cheater);
+
+// unpack skins
+var success = -1;
+if (!directory_exists(working_directory+"skins\"))
+    directory_create(working_directory+"skins\");
+if (file_exists(working_directory+"skins.zip"))
+    success = zip_unzip(working_directory+"skins.zip",working_directory+"skins\");
+if (success &lt;= 0)
+    log("[ERROR] MISSING SKIN FILES!");
+else
+    log("Successfully unpacked ["+string(success)+"] skin files!");
 
 room_goto_next();</code>
   <enableViews>-1</enableViews>

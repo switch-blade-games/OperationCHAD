@@ -33,86 +33,22 @@ switch(move_state)
                 }
             else
                 {
-                if (on_ramp)
+                if (input_fire)
                     {
-                    if (input_fire)
-                        {
-                        if (dir > 0)
-                            {
-                            if (ramp_slope > 0)
-                                {
-                                if (anim_state != aState.ramp_u_fire)
-                                    anim_state = aState.ramp_u_fire;
-                                }
-                            else if (ramp_slope < 0)
-                                {
-                                if (anim_state != aState.ramp_d_fire)
-                                    anim_state = aState.ramp_d_fire;
-                                }
-                            }
-                        else if (dir < 0)
-                            {
-                            if (ramp_slope > 0)
-                                {
-                                if (anim_state != aState.ramp_d_fire)
-                                    anim_state = aState.ramp_d_fire;
-                                }
-                            else if (ramp_slope < 0)
-                                {
-                                if (anim_state != aState.ramp_u_fire)
-                                    anim_state = aState.ramp_u_fire;
-                                }
-                            }
-                        }
-                    else
-                        {
-                        if (dir > 0)
-                            {
-                            if (ramp_slope > 0)
-                                {
-                                if (anim_state != aState.ramp_u_idle)
-                                    anim_state = aState.ramp_u_idle;
-                                }
-                            else if (ramp_slope < 0)
-                                {
-                                if (anim_state != aState.ramp_d_idle)
-                                    anim_state = aState.ramp_d_idle;
-                                }
-                            }
-                        else if (dir < 0)
-                            {
-                            if (ramp_slope > 0)
-                                {
-                                if (anim_state != aState.ramp_d_idle)
-                                    anim_state = aState.ramp_d_idle;
-                                }
-                            else if (ramp_slope < 0)
-                                {
-                                if (anim_state != aState.ramp_u_idle)
-                                    anim_state = aState.ramp_u_idle;
-                                }
-                            }
-                        }
+                    if (anim_state != aState.flat_fire)
+                        anim_state = aState.flat_fire;
                     }
                 else
                     {
-                    if (input_fire)
+                    if (wait > 5*room_speed)
                         {
-                        if (anim_state != aState.flat_fire)
-                            anim_state = aState.flat_fire;
+                        if (anim_state != aState.flat_wait)
+                            anim_state = aState.flat_wait;
                         }
                     else
                         {
-                        if (wait > 15*room_speed)
-                            {
-                            if (anim_state != aState.flat_wait)
-                                anim_state = aState.flat_wait;
-                            }
-                        else
-                            {
-                            if (anim_state != aState.flat_idle)
-                                anim_state = aState.flat_idle;
-                            }
+                        if (anim_state != aState.flat_idle)
+                            anim_state = aState.flat_idle;
                         }
                     }
                 }
@@ -125,79 +61,15 @@ switch(move_state)
         break;
     
     case mState.duck:
-        if (on_ramp)
+        if (input_fire)
             {
-            if (input_fire)
-                {
-                if (dir > 0)
-                    {
-                    if (ramp_slope > 0)
-                        {
-                        if (anim_state != aState.ramp_u_duck_idle)
-                            anim_state = aState.ramp_u_duck_idle;
-                        }
-                    else if (ramp_slope < 0)
-                        {
-                        if (anim_state != aState.ramp_d_duck_idle)
-                            anim_state = aState.ramp_d_duck_idle;
-                        }
-                    }
-                else if (dir < 0)
-                    {
-                    if (ramp_slope > 0)
-                        {
-                        if (anim_state != aState.ramp_d_duck_idle)
-                            anim_state = aState.ramp_d_duck_idle;
-                        }
-                    else if (ramp_slope < 0)
-                        {
-                        if (anim_state != aState.ramp_u_duck_idle)
-                            anim_state = aState.ramp_u_duck_idle;
-                        }
-                    }
-                }
-            else
-                {
-                if (dir > 0)
-                    {
-                    if (ramp_slope > 0)
-                        {
-                        if (anim_state != aState.ramp_u_duck_fire)
-                            anim_state = aState.ramp_u_duck_fire;
-                        }
-                    else if (ramp_slope < 0)
-                        {
-                        if (anim_state != aState.ramp_d_duck_fire)
-                            anim_state = aState.ramp_d_duck_fire;
-                        }
-                    }
-                else if (dir < 0)
-                    {
-                    if (ramp_slope > 0)
-                        {
-                        if (anim_state != aState.ramp_d_duck_fire)
-                            anim_state = aState.ramp_d_duck_fire;
-                        }
-                    else if (ramp_slope < 0)
-                        {
-                        if (anim_state != aState.ramp_u_duck_fire)
-                            anim_state = aState.ramp_u_duck_fire;
-                        }
-                    }
-                }
+            if (anim_state != aState.flat_duck_fire)
+                anim_state = aState.flat_duck_fire;
             }
         else
             {
-            if (input_fire)
-                {
-                if (anim_state != aState.flat_duck_fire)
-                    anim_state = aState.flat_duck_fire;
-                }
-            else
-                {
-                if (anim_state != aState.flat_duck_idle)
-                    anim_state = aState.flat_duck_idle;
-                }
+            if (anim_state != aState.flat_duck_idle)
+                anim_state = aState.flat_duck_idle;
             }
         break;
     
@@ -338,22 +210,9 @@ switch(anim_state)
     case aState.flat_fire:
     case aState.walk_move:
     case aState.walk_fire:
-    case aState.ramp_u_idle:
-    case aState.ramp_d_idle:
-    case aState.ramp_u_fire:
-    case aState.ramp_d_fire:
         anim_update();
         img_index += img_speed[anim_state];
         gun_y = -18;
-        break;
-    
-    case aState.ramp_u_duck_idle:
-    case aState.ramp_d_duck_idle:
-    case aState.ramp_u_duck_fire:
-    case aState.ramp_d_duck_fire:
-        anim_update();
-        img_index += img_speed[anim_state];
-        gun_y = -12;
         break;
     
     case aState.flat_duck_idle:

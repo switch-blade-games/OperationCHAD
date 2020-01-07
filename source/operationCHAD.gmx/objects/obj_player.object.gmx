@@ -48,14 +48,6 @@ enum aState
     flat_fire,
     walk_move,
     walk_fire,
-    ramp_u_idle,
-    ramp_u_fire,
-    ramp_u_duck_idle,
-    ramp_u_duck_fire,
-    ramp_d_idle,
-    ramp_d_fire,
-    ramp_d_duck_idle,
-    ramp_d_duck_fire,
     flat_duck_idle,
     flat_duck_fire,
     wc_idle,
@@ -77,9 +69,9 @@ enum aState
 enum skin
     {
     stone,
+    pumpkin,
     foxford,
     yolo,
-    pumpkin,
     size
     }
 
