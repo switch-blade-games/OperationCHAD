@@ -15,10 +15,23 @@ var inst = instance_create(0,0,obj_camera);
 inst.cam_state = camState.static;
 
 
-instance_create(0,0,fent_controller_2)
+//instance_create(0,0,fent_controller_1)
+
+
+background_color=global.PINK
+
+instance_create(0,0,fent_painter)
+
+instance_create(0,0,fent_BG_drawer)
+
+instance_create(0,0,fent_BG_drawer_2)
+
 
 with(obj_wall)
-    visible=false</code>
+    visible=false
+    
+//with(obj_mb)
+    //visible=false</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -66,22 +79,20 @@ with(obj_wall)
     <instance objName="obj_wall" x="400" y="-80" name="inst_FD0727BE" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="140" y="40" name="inst_AA8DDFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="40" y="60" name="inst_BDE1AD17" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="60" y="60" name="inst_FCDC4200" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="80" y="60" name="inst_A760458E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="100" y="60" name="inst_EFE79039" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="120" y="60" name="inst_F2D145F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="140" y="60" name="inst_CCA6D2BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="160" y="60" name="inst_6164544E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="180" y="60" name="inst_09E55947" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="200" y="60" name="inst_D5D29708" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="220" y="60" name="inst_D79E6537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="240" y="60" name="inst_F21027AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="260" y="60" name="inst_222A6834" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="280" y="60" name="inst_98079798" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="300" y="60" name="inst_9247FAB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="320" y="60" name="inst_05D8D04A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="340" y="60" name="inst_934E3394" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="death_block" x="0" y="210" name="inst_4686AE3F" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="base_needle" x="340" y="60" name="inst_A79F6AD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="100" y="140" name="inst_959F1A7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="140" y="120" name="inst_4ABF48EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="180" y="100" name="inst_FDAE17B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="220" y="80" name="inst_55745D70" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="260" y="60" name="inst_90CC1ED5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="300" y="40" name="inst_F4276A65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="60" y="160" name="inst_EEEDA154" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fent_rock_maker" x="300" y="230" name="inst_F0AE6817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fent_rock_maker" x="380" y="160" name="inst_7DFA6F78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fent_rock_maker" x="340" y="200" name="inst_52FE120C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fent_rock_maker" x="400" y="200" name="inst_FCB72ECD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="fent_rock_maker" x="240" y="240" name="inst_275FEEA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
