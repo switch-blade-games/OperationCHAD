@@ -11,12 +11,19 @@ switch(move_state)
             break;
             }
         
-        var xh = mb_offset;
-        var yh = floor(lerp(mb_id.y1,mb_id.y2,xh/(mb_id.x2-mb_id.x1)))+40;
-        if (!place_meeting(mb_id.x+xh,mb_id.y+yh,par_solid))
+        var x1 = mb_id.x+mb_id.x1;
+        var y1 = mb_id.y+mb_id.y1;
+        var x2 = mb_id.x+mb_id.x2;
+        var y2 = mb_id.y+mb_id.y2;
+        var dir = mb_id.dir;
+        var ldx = lengthdir_x(mb_offset,dir);
+        var ldy = lengthdir_y(mb_offset,dir);
+        
+        if (!place_meeting(round(x1+ldx),round(y1+ldy)+32,par_solid))
             {
-            x = mb_id.x + xh;
-            y = mb_id.y + yh;
+            x = round(x1+ldx);
+            y = round(y1+ldy)+32;
+            mb_sign = ternary(x2>=x1,+1,-1);
             }
         else
             mb_id = noone;

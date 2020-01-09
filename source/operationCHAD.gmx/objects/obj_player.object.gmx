@@ -94,6 +94,7 @@ wc_side = tile_side.none;
 mb_id = noone;
 mb_offset = 0;
 mb_offset_old = 0;
+mb_sign = 1;
 no_mb = false;
 no_mb_time = false;
 moto_y = 0;

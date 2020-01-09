@@ -26,15 +26,27 @@ switch(move_state)
             if (detect_mb) and (mb_id == noone) and (yspeed > 0)
                 {
                 var temp_mb = detect_mb_id;
-                var xh = x-temp_mb.x;
-                var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
-                if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
+                
+                var x1 = temp_mb.x+temp_mb.x1;
+                var y1 = temp_mb.y+temp_mb.y1;
+                var x2 = temp_mb.x+temp_mb.x2;
+                var y2 = temp_mb.y+temp_mb.y2;
+                var len = temp_mb.len;
+                var dir = temp_mb.dir;
+                var off = point_distance(x1,y1,x,y-32);
+                var ldx = lengthdir_x(off,dir);
+                var ldy = lengthdir_y(off,dir);
+                
+                if (off > 0) and (off <= len)
+                and (!place_meeting(x1+ldx,y1+ldy+32,par_solid))
                     {
                     move_state = mState.mb;
-                    x = temp_mb.x + xh;
-                    y = temp_mb.y + yh;
+                    x = x1+ldx;
+                    y = y1+ldy+32;
                     mb_id = temp_mb;
-                    mb_offset = xh;
+                    mb_offset = off;
+                    mb_sign = ternary(x2>=x1,+1,-1);
+                    xspeed = 0;
                     yspeed = 0;
                     }
                 }
@@ -47,29 +59,46 @@ switch(move_state)
         var fall = false;
         if (!instance_exists(mb_id))
             fall = true;
-        else if (mb_offset < mb_id.x1) or (mb_offset > mb_id.x2)
+        else if (mb_offset <= 0) or (mb_offset > mb_id.len)
             {
             fall = true;
-            var temp_x = mb_id.x+mb_offset;
-            var inst = collision_line(temp_x,y-36,temp_x,y-42,par_mb,true,true);
-            if (inst != noone)
+            
+            // move to position where player should be
+            var x1 = mb_id.x+mb_id.x1;
+            var y1 = mb_id.y+mb_id.y1;
+            var ldx = lengthdir_x(mb_offset,mb_id.dir);
+            var ldy = lengthdir_y(mb_offset,mb_id.dir);
+            x = x1+ldx;
+            y = y1+ldy+32;
+            
+            var temp_mb = collision_line(x,y-28,x,y-38,par_mb,true,true);
+            if (temp_mb != noone)
                 {
-                var xh = temp_x-inst.x;
-                var yh = floor(lerp(inst.y1,inst.y2,xh/(inst.x2-inst.x1)))+40;
-                if (!place_meeting(inst.x+xh,inst.y+yh,par_solid))
+                var x1 = temp_mb.x+temp_mb.x1;
+                var y1 = temp_mb.y+temp_mb.y1;
+                var x2 = temp_mb.x+temp_mb.x2;
+                var y2 = temp_mb.y+temp_mb.y2;
+                var len = temp_mb.len;
+                var dir = temp_mb.dir;
+                var off = point_distance(x1,y1,x,y-32);
+                var ldx = lengthdir_x(off,dir);
+                var ldy = lengthdir_y(off,dir);
+                
+                if (off > 0) and (off <= len) and (x >= x1) and (x <= x2)
+                and (!place_meeting(round(x1+ldx),round(y1+ldy)+32,par_solid))
                     {
                     move_state = mState.mb;
-                    x = inst.x + xh;
-                    y = inst.y + yh;
-                    mb_id = inst;
-                    mb_offset = xh;
+                    x = round(x1+ldx);
+                    y = round(y1+ldy)+32;
+                    mb_id = temp_mb;
+                    mb_offset = off;
+                    mb_sign = ternary(x2>=x1,+1,-1);
+                    xspeed = 0;
                     yspeed = 0;
-                    
                     fall = false;
                     }
                 }
             }
-        
         
         if (fall)
             {

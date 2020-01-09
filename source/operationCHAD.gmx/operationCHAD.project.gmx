@@ -876,6 +876,7 @@
       <script>scripts\bezier.gml</script>
       <script>scripts\projectile_init.gml</script>
       <script>scripts\projectile_step.gml</script>
+      <script>scripts\ternary.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
@@ -1405,6 +1406,7 @@
       <object>objects\obj_wall_move</object>
       <object>objects\death_block</object>
       <object>objects\monkeybar_move</object>
+      <object>objects\monkeybar_rotate</object>
       <object>objects\monkeybar_path</object>
       <object>objects\monkey_ramp_L</object>
     </objects>

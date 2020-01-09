@@ -27,9 +27,10 @@
             <kind>1</kind>
             <string>event_inherited();
 
+image_xscale = 2;
 x1 = 0;
 y1 = 0;
-x2 = 20;
+x2 = 20*image_xscale;
 y2 = 0;
 
 // init offsets
@@ -63,7 +64,10 @@ event_user(0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>image_angle += 1;
+ang = image_angle;
+
+event_inherited();
 </string>
           </argument>
         </arguments>

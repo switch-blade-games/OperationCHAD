@@ -221,7 +221,7 @@ switch(move_state)
             // horizontal movement input
             if (h_dir != 0)
                 {
-                mb_offset += mb_speed*h_dir;
+                mb_offset += mb_speed*mb_sign*h_dir;
                 
                 // move left or right
                 if (input_right)
@@ -357,15 +357,27 @@ switch(move_state)
                         and (detect_mb) and (mb_id == noone) and (input_up)
                             {
                             var temp_mb = detect_mb_id;
-                            var xh = x-temp_mb.x;
-                            var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
-                            if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
+                            
+                            var x1 = temp_mb.x+temp_mb.x1;
+                            var y1 = temp_mb.y+temp_mb.y1;
+                            var x2 = temp_mb.x+temp_mb.x2;
+                            var y2 = temp_mb.y+temp_mb.y2;
+                            var _l = temp_mb.len;
+                            var _d = temp_mb.dir;
+                            var off = point_distance(x1,y1,x,y-32);
+                            var ldx = lengthdir_x(off,_d);
+                            var ldy = lengthdir_y(off,_d);
+                            
+                            if (off <= _l)
+                            and (!place_meeting(x1+ldx,y1+ldy+32,par_solid))
                                 {
                                 move_state = mState.mb;
-                                x = temp_mb.x + xh;
-                                y = temp_mb.y + yh;
+                                x = x1+ldx;
+                                y = y1+ldy+32;
                                 mb_id = temp_mb;
-                                mb_offset = xh;
+                                mb_offset = off;
+                                mb_sign = ternary(x2>=x1,+1,-1);
+                                xspeed = 0;
                                 yspeed = 0;
                                 }
                             }

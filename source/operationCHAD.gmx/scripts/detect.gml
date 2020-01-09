@@ -27,13 +27,13 @@ if (!no_mb) and (no_mb_time <= 0)
     {
     if (move_state == mState.mb)
         {
-        detect_mb_id = instance_position(x,y-40,par_mb);
+        detect_mb_id = instance_position(x,y-32,par_mb);
         if (detect_mb_id != noone)
             detect_mb = true;
         }
     else
         {
-        detect_mb_id = collision_line(x,y-36,x,y-42,par_mb,true,true);
+        detect_mb_id = collision_line(x,y-28,x,y-38,par_mb,true,true);
         if (detect_mb_id != noone)
             detect_mb = true;
         }
