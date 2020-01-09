@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>190</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,23 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BGy=0
+            <string>DRAGlife=600
 
-WAIT=1
-DOWN=2
-UP=3
+MAKEhands=false
 
-state=WAIT
 
-Ydest=40
 
-MOVEspe=0.5
+alarm[0]=60
+
+alarm[2]=60
+
+HANDlist=ds_list_create()
+
+NUM=6
+
+var i=0;
+
+repeat(NUM){
+
+    ds_list_insert(HANDlist,i,i)
+    
+    i+=1
+}
+
+ds_list_shuffle(HANDlist)
+
+HANDrate=30
+
+HANDnoise=15
+
+
+//amount of time before top dragon emerges
+TOPdelay=180
+
+//amount of time before bottom dragon emerges
+BOTTOMdelay=120
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -58,32 +82,17 @@ MOVEspe=0.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=DOWN){
+            <string>///make bottom dragon
 
-    y+=MOVEspe
-    
-    if(y&gt;=Ydest){
-        y=Ydest
-        state=WAIT
-    }
-}
+var DRAG=instance_create(480,180,dragon_head);
 
 
-if(state=UP){
-
-    y-=MOVEspe
-    
-    if(y&lt;=0){
-        y=0
-        state=WAIT
-    }
-}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,7 +109,65 @@ if(state=UP){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(fent_BG_spr,-1,0,y)
+            <string>///make top dragon
+
+var DRAG=instance_create(-80,70,dragon_head);
+
+with(DRAG){
+    NOshot=true
+    TOPpath=true
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[0]=HANDrate+random(HANDnoise)
+
+if(MAKEhands=false)
+    exit
+
+var PICK=ds_list_find_value(HANDlist,0);
+
+instance_create(30+(PICK*60),220,tar_hand)
+
+
+ds_list_delete(HANDlist,0)
+
+if(ds_list_empty(HANDlist)=true){
+
+    
+
+var i=0;
+
+repeat(NUM){
+
+    ds_list_insert(HANDlist,i,i)
+    
+    i+=1
+}
+
+ds_list_shuffle(HANDlist)
+
+}
+
 </string>
           </argument>
         </arguments>

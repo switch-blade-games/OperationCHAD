@@ -399,13 +399,31 @@
           <sprite>sprites\pooh_octo_spr</sprite>
         </sprites>
         <sprites name="fent">
-          <sprite>sprites\fent_BG_spr</sprite>
-          <sprite>sprites\fent_hand_spr</sprite>
-          <sprite>sprites\fent_BG_2_spr</sprite>
           <sprite>sprites\fent_needle_spr</sprite>
-          <sprites name="painters">
+          <sprites name="drawer, painters, BG">
+            <sprite>sprites\fent_BG_spr</sprite>
+            <sprite>sprites\fent_BG_2_spr</sprite>
             <sprite>sprites\fent_P1_spr</sprite>
             <sprite>sprites\fent_P2_spr</sprite>
+            <sprite>sprites\base_needle_spr</sprite>
+            <sprite>sprites\needle_part_spr</sprite>
+          </sprites>
+          <sprites name="phase_1">
+            <sprite>sprites\tar_arm_spr</sprite>
+            <sprite>sprites\tar_hand_spr</sprite>
+            <sprite>sprites\tar_hand_under_spr</sprite>
+            <sprite>sprites\tar_hand_over_spr</sprite>
+            <sprite>sprites\fent_pill_spr</sprite>
+            <sprite>sprites\dragon_body_spr</sprite>
+            <sprite>sprites\dragon_head_spr</sprite>
+            <sprite>sprites\dragon_tail_spr</sprite>
+          </sprites>
+          <sprites name="phase_2">
+            <sprite>sprites\fent_pile_spr</sprite>
+            <sprite>sprites\fent_blob_spr</sprite>
+            <sprite>sprites\fent_rock_spr</sprite>
+            <sprite>sprites\fent_rock_small_spr</sprite>
+            <sprite>sprites\fent_dust_spr</sprite>
           </sprites>
         </sprites>
         <sprites name="xi_battle">
@@ -809,6 +827,11 @@
       <path>paths\BG_pipe_1_path</path>
       <path>paths\BG_pipe_2_path</path>
       <path>paths\hunny_arm_path</path>
+      <path>paths\dragon_low_path</path>
+      <path>paths\dragon_high_path</path>
+      <path>paths\tar_arm_path</path>
+      <path>paths\tar_arm_path_2</path>
+      <path>paths\fent_blob_path</path>
     </paths>
   </paths>
   <scripts name="scripts">
@@ -915,6 +938,10 @@
       <script>scripts\Rfollow.gml</script>
       <script>scripts\checkpoint_check.gml</script>
       <script>scripts\define_cam_states.gml</script>
+      <scripts name="fent">
+        <script>scripts\dragon_make_pills.gml</script>
+        <script>scripts\dragon_hit.gml</script>
+      </scripts>
     </scripts>
     <script>scripts\camera_setup.gml</script>
     <script>scripts\camera_bounds.gml</script>
@@ -1253,15 +1280,36 @@
         <objects name="painters">
           <object>objects\blank_painter</object>
           <object>objects\dream_painter</object>
-          <object>objects\fent_painter</object>
         </objects>
         <objects name="fent">
-          <object>objects\fent_controller_2</object>
-          <object>objects\fent_BG_drawer</object>
-          <object>objects\fent_BG_drawer_2</object>
-          <object>objects\fent_hand</object>
-          <object>objects\fent_needle</object>
-          <object>objects\fent_controller</object>
+          <objects name="BGs &amp; drawers">
+            <object>objects\fent_painter</object>
+            <object>objects\fent_BG_drawer</object>
+            <object>objects\fent_BG_drawer_2</object>
+            <object>objects\base_needle</object>
+            <object>objects\needle_part</object>
+          </objects>
+          <objects name="needle_attack">
+            <object>objects\fent_needle</object>
+            <object>objects\fent_controller</object>
+          </objects>
+          <objects name="phase_1">
+            <object>objects\fent_controller_1</object>
+            <object>objects\dragon_tail_obj</object>
+            <object>objects\fent_pill</object>
+            <object>objects\dragon_body</object>
+            <object>objects\dragon_head</object>
+          </objects>
+          <objects name="phase_2">
+            <object>objects\fent_controller_2</object>
+            <object>objects\fent_pile</object>
+            <object>objects\dragon_head_2</object>
+            <object>objects\fent_blob_maker</object>
+            <object>objects\fent_blob</object>
+            <object>objects\fent_rock_maker</object>
+            <object>objects\fent_rock</object>
+            <object>objects\fent_dust</object>
+          </objects>
         </objects>
         <objects name="pooh_stage">
           <object>objects\pooh_torch</object>
@@ -1353,6 +1401,8 @@
         <object>objects\xi_intro</object>
         <object>objects\xi_pic</object>
         <object>objects\blade_shot</object>
+        <object>objects\tar_hand</object>
+        <object>objects\tar_arm</object>
       </objects>
       <objects name="008-Ending">
         <object>objects\credits_drawer</object>
@@ -1491,9 +1541,9 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="007-Pooh">
+        <room>rooms\fent_room</room>
         <room>rooms\xi_room</room>
         <room>rooms\pooh_stage</room>
-        <room>rooms\fent_room</room>
         <room>rooms\dream_room</room>
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
