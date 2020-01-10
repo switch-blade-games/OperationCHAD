@@ -400,6 +400,7 @@
         </sprites>
         <sprites name="fent">
           <sprite>sprites\fent_needle_spr</sprite>
+          <sprite>sprites\fent_needle_mb</sprite>
           <sprites name="drawer, painters, BG">
             <sprite>sprites\fent_BG_spr</sprite>
             <sprite>sprites\fent_BG_2_spr</sprite>
