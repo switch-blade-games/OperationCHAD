@@ -353,31 +353,36 @@ switch(move_state)
                         yspeed = wc_speed*v_dir;
                         
                         // transition from wall climb to monkey bar
-                        if ((input_right and wc_r) or (input_left and wc_l))
-                        and (detect_mb) and (mb_id == noone) and (input_up)
+                        if (detect_mb)
                             {
-                            var temp_mb = detect_mb_id;
-                            
-                            var x1 = temp_mb.x+temp_mb.x1;
-                            var x2 = temp_mb.x+temp_mb.x2;
-                            var y1 = temp_mb.y+temp_mb.y1;
-                            var y2 = temp_mb.y+temp_mb.y2;
-                            var len = temp_mb.len;
-                            var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
-                            var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
-                            var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
-                            
-                            if (off >= 0) and (off <= len)
-                            and (!place_meeting(x,yto+32,par_solid))
+                            if ((input_right and wc_r) or (input_left and wc_l))
+                            and (mb_id == noone) and (input_up)
                                 {
-                                move_state = mState.mb;
-                                y = yto+32;
-                                mb_id = temp_mb;
-                                mb_offset = off;
-                                mb_sign = ternary(x1<x2,+1,-1);
-                                xspeed = 0;
-                                yspeed = 0;
+                                var temp_mb = detect_mb_id;
+                                
+                                var x1 = temp_mb.x+temp_mb.x1;
+                                var x2 = temp_mb.x+temp_mb.x2;
+                                var y1 = temp_mb.y+temp_mb.y1;
+                                var y2 = temp_mb.y+temp_mb.y2;
+                                var len = temp_mb.len;
+                                var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                                var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                                var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
+                                
+                                if (off >= 0) and (off <= len)
+                                and (!place_meeting(x,yto+32,par_solid))
+                                    {
+                                    move_state = mState.mb;
+                                    y = yto+32;
+                                    mb_id = temp_mb;
+                                    mb_offset = off;
+                                    mb_sign = ternary(x1<x2,+1,-1);
+                                    xspeed = 0;
+                                    yspeed = 0;
+                                    }
                                 }
+                            else
+                                yspeed = 0;
                             }
                         }
                     
