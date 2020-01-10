@@ -488,6 +488,10 @@
         </sprites>
         <sprite>sprites\xi_pic_spr</sprite>
         <sprite>sprites\xi_dark_spr</sprite>
+        <sprites name="art shots">
+          <sprite>sprites\art_needle_spr</sprite>
+        </sprites>
+        <sprite>sprites\art_needle_small_spr</sprite>
       </sprites>
       <sprites name="009-Misc">
         <sprite>sprites\might_wood_spr</sprite>
@@ -1277,9 +1281,13 @@
           <object>objects\final_spiral</object>
           <object>objects\final_controller</object>
         </objects>
-        <objects name="painters">
+        <objects name="painters &amp; art">
           <object>objects\blank_painter</object>
           <object>objects\dream_painter</object>
+          <object>objects\art_needle</object>
+          <object>objects\art_controller</object>
+          <object>objects\art_needle_small</object>
+          <object>objects\in_white_flash</object>
         </objects>
         <objects name="fent">
           <objects name="BGs &amp; drawers">
@@ -1287,6 +1295,7 @@
             <object>objects\fent_BG_drawer</object>
             <object>objects\fent_BG_drawer_2</object>
             <object>objects\base_needle</object>
+            <object>objects\needle_mb</object>
             <object>objects\needle_part</object>
           </objects>
           <objects name="needle_attack">
@@ -1543,8 +1552,9 @@
       <rooms name="007-Pooh">
         <room>rooms\fent_room</room>
         <room>rooms\xi_room</room>
-        <room>rooms\pooh_stage</room>
         <room>rooms\dream_room</room>
+        <room>rooms\art_room</room>
+        <room>rooms\pooh_stage</room>
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
         <room>rooms\final_room</room>

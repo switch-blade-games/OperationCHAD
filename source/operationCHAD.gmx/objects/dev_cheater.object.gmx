@@ -174,6 +174,8 @@ with(fryguy_light_2){
             <kind>1</kind>
             <string>instance_create(0,0,fent_controller_2)
 
+//instance_create(0,0,in_white_flash)
+
 
 </string>
           </argument>
