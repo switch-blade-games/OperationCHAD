@@ -28,24 +28,22 @@ switch(move_state)
                 var temp_mb = detect_mb_id;
                 
                 var x1 = temp_mb.x+temp_mb.x1;
-                var y1 = temp_mb.y+temp_mb.y1;
                 var x2 = temp_mb.x+temp_mb.x2;
+                var y1 = temp_mb.y+temp_mb.y1;
                 var y2 = temp_mb.y+temp_mb.y2;
                 var len = temp_mb.len;
-                var dir = temp_mb.dir;
-                var off = point_distance(x1,y1,x,y-32);
-                var ldx = lengthdir_x(off,dir);
-                var ldy = lengthdir_y(off,dir);
+                var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
-                if (off > 0) and (off <= len)
-                and (!place_meeting(x1+ldx,y1+ldy+32,par_solid))
+                if (off >= 0) and (off <= len)
+                and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
-                    x = x1+ldx;
-                    y = y1+ldy+32;
+                    y = yto+32;
                     mb_id = temp_mb;
                     mb_offset = off;
-                    mb_sign = ternary(x2>=x1,+1,-1);
+                    mb_sign = ternary(x1<x2,+1,-1);
                     xspeed = 0;
                     yspeed = 0;
                     }
@@ -59,40 +57,44 @@ switch(move_state)
         var fall = false;
         if (!instance_exists(mb_id))
             fall = true;
-        else if (mb_offset <= 0) or (mb_offset > mb_id.len)
+        else if (mb_offset < 0) or (mb_offset > mb_id.len)
             {
             fall = true;
             
-            // move to position where player should be
+            // move to position
             var x1 = mb_id.x+mb_id.x1;
+            var x2 = mb_id.x+mb_id.x2;
             var y1 = mb_id.y+mb_id.y1;
+            var y2 = mb_id.y+mb_id.y2;
             var ldx = lengthdir_x(mb_offset,mb_id.dir);
             var ldy = lengthdir_y(mb_offset,mb_id.dir);
-            x = x1+ldx;
-            y = y1+ldy+32;
+            if (!place_meeting(round(x1+ldx),round(y1+ldy)+32,par_solid))
+                {
+                x = round(x1+ldx);
+                y = round(y1+ldy)+32;
+                mb_sign = ternary(x2>=x1,+1,-1);
+                }
             
-            var temp_mb = collision_line(x,y-28,x,y-38,par_mb,true,true);
+            var temp_mb = collision_line(x,y-28,x,y-40,par_mb,true,true);
             if (temp_mb != noone)
                 {
                 var x1 = temp_mb.x+temp_mb.x1;
-                var y1 = temp_mb.y+temp_mb.y1;
                 var x2 = temp_mb.x+temp_mb.x2;
+                var y1 = temp_mb.y+temp_mb.y1;
                 var y2 = temp_mb.y+temp_mb.y2;
                 var len = temp_mb.len;
-                var dir = temp_mb.dir;
-                var off = point_distance(x1,y1,x,y-32);
-                var ldx = lengthdir_x(off,dir);
-                var ldy = lengthdir_y(off,dir);
+                var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
-                if (off > 0) and (off <= len) and (x >= x1) and (x <= x2)
-                and (!place_meeting(round(x1+ldx),round(y1+ldy)+32,par_solid))
+                if (off >= 0) and (off <= len)
+                and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
-                    x = round(x1+ldx);
-                    y = round(y1+ldy)+32;
+                    y = yto+32;
                     mb_id = temp_mb;
                     mb_offset = off;
-                    mb_sign = ternary(x2>=x1,+1,-1);
+                    mb_sign = ternary(x1<x2,+1,-1);
                     xspeed = 0;
                     yspeed = 0;
                     fall = false;

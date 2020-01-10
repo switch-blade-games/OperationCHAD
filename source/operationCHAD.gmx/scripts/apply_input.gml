@@ -359,24 +359,22 @@ switch(move_state)
                             var temp_mb = detect_mb_id;
                             
                             var x1 = temp_mb.x+temp_mb.x1;
-                            var y1 = temp_mb.y+temp_mb.y1;
                             var x2 = temp_mb.x+temp_mb.x2;
+                            var y1 = temp_mb.y+temp_mb.y1;
                             var y2 = temp_mb.y+temp_mb.y2;
-                            var _l = temp_mb.len;
-                            var _d = temp_mb.dir;
-                            var off = point_distance(x1,y1,x,y-32);
-                            var ldx = lengthdir_x(off,_d);
-                            var ldy = lengthdir_y(off,_d);
+                            var len = temp_mb.len;
+                            var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                            var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                            var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                             
-                            if (off <= _l)
-                            and (!place_meeting(x1+ldx,y1+ldy+32,par_solid))
+                            if (off >= 0) and (off <= len)
+                            and (!place_meeting(x,yto+32,par_solid))
                                 {
                                 move_state = mState.mb;
-                                x = x1+ldx;
-                                y = y1+ldy+32;
+                                y = yto+32;
                                 mb_id = temp_mb;
                                 mb_offset = off;
-                                mb_sign = ternary(x2>=x1,+1,-1);
+                                mb_sign = ternary(x1<x2,+1,-1);
                                 xspeed = 0;
                                 yspeed = 0;
                                 }

@@ -30,7 +30,7 @@
     //under
     draw_sprite(HUD_under_spr,-1,view_xview[0]+40,view_yview[0]);
     //p1
-    draw_sprite(yolo_head_spr,0,view_xview[0],view_yview[0]);
+    draw_sprite(HUD_heads_spr,obj_player.skin_id,view_xview[0],view_yview[0]);
     draw_set_halign(fa_left);
     draw_set_color(global.WHITE);
     draw_text(view_xview[0]+25,view_yview[0]+2,"="+string(global.P1LIVES-1));
