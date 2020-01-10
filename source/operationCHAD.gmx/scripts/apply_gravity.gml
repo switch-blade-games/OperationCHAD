@@ -36,7 +36,7 @@ switch(move_state)
                 var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
                 var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
-                if (off >= 0) and (off <= len)
+                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= 10)
                 and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
@@ -87,7 +87,7 @@ switch(move_state)
                 var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
                 var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
-                if (off >= 0) and (off <= len)
+                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= 10)
                 and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
