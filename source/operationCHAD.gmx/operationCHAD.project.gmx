@@ -492,6 +492,7 @@
         <sprites name="art shots">
           <sprite>sprites\art_needle_spr</sprite>
           <sprite>sprites\art_needle_small_spr</sprite>
+          <sprite>sprites\fent_text_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="009-Misc">
@@ -1388,6 +1389,9 @@
           <object>objects\dream_controller</object>
           <object>objects\dream_circle</object>
           <object>objects\dream_circle_controller</object>
+          <object>objects\dream_pooh</object>
+          <object>objects\fent_text</object>
+          <object>objects\pooh_cast</object>
         </objects>
         <objects name="cam">
           <object>objects\cam_battle_controller</object>

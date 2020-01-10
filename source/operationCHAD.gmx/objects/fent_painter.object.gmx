@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>200</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -202,7 +202,11 @@ alarm[0]=ONEtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(MYsur)
+            <string>if not(room=art_room)
+if not(room=fent_room)
+instance_destroy()
+
+surface_set_target(MYsur)
 
         draw_clear_alpha(c_white,0)
         var set=0;
