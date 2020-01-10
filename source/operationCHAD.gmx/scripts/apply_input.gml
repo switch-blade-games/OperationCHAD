@@ -382,7 +382,7 @@ switch(move_state)
                                     }
                                 }
                             else
-                                yspeed = 0;
+                                yspeed = max(0,yspeed);
                             }
                         }
                     
