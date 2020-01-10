@@ -172,9 +172,9 @@ with(fryguy_light_2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,fent_controller_2)
+            <string>//instance_create(0,0,fent_controller_2)
 
-//instance_create(0,0,in_white_flash)
+instance_create(0,0,in_white_flash)
 
 
 </string>

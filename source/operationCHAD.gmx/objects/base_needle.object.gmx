@@ -78,7 +78,7 @@ state=WAIT
     }
 
     //move up
-    /*
+    
     if(UPdone=false){
     
         y-=MOVEspe
@@ -88,9 +88,7 @@ state=WAIT
         }
     }
     
-    */
     
-    UPdone=true
     
     //check if both are done, if true then rest
     

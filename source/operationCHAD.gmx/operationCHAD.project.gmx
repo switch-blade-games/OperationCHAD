@@ -490,8 +490,8 @@
         <sprite>sprites\xi_dark_spr</sprite>
         <sprites name="art shots">
           <sprite>sprites\art_needle_spr</sprite>
+          <sprite>sprites\art_needle_small_spr</sprite>
         </sprites>
-        <sprite>sprites\art_needle_small_spr</sprite>
       </sprites>
       <sprites name="009-Misc">
         <sprite>sprites\might_wood_spr</sprite>
@@ -1284,8 +1284,8 @@
         <objects name="painters &amp; art">
           <object>objects\blank_painter</object>
           <object>objects\dream_painter</object>
-          <object>objects\art_needle</object>
           <object>objects\art_controller</object>
+          <object>objects\art_needle</object>
           <object>objects\art_needle_small</object>
           <object>objects\in_white_flash</object>
         </objects>
@@ -1550,10 +1550,10 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="007-Pooh">
-        <room>rooms\fent_room</room>
         <room>rooms\xi_room</room>
         <room>rooms\dream_room</room>
         <room>rooms\art_room</room>
+        <room>rooms\fent_room</room>
         <room>rooms\pooh_stage</room>
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>

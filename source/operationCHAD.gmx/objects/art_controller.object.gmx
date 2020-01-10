@@ -40,6 +40,8 @@ CREATErate=1
 
 
 alarm[0]=2
+
+alarm[1]=60
 </string>
           </argument>
         </arguments>
@@ -62,7 +64,26 @@ alarm[0]=2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>///make art needles
+
+var i=0;
+
+
+repeat(12){
+
+    var SON=instance_create(0+(i*40),240,art_needle);
+    
+    with(SON){
+        alarm[0]=WAITtime+random(RANGE)
+        motion_set(90,MYspe)
+    }
+        
+    
+    
+    i+=1
+}
+    
+</string>
           </argument>
         </arguments>
       </action>
@@ -137,10 +158,12 @@ if(SPE&gt;=SPEmax){
 
 var SETspe=SPE;
 
-var SETdir=DIR;
+var SETdir=DIR-180;
 
-with(art_needle_small)
+with(art_needle_small){
+    direction=SETdir
     speed=SETspe;
+}
     
     
 </string>
