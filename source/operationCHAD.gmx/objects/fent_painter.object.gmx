@@ -202,7 +202,7 @@ alarm[0]=ONEtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not(room=art_room)
+            <string>if not(room=dream_room)
 if not(room=fent_room)
 instance_destroy()
 

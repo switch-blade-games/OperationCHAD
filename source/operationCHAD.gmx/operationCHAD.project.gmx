@@ -60,6 +60,7 @@
     </sounds>
     <sounds name="effects">
       <sound>sound\explode_snd</sound>
+      <sound>sound\space_hit_snd</sound>
     </sounds>
     <sound>sound\snd_menu_hover</sound>
     <sound>sound\snd_menu_select</sound>
@@ -493,6 +494,7 @@
           <sprite>sprites\art_needle_spr</sprite>
           <sprite>sprites\art_needle_small_spr</sprite>
           <sprite>sprites\fent_text_spr</sprite>
+          <sprite>sprites\cam_text_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="009-Misc">
@@ -1284,14 +1286,6 @@
           <object>objects\final_spiral</object>
           <object>objects\final_controller</object>
         </objects>
-        <objects name="painters &amp; art">
-          <object>objects\blank_painter</object>
-          <object>objects\dream_painter</object>
-          <object>objects\art_controller</object>
-          <object>objects\art_needle</object>
-          <object>objects\art_needle_small</object>
-          <object>objects\in_white_flash</object>
-        </objects>
         <objects name="fent">
           <objects name="BGs &amp; drawers">
             <object>objects\fent_painter</object>
@@ -1311,6 +1305,8 @@
             <object>objects\fent_pill</object>
             <object>objects\dragon_body</object>
             <object>objects\dragon_head</object>
+            <object>objects\tar_arm</object>
+            <object>objects\tar_hand</object>
           </objects>
           <objects name="phase_2">
             <object>objects\fent_controller_2</object>
@@ -1393,6 +1389,14 @@
           <object>objects\dream_pooh</object>
           <object>objects\fent_text</object>
           <object>objects\pooh_cast</object>
+          <objects name="painters &amp; art">
+            <object>objects\blank_painter</object>
+            <object>objects\dream_painter</object>
+            <object>objects\art_controller</object>
+            <object>objects\art_needle</object>
+            <object>objects\art_needle_small</object>
+            <object>objects\in_white_flash</object>
+          </objects>
         </objects>
         <objects name="cam">
           <object>objects\cam_battle_controller</object>
@@ -1416,8 +1420,6 @@
         <object>objects\xi_intro</object>
         <object>objects\xi_pic</object>
         <object>objects\blade_shot</object>
-        <object>objects\tar_hand</object>
-        <object>objects\tar_arm</object>
       </objects>
       <objects name="008-Ending">
         <object>objects\credits_drawer</object>

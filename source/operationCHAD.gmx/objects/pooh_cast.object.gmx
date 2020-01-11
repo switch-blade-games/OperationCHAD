@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>snd_play(space_hit_snd,1,1)
 
 PREtext=60
 
@@ -59,8 +59,7 @@ alarm[1]=WAITtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,in_white_flash)
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -83,6 +82,8 @@ alarm[1]=WAITtime
           <argument>
             <kind>1</kind>
             <string>instance_create(0,0,fent_text)
+
+
 </string>
           </argument>
         </arguments>
