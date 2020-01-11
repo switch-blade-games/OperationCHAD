@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>image_speed = 0.3+random(0.3);
 
-snd_play(explode_snd,1,0.5);
+snd_play(explode_snd,0.1,0.5);
 </string>
           </argument>
         </arguments>
