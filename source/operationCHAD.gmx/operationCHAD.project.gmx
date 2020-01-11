@@ -933,6 +933,7 @@
         <script>scripts\anim_update.gml</script>
         <script>scripts\anim_find_skin.gml</script>
       </scripts>
+      <script>scripts\live.gml</script>
     </scripts>
     <scripts name="enemy">
       <script>scripts\enemy_init.gml</script>
@@ -1411,18 +1412,25 @@
           <object>objects\dream_counter</object>
         </objects>
         <objects name="cam">
-          <object>objects\cam_battle_controller</object>
-          <object>objects\diag_cam</object>
-          <object>objects\cam_laz</object>
-          <object>objects\screen_drawer</object>
-          <object>objects\cam_part</object>
-          <object>objects\diag_blast_drawer</object>
-          <object>objects\cam_gun</object>
-          <object>objects\cam_range_1</object>
-          <object>objects\cam_range_2</object>
+          <object>objects\obj_cam_controller</object>
+          <object>objects\obj_cam_laser</object>
           <object>objects\cam_xi</object>
           <object>objects\cam_overlay</object>
+<<<<<<< HEAD
           <object>objects\cam_bot</object>
+=======
+          <objects name="old">
+            <object>objects\cam_battle_controller</object>
+            <object>objects\diag_cam</object>
+            <object>objects\cam_laz</object>
+            <object>objects\screen_drawer</object>
+            <object>objects\cam_part</object>
+            <object>objects\diag_blast_drawer</object>
+            <object>objects\cam_gun</object>
+            <object>objects\cam_range_1</object>
+            <object>objects\cam_range_2</object>
+          </objects>
+>>>>>>> f23e911cd875031d12f981f41079c46358043e89
         </objects>
         <objects name="forest">
           <object>objects\forest_controller</object>

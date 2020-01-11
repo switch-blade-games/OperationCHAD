@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(100000)
+deal_damage = false;
 </string>
           </argument>
         </arguments>

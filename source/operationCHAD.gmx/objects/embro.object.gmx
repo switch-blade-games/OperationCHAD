@@ -26,8 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(50);
-
-nohit = true;
+take_damage = false;
 </string>
           </argument>
         </arguments>

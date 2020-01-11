@@ -25,14 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spe=2.5+random(1)
-
-motion_set(180,spe)
-
-enemy_init(3);
-
+            <string>enemy_init(3);
 
 image_speed=0.6
+
+spe=2.5+random(1)
+motion_set(180,spe)
 </string>
           </argument>
         </arguments>

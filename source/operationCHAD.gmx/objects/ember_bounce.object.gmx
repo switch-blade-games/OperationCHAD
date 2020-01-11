@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(4);
-killOnContact = true;
 
 FLOORy=200
 

@@ -79,16 +79,12 @@ state=WAIT
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=WAIT){
+            <string>event_inherited();
 
+if(state=WAIT){
     x=zepplin.x+zepplin.PORTx
-    
     y=zepplin.y+zepplin.PORTy
-    
 }
-
-
-    
 </string>
           </argument>
         </arguments>

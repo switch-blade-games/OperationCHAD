@@ -176,7 +176,9 @@ repeat(3){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>outside_view(64)
+            <string>event_inherited();
+
+outside_view(64)
 
 if(y&lt;0)
 instance_destroy()

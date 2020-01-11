@@ -49,7 +49,10 @@
           <argument>
             <kind>1</kind>
             <string>if(instance_number(object_index)&lt;MAX)
-    instance_create(view_xview[0]-40+random(480),view_yview[0]-40+random(320),explode_big)  
+    {
+    var inst = instance_create(view_xview[0]-40+random(480),view_yview[0]-40+random(320),explode_big);
+    inst.deal_damage = false;
+    }
 </string>
           </argument>
         </arguments>

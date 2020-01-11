@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_init(1)
+            <string>enemy_init(1);
+deal_damage = false;
 
 UP=1
 DOWN=2
@@ -61,12 +62,12 @@ Hspe=-2.5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(life&lt;=0){
-instance_create(x,y,explode_big)
-instance_create(x,y,C_powerup)
-}
-
-
+            <string>if(life&lt;=0)
+    {
+    instance_create(x,y,C_powerup);
+    var inst = instance_create(x,y,explode_big);
+    inst.deal_damage = false;
+    }
 </string>
           </argument>
         </arguments>

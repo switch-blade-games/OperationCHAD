@@ -560,7 +560,9 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//jump, and land on the ground to start STAND attack
+            <string>event_inherited();
+
+//jump, and land on the ground to start STAND attack
 if(state=JUMP){
 
     motion_add(270,JUMPgrav)
