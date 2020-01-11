@@ -25,12 +25,69 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>lifemax = 6;
+            <string>// hp
+lifemax = 1;
 life = lifemax;
 
+// team/damage
 team = 0;
-nohit = false;
+damage = 1;
+take_damage = true;
+deal_damage = false;
+block_projectiles = true;
+
+// sprite flash
 flash = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_death">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>life = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="par_enemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (team == other.team) or (!deal_damage) or (!other.take_damage)
+    exit;
+
+other.life = max(0,other.life-damage);
+other.flash = 1;
 </string>
           </argument>
         </arguments>

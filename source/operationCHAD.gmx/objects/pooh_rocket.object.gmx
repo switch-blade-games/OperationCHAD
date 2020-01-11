@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(3);
-killOnContact = true;
 
 range=45
 

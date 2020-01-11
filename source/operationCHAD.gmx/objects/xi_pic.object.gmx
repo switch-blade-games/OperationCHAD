@@ -25,10 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>enemy_init(20)
 
-enemy_init(20)
-
+deal_damage = false;
 
 instance_create(x,y,xi_dark)
 </string>

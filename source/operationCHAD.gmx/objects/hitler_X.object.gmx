@@ -25,44 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>DROP=0
+            <string>enemy_init(260)
 
+DROP=0
 WAIT=1
-
 LAUGH=2
-
 SEEK=3
-
 ROLL=4
 PAINTING=5
-
 BOMB=6
-
-
-flip=1
-
-event_inherited()
-
-enemy_init(260)
-
-
-LAUGHtime=60
 
 state=DROP
 
+flip=1
 motion_set(90,1)
-
 grav=0.1
 
+LAUGHtime=60
+WAITtime=60
 
 Xdist=400
 Ydist=240
 
 Xplace=round(zepplin.x+Xdist)
-
 Yplace=round(zepplin.y+Ydist)
 
-WAITtime=60
+
 
 
 side=1
@@ -247,14 +235,12 @@ alarm[1]=LAUGHtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Xplace=round(zepplin.x+Xdist)
+            <string>event_inherited();
 
+Xplace=round(zepplin.x+Xdist)
 Yplace=round(zepplin.y+Ydist)
 
-
 if(state=DROP){
-
-
     if(FALLsnd=false)
     if(y&gt;Yplace-80){
         snd_play(can_fall_snd);
@@ -276,20 +262,16 @@ if(state=DROP){
 
 
 if(state=WAIT){
-
     x=Xplace
     y=Yplace
-    
 }
 
 if(state=LAUGH){
-
     x=Xplace
         y=Yplace
 }
 
 if(state=SEEK){
-
     x=Xplace
     y=Yplace
 
@@ -306,7 +288,6 @@ if(state=SEEK){
 }
 
 if(state=ROLL){
-    
     y=Yplace
     
     var SNAP=false;

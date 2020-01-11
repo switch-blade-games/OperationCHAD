@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(4);
-killOnContact = true;
 
 image_speed = 0;
 image_index = 0;
@@ -120,7 +119,9 @@ state=JUMP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//destroy if out of view
+            <string>event_inherited();
+
+//destroy if out of view
 if(x&lt;view_xview[0]-32)
     instance_destroy()
 

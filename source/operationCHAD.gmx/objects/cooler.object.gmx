@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>enemy_init(30);
+deal_damage = false;
 
 //rate=240
 //alarm[0]=2

@@ -925,6 +925,7 @@
         <script>scripts\anim_update.gml</script>
         <script>scripts\anim_find_skin.gml</script>
       </scripts>
+      <script>scripts\live.gml</script>
     </scripts>
     <scripts name="enemy">
       <script>scripts\enemy_init.gml</script>

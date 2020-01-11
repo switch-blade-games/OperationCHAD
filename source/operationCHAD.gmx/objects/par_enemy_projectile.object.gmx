@@ -25,65 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>team = 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_shootable">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (team == other.team) or (other.nohit)
-    exit;
-
-if (global.CFG[config.particles])
-    {
-    var spr = other.sprite_index;
-    var ind = other.image_index;
-    var sw = sprite_get_width(spr);
-    var sh = sprite_get_height(spr);
-    
-    repeat(choose(2,3))
-        {
-        var inst = instance_create(x,y,obj_particle);
-        inst.sprite_index = spr;
-        inst.image_index = ind;
-        inst.x2 = 4+irandom(4);
-        inst.y2 = 4+irandom(4);
-        inst.x1 = irandom((sw-1)-inst.x2);
-        inst.y1 = irandom((sh-1)-inst.y2);
-        inst.direction = direction+random_range(-30,30);
-        inst.speed = 2+random(2);
-        }
-    }
-
-if (!other.invulnerable)
-    {
-    with(other)
-        {
-        flash = 1;
-        life = max(0,life-other.damage);
-        if (life == 0)
-            instance_destroy();
-        }
-    }
-
-instance_destroy();
+            <string>// team/damage
+team = 1;
+damage = 1;
+deal_damage = true;
 </string>
           </argument>
         </arguments>

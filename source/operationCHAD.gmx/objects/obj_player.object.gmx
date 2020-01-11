@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 
-slot = -1;
+xstart = x;
+ystart = y;
 
 // player move states
 enum mState
@@ -75,6 +76,9 @@ enum skin
     size
     }
 
+// input slot
+slot = -1;
+
 // player motion state/flags
 no_clip = false;
 move_state = mState.walk;
@@ -84,10 +88,12 @@ on_moto = false;
 lock = false;
 drop = false;
 wait = 0;
-invulnerable = false;
-invulnerable_flash = false;
-invulnerable_time = 0; // set to 180 when respawn
-invulnerable_rate = 3; // higher = slower
+respawn_timer = 0;
+respawn_time = 180;
+respawn_flash = false;
+death_timer = 0;
+death_time = 120;
+flash_rate = 3; // higher = slower
 grace_jump = 0; // 6
 ramp_slope = 1;
 wc_side = tile_side.none;
@@ -127,12 +133,6 @@ cur_weapon = weapon.rifle;
 shoot_timer = 0;
 flame_ang = 0;
 gun_y = -18;
-
-// death/respawn
-dead_timer = 120;
-dead_moto = false;
-xstart = x;
-ystart = y;
 
 anim_init();
 
@@ -201,9 +201,6 @@ or (gamepad_check_pressed_all(gpinput.bumpl))
     anim_load_skin(sheet_path[skin_id],json_path[skin_id]);
     }
 
-//if (debug_freeze)
-//    exit;
-
 input();
 detect();
 apply_gravity();
@@ -211,6 +208,7 @@ apply_input();
 apply_force();
 collide();
 animate();
+live();
 
 // hang time
 if (no_mb_time &gt; 0)
@@ -220,183 +218,6 @@ if (shoot_timer &gt; 0)
     shoot_timer--;
 if (cur_weapon == weapon.flame) and (flame_ang != aim)
     flame_ang -= clamp(angle_difference(flame_ang,aim),-10,10);
-
-// dead
-if (move_state == mState.dead)
-    {
-    if (dead_timer &gt; 0)
-        dead_timer--;
-    else
-        {
-        dead_timer = 120;
-        invulnerable = true;
-        invulnerable_time = 180;
-        
-        dead_moto = false;
-        if (instance_exists(motor_controller))
-        or (instance_exists(sub_controller))
-            dead_moto = true;
-        
-        yspeed = 0;
-        no_mb = false;
-        mb_id = noone;
-        
-        if (dead_moto)
-            {
-            move_state = mState.moto;
-            drop = false;
-            
-            y = moto_y;
-            }
-        else
-            {
-            move_state = mState.walk;
-            drop = true;
-            
-            if (instance_exists(JB_cam))
-                {
-                
-                if(global.P1LIVES&lt;=0)
-                room_goto(game_over_room)
-                
-                if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
-                    {
-                    x = xstart;
-                    y = ystart;
-                    }
-                else
-                    {
-                    x = view_xview[0]+64;
-                    y = view_yview[0];
-                    }
-                }
-            else
-                {
-                x = xstart;
-                y = ystart;
-                }
-            }
-        }
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_death">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>
-
-if (move_state != mState.dead)
-    {
-    
-    global.P1LIVES-=1
-    
-    move_state = mState.dead;
-    on_ground = false;
-    xspeed = sign(x-other.x)*2;
-    yspeed = -8;
-    
-    if (instance_exists(obj_shader))
-        obj_shader.flash = 3;
-    
-    //with(other)
-    //    instance_destroy();
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_enemy_projectile">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (team == other.team) or (nohit) or (invulnerable)
-    exit;
-
-if (move_state != mState.dead)
-    {
-    
-    global.P1LIVES-=1
-    
-    move_state = mState.dead;
-    on_ground = false;
-    xspeed = sign(x-other.x)*2;
-    yspeed = -8;
-    
-    if (instance_exists(obj_shader))
-        obj_shader.flash = 3;
-    
-    //with(other)
-    //    instance_destroy();
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (team == other.team) or (!other.killOnContact) or (nohit) or (invulnerable)
-    exit;
-
-if (move_state != mState.dead)
-    {
-    
-    global.P1LIVES-=1
-    
-    move_state = mState.dead;
-    on_ground = false;
-    xspeed = sign(x-other.x)*2;
-    yspeed = -8;
-    
-    if (instance_exists(obj_shader))
-        obj_shader.flash = 3;
-    }
 </string>
           </argument>
         </arguments>
@@ -424,37 +245,23 @@ if (move_state != mState.dead)
 else
     var mShake = 0;
 
-if (invulnerable)
-    {
-    if (invulnerable_time &gt; 0)
-        {
-        invulnerable_time--;
-        if (invulnerable_time mod invulnerable_rate == 0)
-            invulnerable_flash = !invulnerable_flash;
-        }
-    else
-        {
-        invulnerable = false;
-        invulnerable_flash = false;
-        }
-    
-    if (invulnerable_flash)
-        shader_set(shd_flash);
-    }
-
+// retrieve animation frame properties
 var _f = floor(img_index);
 var tx = frame_info[_f,FRAME_TEX_X];
 var ty = frame_info[_f,FRAME_TEX_Y];
 var tw = frame_info[_f,FRAME_TEX_W];
 var th = frame_info[_f,FRAME_TEX_H];
 
-draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
-
-if (invulnerable)
+if (respawn_flash) or (flash &gt; 0)
     {
-    if (invulnerable_flash)
-        shader_reset();
+    shader_set(shd_flash);
+    draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
+    shader_reset();
+    
+    flash--;
     }
+else
+    draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
 </string>
           </argument>
         </arguments>

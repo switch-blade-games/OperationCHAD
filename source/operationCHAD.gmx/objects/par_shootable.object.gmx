@@ -25,12 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>invulnerable = true;
+            <string>// hp
 lifemax = 1;
 life = lifemax;
 
+// team/damage
 team = -1;
-nohit = false;
+take_damage = false;
+deal_damage = false;
+
+// sprite flash
 flash = 0;
 </string>
           </argument>
