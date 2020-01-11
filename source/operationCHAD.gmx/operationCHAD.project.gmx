@@ -379,6 +379,8 @@
       </sprites>
       <sprites name="006- Island of NPCs">
         <sprite>sprites\NPC_enemy_spr</sprite>
+        <sprite>sprites\die_spr</sprite>
+        <sprite>sprites\player_icon_spr</sprite>
       </sprites>
       <sprites name="007-Pooh">
         <sprites name="pooh_mech">
@@ -482,6 +484,7 @@
           <sprite>sprites\cam_hoard_spr</sprite>
           <sprite>sprites\cam_laz_spr</sprite>
           <sprite>sprites\cam_overlay_spr</sprite>
+          <sprite>sprites\cam_bot_spr</sprite>
         </sprites>
         <sprites name="forest">
           <sprite>sprites\pollution_BG_spr</sprite>
@@ -495,6 +498,8 @@
           <sprite>sprites\art_needle_small_spr</sprite>
           <sprite>sprites\fent_text_spr</sprite>
           <sprite>sprites\cam_text_spr</sprite>
+          <sprite>sprites\cam_art_spr</sprite>
+          <sprite>sprites\small_cam_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="009-Misc">
@@ -783,7 +788,8 @@
         <background>background\NPC_foreground_bot</background>
         <background>background\NPC_floor_BG</background>
         <background>background\NPC_pillars_BG</background>
-        <background>background\NPC_game_BG</background>
+        <background>background\NPC_snake_BG</background>
+        <background>background\NPC_island_BG</background>
         <background>background\NPC_boss_BG</background>
       </backgrounds>
       <backgrounds name="007-Pooh">
@@ -1264,6 +1270,9 @@
         <object>objects\NPC_spawner</object>
         <object>objects\NPC_controller</object>
         <object>objects\NPC_BG_drawer</object>
+        <object>objects\die</object>
+        <object>objects\P1_icon</object>
+        <object>objects\P2_icon</object>
       </objects>
       <objects name="007-Pooh">
         <objects name="mech_battle">
@@ -1386,16 +1395,20 @@
           <object>objects\dream_circle</object>
           <object>objects\dream_circle_controller</object>
           <object>objects\dream_pooh</object>
-          <object>objects\fent_text</object>
+          <object>objects\spy_text</object>
           <object>objects\pooh_cast</object>
           <objects name="painters &amp; art">
+            <object>objects\art_text</object>
+            <object>objects\art_controller</object>
             <object>objects\blank_painter</object>
             <object>objects\dream_painter</object>
-            <object>objects\art_controller</object>
-            <object>objects\art_needle</object>
-            <object>objects\art_needle_small</object>
+            <object>objects\art_big</object>
+            <object>objects\art_part</object>
             <object>objects\in_white_flash</object>
+            <object>objects\art_back</object>
+            <object>objects\back_flash</object>
           </objects>
+          <object>objects\dream_counter</object>
         </objects>
         <objects name="cam">
           <object>objects\cam_battle_controller</object>
@@ -1409,6 +1422,7 @@
           <object>objects\cam_range_2</object>
           <object>objects\cam_xi</object>
           <object>objects\cam_overlay</object>
+          <object>objects\cam_bot</object>
         </objects>
         <objects name="forest">
           <object>objects\forest_controller</object>
@@ -1556,16 +1570,16 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\NPC_game_room</room>
       <rooms name="007-Pooh">
         <room>rooms\xi_room</room>
         <room>rooms\dream_room</room>
-        <room>rooms\art_room</room>
         <room>rooms\fent_room</room>
+        <room>rooms\cam_room</room>
         <room>rooms\pooh_stage</room>
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
         <room>rooms\final_room</room>
-        <room>rooms\cam_room</room>
       </rooms>
       <rooms name="demo_rooms">
         <room>rooms\demo_room_2</room>
@@ -1601,7 +1615,6 @@
       </rooms>
       <rooms name="006- NPC Island">
         <room>rooms\NPC_room</room>
-        <room>rooms\NPC_game_room</room>
         <room>rooms\ball_buster_room</room>
       </rooms>
       <rooms name="009-Misc">

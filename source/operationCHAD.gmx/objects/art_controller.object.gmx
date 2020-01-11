@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ATTACK=3
+            <string>ATTACK=global.DREAM
 
 SPE=4
 
@@ -42,6 +42,10 @@ CREATErate=1
 alarm[0]=2
 
 alarm[1]=60
+
+SMALLspr=-1
+
+BIGspr=-1
 </string>
           </argument>
         </arguments>
@@ -64,7 +68,11 @@ alarm[1]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(fent_room)
+            <string>if(ATTACK=1)
+room_goto(cam_room)
+
+if(ATTACK=3)
+room_goto(fent_room)
 </string>
           </argument>
         </arguments>
@@ -87,7 +95,8 @@ alarm[1]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(0,0,fent_painter)
+            <string>if(ATTACK=3)
+instance_create(0,0,fent_painter)
 
 alarm[3]=60
 </string>
@@ -116,17 +125,47 @@ alarm[3]=60
 
 var i=0;
 
+var Yset=0;
+var Xset=0;
+var SETdir=DIR;
 
-repeat(12){
+var REPS=-1
 
-    var SON=instance_create(0+(i*40),240,art_needle);
+var SPACE=-1
+
+//cam
+if(ATTACK=1){
+    Yset=-20
+    
+    REPS=8
+    
+    SPACE=60
+}
+
+//fent
+if(ATTACK=3){
+
+    Yset=260
+    
+    REPS=12
+    
+    SPACE=40
+}
+
+
+
+
+
+repeat(REPS){
+
+    var SON=instance_create(0+(i*SPACE),Yset,art_big);
     
     with(SON){
         alarm[0]=WAITtime+random(RANGE)
-        motion_set(90,MYspe)
+        direction=SETdir-180
     }
         
-    
+    SON.sprite_index=BIGspr
     
     i+=1
 }
@@ -156,22 +195,23 @@ alarm[2]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(60)
-instance_create(random(400),random(240),art_needle_small)
+            <string>if(ATTACK=1){
+SMALLspr=small_cam_spr
+BIGspr=cam_art_spr
+}
+
+if(ATTACK=3){
+SMALLspr=art_needle_small_spr
+BIGspr=art_needle_spr
+}
+
+repeat(60){
+var PART=instance_create(random(400),random(240),art_part);
+PART.sprite_index=SMALLspr
+}
 
 
 CREATErate=1
-
-
-var i=0;
-
-
-repeat(12){
-
-    instance_create(0+(i*40),300,art_needle)
-    
-    i+=1
-}
 
 
 alarm[1]=60
@@ -197,21 +237,44 @@ alarm[1]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>repeat(CREATErate)
-instance_create(random(400),280,art_needle_small)
-
-SPE+=SPEadd
+            <string>SPE+=SPEadd
 
 if(SPE&gt;=SPEmax){
 
     SPE=SPEmax
 }
 
+
 var SETspe=SPE;
 
 var SETdir=DIR-180;
 
-with(art_needle_small){
+
+
+
+
+//make parts
+
+
+var Xset=0;
+
+var Yset=0;
+
+if(ATTACK=1)
+Yset=-20
+
+if(ATTACK=3)
+Yset=260
+
+repeat(CREATErate){
+var PART=instance_create(random(400),Yset,art_part);
+
+PART.sprite_index=SMALLspr
+}
+
+//
+
+with(art_part){
     direction=SETdir
     speed=SETspe;
 }

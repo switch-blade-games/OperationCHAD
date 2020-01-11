@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>SPEmax=0.4
-ADDspe=0.01
+            <string>SPEmax=0.6
+ADDspe=0.03
 
 
 SPIN=false
@@ -41,7 +41,7 @@ ATTACK=false
 
 TRIG=false
 
-TRIGtime=120
+TRIGtime=60
 
 SET=0
 
@@ -57,7 +57,7 @@ SPINrate=180
 
 SPINspe=0.1
 
-SPINadd=0.1
+SPINadd=0.3
 </string>
           </argument>
         </arguments>

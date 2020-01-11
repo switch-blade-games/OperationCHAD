@@ -48,6 +48,12 @@ global.PURPLE = make_color_rgb(68,38,52);
 global.BROWN = make_color_rgb(133,76,48);
 global.ORANGE = make_color_rgb(210,125,44);
 
+
+
+//xi stuff
+
+global.DREAM=3
+
 // game enums
 enum tile_side
     {
