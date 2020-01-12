@@ -1416,9 +1416,7 @@
           <object>objects\obj_cam_laser</object>
           <object>objects\cam_xi</object>
           <object>objects\cam_overlay</object>
-<<<<<<< HEAD
           <object>objects\cam_bot</object>
-=======
           <objects name="old">
             <object>objects\cam_battle_controller</object>
             <object>objects\diag_cam</object>
@@ -1430,7 +1428,6 @@
             <object>objects\cam_range_1</object>
             <object>objects\cam_range_2</object>
           </objects>
->>>>>>> f23e911cd875031d12f981f41079c46358043e89
         </objects>
         <objects name="forest">
           <object>objects\forest_controller</object>

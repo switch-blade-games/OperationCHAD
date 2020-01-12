@@ -33,6 +33,7 @@ life = lifemax;
 team = -1;
 take_damage = false;
 deal_damage = false;
+block_projectiles = true;
 
 // sprite flash
 flash = 0;
