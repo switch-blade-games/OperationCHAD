@@ -1,5 +1,6 @@
 fent_controller_1.DRAGlife-=1
 
+if(instance_number(dragon_head)=1)
 if (dragon_head.DEAD=false)
 if(fent_controller_1.DRAGlife<=0){
 

@@ -41,12 +41,58 @@ Ydist=0
 
 Xset=obj_player.x
 Ycurrent=0
+
+
 //factory y sequencing
 Yfactory[0]=1460
 Yfactory[1]=1280
 Yfactory[2]=2660
-if(room=final_factory)
-Yset=Yfactory[Ycurrent]
+
+
+if(room=final_factory){
+
+var i=0;
+
+    repeat(array_length_1d(Yfactory)){
+
+        MYarray[i]=Yfactory[i]
+        i+=1
+    }
+}
+
+//clown world sequencing
+
+//Pooh y sequencing
+Yclown[0]=19640
+
+if(room=clown_room){
+
+var i=0;
+
+    repeat(array_length_1d(Yclown)){
+
+        MYarray[i]=Yclown[i]
+        i+=1
+    }
+}
+
+//Pooh y sequencing
+Ypooh[0]=160
+
+if(room=pooh_stage){
+
+var i=0;
+
+    repeat(array_length_1d(Yfpooh)){
+
+        MYarray[i]=Ypooh[i]
+        i+=1
+    }
+}
+
+
+//set which array
+Yset=MYarray[Ycurrent]
 
 // audio listener
 var ear_x = view_xview[0]+view_wview[0]/2;
@@ -104,7 +150,7 @@ audio_listener_velocity(0,0,0);
     {
     case RIGHT:
         Rfollow(180)
-        Yset=Yfactory[Ycurrent]
+        Yset=MYarray[Ycurrent]
         x=round(Xset)
         y=round(Yset)
         break;
@@ -119,15 +165,15 @@ audio_listener_velocity(0,0,0);
     case JOGUP:
         Rfollow(180)
         y-=JOGspe
-        if(y&lt;=Yfactory[Ycurrent]){
-            y=Yfactory[Ycurrent]
+        if(y&lt;=MYarray[Ycurrent]){
+            y=MYarray[Ycurrent]
             state=RIGHT
         }
         x=round(Xset)
         break;
 
     case RJOG:
-        Yset=Yfactory[Ycurrent]
+        Yset=MYarray[Ycurrent]
         x+=JOGspe
         if(x&gt;=RJOGx){
             x=RJOGx
@@ -150,7 +196,7 @@ audio_listener_velocity(0,0,0);
         break;
     
     case RJOGPLAYER:
-        Yset=Yfactory[Ycurrent]
+        Yset=MYarray[Ycurrent]
         x+=JOGspe
         if(x&gt;=obj_player.x-180){
             x=obj_player.x-180
@@ -161,7 +207,7 @@ audio_listener_velocity(0,0,0);
         break;
     
     case RDEAD:
-        Yset=Yfactory[Ycurrent]
+        Yset=MYarray[Ycurrent]
         if(obj_player.x&gt;view_xview[0]+180){
             Rfollow(180)
             state=RIGHT

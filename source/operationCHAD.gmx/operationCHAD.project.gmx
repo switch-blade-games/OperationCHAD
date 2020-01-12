@@ -229,6 +229,11 @@
           <sprite>sprites\spr_unicorn_leg_bb</sprite>
           <sprite>sprites\spr_unicorn_hoof</sprite>
         </sprites>
+        <sprite>sprites\clown_ball_spr</sprite>
+        <sprite>sprites\clown_man_spr</sprite>
+        <sprite>sprites\hang_cloud_spr</sprite>
+        <sprite>sprites\clown_mb_spr</sprite>
+        <sprite>sprites\clown_head_spr</sprite>
       </sprites>
       <sprites name="004-Germany">
         <sprite>sprites\motor_shadow_spr</sprite>
@@ -431,12 +436,6 @@
           </sprites>
         </sprites>
         <sprites name="xi_battle">
-          <sprites name="xi_character">
-            <sprite>sprites\xi_bot_spr</sprite>
-            <sprite>sprites\xi_front_spr</sprite>
-            <sprite>sprites\xi_grap_spr</sprite>
-            <sprite>sprites\xi_hang_spr</sprite>
-          </sprites>
           <sprite>sprites\xi_spin_spr</sprite>
           <sprite>sprites\xi_hammer_make_spr</sprite>
           <sprite>sprites\xi_hammer_back_spr</sprite>
@@ -500,6 +499,14 @@
           <sprite>sprites\cam_text_spr</sprite>
           <sprite>sprites\cam_art_spr</sprite>
           <sprite>sprites\small_cam_spr</sprite>
+        </sprites>
+        <sprite>sprites\evil_gate_spr</sprite>
+        <sprites name="xi_character">
+          <sprite>sprites\xi_bot_spr</sprite>
+          <sprite>sprites\xi_front_spr</sprite>
+          <sprite>sprites\xi_grap_spr</sprite>
+          <sprite>sprites\xi_hang_spr</sprite>
+          <sprite>sprites\lil_xi_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="009-Misc">
@@ -720,6 +727,8 @@
       <sprite>sprites\enemy_L_spr</sprite>
       <sprite>sprites\enemy_R_spr</sprite>
       <sprite>sprites\enemy_X_spr</sprite>
+      <sprite>sprites\P1_mark_spr</sprite>
+      <sprite>sprites\P2_mark_spr</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -758,6 +767,9 @@
       <backgrounds name="003-Clown World">
         <background>background\clown_BG</background>
         <background>background\unicorn_BG</background>
+        <background>background\cloud_tile</background>
+        <background>background\cloud_side_tile</background>
+        <background>background\clown_sky_BG</background>
       </backgrounds>
       <backgrounds name="004-Germany">
         <backgrounds name="moto">
@@ -1120,6 +1132,11 @@
           <object>objects\unicorn_controller</object>
           <object>objects\unicorn_rail</object>
         </objects>
+        <object>objects\clown_man</object>
+        <object>objects\clown_ball</object>
+        <object>objects\hang_cloud</object>
+        <object>objects\clown_mb</object>
+        <object>objects\clown_head</object>
       </objects>
       <objects name="004-Germany">
         <objects name="germany_motor">
@@ -1390,6 +1407,8 @@
             <object>objects\hunny_arm</object>
             <object>objects\hunny_arm_ball</object>
           </objects>
+          <object>objects\lil_xi</object>
+          <object>objects\xi_mark</object>
         </objects>
         <objects name="dream">
           <object>objects\dream_controller</object>
@@ -1438,6 +1457,7 @@
         <object>objects\xi_intro</object>
         <object>objects\xi_pic</object>
         <object>objects\blade_shot</object>
+        <object>objects\evil_gate</object>
       </objects>
       <objects name="008-Ending">
         <object>objects\credits_drawer</object>
@@ -1562,6 +1582,9 @@
       <object>objects\enemy_R</object>
       <object>objects\enemy_X</object>
       <object>objects\enemy_spawn_parent</object>
+      <object>objects\P1_mark</object>
+      <object>objects\P2_mark</object>
+      <object>objects\cam_push_R</object>
     </objects>
     <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
@@ -1575,16 +1598,11 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\NPC_game_room</room>
-      <rooms name="007-Pooh">
-        <room>rooms\xi_room</room>
-        <room>rooms\dream_room</room>
-        <room>rooms\fent_room</room>
-        <room>rooms\cam_room</room>
-        <room>rooms\pooh_stage</room>
-        <room>rooms\forest_room</room>
-        <room>rooms\pooh_room</room>
-        <room>rooms\final_room</room>
+      <rooms name="003-Clown World">
+        <room>rooms\circle_room</room>
+        <room>rooms\clown_room</room>
+        <room>rooms\merry_room</room>
+        <room>rooms\cloud_room</room>
       </rooms>
       <rooms name="demo_rooms">
         <room>rooms\demo_room_2</room>
@@ -1603,11 +1621,6 @@
         <room>rooms\embro_room</room>
         <room>rooms\room44</room>
       </rooms>
-      <rooms name="003-Clown World">
-        <room>rooms\cloud_room</room>
-        <room>rooms\circle_room</room>
-        <room>rooms\merry_room</room>
-      </rooms>
       <rooms name="004-Germany">
         <room>rooms\germany_motor_room</room>
         <room>rooms\paint_2_room</room>
@@ -1621,6 +1634,7 @@
       <rooms name="006- NPC Island">
         <room>rooms\NPC_room</room>
         <room>rooms\ball_buster_room</room>
+        <room>rooms\NPC_game_room</room>
       </rooms>
       <rooms name="009-Misc">
         <room>rooms\might_room</room>
@@ -1635,6 +1649,16 @@
         <room>rooms\game_over_room</room>
         <room>rooms\open_cutscene_room</room>
         <room>rooms\time_cutscene_room</room>
+      </rooms>
+      <rooms name="007-Pooh">
+        <room>rooms\pooh_stage</room>
+        <room>rooms\xi_room</room>
+        <room>rooms\dream_room</room>
+        <room>rooms\fent_room</room>
+        <room>rooms\cam_room</room>
+        <room>rooms\forest_room</room>
+        <room>rooms\pooh_room</room>
+        <room>rooms\final_room</room>
       </rooms>
     </rooms>
   </rooms>
