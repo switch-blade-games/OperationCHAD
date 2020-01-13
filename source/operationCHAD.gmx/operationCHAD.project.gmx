@@ -248,6 +248,7 @@
         <sprite>sprites\agnus_spr</sprite>
         <sprite>sprites\maga_man_spr</sprite>
         <sprite>sprites\tink_spr</sprite>
+        <sprite>sprites\clown_cart_spr</sprite>
       </sprites>
       <sprites name="004-Germany">
         <sprite>sprites\motor_shadow_spr</sprite>
@@ -744,6 +745,7 @@
       <sprite>sprites\P1_mark_spr</sprite>
       <sprite>sprites\P2_mark_spr</sprite>
     </sprites>
+    <sprite>sprites\stonetoss_comic_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="REDACTED">
@@ -846,6 +848,7 @@
       <background>background\tileset_20_BG</background>
       <background>background\big_TS</background>
       <background>background\background61</background>
+      <background>background\comic_BG</background>
     </backgrounds>
   </backgrounds>
   <paths name="paths">
@@ -872,6 +875,7 @@
       <path>paths\tar_arm_path</path>
       <path>paths\tar_arm_path_2</path>
       <path>paths\fent_blob_path</path>
+      <path>paths\clown_cart_path</path>
     </paths>
   </paths>
   <scripts name="scripts">
@@ -1165,6 +1169,8 @@
         <object>objects\agnus</object>
         <object>objects\maga_man</object>
         <object>objects\tink</object>
+        <object>objects\clown_cart_head</object>
+        <object>objects\clown_cart_body</object>
       </objects>
       <objects name="004-Germany">
         <objects name="germany_motor">
@@ -1621,6 +1627,7 @@
     <object>objects\obj_player</object>
     <object>objects\ani_tester</object>
     <object>objects\stage_finish</object>
+    <object>objects\stonetoss_comic</object>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">

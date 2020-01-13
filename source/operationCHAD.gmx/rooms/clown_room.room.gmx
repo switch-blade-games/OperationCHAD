@@ -40,7 +40,7 @@ background_color=global.DARKpurple</code>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="clown_sky_BG" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="-1" stretch="0"/>
-    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="comic_BG" x="100" y="160" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -266,48 +266,14 @@ background_color=global.DARKpurple</code>
     <instance objName="cloud_trans" x="1360" y="19760" name="inst_CC5FDE68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="cloud_female" x="1280" y="19760" name="inst_6032AAE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="cloud_male" x="1200" y="19760" name="inst_A4C7C747" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1640" y="19820" name="inst_D8D7AED1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1680" y="19820" name="inst_3C645BB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1760" y="19820" name="inst_7060767D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1800" y="19820" name="inst_1A53BFB3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1840" y="19760" name="inst_C9DB592B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1880" y="19760" name="inst_7080EEA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1880" y="19820" name="inst_AB9F6E62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1940" y="19800" name="inst_E5D14EBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="1980" y="19800" name="inst_BE125DC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="2020" y="19800" name="inst_0E5F3CDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_male" x="2060" y="19800" name="inst_54149F84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="1840" y="19820" name="inst_75061EAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="1720" y="19820" name="inst_52EF31AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2100" y="19800" name="inst_14BE8A0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2140" y="19800" name="inst_595727C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2140" y="19680" name="inst_C961810A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2280" y="19800" name="inst_D4124B78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2200" y="19760" name="inst_3B8AEAF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2400" y="19660" name="inst_026AC803" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2540" y="19760" name="inst_2DB7CAAA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_hang" x="2440" y="19800" name="inst_7EEF3A72" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2220" y="19800" name="inst_AC33FFDA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2120" y="19740" name="inst_EA587470" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2260" y="19800" name="inst_6F321986" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2300" y="19820" name="inst_4EDA1948" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2340" y="19820" name="inst_C7C9BA1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2320" y="19740" name="inst_BC7CE04B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2360" y="19740" name="inst_0431BC11" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2440" y="19740" name="inst_E1DFDE01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2480" y="19740" name="inst_F70A08AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2440" y="19820" name="inst_300BF62B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2480" y="19820" name="inst_9AE83085" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2400" y="19740" name="inst_4CA465FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2380" y="19820" name="inst_515D9EEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2280" y="19740" name="inst_03AB57F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_trans" x="2540" y="19820" name="inst_38825959" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="cloud_female" x="2600" y="19820" name="inst_DB47A405" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2520" y="19740" name="inst_5672C716" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="cloud_female" x="2240" y="19740" name="inst_9598BE9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ped_1" x="220" y="19740" name="inst_BC71B105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="maga_man" x="600" y="19700" name="inst_E977A06A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="tink" x="500" y="19660" name="inst_EDBCC3C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="clown_cart_head" x="320" y="19760" name="inst_8F84387F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="1640" y="19820" name="inst_576581AC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="1640" y="19820" name="inst_D72A135B" locked="0" code="" scaleX="93" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="stonetoss_comic" x="2120" y="19620" name="inst_36D1D9D3" locked="0" code="" scaleX="0.899999976158142" scaleY="0.916666686534882" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="cloud_tile" x="100" y="19600" w="220" h="240" xo="0" yo="0" id="10006266" name="inst_8C83B85B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
