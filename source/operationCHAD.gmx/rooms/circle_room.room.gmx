@@ -52,8 +52,8 @@
   </views>
   <instances>
     <instance objName="circle_sign" x="20" y="640" name="inst_260F4B49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="clown_head" x="420" y="720" name="inst_EE7957E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
-    <instance objName="obj_player" x="200" y="620" name="inst_31A3CD49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="clown_head" x="420" y="400" name="inst_EE7957E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="270"/>
+    <instance objName="obj_player" x="580" y="380" name="inst_31A3CD49" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="220" y="760" name="inst_976DA197" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="160" y="740" name="inst_D2061085" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="140" y="740" name="inst_CC5B3349" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

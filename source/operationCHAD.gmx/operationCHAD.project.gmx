@@ -234,6 +234,17 @@
         <sprite>sprites\hang_cloud_spr</sprite>
         <sprite>sprites\clown_mb_spr</sprite>
         <sprite>sprites\clown_head_spr</sprite>
+        <sprite>sprites\color_wheel_spr</sprite>
+        <sprite>sprites\frame_hand_spr</sprite>
+        <sprite>sprites\cloud_platform_spr</sprite>
+        <sprite>sprites\gender_symbol_spr</sprite>
+        <sprite>sprites\clown_extra_spr</sprite>
+        <sprite>sprites\clown_stand_spr</sprite>
+        <sprite>sprites\clown_hang_spr</sprite>
+        <sprite>sprites\big_balloon_spr</sprite>
+        <sprite>sprites\ped_kid_spr</sprite>
+        <sprite>sprites\ped_1_spr</sprite>
+        <sprite>sprites\ped_2_spr</sprite>
       </sprites>
       <sprites name="004-Germany">
         <sprite>sprites\motor_shadow_spr</sprite>
@@ -1137,6 +1148,17 @@
         <object>objects\hang_cloud</object>
         <object>objects\clown_mb</object>
         <object>objects\clown_head</object>
+        <object>objects\frame_hand</object>
+        <object>objects\cloud_male</object>
+        <object>objects\cloud_female</object>
+        <object>objects\cloud_trans</object>
+        <object>objects\clown_stand</object>
+        <object>objects\clown_hang</object>
+        <object>objects\big_balloon</object>
+        <object>objects\clown_spawner</object>
+        <object>objects\ped_1</object>
+        <object>objects\ped_2</object>
+        <object>objects\ped_kid</object>
       </objects>
       <objects name="004-Germany">
         <objects name="germany_motor">
@@ -1276,12 +1298,12 @@
           <object>objects\tank_spin_gun</object>
           <object>objects\tank_spin_shot</object>
         </objects>
-      </objects>
-      <objects name="005-Thot Paradise">
-        <object>objects\PC_fly</object>
-        <object>objects\flying_cam</object>
-        <object>objects\flying_shot</object>
-        <object>objects\white_knight</object>
+        <objects name="005-Thot Paradise">
+          <object>objects\PC_fly</object>
+          <object>objects\flying_cam</object>
+          <object>objects\flying_shot</object>
+          <object>objects\white_knight</object>
+        </objects>
       </objects>
       <objects name="006- Island of NPCs">
         <object>objects\NPC_enemy</object>
@@ -1599,8 +1621,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="003-Clown World">
-        <room>rooms\circle_room</room>
         <room>rooms\clown_room</room>
+        <room>rooms\circle_room</room>
         <room>rooms\merry_room</room>
         <room>rooms\cloud_room</room>
       </rooms>

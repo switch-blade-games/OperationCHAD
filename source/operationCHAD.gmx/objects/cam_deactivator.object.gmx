@@ -101,6 +101,15 @@ instance_activate_object(par_actor_projectile);
 instance_activate_object(screen_explode);
 instance_activate_object(par_explode);
 
+
+//clown world
+instance_activate_object(big_balloon);
+instance_activate_object(clown_hang);
+
+instance_activate_object(clown_man);
+instance_activate_object(clown_ball);
+
+
 global.ctime = get_timer()-time;
 </string>
           </argument>

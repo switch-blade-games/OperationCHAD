@@ -63,7 +63,7 @@ var i=0;
 //clown world sequencing
 
 //Pooh y sequencing
-Yclown[0]=19640
+Yclown[0]=19600
 
 if(room=clown_room){
 
