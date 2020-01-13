@@ -245,6 +245,9 @@
         <sprite>sprites\ped_kid_spr</sprite>
         <sprite>sprites\ped_1_spr</sprite>
         <sprite>sprites\ped_2_spr</sprite>
+        <sprite>sprites\agnus_spr</sprite>
+        <sprite>sprites\maga_man_spr</sprite>
+        <sprite>sprites\tink_spr</sprite>
       </sprites>
       <sprites name="004-Germany">
         <sprite>sprites\motor_shadow_spr</sprite>
@@ -1159,6 +1162,9 @@
         <object>objects\ped_1</object>
         <object>objects\ped_2</object>
         <object>objects\ped_kid</object>
+        <object>objects\agnus</object>
+        <object>objects\maga_man</object>
+        <object>objects\tink</object>
       </objects>
       <objects name="004-Germany">
         <objects name="germany_motor">
