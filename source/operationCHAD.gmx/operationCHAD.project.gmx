@@ -723,12 +723,11 @@
       <sprite>sprites\spr_dust</sprite>
     </sprites>
     <sprites name="HUD">
-      <sprite>sprites\yolo_head_spr</sprite>
-      <sprite>sprites\hit_rate_spr</sprite>
-      <sprite>sprites\yolo_weps_spr</sprite>
-      <sprite>sprites\wep_select_spr</sprite>
-      <sprite>sprites\HUD_under_spr</sprite>
-      <sprite>sprites\HUD_heads_spr</sprite>
+      <sprite>sprites\HUD_hit_rate</sprite>
+      <sprite>sprites\HUD_weapon_icon</sprite>
+      <sprite>sprites\HUD_weapon_select</sprite>
+      <sprite>sprites\HUD_weapon_bg</sprite>
+      <sprite>sprites\HUD_player_icon</sprite>
     </sprites>
     <sprites name="camera">
       <sprite>sprites\cam_icon_spr</sprite>

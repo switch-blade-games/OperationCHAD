@@ -35,9 +35,11 @@ ROLL = 1;
 state = FALL;
 
 // tuners
-gravity = 0.4;
+grav_speed = 0.4;
 roll_speed = 6;
 fall_speed = 10;
+
+gravity = grav_speed;
 </string>
           </argument>
         </arguments>
@@ -63,32 +65,21 @@ fall_speed = 10;
             <string>image_index += (hspeed/22)*8; // 22 is the sprite's circumference
 image_angle = 0;
 
-switch(state)
+x -= hspeed;
+y -= vspeed;
+
+if (!place_meeting(x+hspeed,y,par_solid))
+    x += hspeed;
+else
+    instance_destroy();
+
+if (!(place_meeting(x,y+vspeed,par_solid) or (vspeed &gt;= 0 and position_meeting(x,bbox_bottom+vspeed,par_jt) and (!position_meeting(x,bbox_bottom,par_jt)))))
+    y += vspeed;
+else
     {
-    case FALL:
-        if (place_meeting(x,y+vspeed,par_solid))
-        or (place_meeting(x,y+vspeed,par_jt) and (!position_meeting(x,bbox_bottom,par_jt)) and vspeed &gt;= 0)
-            {
-            state = ROLL;
-            gravity = 0;
-            vspeed = 0;
-            
-            y = round(y);
-            while((!place_meeting(x,y+1,par_solid)) and (!position_meeting(x,bbox_bottom,par_jt)))
-                y++;
-            }
-        else if (vspeed &gt; fall_speed)
-            vspeed = fall_speed;
-        break;
-    
-    case ROLL:
-        if (hspeed &gt; 0) and (hspeed &gt; roll_speed)
-            hspeed--;
-        else if (hspeed &lt; 0) and (hspeed &lt; -roll_speed)
-            hspeed++;
-        else if (hspeed == 0)
-            instance_destroy();
-        break;
+    if (vspeed &gt;= 0)
+        gravity = 0;
+    vspeed = 0;
     }
 
 if (place_meeting(x+hspeed,y-1,par_solid))
