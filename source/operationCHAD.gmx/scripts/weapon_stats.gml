@@ -6,7 +6,8 @@ enum weapon
     rifle,
     flame,
     spread,
-    homing
+    homing,
+    rollingCutter,
     }
 
 weapon_name[weapon.rifle] = "Rifle";
@@ -43,4 +44,13 @@ weapon_pnum[weapon.homing] = 1;
 weapon_sprd[weapon.homing] = 0;
 weapon_proj[weapon.homing] = obj_heat_seeker;
 weapon_case[weapon.homing] = -1;
+weapons++;
+
+weapon_name[weapon.rollingCutter] = "Rolling Cutter";
+weapon_time[weapon.rollingCutter] = 10;
+weapon_pspd[weapon.rollingCutter] = 6;
+weapon_pnum[weapon.rollingCutter] = 1;
+weapon_sprd[weapon.rollingCutter] = 0;
+weapon_proj[weapon.rollingCutter] = obj_rolling_cutter;
+weapon_case[weapon.rollingCutter] = 1;
 weapons++;
