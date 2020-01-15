@@ -15,6 +15,13 @@ switch(move_state)
             drop = false;
             // no hang
             no_mb = false;
+            
+            // sfx
+            if (land_sfx)
+                {
+                land_sfx = false;
+                snd_play(choose(snd_land_stone_1,snd_land_stone_2,snd_land_stone_3),0.1,0.25);
+                }
             }
         
         // gravity
@@ -50,6 +57,9 @@ switch(move_state)
                 }
             if (yspeed < fall_speed)
                 yspeed += grav;
+            
+            // sfx
+            land_sfx = true;
             }
         break;
     

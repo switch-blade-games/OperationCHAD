@@ -30,6 +30,17 @@ switch(move_state)
                     if (anim_state != aState.walk_move)
                         anim_state = aState.walk_move;
                     }
+                if (img_index >= 0) and (img_index < 1)
+                or (img_index >= 5) and (img_index < 6)
+                    {
+                    if (step_sfx)
+                        {
+                        step_sfx = false;
+                        snd_play(choose(snd_step_stone_1,snd_step_stone_2,snd_step_stone_3),0.1,0.25);
+                        }
+                    }
+                else
+                    step_sfx = true;
                 }
             else
                 {

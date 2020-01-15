@@ -106,6 +106,8 @@ no_mb_time = false;
 moto_y = 0;
 moto_yspeed = 0;
 moto_shake = 0;
+step_sfx = false;
+land_sfx = false;
 
 // player position/physics
 walk_speed = 2;
