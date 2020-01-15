@@ -118,6 +118,7 @@ switch(move_state)
         
         // jump
         if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
+        and (move_state != mState.duck)
             jump();
         
         // fire weapon
