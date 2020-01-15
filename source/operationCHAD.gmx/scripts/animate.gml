@@ -30,13 +30,13 @@ switch(move_state)
                     if (anim_state != aState.walk_move)
                         anim_state = aState.walk_move;
                     }
-                if (img_index >= 0) and (img_index < 1)
-                or (img_index >= 5) and (img_index < 6)
+                if (img_index >= anim_start+0) and (img_index < anim_start+1)
+                or (img_index >= anim_start+5) and (img_index < anim_start+6)
                     {
                     if (step_sfx)
                         {
                         step_sfx = false;
-                        snd_play(choose(snd_step_stone_1,snd_step_stone_2,snd_step_stone_3),0.1,0.25);
+                        snd_play(choose(snd_step_stone_1,snd_step_stone_2,snd_step_stone_3),0.1,0.2);
                         }
                     }
                 else
@@ -97,6 +97,18 @@ switch(move_state)
                 mb_offset_old = mb_offset;
                 if (anim_state != aState.mb_move)
                     anim_state = aState.mb_move;
+                
+                if (img_index >= anim_start+0) and (img_index < anim_start+1)
+                or (img_index >= anim_start+5) and (img_index < anim_start+6)
+                    {
+                    if (step_sfx)
+                        {
+                        step_sfx = false;
+                        snd_play(choose(snd_step_metal_1,snd_step_metal_2,snd_step_metal_3),0.1,0.2);
+                        }
+                    }
+                else
+                    step_sfx = true;
                 }
             else
                 {

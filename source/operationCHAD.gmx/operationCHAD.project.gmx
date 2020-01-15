@@ -71,6 +71,14 @@
         <sound>sound\snd_step_stone_2</sound>
         <sound>sound\snd_step_stone_3</sound>
       </sounds>
+      <sounds name="metal">
+        <sound>sound\snd_land_metal_1</sound>
+        <sound>sound\snd_land_metal_2</sound>
+        <sound>sound\snd_land_metal_3</sound>
+        <sound>sound\snd_step_metal_1</sound>
+        <sound>sound\snd_step_metal_2</sound>
+        <sound>sound\snd_step_metal_3</sound>
+      </sounds>
     </sounds>
     <sound>sound\snd_menu_hover</sound>
     <sound>sound\snd_menu_select</sound>

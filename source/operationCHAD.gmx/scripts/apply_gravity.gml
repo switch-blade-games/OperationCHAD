@@ -20,7 +20,7 @@ switch(move_state)
             if (land_sfx)
                 {
                 land_sfx = false;
-                snd_play(choose(snd_land_stone_1,snd_land_stone_2,snd_land_stone_3),0.1,0.25);
+                snd_play(choose(snd_land_stone_1,snd_land_stone_2,snd_land_stone_3),0.1,0.2);
                 }
             }
         
@@ -53,6 +53,9 @@ switch(move_state)
                     mb_sign = ternary(x1<x2,+1,-1);
                     xspeed = 0;
                     yspeed = 0;
+                    
+                    // sfx
+                    snd_play(choose(snd_land_metal_1,snd_land_metal_2,snd_land_metal_3),0.1,0.2);
                     }
                 }
             if (yspeed < fall_speed)
