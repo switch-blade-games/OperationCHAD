@@ -25,7 +25,7 @@ if (shoot_timer == 0)
         // bullet
         var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
         inst.direction = ang;
-        inst.speed = weapon_pspd[cur_weapon]
+        inst.speed = weapon_pspd[cur_weapon];
         inst.image_angle = ang;
         
         ang += weapon_sprd[cur_weapon];
@@ -49,7 +49,6 @@ if (shoot_timer == 0)
         }
     
     // sound
-    if(instance_number(tunnel)=0)
     snd_play_3d(x,y,bullet_snd,0.5,1);
     
     // smoke
