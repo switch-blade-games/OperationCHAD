@@ -1634,6 +1634,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="003-Clown World">
+        <room>rooms\dream_room</room>
         <room>rooms\clown_room</room>
         <room>rooms\circle_room</room>
         <room>rooms\merry_room</room>
@@ -1688,7 +1689,6 @@
       <rooms name="007-Pooh">
         <room>rooms\pooh_stage</room>
         <room>rooms\xi_room</room>
-        <room>rooms\dream_room</room>
         <room>rooms\fent_room</room>
         <room>rooms\cam_room</room>
         <room>rooms\forest_room</room>
