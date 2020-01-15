@@ -705,7 +705,7 @@
       <sprite>sprites\spr_heat_seeker</sprite>
       <sprite>sprites\spr_flamethrower_flame</sprite>
       <sprite>sprites\spr_rolling_cutter</sprite>
-      <sprite>sprites\sprite469</sprite>
+      <sprite>sprites\spr_missile</sprite>
       <sprites name="weapons">
         <sprite>sprites\AA_rolling_stone_spr</sprite>
         <sprite>sprites\A_rolling_cutter_spr</sprite>
@@ -1577,6 +1577,7 @@
       <object>objects\obj_heat_seeker</object>
       <object>objects\obj_flamethrower_flame</object>
       <object>objects\obj_rolling_cutter</object>
+      <object>objects\obj_crush_shot</object>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>

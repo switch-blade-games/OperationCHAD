@@ -8,6 +8,7 @@ enum weapon
     spread,
     homing,
     rollingCutter,
+    crushShot
     }
 
 weapon_name[weapon.rifle] = "Rifle";
@@ -53,4 +54,13 @@ weapon_pnum[weapon.rollingCutter] = 1;
 weapon_sprd[weapon.rollingCutter] = 0;
 weapon_proj[weapon.rollingCutter] = obj_rolling_cutter;
 weapon_case[weapon.rollingCutter] = 1;
+weapons++;
+
+weapon_name[weapon.crushShot] = "Crush Shot";
+weapon_time[weapon.crushShot] = 22;
+weapon_pspd[weapon.crushShot] = 6;
+weapon_pnum[weapon.crushShot] = 1;
+weapon_sprd[weapon.crushShot] = 0;
+weapon_proj[weapon.crushShot] = obj_crush_shot;
+weapon_case[weapon.crushShot] = -1;
 weapons++;
