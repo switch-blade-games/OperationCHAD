@@ -77,13 +77,13 @@ var i=0;
 }
 
 //Pooh y sequencing
-Ypooh[0]=160
+Ypooh[0]=240
 
 if(room=pooh_stage){
 
 var i=0;
 
-    repeat(array_length_1d(Yfpooh)){
+    repeat(array_length_1d(Ypooh)){
 
         MYarray[i]=Ypooh[i]
         i+=1

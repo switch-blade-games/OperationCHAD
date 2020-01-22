@@ -486,7 +486,8 @@
         </sprites>
         <sprite>sprites\dream_paint_spr</sprite>
         <sprite>sprites\dream_circle_spr</sprite>
-        <sprites name="camera">
+        <sprites name="mic">
+          <sprite>sprites\mic_bot_spr</sprite>
           <sprite>sprites\camera_BG_spr</sprite>
           <sprite>sprites\diag_cam_spr</sprite>
           <sprite>sprites\cam_range_spr</sprite>
@@ -499,6 +500,12 @@
           <sprite>sprites\cam_laz_spr</sprite>
           <sprite>sprites\cam_overlay_spr</sprite>
           <sprite>sprites\cam_bot_spr</sprite>
+          <sprite>sprites\marvel_spr</sprite>
+          <sprite>sprites\mic_panic_spr</sprite>
+          <sprite>sprites\mic_BG_spr</sprite>
+          <sprite>sprites\mic_screen_spr</sprite>
+          <sprite>sprites\obey_screen_spr</sprite>
+          <sprite>sprites\static_screen_spr</sprite>
         </sprites>
         <sprites name="forest">
           <sprite>sprites\pollution_BG_spr</sprite>
@@ -1463,7 +1470,7 @@
           </objects>
           <object>objects\dream_counter</object>
         </objects>
-        <objects name="cam">
+        <objects name="mic">
           <object>objects\obj_cam_controller</object>
           <object>objects\obj_cam_laser</object>
           <object>objects\cam_xi</object>
@@ -1480,6 +1487,9 @@
             <object>objects\cam_range_1</object>
             <object>objects\cam_range_2</object>
           </objects>
+          <object>objects\mic_bot</object>
+          <object>objects\mic_screen_drawer</object>
+          <object>objects\mic_screen</object>
         </objects>
         <objects name="forest">
           <object>objects\forest_controller</object>
@@ -1634,12 +1644,15 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <rooms name="003-Clown World">
+      <rooms name="007-Pooh">
+        <room>rooms\pooh_stage</room>
+        <room>rooms\xi_room</room>
         <room>rooms\dream_room</room>
-        <room>rooms\clown_room</room>
-        <room>rooms\circle_room</room>
-        <room>rooms\merry_room</room>
-        <room>rooms\cloud_room</room>
+        <room>rooms\mic_room</room>
+        <room>rooms\fent_room</room>
+        <room>rooms\forest_room</room>
+        <room>rooms\pooh_room</room>
+        <room>rooms\final_room</room>
       </rooms>
       <rooms name="demo_rooms">
         <room>rooms\demo_room_2</room>
@@ -1687,14 +1700,11 @@
         <room>rooms\open_cutscene_room</room>
         <room>rooms\time_cutscene_room</room>
       </rooms>
-      <rooms name="007-Pooh">
-        <room>rooms\pooh_stage</room>
-        <room>rooms\xi_room</room>
-        <room>rooms\fent_room</room>
-        <room>rooms\cam_room</room>
-        <room>rooms\forest_room</room>
-        <room>rooms\pooh_room</room>
-        <room>rooms\final_room</room>
+      <rooms name="003-Clown World">
+        <room>rooms\clown_room</room>
+        <room>rooms\circle_room</room>
+        <room>rooms\merry_room</room>
+        <room>rooms\cloud_room</room>
       </rooms>
     </rooms>
   </rooms>
