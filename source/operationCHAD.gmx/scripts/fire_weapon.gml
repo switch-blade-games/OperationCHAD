@@ -1,56 +1,71 @@
 var muzzle_y = gun_y;
 
-if (shoot_timer == 0)
+// check if we can fire
+var fire = false;
+if (input_fire and weapon_auto[cur_weapon])
+or (input_fire_pressed)
     {
-    shoot_timer = weapon_time[cur_weapon];
-    
-    if (cur_weapon == weapon.flame)
-        var ang = flame_ang;
-    else
+    if (shoot_timer == 0)
         {
-        if (weapon_pnum[cur_weapon] == 1)
-            var ang = aim;
-        else if (weapon_pnum[cur_weapon] == 2)
-            var ang = aim-(weapon_sprd[cur_weapon]/2);
-        else if (weapon_pnum[cur_weapon] > 2)
-            var ang = aim - weapon_sprd[cur_weapon]*floor(weapon_pnum[cur_weapon]/2);
+        if (weapon_pmax[cur_weapon] == -1)
+        or (instance_number(weapon_proj[cur_weapon]) <= weapon_pmax[cur_weapon])
+            fire = true;
         }
-    
-    repeat(weapon_pnum[cur_weapon])
-        {
-        // aim vector
-        var ldx = lengthdir_x(1,ang);
-        var ldy = lengthdir_y(1,ang);
-        
-        // bullet
-        var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
-        inst.direction = ang;
-        inst.speed = weapon_pspd[cur_weapon];
-        inst.image_angle = ang;
-        
-        ang += weapon_sprd[cur_weapon];
-        }
-    
+    }
+if (!fire)
+    exit;
+
+shoot_timer = weapon_time[cur_weapon];
+
+// flame thrower aim angle
+if (cur_weapon == weapon.flame)
+    var ang = flame_ang;
+else
+    {
+    // aim angles based on number of projectiles
+    if (weapon_pnum[cur_weapon] == 1)
+        var ang = aim;
+    else if (weapon_pnum[cur_weapon] == 2)
+        var ang = aim-(weapon_sprd[cur_weapon]/2);
+    else if (weapon_pnum[cur_weapon] > 2)
+        var ang = aim - weapon_sprd[cur_weapon]*floor(weapon_pnum[cur_weapon]/2);
+    }
+
+// create the projectile(s)
+repeat(weapon_pnum[cur_weapon])
+    {
     // aim vector
-    var ldx = lengthdir_x(1,aim);
-    var ldy = lengthdir_y(1,aim);
+    var ldx = lengthdir_x(1,ang);
+    var ldy = lengthdir_y(1,ang);
     
-    if (weapon_case[cur_weapon] >= 0)
-        {
-        // bullet/shell casing
-        var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_casing);
-        if (aim == 0)
-            inst.direction = aim+random_range(130,160);
-        else
-            inst.direction = aim-random_range(130,160);
-        inst.speed = 4+random(2);
-        inst.image_speed = 0;
-        inst.image_index = weapon_case[cur_weapon];
-        }
+    // bullet
+    var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
+    inst.direction = ang;
+    inst.speed = weapon_pspd[cur_weapon];
+    inst.image_angle = ang;
     
-    // sound
-    snd_play_3d(x,y,bullet_snd,0.5,1);
-    
+    ang += weapon_sprd[cur_weapon];
+    }
+
+// aim vector
+var ldx = lengthdir_x(1,aim);
+var ldy = lengthdir_y(1,aim);
+
+if (weapon_case[cur_weapon] >= 0)
+    {
+    // bullet/shell casing
+    var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_casing);
+    if (aim == 0)
+        inst.direction = aim+random_range(130,160);
+    else
+        inst.direction = aim-random_range(130,160);
+    inst.speed = 4+random(2);
+    inst.image_speed = 0;
+    inst.image_index = weapon_case[cur_weapon];
+    }
+
+if (global.CFG[config.particles])
+    {
     // smoke
     repeat(3)
         {
@@ -63,3 +78,6 @@ if (shoot_timer == 0)
         inst.fade = 0.1;
         }
     }
+
+// sound
+snd_play_3d(x,y,weapon_snd[cur_weapon],0.5,1);

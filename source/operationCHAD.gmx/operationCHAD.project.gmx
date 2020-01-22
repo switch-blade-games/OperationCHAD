@@ -62,6 +62,24 @@
       <sound>sound\explode_snd</sound>
       <sound>sound\space_hit_snd</sound>
     </sounds>
+    <sounds name="footsteps">
+      <sounds name="stone">
+        <sound>sound\snd_land_stone_1</sound>
+        <sound>sound\snd_land_stone_2</sound>
+        <sound>sound\snd_land_stone_3</sound>
+        <sound>sound\snd_step_stone_1</sound>
+        <sound>sound\snd_step_stone_2</sound>
+        <sound>sound\snd_step_stone_3</sound>
+      </sounds>
+      <sounds name="metal">
+        <sound>sound\snd_land_metal_1</sound>
+        <sound>sound\snd_land_metal_2</sound>
+        <sound>sound\snd_land_metal_3</sound>
+        <sound>sound\snd_step_metal_1</sound>
+        <sound>sound\snd_step_metal_2</sound>
+        <sound>sound\snd_step_metal_3</sound>
+      </sounds>
+    </sounds>
     <sound>sound\snd_menu_hover</sound>
     <sound>sound\snd_menu_select</sound>
   </sounds>
@@ -1588,6 +1606,7 @@
       <object>objects\obj_flamethrower_flame</object>
       <object>objects\obj_rolling_cutter</object>
       <object>objects\obj_crush_shot</object>
+      <object>objects\obj_spin_flame</object>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>

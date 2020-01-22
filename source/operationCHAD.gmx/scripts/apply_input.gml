@@ -118,11 +118,11 @@ switch(move_state)
         
         // jump
         if ((on_ground) or (grace_jump > 0)) and (input_jump_pressed)
+        and (move_state != mState.duck)
             jump();
         
         // fire weapon
-        if (input_fire)
-            fire_weapon();
+        fire_weapon();
         break;
     
     case mState.duck:
@@ -193,8 +193,7 @@ switch(move_state)
             }
         
         // shoot
-        if (input_fire)
-            fire_weapon();
+        fire_weapon();
         break;
     
     case mState.mb:
@@ -202,8 +201,7 @@ switch(move_state)
             dir = h_dir;
         if (input_fire) or (input_lock)
             {
-            if (input_fire)
-                fire_weapon();
+            fire_weapon();
             
             // aim
             if (h_dir == 0 and v_dir == 0)
@@ -323,8 +321,7 @@ switch(move_state)
                         aim = point_direction(0,0,input_right-input_left,input_down);
                     }
                 
-                if (input_fire)
-                    fire_weapon();
+                fire_weapon();
                 }
             else
                 {
@@ -517,8 +514,7 @@ switch(move_state)
             jump();
         
         // fire weapon
-        if (input_fire)
-            fire_weapon();
+        fire_weapon();
         break;
     
     case mState.dead:
