@@ -82,6 +82,8 @@
     </sounds>
     <sound>sound\snd_menu_hover</sound>
     <sound>sound\snd_menu_select</sound>
+    <sound>sound\toy_snd</sound>
+    <sound>sound\toy_beep_snd</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="REDACTED">
@@ -524,6 +526,7 @@
           <sprite>sprites\mic_screen_spr</sprite>
           <sprite>sprites\obey_screen_spr</sprite>
           <sprite>sprites\static_screen_spr</sprite>
+          <sprite>sprites\toy_1_spr</sprite>
         </sprites>
         <sprites name="forest">
           <sprite>sprites\pollution_BG_spr</sprite>
@@ -1508,6 +1511,7 @@
           <object>objects\mic_bot</object>
           <object>objects\mic_screen_drawer</object>
           <object>objects\mic_screen</object>
+          <object>objects\mic_toy</object>
         </objects>
         <objects name="forest">
           <object>objects\forest_controller</object>
