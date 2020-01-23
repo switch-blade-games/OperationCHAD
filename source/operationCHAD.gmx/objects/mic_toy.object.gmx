@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>sprite_index=choose(toy_1_spr,toy_2_spr)
 
 
 
@@ -39,7 +39,7 @@ BOMB=4
 
 state=THROW
 
-FLOORy=210
+FLOORy=220
 
 LANDtime=60
 
