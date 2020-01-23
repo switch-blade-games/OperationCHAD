@@ -22,7 +22,9 @@ global.pad_lock
 */
 
 global.OUTPUT = true;
+global.PLAYERS=1;
 global.P1LIVES=4;
+global.P2LIVES=4;
 global.CHECKPOINT=1;
 
 randomize();

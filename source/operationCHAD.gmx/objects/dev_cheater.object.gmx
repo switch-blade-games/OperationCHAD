@@ -291,7 +291,7 @@ file_text_close(file);
             draw_set_color(c_red);
             with(par_enemy)
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-            draw_set_color(c_yellow);
+            draw_set_color(c_orange);
             with(par_projectile)
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
             draw_set_color(c_fuchsia);
@@ -301,6 +301,17 @@ file_text_close(file);
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
             with(par_mb)
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_yellow);
+            with(par_trigger)
+                {
+                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+                if (active)
+                    {
+                    draw_set_alpha(0.5);
+                    draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,0);
+                    draw_set_alpha(1.0);
+                    }
+                }
             //draw_set_color(c_lime);
             //with(par_verlet)
             //    draw_point(x,y);
