@@ -91,6 +91,22 @@ var i=0;
 }
 
 
+//comix y sequencing
+Ycomix[0]=520
+
+
+if(room=comix_zone){
+
+var i=0;
+
+    repeat(array_length_1d(Ycomix)){
+
+        MYarray[i]=Ycomix[i]
+        i+=1
+    }
+}
+
+
 //set which array
 Yset=MYarray[Ycurrent]
 

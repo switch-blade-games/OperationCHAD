@@ -418,9 +418,14 @@
         </sprites>
       </sprites>
       <sprites name="006- Island of NPCs">
+        <sprite>sprites\justice_comic_spr</sprite>
         <sprite>sprites\NPC_enemy_spr</sprite>
         <sprite>sprites\die_spr</sprite>
         <sprite>sprites\player_icon_spr</sprite>
+        <sprite>sprites\justice_frame_spr</sprite>
+        <sprite>sprites\justice_BG_spr</sprite>
+        <sprite>sprites\justice_cloud_spr</sprite>
+        <sprite>sprites\boat_comic_spr</sprite>
       </sprites>
       <sprites name="007-Pooh">
         <sprites name="pooh_mech">
@@ -848,6 +853,7 @@
         <background>background\NPC_snake_BG</background>
         <background>background\NPC_island_BG</background>
         <background>background\NPC_boss_BG</background>
+        <background>background\comic_floor_BG</background>
       </backgrounds>
       <backgrounds name="007-Pooh">
         <background>background\xi_BG</background>
@@ -1353,6 +1359,8 @@
         <object>objects\die</object>
         <object>objects\P1_icon</object>
         <object>objects\P2_icon</object>
+        <object>objects\justice</object>
+        <object>objects\boat_comic</object>
       </objects>
       <objects name="007-Pooh">
         <objects name="mech_battle">
@@ -1669,17 +1677,13 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <rooms name="007-Pooh">
-        <room>rooms\mic_room</room>
-        <room>rooms\pooh_stage</room>
-        <room>rooms\xi_room</room>
-        <room>rooms\dream_room</room>
-        <room>rooms\fent_room</room>
-        <room>rooms\forest_room</room>
-        <room>rooms\pooh_room</room>
-        <room>rooms\final_room</room>
-      </rooms>
       <rooms name="demo_rooms">
+        <rooms name="006- NPC Island">
+          <room>rooms\comix_zone</room>
+          <room>rooms\NPC_room</room>
+          <room>rooms\ball_buster_room</room>
+          <room>rooms\NPC_game_room</room>
+        </rooms>
         <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
         <room>rooms\new_factory</room>
@@ -1706,11 +1710,6 @@
       <rooms name="005-Thot Paradise">
         <room>rooms\thot_room</room>
       </rooms>
-      <rooms name="006- NPC Island">
-        <room>rooms\NPC_room</room>
-        <room>rooms\ball_buster_room</room>
-        <room>rooms\NPC_game_room</room>
-      </rooms>
       <rooms name="009-Misc">
         <room>rooms\might_room</room>
         <room>rooms\mario_room</room>
@@ -1730,6 +1729,16 @@
         <room>rooms\circle_room</room>
         <room>rooms\merry_room</room>
         <room>rooms\cloud_room</room>
+      </rooms>
+      <rooms name="007-Pooh">
+        <room>rooms\mic_room</room>
+        <room>rooms\pooh_stage</room>
+        <room>rooms\xi_room</room>
+        <room>rooms\dream_room</room>
+        <room>rooms\fent_room</room>
+        <room>rooms\forest_room</room>
+        <room>rooms\pooh_room</room>
+        <room>rooms\final_room</room>
       </rooms>
     </rooms>
   </rooms>
