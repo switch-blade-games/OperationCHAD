@@ -1697,14 +1697,14 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <rooms name="demo_rooms">
+      <rooms name="001-Abortion Factory">
+        <room>rooms\final_factory</room>
         <room>rooms\elevator_mockup</room>
-        <rooms name="006- NPC Island">
-          <room>rooms\comix_zone</room>
-          <room>rooms\NPC_room</room>
-          <room>rooms\ball_buster_room</room>
-          <room>rooms\NPC_game_room</room>
-        </rooms>
+        <room>rooms\fryguy_room</room>
+        <room>rooms\tong_room</room>
+        <room>rooms\room44</room>
+      </rooms>
+      <rooms name="demo_rooms">
         <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
         <room>rooms\new_factory</room>
@@ -1713,14 +1713,6 @@
       <room>rooms\player_select_room</room>
     </rooms>
     <rooms name="REDACTED">
-      <rooms name="001-Abortion Factory">
-        <room>rooms\final_factory</room>
-        <room>rooms\fryguy_room</room>
-        <room>rooms\megaphone_room</room>
-        <room>rooms\tong_room</room>
-        <room>rooms\embro_room</room>
-        <room>rooms\room44</room>
-      </rooms>
       <rooms name="004-Germany">
         <room>rooms\germany_motor_room</room>
         <room>rooms\paint_2_room</room>
@@ -1760,6 +1752,14 @@
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
         <room>rooms\final_room</room>
+      </rooms>
+      <rooms name="006- NPC Island">
+        <room>rooms\comix_zone</room>
+        <room>rooms\NPC_room</room>
+        <room>rooms\megaphone_room</room>
+        <room>rooms\ball_buster_room</room>
+        <room>rooms\NPC_game_room</room>
+        <room>rooms\embro_room</room>
       </rooms>
     </rooms>
   </rooms>
