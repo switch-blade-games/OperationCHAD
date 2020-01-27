@@ -63,6 +63,7 @@ background_color=global.WHITE</code>
     <instance objName="obj_jt" x="2780" y="660" name="inst_ACDFAC5A" locked="0" code="" scaleX="5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="boat_comic" x="580" y="580" name="inst_8079326B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1440" y="740" name="inst_1EA4F7AF" locked="0" code="" scaleX="106.315788269043" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="justice_trigger" x="2780" y="620" name="inst_04234179" locked="0" code="" scaleX="5" scaleY="2" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="comic_floor_BG" x="0" y="740" w="20" h="20" xo="0" yo="0" id="10006290" name="inst_3CEFEAEE" depth="200" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
