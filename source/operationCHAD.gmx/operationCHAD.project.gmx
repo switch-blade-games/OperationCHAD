@@ -1698,10 +1698,10 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="001-Abortion Factory">
+        <room>rooms\tong_room</room>
         <room>rooms\final_factory</room>
         <room>rooms\elevator_mockup</room>
         <room>rooms\fryguy_room</room>
-        <room>rooms\tong_room</room>
         <room>rooms\room44</room>
       </rooms>
       <rooms name="demo_rooms">
