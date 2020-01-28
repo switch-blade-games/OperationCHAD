@@ -10,28 +10,11 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,obj_control);
-var inst = instance_create(0,0,obj_camera);
-inst.cam_state = camState.static;
-
+  <code>background_color=global.PINK
 
 instance_create(0,0,fent_controller_1)
-
-
-background_color=global.PINK
-
-//instance_create(0,0,fent_painter)
-
 instance_create(0,0,fent_BG_drawer)
-
-instance_create(0,0,fent_BG_drawer_2)
-
-
-with(obj_wall)
-    visible=false
-    
-//with(obj_mb)
-    //visible=false</code>
+instance_create(0,0,fent_BG_drawer_2)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

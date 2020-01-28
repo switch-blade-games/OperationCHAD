@@ -10,11 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,obj_control);
-var inst = instance_create(0,0,obj_camera);
-inst.cam_state = camState.static;
-
-var player = instance_create(60,70,obj_player);
+  <code>var player = instance_create(60,70,obj_player);
 player.move_state = mState.moto;
 
 instance_create(0,0,sub_controller)

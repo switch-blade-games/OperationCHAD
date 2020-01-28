@@ -2,7 +2,7 @@
 <object>
   <spriteName>ramp_R_spr</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>100</depth>
   <persistent>0</persistent>
   <parentName>par_ramp</parentName>

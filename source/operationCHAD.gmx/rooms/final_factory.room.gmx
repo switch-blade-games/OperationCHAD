@@ -10,24 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,obj_control)
-
-instance_create(0,0,HUD)
-
-//camera_setup(0,0,camState.right,par_actor);
-
-//instance_create(0,0,new_factory_drawer)
-
-//obj_wall.visible=true
-
-
-//instance_create(0,0,rail_under_drawer)
-
-//instance_create(0,0,factory_claw_maker)
-
-instance_create(0,0,abort_enemy_controller)
-
-instance_create(0,0,cam_deactivator)
+  <code>instance_create(0,0,abort_enemy_controller)
 
 instance_create(0,0,obj_player)
 

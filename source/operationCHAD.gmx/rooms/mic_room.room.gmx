@@ -10,16 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,obj_control)
-
-//instance_create(0,0,internet_controller)
-
-//instance_create(0,0,obj_cam_controller)
-
-with(obj_wall)
-    visible=false
-    
-instance_create(0,0,mic_screen_drawer)</code>
+  <code>instance_create(0,0,mic_screen_drawer)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

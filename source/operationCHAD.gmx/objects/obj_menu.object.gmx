@@ -126,7 +126,10 @@ switch(menu)
         if (input_select)
             {
             if (select_y == 0)
+                {
+                instance_create(0,0,obj_control);
                 room_goto_next();
+                }
             else if (select_y == 2)
                 menu = 2;
             else if (select_y == 3)

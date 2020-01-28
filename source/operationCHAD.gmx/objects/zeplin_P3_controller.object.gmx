@@ -47,7 +47,7 @@ instance_create(0,0,paint_painter)
 SNOWx=0
 SNOWy=0
 
-SNOWsur=surface_create(400,240)
+//SNOWsur=surface_create(400,240)
 
 SNOWspe=1
 

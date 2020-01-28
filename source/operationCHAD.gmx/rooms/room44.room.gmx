@@ -10,13 +10,7 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>instance_create(0,0,obj_control);
-
-camera_setup(0,0,camState.free,par_actor);
-instance_create(0,0,cam_deactivator);
-
-instance_create(0,0,HUD);
-instance_create(0,0,abort_enemy_controller);</code>
+  <code>instance_create(0,0,abort_enemy_controller);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

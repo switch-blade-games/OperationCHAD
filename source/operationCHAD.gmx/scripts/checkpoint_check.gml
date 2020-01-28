@@ -1,3 +1,6 @@
+if (!instance_exists(par_actor))
+    exit;
+
 with(checkpoint_obj){
 
     var Yset=Yplace;

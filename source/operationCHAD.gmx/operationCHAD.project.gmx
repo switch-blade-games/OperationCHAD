@@ -522,8 +522,6 @@
           <sprite>sprites\cam_range_1_spr</sprite>
           <sprite>sprites\cam_range_2_spr</sprite>
           <sprite>sprites\cam_gun_spr</sprite>
-          <sprite>sprites\cam_hoard_spr</sprite>
-          <sprite>sprites\cam_laz_spr</sprite>
           <sprite>sprites\cam_overlay_spr</sprite>
           <sprite>sprites\cam_bot_spr</sprite>
           <sprite>sprites\marvel_spr</sprite>
@@ -558,29 +556,6 @@
           <sprite>sprites\xi_grap_spr</sprite>
           <sprite>sprites\xi_hang_spr</sprite>
           <sprite>sprites\lil_xi_spr</sprite>
-        </sprites>
-      </sprites>
-      <sprites name="009-Misc">
-        <sprite>sprites\might_wood_spr</sprite>
-        <sprite>sprites\might_wood_break_spr</sprite>
-        <sprite>sprites\might_hehe_spr</sprite>
-        <sprite>sprites\might_HUD_spr</sprite>
-        <sprite>sprites\might_block_spr</sprite>
-        <sprite>sprites\might_meter_spr</sprite>
-        <sprites name="stone">
-          <sprite>sprites\stone_might_start_spr</sprite>
-          <sprite>sprites\stone_might_up_spr</sprite>
-          <sprite>sprites\stone_might_strike_spr</sprite>
-          <sprite>sprites\stone_might_win_spr</sprite>
-          <sprite>sprites\stone_might_lose_spr</sprite>
-          <sprite>sprites\stone_angry_spr</sprite>
-          <sprite>sprites\stone_might_shake_spr</sprite>
-        </sprites>
-        <sprites name="diverse">
-          <sprite>sprites\diverse_might_start_spr</sprite>
-          <sprite>sprites\diverse_strike_spr</sprite>
-          <sprite>sprites\diverse_up_spr</sprite>
-          <sprite>sprites\diverse_win_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="100-Characters">
@@ -866,7 +841,6 @@
           <background>background\thot_BG</background>
         </backgrounds>
         <backgrounds name="Minigames">
-          <background>background\might_BG</background>
           <background>background\FF_BG</background>
           <background>background\mario_BG</background>
           <background>background\ball_buster_BG</background>
@@ -877,7 +851,6 @@
         <background>background\moto_frame_BG</background>
       </backgrounds>
       <background>background\factory_mockup_3</background>
-      <background>background\factory_mockup_2</background>
       <background>background\factory_base_BG</background>
       <background>background\background58</background>
       <background>background\tileset_20_BG</background>
@@ -1126,6 +1099,7 @@
         <object>objects\factory_frame</object>
         <object>objects\abort_sign</object>
         <object>objects\baby_part</object>
+        <object>objects\factory_1_trigger</object>
         <objects name="new_factory">
           <object>objects\abort_enemy_controller</object>
           <object>objects\abort_bot</object>
@@ -1541,16 +1515,6 @@
       </objects>
       <objects name="099-Misc">
         <objects name="Minigames">
-          <objects name="test_your_might">
-            <object>objects\might_controller</object>
-            <object>objects\P1_might</object>
-            <object>objects\might_wood</object>
-            <object>objects\might_draw_over</object>
-            <object>objects\might_score</object>
-            <object>objects\might_hehe</object>
-            <object>objects\diverse_man</object>
-            <object>objects\might_block</object>
-          </objects>
           <objects name="FF">
             <object>objects\FF_controller</object>
           </objects>
@@ -1559,6 +1523,8 @@
           <object>objects\NPC_dummy</object>
           <object>objects\obj_rope</object>
           <object>objects\obj_rope_segment</object>
+          <object>objects\practice_target</object>
+          <object>objects\weapon_test_controller</object>
         </objects>
       </objects>
       <objects name="Cutscene">
@@ -1638,21 +1604,13 @@
       <object>objects\obj_editor</object>
       <object>objects\obj_horse_mockup</object>
     </objects>
-    <objects name="JB_stuff">
-      <object>objects\dev_cheater</object>
-      <object>objects\factory_1_trigger</object>
-      <object>objects\practice_target</object>
-      <object>objects\weapon_test_controller</object>
-    </objects>
-    <objects name="HUD">
-      <object>objects\HUD</object>
-    </objects>
     <objects name="powerups">
       <object>objects\red_pill</object>
       <object>objects\C_powerup</object>
     </objects>
     <objects name="camera">
       <object>objects\cam_deactivator</object>
+      <object>objects\HUD</object>
       <object>objects\JB_cam</object>
       <object>objects\UR_cam</object>
       <object>objects\R_ramp_finish</object>
@@ -1667,6 +1625,7 @@
       <object>objects\P2_mark</object>
       <object>objects\cam_push_R</object>
     </objects>
+    <object>objects\dev_cheater</object>
     <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
@@ -1714,7 +1673,6 @@
         <room>rooms\thot_room</room>
       </rooms>
       <rooms name="009-Misc">
-        <room>rooms\might_room</room>
         <room>rooms\mario_room</room>
         <room>rooms\FF_room</room>
       </rooms>
