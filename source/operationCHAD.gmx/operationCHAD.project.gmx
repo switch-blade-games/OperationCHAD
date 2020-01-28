@@ -1041,6 +1041,7 @@
           <object>objects\sjw</object>
           <object>objects\acid</object>
           <object>objects\drill</object>
+          <object>objects\cell_bubble</object>
         </objects>
         <objects name="fryguy_boss">
           <object>objects\fryguy_controller</object>
