@@ -767,6 +767,8 @@
     <sprite>sprites\hang_man_mask_2_spr</sprite>
     <sprite>sprites\hang_man_mask_spr</sprite>
     <sprite>sprites\sprite562</sprite>
+    <sprite>sprites\cell_bubble_spr</sprite>
+    <sprite>sprites\cell_blood_spr</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="REDACTED">
