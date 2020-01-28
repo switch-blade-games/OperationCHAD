@@ -495,7 +495,13 @@ ds_queue_destroy(_player_q);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!instance_exists(JB_cam))
+            <string>if (room == menu_room)
+    {
+    instance_destroy();
+    exit;
+    }
+
+if (!instance_exists(JB_cam))
     instance_create(0,0,JB_cam);
 if (!instance_exists(cam_deactivator))
     instance_create(0,0,cam_deactivator);
