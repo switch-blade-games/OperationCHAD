@@ -756,6 +756,17 @@
       <sprite>sprites\P2_mark_spr</sprite>
     </sprites>
     <sprite>sprites\stonetoss_comic_spr</sprite>
+    <sprite>sprites\elevator_BG_spr</sprite>
+    <sprite>sprites\elevator_platform_spr</sprite>
+    <sprite>sprites\med_snake_spr</sprite>
+    <sprite>sprites\hang_man_enter_spr</sprite>
+    <sprite>sprites\hang_man_spin_spr</sprite>
+    <sprite>sprites\hang_man_spr</sprite>
+    <sprite>sprites\hang_rod_spr</sprite>
+    <sprite>sprites\sprite557</sprite>
+    <sprite>sprites\hang_man_mask_2_spr</sprite>
+    <sprite>sprites\hang_man_mask_spr</sprite>
+    <sprite>sprites\sprite562</sprite>
   </sprites>
   <backgrounds name="background">
     <backgrounds name="REDACTED">
@@ -1129,6 +1140,11 @@
           <object>objects\over_tube</object>
           <object>objects\over_light</object>
         </objects>
+        <object>objects\elevator_drawer</object>
+        <object>objects\elevator_platform</object>
+        <object>objects\hang_man_enter</object>
+        <object>objects\hang_rod</object>
+        <object>objects\hang_man</object>
       </objects>
       <objects name="002-Public School">
         <object>objects\G_eye</object>
@@ -1634,18 +1650,20 @@
     <object>objects\ani_tester</object>
     <object>objects\stage_finish</object>
     <object>objects\stonetoss_comic</object>
+    <object>objects\med_snake</object>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <rooms name="001-Abortion Factory">
+        <room>rooms\tong_room</room>
+        <room>rooms\final_factory</room>
+        <room>rooms\elevator_mockup</room>
+        <room>rooms\fryguy_room</room>
+        <room>rooms\room44</room>
+      </rooms>
       <rooms name="demo_rooms">
-        <rooms name="006- NPC Island">
-          <room>rooms\comix_zone</room>
-          <room>rooms\NPC_room</room>
-          <room>rooms\ball_buster_room</room>
-          <room>rooms\NPC_game_room</room>
-        </rooms>
         <room>rooms\demo_room_2</room>
         <room>rooms\sub_room</room>
         <room>rooms\new_factory</room>
@@ -1654,14 +1672,6 @@
       <room>rooms\player_select_room</room>
     </rooms>
     <rooms name="REDACTED">
-      <rooms name="001-Abortion Factory">
-        <room>rooms\final_factory</room>
-        <room>rooms\fryguy_room</room>
-        <room>rooms\megaphone_room</room>
-        <room>rooms\tong_room</room>
-        <room>rooms\embro_room</room>
-        <room>rooms\room44</room>
-      </rooms>
       <rooms name="004-Germany">
         <room>rooms\germany_motor_room</room>
         <room>rooms\paint_2_room</room>
@@ -1700,6 +1710,14 @@
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
         <room>rooms\final_room</room>
+      </rooms>
+      <rooms name="006- NPC Island">
+        <room>rooms\comix_zone</room>
+        <room>rooms\NPC_room</room>
+        <room>rooms\megaphone_room</room>
+        <room>rooms\ball_buster_room</room>
+        <room>rooms\NPC_game_room</room>
+        <room>rooms\embro_room</room>
       </rooms>
     </rooms>
   </rooms>
