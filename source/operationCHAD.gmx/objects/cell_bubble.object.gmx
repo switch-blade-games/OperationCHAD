@@ -25,10 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>precision = 16;
+            <string>// grab the texture from our sprite
+tex = sprite_get_texture(sprite_index,0);
+
+// tuners
+precision = 12;
 radius = 30;
 radius_warp = 4; // radius +/- radius_warp = min/max radius
 
+// generate offsets
 warp = random_range(0,2*pi);
 for(var i=0; i&lt;precision; i++;)
     {
@@ -64,18 +69,20 @@ for(var i=0; i&lt;precision; i++;)
             <kind>1</kind>
             <string>draw_set_color($FFFFFF);
 
-var tex = sprite_get_texture(sprite_index,0);
 draw_primitive_begin_texture(pr_trianglefan,tex);
 
+// draw middle vertex
 draw_vertex_texture(x,y,0.5,0.5);
+// draw ring of vertices
 for(var i=0; i&lt;precision; i++;)
     {
-    var rad = radius + sin(current_time/500 + offset[i])*radius_warp;
+    var rad = radius + sin(current_time/700 + offset[i])*radius_warp;
     var ldx = lengthdir_x(1,angle[i]);
     var ldy = lengthdir_y(1,angle[i]);
     draw_vertex_texture(x+ldx*rad,y+ldy*rad,0.5+ldx*0.5,0.5+ldy*0.5);
     }
-var rad = radius + sin(current_time/500 + offset[0])*radius_warp;
+// final connecting vertex
+var rad = radius + sin(current_time/700 + offset[0])*radius_warp;
 var ldx = lengthdir_x(1,angle[0]);
 var ldy = lengthdir_y(1,angle[0]);
 draw_vertex_texture(x+ldx*rad,y+ldy*rad,0.5+ldx*0.5,0.5+ldy*0.5);
