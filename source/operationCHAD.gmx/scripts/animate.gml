@@ -5,7 +5,7 @@ skin_id_old = skin_id;
 spr_index_old = spr_index;
 img_index_old = img_index;
 
-anim_group_old = EXP_GROUP[anim_state];
+anim_group_old = anim_group;
 anim_state_old = anim_state;
 anim_start_old = anim_start;
 anim_end_old = anim_end;

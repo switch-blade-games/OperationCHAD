@@ -73,6 +73,30 @@ global.moto_floor = 210;
 if (!instance_exists(dev_cheater))
     instance_create(0,0,dev_cheater);
 
+// player skin enums
+enum skin
+    {
+    stone,
+    pumpkin,
+    foxford,
+    yolo,
+    size
+    }
+
+// player skin
+global.skin_tag[skin.stone]     = "101-Stone";
+global.skin_tag[skin.pumpkin]   = "102-Pumpkin";
+global.skin_tag[skin.foxford]   = "103-Fox";
+global.skin_tag[skin.yolo]      = "104-Yolo";
+
+for(var i=0; i&lt;skin.size; i++;)
+    {
+    global.player_sprite[i] = -1;
+    global.frame_info[i] = -1;
+    global.anim_info[i] = -1;
+    global.frames[i] = 0;
+    }
+
 // unpack skins
 var success = -1;
 if (!directory_exists(working_directory+"skins\"))
@@ -83,6 +107,10 @@ if (success &lt;= 0)
     log("[ERROR] MISSING SKIN FILES!");
 else
     log("Successfully unpacked ["+string(success)+"] skin files!");
+
+// load skins
+for(var i=0; i&lt;skin.size; i++;)
+    anim_load_skin(i);
 
 room_goto_next();</code>
   <enableViews>-1</enableViews>

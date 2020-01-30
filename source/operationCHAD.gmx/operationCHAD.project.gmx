@@ -980,10 +980,13 @@
       <script>scripts\jump.gml</script>
       <scripts name="animation">
         <script>scripts\anim_init.gml</script>
-        <script>scripts\anim_load_skin.gml</script>
-        <script>scripts\anim_create.gml</script>
+        <script>scripts\anim_set_skin.gml</script>
         <script>scripts\anim_update.gml</script>
-        <script>scripts\anim_find_skin.gml</script>
+        <scripts name="setup">
+          <script>scripts\anim_load_skin.gml</script>
+          <script>scripts\anim_create.gml</script>
+          <script>scripts\anim_find_skin.gml</script>
+        </scripts>
       </scripts>
     </scripts>
     <scripts name="enemy">

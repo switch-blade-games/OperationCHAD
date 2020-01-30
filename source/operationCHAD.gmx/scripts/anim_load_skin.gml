@@ -1,29 +1,114 @@
-/// anim_load_skin(sheetpath,jsonpath);
+/// anim_load_skin(skin_id);
 
-// tag lookup
-if (!ds_exists(tag_map,ds_type_map))
-    tag_map = ds_map_create();
-ds_map_clear(tag_map);
-// tag/frame data
-tag_info = -1;
-frame_info = -1;
-anim_info = -1;
-img_speed = -1;
+var _skin_id = argument[0];
 
-if (file_exists(argument[0])) and (file_exists(argument[1]))
+// tag enums
+TAG_NAME    = 0;
+TAG_START   = 1;
+TAG_END     = 2;
+// frame enums
+FRAME_TEX_X = 0;
+FRAME_TEX_Y = 1;
+FRAME_TEX_W = 2;
+FRAME_TEX_H = 3;
+// anim enums
+ANIM_LEN   = 0;
+ANIM_AIM   = 1;
+ANIM_GROUP = 2;
+ANIM_POS0  = 3;
+ANIM_POS1  = 4;
+ANIM_POS2  = 5;
+ANIM_POS3  = 6;
+ANIM_POS4  = 7;
+ANIM_POS5  = 8;
+ANIM_POS6  = 9;
+ANIM_POS7  = 10;
+
+// clear existing sprites and data structures
+if (sprite_exists(global.player_sprite[_skin_id]))
+    sprite_delete(global.player_sprite[_skin_id]);
+if (ds_exists(global.frame_info[_skin_id],ds_type_grid))
+    ds_grid_clear(global.frame_info[_skin_id],0);
+else
+    global.frame_info[_skin_id] = ds_grid_create(1,4);
+if (ds_exists(global.anim_info[_skin_id],ds_type_grid))
+    ds_grid_clear(global.anim_info[_skin_id],0);
+else
+    global.anim_info[_skin_id] = ds_grid_create(aState.size,11);
+global.frames[_skin_id] = 0;
+
+// sheet/json paths
+sheet_path = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_sheet.png";
+json_path  = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_info.json";
+
+if (file_exists(sheet_path)) and (file_exists(json_path))
     {
+    // tag lookup
+    tag_map = ds_map_create();
+    tag_info = -1;
+    tags = 0;
+    
+    // expected tags
+    for(var i=0; i<aState.size; i++;)
+        {
+        for(var j=0; j<8; j++;)
+            tag_expected[i,j] = "";
+        }
+    tag_expected[aState.flat_idle,0]         = "idle";
+    tag_expected[aState.flat_wait,0]         = "wait";
+    tag_expected[aState.flat_fire,0]         = "F_0";
+    tag_expected[aState.flat_fire,1]         = "F_45";
+    tag_expected[aState.flat_fire,2]         = "F_90";
+    tag_expected[aState.flat_fire,3]         = "F_270";
+    tag_expected[aState.flat_fire,4]         = "F_315";
+    tag_expected[aState.walk_move,0]         = "W_0";
+    tag_expected[aState.walk_move,1]         = "W_45";
+    tag_expected[aState.walk_move,2]         = "W_315";
+    tag_expected[aState.walk_fire,0]         = "W_shoot_0";
+    tag_expected[aState.walk_fire,1]         = "W_shoot_45";
+    tag_expected[aState.walk_fire,2]         = "W_shoot_315";
+    tag_expected[aState.flat_duck_idle,0]    = "F_duck_idle";
+    tag_expected[aState.flat_duck_fire,0]    = "F_duck_fire";
+    tag_expected[aState.wc_idle,0]           = "C_idle";
+    tag_expected[aState.wc_move,0]           = "C_move";
+    tag_expected[aState.wc_fire,0]           = "C_0";
+    tag_expected[aState.wc_fire,1]           = "C_45";
+    tag_expected[aState.wc_fire,2]           = "C_90";
+    tag_expected[aState.wc_fire,3]           = "C_135";
+    tag_expected[aState.wc_fire,4]           = "C_180";
+    tag_expected[aState.wc_fire,5]           = "C_225";
+    tag_expected[aState.wc_fire,6]           = "C_270";
+    tag_expected[aState.wc_fire,7]           = "C_315";
+    tag_expected[aState.mb_idle,0]           = "M_idle";
+    tag_expected[aState.mb_move,0]           = "M_move";
+    tag_expected[aState.mb_fire,0]           = "M_0";
+    tag_expected[aState.mb_fire,1]           = "M_45";
+    tag_expected[aState.mb_fire,2]           = "M_90";
+    tag_expected[aState.mb_fire,3]           = "M_270";
+    tag_expected[aState.mb_fire,4]           = "M_315";
+    tag_expected[aState.moto_idle,0]         = "B_idle";
+    tag_expected[aState.moto_fire,0]         = "B_0";
+    tag_expected[aState.moto_fire,1]         = "B_45";
+    tag_expected[aState.moto_fire,2]         = "B_90";
+    tag_expected[aState.moto_fire,3]         = "B_135";
+    tag_expected[aState.moto_fire,4]         = "B_180";
+    tag_expected[aState.moto_fire,5]         = "B_225";
+    tag_expected[aState.moto_fire,6]         = "B_270";
+    tag_expected[aState.moto_fire,7]         = "B_315";
+    tag_expected[aState.roll,0]              = "jump";
+    tag_expected[aState.dead_roll,0]         = "dead_fly";
+    tag_expected[aState.dead,0]              = "dead";
+    tag_expected[aState.victory,0]           = "V_pose";
+    
     // load the texture
-    spr_index = sprite_add(argument[0],1,true,0,0,0);
+    global.player_sprite[_skin_id] = sprite_add(sheet_path,1,true,0,0,0);
     
     // load and read json
     var json = "";
-    var file = file_text_open_read(argument[1]);
-    var eof = file_text_eof(file);
-    while(!eof)
-        {
+    var file = file_text_open_read(json_path);
+    while(!file_text_eof(file))
         json = string(json)+string(file_text_readln(file));
-        eof = file_text_eof(file);
-        }
+    file_text_close(file);
     
     // decode and parse json
     info_map = json_decode(json);
@@ -33,16 +118,17 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
         if (ds_map_exists(info_map,"meta"))
             {
             var meta_map = info_map[?"meta"];
-            // read texture atlas size
+            // read sheet size
             if (ds_map_exists(meta_map,"size"))
                 {
                 size_map = meta_map[?"size"];
                 
-                spr_w = 1024; spr_h = 1024;
+                sheet_w = sprite_get_width(global.player_sprite[_skin_id]);
+                sheet_h = sprite_get_height(global.player_sprite[_skin_id]);
                 if (ds_map_exists(size_map,"w"))
-                    spr_w = real(size_map[?"w"]);
+                    sheet_w = real(size_map[?"w"]);
                 if (ds_map_exists(size_map,"h"))
-                    spr_h = real(size_map[?"h"]);
+                    sheet_h = real(size_map[?"h"]);
                 }
             
             // load tags
@@ -66,8 +152,8 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
                     // add to tag lookup
                     ds_map_add(tag_map,tag_info[tags,TAG_NAME],tags);
                     // calculate number of frames
-                    if (tag_info[tags,TAG_END]+1 > frames)
-                        frames = tag_info[tags,TAG_END]+1;
+                    if (tag_info[tags,TAG_END]+1 > global.frames[_skin_id])
+                        global.frames[_skin_id] = tag_info[tags,TAG_END]+1;
                     
                     // increment
                     tags++;
@@ -76,12 +162,11 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
             }
         
         // init frame info array
-        for(var i=frames; i>=0; i--;)
+        if (ds_grid_width(global.frame_info[_skin_id]) != global.frames[_skin_id])
+        or (ds_grid_height(global.frame_info[_skin_id]) != 4)
             {
-            frame_info[i,FRAME_TEX_X] = 0;
-            frame_info[i,FRAME_TEX_Y] = 0;
-            frame_info[i,FRAME_TEX_W] = 0;
-            frame_info[i,FRAME_TEX_H] = 0;
+            ds_grid_resize(global.frame_info[_skin_id],global.frames[_skin_id],4);
+            ds_grid_clear(global.frame_info[_skin_id],0);
             }
         
         // next read frame data
@@ -112,16 +197,16 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
                     
                     // tex x
                     if (ds_map_exists(tex_map,"x"))
-                        frame_info[index,FRAME_TEX_X] = tex_map[?"x"];
+                        ds_grid_set(global.frame_info[_skin_id],index,FRAME_TEX_X,tex_map[?"x"]);
                     // tex y
                     if (ds_map_exists(tex_map,"y"))
-                        frame_info[index,FRAME_TEX_Y] = tex_map[?"y"];
+                        ds_grid_set(global.frame_info[_skin_id],index,FRAME_TEX_Y,tex_map[?"y"]);
                     // tex w
                     if (ds_map_exists(tex_map,"w"))
-                        frame_info[index,FRAME_TEX_W] = tex_map[?"w"];
+                        ds_grid_set(global.frame_info[_skin_id],index,FRAME_TEX_W,tex_map[?"w"]);
                     // tex h
                     if (ds_map_exists(tex_map,"h"))
-                        frame_info[index,FRAME_TEX_H] = tex_map[?"h"];
+                        ds_grid_set(global.frame_info[_skin_id],index,FRAME_TEX_H,tex_map[?"h"]);
                     }
             
                 frames_key = ds_map_find_next(frames_map,frames_key);
@@ -130,124 +215,29 @@ if (file_exists(argument[0])) and (file_exists(argument[1]))
         }
     ds_map_destroy(info_map);
     
-    file_text_close(file);
+        // define animations
+    var _group = 0;
+    anim_create(_skin_id,aState.flat_idle,      _group++);
+    anim_create(_skin_id,aState.flat_wait,      _group++);
+    anim_create(_skin_id,aState.flat_fire,      _group++,0,1,2,1,0,4,3,4);
+    anim_create(_skin_id,aState.walk_move,      _group  ,0,1,0,1,0,2,0,2);
+    anim_create(_skin_id,aState.walk_fire,      _group++,0,1,0,1,0,2,0,2);
+    anim_create(_skin_id,aState.flat_duck_idle, _group++);
+    anim_create(_skin_id,aState.flat_duck_fire, _group++);
+    anim_create(_skin_id,aState.wc_idle,        _group++);
+    anim_create(_skin_id,aState.wc_move,        _group++);
+    anim_create(_skin_id,aState.wc_fire,        _group++,0,1,2,3,4,5,6,7);
+    anim_create(_skin_id,aState.mb_idle,        _group++);
+    anim_create(_skin_id,aState.mb_move,        _group++);
+    anim_create(_skin_id,aState.mb_fire,        _group++,0,1,2,1,0,4,3,4);
+    anim_create(_skin_id,aState.moto_idle,      _group++);
+    anim_create(_skin_id,aState.moto_fire,      _group++,0,1,2,3,4,5,6,7);
+    anim_create(_skin_id,aState.roll,           _group++);
+    anim_create(_skin_id,aState.dead_roll,      _group++);
+    anim_create(_skin_id,aState.dead,           _group++);
+    anim_create(_skin_id,aState.victory,        _group++);
+    
+    ds_map_destroy(tag_map);
+    tag_expected = -1;
+    tag_info = -1;
     }
-
-// define animations
-anim_create(aState.flat_idle);
-anim_create(aState.flat_wait);
-anim_create(aState.flat_fire,0,1,2,1,0,4,3,4);
-anim_create(aState.walk_move,0,1,0,1,0,2,0,2);
-anim_create(aState.walk_fire,0,1,0,1,0,2,0,2);
-anim_create(aState.flat_duck_idle);
-anim_create(aState.flat_duck_fire);
-anim_create(aState.wc_idle);
-anim_create(aState.wc_move);
-anim_create(aState.wc_fire,0,1,2,3,4,5,6,7);
-anim_create(aState.mb_idle);
-anim_create(aState.mb_move);
-anim_create(aState.mb_fire,0,1,2,1,0,4,3,4);
-anim_create(aState.moto_idle);
-anim_create(aState.moto_fire,0,1,2,3,4,5,6,7);
-anim_create(aState.roll);
-anim_create(aState.dead_roll);
-anim_create(aState.dead);
-anim_create(aState.victory);
-
-// define animation state speeds
-switch(skin_id)
-    {
-    case skin.stone:
-        off_x = 0;
-        off_y = 36;
-        img_speed[aState.flat_idle] = 0.2;
-        img_speed[aState.flat_wait] = 0.2;
-        img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.22;
-        img_speed[aState.walk_fire] = 0.22;
-        img_speed[aState.flat_duck_idle] = 0.2;
-        img_speed[aState.flat_duck_fire] = 0.2;
-        img_speed[aState.wc_idle] = 0.2;
-        img_speed[aState.wc_move] = 0.2;
-        img_speed[aState.wc_fire] = 0.2;
-        img_speed[aState.mb_idle] = 0.2;
-        img_speed[aState.mb_move] = 0.2;
-        img_speed[aState.mb_fire] = 0.2;
-        img_speed[aState.moto_idle] = 0.2;
-        img_speed[aState.moto_fire] = 0.2;
-        img_speed[aState.roll] = 0.5;
-        img_speed[aState.dead_roll] = 0.3;
-        img_speed[aState.dead] = 0.2;
-        img_speed[aState.victory] = 0.2;
-        break;
-    case skin.foxford:
-        off_x = 0;
-        off_y = 36;
-        img_speed[aState.flat_idle] = 0.2;
-        img_speed[aState.flat_wait] = 0.2;
-        img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.22;
-        img_speed[aState.walk_fire] = 0.22;
-        img_speed[aState.flat_duck_idle] = 0.2;
-        img_speed[aState.flat_duck_fire] = 0.2;
-        img_speed[aState.wc_idle] = 0.2;
-        img_speed[aState.wc_move] = 0.2;
-        img_speed[aState.wc_fire] = 0.2;
-        img_speed[aState.mb_idle] = 0.2;
-        img_speed[aState.mb_move] = 0.2;
-        img_speed[aState.mb_fire] = 0.2;
-        img_speed[aState.moto_idle] = 0.2;
-        img_speed[aState.moto_fire] = 0.2;
-        img_speed[aState.roll] = 0.5;
-        img_speed[aState.dead_roll] = 0.3;
-        img_speed[aState.dead] = 0.2;
-        img_speed[aState.victory] = 0.2;
-        break;
-    case skin.yolo:
-        off_x = 0;
-        off_y = 36;
-        img_speed[aState.flat_idle] = 0.2;
-        img_speed[aState.flat_wait] = 0.2;
-        img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.22;
-        img_speed[aState.walk_fire] = 0.22;
-        img_speed[aState.flat_duck_idle] = 0.2;
-        img_speed[aState.flat_duck_fire] = 0.2;
-        img_speed[aState.wc_idle] = 0.2;
-        img_speed[aState.wc_move] = 0.2;
-        img_speed[aState.wc_fire] = 0.2;
-        img_speed[aState.mb_idle] = 0.2;
-        img_speed[aState.mb_move] = 0.2;
-        img_speed[aState.mb_fire] = 0.2;
-        img_speed[aState.moto_idle] = 0.2;
-        img_speed[aState.moto_fire] = 0.2;
-        img_speed[aState.roll] = 0.5;
-        img_speed[aState.dead_roll] = 0.3;
-        img_speed[aState.dead] = 0.2;
-        img_speed[aState.victory] = 0.2;
-        break;
-    case skin.pumpkin:
-        off_x = 0;
-        off_y = 36;
-        img_speed[aState.flat_idle] = 0.2;
-        img_speed[aState.flat_wait] = 0.2;
-        img_speed[aState.flat_fire] = 0.2;
-        img_speed[aState.walk_move] = 0.22;
-        img_speed[aState.walk_fire] = 0.22;
-        img_speed[aState.flat_duck_idle] = 0.2;
-        img_speed[aState.flat_duck_fire] = 0.2;
-        img_speed[aState.wc_idle] = 0.2;
-        img_speed[aState.wc_move] = 0.2;
-        img_speed[aState.wc_fire] = 0.2;
-        img_speed[aState.mb_idle] = 0.2;
-        img_speed[aState.mb_move] = 0.2;
-        img_speed[aState.mb_fire] = 0.2;
-        img_speed[aState.moto_idle] = 0.2;
-        img_speed[aState.moto_fire] = 0.2;
-        img_speed[aState.roll] = 0.5;
-        img_speed[aState.dead_roll] = 0.3;
-        img_speed[aState.dead] = 0.2;
-        img_speed[aState.victory] = 0.2;
-        break;
-    }
-
