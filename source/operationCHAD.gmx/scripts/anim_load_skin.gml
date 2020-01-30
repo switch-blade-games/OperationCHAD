@@ -67,8 +67,8 @@ if (file_exists(sheet_path)) and (file_exists(json_path))
     tag_expected[aState.walk_fire,0]         = "W_shoot_0";
     tag_expected[aState.walk_fire,1]         = "W_shoot_45";
     tag_expected[aState.walk_fire,2]         = "W_shoot_315";
-    tag_expected[aState.flat_duck_idle,0]    = "F_duck_idle";
-    tag_expected[aState.flat_duck_fire,0]    = "F_duck_fire";
+    tag_expected[aState.flat_duck_idle,0]    = "F_duck";
+    tag_expected[aState.flat_duck_fire,0]    = "F_duck";
     tag_expected[aState.wc_idle,0]           = "C_idle";
     tag_expected[aState.wc_move,0]           = "C_move";
     tag_expected[aState.wc_fire,0]           = "C_0";

@@ -239,6 +239,10 @@ switch(anim_state)
         break;
     
     case aState.flat_duck_idle:
+        anim_update();
+        img_index = anim_start;
+        break;
+    
     case aState.flat_duck_fire:
         anim_update();
         img_index += img_speed[anim_state];
