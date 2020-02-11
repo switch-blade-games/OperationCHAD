@@ -32,8 +32,8 @@ image_index = 0;
 damage = 1;
 
 // tuners
-spin_rad = 6;
-spin_spd = 20;
+spin_rad = 22;
+spin_spd = 6;
 spin_ang = 0;
 
 // don't change

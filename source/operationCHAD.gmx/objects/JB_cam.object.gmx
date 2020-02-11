@@ -62,7 +62,7 @@ else if (room == pooh_stage)
     // pooh sequencing
     MYarray[0] = 240;
     }
-else if (room == comix_zone)
+else if (room == comix_zone_room)
     {
     // comix zone sequencing
     MYarray[0] = 520;
@@ -193,6 +193,17 @@ audio_listener_velocity(0,0,0);
         y=round(Yset)
         break;
     }
+    
+    
+    //JB CODE
+    
+    if(gamepad_check(0,gpinput.trigr)=true){
+    
+        global.yshake=6
+        
+    }
+    
+    ///END JB CODE
 
 // apply screenshake
 cam_x = x+global.xnudge;
