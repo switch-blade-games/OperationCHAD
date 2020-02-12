@@ -976,8 +976,6 @@
       <script>scripts\collide.gml</script>
       <script>scripts\animate.gml</script>
       <script>scripts\live.gml</script>
-      <script>scripts\weapon_stats.gml</script>
-      <script>scripts\fire_weapon.gml</script>
       <script>scripts\jump.gml</script>
       <scripts name="animation">
         <script>scripts\anim_init.gml</script>
@@ -988,6 +986,10 @@
           <script>scripts\anim_create.gml</script>
           <script>scripts\anim_find_skin.gml</script>
         </scripts>
+      </scripts>
+      <scripts name="weapons">
+        <script>scripts\weapon_stats.gml</script>
+        <script>scripts\fire_weapon.gml</script>
       </scripts>
     </scripts>
     <scripts name="enemy">

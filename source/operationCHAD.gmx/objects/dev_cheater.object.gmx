@@ -340,7 +340,7 @@ file_text_close(file);
             part_num += instance_number(par_effect);
             
             if (instance_exists(obj_player))
-                txt = obj_player.skin_tag[obj_player.skin_id];
+                txt = global.skin_tag[obj_player.skin_id];
             else
                 txt = "";
             

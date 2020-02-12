@@ -12,16 +12,16 @@ enum weapon
     spinFlame
     }
 
-weapon_name[weapon.rifle] = "Rifle";
-weapon_auto[weapon.rifle] = true;
-weapon_pmax[weapon.rifle] = -1;
-weapon_time[weapon.rifle] = 4;
-weapon_pspd[weapon.rifle] = 8;
-weapon_pnum[weapon.rifle] = 1;
-weapon_sprd[weapon.rifle] = 0;
-weapon_proj[weapon.rifle] = obj_bullet;
-weapon_case[weapon.rifle] = 0;
-weapon_snd[weapon.rifle] = bullet_snd;
+weapon_name[weapon.rifle] = "Rifle";    // Name
+weapon_auto[weapon.rifle] = true;       // automatic (hold LMB vs. click to fire)
+weapon_pmax[weapon.rifle] = -1;         // max projectiles on screen
+weapon_time[weapon.rifle] = 4;          // time between each shot (effects fire rate)
+weapon_pspd[weapon.rifle] = 8;          // projectile speed
+weapon_pnum[weapon.rifle] = 1;          // projectile number
+weapon_sprd[weapon.rifle] = 0;          // spread (angle between each projectile)
+weapon_proj[weapon.rifle] = obj_bullet; // projectile object
+weapon_case[weapon.rifle] = 0;          // type of casing
+weapon_snd[weapon.rifle] = bullet_snd;  // sound to play when firing
 weapons++;
 
 weapon_name[weapon.flame] = "Flame Thrower";
