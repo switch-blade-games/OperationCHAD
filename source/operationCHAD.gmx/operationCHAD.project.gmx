@@ -226,6 +226,10 @@
           <sprite>sprites\moloch_regular_BG_spr</sprite>
           <sprite>sprites\moloch_lady_BG_spr</sprite>
           <sprite>sprites\moloch_light_spr</sprite>
+          <sprite>sprites\shoulder_blade_spr</sprite>
+          <sprite>sprites\moloch_full_spr</sprite>
+          <sprite>sprites\elevator_sur_spr</sprite>
+          <sprite>sprites\fryguy_BG_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="003-Clown World">
@@ -793,9 +797,6 @@
           <background>background\tong_BG</background>
           <background>background\VG_tileset</background>
         </backgrounds>
-        <backgrounds name="fryguy">
-          <background>background\fryguy_BG</background>
-        </backgrounds>
         <backgrounds name="embro">
           <background>background\embro_BG</background>
         </backgrounds>
@@ -1155,6 +1156,8 @@
           <object>objects\moloch_lady_BG</object>
           <object>objects\moloch_obj</object>
           <object>objects\moloch_light</object>
+          <object>objects\elev_surface_drawer</object>
+          <object>objects\fryguy_BG</object>
         </objects>
       </objects>
       <objects name="002-Public School">
