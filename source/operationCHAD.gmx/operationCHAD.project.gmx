@@ -219,6 +219,14 @@
         <sprite>sprites\pipe_under_2_spr</sprite>
         <sprite>sprites\pipe_over_2_spr</sprite>
         <sprite>sprites\med_waste_spr</sprite>
+        <sprites name="moloch">
+          <sprite>sprites\moloch_black_spr</sprite>
+          <sprite>sprites\moloch_enter_spr</sprite>
+          <sprite>sprites\elevator_floor_spr</sprite>
+          <sprite>sprites\moloch_regular_BG_spr</sprite>
+          <sprite>sprites\moloch_lady_BG_spr</sprite>
+          <sprite>sprites\moloch_light_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="003-Clown World">
         <sprites name="circle_ride">
@@ -1096,20 +1104,6 @@
           </objects>
           <object>objects\fryguy_die</object>
         </objects>
-        <objects name="embro">
-          <object>objects\baby_enemy</object>
-          <object>objects\cooler</object>
-          <object>objects\embro_controller</object>
-          <object>objects\embro</object>
-          <object>objects\embro_case</object>
-          <object>objects\embro_case_bottom</object>
-        </objects>
-        <objects name="megaphone">
-          <object>objects\megaphone</object>
-          <object>objects\letter</object>
-          <object>objects\letter_spawner</object>
-          <object>objects\letter_enemy</object>
-        </objects>
         <object>objects\abortion_factory_drawer</object>
         <object>objects\baby_scale</object>
         <object>objects\factory_works_1</object>
@@ -1152,6 +1146,14 @@
         <object>objects\hang_man_enter</object>
         <object>objects\hang_rod</object>
         <object>objects\hang_man</object>
+        <objects name="moloch_boss">
+          <object>objects\moloch_controller</object>
+          <object>objects\elevator_floor</object>
+          <object>objects\moloch_regular_BG</object>
+          <object>objects\moloch_lady_BG</object>
+          <object>objects\moloch_obj</object>
+          <object>objects\moloch_light</object>
+        </objects>
       </objects>
       <objects name="002-Public School">
         <object>objects\G_eye</object>
@@ -1349,7 +1351,7 @@
           <object>objects\white_knight</object>
         </objects>
       </objects>
-      <objects name="006- Island of NPCs">
+      <objects name="006- Comix Zone">
         <object>objects\NPC_enemy</object>
         <object>objects\NPC_spawner</object>
         <object>objects\NPC_controller</object>
@@ -1360,6 +1362,20 @@
         <object>objects\justice</object>
         <object>objects\boat_comic</object>
         <object>objects\justice_trigger</object>
+        <objects name="megaphone">
+          <object>objects\megaphone</object>
+          <object>objects\letter</object>
+          <object>objects\letter_spawner</object>
+          <object>objects\letter_enemy</object>
+        </objects>
+        <objects name="embro">
+          <object>objects\baby_enemy</object>
+          <object>objects\cooler</object>
+          <object>objects\embro_controller</object>
+          <object>objects\embro</object>
+          <object>objects\embro_case</object>
+          <object>objects\embro_case_bottom</object>
+        </objects>
       </objects>
       <objects name="007-Pooh">
         <objects name="mech_battle">
@@ -1665,7 +1681,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\xi_room</room>
+        <room>rooms\moloch_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
@@ -1717,6 +1733,7 @@
         <room>rooms\forest_room</room>
         <room>rooms\pooh_room</room>
         <room>rooms\final_room</room>
+        <room>rooms\xi_room</room>
       </rooms>
       <rooms name="006-Comix Zone">
         <room>rooms\comix_zone_room</room>
