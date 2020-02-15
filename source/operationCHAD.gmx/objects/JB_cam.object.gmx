@@ -194,9 +194,6 @@ audio_listener_velocity(0,0,0);
         break;
     }
     
-    
-    
-
 // apply screenshake
 cam_x = x+global.xnudge;
 cam_y = y+global.ynudge;

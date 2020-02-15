@@ -25,19 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enemy_init(1000)
+            <string>enemy_init(1000);
 
-ATTACK=choose(1,2)
+// various states
 
-//various states
-
-
-//sitting is the default
+// sitting is the default
 SIT=1
 
-//for STAND attack
-
-//fryguy jumps out of furance, performs attack, then jumps back in
+// for STAND attack
+// fryguy jumps out of furance, performs attack, then jumps back in
 JUMP=2
 STAND=3
 STANDfinish=4
@@ -47,7 +43,6 @@ JUMPwait=14
 JUMPwaitbuffer=15
 
 //for EAT attack
-
 //fryguy eats a bunch of babies, shoots out flames, closes door, flames fall, then door reopens
 EAT=6
 CHEW=7
@@ -57,13 +52,9 @@ REACH=10
 SLAM=11
 DOORwait=12
 LIFT=13
-
-
-state=SIT
+DEAD=-1;
 
 SITtime=60
-
-alarm[0]=SITtime
 
 JUMPspe=2
 JUMPgrav=0.1
@@ -79,7 +70,6 @@ SITy=80
 
 //times for attack
 STANDtime=1000
-
 
 //time of EAT attack (moved over to eat_attack_controller
 EATattacktime=800
@@ -106,12 +96,13 @@ EATwatch=false
 
 TEMPspit=false
 
-
 ARMx=60
 ARMy=30
 
-
-
+state = SIT;
+alarm[0] = SITtime;
+ATTACK = irandom(2);
+attack_list = ds_list_create();
 </string>
           </argument>
         </arguments>
@@ -134,26 +125,20 @@ ARMy=30
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with(L_fry_arm)
-    instance_destroy()
+            <string>ds_list_destroy(attack_list);
+
+with(L_fry_arm)
+    instance_destroy();
 with(fry_arm)
-    instance_destroy()
-    
+    instance_destroy();
 with(arm_ball)
-    instance_destroy()
-    
+    instance_destroy();
 with(floor_flame)
-    instance_destroy()
-    
+    instance_destroy();
 with(flame_boy)
-    instance_destroy()
-    
+    instance_destroy();
 with(flame_bullet)
-    instance_destroy()
-    
-
-
-
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -176,7 +161,9 @@ with(flame_bullet)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TEMPspit=false
+            <string>/// TEMP SPIT
+
+TEMPspit = false;
 </string>
           </argument>
         </arguments>
@@ -199,24 +186,19 @@ with(flame_bullet)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///completes STAND attack
+            <string>/// FINISH STAND ATTACK
 
+state = JUMPback;
 
 with(fry_arm)
-    instance_destroy()
+    instance_destroy();
 with(L_fry_arm)
-    instance_destroy()
-    
+    instance_destroy();
 with(arm_ball)
-    instance_destroy()
-
-    
-state=JUMPback
-
+    instance_destroy();
 with(ghost_rope)
-    instance_destroy()
-
-motion_set(90,JUMPbackspe)
+    instance_destroy();
+motion_set(90,JUMPbackspe);
 </string>
           </argument>
         </arguments>
@@ -239,21 +221,19 @@ motion_set(90,JUMPbackspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Lift up over door
+            <string>/// OPEN OVEN DOOR
 
-state=LIFT
+state = LIFT;
 
-//clear out eat attack
-
+// cclean up eat attack
 with(eat_attack_controller)
     instance_destroy()
-
-
-with(oven_door){
-
-    motion_set(90,UPspe)
-    state=UP
-}
+// tell oven door to move up
+with(oven_door)
+    {
+    state = UP;
+    motion_set(90,UPspe);
+    }
 </string>
           </argument>
         </arguments>
@@ -276,13 +256,11 @@ with(oven_door){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Pull down oven door
+            <string>/// CLOSE OVEN DOOR
 
-state=REACH
+state = REACH;
 
-instance_create(200,0,oven_door)
-
-
+instance_create(200,0,oven_door);
 </string>
           </argument>
         </arguments>
@@ -305,25 +283,17 @@ instance_create(200,0,oven_door)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///PREslam, spit ring flame
+            <string>/// PRE SLAM
 
+state = PREslam;
+alarm[6] = PREslamtime;
 
-var i=0;
-
-var RINGson=0;
-
-repeat(8){
-
-    RINGson=instance_create(x,y,dir_flame);
-    RINGson.direction=i*45
-    RINGson.speed=RINGflamespe
-    i+=1
-}
-        
-
-state=PREslam
-
-alarm[6]=PREslamtime
+for(var i=0; i&lt;8; i++;)
+    {
+    var inst = instance_create(x,y,dir_flame);
+    inst.direction = i*45;
+    inst.speed = RINGflamespe;
+    }
 </string>
           </argument>
         </arguments>
@@ -346,16 +316,16 @@ alarm[6]=PREslamtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///SPIT up flames
+            <string>/// SPIT FLAMES UP
 
-if not(state=SPIT)
-exit
+if (state != SPIT)
+    exit;
 
-var SON=instance_create(x,y+20,spit_flame);
+alarm[4] = SPITrate+irandom(SPITnoise);
 
-    SON.direction=90-random(SPITrange)+random(SPITrange)
-    
-alarm[4]=SPITrate+random(SPITnoise)
+// create flames
+var inst = instance_create(x,y+20,spit_flame);
+inst.direction = 90+random_range(-SPITrange,+SPITrange);
 </string>
           </argument>
         </arguments>
@@ -378,18 +348,11 @@ alarm[4]=SPITrate+random(SPITnoise)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///start SPIT
+            <string>/// SPIT START
 
-state=SPIT
-
-
-//SPIT up flame loop
-alarm[4]=1
-
-//total time SPITting
-alarm[5]=SPITtime
-
-
+state = SPIT;
+alarm[4] = 1;
+alarm[5] = SPITtime;
 </string>
           </argument>
         </arguments>
@@ -412,11 +375,10 @@ alarm[5]=SPITtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///chewing
+            <string>/// CHEW
 
-state=CHEW
-
-alarm[3]=CHEWtime
+state = CHEW;
+alarm[3] = CHEWtime;
 </string>
           </argument>
         </arguments>
@@ -439,18 +401,14 @@ alarm[3]=CHEWtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///JUMPwait
+            <string>/// JUMP WAIT
 
-state=JUMPwait
-
+state = JUMPwait;
 
 with(floor_flame)
-    instance_destroy()
-
+    instance_destroy();
 with(fryguy_stand_controller)
-    instance_destroy()
-
-
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -473,71 +431,41 @@ with(fryguy_stand_controller)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///pick different attacks
+            <string>/// ATTACK QUEUE
 
-if(ds_list_empty(global.FRYlist)){
+if (state == DEAD)
+    exit;
 
-var i=0;
+// if queue is empty, queue some attacks
+if (ds_list_empty(attack_list))
+    {
+    for(var i=0; i&lt;3; i++;)
+        attack_list[|i] = i;
+    ds_list_shuffle(attack_list);
+    }
+// pull from attack queue
+ATTACK = attack_list[|0];
+ds_list_delete(attack_list,0);
 
-repeat(3){
-
-    ds_list_insert(global.FRYlist,i,2)
-    i+=1
-}
-
-ds_list_shuffle(global.FRYlist)
-
-}
-
-ATTACK=ds_list_find_value(global.FRYlist,0)
-
-ds_list_delete(global.FRYlist,0)
-
-
-//ATTACK=0
-
-///////STAND attack
-
-if(ATTACK=0){
-state=JUMP
-
-//make ghost ropes
-instance_create(0,100,ghost_rope)
-
-var ROPE=instance_create(300,100,ghost_rope);
-
-//ROPE.image_xscale=-1
-
-motion_set(90,JUMPspe)
-}
-
-
-
-
-/////////EAT attack
-
-if(ATTACK=1){
-
-state=EAT
-
-alarm[2]=EATtime
-
-}
-
-
-//LIGHT attack
-
-if(ATTACK=2){
-
-instance_create(x,y,fryguy_light_2)
-
-instance_destroy()
-}
-
-
-
-
-
+// attack states
+switch(ATTACK)
+    {
+    case 0: // stand attack
+        state = JUMP;
+        motion_set(90,JUMPspe);
+        //make ghost ropes
+        instance_create(0,100,ghost_rope);
+        instance_create(300,100,ghost_rope);
+        break;
+    case 1: // eat attack
+        state = EAT;
+        alarm[2] = EATtime;
+        break;
+    case 2: // light attack
+        instance_create(x,y,fryguy_light_2);
+        instance_destroy();
+        break;
+    }
 </string>
           </argument>
         </arguments>
@@ -560,92 +488,104 @@ instance_destroy()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>// DEAD
+if (life &lt;= 0)
+    {
+    instance_destroy();
+    for(var i=0; i&lt;10; i++;)
+        alarm[i] = -1;
+    state = DEAD;
+    exit;
+    }
 
 //jump, and land on the ground to start STAND attack
-if(state=JUMP){
-
-    motion_add(270,JUMPgrav)
+switch(state)
+    {
+    case JUMP: // jump then start stand attack
+        motion_add(270,JUMPgrav);
+        if (y &gt;= STANDy)
+            {
+            // state changes
+            state = STAND;
+            alarm[1] = STANDtime;
+            // position changes
+            y = STANDy;
+            speed = 0;
+            
+            // controller
+            instance_create(0,0,fryguy_stand_controller);
+            // left floor flames
+            var inst = instance_create(190,200,floor_flame);
+            with(inst)
+                {
+                DIR = 180;
+                event_perform(ev_create,0);
+                }
+            // right floor flames
+            var inst = instance_create(210,200,floor_flame);
+            with(inst)
+                {
+                DIR = 0;
+                event_perform(ev_create,0);
+                }
+            // right arm
+            instance_create(x+ARMx,y+ARMy,fry_arm);
+            // left arm
+            instance_create(x-ARMx,y+ARMy,L_fry_arm);
+            
+            // screenshake
+            global.ynudge += 4;
+            global.xshake += 2;
+            global.yshake += 2;
+            }
+        break;
     
-    if(y&gt;=STANDy){
-        y=STANDy
-        speed=0
-        state=STAND
-        instance_create(0,0,fryguy_stand_controller)
-        
-        
-        var Lson=instance_create(190,200,floor_flame);
-        with(Lson)
-            event_perform(ev_create,0)
-            Lson.DIR=180
-
-        var Rson=instance_create(210,200,floor_flame);
-            Rson.DIR=0
-        
-        alarm[1]=STANDtime
-        
-        instance_create(x+ARMx,y+ARMy,fry_arm);
-        
-        instance_create(x-ARMx,y+ARMy,L_fry_arm);
-        
-        
-        global.ynudge += 4;
-        global.xshake += 2;
-        global.yshake += 2;
-    }
+    case JUMPback: // jump back into furnace
+        motion_add(270,JUMPgrav);
+        if (vspeed &gt; 0) and (y &gt;= SITy)
+            {
+            // state changes
+            state = SIT;
+            alarm[0] = SITtime;
+            // position changes
+            speed = 0;
+            y = SITy;
+            
+            // screenshake
+            global.ynudge += 2;
+            global.xshake += 4;
+            global.yshake += 4;
+            }
+        break;
+    
+    case JUMPwait:
+        if  (!instance_exists(fry_blob))
+        and (!instance_exists(drop_flame))
+        and (!instance_exists(ground_flame_shot))
+        and (!instance_exists(fry_maker))
+        and (!instance_exists(L_fry_maker))
+        and (!instance_exists(fry_flame_maker))
+        and (!instance_exists(fry_flame))
+        and (!instance_exists(pre_v_bounce))
+        and (!instance_exists(H_fry_flame))
+        and (!instance_exists(fry_bounce))
+            {
+            // state changes
+            state = JUMPwaitbuffer;
+            alarm[8] = 30;
+            }
+        break;
 }
 
-//when stand attack is done, jump back into furnace and repeat
-if(state=JUMPback){
-
-    
-    
-    motion_add(270,JUMPgrav)
-    
-    if(vspeed&gt;0)
-    if(y&gt;=SITy){
-        speed=0
-        y=SITy
-        state=SIT
-        alarm[0]=SITtime
-        
-        global.ynudge += 2;
-        global.xshake += 4;
-        global.yshake += 4;
+// check if we can eat attack
+if (ATTACK == 1)
+    {
+    if (EATwatch) and (!instance_exists(flame_boy))
+        {
+        EATwatch = false;
+        alarm[7] = 10;
+        }
     }
-}
-
-//wait for everything to clear out for EAT attack
-if(ATTACK=1){
-
-    if(EATwatch=true)
-    if(instance_number(flame_boy)=0){
-        alarm[7]=10
-        EATwatch=false
-    }
-}
-
-
-if(state=JUMPwait){
-
-    if(instance_number(fry_blob)=0)
-    if(instance_number(drop_flame)=0)
-    if(instance_number(ground_flame_shot)=0)
-    if(instance_number(fry_flame_maker)=0)
-    if(instance_number(fry_flame)=0)
-    if(instance_number(pre_v_bounce)=0)
-    if(instance_number(H_fry_flame)=0)
-    if(instance_number(fry_maker)=0)
-    if(instance_number(L_fry_maker)=0)
-    if(instance_number(fry_bounce)=0){
-    
-    alarm[8]=30
-    
-    state=JUMPwaitbuffer
-    }
-}
-
-    
 </string>
           </argument>
         </arguments>
@@ -670,63 +610,47 @@ if(state=JUMPwait){
             <kind>1</kind>
             <string>//regulate image_speed, will expand later
 
-if(state=EAT)
-    image_speed=EATimgspe
+if (state == EAT)
+    image_speed = EATimgspe;
 else
-    image_speed=0
+    image_speed = 0;
 
-//assign sprite based on state
+// assign sprite based on state
+switch(state)
+    {
+    case SIT:
+    case DOORwait:
+    case PREslam:
+        sprite_index = fryguy_sit_spr;
+        break;
+    case JUMP:
+    case JUMPback:
+        sprite_index=fryguy_jump_spr;
+        break;
+    case STAND:
+    case JUMPwait:
+    case JUMPwaitbuffer:
+        sprite_index = fryguy_stand_spr;
+        break;
+    case EAT:
+        sprite_index = fryguy_eat_spr;
+        break;
+    case CHEW:
+        sprite_index = fryguy_chew_spr;
+        break;
+    case REACH:
+    case LIFT:
+        sprite_index = fryguy_reach_spr;
+        break;
+    case SPIT:
+        sprite_index = fryguy_spit_spr;
+        break;
+    }
 
-if(state=SIT)
-    sprite_index=fryguy_sit_spr
-    
-if(state=JUMP)
-or
-state=JUMPback
-    sprite_index=fryguy_jump_spr
-    
-if(state=STAND)
-or
-state=JUMPwait
-or
-state=JUMPwaitbuffer
-    sprite_index=fryguy_stand_spr
-    
-if(state=EAT)
-    sprite_index=fryguy_eat_spr
-    
-if(state=CHEW)
-    sprite_index=fryguy_chew_spr
-    
+if (TEMPspit)
+    sprite_index = fryguy_spit_spr;
 
-    
-if(state=PREslam)
-    sprite_index=fryguy_sit_spr
-    
-if(state=REACH)
-    sprite_index=fryguy_reach_spr
-    
-if(state=DOORwait)
-    sprite_index=fryguy_sit_spr
-    
-if(state=LIFT)
-    sprite_index=fryguy_reach_spr
-    
-if(state=SPIT)
-or
-TEMPspit=true
-    sprite_index=fryguy_spit_spr
-    
-
-    
-
-//draw_enemy_self();
-
-draw_enemy_self()
-
-
-
-//draw_text(x,y-40,alarm[1])
+draw_enemy_self();
 </string>
           </argument>
         </arguments>

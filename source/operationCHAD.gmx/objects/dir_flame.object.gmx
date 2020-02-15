@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-2</depth>
   <persistent>0</persistent>
-  <parentName>par_active_projectile</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_flame_mask</maskName>
   <events>
     <event eventtype="0" enumb="0">

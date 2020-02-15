@@ -25,34 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room=final_factory)
-instance_create(3840,2760,fryguy)
-
-global.FRYlife=300
-
-global.FRYlist=ds_list_create();
-
-var i=0;
-
-repeat(3){
-
-    ds_list_insert(global.FRYlist,i,2)
-    i+=1
-}
-
-ds_list_shuffle(global.FRYlist)
-
-
-//instance_create(0,0,fryguy_BG_drawer)
-
-
-global.FRYGUYLIFE=500
-
-
-
-
-
-
+            <string>// maybe this is why he keeps getting recreated
+if (room == final_factory)
+    instance_create(3840,2760,fryguy);
 </string>
           </argument>
         </arguments>

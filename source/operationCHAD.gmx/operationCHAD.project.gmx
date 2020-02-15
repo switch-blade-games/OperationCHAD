@@ -1063,6 +1063,7 @@
           <object>objects\fryguy_controller</object>
           <object>objects\flame_part_node</object>
           <object>objects\fryguy</object>
+          <object>objects\fryguy_die</object>
           <object>objects\fryguy_BG_drawer</object>
           <object>objects\dir_flame</object>
           <objects name="eat_attack">
@@ -1106,7 +1107,6 @@
             <object>objects\bull_placeholder</object>
             <object>objects\fryguy_light</object>
           </objects>
-          <object>objects\fryguy_die</object>
         </objects>
         <object>objects\abortion_factory_drawer</object>
         <object>objects\baby_scale</object>
@@ -1636,7 +1636,6 @@
       <object>objects\par_verlet</object>
       <object>objects\par_stay_active</object>
       <object>objects\par_active_enemy</object>
-      <object>objects\par_active_projectile</object>
       <object>objects\par_cam_obj</object>
       <object>objects\par_death</object>
       <object>objects\par_trigger</object>
@@ -1709,6 +1708,22 @@
       <room>rooms\player_select_room</room>
     </rooms>
     <rooms name="REDACTED">
+      <rooms name="001-Abortion Factory">
+        <room>rooms\final_factory</room>
+        <room>rooms\tong_room</room>
+        <room>rooms\elevator_mockup</room>
+        <room>rooms\fryguy_room</room>
+        <room>rooms\room44</room>
+      </rooms>
+      <rooms name="002-Public School">
+        <room>rooms\school_room</room>
+      </rooms>
+      <rooms name="003-Clown World">
+        <room>rooms\clown_room</room>
+        <room>rooms\circle_room</room>
+        <room>rooms\merry_room</room>
+        <room>rooms\cloud_room</room>
+      </rooms>
       <rooms name="004-Germany">
         <room>rooms\germany_motor_room</room>
         <room>rooms\paint_2_room</room>
@@ -1716,6 +1731,27 @@
         <room>rooms\zepplin_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\sub_room</room>
+      </rooms>
+      <rooms name="005-Thot Paradise">
+        <room>rooms\thot_room</room>
+      </rooms>
+      <rooms name="006-Comix Zone">
+        <room>rooms\comix_zone_room</room>
+        <room>rooms\NPC_room</room>
+        <room>rooms\megaphone_room</room>
+        <room>rooms\ball_buster_room</room>
+        <room>rooms\NPC_game_room</room>
+        <room>rooms\embro_room</room>
+      </rooms>
+      <rooms name="007-Pooh">
+        <room>rooms\mic_room</room>
+        <room>rooms\pooh_stage</room>
+        <room>rooms\dream_room</room>
+        <room>rooms\fent_room</room>
+        <room>rooms\forest_room</room>
+        <room>rooms\pooh_room</room>
+        <room>rooms\final_room</room>
+        <room>rooms\xi_room</room>
       </rooms>
       <rooms name="009-Misc">
         <room>rooms\mario_room</room>
@@ -1729,43 +1765,6 @@
         <room>rooms\game_over_room</room>
         <room>rooms\open_cutscene_room</room>
         <room>rooms\time_cutscene_room</room>
-      </rooms>
-      <rooms name="003-Clown World">
-        <room>rooms\clown_room</room>
-        <room>rooms\circle_room</room>
-        <room>rooms\merry_room</room>
-        <room>rooms\cloud_room</room>
-      </rooms>
-      <rooms name="001-Abortion Factory">
-        <room>rooms\final_factory</room>
-        <room>rooms\tong_room</room>
-        <room>rooms\elevator_mockup</room>
-        <room>rooms\fryguy_room</room>
-        <room>rooms\room44</room>
-      </rooms>
-      <rooms name="007-Pooh">
-        <room>rooms\mic_room</room>
-        <room>rooms\pooh_stage</room>
-        <room>rooms\dream_room</room>
-        <room>rooms\fent_room</room>
-        <room>rooms\forest_room</room>
-        <room>rooms\pooh_room</room>
-        <room>rooms\final_room</room>
-        <room>rooms\xi_room</room>
-      </rooms>
-      <rooms name="006-Comix Zone">
-        <room>rooms\comix_zone_room</room>
-        <room>rooms\NPC_room</room>
-        <room>rooms\megaphone_room</room>
-        <room>rooms\ball_buster_room</room>
-        <room>rooms\NPC_game_room</room>
-        <room>rooms\embro_room</room>
-      </rooms>
-      <rooms name="002-Public School">
-        <room>rooms\school_room</room>
-      </rooms>
-      <rooms name="005-Thot Paradise">
-        <room>rooms\thot_room</room>
       </rooms>
     </rooms>
   </rooms>

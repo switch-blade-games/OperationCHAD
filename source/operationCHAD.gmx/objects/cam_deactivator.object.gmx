@@ -25,9 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=true
-
-alarm[0]=60
+            <string>BUFFER = true;
+alarm[0] = 60;
 </string>
           </argument>
         </arguments>
@@ -50,7 +49,7 @@ alarm[0]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=false
+            <string>BUFFER = false;
 </string>
           </argument>
         </arguments>
@@ -73,13 +72,12 @@ alarm[0]=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(BUFFER=true)
-exit
-
-var MARGIN=100;
+            <string>if (BUFFER)
+    exit;
 
 var time = get_timer();
 
+var MARGIN = 100;
 instance_deactivate_all(true);
 instance_activate_region(view_xview[0]-MARGIN,view_yview[0]-MARGIN,view_wview[0]+(MARGIN*2),view_hview[0]+(MARGIN*2),true);
 
@@ -88,33 +86,28 @@ instance_activate_object(dev_cheater);
 instance_activate_object(obj_control);
 instance_activate_object(obj_camera);
 instance_activate_object(obj_shader);
-
 instance_activate_object(par_actor);
-
 instance_activate_object(par_stay_active);
-instance_activate_object(par_actor);
-instance_activate_object(par_active_projectile);
-
-instance_activate_object(par_actor_projectile);
 
 // test
 instance_activate_object(screen_explode);
 instance_activate_object(par_explode);
 
-
-//clown world
-instance_activate_object(big_balloon);
-instance_activate_object(clown_hang);
-
-instance_activate_object(clown_man);
-instance_activate_object(clown_ball);
-
-
-//clown judge
-instance_activate_object(clown_judge_controller)
-instance_activate_object(muslim_spin)
-instance_activate_object(muslim_boat)
-
+// clown world
+if (room == clown_room)
+or (room == cloud_room)
+    {
+    instance_activate_object(big_balloon);
+    instance_activate_object(clown_hang);
+    instance_activate_object(clown_man);
+    instance_activate_object(clown_ball);
+    }
+if (room == clown_judge_mockup)
+    {
+    instance_activate_object(clown_judge_controller)
+    instance_activate_object(muslim_spin)
+    instance_activate_object(muslim_boat)
+    }
 
 global.ctime = get_timer()-time;
 </string>
