@@ -131,18 +131,6 @@
           <sprite>sprites\spr_acid_mask</sprite>
           <sprite>sprites\acid_spr</sprite>
           <sprite>sprites\drill_spr</sprite>
-          <sprites name="SJWs">
-            <sprite>sprites\sjw_1_spr</sprite>
-            <sprite>sprites\sjw_2_spr</sprite>
-            <sprite>sprites\sjw_3_spr</sprite>
-            <sprite>sprites\sjw_4_spr</sprite>
-            <sprite>sprites\sjw_5_spr</sprite>
-            <sprite>sprites\sjw_6_spr</sprite>
-            <sprite>sprites\sjw_7_spr</sprite>
-            <sprite>sprites\sjw_8_spr</sprite>
-            <sprite>sprites\sjw_9_spr</sprite>
-            <sprite>sprites\sjw_10_spr</sprite>
-          </sprites>
         </sprites>
         <sprites name="megaphone">
           <sprite>sprites\megaphone_spr</sprite>
@@ -282,6 +270,20 @@
         <sprite>sprites\maga_man_spr</sprite>
         <sprite>sprites\tink_spr</sprite>
         <sprite>sprites\clown_cart_spr</sprite>
+        <sprites name="clown_judge">
+          <sprite>sprites\clown_judge_BG</sprite>
+          <sprite>sprites\muslim_spin_spr</sprite>
+          <sprite>sprites\muslim_boat_spr</sprite>
+          <sprite>sprites\bleachers_back_spr</sprite>
+          <sprite>sprites\bleacher_front_spr</sprite>
+          <sprite>sprites\sjw_1_spr</sprite>
+          <sprite>sprites\clown_world_spr</sprite>
+          <sprite>sprites\boat_far_spr</sprite>
+          <sprite>sprites\boat_sparkle_spr</sprite>
+          <sprite>sprites\clown_judge_stand_spr</sprite>
+          <sprite>sprites\clown_judge_whistle_spr</sprite>
+          <sprite>sprites\muslim_sword_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="004-Germany">
         <sprite>sprites\motor_shadow_spr</sprite>
@@ -814,7 +816,6 @@
         <background>background\octo_battle_BG</background>
       </backgrounds>
       <backgrounds name="003-Clown World">
-        <background>background\clown_BG</background>
         <background>background\unicorn_BG</background>
         <background>background\cloud_tile</background>
         <background>background\cloud_side_tile</background>
@@ -1210,6 +1211,20 @@
         <object>objects\tink</object>
         <object>objects\clown_cart_head</object>
         <object>objects\clown_cart_body</object>
+        <objects name="clown_judge">
+          <object>objects\clown_judge_controller</object>
+          <object>objects\clown_judge</object>
+          <object>objects\back_boat</object>
+          <object>objects\muslim_spin</object>
+          <object>objects\bleacher</object>
+          <object>objects\bleacher_front</object>
+          <object>objects\sjw_1</object>
+          <object>objects\clown_globe</object>
+          <object>objects\boat_sparkle</object>
+          <object>objects\muslim_boat</object>
+          <object>objects\muslim_sword_controller</object>
+          <object>objects\muslim_sword</object>
+        </objects>
       </objects>
       <objects name="004-Germany">
         <objects name="germany_motor">
@@ -1686,6 +1701,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\clown_judge_mockup</room>
         <room>rooms\moloch_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
@@ -1700,9 +1716,6 @@
         <room>rooms\zepplin_room</room>
         <room>rooms\paint_room</room>
         <room>rooms\sub_room</room>
-      </rooms>
-      <rooms name="005-Thot Paradise">
-        <room>rooms\thot_room</room>
       </rooms>
       <rooms name="009-Misc">
         <room>rooms\mario_room</room>
@@ -1747,6 +1760,12 @@
         <room>rooms\ball_buster_room</room>
         <room>rooms\NPC_game_room</room>
         <room>rooms\embro_room</room>
+      </rooms>
+      <rooms name="002-Public School">
+        <room>rooms\school_room</room>
+      </rooms>
+      <rooms name="005-Thot Paradise">
+        <room>rooms\thot_room</room>
       </rooms>
     </rooms>
   </rooms>

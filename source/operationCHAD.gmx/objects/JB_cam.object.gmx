@@ -195,15 +195,7 @@ audio_listener_velocity(0,0,0);
     }
     
     
-    //JB CODE
     
-    if(gamepad_check(0,gpinput.trigr)=true){
-    
-        global.yshake=6
-        
-    }
-    
-    ///END JB CODE
 
 // apply screenshake
 cam_x = x+global.xnudge;
@@ -252,10 +244,10 @@ audio_listener_velocity(0,0,0);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(view_xview[0]+40,view_yview[0]+40,Ycurrent)
-draw_text(view_xview[0]+40,view_yview[0]+50,instance_number(dev_cheater))
-draw_text(view_xview[0]+40,view_yview[0]+60,MYarray[Ycurrent])
-draw_text(view_xview[0]+40,view_yview[0]+70,global.CHECKPOINT)
+            <string>//draw_text(view_xview[0]+40,view_yview[0]+40,Ycurrent)
+//draw_text(view_xview[0]+40,view_yview[0]+50,instance_number(dev_cheater))
+//draw_text(view_xview[0]+40,view_yview[0]+60,MYarray[Ycurrent])
+//draw_text(view_xview[0]+40,view_yview[0]+70,global.CHECKPOINT)
 
 
 if(BUFFER){
