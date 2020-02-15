@@ -59,8 +59,11 @@ instance_create(0,0,screen_explode);
           <argument>
             <kind>1</kind>
             <string>//camera jogs over to the player if they're more than halfway across the screen
-Ycurrent = 2;
-Yset = MYarray[Ycurrent];
+with(JB_cam)
+    {
+    Ycurrent = 2;
+    Yset = MYarray[Ycurrent];
+    }
 if (obj_player.x &gt; view_xview[0]+180)
     {
     with(JB_cam)

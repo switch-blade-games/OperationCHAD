@@ -27,10 +27,14 @@
             <kind>1</kind>
             <string>define_cam_states()
 
-alarm[0]=2
+alarm[0] = 2;
 BUFFER=true
 
-state=RIGHT
+if (room_width == 400)
+and (room_height = 240)
+    state = LOCKED;
+else
+    state = RIGHT;
 
 //movement speeds
 JOGspe=2
