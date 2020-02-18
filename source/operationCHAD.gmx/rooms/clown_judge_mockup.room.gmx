@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>instance_create(0,0,clown_judge_controller)
 
-//instance_create(0,0,obj_control)
+instance_create(0,0,obj_control)
 
 //instance_create(0,0,JB_cam)
 
@@ -60,6 +60,7 @@
     <instance objName="obj_wall" x="0" y="220" name="inst_E3C66284" locked="0" code="" scaleX="22.3999996185303" scaleY="4.80000019073486" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="-20" name="inst_987A549E" locked="0" code="" scaleX="1" scaleY="14" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="400" y="-20" name="inst_06F2AB07" locked="0" code="" scaleX="1" scaleY="12" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="200" y="140" name="inst_DBB32515" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

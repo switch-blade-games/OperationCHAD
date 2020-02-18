@@ -208,16 +208,49 @@
         <sprite>sprites\pipe_over_2_spr</sprite>
         <sprite>sprites\med_waste_spr</sprite>
         <sprites name="moloch">
-          <sprite>sprites\moloch_black_spr</sprite>
-          <sprite>sprites\moloch_enter_spr</sprite>
+          <sprites name="mo-bot">
+            <sprite>sprites\moloch_black_spr</sprite>
+            <sprite>sprites\moloch_enter_glow_spr</sprite>
+            <sprite>sprites\moloch_enter_spr</sprite>
+            <sprite>sprites\shoulder_blade_spr</sprite>
+            <sprite>sprites\moloch_hand_spr</sprite>
+            <sprite>sprites\moloch_arm_ball_spr</sprite>
+            <sprite>sprites\moloch_eyes_abort_spr</sprite>
+            <sprite>sprites\moloch_eyes_pay_spr</sprite>
+            <sprite>sprites\moloch_pocket_spr</sprite>
+            <sprite>sprites\moloch_eyes_sold_spr</sprite>
+            <sprite>sprites\mifeprex_spr</sprite>
+            <sprite>sprites\mife_tin_spr</sprite>
+            <sprite>sprites\mife_pill_spr</sprite>
+          </sprites>
+          <sprites name="moloch_BGs">
+            <sprite>sprites\moloch_regular_BG_spr</sprite>
+            <sprite>sprites\moloch_lady_BG_spr</sprite>
+            <sprite>sprites\moloch_full_spr</sprite>
+            <sprite>sprites\elevator_sur_spr</sprite>
+            <sprite>sprites\fryguy_BG_spr</sprite>
+          </sprites>
           <sprite>sprites\elevator_floor_spr</sprite>
-          <sprite>sprites\moloch_regular_BG_spr</sprite>
-          <sprite>sprites\moloch_lady_BG_spr</sprite>
-          <sprite>sprites\moloch_light_spr</sprite>
-          <sprite>sprites\shoulder_blade_spr</sprite>
-          <sprite>sprites\moloch_full_spr</sprite>
-          <sprite>sprites\elevator_sur_spr</sprite>
-          <sprite>sprites\fryguy_BG_spr</sprite>
+          <sprite>sprites\moloch_light_off_spr</sprite>
+          <sprite>sprites\moloch_light_flicker_spr</sprite>
+          <sprite>sprites\moloch_light_on_spr</sprite>
+          <sprites name="moloch_lady">
+            <sprite>sprites\lady_desk_spr</sprite>
+            <sprite>sprites\moloch_lady_stand_spr</sprite>
+            <sprite>sprites\moloch_lady_surprise_spr</sprite>
+            <sprite>sprites\moloch_lady_left_spr</sprite>
+            <sprite>sprites\moloch_lady_right_spr</sprite>
+            <sprite>sprites\moloch_lady_program_spr</sprite>
+            <sprite>sprites\moloch_lady_drink_spr</sprite>
+            <sprite>sprites\cat_sit_spr</sprite>
+            <sprite>sprites\cat_jump_spr</sprite>
+            <sprite>sprites\cat_run_spr</sprite>
+            <sprite>sprites\moloch_lady_purse_spr</sprite>
+            <sprite>sprites\moloch_lady_coin_spr</sprite>
+            <sprite>sprites\moloch_lady_throw_spr</sprite>
+            <sprite>sprites\lady_flower_spr</sprite>
+          </sprites>
+          <sprite>sprites\sheckle_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="003-Clown World">
@@ -777,7 +810,6 @@
     <sprite>sprites\hang_man_spin_spr</sprite>
     <sprite>sprites\hang_man_spr</sprite>
     <sprite>sprites\hang_rod_spr</sprite>
-    <sprite>sprites\sprite557</sprite>
     <sprite>sprites\hang_man_mask_2_spr</sprite>
     <sprite>sprites\hang_man_mask_spr</sprite>
     <sprite>sprites\sprite562</sprite>
@@ -1156,9 +1188,22 @@
           <object>objects\moloch_regular_BG</object>
           <object>objects\moloch_lady_BG</object>
           <object>objects\moloch_obj</object>
+          <object>objects\moloch_pocket</object>
           <object>objects\moloch_light</object>
           <object>objects\elev_surface_drawer</object>
           <object>objects\fryguy_BG</object>
+          <object>objects\moloch_blade</object>
+          <object>objects\lady_desk</object>
+          <object>objects\moloch_lady</object>
+          <object>objects\moloch_enter</object>
+          <object>objects\cat</object>
+          <object>objects\moloch_hand</object>
+          <object>objects\moloch_coin</object>
+          <object>objects\lady_flower</object>
+          <object>objects\coin_sparkle</object>
+          <object>objects\mifeprex</object>
+          <object>objects\mife_pill</object>
+          <object>objects\mife_tin</object>
         </objects>
       </objects>
       <objects name="002-Public School">
@@ -1700,8 +1745,8 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\clown_judge_mockup</room>
         <room>rooms\moloch_mockup</room>
+        <room>rooms\clown_judge_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
