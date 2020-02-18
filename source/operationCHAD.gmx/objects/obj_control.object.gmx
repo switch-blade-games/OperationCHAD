@@ -500,13 +500,6 @@ ds_queue_destroy(_player_q);
     instance_destroy();
     exit;
     }
-
-if (!instance_exists(JB_cam))
-    instance_create(0,0,JB_cam);
-if (!instance_exists(cam_deactivator))
-    instance_create(0,0,cam_deactivator);
-if (!instance_exists(HUD))
-    instance_create(0,0,HUD);
 </string>
           </argument>
         </arguments>

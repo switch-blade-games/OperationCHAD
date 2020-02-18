@@ -27,8 +27,15 @@
             <kind>1</kind>
             <string>event_inherited();
 
-FLOORy=200
-            
+cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
+
+FLOORy=cy+200;
 </string>
           </argument>
         </arguments>
@@ -53,11 +60,8 @@ FLOORy=200
             <kind>1</kind>
             <string>outside_view(32)
 
-
 if(y&gt;FLOORy)
-    instance_destroy()
-
-
+    instance_destroy();
 </string>
           </argument>
         </arguments>

@@ -63,23 +63,16 @@ max_fps = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//JB CODE
-    
-    if(gamepad_check(0,gpinput.trigr)=true){
-    
-        global.yshake=6
-        
+            <string>//JB CODE
+if(gamepad_check(0,gpinput.trigr)=true){
+    global.yshake=6
+}
+
+if(gamepad_check(0,gpinput.trigl)=true){
+    with(muslim_boat)
+        instance_create(x+40+random(40),y+140,muslim_spin)
     }
-    
-    
-    if(gamepad_check(0,gpinput.trigl)=true){
-    
-        with(muslim_boat)
-            instance_create(x+40+random(40),y+140,muslim_spin)
-        }
-    
-    ///END JB CODE
+///END JB CODE
 
 // smooth fps stats
 if (fps_real &gt; max_fps)

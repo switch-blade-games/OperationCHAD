@@ -25,7 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FLOORy=180
+            <string>cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
+
+FLOORy=cy+180;
 </string>
           </argument>
         </arguments>

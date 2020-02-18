@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>background_color=global.PINK
+  <code>background_color = global.PINK;
+
+room_init();
 
 instance_create(0,0,fent_controller_1)
 instance_create(0,0,fent_BG_drawer)

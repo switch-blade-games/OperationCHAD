@@ -1025,8 +1025,9 @@
         <script>scripts\dragon_hit.gml</script>
       </scripts>
     </scripts>
-    <script>scripts\camera_setup.gml</script>
+    <script>scripts\camera_deactivate.gml</script>
     <script>scripts\camera_bounds.gml</script>
+    <script>scripts\room_init.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shd_grayscale.shader</shader>
@@ -1667,8 +1668,6 @@
       <object>objects\C_powerup</object>
     </objects>
     <objects name="camera">
-      <object>objects\cam_deactivator</object>
-      <object>objects\HUD</object>
       <object>objects\JB_cam</object>
       <object>objects\UR_cam</object>
       <object>objects\R_ramp_finish</object>

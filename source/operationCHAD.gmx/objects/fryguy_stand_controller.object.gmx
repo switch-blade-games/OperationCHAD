@@ -33,7 +33,7 @@ Hlist=ds_list_create()
 
 var i=0;
 
-NUM=4
+NUM = 4
 
 repeat(NUM){
 ds_list_insert(Hlist,0,i)
@@ -96,14 +96,11 @@ alarm[1]=60
           <argument>
             <kind>1</kind>
             <string>with(drop_flame)
-    instance_destroy()
-    
+    instance_destroy();
 with(fry_flame_maker)
-    instance_destroy()
-
-    
+    instance_destroy();
 with(ground_flame_shot)
-    instance_destroy()
+    instance_destroy();
 </string>
           </argument>
         </arguments>

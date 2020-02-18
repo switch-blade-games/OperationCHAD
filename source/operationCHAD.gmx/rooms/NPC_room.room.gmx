@@ -12,6 +12,8 @@
   <showcolour>-1</showcolour>
   <code>background_color = global.MEDblue;
 
+room_init();
+
 instance_create(0,0,NPC_controller);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>

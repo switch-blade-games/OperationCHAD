@@ -10,14 +10,15 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>var player = instance_create(60,70,obj_player);
+  <code>background_color = global.LIGHTgrey;
+
+room_init();
+
+global.moto_floor = 70;
+var player = instance_create(60,70,obj_player);
 player.move_state = mState.moto;
 
-instance_create(0,0,sub_controller)
-
-background_color=global.LIGHTgrey
-
-global.moto_floor = 70;</code>
+instance_create(0,0,sub_controller)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

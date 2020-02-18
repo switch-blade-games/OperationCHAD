@@ -25,9 +25,46 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// maybe this is why he keeps getting recreated
-if (room == final_factory)
-    instance_create(3840,2760,fryguy);
+            <string>// create empty attack list (fry guy populates it himself)
+attack_list = ds_list_create();
+
+// create fryguy
+if (instance_number(fryguy) == 0)
+    {
+    switch(room)
+        {
+        case final_factory:
+            instance_create(3840,2760,fryguy);
+            break;
+        case fryguy_room:
+            instance_create(200,120,fryguy);
+            break;
+        }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (ds_exists(attack_list,ds_type_list))
+    ds_list_destroy(attack_list);
 </string>
           </argument>
         </arguments>

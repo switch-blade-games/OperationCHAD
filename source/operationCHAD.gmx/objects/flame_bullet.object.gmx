@@ -26,7 +26,17 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
- image_speed=0.3
+image_speed=0.3
+
+cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
+
+FLOORy=cy+220;
 
 LEFT=-1
 RIGHT=1
@@ -45,7 +55,7 @@ motion_set(180,spe)
 else
 motion_set(0,spe)
 
-FLOORy=220
+
 
 VSPE=0.5+random(0.5)
 

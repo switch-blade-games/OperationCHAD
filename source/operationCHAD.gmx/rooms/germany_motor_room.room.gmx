@@ -10,7 +10,9 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>background_color=global.LIGHTgrey;
+  <code>background_color = global.LIGHTgrey;
+
+room_init();
 
 instance_create(0,0,motor_controller_2);
 instance_create(0,0,forest_drawer)

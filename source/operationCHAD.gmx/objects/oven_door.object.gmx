@@ -25,26 +25,28 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>DOWN=1
+            <string>cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
 
+DOWN=1
 WAIT=2
-
 UP=3
 
 state=DOWN
 
 DOWNspe=2
-
 UPspe=2
-
-DOWNy=180
+DOWNy=cy+180;
 
 motion_set(270,DOWNspe)
 
-
 //is actually half of total embers
 EMBERnum=6
-
 EMBERspe=0.5
 </string>
           </argument>

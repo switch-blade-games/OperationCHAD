@@ -27,9 +27,15 @@
             <kind>1</kind>
             <string>enemy_init(4);
 
-FLOORy=200
+cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
 
-
+FLOORy=cy+200;
 
 grav=0.05
 

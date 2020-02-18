@@ -28,6 +28,16 @@
             <string>LEFT=1
 RIGHT=2
 
+cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
+
+FLOORy=cy+180;
+
 side=RIGHT
 
 if(obj_player.x&lt;=x)
@@ -47,7 +57,7 @@ if(side=RIGHT)
 motion_set(60,spe+random(SPEnoise))
 
 
-FLOORy=180
+
 
 </string>
           </argument>

@@ -27,7 +27,15 @@
             <kind>1</kind>
             <string>event_inherited();
 
-FLOORy=180
+cx = 0;
+cy = 0;
+if (instance_exists(fryguy_controller))
+    {
+    cx = fryguy_controller.x;
+    cy = fryguy_controller.y;
+    }
+
+FLOORy=cy+180;
 
 
 Xdest=0

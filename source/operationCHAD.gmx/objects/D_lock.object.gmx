@@ -63,8 +63,12 @@ if(view_yview[0]&gt;=y){
     
     ACTIVE=false
     
-    if(room=final_factory)
-        instance_create(x,y,fryguy_controller)
+    switch(room)
+        {
+        case final_factory:
+            instance_create(3640,2660,fryguy_controller);
+            break;
+        }
         
 }
 </string>
