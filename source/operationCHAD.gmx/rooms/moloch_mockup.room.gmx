@@ -12,15 +12,7 @@
   <showcolour>-1</showcolour>
   <code>room_init();
 
-instance_create(0,0,moloch_controller);</code>
-  <code>//instance_create(0,0,obj_control)
-
-instance_create(0,0,HUD)
-
-
-instance_create(0,0,moloch_controller)
-
-//instance_create(0,0,JB_cam)</code>
+instance_create(0,0,moloch_controller)</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
