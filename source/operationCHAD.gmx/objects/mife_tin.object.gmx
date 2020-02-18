@@ -37,7 +37,7 @@ repeat(3){
 
 
 Xoffset=31-50
-Yoffset=33-40
+Yoffset=34-40
 
 Xdist=19
 
@@ -128,7 +128,9 @@ if(state=UP){
     if(vspeed&gt;0)
     if(PEAK=false){
         PEAK=true
-        mifeprex.depth=85
+        depth=79
+        with(mife_pill)
+            depth=78
     }
 
     motion_add(270,grav)

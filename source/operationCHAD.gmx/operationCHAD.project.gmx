@@ -219,7 +219,10 @@
             <sprite>sprites\moloch_eyes_pay_spr</sprite>
             <sprite>sprites\moloch_pocket_spr</sprite>
             <sprite>sprites\moloch_eyes_sold_spr</sprite>
-            <sprite>sprites\mifeprex_spr</sprite>
+            <sprite>sprites\mife_box_spr</sprite>
+            <sprite>sprites\mife_bottom_spr</sprite>
+            <sprite>sprites\mife_bottom_open_spr</sprite>
+            <sprite>sprites\mife_box_open_spr</sprite>
             <sprite>sprites\mife_tin_spr</sprite>
             <sprite>sprites\mife_pill_spr</sprite>
           </sprites>
@@ -1201,6 +1204,7 @@
           <object>objects\moloch_coin</object>
           <object>objects\lady_flower</object>
           <object>objects\coin_sparkle</object>
+          <object>objects\mife_box_bottom</object>
           <object>objects\mifeprex</object>
           <object>objects\mife_pill</object>
           <object>objects\mife_tin</object>
