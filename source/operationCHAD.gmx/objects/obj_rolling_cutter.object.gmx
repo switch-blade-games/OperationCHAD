@@ -126,7 +126,7 @@ if (ay &gt; 0)
         repeat(ay)
             {
             if (!place_meeting(x,y+sy,par_solid))
-            and (!(!position_meeting(x,bbox_bottom,par_jt) and position_meeting(x,bbox_bottom+1,par_jt)))
+            and (!((!position_meeting(x,bbox_bottom,par_jt)) and (position_meeting(x,bbox_bottom+1,par_jt))))
                 y += sy;
             else
                 {
@@ -136,6 +136,13 @@ if (ay &gt; 0)
                 }
             }
         }
+    }
+
+if (!position_meeting(x,y+1,par_solid))
+and (!((yspeed &gt;= 0) and (!position_meeting(x,bbox_bottom,par_jt)) and (position_meeting(x,bbox_bottom+1,par_jt))))
+    {
+    if (yspeed &lt; fall_speed)
+        yspeed += grav_speed;
     }
 
 outside_view(240);
