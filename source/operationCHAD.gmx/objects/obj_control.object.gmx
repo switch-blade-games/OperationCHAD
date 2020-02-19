@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>surf_pause = -1;
 buff_pause = -1;
+
 actors = 0;
+actors_last = -1;
 
 // menu properties
 menu = 0;
@@ -68,10 +70,12 @@ gamepad_update();
 var pause_old = global.pause;
 if (!global.pause)
     {
-    var actors_old = actors;
     actors = instance_number(par_actor);
-    if (actors != actors_old)
+    if (actors != actors_last)
+        {
+        actors_last = actors;
         event_user(0);
+        }
     
     // controller disconnected
     if (global.gpcount &lt; gpcount_old)
@@ -500,6 +504,8 @@ ds_queue_destroy(_player_q);
     instance_destroy();
     exit;
     }
+
+actors_last = 0;
 </string>
           </argument>
         </arguments>
