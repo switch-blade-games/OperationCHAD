@@ -72,7 +72,12 @@ else if (room == comix_zone_room)
     MYarray[0] = 520;
     }
 else
-    MYarray[0] = 0;
+    {
+    if (instance_exists(par_actor))
+        MYarray[0] = max(0,obj_player.y-140);
+    else
+        MYarray[0] = 0;
+    }
 
 Yset = MYarray[Ycurrent];
 
@@ -135,6 +140,14 @@ if (!BUFFER)
 // camera states
 switch(state)
     {
+    case FREE:
+        if (instance_exists(par_actor))
+            {
+            x=round(obj_player.x-180);
+            y=round(obj_player.y-140);
+            }
+        break;
+    
     case RIGHT:
         Rfollow(180)
         Yset=MYarray[Ycurrent]
@@ -254,6 +267,7 @@ audio_listener_velocity(0,0,0);
             <string>/// DRAW HUD
 
 if (!instance_exists(par_actor))
+or ((instance_exists(dev_cheater)) and (dev_cheater.debug))
     exit;
 
 // player 1

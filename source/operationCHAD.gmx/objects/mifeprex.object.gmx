@@ -49,7 +49,7 @@ grav=0.1
 
 SPEmax=3
 
-Ymax=global.MOLOCHy+160
+Ymax=global.MOLOCHy+180
 
 LANDtime=60
 

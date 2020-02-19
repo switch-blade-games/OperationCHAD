@@ -41,6 +41,8 @@ for(var i=fps_num-1; i&gt;=0; i--;)
     fps_avg[i] = 0;
 avg_fps = 0;
 max_fps = 1;
+
+room_scroll = 0;
 </string>
           </argument>
         </arguments>
@@ -88,7 +90,7 @@ avg_fps -= fps_avg[fps_ind];
 if (keyboard_check_pressed(vk_f1))
     {
     debugMode++;
-    if (debugMode &gt; 2)
+    if (debugMode &gt; 3)
         debugMode = -1;
     debug = (debugMode &gt; -1);
     if (!debug)
@@ -124,6 +126,24 @@ if (keyboard_check_pressed(vk_pagedown))
         }
     }
 
+// room scroll
+if (mouse_wheel_up())
+    {
+    if (room_scroll &gt; 0)
+        {
+        room_scroll -= 2;
+        room_scroll = max(0,room_scroll);
+        }
+    }
+if (mouse_wheel_down())
+    {
+    if (room_scroll &lt; room_last-7)
+        {
+        room_scroll += 2;
+        room_scroll = min(room_last-7,room_scroll);
+        }
+    }
+
 // restart
 if (keyboard_check_pressed(ord("R")))
     {
@@ -137,30 +157,6 @@ if (keyboard_check_pressed(ord("R")))
 // end
 if (keyboard_check_pressed(vk_escape))
     game_end();
-    
-    
-    
-//just for fryguy testing
-
-if(gamepad_check(0,gpinput.trigr)=true){
-
-
-with(fryguy){
-
-    instance_create(x,y,fryguy_die)
-    
-    instance_destroy()
-    }
-
-with(fryguy_light_2){
-
-    instance_create(x,y,fryguy_die)
-    
-    instance_destroy()
-    }
-}
-
-
 </string>
           </argument>
         </arguments>
@@ -318,27 +314,76 @@ file_text_close(file);
             inst_num += instance_number(par_actor);
             inst_num += instance_number(par_enemy);
             inst_num += instance_number(par_shootable);
-            inst_num += instance_number(par_projectile);
+            
+            var proj_num = 0;
+            proj_num += instance_number(par_projectile);
             
             var part_num = 0;
             part_num += instance_number(par_effect);
-            
-            if (instance_exists(obj_player))
-                txt = global.skin_tag[obj_player.skin_id];
-            else
-                txt = "";
             
             draw_set_halign(0);
             draw_set_valign(0);
             draw_text_outline(vx+4,vy+4+00,"Version: BUILD["+string(global.BUILDversion)+"] CFG["+string(global.CFGversion)+"]");
             draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
-            draw_text_outline(vx+4,vy+4+24,"Particles: "+string(part_num));
-            draw_text_outline(vx+4,vy+4+36,"CamPos: "+string(vx)+"/"+string(vy));
-            draw_text_outline(vx+4,vy+4+48,"Character: "+string(txt));
-            draw_set_color($000000);
+            draw_text_outline(vx+4,vy+4+24,"Projectiles: "+string(proj_num));
+            draw_text_outline(vx+4,vy+4+36,"Particles: "+string(part_num));            draw_set_color($000000);
             draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
             draw_surface(surf_graph,(vx+400)-(graph_w+4),vy+4);
             draw_text_outline((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
+            
+            // draw connected gamepads
+            if (global.CFG[config.padType])
+                var spr = spr_buttons_xbox;
+            else
+                var spr = spr_buttons_ps;
+            for(var i=0; i&lt;global.gpcount; i++;)
+                draw_sprite(spr,24,vx+4 + i*44,vy+216);
+            break;
+        
+        case 3: // room select
+            draw_set_color($000000);
+            draw_set_alpha(0.75);
+            draw_rectangle(vx+6,vy+6,vx+262,vy+6+9*12,0);
+            draw_set_alpha(1.00);
+            
+            var dy = 0;
+            draw_text_outline(vx+12,vy+6,"ROOM SELECT");
+            for(var i=room_first+1+room_scroll; i&lt;=min(room_first+room_scroll+7,room_last); i++;)
+                {
+                if (point_in_rectangle(mouse_x,mouse_y,vx+6,vy+25+dy*12,vx+262,vy+36+dy*12))
+                    {
+                    if (i == room)
+                        {
+                        draw_set_color($FFFFFF);
+                        draw_set_alpha(0.75);
+                        draw_rectangle(vx+6,vy+25+dy*12,vx+262,vy+36+dy*12,0);
+                        draw_set_alpha(1.00);
+                        }
+                    
+                    draw_text_outline(vx+12,vy+24+dy*12,room_get_name(i));
+                    if (mouse_check_button_pressed(mb_left))
+                        room_goto(i);
+                    }
+                else
+                    {
+                    if (i == room)
+                        {
+                        draw_set_color($FFFFFF);
+                        draw_set_alpha(0.75);
+                        draw_rectangle(vx+6,vy+25+dy*12,vx+262,vy+36+dy*12,0);
+                        draw_set_alpha(1.00);
+                        
+                        draw_set_color($000000);
+                        draw_text(vx+12,vy+24+dy*12,room_get_name(i));
+                        }
+                    else
+                        {
+                        draw_set_color($CCCCCC);
+                        draw_text(vx+12,vy+24+dy*12,room_get_name(i));
+                        }
+                    }
+                dy++;
+                }
             break;
         }
     }
