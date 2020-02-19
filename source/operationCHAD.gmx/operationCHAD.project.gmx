@@ -225,6 +225,7 @@
             <sprite>sprites\mife_box_open_spr</sprite>
             <sprite>sprites\mife_tin_spr</sprite>
             <sprite>sprites\mife_pill_spr</sprite>
+            <sprite>sprites\mife_pill_half_spr</sprite>
           </sprites>
           <sprites name="moloch_BGs">
             <sprite>sprites\moloch_regular_BG_spr</sprite>
@@ -1081,7 +1082,6 @@
         </objects>
         <object>objects\ep_warning</object>
         <object>objects\obj_gamepad_disconnect</object>
-        <object>objects\stage_finish</object>
         <objects name="player_select">
           <object>objects\player_select_controller</object>
         </objects>
@@ -1210,8 +1210,7 @@
           <object>objects\mifeprex</object>
           <object>objects\mife_pill</object>
           <object>objects\mife_tin</object>
-          <object>objects\med_snake</object>
-          <object>objects\lady_stand</object>
+          <object>objects\mife_pill_go</object>
         </objects>
       </objects>
       <objects name="002-Public School">
@@ -1637,9 +1636,7 @@
           <object>objects\obj_rope_segment</object>
           <object>objects\practice_target</object>
           <object>objects\weapon_test_controller</object>
-          <object>objects\ani_tester</object>
         </objects>
-        <object>objects\stonetoss_comic</object>
       </objects>
       <objects name="Cutscene">
         <object>objects\no_boss_cutscene</object>
@@ -1742,6 +1739,11 @@
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
+    <object>objects\ani_tester</object>
+    <object>objects\stage_finish</object>
+    <object>objects\stonetoss_comic</object>
+    <object>objects\med_snake</object>
+    <object>objects\lady_stand</object>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
