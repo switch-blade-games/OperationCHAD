@@ -38,11 +38,30 @@ repeat(weapon_pnum[cur_weapon])
     var ldx = lengthdir_x(1,ang);
     var ldy = lengthdir_y(1,ang);
     
-    // bullet
-    var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
-    inst.direction = ang;
-    inst.speed = weapon_pspd[cur_weapon];
-    inst.image_angle = ang;
+    switch(cur_weapon)
+        {
+        case weapon.flame:
+            var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
+            inst.direction = ang;
+            inst.speed = weapon_pspd[cur_weapon];
+            break;
+        case weapon.rollingCutter:
+            var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
+            inst.xspeed = ldx*weapon_pspd[cur_weapon];
+            inst.yspeed = ldy*weapon_pspd[cur_weapon];
+            break;
+        case weapon.spinFlame:
+            var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
+            inst.ldx = ldx*weapon_pspd[cur_weapon];
+            inst.ldy = ldy*weapon_pspd[cur_weapon];
+            break;
+        default:
+            var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
+            inst.direction = ang;
+            inst.speed = weapon_pspd[cur_weapon];
+            inst.image_angle = ang;
+            break;
+        }
     
     ang += weapon_sprd[cur_weapon];
     }

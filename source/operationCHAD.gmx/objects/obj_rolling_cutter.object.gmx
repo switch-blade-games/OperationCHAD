@@ -27,19 +27,19 @@
             <kind>1</kind>
             <string>event_inherited();
 image_speed = 0;
+image_angle = 0;
 
 damage = 1;
 
-FALL = 0;
-ROLL = 1;
-state = FALL;
+xspeed = 0;
+yspeed = 0;
+xspd_f = 0;
+yspd_f = 0;
 
 // tuners
 grav_speed = 0.4;
 roll_speed = 6;
 fall_speed = 10;
-
-gravity = grav_speed;
 </string>
           </argument>
         </arguments>
@@ -62,28 +62,81 @@ gravity = grav_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index += (hspeed/22)*8; // 22 is the sprite's circumference
-image_angle = 0;
+            <string>image_index += (xspeed/22)*8; // 22 is the sprite's circumference
 
-x -= hspeed;
-y -= vspeed;
-
-if (!place_meeting(x+hspeed,y,par_solid))
-    x += hspeed;
-else
-    instance_destroy();
-
-if (!(place_meeting(x,y+vspeed,par_solid) or (vspeed &gt;= 0 and position_meeting(x,bbox_bottom+vspeed,par_jt) and (!position_meeting(x,bbox_bottom,par_jt)))))
-    y += vspeed;
-else
+// horizontal sub-pixel speed calculations
+var ax = abs(xspeed);
+var sx = sign(xspeed);
+var fx = floor(ax);
+xspd_f += ax-fx;
+if (xspd_f &gt;= 1)
     {
-    if (vspeed &gt;= 0)
-        gravity = 0;
-    vspeed = 0;
+    var add = floor(xspd_f);
+    xspd_f -= add;
+    ax += add;
+    fx += add;
+    }
+// horizontal collision detection/response
+if (ax &gt; 0)
+    {
+    repeat(ax)
+        {
+        if (!place_meeting(x+sx,y,par_solid))
+            x += sx;
+        else
+            {
+            instance_destroy();
+            break;
+            }
+        }
     }
 
-if (place_meeting(x+hspeed,y-1,par_solid))
-    instance_destroy();
+// vertical sub-pixel speed calculation
+var ay = abs(yspeed);
+var sy = sign(yspeed);
+var fy = floor(ay);
+yspd_f += ay-fy;
+if (yspd_f &gt;= 1)
+    {
+    var add = floor(yspd_f);
+    yspd_f -= add;
+    ay += add;
+    fy += add;
+    }
+// vertical collision detection/response
+if (ay &gt; 0)
+    {
+    // moving upwards
+    if (sy &lt; 0)
+        {
+        repeat(ay)
+            {
+            if (!place_meeting(x,y+sy,par_solid))
+                y += sy;
+            else
+                {
+                yspeed = 0;
+                yspd_f = 0;
+                break;
+                }
+            }
+        }
+    else if (sy &gt; 0) // moving downwards
+        {
+        repeat(ay)
+            {
+            if (!place_meeting(x,y+sy,par_solid))
+            and (!(!position_meeting(x,bbox_bottom,par_jt) and position_meeting(x,bbox_bottom+1,par_jt)))
+                y += sy;
+            else
+                {
+                yspeed = 0;
+                yspd_f = 0;
+                break;
+                }
+            }
+        }
+    }
 
 outside_view(240);
 </string>
