@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>var i=0;
 
-repeat(3){
+repeat(6){
 
     PILL[i]=instance_create(x,y,mife_pill)
     
@@ -63,6 +63,60 @@ PEAK=false
 
 
 Ymax=global.MOLOCHy+180
+
+PILLrange=20
+
+
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///make pills fly out
+var SON=0;
+
+SON=instance_create(PILL[0].x,PILL[0].y,mife_pill_go);
+
+with(SON)
+    event_perform(ev_create,0)
+    
+SON.Xdest=global.MOLOCHx+40
+
+
+SON=instance_create(PILL[1].x,PILL[1].y,mife_pill_go);
+
+with(SON)
+    event_perform(ev_create,0)
+    
+SON.Xdest=global.MOLOCHx+100
+
+
+SON=instance_create(PILL[2].x,PILL[2].y,mife_pill_go);
+
+with(SON)
+    event_perform(ev_create,0)
+    
+SON.Xdest=global.MOLOCHx+140
+
 </string>
           </argument>
         </arguments>
@@ -112,12 +166,28 @@ state=UP
             <kind>1</kind>
             <string>var i=0;
 
-repeat(3){
+var Xtrack=0;
 
-        PILL[i].x=x+Xoffset+(i*Xdist)
-        PILL[i].y=y+Yoffset
+var Yadd=0;
+
+repeat(6){
+
+        PILL[i].x=x+Xoffset+(Xtrack*Xdist)
+        PILL[i].y=y+Yoffset+Yadd
+        
         
         i+=1
+        
+        Xtrack+=1
+        
+        if(i=3){
+        
+            Xtrack=0
+            Yadd=17
+        }
+        
+        
+        
 }
 
 
