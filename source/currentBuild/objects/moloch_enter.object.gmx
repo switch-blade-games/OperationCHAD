@@ -34,17 +34,84 @@ GLOW=3
 state=ENTER
 
 
-motion_set(90,0.5)
+motion_set(90,1)
 
 
 Ystop=global.MOLOCHy+120
 
 
-WAITtime=30
+WAITtime=10
 
-GLOWtime=60
+GLOWtime=10
 
 image_speed=0.2
+
+//make nice things
+NICE[0]=instance_create(x,y,nice_obj)
+NICE[0].sprite_index=nice_1_spr
+
+with(NICE[0])
+event_perform(ev_create,0)
+
+NICE[0].DIR=45
+
+X0=20
+Y0=20
+
+//
+
+NICE[1]=instance_create(x,y,nice_obj)
+NICE[1].sprite_index=nice_2_spr
+
+with(NICE[1])
+event_perform(ev_create,0)
+
+NICE[1].DIR=45
+
+X1=60
+Y1=30
+
+//
+
+NICE[2]=instance_create(x,y,nice_obj)
+NICE[2].sprite_index=nice_3_spr
+
+with(NICE[2])
+event_perform(ev_create,0)
+
+NICE[2].DIR=20
+
+X2=80
+Y2=5
+
+//
+
+NICE[3]=instance_create(x,y,nice_obj)
+NICE[3].sprite_index=nice_4_spr
+
+with(NICE[3])
+event_perform(ev_create,0)
+
+NICE[3].DIR=100
+
+X3=-40
+Y3=-20
+
+
+//
+
+NICE[4]=instance_create(x,y,nice_obj)
+NICE[4].sprite_index=nice_5_spr
+
+with(NICE[4])
+event_perform(ev_create,0)
+
+NICE[4].DIR=110
+
+X4=-80
+Y4=-10
+
+
 </string>
           </argument>
         </arguments>
@@ -137,6 +204,23 @@ if(state=ENTER){
         alarm[0]=WAITtime
     }
 }
+
+
+    NICE[0].x=x+X0
+    NICE[0].y=y+Y0
+    
+    NICE[1].x=x+X1
+    NICE[1].y=y+Y1
+    
+    NICE[2].x=x+X2
+    NICE[2].y=y+Y2
+    
+    NICE[3].x=x+X3
+    NICE[3].y=y+Y3
+    
+    NICE[4].x=x+X4
+    NICE[4].y=y+Y4
+
 
 </string>
           </argument>

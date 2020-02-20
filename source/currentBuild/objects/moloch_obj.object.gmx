@@ -25,7 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>EYEx=0
+            <string>FLAP=instance_create(x,y,moloch_flap)
+
+FLAPx=0
+FLAPy=15
+
+instance_create(x+22,y-34,moloch_steam)
+
+var FLIPson=instance_create(x-22,y-34,moloch_steam);
+
+FLIPson.image_xscale=-1
+
+EYEx=0
 EYEy=-50
 
 POCKETx=40
@@ -37,9 +48,9 @@ ABORT=1
 PAY=2
 SOLD=3
 
-SOLDtime=120
+SOLDtime=60
 
-PAYwait=60
+PAYwait=30
 
 EYEstate=ABORT
 
@@ -49,7 +60,7 @@ EYEimg=0
 
 EYEspr=moloch_eyes_abort_spr
 
-alarm[2]=60
+alarm[2]=2
 
 
 BLADEspread=45
@@ -103,7 +114,10 @@ else
             <kind>1</kind>
             <string>///make mifeprex
 
-instance_create(x+4,y+10,mifeprex)
+with(moloch_flap)
+state=OPEN
+
+//instance_create(x+4,y+10,mifeprex)
 </string>
           </argument>
         </arguments>
@@ -160,7 +174,7 @@ with(moloch_lady){
             <kind>1</kind>
             <string>///start up getting paid sequence
 
-EYEstate=PAY
+EYEstate=ABORT
 
 alarm[3]=PAYwait
 </string>
@@ -274,7 +288,11 @@ alarm[0]=BLADErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x&gt;=global.MOLOCHx+200)
+            <string>FLAP.x=x+FLAPx
+FLAP.y=y+FLAPy
+
+
+if(x&gt;=global.MOLOCHx+200)
     facing=RIGHT
     
 else

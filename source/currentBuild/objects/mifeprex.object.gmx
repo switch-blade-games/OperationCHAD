@@ -55,7 +55,7 @@ grav=0.1
 
 SPEmax=3
 
-Ymax=global.MOLOCHy+180
+Ymax=global.MOLOCHy+170
 
 LANDtime=60
 
@@ -67,7 +67,7 @@ TILTspe=0.1
 DOWNspe=3
 
 
-OPENtime=30
+OPENtime=120
 
 
 </string>
@@ -152,7 +152,7 @@ state=BACK
 
 state=OPEN
 
-instance_create(x,y,mife_tin)
+instance_create(x,y-10,mife_tin)
 
 mife_box_bottom.sprite_index=mife_bottom_open_spr
 sprite_index=mife_box_open_spr
@@ -297,7 +297,7 @@ if(state=BACK){
     image_index=image_number-1
     
     state=LAND
-    alarm[2]=LANDtime
+    alarm[2]=2
 }
 
 if(state=BACK){

@@ -47,13 +47,17 @@ UP=1
 
 LAND=2
 
+TILT=3
+
+DOWN=4
+
 state=INIT
 
 alarm[0]=2
 
 UPspe=4
 
-grav=0.02
+grav=0.05
 
 LANDtime=60
 
@@ -62,9 +66,43 @@ SPEmax=2
 PEAK=false
 
 
-Ymax=global.MOLOCHy+180
+Ymax=global.MOLOCHy+170
 
 PILLrange=20
+
+DOWNspe=2
+
+TILTspe=0.2
+
+//how long to wait until TILT
+PILLtime=180
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///TILT
+
+image_speed=TILTspe
+
+state=TILT
 </string>
           </argument>
         </arguments>
@@ -143,6 +181,9 @@ SON.Xdest=global.MOLOCHx+380
 
 with(mife_pill)
 visible=false
+
+
+alarm[2]=PILLtime
 </string>
           </argument>
         </arguments>
@@ -190,14 +231,34 @@ state=UP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var i=0;
+            <string>outside_view(60)
 
-repeat(3){
+var i=0;
 
-        PILL[i].x=x+Xoffset+(i*Xdist)
-        PILL[i].y=y+Yoffset
+var Yplace=0;
+
+var Xplace=0;
+
+
+
+var COUNT=0;
+
+repeat(6){
+
+        PILL[i].x=x+Xoffset+(COUNT*Xdist)
+        PILL[i].y=y+Yoffset+(Yplace*19)
         
         i+=1
+        
+        COUNT+=1
+        
+        if(COUNT=3){
+        
+        COUNT=0
+        
+        Yplace=1
+        }
+        
 }
 
 
@@ -211,6 +272,9 @@ if(state=UP){
         depth=79
         with(mife_pill)
             depth=78
+            
+          with(mifeprex)
+            alarm[3]=2  
     }
 
     motion_add(270,grav)
@@ -225,6 +289,37 @@ if(state=UP){
         alarm[1]=LANDtime
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="7">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(state=TILT){
+
+    image_speed=0
+    state=DOWN
+    
+    motion_set(270,DOWNspe)
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -247,9 +342,15 @@ if(state=UP){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>if(state=TILT)
+sprite_index=mife_tin_tilt_spr
 
-draw_text(x,y,vspeed)
+if(state=DOWN)
+sprite_index=mife_tin_down_spr
+
+draw_self()
+
+//draw_text(x,y,vspeed)
 </string>
           </argument>
         </arguments>

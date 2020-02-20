@@ -49,14 +49,14 @@ THROW=8
 state=DRINK
 
 
-alarm[0]=120
+alarm[0]=30
 
-SURPRISEtime=60
+SURPRISEtime=30
 
 
-PURSEtime=60
+PURSEtime=30
 
-COINtime=60
+COINtime=30
 
 
 </string>
@@ -81,7 +81,11 @@ COINtime=60
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=THROW
+            <string>///throw coin
+
+state=THROW
+
+snd_play(coin_throw_snd,0,1)
 
 with(moloch_coin)
     alarm[0]=2

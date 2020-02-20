@@ -61,6 +61,12 @@
     <sounds name="effects">
       <sound>sound\explode_snd</sound>
       <sound>sound\space_hit_snd</sound>
+      <sounds name="moloch">
+        <sound>sound\moloch_steam_snd</sound>
+        <sound>sound\moloch_take_coin_snd</sound>
+        <sound>sound\coin_throw_snd</sound>
+        <sound>sound\coin_land_snd</sound>
+      </sounds>
     </sounds>
     <sounds name="footsteps">
       <sounds name="stone">
@@ -212,8 +218,12 @@
             <sprite>sprites\moloch_black_spr</sprite>
             <sprite>sprites\moloch_enter_glow_spr</sprite>
             <sprite>sprites\moloch_enter_spr</sprite>
+            <sprite>sprites\moloch_flap_open_spr</sprite>
+            <sprite>sprites\moloch_flap_close_spr</sprite>
+            <sprite>sprites\moloch_flap_normal_spr</sprite>
             <sprite>sprites\shoulder_blade_spr</sprite>
             <sprite>sprites\moloch_hand_spr</sprite>
+            <sprite>sprites\moloch_arm_hand_spr</sprite>
             <sprite>sprites\moloch_arm_ball_spr</sprite>
             <sprite>sprites\moloch_eyes_abort_spr</sprite>
             <sprite>sprites\moloch_eyes_pay_spr</sprite>
@@ -227,7 +237,11 @@
             <sprite>sprites\mife_box_tilt_spr</sprite>
             <sprite>sprites\mife_down_spr</sprite>
             <sprite>sprites\mife_tin_spr</sprite>
+            <sprite>sprites\mife_tin_down_spr</sprite>
+            <sprite>sprites\mife_tin_tilt_spr</sprite>
             <sprite>sprites\mife_pill_spr</sprite>
+            <sprite>sprites\moloch_steam_spr</sprite>
+            <sprite>sprites\moloch_flap_vend_spr</sprite>
           </sprites>
           <sprites name="moloch_BGs">
             <sprite>sprites\moloch_regular_BG_spr</sprite>
@@ -257,6 +271,11 @@
             <sprite>sprites\lady_flower_spr</sprite>
           </sprites>
           <sprite>sprites\sheckle_spr</sprite>
+          <sprite>sprites\nice_5_spr</sprite>
+          <sprite>sprites\nice_4_spr</sprite>
+          <sprite>sprites\nice_3_spr</sprite>
+          <sprite>sprites\nice_2_spr</sprite>
+          <sprite>sprites\nice_1_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="003-Clown World">
@@ -1195,6 +1214,7 @@
           <object>objects\elevator_floor</object>
           <object>objects\moloch_regular_BG</object>
           <object>objects\moloch_lady_BG</object>
+          <object>objects\moloch_flap</object>
           <object>objects\moloch_obj</object>
           <object>objects\moloch_pocket</object>
           <object>objects\moloch_light</object>
@@ -1203,6 +1223,7 @@
           <object>objects\moloch_blade</object>
           <object>objects\lady_desk</object>
           <object>objects\moloch_lady</object>
+          <object>objects\nice_obj</object>
           <object>objects\moloch_enter</object>
           <object>objects\cat</object>
           <object>objects\moloch_hand</object>
@@ -1216,6 +1237,8 @@
           <object>objects\mife_tin</object>
           <object>objects\med_snake</object>
           <object>objects\lady_stand</object>
+          <object>objects\moloch_arm_1</object>
+          <object>objects\moloch_steam</object>
         </objects>
       </objects>
       <objects name="002-Public School">

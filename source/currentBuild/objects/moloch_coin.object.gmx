@@ -33,7 +33,7 @@ STOP=3
 
 DOWN=4
 
-STOPtime=60
+STOPtime=30
 
 DOWNspe=2
 
@@ -107,7 +107,11 @@ instance_create(x+SPARKLEx,y+SPARKLEy,coin_sparkle)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=DOWN
+            <string>///coin down
+
+snd_play(moloch_take_coin_snd,0,1)
+
+state=DOWN
 
 Ysnap=y
 
@@ -172,6 +176,7 @@ state=THROW
         speed=0
         state=STOP
         
+        snd_play(coin_land_snd,0,1)
     
         alarm[1]=STOPtime
         
