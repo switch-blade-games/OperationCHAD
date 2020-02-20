@@ -49,6 +49,7 @@ repeat(weapon_pnum[cur_weapon])
             var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
             inst.xspeed = ldx*weapon_pspd[cur_weapon];
             inst.yspeed = ldy*weapon_pspd[cur_weapon];
+            inst.roll_dir = face;
             break;
         case weapon.spinFlame:
             var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
