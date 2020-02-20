@@ -41,8 +41,15 @@ switch(move_state)
                     // climb wall to the right
                     if (detect_wc) and (wc_side & tile_side.left == tile_side.left)
                         {
-                        move_state = mState.wc;
-                        yspeed = 0;
+                        if (input_up) xor (input_down)
+                            {
+                            if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
+                                {
+                                move_state = mState.wc;
+                                // start moving to use correct animation
+                                yspeed = wc_speed*v_dir;
+                                }
+                            }
                         }
                     
                     // aim
@@ -58,8 +65,15 @@ switch(move_state)
                     // climb wall to the left
                     if (detect_wc) and (wc_side & tile_side.right == tile_side.right)
                         {
-                        move_state = mState.wc;
-                        yspeed = 0;
+                        if (input_up) xor (input_down)
+                            {
+                            if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
+                                {
+                                move_state = mState.wc;
+                                // start moving to use correct animation
+                                yspeed = wc_speed*v_dir;
+                                }
+                            }
                         }
                     
                     // aim
@@ -112,6 +126,13 @@ switch(move_state)
                     {
                     move_state = mState.wc;
                     yspeed = 0;
+                    xspeed = 0;
+                    // start moving to use correct animation
+                    if (input_left) xor (input_right)
+                        {
+                        if (!place_meeting(x+wc_speed*h_dir,y,par_solid))
+                            xspeed = wc_speed*h_dir;
+                        }
                     }
                 }
             }
