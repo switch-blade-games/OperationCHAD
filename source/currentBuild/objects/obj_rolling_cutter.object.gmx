@@ -81,6 +81,10 @@ if (ax &gt; 0)
     {
     repeat(ax)
         {
+        // move up slope
+        if (place_meeting(x+sx,y,par_solid)) and (!place_meeting(x+sx,y-1,par_solid))
+            y -= 1;
+        
         if (!place_meeting(x+sx,y,par_solid))
             x += sx;
         else
