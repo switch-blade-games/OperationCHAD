@@ -184,6 +184,8 @@ alarm[3]=OPENtime
             <kind>1</kind>
             <string>///UP
 
+snd_play(box_up_snd,0,1)
+
 state=UP
 
 motion_set(90,UPspe)
@@ -247,6 +249,8 @@ if(state=UP){
         speed=SPEmax
         
     if(y&gt;=Ymax){
+    
+        snd_play(mife_land_snd,0,1)
     
         y=Ymax
         speed=0

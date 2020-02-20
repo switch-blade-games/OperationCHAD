@@ -25,7 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FLAP=instance_create(x,y,moloch_flap)
+            <string>ARM1=instance_create(x,y,moloch_arm_1)
+
+ARM1x=-120
+ARM1y=8
+
+UNDER=instance_create(x,y,moloch_under)
+
+UNDERx=0
+UNDERy=0
+
+FLAP=instance_create(x,y,moloch_flap)
 
 FLAPx=0
 FLAPy=15
@@ -95,7 +105,7 @@ else
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="4">
+    <event eventtype="2" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -114,10 +124,37 @@ else
             <kind>1</kind>
             <string>///make mifeprex
 
-with(moloch_flap)
-state=OPEN
+instance_create(x+4,y+10,mifeprex)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///open flap
 
-//instance_create(x+4,y+10,mifeprex)
+with(moloch_flap){
+snd_play(flap_open_snd,0,1)
+state=OPEN
+}
+
+
 </string>
           </argument>
         </arguments>
@@ -288,7 +325,13 @@ alarm[0]=BLADErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>FLAP.x=x+FLAPx
+            <string>ARM1.x=x+ARM1x
+ARM1.y=y+ARM1y
+
+UNDER.x=x+UNDERx
+UNDER.y=y+UNDERy
+
+FLAP.x=x+FLAPx
 FLAP.y=y+FLAPy
 
 

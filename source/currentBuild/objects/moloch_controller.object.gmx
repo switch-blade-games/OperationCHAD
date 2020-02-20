@@ -44,8 +44,23 @@ state=WAIT
 
 DOWNspe=0.5
 
+//make BG gears
+
+instance_create(global.MOLOCHx+20,global.MOLOCHy+30,BG_gear)
+
+instance_create(global.MOLOCHx+20,global.MOLOCHy+90,BG_gear)
+
+instance_create(global.MOLOCHx+220,global.MOLOCHy+30,BG_gear)
+
+instance_create(global.MOLOCHx+260,global.MOLOCHy+80,BG_gear)
+
+instance_create(global.MOLOCHx+220,global.MOLOCHy+130,BG_gear)
 
 
+//
+
+
+instance_create(global.MOLOCHx-MARGIN,global.MOLOCHy-MARGIN,moloch_bottom_BG)
 
 instance_create(global.MOLOCHx-MARGIN,global.MOLOCHy-MARGIN,moloch_lady_BG)
 

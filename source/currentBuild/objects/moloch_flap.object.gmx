@@ -57,8 +57,12 @@ CLOSEspe=0.1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(state=OPEN)
+            <string>if(state=OPEN){
 state=VEND
+
+with(moloch_obj)
+    alarm[5]=2
+}
 
 if(state=CLOSE)
 state=NORMAL

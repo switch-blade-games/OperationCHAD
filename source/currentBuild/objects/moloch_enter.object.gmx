@@ -25,7 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ENTER=1
+            <string>audio_stop_sound(moloch_rise_snd)
+
+audio_play_sound(moloch_rise_snd,0,true)
+
+ENTER=1
 
 WAIT=2
 
@@ -197,6 +201,8 @@ if(state=ENTER){
         y=Ystop
         
         state=WAIT
+        
+        audio_stop_sound(moloch_rise_snd)
         
         with(moloch_lady)
             state=STAND

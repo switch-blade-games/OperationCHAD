@@ -126,6 +126,10 @@ state=TILT
           <argument>
             <kind>1</kind>
             <string>///make pills fly out
+
+snd_play(pills_go_snd,0,1)
+
+
 var SON=0;
 
 SON=instance_create(PILL[0].x,PILL[0].y,mife_pill_go);
@@ -206,7 +210,11 @@ alarm[2]=PILLtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>motion_set(90,UPspe)
+            <string>///UP
+
+snd_play(tin_up_snd,0,1)
+
+motion_set(90,UPspe)
 
 state=UP
 </string>
@@ -214,7 +222,7 @@ state=UP
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -231,7 +239,8 @@ state=UP
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>outside_view(60)
+            <string>///place pills
+
 
 var i=0;
 
@@ -260,6 +269,31 @@ repeat(6){
         }
         
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>outside_view(60)
+
+
 
 
 if(state=UP){
@@ -287,6 +321,8 @@ if(state=UP){
         speed=0
         state=LAND
         alarm[1]=LANDtime
+        snd_play(tin_land_snd,0,1)
+        
     }
 }
 </string>

@@ -66,6 +66,14 @@
         <sound>sound\moloch_take_coin_snd</sound>
         <sound>sound\coin_throw_snd</sound>
         <sound>sound\coin_land_snd</sound>
+        <sound>sound\mife_land_snd</sound>
+        <sound>sound\flap_open_snd</sound>
+        <sound>sound\pills_go_snd</sound>
+        <sound>sound\box_up_snd</sound>
+        <sound>sound\tin_up_snd</sound>
+        <sound>sound\tin_land_snd</sound>
+        <sound>sound\pills_fall_snd</sound>
+        <sound>sound\moloch_rise_snd</sound>
       </sounds>
     </sounds>
     <sounds name="footsteps">
@@ -217,6 +225,7 @@
           <sprites name="mo-bot">
             <sprite>sprites\moloch_black_spr</sprite>
             <sprite>sprites\moloch_enter_glow_spr</sprite>
+            <sprite>sprites\bot_under_spr</sprite>
             <sprite>sprites\moloch_enter_spr</sprite>
             <sprite>sprites\moloch_flap_open_spr</sprite>
             <sprite>sprites\moloch_flap_close_spr</sprite>
@@ -249,6 +258,8 @@
             <sprite>sprites\moloch_full_spr</sprite>
             <sprite>sprites\elevator_sur_spr</sprite>
             <sprite>sprites\fryguy_BG_spr</sprite>
+            <sprite>sprites\moloch_bottom_BG_spr</sprite>
+            <sprite>sprites\BG_gear_spr</sprite>
           </sprites>
           <sprite>sprites\elevator_floor_spr</sprite>
           <sprite>sprites\moloch_light_off_spr</sprite>
@@ -1167,6 +1178,7 @@
             <object>objects\fryguy_light</object>
           </objects>
         </objects>
+        <object>objects\BG_gear</object>
         <object>objects\abortion_factory_drawer</object>
         <object>objects\baby_scale</object>
         <object>objects\factory_works_1</object>
@@ -1212,9 +1224,11 @@
         <objects name="moloch_boss">
           <object>objects\moloch_controller</object>
           <object>objects\elevator_floor</object>
+          <object>objects\moloch_bottom_BG</object>
           <object>objects\moloch_regular_BG</object>
           <object>objects\moloch_lady_BG</object>
           <object>objects\moloch_flap</object>
+          <object>objects\moloch_under</object>
           <object>objects\moloch_obj</object>
           <object>objects\moloch_pocket</object>
           <object>objects\moloch_light</object>
@@ -1237,6 +1251,7 @@
           <object>objects\mife_tin</object>
           <object>objects\med_snake</object>
           <object>objects\lady_stand</object>
+          <object>objects\moloch_arm_ball</object>
           <object>objects\moloch_arm_1</object>
           <object>objects\moloch_steam</object>
         </objects>
