@@ -35,6 +35,7 @@ xspeed = 0;
 yspeed = 0;
 xspd_f = 0;
 yspd_f = 0;
+roll_dir = 1;
 
 // tuners
 grav_speed = 0.4;
@@ -142,11 +143,17 @@ if (ay &gt; 0)
         }
     }
 
-if (!position_meeting(x,y+1,par_solid))
+if (!place_meeting(x,y+1,par_solid))
 and (!((yspeed &gt;= 0) and (!position_meeting(x,bbox_bottom,par_jt)) and (position_meeting(x,bbox_bottom+1,par_jt))))
     {
     if (yspeed &lt; fall_speed)
         yspeed += grav_speed;
+    }
+else
+    {
+    if ((roll_dir &gt; 0) and (xspeed &lt; roll_speed*roll_dir))
+    or ((roll_dir &lt; 0) and (xspeed &gt; roll_speed*roll_dir))
+        xspeed += 1*roll_dir;
     }
 
 outside_view(240);
