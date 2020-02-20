@@ -12,6 +12,8 @@
   <showcolour>-1</showcolour>
   <code>room_init();
 
+instance_create(0,0,obj_control)
+
 instance_create(0,0,moloch_controller)</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -58,6 +60,7 @@ instance_create(0,0,moloch_controller)</code>
     <instance objName="obj_wall" x="-20" y="200" name="inst_74F89672" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="med_snake" x="1100" y="220" name="inst_4EC2A370" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="elevator_floor" x="200" y="210" name="inst_12C6EEEF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="140" y="130" name="inst_1021DA8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
