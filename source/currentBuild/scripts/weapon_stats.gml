@@ -9,11 +9,13 @@ enum weapon
     homing,
     rollingCutter,
     crushShot,
-    spinFlame
+    spinFlame,
+    buckShot
     }
 
 weapon_name[weapon.rifle] = "Rifle";    // Name
 weapon_auto[weapon.rifle] = true;       // automatic (hold LMB vs. click to fire)
+weapon_walk[weapon.rifle] = true;       // can the player walk while firing
 weapon_pmax[weapon.rifle] = -1;         // max projectiles on screen
 weapon_time[weapon.rifle] = 4;          // time between each shot (effects fire rate)
 weapon_pspd[weapon.rifle] = 8;          // projectile speed
@@ -26,6 +28,7 @@ weapons++;
 
 weapon_name[weapon.flame] = "Flame Thrower";
 weapon_auto[weapon.flame] = true;
+weapon_walk[weapon.flame] = true;
 weapon_pmax[weapon.flame] = -1;
 weapon_time[weapon.flame] = 4;
 weapon_pspd[weapon.flame] = 6;
@@ -38,6 +41,7 @@ weapons++;
 
 weapon_name[weapon.spread] = "Spreadshot";
 weapon_auto[weapon.spread] = true;
+weapon_walk[weapon.spread] = true;
 weapon_pmax[weapon.spread] = 15;
 weapon_time[weapon.spread] = 6;
 weapon_pspd[weapon.spread] = 8;
@@ -50,6 +54,7 @@ weapons++;
 
 weapon_name[weapon.homing] = "Heat Seeker";
 weapon_auto[weapon.homing] = true;
+weapon_walk[weapon.homing] = true;
 weapon_pmax[weapon.homing] = 3;
 weapon_time[weapon.homing] = 10;
 weapon_pspd[weapon.homing] = 6;
@@ -62,6 +67,7 @@ weapons++;
 
 weapon_name[weapon.rollingCutter] = "Rolling Cutter";
 weapon_auto[weapon.rollingCutter] = true;
+weapon_walk[weapon.rollingCutter] = true;
 weapon_pmax[weapon.rollingCutter] = 3;
 weapon_time[weapon.rollingCutter] = 10;
 weapon_pspd[weapon.rollingCutter] = 6;
@@ -74,6 +80,7 @@ weapons++;
 
 weapon_name[weapon.crushShot] = "Crush Shot";
 weapon_auto[weapon.crushShot] = true;
+weapon_walk[weapon.crushShot] = true;
 weapon_pmax[weapon.crushShot] = 3;
 weapon_time[weapon.crushShot] = 22;
 weapon_pspd[weapon.crushShot] = 6;
@@ -86,6 +93,7 @@ weapons++;
 
 weapon_name[weapon.spinFlame] = "Spin Flame";
 weapon_auto[weapon.spinFlame] = false;
+weapon_walk[weapon.spinFlame] = true;
 weapon_pmax[weapon.spinFlame] = 3;
 weapon_time[weapon.spinFlame] = 12;
 weapon_pspd[weapon.spinFlame] = 3; //overall speed
@@ -94,4 +102,17 @@ weapon_sprd[weapon.spinFlame] = 0;
 weapon_proj[weapon.spinFlame] = obj_spin_flame;
 weapon_case[weapon.spinFlame] = -1;
 weapon_snd[weapon.spinFlame] = bullet_snd;
+weapons++;
+
+weapon_name[weapon.buckShot] = "Buckshot";
+weapon_auto[weapon.buckShot] = true;
+weapon_walk[weapon.buckShot] = false;
+weapon_pmax[weapon.buckShot] = 3;
+weapon_time[weapon.buckShot] = 20;
+weapon_pspd[weapon.buckShot] = 3;
+weapon_pnum[weapon.buckShot] = 1;
+weapon_sprd[weapon.buckShot] = 0;
+weapon_proj[weapon.buckShot] = obj_buckshot;
+weapon_case[weapon.buckShot] = -1;
+weapon_snd[weapon.buckShot] = snd_buckshot;
 weapons++;
