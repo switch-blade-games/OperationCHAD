@@ -3,8 +3,8 @@
   <caption></caption>
   <width>20000</width>
   <height>20000</height>
-  <vsnap>20</vsnap>
-  <hsnap>20</hsnap>
+  <vsnap>10</vsnap>
+  <hsnap>10</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
@@ -112,10 +112,8 @@ with(obj_wall)
     <instance objName="obj_wall" x="3620" y="2860" name="inst_56351E73" locked="0" code="" scaleX="21" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="3620" y="1520" name="inst_D4447B96" locked="0" code="" scaleX="1" scaleY="67" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="4040" y="1520" name="inst_F65ABF6D" locked="0" code="" scaleX="1" scaleY="56.8421058654785" colour="4294967295" rotation="0"/>
-    <instance objName="block_break" x="3640" y="1500" name="inst_B1F504A6" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="block_break" x="4040" y="2660" name="inst_4BBFDB7D" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="D_lock" x="4020" y="2660" name="inst_14BCEB98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="factory_1_trigger" x="4020" y="1460" name="inst_A275CA9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="checkpoint_obj" x="20" y="1440" name="inst_AF3C614B" locked="0" code="CHK=1&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=RIGHT&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="checkpoint_obj" x="3640" y="1280" name="inst_B999DDFB" locked="0" code="CHK=2&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=LOCKED&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="checkpoint_obj" x="3640" y="2660" name="inst_C3EE49A1" locked="0" code="CHK=3&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=LOCKED" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -392,15 +390,13 @@ with(obj_wall)
     <instance objName="BG_pipe_2" x="1320" y="1360" name="inst_2DAD4D24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_2" x="2820" y="1240" name="inst_A7E4140D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_1" x="3040" y="1240" name="inst_C2AE3D42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coat_pipe" x="-60" y="1360" name="inst_A3FDEE77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="coat_pipe" x="-60" y="1380" name="inst_A3FDEE77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="coat_pipe" x="1300" y="1360" name="inst_C3AEA4A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_L" x="620" y="1620" name="inst_32D22411" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_X" x="1820" y="1500" name="inst_3FC8FF13" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_L" x="2360" y="1480" name="inst_A5C07063" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_X" x="3880" y="1280" name="inst_CCB84697" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="groyp_gag" x="420" y="1520" name="inst_39E75A1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="over_light" x="3800" y="1280" name="inst_9E5C3BC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="over_light" x="4060" y="1280" name="inst_7EE7AB86" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="pop_served" x="3340" y="1260" name="inst_57083870" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="over_tube" x="2680" y="1280" name="inst_C300BD6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hanger_pile" x="1920" y="1520" name="inst_098DFF41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -409,19 +405,13 @@ with(obj_wall)
     <instance objName="BG_pipe_1" x="5040" y="2640" name="inst_C0C2219B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_1" x="5180" y="2640" name="inst_7ED467D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_2" x="6000" y="2640" name="inst_D765136E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_jt" x="3640" y="1460" name="inst_612256E7" locked="0" code="" scaleX="13" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_jt" x="3640" y="1400" name="inst_35C8D100" locked="0" code="" scaleX="13" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="160" y="1600" name="inst_7E557700" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="740" y="1600" name="inst_E94FC55A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="660" y="1460" name="inst_2C74B60C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="800" y="1440" name="inst_2A8D0ECA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="580" y="1440" name="inst_69FD539D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="lady_stand" x="520" y="1600" name="inst_7D020795" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="60" y="1580" name="inst_07FAFA06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="40" y="1530" name="inst_07FAFA06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="1640" name="inst_130B4A58" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="480" y="1640" name="inst_E3D8C496" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="960" y="1640" name="inst_CAAD1C50" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1440" y="1640" name="inst_44951C4E" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="moloch_controller" x="3650" y="1290" name="inst_3A8FFFA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="3640" y="1500" name="inst_F1460A9F" locked="0" code="" scaleX="20" scaleY="1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="big_TS" x="0" y="1610" w="100" h="100" xo="0" yo="0" id="10006230" name="inst_7209E580" depth="80" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

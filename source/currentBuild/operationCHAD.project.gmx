@@ -1252,7 +1252,6 @@
           <object>objects\mife_pill_go</object>
           <object>objects\mife_tin</object>
           <object>objects\med_snake</object>
-          <object>objects\lady_stand</object>
           <object>objects\moloch_arm_ball</object>
           <object>objects\moloch_arm_1</object>
           <object>objects\moloch_steam</object>
@@ -1761,6 +1760,7 @@
       <object>objects\explode_big</object>
       <object>objects\screen_explode</object>
       <object>objects\mini_exploder</object>
+      <object>objects\boss_die_flash</object>
     </objects>
     <objects name="editor">
       <object>objects\obj_editor</object>
@@ -1797,7 +1797,7 @@
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\moloch_mockup</room>
+        <room>rooms\final_factory</room>
         <room>rooms\clown_judge_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
@@ -1806,7 +1806,7 @@
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
-        <room>rooms\final_factory</room>
+        <room>rooms\moloch_mockup</room>
         <room>rooms\tong_room</room>
         <room>rooms\elevator_mockup</room>
         <room>rooms\fryguy_room</room>
