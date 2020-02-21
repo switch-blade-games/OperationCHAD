@@ -25,23 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_index=random(image_number)
+            <string>image_index = irandom(image_number);
+image_speed = 0.3+random(0.3);
 
-image_speed=0.3+random(0.3)
+motion_set(random(360),2);
 
-motion_set(180+random(45)-random(45),2)
-
-BUFFER=true
-
-BUFFERtime=2
-
-alarm[0]=BUFFERtime
-
-
-
-
-
-
+bounce = 3;
 </string>
           </argument>
         </arguments>
@@ -87,99 +76,37 @@ alarm[0]=BUFFERtime
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>outside_view(40)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_climb">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hunny_bank()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_ramp">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hunny_bank()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_mb">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hunny_bank()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_wall">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hunny_bank()
+            <string>outside_view(40);
+
+if (!place_meeting(x,y,par_solid))
+    {
+    if (place_meeting(x+hspeed,y,par_solid))
+        hspeed *= -1;
+    if (place_meeting(x,y+vspeed,par_solid))
+        vspeed *= -1;
+    }
+
+if (place_meeting(x+hspeed,y+vspeed,par_mb))
+and (!place_meeting(x,y,par_mb))
+    {
+    var inst = instance_place(x+hspeed,y+vspeed,par_mb);
+    if (inst != noone)
+        {
+        x = xprevious;
+        y = yprevious;
+        
+        var normal_angle = inst.dir+90;
+        var ldx_n = lengthdir_x(1,normal_angle);
+        var ldy_n = lengthdir_y(1,normal_angle);
+        var lookat_angle = point_direction((inst.x1+inst.x2)/2,(inst.y1+inst.y2)/2,x,y);
+        var ldx_l = lengthdir_x(1,lookat_angle);
+        var ldy_l = lengthdir_y(1,lookat_angle);
+        if (dot_product(ldx_n,ldy_n,ldx_l,ldy_l) &gt;= dot_product(-ldx_n,-ldy_n,ldx_l,ldy_l))
+            direction = reflect(hspeed/speed,vspeed/speed,+ldx_n,+ldy_n);
+        else
+            direction = reflect(hspeed/speed,vspeed/speed,-ldx_n,-ldy_n);
+        }
+    }
 </string>
           </argument>
         </arguments>

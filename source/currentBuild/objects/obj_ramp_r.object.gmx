@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>slope = 1;
+            <string>event_inherited();
+normal = 180-26;
+slope = 1;
 </string>
           </argument>
         </arguments>
