@@ -88,7 +88,9 @@ weapon_name[weapon.spinFlame] = "Spin Flame";
 weapon_auto[weapon.spinFlame] = false;
 weapon_pmax[weapon.spinFlame] = 3;
 weapon_time[weapon.spinFlame] = 12;
-weapon_pspd[weapon.spinFlame] = 5;
+
+//overall speed
+weapon_pspd[weapon.spinFlame] = 3;
 weapon_pnum[weapon.spinFlame] = 1;
 weapon_sprd[weapon.spinFlame] = 0;
 weapon_proj[weapon.spinFlame] = obj_spin_flame;
