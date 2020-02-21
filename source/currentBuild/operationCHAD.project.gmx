@@ -1044,6 +1044,7 @@
       <script>scripts\projectile_init.gml</script>
       <script>scripts\projectile_step.gml</script>
       <script>scripts\ternary.gml</script>
+      <script>scripts\reflect.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
@@ -1083,7 +1084,6 @@
       <script>scripts\random_col_set.gml</script>
       <script>scripts\blend_zero.gml</script>
       <script>scripts\hunny_shuffle.gml</script>
-      <script>scripts\hunny_bank.gml</script>
       <script>scripts\Yfollow.gml</script>
       <script>scripts\Rfollow.gml</script>
       <script>scripts\checkpoint_check.gml</script>
@@ -1715,27 +1715,32 @@
       <object>objects\monkey_ramp_L</object>
     </objects>
     <objects name="parents">
+      <objects name="colliders">
+        <object>objects\par_collider</object>
+        <object>objects\par_solid</object>
+        <object>objects\par_jt</object>
+        <object>objects\par_mb</object>
+        <object>objects\par_mb_move</object>
+        <object>objects\par_ramp</object>
+        <object>objects\par_climb</object>
+        <object>objects\par_move</object>
+        <object>objects\par_trigger</object>
+        <object>objects\par_death</object>
+      </objects>
+      <objects name="projectiles">
+        <object>objects\par_projectile</object>
+        <object>objects\par_actor_projectile</object>
+        <object>objects\par_enemy_projectile</object>
+      </objects>
       <object>objects\par_actor</object>
       <object>objects\par_enemy</object>
-      <object>objects\par_solid</object>
-      <object>objects\par_jt</object>
-      <object>objects\par_move</object>
-      <object>objects\par_mb</object>
-      <object>objects\par_mb_move</object>
-      <object>objects\par_ramp</object>
-      <object>objects\par_climb</object>
       <object>objects\par_shootable</object>
-      <object>objects\par_projectile</object>
       <object>objects\par_explode</object>
-      <object>objects\par_actor_projectile</object>
-      <object>objects\par_enemy_projectile</object>
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
       <object>objects\par_stay_active</object>
       <object>objects\par_active_enemy</object>
       <object>objects\par_cam_obj</object>
-      <object>objects\par_death</object>
-      <object>objects\par_trigger</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>
