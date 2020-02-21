@@ -1018,6 +1018,8 @@
       <scripts name="ui">
         <script>scripts\draw_text_outline.gml</script>
         <script>scripts\val_to_text.gml</script>
+        <script>scripts\button.gml</script>
+        <script>scripts\slider.gml</script>
       </scripts>
       <scripts name="unused">
         <scripts name="verlet">
