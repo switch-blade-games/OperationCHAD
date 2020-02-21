@@ -152,14 +152,16 @@ for(var i=0; i&lt;x_num; i++;)
     }
 
 // move cams
+var _cos = dcos(ang);
+var _sin = dsin(ang);
 for(var i=0; i&lt;x_num; i++;)
     {
     for(var j=0; j&lt;y_num; j++;)
         {
         var _x = (-x_mid+i)*spread;
         var _y = (-y_mid+j)*spread;
-        var rx = _x*dcos(ang) - _y*dsin(ang);
-        var ry = _x*dsin(ang) + _y*dcos(ang);
+        var rx = _x*_cos - _y*_sin;
+        var ry = _x*_sin + _y*_cos;
         cam[i,j].x = x+rx;
         cam[i,j].y = y+ry;
         }

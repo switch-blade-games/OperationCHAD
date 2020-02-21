@@ -4,7 +4,7 @@ var v_dir = input_down-input_up;
 switch(move_state)
     {
     case mState.walk:
-        lock = (input_lock) and (on_ground);
+        lock = (input_lock or (input_fire and !weapon_walk[cur_weapon])) and (on_ground);
         
         if (lock)
             {

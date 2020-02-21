@@ -55,8 +55,29 @@
     <sounds name="Music">
       <sound>sound\pre_fight_snd</sound>
     </sounds>
-    <sounds name="Player">
-      <sound>sound\bullet_snd</sound>
+    <sounds name="player">
+      <sounds name="footsteps">
+        <sounds name="stone">
+          <sound>sound\snd_land_stone_1</sound>
+          <sound>sound\snd_land_stone_2</sound>
+          <sound>sound\snd_land_stone_3</sound>
+          <sound>sound\snd_step_stone_1</sound>
+          <sound>sound\snd_step_stone_2</sound>
+          <sound>sound\snd_step_stone_3</sound>
+        </sounds>
+        <sounds name="metal">
+          <sound>sound\snd_land_metal_1</sound>
+          <sound>sound\snd_land_metal_2</sound>
+          <sound>sound\snd_land_metal_3</sound>
+          <sound>sound\snd_step_metal_1</sound>
+          <sound>sound\snd_step_metal_2</sound>
+          <sound>sound\snd_step_metal_3</sound>
+        </sounds>
+      </sounds>
+      <sounds name="weapons">
+        <sound>sound\bullet_snd</sound>
+        <sound>sound\snd_buckshot</sound>
+      </sounds>
     </sounds>
     <sounds name="effects">
       <sound>sound\explode_snd</sound>
@@ -74,24 +95,6 @@
         <sound>sound\tin_land_snd</sound>
         <sound>sound\pills_fall_snd</sound>
         <sound>sound\moloch_rise_snd</sound>
-      </sounds>
-    </sounds>
-    <sounds name="footsteps">
-      <sounds name="stone">
-        <sound>sound\snd_land_stone_1</sound>
-        <sound>sound\snd_land_stone_2</sound>
-        <sound>sound\snd_land_stone_3</sound>
-        <sound>sound\snd_step_stone_1</sound>
-        <sound>sound\snd_step_stone_2</sound>
-        <sound>sound\snd_step_stone_3</sound>
-      </sounds>
-      <sounds name="metal">
-        <sound>sound\snd_land_metal_1</sound>
-        <sound>sound\snd_land_metal_2</sound>
-        <sound>sound\snd_land_metal_3</sound>
-        <sound>sound\snd_step_metal_1</sound>
-        <sound>sound\snd_step_metal_2</sound>
-        <sound>sound\snd_step_metal_3</sound>
       </sounds>
     </sounds>
     <sound>sound\snd_menu_hover</sound>
@@ -1752,6 +1755,7 @@
       <object>objects\obj_rolling_cutter</object>
       <object>objects\obj_crush_shot</object>
       <object>objects\obj_spin_flame</object>
+      <object>objects\obj_buckshot</object>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>

@@ -9,8 +9,8 @@
   <bboxmode>0</bboxmode>
   <bbox_left>4</bbox_left>
   <bbox_right>17</bbox_right>
-  <bbox_top>5</bbox_top>
-  <bbox_bottom>14</bbox_bottom>
+  <bbox_top>3</bbox_top>
+  <bbox_bottom>16</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
@@ -28,5 +28,6 @@
     <frame index="5">images\HUD_weapon_icon_5.png</frame>
     <frame index="6">images\HUD_weapon_icon_6.png</frame>
     <frame index="7">images\HUD_weapon_icon_7.png</frame>
+    <frame index="8">images\HUD_weapon_icon_8.png</frame>
   </frames>
 </sprite>
