@@ -35,23 +35,29 @@ switch(move_state)
                 xspeed = walk_speed*h_dir;
                 dir = h_dir;
                 
+                // wall climb
+                if (detect_wc)
+                and (((input_right) and (wc_side & tile_side.left  == tile_side.left))
+                or   ((input_left)  and (wc_side & tile_side.right == tile_side.right)))
+                    {
+                    if (on_ground and (input_up xor input_down))
+                        {
+                        if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
+                            {
+                            move_state = mState.wc;
+                            yspeed = wc_speed*v_dir;
+                            }
+                        }
+                    else if (!on_ground)
+                        {
+                        move_state = mState.wc;
+                        yspeed = 0;
+                        }
+                    }
+                
                 // move left or right
                 if (input_right)
                     {
-                    // climb wall to the right
-                    if (detect_wc) and (wc_side & tile_side.left == tile_side.left)
-                        {
-                        if (input_up) xor (input_down)
-                            {
-                            if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
-                                {
-                                move_state = mState.wc;
-                                // start moving to use correct animation
-                                yspeed = wc_speed*v_dir;
-                                }
-                            }
-                        }
-                    
                     // aim
                     if (input_up)
                         aim = 45;
@@ -62,20 +68,6 @@ switch(move_state)
                     }
                 if (input_left)
                     {
-                    // climb wall to the left
-                    if (detect_wc) and (wc_side & tile_side.right == tile_side.right)
-                        {
-                        if (input_up) xor (input_down)
-                            {
-                            if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
-                                {
-                                move_state = mState.wc;
-                                // start moving to use correct animation
-                                yspeed = wc_speed*v_dir;
-                                }
-                            }
-                        }
-                    
                     // aim
                     if (input_up)
                         aim = 135;
@@ -371,24 +363,23 @@ switch(move_state)
                         yspeed = wc_speed*v_dir;
                         
                         // transition from wall climb to monkey bar
-                        if (detect_mb)
+                        if (detect_mb) and (mb_id == noone)
                             {
-                            if ((input_right and wc_r) or (input_left and wc_l))
-                            and (mb_id == noone) and (input_up)
+                            var temp_mb = detect_mb_id;
+                            
+                            var x1 = temp_mb.x+temp_mb.x1;
+                            var x2 = temp_mb.x+temp_mb.x2;
+                            var y1 = temp_mb.y+temp_mb.y1;
+                            var y2 = temp_mb.y+temp_mb.y2;
+                            var len = temp_mb.len;
+                            var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                            var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                            var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
+                            
+                            if ((off >= 0) and (off <= len)) and (abs(y-(yto+32)) <= wc_speed)
+                            and (!place_meeting(x,yto+32,par_solid))
                                 {
-                                var temp_mb = detect_mb_id;
-                                
-                                var x1 = temp_mb.x+temp_mb.x1;
-                                var x2 = temp_mb.x+temp_mb.x2;
-                                var y1 = temp_mb.y+temp_mb.y1;
-                                var y2 = temp_mb.y+temp_mb.y2;
-                                var len = temp_mb.len;
-                                var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
-                                var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
-                                var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
-                                
-                                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= 10)
-                                and (!place_meeting(x,yto+32,par_solid))
+                                if ((input_right and wc_r) or (input_left and wc_l)) and (input_up)
                                     {
                                     move_state = mState.mb;
                                     y = yto+32;
@@ -398,9 +389,9 @@ switch(move_state)
                                     xspeed = 0;
                                     yspeed = 0;
                                     }
+                                else
+                                    yspeed = max(0,yspeed);
                                 }
-                            else
-                                yspeed = max(0,yspeed);
                             }
                         }
                     

@@ -26,6 +26,7 @@ detect_mb_id = noone;
 if (!no_mb) and (no_mb_time <= 0)
     {
     if (move_state == mState.mb)
+    or (move_state == mState.wc)
         {
         detect_mb_id = instance_position(x,y-32,par_mb);
         if (detect_mb_id != noone)
