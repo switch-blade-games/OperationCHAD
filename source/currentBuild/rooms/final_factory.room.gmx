@@ -390,14 +390,12 @@ with(obj_wall)
     <instance objName="BG_pipe_2" x="1320" y="1360" name="inst_2DAD4D24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_2" x="2820" y="1240" name="inst_A7E4140D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="BG_pipe_1" x="3040" y="1240" name="inst_C2AE3D42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coat_pipe" x="-60" y="1380" name="inst_A3FDEE77" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coat_pipe" x="1300" y="1360" name="inst_C3AEA4A5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_L" x="620" y="1620" name="inst_32D22411" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_X" x="1820" y="1500" name="inst_3FC8FF13" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_L" x="2360" y="1480" name="inst_A5C07063" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="enemy_X" x="3880" y="1280" name="inst_CCB84697" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="groyp_gag" x="420" y="1520" name="inst_39E75A1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="pop_served" x="3340" y="1260" name="inst_57083870" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="groyp_gag" x="830" y="1510" name="inst_39E75A1B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="pop_served" x="180" y="1410" name="inst_57083870" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="over_tube" x="2680" y="1280" name="inst_C300BD6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hanger_pile" x="1920" y="1520" name="inst_098DFF41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hanger_pile" x="3300" y="1420" name="inst_14074FDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

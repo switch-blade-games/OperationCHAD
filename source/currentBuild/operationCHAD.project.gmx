@@ -226,9 +226,12 @@
         <sprite>sprites\med_waste_spr</sprite>
         <sprites name="moloch">
           <sprites name="mo-bot">
+            <sprite>sprites\moloch_outline_spr</sprite>
+            <sprite>sprites\moloch_die_spr</sprite>
             <sprite>sprites\moloch_black_spr</sprite>
             <sprite>sprites\moloch_enter_glow_spr</sprite>
             <sprite>sprites\bot_under_spr</sprite>
+            <sprite>sprites\moloch_nose_ring_spr</sprite>
             <sprite>sprites\moloch_enter_spr</sprite>
             <sprite>sprites\moloch_flap_open_spr</sprite>
             <sprite>sprites\moloch_flap_close_spr</sprite>
@@ -254,6 +257,7 @@
             <sprite>sprites\mife_pill_spr</sprite>
             <sprite>sprites\moloch_steam_spr</sprite>
             <sprite>sprites\moloch_flap_vend_spr</sprite>
+            <sprite>sprites\moloch_top_spr</sprite>
           </sprites>
           <sprites name="moloch_BGs">
             <sprite>sprites\moloch_regular_BG_spr</sprite>
@@ -283,6 +287,7 @@
             <sprite>sprites\moloch_lady_coin_spr</sprite>
             <sprite>sprites\moloch_lady_throw_spr</sprite>
             <sprite>sprites\lady_flower_spr</sprite>
+            <sprite>sprites\moloch_lady_cry_spr</sprite>
           </sprites>
           <sprite>sprites\sheckle_spr</sprite>
           <sprite>sprites\nice_5_spr</sprite>
@@ -818,6 +823,8 @@
       <sprite>sprites\floor_flame_spr</sprite>
       <sprite>sprites\spr_casings</sprite>
       <sprite>sprites\spr_dust</sprite>
+      <sprite>sprites\action_lines_spr</sprite>
+      <sprite>sprites\moloch_hebrew_spr</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\HUD_hit_rate</sprite>
@@ -1097,6 +1104,8 @@
         <script>scripts\dragon_make_pills.gml</script>
         <script>scripts\dragon_hit.gml</script>
       </scripts>
+      <script>scripts\moloch_die_list.gml</script>
+      <script>scripts\elevator_down.gml</script>
     </scripts>
     <script>scripts\camera_deactivate.gml</script>
     <script>scripts\camera_bounds.gml</script>
@@ -1120,8 +1129,21 @@
         <object>objects\ep_warning</object>
         <object>objects\obj_gamepad_disconnect</object>
         <object>objects\stage_finish</object>
+        <objects name="Cutscene">
+          <object>objects\opening_cutscene</object>
+          <object>objects\no_boss_cutscene</object>
+          <object>objects\time_cutscene</object>
+          <object>objects\ending_cutscene</object>
+          <object>objects\ending_pan</object>
+          <objects name="game_over">
+            <object>objects\game_over_controller</object>
+          </objects>
+        </objects>
         <objects name="player_select">
           <object>objects\player_select_controller</object>
+        </objects>
+        <objects name="panels">
+          <object>objects\panel_controller</object>
         </objects>
       </objects>
       <objects name="001-Abortion Factory">
@@ -1222,42 +1244,57 @@
           <object>objects\over_light</object>
         </objects>
         <object>objects\elevator_drawer</object>
-        <object>objects\elevator_platform</object>
-        <object>objects\hang_man_enter</object>
-        <object>objects\hang_rod</object>
-        <object>objects\hang_man</object>
         <objects name="moloch_boss">
           <object>objects\moloch_controller</object>
-          <object>objects\elevator_floor</object>
-          <object>objects\moloch_bottom_BG</object>
-          <object>objects\moloch_regular_BG</object>
-          <object>objects\moloch_lady_BG</object>
-          <object>objects\moloch_flap</object>
-          <object>objects\moloch_under</object>
-          <object>objects\moloch_obj</object>
-          <object>objects\moloch_pocket</object>
-          <object>objects\moloch_light</object>
           <object>objects\elev_surface_drawer</object>
-          <object>objects\fryguy_BG</object>
-          <object>objects\moloch_blade</object>
-          <object>objects\lady_desk</object>
-          <object>objects\moloch_lady</object>
-          <object>objects\nice_obj</object>
-          <object>objects\moloch_enter</object>
-          <object>objects\cat</object>
-          <object>objects\moloch_hand</object>
-          <object>objects\moloch_coin</object>
-          <object>objects\lady_flower</object>
-          <object>objects\coin_sparkle</object>
-          <object>objects\mife_box_bottom</object>
-          <object>objects\mifeprex</object>
-          <object>objects\mife_pill</object>
-          <object>objects\mife_pill_go</object>
-          <object>objects\mife_tin</object>
-          <object>objects\med_snake</object>
-          <object>objects\moloch_arm_ball</object>
-          <object>objects\moloch_arm_1</object>
-          <object>objects\moloch_steam</object>
+          <objects name="moloch_BG">
+            <object>objects\elevator_floor</object>
+            <object>objects\moloch_light</object>
+            <object>objects\moloch_regular_BG</object>
+            <object>objects\moloch_lady_BG</object>
+            <object>objects\moloch_bottom_BG</object>
+          </objects>
+          <objects name="mo-bot">
+            <object>objects\moloch_obj</object>
+            <object>objects\moloch_ring</object>
+            <object>objects\nice_obj</object>
+            <object>objects\moloch_enter</object>
+            <object>objects\moloch_hand</object>
+            <object>objects\moloch_flap</object>
+            <object>objects\moloch_under</object>
+            <object>objects\moloch_pocket</object>
+            <object>objects\moloch_arm_ball</object>
+            <object>objects\moloch_arm_1</object>
+            <object>objects\moloch_blade</object>
+            <object>objects\moloch_steam</object>
+            <object>objects\moloch_die</object>
+            <object>objects\moloch_head_flip</object>
+          </objects>
+          <objects name="mife">
+            <object>objects\mife_box_bottom</object>
+            <object>objects\mifeprex</object>
+            <object>objects\mife_pill_go</object>
+            <object>objects\mife_pill</object>
+            <object>objects\mife_tin</object>
+          </objects>
+          <objects name="lady">
+            <object>objects\moloch_lady</object>
+            <object>objects\moloch_coin</object>
+            <object>objects\cat</object>
+            <object>objects\lady_desk</object>
+            <object>objects\lady_flower</object>
+            <object>objects\coin_sparkle</object>
+          </objects>
+          <objects name="fryguy">
+            <object>objects\fryguy_BG</object>
+          </objects>
+          <objects name="elevator">
+            <object>objects\hang_rod</object>
+            <object>objects\elevator_platform</object>
+            <object>objects\hang_man_enter</object>
+            <object>objects\hang_man</object>
+            <object>objects\med_snake</object>
+          </objects>
         </objects>
       </objects>
       <objects name="002-Public School">
@@ -1687,16 +1724,6 @@
         </objects>
         <object>objects\stonetoss_comic</object>
       </objects>
-      <objects name="Cutscene">
-        <object>objects\no_boss_cutscene</object>
-        <object>objects\opening_cutscene</object>
-        <object>objects\time_cutscene</object>
-        <object>objects\ending_cutscene</object>
-        <object>objects\ending_pan</object>
-        <objects name="game_over">
-          <object>objects\game_over_controller</object>
-        </objects>
-      </objects>
     </objects>
     <objects name="colliders">
       <object>objects\obj_wall</object>
@@ -1765,6 +1792,7 @@
       <object>objects\screen_explode</object>
       <object>objects\mini_exploder</object>
       <object>objects\boss_die_flash</object>
+      <object>objects\top_die_flash</object>
     </objects>
     <objects name="editor">
       <object>objects\obj_editor</object>
@@ -1799,18 +1827,21 @@
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
+      <room>rooms\ep_room</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
+        <room>rooms\player_select_room</room>
+        <room>rooms\open_cutscene_room</room>
+        <room>rooms\panel_room</room>
         <room>rooms\final_factory</room>
+        <room>rooms\moloch_mockup</room>
         <room>rooms\clown_judge_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
-      <room>rooms\player_select_room</room>
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
-        <room>rooms\moloch_mockup</room>
         <room>rooms\tong_room</room>
         <room>rooms\elevator_mockup</room>
         <room>rooms\fryguy_room</room>
@@ -1862,9 +1893,7 @@
         <room>rooms\end_cutscene_room</room>
         <room>rooms\no_boss_cutscene_room</room>
         <room>rooms\cine_room</room>
-        <room>rooms\ep_room</room>
         <room>rooms\game_over_room</room>
-        <room>rooms\open_cutscene_room</room>
         <room>rooms\time_cutscene_room</room>
       </rooms>
     </rooms>

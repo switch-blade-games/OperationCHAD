@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ARM1=instance_create(x,y,moloch_arm_1)
+            <string>RING=instance_create(x,y,moloch_ring)
+
+RINGx=2
+RINGy=-27
+
+ARM1=instance_create(x,y,moloch_arm_1)
 
 ARM1x=-120
 ARM1y=8
@@ -325,7 +330,12 @@ alarm[0]=BLADErate
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ARM1.x=x+ARM1x
+            <string>if(instance_number(RING)=1){
+RING.x=x+RINGx
+RING.y=y+RINGy
+}
+
+ARM1.x=x+ARM1x
 ARM1.y=y+ARM1y
 
 UNDER.x=x+UNDERx

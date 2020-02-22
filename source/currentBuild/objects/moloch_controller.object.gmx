@@ -33,7 +33,7 @@ global.MOLOCHy=y
 MARGIN=20;
 
 
-
+DOWNspe=0.5
 
 
 WAIT=1
@@ -42,7 +42,7 @@ DONE=3
 
 state=WAIT
 
-DOWNspe=0.5
+
 
 //make BG gears
 
@@ -210,35 +210,7 @@ if(ATTACK=2){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state=DOWN
-
-global.yshake=10
-
-
-//list of objects that need to start moving up
-
-var SETspe=DOWNspe;
-
-with(moloch_regular_BG)
-    motion_set(90,SETspe)
-    
-with(moloch_lady_BG)
-    motion_set(90,SETspe)
-    
-with(moloch_light)
-    motion_set(90,SETspe)
-    
-with(moloch_obj)
-    motion_set(90,SETspe)
-    
-with(lady_desk)
-    motion_set(90,SETspe)
-    
-with(moloch_lady)
-    motion_set(90,SETspe)
-    
-with(elev_surface_drawer)
-    motion_set(90,SETspe)
+            <string>elevator_down(DOWNspe)
     
 
     

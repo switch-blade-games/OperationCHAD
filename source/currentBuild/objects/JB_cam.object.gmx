@@ -52,7 +52,7 @@ Ycurrent = 0;
 if (room == final_factory)
     {
     // factory sequencing
-    MYarray[0] = 1460;
+    MYarray[0] = 1440;
     MYarray[1] = 1280;
     MYarray[2] = 2660;
     }
@@ -178,6 +178,21 @@ switch(state)
         if(x&gt;=RJOGx){
             x=RJOGx
             state=LOCKED
+            
+            
+            //trigger lady
+            if(room=final_factory){
+            
+            
+            with(moloch_lady){
+                state=SURPRISE
+                alarm[1]=SURPRISEtime
+                    with(cat)
+                    state=JUMP
+                }
+            }
+                
+            
             }
         y=round(Yset)
         break;
