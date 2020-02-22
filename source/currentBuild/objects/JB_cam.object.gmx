@@ -52,7 +52,7 @@ Ycurrent = 0;
 if (room == final_factory)
     {
     // factory sequencing
-    MYarray[0] = 1460;
+    MYarray[0] = 1440;
     MYarray[1] = 1280;
     MYarray[2] = 2660;
     }
