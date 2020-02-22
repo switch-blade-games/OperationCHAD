@@ -77,6 +77,7 @@
       <sounds name="weapons">
         <sound>sound\bullet_snd</sound>
         <sound>sound\snd_buckshot</sound>
+        <sound>sound\snd_missile</sound>
       </sounds>
     </sounds>
     <sounds name="effects">

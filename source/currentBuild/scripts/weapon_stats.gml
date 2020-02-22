@@ -10,7 +10,8 @@ enum weapon
     rollingCutter,
     crushShot,
     spinFlame,
-    buckShot
+    buckShot,
+    spreadCrush
     }
 
 weapon_name[weapon.rifle] = "Rifle";    // Name
@@ -88,7 +89,7 @@ weapon_pnum[weapon.crushShot] = 1;
 weapon_sprd[weapon.crushShot] = 0;
 weapon_proj[weapon.crushShot] = obj_crush_shot;
 weapon_case[weapon.crushShot] = -1;
-weapon_snd[weapon.crushShot] = bullet_snd;
+weapon_snd[weapon.crushShot] = snd_missile;
 weapons++;
 
 weapon_name[weapon.spinFlame] = "Spin Flame";
@@ -115,4 +116,17 @@ weapon_sprd[weapon.buckShot] = 0;
 weapon_proj[weapon.buckShot] = obj_buckshot;
 weapon_case[weapon.buckShot] = -1;
 weapon_snd[weapon.buckShot] = snd_buckshot;
+weapons++;
+
+weapon_name[weapon.spreadCrush] = "Spread Crush";
+weapon_auto[weapon.spreadCrush] = true;
+weapon_walk[weapon.spreadCrush] = false;
+weapon_pmax[weapon.spreadCrush] = 9;
+weapon_time[weapon.spreadCrush] = 32;
+weapon_pspd[weapon.spreadCrush] = 6;
+weapon_pnum[weapon.spreadCrush] = 3;
+weapon_sprd[weapon.spreadCrush] = 9;
+weapon_proj[weapon.spreadCrush] = obj_crush_shot;
+weapon_case[weapon.spreadCrush] = -1;
+weapon_snd[weapon.spreadCrush] = snd_missile;
 weapons++;
