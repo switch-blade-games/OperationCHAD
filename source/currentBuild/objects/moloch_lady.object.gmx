@@ -45,6 +45,8 @@ COIN=7
 
 THROW=8
 
+CRY=9
+
 
 state=DRINK
 
@@ -293,6 +295,12 @@ if(state=COIN){
 if(state=THROW){
 
     sprite_index=moloch_lady_throw_spr
+}
+
+if(state=CRY){
+
+    sprite_index=moloch_lady_cry_spr
+    
 }
 
 draw_self()

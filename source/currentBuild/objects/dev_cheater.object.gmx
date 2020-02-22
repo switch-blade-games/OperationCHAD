@@ -91,6 +91,8 @@ log("["+string(objects)+"] Objects Indexed");
           <argument>
             <kind>1</kind>
             <string>//JB CODE
+
+/*
 if(gamepad_check(0,gpinput.trigr)=true){
     global.yshake=6
 }
@@ -99,6 +101,8 @@ if(gamepad_check(0,gpinput.trigl)=true){
         instance_create(x+40+random(40),y+140,muslim_spin)
     }
 ///END JB CODE
+
+*/
 
 // smooth fps stats
 if (fps_real &gt; max_fps)

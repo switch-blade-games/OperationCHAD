@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var FLASH=instance_create(global.MOLOCHx,global.MOLOCHy,boss_die_flash);
+            <string>with(moloch_lady)
+    state=CRY
+
+var FLASH=instance_create(global.MOLOCHx,global.MOLOCHy,boss_die_flash);
 
 with(FLASH)
     event_perform(ev_create,0)
@@ -33,10 +36,68 @@ with(FLASH)
 
 FLASH.depth=111
 
+FLASH.MOLOCH=true
+
 
 instance_create(0,0,screen_explode)
 
+alarm[0]=FLASH.TIME
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(x,y-60,moloch_head_flip)
+
+instance_destroy()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(instance_number(boss_die_flash)=1)
+if(boss_die_flash.OUTLINE=true)
+sprite_index=moloch_outline_spr
+else
+sprite_index=moloch_die_spr
+
+draw_self()
 </string>
           </argument>
         </arguments>

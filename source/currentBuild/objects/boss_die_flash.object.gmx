@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>rate=6
+            <string>//FLASHson=instance_create(x,y,top_die_flash)
+
+rate=8
 
 alarm[0]=rate
 
@@ -33,7 +35,7 @@ CURRENTcol=PURPLE
 
 OUTLINE=false
 
-TIME=12000
+TIME=120
 
 ON=true
 
@@ -45,6 +47,28 @@ MARGIN=20
 
 MOLOCH=false
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -70,6 +94,10 @@ MOLOCH=false
 
 with(screen_explode)
     instance_destroy()
+    
+    
+//with(FLASHson)
+    //instance_destroy()
 </string>
           </argument>
         </arguments>
@@ -156,6 +184,7 @@ ON=false
             <kind>1</kind>
             <string>CURRENTcol=DARKpurple
 
+
 alarm[4]=rate
 
 
@@ -217,6 +246,8 @@ ON=false
             <kind>1</kind>
             <string>CURRENTcol=ORANGE
 
+
+
 alarm[2]=rate
 
 if(ON=false)
@@ -249,7 +280,7 @@ ON=false
 
 alarm[1]=rate
 
-OUTline=false
+OUTLINE=false
 
 if(ON=false)
 ON=true
@@ -277,7 +308,9 @@ ON=false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(CURRENTcol)
+            <string>
+
+draw_set_color(CURRENTcol)
 
 draw_rectangle(x-MARGIN,y-MARGIN,x+400+MARGIN,y+240+MARGIN,false)
 

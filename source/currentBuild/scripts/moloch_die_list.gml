@@ -6,6 +6,9 @@ with(mifeprex)
 with(mife_box_bottom)
     instance_destroy()
     
+with(mife_pill)
+    instance_destroy()
+    
 with(mife_pill_go)
     instance_destroy()
     

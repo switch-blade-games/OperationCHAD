@@ -178,6 +178,21 @@ switch(state)
         if(x&gt;=RJOGx){
             x=RJOGx
             state=LOCKED
+            
+            
+            //trigger lady
+            if(room=final_factory){
+            
+            
+            with(moloch_lady){
+                state=SURPRISE
+                alarm[1]=SURPRISEtime
+                    with(cat)
+                    state=JUMP
+                }
+            }
+                
+            
             }
         y=round(Yset)
         break;
