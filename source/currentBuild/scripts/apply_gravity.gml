@@ -121,6 +121,15 @@ switch(move_state)
             mb_id = noone;
             no_mb_time = 12;
             drop = true;
+            
+            // wall climb
+            if (detect_wc)
+            and (((input_right) and (wc_side & tile_side.left  == tile_side.left))
+            or   ((input_left)  and (wc_side & tile_side.right == tile_side.right)))
+                {
+                move_state = mState.wc;
+                yspeed = 0;
+                }
             }
         
         yspeed = 0;
