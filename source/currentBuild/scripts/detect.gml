@@ -23,22 +23,22 @@ if (detect_ground)
 // detect monkey bar
 detect_mb = false;
 detect_mb_id = noone;
-if (!no_mb) and (no_mb_time <= 0)
+if (move_state == mState.mb)
+or (move_state == mState.wc)
     {
-    if (move_state == mState.mb)
-    or (move_state == mState.wc)
-        {
-        detect_mb_id = instance_position(x,y-32,par_mb);
-        if (detect_mb_id != noone)
-            detect_mb = true;
-        }
-    else
-        {
-        detect_mb_id = collision_line(x,y-28,x,y-40,par_mb,true,true);
-        if (detect_mb_id != noone)
-            detect_mb = true;
-        }
+    detect_mb_id = instance_position(x,y-32,par_mb);
+    if (detect_mb_id != noone)
+        detect_mb = true;
     }
+else
+    {
+    detect_mb_id = collision_line(x,y-28,x,y-40,par_mb,true,true);
+    if (detect_mb_id != noone)
+        detect_mb = true;
+    }
+if (no_mb_time > 0)
+    no_mb_time--;
+can_mb = (!no_mb) and (no_mb_time == 0);
 
 // detect climbable walls
 detect_wc = false;
@@ -61,3 +61,6 @@ if (temp_id != noone) and (temp_id.sides & tile_side.bottom == tile_side.bottom)
     detect_wc = true;
     wc_side += tile_side.bottom;
     }
+if (no_wc_time > 0)
+    no_wc_time--;
+can_wc = (!no_wc) and (no_wc_time == 0);

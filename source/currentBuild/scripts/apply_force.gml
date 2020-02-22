@@ -7,6 +7,7 @@ switch(move_state)
             {
             move_state = mState.walk;
             mb_id = noone;
+            no_mb_time = 12;
             drop = true;
             break;
             }
@@ -25,6 +26,9 @@ switch(move_state)
             mb_sign = ternary(x2>=x1,+1,-1);
             }
         else
+            {
             mb_id = noone;
+            no_mb_time = 12;
+            }
         break;
     }

@@ -7,14 +7,9 @@ switch(move_state)
         on_ground = false;
         if (detect_ground)
             {
-            // on the ground
             on_ground = true;
-            // grace jump time
             grace_jump = 8;
-            // drop
             drop = false;
-            // no hang
-            no_mb = false;
             
             // sfx
             if (land_sfx)
@@ -30,7 +25,7 @@ switch(move_state)
         else
             {
             // start hanging
-            if (detect_mb) and (mb_id == noone) and (yspeed > 0)
+            if (detect_mb) and (mb_id == noone)
                 {
                 var temp_mb = detect_mb_id;
                 
@@ -43,8 +38,9 @@ switch(move_state)
                 var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
                 var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
-                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= 10)
-                and (!place_meeting(x,yto+32,par_solid))
+                // make sure we can smoothly transition to monkeybar
+                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= yspeed)
+                and (yspeed > 0) and (can_mb) and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
                     y = yto+32;
@@ -88,6 +84,7 @@ switch(move_state)
                 mb_sign = ternary(x2>=x1,+1,-1);
                 }
             
+            // manually detect a possible monkey bar
             var temp_mb = collision_line(x,y-28,x,y-40,par_mb,true,true);
             if (temp_mb != noone)
                 {
@@ -100,8 +97,9 @@ switch(move_state)
                 var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
                 var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                 
+                // make sure we can smoothly continue hanging from a monkeybar
                 if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= 10)
-                and (!place_meeting(x,yto+32,par_solid))
+                and (can_mb) and (!place_meeting(x,yto+32,par_solid))
                     {
                     move_state = mState.mb;
                     y = yto+32;
@@ -117,18 +115,18 @@ switch(move_state)
         
         if (fall)
             {
-            move_state = mState.walk;
             mb_id = noone;
             no_mb_time = 12;
-            drop = true;
             
             // wall climb
-            if (detect_wc)
+            if (detect_wc) and (can_wc)
             and (((input_right) and (wc_side & tile_side.left  == tile_side.left))
             or   ((input_left)  and (wc_side & tile_side.right == tile_side.right)))
-                {
                 move_state = mState.wc;
-                yspeed = 0;
+            else
+                {
+                move_state = mState.walk;
+                drop = true;
                 }
             }
         
@@ -139,15 +137,12 @@ switch(move_state)
     
     case mState.wc:
         on_ground = false;
+        // detect if we are on the ground for potential
+        // wallclimb to walking transition
         if (place_meeting(x,y+1,par_solid))
         or (!place_meeting(x,y,par_jt) and place_meeting(x,y+1,par_jt) and yspeed >= 0)
         or (position_meeting(x,bbox_bottom+1,par_ramp))
-            {
-            // on the ground
             on_ground = true;
-            // no hang
-            no_mb = false;
-            }
         break;
     
     case mState.moto:
@@ -158,26 +153,14 @@ switch(move_state)
             on_moto = true;
             y = moto_y;
             yspeed = 0;
-            // no hang
-            no_mb = false;
             }
         else
             {
             // start hanging
             if (detect_mb) and (mb_id = noone) and (yspeed > 0)
+            and (!no_mb) and (no_mb_timer == 0)
                 {
-                var temp_mb = detect_mb_id;
-                var xh = x-(temp_mb.x);
-                var yh = floor(lerp(temp_mb.y1,temp_mb.y2,xh/(temp_mb.x2-temp_mb.x1)))+40;
-                if (!place_meeting(temp_mb.x+xh,temp_mb.y+yh,par_solid))
-                    {
-                    move_state = mState.mb;
-                    x = temp_mb.x + xh;
-                    y = temp_mb.y + yh;
-                    mb_id = temp_mb;
-                    mb_offset = xh;
-                    yspeed = 0;
-                    }
+                // wall climbing code
                 }
             if (yspeed < fall_speed)
                 yspeed += grav;
@@ -194,7 +177,6 @@ switch(move_state)
             if (moto_yspeed < fall_speed)
                 moto_yspeed += grav;
             }
-        
         moto_y += moto_yspeed;
         break;
     
@@ -202,12 +184,7 @@ switch(move_state)
         // detect if we're standing on ground
         on_ground = false;
         if (detect_ground)
-            {
-            // on the ground
             on_ground = true;
-            // grace jump time
-            grace_jump = 8;
-            }
         
         // gravity
         if (!on_ground) and (yspeed < fall_speed)

@@ -35,11 +35,12 @@ switch(move_state)
                 xspeed = walk_speed*h_dir;
                 dir = h_dir;
                 
-                // wall climb
-                if (detect_wc)
+                // transition from walking to wallclimb
+                if (detect_wc) and (can_wc)
                 and (((input_right) and (wc_side & tile_side.left  == tile_side.left))
                 or   ((input_left)  and (wc_side & tile_side.right == tile_side.right)))
                     {
+                    // ground transition from walking to wallclimb
                     if (on_ground and (input_up xor input_down))
                         {
                         if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
@@ -50,6 +51,7 @@ switch(move_state)
                         }
                     else if (!on_ground)
                         {
+                        // mid-air transition from walking to wallclimb
                         move_state = mState.wc;
                         yspeed = 0;
                         }
@@ -111,20 +113,18 @@ switch(move_state)
                 }
             
             // climb wall above the player
-            if (!on_ground) and (input_up)
+            if (detect_wc) and (can_wc)
+            and ((input_up) and (wc_side & tile_side.bottom == tile_side.bottom))
                 {
-                if (detect_wc) and (wc_side & tile_side.bottom == tile_side.bottom)
-                and (!input_down)
+                if (!on_ground) and (!input_down)
                     {
                     move_state = mState.wc;
                     yspeed = 0;
                     xspeed = 0;
                     // start moving to use correct animation
-                    if (input_left) xor (input_right)
-                        {
-                        if (!place_meeting(x+wc_speed*h_dir,y,par_solid))
-                            xspeed = wc_speed*h_dir;
-                        }
+                    if ((input_left) xor (input_right))
+                    and (!place_meeting(x+wc_speed*h_dir,y,par_solid))
+                        xspeed = wc_speed*h_dir;
                     }
                 }
             }
@@ -242,34 +242,18 @@ switch(move_state)
                 }
             }
         
-        if (input_jump_pressed)
+        // let go of monkeybar
+        if (input_jump_pressed) and (!input_lock)
             {
-            if (input_down)
+            move_state = mState.walk;
+            mb_id = noone;
+            no_mb_time = 12;
+            drop = true;
+            // jump up if unobstructed, otherwise just fall
+            if (!input_down) and (!place_meeting(x,y-10,par_solid))
                 {
-                if (!input_lock)
-                    {
-                    move_state = mState.walk;
-                    // drop
-                    drop = true;
-                    mb_id = noone;
-                    no_mb_time = 12;
-                    }
-                }
-            else
-                {
-                move_state = mState.walk;
-                mb_id = noone;
-                if (!place_meeting(x,y-10,par_solid))
-                    {
-                    // drop
-                    drop = false;
-                    jump();
-                    }
-                else
-                    {
-                    drop = true;
-                    no_mb_time = 12;
-                    }
+                drop = false;
+                jump();
                 }
             }
         break;
@@ -376,21 +360,22 @@ switch(move_state)
                             var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
                             var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                             
-                            if ((off >= 0) and (off <= len)) and (abs(y-(yto+32)) <= wc_speed)
+                            // don't move up into a monkey bar
+                            if ((off < 0) or (off > len)) or (y <= yto+32) or (!can_mb)
+                                yspeed = max(0,yspeed);
+                            
+                            // transition from wallclimb to monkeybar
+                            if ((input_right and wc_r) or (input_left and wc_l)) and (input_up)
+                            and (abs(y-(yto+32)) <= wc_speed)
                             and (!place_meeting(x,yto+32,par_solid))
                                 {
-                                if ((input_right and wc_r) or (input_left and wc_l)) and (input_up)
-                                    {
-                                    move_state = mState.mb;
-                                    y = yto+32;
-                                    mb_id = temp_mb;
-                                    mb_offset = off;
-                                    mb_sign = ternary(x1<x2,+1,-1);
-                                    xspeed = 0;
-                                    yspeed = 0;
-                                    }
-                                else
-                                    yspeed = max(0,yspeed);
+                                move_state = mState.mb;
+                                y = yto+32;
+                                mb_id = temp_mb;
+                                mb_offset = off;
+                                mb_sign = ternary(x1<x2,+1,-1);
+                                xspeed = 0;
+                                yspeed = 0;
                                 }
                             }
                         }
@@ -400,6 +385,7 @@ switch(move_state)
                     or (on_ground and (input_down or (wc_r and input_right) or (wc_l and input_left)))
                         {
                         move_state = mState.walk;
+                        no_wc_time = 12;
                         aim = point_direction(0,0,dir,0);
                         drop = true;
                         }
@@ -431,6 +417,7 @@ switch(move_state)
                     or (input_down and on_ground)
                         {
                         move_state = mState.walk;
+                        no_wc_time = 12;
                         aim = point_direction(0,0,dir,0);
                         drop = true;
                         }
@@ -439,14 +426,15 @@ switch(move_state)
             }
         else
             {
+            // transition from wallclimb to walk
             move_state = mState.walk;
+            no_wc_time = 12;
             drop = true;
             }
         break;
     
     case mState.moto:
         lock = (input_lock) and (on_moto);
-        
         if (lock)
             {
             // aim

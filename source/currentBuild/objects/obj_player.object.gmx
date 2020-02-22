@@ -87,12 +87,14 @@ flash_rate = 3; // higher = slower
 grace_jump = 0; // 6
 ramp_slope = 1;
 wc_side = tile_side.none;
+no_wc = false;
+no_wc_time = 0;
 mb_id = noone;
 mb_offset = 0;
 mb_offset_old = 0;
 mb_sign = 1;
 no_mb = false;
-no_mb_time = false;
+no_mb_time = 0;
 moto_y = 0;
 moto_yspeed = 0;
 moto_shake = 0;
@@ -198,9 +200,6 @@ collide();
 animate();
 live();
 
-// hang time
-if (no_mb_time &gt; 0)
-    no_mb_time--;
 // weapon
 if (shoot_timer &gt; 0)
     shoot_timer--;
@@ -256,6 +255,8 @@ if (respawn_flash) or (flash &gt; 0)
     }
 else
     draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
+
+draw_text(x+24,y,"State: "+string(move_state));
 </string>
           </argument>
         </arguments>

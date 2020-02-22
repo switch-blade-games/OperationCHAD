@@ -89,9 +89,12 @@ else
                     // stop before moving into the wall
                     yspeed = 0;
                     
-                    var inst = instance_place(x,y+uy,par_climb);
-                    if (inst != noone) and (inst.sides & tile_side.bottom == tile_side.bottom) and (input_up)
-                        move_state = mState.wc;
+                    if (can_wc)
+                        {
+                        var inst = instance_place(x,y+uy,par_climb);
+                        if (inst != noone) and (input_up) and (inst.sides & tile_side.bottom == tile_side.bottom)
+                            move_state = mState.wc;
+                        }
                     break;
                     }
                 else
