@@ -140,6 +140,100 @@
             <sprite>sprites\spr_arrow_h</sprite>
           </sprites>
         </sprites>
+        <sprites name="Cutscene">
+          <sprites name="ending">
+            <sprite>sprites\end_1_spr</sprite>
+            <sprite>sprites\end_2_spr</sprite>
+            <sprite>sprites\end_3_spr</sprite>
+            <sprite>sprites\end_4_spr</sprite>
+            <sprite>sprites\end_44_spr</sprite>
+            <sprite>sprites\end_5_spr</sprite>
+            <sprite>sprites\end_6_spr</sprite>
+            <sprite>sprites\end_7_spr</sprite>
+            <sprite>sprites\end_8_spr</sprite>
+            <sprite>sprites\end_9_spr</sprite>
+            <sprite>sprites\end_10_spr</sprite>
+            <sprite>sprites\ending_pan_spr</sprite>
+          </sprites>
+          <sprites name="time_machine">
+            <sprite>sprites\time_1_spr</sprite>
+            <sprite>sprites\time_2_spr</sprite>
+            <sprite>sprites\time_3_spr</sprite>
+            <sprite>sprites\time_4_spr</sprite>
+            <sprite>sprites\time_5_spr</sprite>
+            <sprite>sprites\time_6_spr</sprite>
+            <sprite>sprites\time_7_spr</sprite>
+            <sprite>sprites\time_8_spr</sprite>
+            <sprite>sprites\time_9_spr</sprite>
+            <sprite>sprites\time_10_spr</sprite>
+            <sprite>sprites\time_11_spr</sprite>
+            <sprite>sprites\time_12_spr</sprite>
+            <sprite>sprites\time_13_spr</sprite>
+            <sprite>sprites\time_14_spr</sprite>
+            <sprite>sprites\time_15_spr</sprite>
+            <sprite>sprites\time_16_spr</sprite>
+            <sprite>sprites\time_17_spr</sprite>
+            <sprite>sprites\time_18_spr</sprite>
+            <sprite>sprites\time_19_spr</sprite>
+            <sprite>sprites\time_20_spr</sprite>
+            <sprite>sprites\time_21_spr</sprite>
+            <sprite>sprites\time_22_spr</sprite>
+            <sprite>sprites\time_222_spr</sprite>
+            <sprite>sprites\time_23_spr</sprite>
+            <sprite>sprites\time_24_spr</sprite>
+            <sprite>sprites\time_25_spr</sprite>
+            <sprite>sprites\time_26_spr</sprite>
+          </sprites>
+          <sprites name="game_over">
+            <sprite>sprites\game_over_BG_spr</sprite>
+          </sprites>
+          <sprites name="opening">
+            <sprite>sprites\open_1_spr</sprite>
+            <sprite>sprites\open_2_spr</sprite>
+            <sprite>sprites\open_3_spr</sprite>
+            <sprite>sprites\open_4_spr</sprite>
+            <sprite>sprites\open_5_spr</sprite>
+            <sprite>sprites\open_6_spr</sprite>
+            <sprite>sprites\open_7_spr</sprite>
+            <sprite>sprites\open_8_spr</sprite>
+          </sprites>
+          <sprites name="no_boss">
+            <sprite>sprites\no_boss_1_spr</sprite>
+            <sprite>sprites\no_boss_2_spr</sprite>
+            <sprite>sprites\no_boss_3_spr</sprite>
+            <sprite>sprites\no_boss_4_spr</sprite>
+            <sprite>sprites\no_boss_5_spr</sprite>
+            <sprite>sprites\no_boss_6_spr</sprite>
+            <sprite>sprites\no_boss_7_spr</sprite>
+            <sprite>sprites\no_boss_8_spr</sprite>
+            <sprite>sprites\no_boss_9_spr</sprite>
+            <sprite>sprites\no_boss_10_spr</sprite>
+            <sprite>sprites\no_boss_11_spr</sprite>
+            <sprite>sprites\no_boss_12_spr</sprite>
+            <sprite>sprites\no_boss_13_spr</sprite>
+          </sprites>
+          <sprites name="panels">
+            <sprite>sprites\stage_1_panel_spr</sprite>
+            <sprite>sprites\stage_3_panel_spr</sprite>
+            <sprite>sprites\stage_4_panel_spr</sprite>
+            <sprite>sprites\stage_5_panel_spr</sprite>
+            <sprite>sprites\stage_6_panel_spr</sprite>
+            <sprite>sprites\stage_7_panel_spr</sprite>
+          </sprites>
+          <sprites name="player_select">
+            <sprite>sprites\player_select_under_spr</sprite>
+            <sprite>sprites\yolo_select_spr</sprite>
+            <sprite>sprites\fox_select_spr</sprite>
+            <sprite>sprites\stone_select_spr</sprite>
+            <sprite>sprites\pumpkin_select_spr</sprite>
+          </sprites>
+          <sprites name="title">
+            <sprite>sprites\title_crew_spr</sprite>
+            <sprite>sprites\title_text_spr</sprite>
+            <sprite>sprites\SB_logo_spr</sprite>
+            <sprite>sprites\JB_text_spr</sprite>
+          </sprites>
+        </sprites>
       </sprites>
       <sprites name="001-Abortion Factory">
         <sprites name="tong">
@@ -686,94 +780,6 @@
         </sprites>
         <sprites name="flying">
           <sprite>sprites\white_knight_spr</sprite>
-        </sprites>
-      </sprites>
-      <sprites name="Cutscene">
-        <sprites name="ending">
-          <sprite>sprites\end_1_spr</sprite>
-          <sprite>sprites\end_2_spr</sprite>
-          <sprite>sprites\end_3_spr</sprite>
-          <sprite>sprites\end_4_spr</sprite>
-          <sprite>sprites\end_44_spr</sprite>
-          <sprite>sprites\end_5_spr</sprite>
-          <sprite>sprites\end_6_spr</sprite>
-          <sprite>sprites\end_7_spr</sprite>
-          <sprite>sprites\end_8_spr</sprite>
-          <sprite>sprites\end_9_spr</sprite>
-          <sprite>sprites\end_10_spr</sprite>
-          <sprite>sprites\ending_pan_spr</sprite>
-        </sprites>
-        <sprites name="time_machine">
-          <sprite>sprites\time_1_spr</sprite>
-          <sprite>sprites\time_2_spr</sprite>
-          <sprite>sprites\time_3_spr</sprite>
-          <sprite>sprites\time_4_spr</sprite>
-          <sprite>sprites\time_5_spr</sprite>
-          <sprite>sprites\time_6_spr</sprite>
-          <sprite>sprites\time_7_spr</sprite>
-          <sprite>sprites\time_8_spr</sprite>
-          <sprite>sprites\time_9_spr</sprite>
-          <sprite>sprites\time_10_spr</sprite>
-          <sprite>sprites\time_11_spr</sprite>
-          <sprite>sprites\time_12_spr</sprite>
-          <sprite>sprites\time_13_spr</sprite>
-          <sprite>sprites\time_14_spr</sprite>
-          <sprite>sprites\time_15_spr</sprite>
-          <sprite>sprites\time_16_spr</sprite>
-          <sprite>sprites\time_17_spr</sprite>
-          <sprite>sprites\time_18_spr</sprite>
-          <sprite>sprites\time_19_spr</sprite>
-          <sprite>sprites\time_20_spr</sprite>
-          <sprite>sprites\time_21_spr</sprite>
-          <sprite>sprites\time_22_spr</sprite>
-          <sprite>sprites\time_222_spr</sprite>
-          <sprite>sprites\time_23_spr</sprite>
-          <sprite>sprites\time_24_spr</sprite>
-          <sprite>sprites\time_25_spr</sprite>
-          <sprite>sprites\time_26_spr</sprite>
-        </sprites>
-        <sprites name="game_over">
-          <sprite>sprites\game_over_BG_spr</sprite>
-        </sprites>
-        <sprites name="opening">
-          <sprite>sprites\open_1_spr</sprite>
-          <sprite>sprites\open_2_spr</sprite>
-          <sprite>sprites\open_3_spr</sprite>
-          <sprite>sprites\open_4_spr</sprite>
-          <sprite>sprites\open_5_spr</sprite>
-          <sprite>sprites\open_6_spr</sprite>
-          <sprite>sprites\open_7_spr</sprite>
-          <sprite>sprites\open_8_spr</sprite>
-        </sprites>
-        <sprites name="no_boss">
-          <sprite>sprites\no_boss_1_spr</sprite>
-          <sprite>sprites\no_boss_2_spr</sprite>
-          <sprite>sprites\no_boss_3_spr</sprite>
-          <sprite>sprites\no_boss_4_spr</sprite>
-          <sprite>sprites\no_boss_5_spr</sprite>
-          <sprite>sprites\no_boss_6_spr</sprite>
-          <sprite>sprites\no_boss_7_spr</sprite>
-          <sprite>sprites\no_boss_8_spr</sprite>
-          <sprite>sprites\no_boss_9_spr</sprite>
-          <sprite>sprites\no_boss_10_spr</sprite>
-          <sprite>sprites\no_boss_11_spr</sprite>
-          <sprite>sprites\no_boss_12_spr</sprite>
-          <sprite>sprites\no_boss_13_spr</sprite>
-        </sprites>
-        <sprites name="panels">
-          <sprite>sprites\stage_1_panel_spr</sprite>
-          <sprite>sprites\stage_3_panel_spr</sprite>
-          <sprite>sprites\stage_4_panel_spr</sprite>
-          <sprite>sprites\stage_5_panel_spr</sprite>
-          <sprite>sprites\stage_6_panel_spr</sprite>
-          <sprite>sprites\stage_7_panel_spr</sprite>
-        </sprites>
-        <sprites name="player_select">
-          <sprite>sprites\player_select_under_spr</sprite>
-          <sprite>sprites\yolo_select_spr</sprite>
-          <sprite>sprites\fox_select_spr</sprite>
-          <sprite>sprites\stone_select_spr</sprite>
-          <sprite>sprites\pumpkin_select_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="gags">
@@ -1828,6 +1834,7 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\ep_room</room>
+      <room>rooms\room48</room>
       <room>rooms\menu_room</room>
       <rooms name="demo_rooms">
         <room>rooms\player_select_room</room>
