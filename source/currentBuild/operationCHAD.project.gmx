@@ -102,11 +102,12 @@
     <sound>sound\snd_menu_select</sound>
     <sound>sound\toy_snd</sound>
     <sound>sound\toy_beep_snd</sound>
+    <sound>sound\title_hit_snd</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="REDACTED">
       <sprites name="000-Front End">
-        <sprites name="cine">
+        <sprites name="credits">
           <sprite>sprites\gang_colors_spr</sprite>
           <sprite>sprites\yolo_cine_spr</sprite>
           <sprite>sprites\fox_cine_spr</sprite>
@@ -228,12 +229,18 @@
             <sprite>sprites\stone_select_spr</sprite>
             <sprite>sprites\pumpkin_select_spr</sprite>
           </sprites>
-          <sprites name="title">
-            <sprite>sprites\title_crew_spr</sprite>
-            <sprite>sprites\title_text_spr</sprite>
-            <sprite>sprites\SB_logo_spr</sprite>
-            <sprite>sprites\JB_text_spr</sprite>
-          </sprites>
+        </sprites>
+        <sprites name="gags">
+          <sprite>sprites\controller_gag_spr</sprite>
+          <sprite>sprites\controller_good_spr</sprite>
+        </sprites>
+        <sprites name="title">
+          <sprite>sprites\title_crew_spr</sprite>
+          <sprite>sprites\nigz_text_spr</sprite>
+          <sprite>sprites\SB_logo_spr</sprite>
+          <sprite>sprites\JB_text_spr</sprite>
+          <sprite>sprites\title_clouds_spr</sprite>
+          <sprite>sprites\title_back_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="001-Abortion Factory">
@@ -243,10 +250,6 @@
           <sprite>sprites\spr_acid_mask</sprite>
           <sprite>sprites\acid_spr</sprite>
           <sprite>sprites\drill_spr</sprite>
-        </sprites>
-        <sprites name="megaphone">
-          <sprite>sprites\megaphone_spr</sprite>
-          <sprite>sprites\racist_text_spr</sprite>
         </sprites>
         <sprites name="fryguy">
           <sprite>sprites\spr_flame_mask</sprite>
@@ -278,18 +281,21 @@
           <sprite>sprites\ghost_baby_spr</sprite>
           <sprite>sprites\fry_guy_mask_spr</sprite>
         </sprites>
-        <sprites name="embro">
-          <sprite>sprites\baby_jump_spr</sprite>
-          <sprite>sprites\baby_crawl_spr</sprite>
-          <sprite>sprites\cooler_spr</sprite>
-          <sprite>sprites\embro_spr</sprite>
-          <sprite>sprites\embro_case_spr</sprite>
-          <sprite>sprites\embro_case_bottom_spr</sprite>
-          <sprite>sprites\embro_overlay_spr</sprite>
-        </sprites>
         <sprite>sprites\pop_served_spr</sprite>
         <sprite>sprites\conveyor_spr</sprite>
         <sprite>sprites\baby_parts_spr</sprite>
+        <sprites name="elevator">
+          <sprite>sprites\elevator_platform_spr</sprite>
+          <sprite>sprites\hang_man_spr</sprite>
+          <sprite>sprites\hang_man_mask_2_spr</sprite>
+          <sprite>sprites\hang_rod_spr</sprite>
+          <sprite>sprites\hang_man_mask_spr</sprite>
+          <sprite>sprites\hang_man_enter_spr</sprite>
+          <sprite>sprites\elevator_BG_spr</sprite>
+          <sprite>sprites\hang_man_spin_spr</sprite>
+          <sprite>sprites\sprite562</sprite>
+          <sprite>sprites\med_snake_spr</sprite>
+        </sprites>
         <sprite>sprites\factory_works_spr</sprite>
         <sprite>sprites\factory_frame_spr</sprite>
         <sprite>sprites\over_tube_spr</sprite>
@@ -604,7 +610,7 @@
           <sprite>sprites\tunnel_end_spr</sprite>
         </sprites>
       </sprites>
-      <sprites name="006- Island of NPCs">
+      <sprites name="006- Comix Zone">
         <sprite>sprites\justice_comic_spr</sprite>
         <sprite>sprites\NPC_enemy_spr</sprite>
         <sprite>sprites\die_spr</sprite>
@@ -612,7 +618,21 @@
         <sprite>sprites\justice_frame_spr</sprite>
         <sprite>sprites\justice_BG_spr</sprite>
         <sprite>sprites\justice_cloud_spr</sprite>
+        <sprite>sprites\stonetoss_comic_spr</sprite>
         <sprite>sprites\boat_comic_spr</sprite>
+        <sprites name="megaphone">
+          <sprite>sprites\megaphone_spr</sprite>
+          <sprite>sprites\racist_text_spr</sprite>
+        </sprites>
+        <sprites name="embro">
+          <sprite>sprites\baby_jump_spr</sprite>
+          <sprite>sprites\baby_crawl_spr</sprite>
+          <sprite>sprites\cooler_spr</sprite>
+          <sprite>sprites\embro_spr</sprite>
+          <sprite>sprites\embro_case_spr</sprite>
+          <sprite>sprites\embro_case_bottom_spr</sprite>
+          <sprite>sprites\embro_overlay_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="007-Pooh">
         <sprites name="pooh_mech">
@@ -783,10 +803,6 @@
           <sprite>sprites\white_knight_spr</sprite>
         </sprites>
       </sprites>
-      <sprites name="gags">
-        <sprite>sprites\controller_gag_spr</sprite>
-        <sprite>sprites\controller_good_spr</sprite>
-      </sprites>
     </sprites>
     <sprites name="environment">
       <sprite>sprites\monkeybar_spr</sprite>
@@ -832,6 +848,7 @@
       <sprite>sprites\spr_dust</sprite>
       <sprite>sprites\action_lines_spr</sprite>
       <sprite>sprites\moloch_hebrew_spr</sprite>
+      <sprite>sprites\flame_spr</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\HUD_hit_rate</sprite>
@@ -855,17 +872,6 @@
       <sprite>sprites\P1_mark_spr</sprite>
       <sprite>sprites\P2_mark_spr</sprite>
     </sprites>
-    <sprite>sprites\stonetoss_comic_spr</sprite>
-    <sprite>sprites\elevator_BG_spr</sprite>
-    <sprite>sprites\elevator_platform_spr</sprite>
-    <sprite>sprites\med_snake_spr</sprite>
-    <sprite>sprites\hang_man_enter_spr</sprite>
-    <sprite>sprites\hang_man_spin_spr</sprite>
-    <sprite>sprites\hang_man_spr</sprite>
-    <sprite>sprites\hang_rod_spr</sprite>
-    <sprite>sprites\hang_man_mask_2_spr</sprite>
-    <sprite>sprites\hang_man_mask_spr</sprite>
-    <sprite>sprites\sprite562</sprite>
     <sprite>sprites\cell_bubble_spr</sprite>
     <sprite>sprites\cell_blood_spr</sprite>
     <sprite>sprites\lady_stand_spr</sprite>
@@ -1151,6 +1157,13 @@
         </objects>
         <objects name="panels">
           <object>objects\panel_controller</object>
+        </objects>
+        <objects name="title">
+          <object>objects\title_controller</object>
+          <object>objects\title_flame</object>
+          <object>objects\SB_logo</object>
+          <object>objects\JB_text</object>
+          <object>objects\title_flash</object>
         </objects>
       </objects>
       <objects name="001-Abortion Factory">
@@ -1834,9 +1847,8 @@
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
-      <room>rooms\ep_room</room>
-      <room>rooms\room48</room>
       <room>rooms\menu_room</room>
+      <room>rooms\logo_room</room>
       <rooms name="demo_rooms">
         <room>rooms\player_select_room</room>
         <room>rooms\open_cutscene_room</room>
@@ -1899,6 +1911,7 @@
       </rooms>
       <rooms name="cutscenes and gags">
         <room>rooms\end_cutscene_room</room>
+        <room>rooms\ep_room</room>
         <room>rooms\no_boss_cutscene_room</room>
         <room>rooms\cine_room</room>
         <room>rooms\game_over_room</room>
