@@ -25,22 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// create empty attack list (fry guy populates it himself)
-attack_list = ds_list_create();
+            <string>global.FRYGUYx=0
+global.FRYGUYy=0
+
+
+
+instance_create(global.FRYGUYx-20,global.FRYGUYy-20,oven_inside_BG)
+
+instance_create(global.FRYGUYx+220,global.FRYGUYy+20+60,fryguy_eat)
+
+instance_create(global.FRYGUYx-20,global.FRYGUYy-20,fryguy_oven)
+
+instance_create(global.FRYGUYx-20,global.FRYGUYy-20,fryguy_bones_BG)
+
+
+//legacy stuff
+/*
+
+// create empty attack list (fry guy populates it himself)
+//attack_list = ds_list_create();
 
 // create fryguy
-if (instance_number(fryguy) == 0)
-    {
-    switch(room)
-        {
-        case final_factory:
-            instance_create(3840,2760,fryguy);
-            break;
-        case fryguy_room:
-            instance_create(200,120,fryguy);
-            break;
-        }
-    }
+if (instance_number(fryguy)= 0)
+
+//instance_create(global.FRYGUYx+200,global.FRYGUYy+120,fryguy)
 </string>
           </argument>
         </arguments>

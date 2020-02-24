@@ -252,37 +252,45 @@
           <sprite>sprites\drill_spr</sprite>
         </sprites>
         <sprites name="fryguy">
-          <sprite>sprites\spr_flame_mask</sprite>
-          <sprite>sprites\fry_flame_1_spr</sprite>
-          <sprite>sprites\fryguy_sit_spr</sprite>
-          <sprite>sprites\fryguy_eat_spr</sprite>
-          <sprite>sprites\fryguy_stand_spr</sprite>
-          <sprite>sprites\fryguy_jump_spr</sprite>
-          <sprite>sprites\fryguy_spit_spr</sprite>
-          <sprite>sprites\spr_ember_mask</sprite>
-          <sprite>sprites\ember_spr</sprite>
-          <sprite>sprites\fryguy_chew_spr</sprite>
-          <sprite>sprites\fryguy_reach_spr</sprite>
-          <sprite>sprites\oven_door_spr</sprite>
-          <sprite>sprites\light_baby_spr</sprite>
-          <sprite>sprites\ghost_rope_spr</sprite>
-          <sprite>sprites\rope_mask_spr</sprite>
-          <sprite>sprites\flame_boy_spr</sprite>
-          <sprite>sprites\flame_boy_fall_spr</sprite>
-          <sprite>sprites\flame_boy_run_spr</sprite>
-          <sprite>sprites\flame_bullet_spr</sprite>
-          <sprite>sprites\bull_stand_spr</sprite>
-          <sprite>sprites\fry_kid_spr</sprite>
-          <sprite>sprites\fry_bomb_spr</sprite>
-          <sprite>sprites\fryguy_die_spr</sprite>
-          <sprite>sprites\arm_ball_spr</sprite>
-          <sprite>sprites\arm_hand_spr</sprite>
-          <sprite>sprites\flame_part_spr</sprite>
-          <sprite>sprites\ghost_baby_spr</sprite>
-          <sprite>sprites\fry_guy_mask_spr</sprite>
+          <sprites name="fryguy_BG">
+            <sprite>sprites\fry_oven_BG_spr</sprite>
+            <sprite>sprites\fry_bones_BG_spr</sprite>
+            <sprite>sprites\oven_back_spr</sprite>
+            <sprite>sprites\fry_guy_eat_spr</sprite>
+            <sprite>sprites\fryguy_bones_BG_spr</sprite>
+          </sprites>
+          <sprites name="old_fryguy">
+            <sprite>sprites\fry_guy_mask_spr</sprite>
+            <sprite>sprites\ghost_baby_spr</sprite>
+            <sprite>sprites\flame_part_spr</sprite>
+            <sprite>sprites\arm_hand_spr</sprite>
+            <sprite>sprites\arm_ball_spr</sprite>
+            <sprite>sprites\fryguy_die_spr</sprite>
+            <sprite>sprites\fry_bomb_spr</sprite>
+            <sprite>sprites\fry_kid_spr</sprite>
+            <sprite>sprites\bull_stand_spr</sprite>
+            <sprite>sprites\flame_bullet_spr</sprite>
+            <sprite>sprites\flame_boy_run_spr</sprite>
+            <sprite>sprites\flame_boy_fall_spr</sprite>
+            <sprite>sprites\flame_boy_spr</sprite>
+            <sprite>sprites\rope_mask_spr</sprite>
+            <sprite>sprites\ghost_rope_spr</sprite>
+            <sprite>sprites\light_baby_spr</sprite>
+            <sprite>sprites\oven_door_spr</sprite>
+            <sprite>sprites\fryguy_reach_spr</sprite>
+            <sprite>sprites\fryguy_chew_spr</sprite>
+            <sprite>sprites\ember_spr</sprite>
+            <sprite>sprites\spr_ember_mask</sprite>
+            <sprite>sprites\fryguy_spit_spr</sprite>
+            <sprite>sprites\fryguy_jump_spr</sprite>
+            <sprite>sprites\fryguy_stand_spr</sprite>
+            <sprite>sprites\fryguy_eat_spr</sprite>
+            <sprite>sprites\fryguy_sit_spr</sprite>
+            <sprite>sprites\fry_flame_1_spr</sprite>
+            <sprite>sprites\spr_flame_mask</sprite>
+          </sprites>
         </sprites>
         <sprite>sprites\pop_served_spr</sprite>
-        <sprite>sprites\conveyor_spr</sprite>
         <sprite>sprites\baby_parts_spr</sprite>
         <sprites name="elevator">
           <sprite>sprites\elevator_platform_spr</sprite>
@@ -1133,7 +1141,7 @@
   <objects name="objects">
     <objects name="REDACTED">
       <objects name="000-Front End">
-        <objects name="cine">
+        <objects name="credits">
           <object>objects\cine_controller</object>
           <object>objects\cine_obj</object>
           <object>objects\painter</object>
@@ -1176,55 +1184,6 @@
           <object>objects\drill</object>
           <object>objects\cell_bubble</object>
         </objects>
-        <objects name="fryguy_boss">
-          <object>objects\fryguy_controller</object>
-          <object>objects\flame_part_node</object>
-          <object>objects\fryguy</object>
-          <object>objects\fryguy_die</object>
-          <object>objects\fryguy_BG_drawer</object>
-          <object>objects\dir_flame</object>
-          <objects name="eat_attack">
-            <object>objects\eat_attack_controller</object>
-            <object>objects\oven_door</object>
-            <object>objects\flame_boy</object>
-            <object>objects\spit_flame</object>
-            <object>objects\ember_bounce</object>
-            <object>objects\flame_bullet</object>
-          </objects>
-          <objects name="stand_attack">
-            <object>objects\fryguy_stand_controller</object>
-            <object>objects\ghost_rope</object>
-            <object>objects\drop_flame</object>
-            <object>objects\fry_flame_maker</object>
-            <object>objects\ground_flame_shot</object>
-            <object>objects\fry_blob</object>
-            <object>objects\fry_flame</object>
-            <object>objects\fry_bounce</object>
-            <object>objects\floor_flame</object>
-            <object>objects\pre_v_bounce</object>
-            <object>objects\fry_arm</object>
-            <object>objects\L_fry_arm</object>
-            <object>objects\arm_ball</object>
-            <object>objects\H_fry_flame</object>
-            <object>objects\fry_maker</object>
-            <object>objects\L_fry_maker</object>
-          </objects>
-          <objects name="light_attack">
-            <object>objects\light_drawer</object>
-            <object>objects\fryguy_light_2</object>
-            <object>objects\light_baby</object>
-            <object>objects\ghost_baby</object>
-            <object>objects\fry_bomb</object>
-            <object>objects\small_burst</object>
-          </objects>
-          <objects name="scrap">
-            <object>objects\light_controller</object>
-            <object>objects\fry_kid</object>
-            <object>objects\fry_node</object>
-            <object>objects\bull_placeholder</object>
-            <object>objects\fryguy_light</object>
-          </objects>
-        </objects>
         <object>objects\BG_gear</object>
         <object>objects\abortion_factory_drawer</object>
         <object>objects\baby_scale</object>
@@ -1264,6 +1223,63 @@
           <object>objects\over_light</object>
         </objects>
         <object>objects\elevator_drawer</object>
+        <objects name="fryguy_boss">
+          <object>objects\fryguy_controller</object>
+          <objects name="fryguy_BG">
+            <object>objects\oven_inside_BG</object>
+            <object>objects\fryguy_eat</object>
+            <object>objects\fryguy_oven</object>
+            <object>objects\fryguy_bones_BG</object>
+          </objects>
+          <objects name="old_fryguy">
+            <object>objects\fryguy</object>
+            <object>objects\fryguy_die</object>
+            <object>objects\flame_part_node</object>
+            <object>objects\fryguy_BG_drawer</object>
+            <object>objects\dir_flame</object>
+            <objects name="eat_attack">
+              <object>objects\eat_attack_controller</object>
+              <object>objects\oven_door</object>
+              <object>objects\flame_boy</object>
+              <object>objects\spit_flame</object>
+              <object>objects\ember_bounce</object>
+              <object>objects\flame_bullet</object>
+            </objects>
+            <objects name="stand_attack">
+              <object>objects\fryguy_stand_controller</object>
+              <object>objects\ghost_rope</object>
+              <object>objects\drop_flame</object>
+              <object>objects\fry_flame_maker</object>
+              <object>objects\ground_flame_shot</object>
+              <object>objects\fry_blob</object>
+              <object>objects\fry_flame</object>
+              <object>objects\fry_bounce</object>
+              <object>objects\floor_flame</object>
+              <object>objects\pre_v_bounce</object>
+              <object>objects\fry_arm</object>
+              <object>objects\L_fry_arm</object>
+              <object>objects\arm_ball</object>
+              <object>objects\H_fry_flame</object>
+              <object>objects\fry_maker</object>
+              <object>objects\L_fry_maker</object>
+            </objects>
+            <objects name="light_attack">
+              <object>objects\light_drawer</object>
+              <object>objects\fryguy_light_2</object>
+              <object>objects\light_baby</object>
+              <object>objects\ghost_baby</object>
+              <object>objects\fry_bomb</object>
+              <object>objects\small_burst</object>
+            </objects>
+            <objects name="scrap">
+              <object>objects\light_controller</object>
+              <object>objects\fry_kid</object>
+              <object>objects\fry_node</object>
+              <object>objects\bull_placeholder</object>
+              <object>objects\fryguy_light</object>
+            </objects>
+          </objects>
+        </objects>
         <objects name="moloch_boss">
           <object>objects\moloch_controller</object>
           <object>objects\elev_surface_drawer</object>
@@ -1848,6 +1864,7 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\fryguy_room</room>
       <room>rooms\logo_room</room>
       <rooms name="demo_rooms">
         <room>rooms\player_select_room</room>
@@ -1864,7 +1881,6 @@
       <rooms name="001-Abortion Factory">
         <room>rooms\tong_room</room>
         <room>rooms\elevator_mockup</room>
-        <room>rooms\fryguy_room</room>
         <room>rooms\room44</room>
       </rooms>
       <rooms name="002-Public School">
