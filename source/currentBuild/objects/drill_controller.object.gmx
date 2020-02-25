@@ -3,12 +3,12 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>200</depth>
   <persistent>0</persistent>
-  <parentName>par_stay_active</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,56 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.FRYGUYx=0
-global.FRYGUYy=0
-
-
-
-instance_create(global.FRYGUYx-20,global.FRYGUYy-20,oven_inside_BG)
-
-instance_create(global.FRYGUYx+220,global.FRYGUYy+20+60,fryguy_eat)
-
-instance_create(global.FRYGUYx+60,global.FRYGUYy+20,fryguy_conveyor)
-
-instance_create(global.FRYGUYx-20,global.FRYGUYy-20,fryguy_oven)
-
-instance_create(global.FRYGUYx-20,global.FRYGUYy-20,fryguy_bones_BG)
-
-
-//legacy stuff
-/*
-
-// create empty attack list (fry guy populates it himself)
-//attack_list = ds_list_create();
-
-// create fryguy
-if (instance_number(fryguy)= 0)
-
-//instance_create(global.FRYGUYx+200,global.FRYGUYy+120,fryguy)
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (ds_exists(attack_list,ds_type_list))
-    ds_list_destroy(attack_list);
+            <string>draw_sprite(drill_BG_spr,-1,view_xview[0]-20,view_yview[0]-20)
 </string>
           </argument>
         </arguments>

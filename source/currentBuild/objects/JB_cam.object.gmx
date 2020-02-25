@@ -147,6 +147,7 @@ switch(state)
             y=round(obj_player.y-140);
             }
         break;
+         
     
     case RIGHT:
         Rfollow(180)
@@ -209,6 +210,14 @@ switch(state)
         if(obj_player.y-120&gt;y)
             y=obj_player.y-120
         break;
+        
+    //JB code
+    case UP:
+        if(obj_player.y-140&lt;y)
+            y=obj_player.y-140
+        break;
+        
+    //end jb code
     
     case RJOGPLAYER:
         Yset=MYarray[Ycurrent]

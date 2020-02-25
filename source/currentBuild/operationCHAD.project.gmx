@@ -258,6 +258,7 @@
             <sprite>sprites\oven_back_spr</sprite>
             <sprite>sprites\fry_guy_eat_spr</sprite>
             <sprite>sprites\fryguy_bones_BG_spr</sprite>
+            <sprite>sprites\fryguy_conveyor_spr</sprite>
           </sprites>
           <sprites name="old_fryguy">
             <sprite>sprites\fry_guy_mask_spr</sprite>
@@ -404,6 +405,12 @@
           <sprite>sprites\nice_3_spr</sprite>
           <sprite>sprites\nice_2_spr</sprite>
           <sprite>sprites\nice_1_spr</sprite>
+        </sprites>
+        <sprites name="drill_wall">
+          <sprite>sprites\factory_wall_spr</sprite>
+          <sprite>sprites\drill_BG_spr</sprite>
+          <sprite>sprites\drill_handle_apr</sprite>
+          <sprite>sprites\big_blade_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="003-Clown World">
@@ -1230,6 +1237,7 @@
             <object>objects\fryguy_eat</object>
             <object>objects\fryguy_oven</object>
             <object>objects\fryguy_bones_BG</object>
+            <object>objects\fryguy_conveyor</object>
           </objects>
           <objects name="old_fryguy">
             <object>objects\fryguy</object>
@@ -1331,6 +1339,12 @@
             <object>objects\hang_man</object>
             <object>objects\med_snake</object>
           </objects>
+        </objects>
+        <objects name="drill_wall">
+          <object>objects\drill_wall</object>
+          <object>objects\drill_controller</object>
+          <object>objects\drill_arm</object>
+          <object>objects\big_blade</object>
         </objects>
       </objects>
       <objects name="002-Public School">
@@ -1864,8 +1878,8 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\drill_room</room>
       <room>rooms\fryguy_room</room>
-      <room>rooms\logo_room</room>
       <rooms name="demo_rooms">
         <room>rooms\player_select_room</room>
         <room>rooms\open_cutscene_room</room>
