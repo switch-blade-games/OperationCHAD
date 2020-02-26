@@ -34,6 +34,8 @@ UP=2
 
 DONE=3
 
+ALLDONE=4
+
 state=WAIT
 
 DONEtrig=false
@@ -100,6 +102,19 @@ if(CLICKlive=true){
     state=DONE
     motion_set(90,MYspe)
     ELEVy=0
+    
+    instance_create(global.MOLOCHx,global.MOLOCHy,fryguy_controller)
+}
+
+
+if(state=DONE){
+
+    global.FRYGUYy=y
+
+    if(y&lt;=global.MOLOCHy-240){
+        speed=0
+        y=global.MOLOCHy-240
+        }
 }
 
 
@@ -134,6 +149,10 @@ surface_reset_target()
           <argument>
             <kind>1</kind>
             <string>draw_surface(MYsur,x,y)
+
+
+if(DONEtrig=true)
+draw_sprite(fryguy_BG_spr,-1,global.MOLOCHx-20,y+240)
 </string>
           </argument>
         </arguments>
