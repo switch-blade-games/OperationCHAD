@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>global.BUILDversion = "v0.12";
 
-debug = false;
 debugMode = 0; // 0=detail; 1=simple; 2=extra;
 event_user(0);
 
@@ -44,30 +43,50 @@ max_fps = 1;
 
 resourceMode = 0;
 resourceCollapse = false;
-// room select
-room_scroll = 0;
-room_slider[0] = 0;
-room_slider[1] = 10;
-room_slider[2] = false;
-// object select
-object_scroll = 0;
-object_select = -1;
-object_slider[0] = 0;
-object_slider[1] = 25;
-object_slider[2] = false;
 
-// index all game objects
-object = -1;
-objects = 0;
-var index = 0;
-while(object_exists(index))
+// index rooms
+rooms = 0;
+rm_id = -1;
+rm_name = -1;
+for(var i=room_first+1; i&lt;=room_last; i++;)
     {
-    // ignore parent objects
-    //if (string_copy(object_get_name(index),1,4) != "par_")
-        object[objects++] = index;
-    index++;
+    rm_id[rooms]   = i;
+    rm_name[rooms] = room_get_name(i);
+    rooms++;
     }
-log("["+string(objects)+"] Objects Indexed");
+// index objects
+objects = 0;
+obj_id = -1;
+obj_name = -1;
+obj_sprite = -1;
+while(object_exists(objects))
+    {
+    obj_id[objects]   = objects;
+    obj_name[objects] = object_get_name(objects);
+    obj_spr[objects]  = object_get_sprite(objects);
+    if (obj_spr[objects] == -1)
+        obj_spr[objects] = node_spr;
+    objects++;
+    }
+
+// search
+search = "";
+// search texbox
+txt_search[0] = "";
+txt_search[1] = false;
+txt_search[2] = "Search";
+// results array
+results = 0;
+result_id = -1;
+result_name = -1;
+result_spr = -1;
+result_select = -1;
+result_scroll = 0;
+result_slider[0] = 0;
+result_slider[1] = sqrt(results+1);
+result_slider[2] = false;
+
+event_user(1);
 </string>
           </argument>
         </arguments>
@@ -90,9 +109,7 @@ log("["+string(objects)+"] Objects Indexed");
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//JB CODE
-
-/*
+            <string>/* JB CODE
 if(gamepad_check(0,gpinput.trigr)=true){
     global.yshake=6
 }
@@ -100,8 +117,6 @@ if(gamepad_check(0,gpinput.trigl)=true){
     with(muslim_boat)
         instance_create(x+40+random(40),y+140,muslim_spin)
     }
-///END JB CODE
-
 */
 
 // smooth fps stats
@@ -120,8 +135,8 @@ if (keyboard_check_pressed(vk_f1))
     debugMode++;
     if (debugMode &gt; 3)
         debugMode = -1;
-    debug = (debugMode &gt; -1);
-    if (!debug)
+    global.DEBUG = (debugMode &gt; -1);
+    if (!global.DEBUG)
         {
         with(par_actor)
             take_damage = true;
@@ -129,7 +144,7 @@ if (keyboard_check_pressed(vk_f1))
     }
 
 // don't hurt player in debug mode
-if (debug)
+if (global.DEBUG)
     {
     with(par_actor)
         take_damage = false;
@@ -159,15 +174,15 @@ if (debugMode == 3)
     {
     var vx = view_xview[0];
     var vy = view_yview[0];
-    if (resourceMode == 1)
+    if (resourceMode == 1) and (result_select &gt; -1)
         {
         if (mouse_check_button_pressed(mb_left))
             {
             if ((resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+220,vy+3*12)))
             or ((!resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+262,vy+9*12))) 
                 {
-                if (object_exists(object_select))
-                    instance_create(mouse_x,mouse_y,object_select);
+                if (object_exists(result_id[result_select]))
+                    instance_create(mouse_x,mouse_y,result_id[result_select]);
                 }
             }
         }
@@ -176,22 +191,15 @@ if (debugMode == 3)
         var delta = mouse_wheel_down()-mouse_wheel_up();
         if (delta != 0)
             {
-            if (resourceMode == 0)
-                {
-                room_slider[0] += delta*2*(1/(room_last-7));
-                room_slider[0] = clamp(room_slider[0],0,1);
-                }
-            else if (resourceMode == 1)
-                {
-                object_slider[0] += delta*2*(1/(objects-7));
-                object_slider[0] = clamp(object_slider[0],0,1);
-                }
+            result_slider[0] += delta*2*(1/(results-6));
+            result_slider[0] = clamp(result_slider[0],0,1);
             }
         }
     }
 
 // restart
 if (keyboard_check_pressed(ord("R")))
+and (!global.DEBUG)
     {
     mus_stop();
     with(obj_shader)
@@ -203,6 +211,99 @@ if (keyboard_check_pressed(ord("R")))
 // end
 if (keyboard_check_pressed(vk_escape))
     game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Index results
+
+// clear previous results
+results = 0;
+result_id   = -1;
+result_name = -1;
+result_spr  = -1;
+
+if (search == "")
+    {
+    // empty search, list all results
+    if (resourceMode == 0)
+        {
+        // room results
+        for(var i=0; i&lt;rooms; i++;)
+            {
+            result_id[i]   = rm_id[i];
+            result_name[i] = rm_name[i];
+            result_spr[i]  = -1;
+            }
+        results = rooms;
+        }
+    else if (resourceMode == 1)
+        {
+        // object results
+        for(var i=0; i&lt;objects; i++;)
+            {
+            result_id[i]   = obj_id[i];
+            result_name[i] = obj_name[i];
+            result_spr[i]  = obj_spr[i];
+            }
+        results = objects;
+        }
+    }
+else
+    {
+    // search results
+    if (resourceMode == 0)
+        {
+        // search-indexed room results
+        for(var i=0; i&lt;rooms; i++;)
+            {
+            if (string_pos(search,rm_name[i]) &gt; 0)
+                {
+                result_id[results]   = rm_id[i];
+                result_name[results] = rm_name[i];
+                result_spr[results]  = -1;
+                results++;
+                }
+            }
+        }
+    else if (resourceMode == 1)
+        {
+        // search-indexed object results
+        for(var i=0; i&lt;objects; i++;)
+            {
+            if (string_pos(search,obj_name[i]) &gt; 0)
+                {
+                result_id[results]   = obj_id[i];
+                result_name[results] = obj_name[i];
+                result_spr[results]  = obj_spr[i];
+                results++;
+                }
+            }
+        }
+    }
+
+result_select = -1;
+result_scroll = 0;
+result_slider[0] = 0;
+result_slider[1] = sqrt(max(results-6,1));
 </string>
           </argument>
         </arguments>
@@ -225,9 +326,9 @@ if (keyboard_check_pressed(vk_escape))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// output OS info for debugging
-var file = file_text_open_write(working_directory+"debug.txt");
+            <string>/// Output OS info
 
+var file = file_text_open_write(working_directory+"debug.txt");
 file_text_write_string(file,"[OS]");
 file_text_writeln(file);
 file_text_write_string(file,string(val_to_text(4,os_type)));
@@ -275,7 +376,7 @@ file_text_close(file);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (debug)
+            <string>if (global.DEBUG)
     {
     var vx = view_xview[0];
     var vy = view_yview[0];
@@ -389,105 +490,135 @@ file_text_close(file);
         case 3: // resource select
             if (resourceCollapse)
                 {
+                // minimized resource list
                 draw_set_color($000000);
                 draw_set_alpha(0.75);
                 draw_rectangle(vx+6,vy+6,vx+220,vy+3*12,0);
                 draw_set_alpha(1.00);
                 
+                // minimized tab buttons
                 if (button(vx+10+00,vy+8,64,14,"ROOMS",(resourceMode == 0)))
                     resourceMode = 0;
                 if (button(vx+10+72,vy+8,64,14,"OBJECTS",(resourceMode == 1)))
                     resourceMode = 1;
+                // maximize button
                 if (button(vx+220-22,vy+8,16,14,"+"))
+                    {
+                    event_user(1);
                     resourceCollapse = false;
+                    }
                 
+                var dy = 0;
+                var dx = 10;
                 if (resourceMode == 0)
-                    draw_text_outline(vx+12,vy+24,room_get_name(room));
+                    draw_text_outline(vx+dx,vy+24+dy*12,room_get_name(room));
                 else if (resourceMode == 1)
                     {
-                    if (object_select &gt; -1)
-                        draw_text_outline(vx+12,vy+24,object_get_name(object_select));
+                    if (result_select &gt; -1)
+                        {
+                        var _spr = result_spr[result_select];
+                        if (_spr &gt; -1)
+                            {
+                            dx += 22;
+                            var _sw = sprite_get_width(_spr);
+                            var _sh = sprite_get_height(_spr);
+                            var _ox = sprite_get_xoffset(_spr);
+                            var _oy = sprite_get_yoffset(_spr);
+                            var _xs = 8/_sw;
+                            var _ys = 8/_sh;
+                            draw_sprite_ext(_spr,0,vx+12+(_ox*_xs),vy+26+(_oy*_ys)+dy*12,_xs,_ys,0,-1,1);
+                            }
+                        draw_text_outline(vx+dx,vy+24+dy*12,result_name[result_select]);
+                        }
+                    else
+                        draw_text_outline(vx+dx,vy+24+dy*12,"No Object Selected");
                     }
                 }
             else
                 {
+                // maximized resource list
                 draw_set_color($000000);
                 draw_set_alpha(0.75);
-                draw_rectangle(vx+6,vy+6,vx+262,vy+9*12,0);
+                draw_rectangle(vx+6,vy+6,vx+262,vy+6+9*12,0);
                 draw_set_alpha(1.00);
                 
+                // tab buttons
                 if (button(vx+10+00,vy+8,64,14,"ROOMS",(resourceMode == 0)))
+                    {
                     resourceMode = 0;
+                    event_user(1);
+                    }
                 if (button(vx+10+72,vy+8,64,14,"OBJECTS",(resourceMode == 1)))
+                    {
                     resourceMode = 1;
+                    event_user(1);
+                    }
+                // minimize button
                 if (button(vx+262-22,vy+8,16,14,"-"))
                     resourceCollapse = true;
                 
+                // search box
+                textbox(vx+10,vy+24,224,14,txt_search);
+                if (search != txt_search[0])
+                    {
+                    search = txt_search[0];
+                    event_user(1);
+                    }
+                
                 var dy = 0;
-                if (resourceMode == 0)
+                var dx = 10;
+                // result list
+                if (results &gt; 0)
                     {
-                    for(var i=room_first+1+room_scroll; i&lt;=min(room_first+room_scroll+7,room_last); i++;)
+                    for(var i=result_scroll; i&lt;min(result_scroll+6,results); i++;)
                         {
-                        if (i == room)
+                        if (i == result_select)
                             {
                             draw_set_color($FFFFFF);
                             draw_set_alpha(0.75);
-                            draw_rectangle(vx+6,vy+25+dy*12,vx+220,vy+36+dy*12,0);
+                            draw_rectangle(vx+6,vy+39+dy*12,vx+220,vy+50+dy*12,0);
                             draw_set_alpha(1.00);
                             }
                         
-                        if (point_in_rectangle(mouse_x,mouse_y,vx+6,vy+25+dy*12,vx+220,vy+36+dy*12))
+                        var dx = 10;
+                        var _spr = result_spr[i];
+                        if (_spr &gt; -1)
                             {
-                            draw_text_outline(vx+12,vy+24+dy*12,room_get_name(i));
+                            dx += 22;
+                            var _sw = sprite_get_width(_spr);
+                            var _sh = sprite_get_height(_spr);
+                            var _ox = sprite_get_xoffset(_spr);
+                            var _oy = sprite_get_yoffset(_spr);
+                            var _xs = 8/_sw;
+                            var _ys = 8/_sh;
+                            draw_sprite_ext(_spr,0,vx+12+(_ox*_xs),vy+40+(_oy*_ys)+dy*12,_xs,_ys,0,-1,1);
+                            }
+                        if (point_in_rectangle(mouse_x,mouse_y,vx+6,vy+39+dy*12,vx+220,vy+50+dy*12))
+                            {
+                            draw_text_outline(vx+dx,vy+38+dy*12,result_name[i]);
                             if (mouse_check_button_pressed(mb_left))
-                                room_goto(i);
+                                {
+                                result_select = i;
+                                if (resourceMode == 0)
+                                    room_goto(result_id[result_select]);
+                                }
                             }
                         else
                             {
-                            if (i == room)
+                            if (i == result_select)
                                 draw_set_color($000000);
                             else
                                 draw_set_color($CCCCCC);
                             
-                            draw_text(vx+12,vy+24+dy*12,room_get_name(i));
+                            draw_text(vx+dx,vy+38+dy*12,result_name[i]);
                             }
                         dy++;
                         }
-                    slider(vx+240,vy+25,vx+256,vy+9*12-6,room_slider);
-                    room_scroll = round((room_last-7)*room_slider[0]);
+                    slider(vx+240,vy+25,vx+256,vy+9*12,result_slider);
+                    result_scroll = clamp(round((results-6)*result_slider[0]),0,results-1);
                     }
-                else if (resourceMode == 1)
-                    {
-                    for(var i=object_scroll; i&lt;min(object_scroll+7,objects); i++;)
-                        {
-                        if (i == object_select)
-                            {
-                            draw_set_color($FFFFFF);
-                            draw_set_alpha(0.75);
-                            draw_rectangle(vx+6,vy+25+dy*12,vx+220,vy+36+dy*12,0);
-                            draw_set_alpha(1.00);
-                            }
-                        
-                        if (point_in_rectangle(mouse_x,mouse_y,vx+6,vy+25+dy*12,vx+220,vy+36+dy*12))
-                            {
-                            draw_text_outline(vx+12,vy+24+dy*12,object_get_name(i));
-                            if (mouse_check_button_pressed(mb_left))
-                                object_select = i;
-                            }
-                        else
-                            {
-                            if (i == object_select)
-                                draw_set_color($000000);
-                            else
-                                draw_set_color($CCCCCC);
-                            
-                            draw_text(vx+12,vy+24+dy*12,object_get_name(i));
-                            }
-                        dy++;
-                        }
-                    slider(vx+240,vy+25,vx+256,vy+9*12-6,object_slider);
-                    object_scroll = round((objects-7)*object_slider[0]);
-                    }
+                else
+                    draw_text_outline(vx+dx,vy+38+dy*12,"No Results");
                 }
             break;
         }

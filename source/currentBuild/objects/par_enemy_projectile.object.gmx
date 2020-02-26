@@ -28,7 +28,9 @@
             <string>// team/damage
 team = 1;
 damage = 1;
+max_damage = -1;
 deal_damage = true;
+destroy_on_contact = true;
 </string>
           </argument>
         </arguments>

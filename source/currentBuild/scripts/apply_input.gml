@@ -42,18 +42,11 @@ switch(move_state)
                     {
                     // ground transition from walking to wallclimb
                     if (on_ground and (input_up xor input_down))
+                    or (!on_ground)
                         {
-                        if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
-                            {
-                            move_state = mState.wc;
-                            yspeed = wc_speed*v_dir;
-                            }
-                        }
-                    else if (!on_ground)
-                        {
-                        // mid-air transition from walking to wallclimb
                         move_state = mState.wc;
-                        yspeed = 0;
+                        if (!place_meeting(x,y+wc_speed*v_dir,par_solid))
+                            yspeed = wc_speed*v_dir;
                         }
                     }
                 

@@ -282,7 +282,7 @@ audio_listener_velocity(0,0,0);
             <string>/// DRAW HUD
 
 if (!instance_exists(par_actor))
-or ((instance_exists(dev_cheater)) and (dev_cheater.debug))
+or ((instance_exists(dev_cheater)) and (global.DEBUG))
     exit;
 
 // player 1

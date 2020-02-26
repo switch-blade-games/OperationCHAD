@@ -10,7 +10,8 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code>global.OUTPUT = true;
+  <code>global.DEBUG = false;
+global.OUTPUT = true;
 global.PLAYERS=1;
 global.P1LIVES=4;
 global.P2LIVES=4;
