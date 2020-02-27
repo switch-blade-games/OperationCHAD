@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>YOLO=1
+            <string>BGsur=surface_create(400,240)
+
+Xdest=0
+Ydest=0
+MOVEspe=1
+
+YOLO=1
 FOX=2
 STONE=3
 PUMPKIN=3
@@ -84,7 +90,18 @@ alarm[0]=6
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(BUFFER=true)
+            <string>surface_set_target(BGsur)
+
+Xdest-=MOVEspe
+Ydest+=MOVEspe
+
+draw_sprite_tiled(gang_colors_spr,set-1,Xdest,Ydest)
+
+surface_reset_target()
+
+
+
+if(BUFFER=true)
 exit
 
 if(gamepad_check_pressed(0,gpinput.padl)=true){
@@ -132,7 +149,9 @@ room_goto_next()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
+            <string>draw_surface(BGsur,0,0)
+
+draw_self()
 
 if(set=1)
     SHOWspr=yolo_select_spr

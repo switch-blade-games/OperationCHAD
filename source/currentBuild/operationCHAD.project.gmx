@@ -222,13 +222,6 @@
             <sprite>sprites\stage_6_panel_spr</sprite>
             <sprite>sprites\stage_7_panel_spr</sprite>
           </sprites>
-          <sprites name="player_select">
-            <sprite>sprites\player_select_under_spr</sprite>
-            <sprite>sprites\yolo_select_spr</sprite>
-            <sprite>sprites\fox_select_spr</sprite>
-            <sprite>sprites\stone_select_spr</sprite>
-            <sprite>sprites\pumpkin_select_spr</sprite>
-          </sprites>
         </sprites>
         <sprites name="gags">
           <sprite>sprites\controller_gag_spr</sprite>
@@ -243,6 +236,14 @@
           <sprite>sprites\title_back_spr</sprite>
           <sprite>sprites\flame_start_spr</sprite>
         </sprites>
+        <sprites name="player_select">
+          <sprite>sprites\player_select_under_spr</sprite>
+          <sprite>sprites\yolo_select_spr</sprite>
+          <sprite>sprites\fox_select_spr</sprite>
+          <sprite>sprites\stone_select_spr</sprite>
+          <sprite>sprites\pumpkin_select_spr</sprite>
+          <sprite>sprites\switch_pattern_spr</sprite>
+        </sprites>
       </sprites>
       <sprites name="001-Abortion Factory">
         <sprites name="tong">
@@ -251,6 +252,15 @@
           <sprite>sprites\spr_acid_mask</sprite>
           <sprite>sprites\acid_spr</sprite>
           <sprite>sprites\drill_spr</sprite>
+          <sprites name="phase_2">
+            <sprite>sprites\diag_BG_spr</sprite>
+            <sprite>sprites\tampon_platform_spr</sprite>
+            <sprite>sprites\diag_rib_spr</sprite>
+          </sprites>
+          <sprites name="phase_3">
+            <sprite>sprites\embro_BG_spr</sprite>
+          </sprites>
+          <sprite>sprites\tong_robo_spr</sprite>
         </sprites>
         <sprites name="fryguy">
           <sprites name="fryguy_BG">
@@ -1187,6 +1197,7 @@
       </objects>
       <objects name="001-Abortion Factory">
         <objects name="tong_boss">
+          <object>objects\tong_robo</object>
           <object>objects\tong_controller</object>
           <object>objects\needle</object>
           <object>objects\needle_bubble</object>
@@ -1194,6 +1205,15 @@
           <object>objects\acid</object>
           <object>objects\drill</object>
           <object>objects\cell_bubble</object>
+          <objects name="tong_P2">
+            <object>objects\tong_P2_controller</object>
+            <object>objects\tampon_spawner</object>
+            <object>objects\tampon_platform</object>
+            <object>objects\diag_rib</object>
+          </objects>
+          <objects name="tong_P3">
+            <object>objects\tong_P3_controller</object>
+          </objects>
         </objects>
         <object>objects\BG_gear</object>
         <object>objects\abortion_factory_drawer</object>
@@ -1884,11 +1904,13 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\tong_P3_room</room>
+      <room>rooms\diag_vag_room</room>
+      <room>rooms\player_select_room</room>
       <room>rooms\JB_room</room>
       <room>rooms\drill_room</room>
       <room>rooms\fryguy_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\player_select_room</room>
         <room>rooms\open_cutscene_room</room>
         <room>rooms\panel_room</room>
         <room>rooms\final_factory</room>
