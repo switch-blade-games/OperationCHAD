@@ -875,7 +875,7 @@
       <sprite>sprites\spr_dust</sprite>
       <sprite>sprites\action_lines_spr</sprite>
       <sprite>sprites\moloch_hebrew_spr</sprite>
-      <sprite>sprites\flame_spr</sprite>
+      <sprite>sprites\HUD_weapon_icon</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\HUD_hit_rate</sprite>
@@ -1116,7 +1116,7 @@
         <scripts name="setup">
           <script>scripts\anim_load_skin.gml</script>
           <script>scripts\anim_create.gml</script>
-          <script>scripts\anim_find_skin.gml</script>
+          <script>scripts\weapon_stats.gml</script>
         </scripts>
       </scripts>
       <scripts name="weapons">
@@ -1830,7 +1830,7 @@
         <object>objects\par_ramp</object>
         <object>objects\par_climb</object>
         <object>objects\par_move</object>
-        <object>objects\par_trigger</object>
+        <object>objects\par_projectile</object>
         <object>objects\par_death</object>
       </objects>
       <objects name="projectiles">
@@ -1895,7 +1895,7 @@
     </objects>
     <object>objects\dev_cheater</object>
     <object>objects\obj_menu</object>
-    <object>objects\obj_control</object>
+    <object>objects\obj_player</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
@@ -1904,7 +1904,6 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\tong_P3_room</room>
       <room>rooms\diag_vag_room</room>
       <room>rooms\player_select_room</room>
       <room>rooms\JB_room</room>
@@ -1923,6 +1922,7 @@
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
         <room>rooms\tong_room</room>
+        <room>rooms\tong_P3_room</room>
         <room>rooms\elevator_mockup</room>
         <room>rooms\room44</room>
       </rooms>
