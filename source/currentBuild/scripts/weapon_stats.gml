@@ -11,7 +11,8 @@ enum weapon
     crushShot,
     spinFlame,
     buckShot,
-    spreadCrush
+    spreadCrush,
+    rollingStone
     }
 
 weapon_name[weapon.rifle] = "Rifle";    // Name
@@ -24,7 +25,7 @@ weapon_pnum[weapon.rifle] = 1;          // projectile number
 weapon_sprd[weapon.rifle] = 0;          // spread (angle between each projectile)
 weapon_proj[weapon.rifle] = obj_bullet; // projectile object
 weapon_case[weapon.rifle] = 0;          // type of casing
-weapon_snd[weapon.rifle] = bullet_snd;  // sound to play when firing
+weapon_snd[weapon.rifle]  = bullet_snd;  // sound to play when firing
 weapons++;
 
 weapon_name[weapon.flame] = "Flame Thrower";
@@ -37,7 +38,7 @@ weapon_pnum[weapon.flame] = 1;
 weapon_sprd[weapon.flame] = 0;
 weapon_proj[weapon.flame] = obj_flamethrower_flame;
 weapon_case[weapon.flame] = -1;
-weapon_snd[weapon.flame] = bullet_snd;
+weapon_snd[weapon.flame]  = bullet_snd;
 weapons++;
 
 weapon_name[weapon.spread] = "Spreadshot";
@@ -50,7 +51,7 @@ weapon_pnum[weapon.spread] = 5;
 weapon_sprd[weapon.spread] = 5;
 weapon_proj[weapon.spread] = obj_pellet;
 weapon_case[weapon.spread] = 1;
-weapon_snd[weapon.spread] = bullet_snd;
+weapon_snd[weapon.spread]  = bullet_snd;
 weapons++;
 
 weapon_name[weapon.homing] = "Heat Seeker";
@@ -63,7 +64,7 @@ weapon_pnum[weapon.homing] = 1;
 weapon_sprd[weapon.homing] = 0;
 weapon_proj[weapon.homing] = obj_heat_seeker;
 weapon_case[weapon.homing] = -1;
-weapon_snd[weapon.homing] = bullet_snd;
+weapon_snd[weapon.homing]  = bullet_snd;
 weapons++;
 
 weapon_name[weapon.rollingCutter] = "Rolling Cutter";
@@ -76,7 +77,7 @@ weapon_pnum[weapon.rollingCutter] = 1;
 weapon_sprd[weapon.rollingCutter] = 0;
 weapon_proj[weapon.rollingCutter] = obj_rolling_cutter;
 weapon_case[weapon.rollingCutter] = 1;
-weapon_snd[weapon.rollingCutter] = bullet_snd;
+weapon_snd[weapon.rollingCutter]  = bullet_snd;
 weapons++;
 
 weapon_name[weapon.crushShot] = "Crush Shot";
@@ -89,7 +90,7 @@ weapon_pnum[weapon.crushShot] = 1;
 weapon_sprd[weapon.crushShot] = 0;
 weapon_proj[weapon.crushShot] = obj_crush_shot;
 weapon_case[weapon.crushShot] = -1;
-weapon_snd[weapon.crushShot] = snd_missile;
+weapon_snd[weapon.crushShot]  = snd_missile;
 weapons++;
 
 weapon_name[weapon.spinFlame] = "Spin Flame";
@@ -102,7 +103,7 @@ weapon_pnum[weapon.spinFlame] = 1;
 weapon_sprd[weapon.spinFlame] = 0;
 weapon_proj[weapon.spinFlame] = obj_spin_flame;
 weapon_case[weapon.spinFlame] = -1;
-weapon_snd[weapon.spinFlame] = bullet_snd;
+weapon_snd[weapon.spinFlame]  = bullet_snd;
 weapons++;
 
 weapon_name[weapon.buckShot] = "Buckshot";
@@ -115,7 +116,7 @@ weapon_pnum[weapon.buckShot] = 1;
 weapon_sprd[weapon.buckShot] = 0;
 weapon_proj[weapon.buckShot] = obj_buckshot;
 weapon_case[weapon.buckShot] = -1;
-weapon_snd[weapon.buckShot] = snd_buckshot;
+weapon_snd[weapon.buckShot]  = snd_buckshot;
 weapons++;
 
 weapon_name[weapon.spreadCrush] = "Spread Crush";
@@ -128,5 +129,18 @@ weapon_pnum[weapon.spreadCrush] = 3;
 weapon_sprd[weapon.spreadCrush] = 9;
 weapon_proj[weapon.spreadCrush] = obj_crush_shot;
 weapon_case[weapon.spreadCrush] = -1;
-weapon_snd[weapon.spreadCrush] = snd_missile;
+weapon_snd[weapon.spreadCrush]  = snd_missile;
+weapons++;
+
+weapon_name[weapon.rollingStone] = "Rolling Stone";
+weapon_auto[weapon.rollingStone] = true;
+weapon_walk[weapon.rollingStone] = true;
+weapon_pmax[weapon.rollingStone] = 3;
+weapon_time[weapon.rollingStone] = 40;
+weapon_pspd[weapon.rollingStone] = 6;
+weapon_pnum[weapon.rollingStone] = 1;
+weapon_sprd[weapon.rollingStone] = 0;
+weapon_proj[weapon.rollingStone] = obj_rolling_stone;
+weapon_case[weapon.rollingStone] = -1;
+weapon_snd[weapon.rollingStone]  = snd_buckshot;
 weapons++;

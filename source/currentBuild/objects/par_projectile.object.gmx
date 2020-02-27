@@ -55,7 +55,7 @@ destroy_on_contact = true;
             <string>if (team == other.team) or (!other.block_projectiles) or (!deal_damage)
     exit;
 
-if (other.take_damage)
+if (other.take_damage) and (other.flash &lt; 0.5)
     {
     var temp_life = other.life;
     other.life = max(0,other.life-damage);
@@ -121,7 +121,7 @@ if (destroy_on_contact)
             <string>if (team == other.team) or (!other.block_projectiles) or (!deal_damage)
     exit;
 
-if (other.take_damage)
+if (other.take_damage) and (other.flash &lt; 0.5)
     {
     var temp_life = other.life;
     other.life = max(0,other.life-damage);
@@ -187,7 +187,7 @@ if (destroy_on_contact)
             <string>if (team == other.team) or (!other.block_projectiles) or (!deal_damage)
     exit;
 
-if (other.take_damage)
+if (other.take_damage) and (other.flash &lt; 0.5)
     {
     var temp_life = other.life;
     other.life = max(0,other.life-damage);

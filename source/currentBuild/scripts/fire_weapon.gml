@@ -46,6 +46,7 @@ repeat(weapon_pnum[cur_weapon])
             inst.speed = weapon_pspd[cur_weapon];
             break;
         case weapon.rollingCutter:
+        case weapon.rollingStone:
             var inst = instance_create(x+ldx*16,y+muzzle_y+ldy*16,weapon_proj[cur_weapon]);
             inst.xspeed = ldx*weapon_pspd[cur_weapon];
             inst.yspeed = ldy*weapon_pspd[cur_weapon];
@@ -75,7 +76,7 @@ if (weapon_case[cur_weapon] >= 0)
     {
     // bullet/shell casing
     var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_casing);
-    if (aim == 0)
+    if (face > 0)
         inst.direction = aim+random_range(130,160);
     else
         inst.direction = aim-random_range(130,160);
