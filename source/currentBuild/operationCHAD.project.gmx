@@ -241,6 +241,7 @@
           <sprite>sprites\JB_text_spr</sprite>
           <sprite>sprites\title_clouds_spr</sprite>
           <sprite>sprites\title_back_spr</sprite>
+          <sprite>sprites\flame_start_spr</sprite>
         </sprites>
       </sprites>
       <sprites name="001-Abortion Factory">
@@ -290,6 +291,7 @@
             <sprite>sprites\fry_flame_1_spr</sprite>
             <sprite>sprites\spr_flame_mask</sprite>
           </sprites>
+          <sprite>sprites\flame_test_spr</sprite>
         </sprites>
         <sprite>sprites\pop_served_spr</sprite>
         <sprite>sprites\baby_parts_spr</sprite>
@@ -1179,6 +1181,7 @@
           <object>objects\SB_logo</object>
           <object>objects\JB_text</object>
           <object>objects\title_flash</object>
+          <object>objects\flame_start</object>
         </objects>
       </objects>
       <objects name="001-Abortion Factory">
@@ -1287,6 +1290,7 @@
               <object>objects\fryguy_light</object>
             </objects>
           </objects>
+          <object>objects\BG_flame</object>
         </objects>
         <objects name="moloch_boss">
           <object>objects\moloch_controller</object>
@@ -1878,6 +1882,7 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
+      <room>rooms\JB_room</room>
       <room>rooms\drill_room</room>
       <room>rooms\fryguy_room</room>
       <rooms name="demo_rooms">

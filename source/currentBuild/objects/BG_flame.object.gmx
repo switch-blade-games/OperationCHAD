@@ -3,7 +3,7 @@
   <spriteName>flame_test_spr</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>99</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,11 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale=choose(1,-1)
-
-image_speed=0.2+random(0.2)
+            <string>image_speed=0.15+random(0.2)
 
 image_index=random(image_number)
+
+image_xscale=choose(1,-1)
+
+RANGE=4
+
+x=x+random(RANGE)-random(RANGE)
+
+y=y+random(RANGE)-random(RANGE)
 </string>
           </argument>
         </arguments>
