@@ -27,7 +27,9 @@
             <kind>1</kind>
             <string>team = -1;
 damage = 1;
+max_damage = -1;
 deal_damage = true;
+destroy_on_contact = true;
 </string>
           </argument>
         </arguments>
@@ -55,7 +57,20 @@ deal_damage = true;
 
 if (other.take_damage)
     {
-    other.life = max(0,other.life-other.damage);
+    var temp_life = other.life;
+    other.life = max(0,other.life-damage);
+    var damage_dealt = abs(temp_life-other.life);
+    if (max_damage &gt; -1)
+        {
+        max_damage -= damage_dealt;
+        if (max_damage &lt;= 0)
+            {
+            max_damage = 0;
+            deal_damage = false;
+            destroy_on_contact = true;
+            }
+        }
+    
     other.flash = 1;
     if (global.CFG[config.particles])
         {
@@ -79,7 +94,8 @@ if (other.take_damage)
         }
     }
 
-instance_destroy();
+if (destroy_on_contact)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -107,7 +123,20 @@ instance_destroy();
 
 if (other.take_damage)
     {
-    other.life = max(0,other.life-other.damage);
+    var temp_life = other.life;
+    other.life = max(0,other.life-damage);
+    var damage_dealt = abs(temp_life-other.life);
+    if (max_damage &gt; -1)
+        {
+        max_damage -= damage_dealt;
+        if (max_damage &lt;= 0)
+            {
+            max_damage = 0;
+            deal_damage = false;
+            destroy_on_contact = true;
+            }
+        }
+    
     other.flash = 1;
     if (global.CFG[config.particles])
         {
@@ -131,7 +160,8 @@ if (other.take_damage)
         }
     }
 
-instance_destroy();
+if (destroy_on_contact)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -159,7 +189,20 @@ instance_destroy();
 
 if (other.take_damage)
     {
-    other.life = max(0,other.life-other.damage);
+    var temp_life = other.life;
+    other.life = max(0,other.life-damage);
+    var damage_dealt = abs(temp_life-other.life);
+    if (max_damage &gt; -1)
+        {
+        max_damage -= damage_dealt;
+        if (max_damage &lt;= 0)
+            {
+            max_damage = 0;
+            deal_damage = false;
+            destroy_on_contact = true;
+            }
+        }
+    
     other.flash = 1;
     if (global.CFG[config.particles])
         {
@@ -183,7 +226,8 @@ if (other.take_damage)
         }
     }
 
-instance_destroy();
+if (destroy_on_contact)
+    instance_destroy();
 </string>
           </argument>
         </arguments>
