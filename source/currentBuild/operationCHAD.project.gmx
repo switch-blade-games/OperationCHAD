@@ -1992,23 +1992,6 @@
       </rooms>
     </rooms>
   </rooms>
-  <constants number="15">
-    <constant name="BROWN">$304C85</constant>
-    <constant name="ORANGE">$2C7DD2</constant>
-    <constant name="YELLOW">$5ED4DA</constant>
-    <constant name="GREEN">$2CAA6D</constant>
-    <constant name="DARKgreen">$246534</constant>
-    <constant name="LIGHTblue">$CAC26D</constant>
-    <constant name="MEDblue">$CE7D59</constant>
-    <constant name="DARKblue">$6D3430</constant>
-    <constant name="PURPLE">$342644</constant>
-    <constant name="DARKpurple">$1C0C14</constant>
-    <constant name="WHITE">$D6EEDE</constant>
-    <constant name="LIGHTgray">$A19585</constant>
-    <constant name="MEDgray">$617175</constant>
-    <constant name="DARKgray">$4E4A4E</constant>
-    <constant name="PINK">$4846D0</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
