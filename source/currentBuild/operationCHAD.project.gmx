@@ -1855,12 +1855,13 @@
       <object>objects\par_actor</object>
       <object>objects\par_enemy</object>
       <object>objects\par_shootable</object>
+      <object>objects\par_stay_active</object>
+      <object>objects\par_active_enemy</object>
+      <object>objects\par_enemy_spawn</object>
+      <object>objects\par_camera_flag</object>
       <object>objects\par_explode</object>
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
-      <object>objects\par_stay_active</object>
-      <object>objects\par_active_enemy</object>
-      <object>objects\par_cam_obj</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>
@@ -1902,7 +1903,7 @@
       <object>objects\enemy_L</object>
       <object>objects\enemy_R</object>
       <object>objects\enemy_X</object>
-      <object>objects\enemy_spawn_parent</object>
+      <object>objects\enemy_T</object>
       <object>objects\P1_mark</object>
       <object>objects\P2_mark</object>
       <object>objects\cam_push_R</object>

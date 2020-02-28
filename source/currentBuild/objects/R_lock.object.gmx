@@ -2,10 +2,10 @@
 <object>
   <spriteName>R_lock_spr</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>par_cam_obj</parentName>
+  <parentName>par_camera_flag</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">

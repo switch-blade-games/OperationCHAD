@@ -2,10 +2,10 @@
 <object>
   <spriteName>enemy_L_spr</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>enemy_spawn_parent</parentName>
+  <parentName>par_enemy_spawn</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,17 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ACTIVE=false
+            <string>ACTIVE = false;
+BUFFER = true;
+BUFFtime = 60;
+alarm[0] = BUFFtime;
 
-
-BUFFER=false
-
-BUFFtime=60
-
-
-ENEMYmax=4
-
-MYenemy=abort_bot
+ENEMYmax = 4;
+MYenemy = abort_bot;
 </string>
           </argument>
         </arguments>
@@ -58,7 +54,7 @@ MYenemy=abort_bot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>BUFFER=false
+            <string>BUFFER = false;
 </string>
           </argument>
         </arguments>
@@ -81,19 +77,25 @@ MYenemy=abort_bot
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x&lt;view_xview[0]+400)
-ACTIVE=true
+            <string>if (x &lt; view_xview[0]+400)
+    ACTIVE = true;
+if (!ACTIVE) or (BUFFER)
+    exit;
 
-if(ACTIVE=true)
-if(BUFFER=false)
-if(instance_number(MYenemy)&lt;ENEMYmax)
-if(random(10)&lt;1){
-var SPAWN=instance_create(view_xview[0]+400+60,y+20,MYenemy);
-SPAWN.FLIP=-1
-SPAWN.direction=180
-BUFFER=true
-alarm[0]=BUFFtime
-}
+if (instance_number(MYenemy) &lt; ENEMYmax)
+    {
+    var SPAWN = instance_create(view_xview[0]+view_wview[0]+60,y+20,MYenemy);
+    switch(MYenemy)
+        {
+        default:
+            SPAWN.FLIP = -1;
+            SPAWN.direction = 180;
+            break;
+        }
+    
+    BUFFER = true;
+    alarm[0] = BUFFtime;
+    }
 </string>
           </argument>
         </arguments>
