@@ -248,18 +248,30 @@
         <sprites name="tong">
           <sprite>sprites\needle_spr</sprite>
           <sprite>sprites\needle_bubble_spr</sprite>
+          <sprite>sprites\tong_robo_spr</sprite>
           <sprite>sprites\spr_acid_mask</sprite>
           <sprite>sprites\acid_spr</sprite>
           <sprite>sprites\drill_spr</sprite>
+          <sprites name="phase_1">
+            <sprite>sprites\tong_P1_BG_spr</sprite>
+            <sprite>sprites\plop_spr</sprite>
+            <sprite>sprites\plop_tall_spr</sprite>
+            <sprite>sprites\party_cup_spr</sprite>
+            <sprite>sprites\cig_butt_spr</sprite>
+            <sprite>sprites\big_pill_spr</sprite>
+            <sprite>sprites\small_mife_spr</sprite>
+            <sprite>sprites\pill_dis_spr</sprite>
+            <sprite>sprites\drill_chain_spr</sprite>
+          </sprites>
           <sprites name="phase_2">
             <sprite>sprites\diag_BG_spr</sprite>
             <sprite>sprites\tampon_platform_spr</sprite>
             <sprite>sprites\diag_rib_spr</sprite>
+            <sprite>sprites\yellow_wall_spr</sprite>
           </sprites>
           <sprites name="phase_3">
             <sprite>sprites\embro_BG_spr</sprite>
           </sprites>
-          <sprite>sprites\tong_robo_spr</sprite>
         </sprites>
         <sprites name="fryguy">
           <sprites name="fryguy_BG">
@@ -1204,8 +1216,21 @@
       </objects>
       <objects name="001-Abortion Factory">
         <objects name="tong_boss">
-          <object>objects\tong_robo</object>
-          <object>objects\tong_controller</object>
+          <objects name="tong_P1">
+            <object>objects\tong_controller</object>
+            <object>objects\big_pill_maker</object>
+            <object>objects\big_pill</object>
+            <object>objects\tong_1_BG</object>
+            <object>objects\small_plop</object>
+            <object>objects\party_cup</object>
+            <object>objects\cig_butt</object>
+            <object>objects\tall_plop</object>
+            <object>objects\tong_robo</object>
+            <object>objects\small_mife_pill</object>
+            <object>objects\pill_dis</object>
+            <object>objects\drill_chain_controller</object>
+            <object>objects\drill_chain</object>
+          </objects>
           <object>objects\needle</object>
           <object>objects\needle_bubble</object>
           <object>objects\sjw</object>
@@ -1217,6 +1242,7 @@
             <object>objects\tampon_spawner</object>
             <object>objects\tampon_platform</object>
             <object>objects\diag_rib</object>
+            <object>objects\yellow_wall</object>
           </objects>
           <objects name="tong_P3">
             <object>objects\tong_P3_controller</object>
@@ -1919,11 +1945,9 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\tong_P3_room</room>
-      <room>rooms\diag_vag_room</room>
+      <room>rooms\tong_P1_room</room>
       <room>rooms\player_select_room</room>
       <room>rooms\JB_room</room>
-      <room>rooms\drill_room</room>
       <room>rooms\fryguy_room</room>
       <rooms name="demo_rooms">
         <room>rooms\open_cutscene_room</room>
@@ -1937,8 +1961,9 @@
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
-        <room>rooms\tong_P3_room</room>
         <room>rooms\elevator_mockup</room>
+        <room>rooms\tong_P3_room</room>
+        <room>rooms\drill_room</room>
         <room>rooms\room44</room>
       </rooms>
       <rooms name="002-Public School">
