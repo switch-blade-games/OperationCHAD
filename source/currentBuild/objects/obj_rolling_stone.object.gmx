@@ -52,7 +52,7 @@ max_size = 1;
 // tuners
 grav_speed = 0.4;
 roll_speed = 0.1;
-fall_speed = 1;
+fall_speed = 10;
 grow_speed = 0.03;
 
 explode_num = 5; // number of explosions
@@ -181,9 +181,10 @@ and (!((yspeed &gt;= 0) and (!position_meeting(x,bbox_bottom,par_jt)) and (posit
     }
 else
     {
-    if ((roll_dir &gt; 0) and (xspeed &lt; roll_speed*roll_dir))
-    or ((roll_dir &lt; 0) and (xspeed &gt; roll_speed*roll_dir))
-        xspeed += 1*roll_dir;
+    if (abs(xspeed) &lt; roll_speed)
+        xspeed += roll_speed*roll_dir;
+    else if (abs(xspeed) &gt; roll_speed)
+        xspeed -= roll_speed*roll_dir;
     }
 
 outside_view(240);
