@@ -181,9 +181,9 @@ and (!((yspeed &gt;= 0) and (!position_meeting(x,bbox_bottom,par_jt)) and (posit
 else
     {
     if (abs(xspeed) &lt; roll_speed)
-        xspeed += roll_speed*roll_dir;
+        xspeed += roll_delta*roll_dir;
     else if (abs(xspeed) &gt; roll_speed)
-        xspeed -= roll_speed*roll_dir;
+        xspeed -= roll_delta*roll_dir;
     }
 
 outside_view(240);
