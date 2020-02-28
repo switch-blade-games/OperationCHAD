@@ -2,10 +2,10 @@
 <object>
   <spriteName>checkpoint_spr</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_camera_flag</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>CHK=1
-
 Yplace=-1
 </string>
           </argument>

@@ -51,9 +51,10 @@ max_size = 1;
 
 // tuners
 grav_speed = 0.4;
-roll_speed = 0.1;
-fall_speed = 10;
-grow_speed = 0.03;
+roll_speed = 6; // max roll speed
+fall_speed = 10; // max fall speed
+grow_speed = 0.03; // scale grow rate
+roll_delta = 0.1; // acceleration/deceleration rate
 
 explode_num = 5; // number of explosions
 explode_rad = 6; // radial range

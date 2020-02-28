@@ -439,6 +439,8 @@ file_text_close(file);
                     draw_set_alpha(1.0);
                     }
                 }
+            with(par_camera_flag)
+                draw_self();
             //draw_set_color(c_lime);
             //with(par_verlet)
             //    draw_point(x,y);
