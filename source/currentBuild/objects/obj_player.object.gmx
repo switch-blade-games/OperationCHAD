@@ -256,6 +256,8 @@ if (respawn_flash) or (flash &gt; 0)
     }
 else
     draw_sprite_part_ext(spr_index,0,tx,ty,tw,th,x-(tw/2)*face + off_x,y+mShake-th + off_y,face,1,-1,1);
+
+draw_text_outline(x,y+20,"STATE: "+string(move_state))
 </string>
           </argument>
         </arguments>

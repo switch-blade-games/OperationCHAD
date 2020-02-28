@@ -63,7 +63,6 @@ with(par_mb)
     <instance objName="obj_player" x="60" y="500" name="inst_4AD26176" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="560" name="inst_7E813235" locked="0" code="" scaleX="40" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="-20" y="0" name="inst_3F0E4699" locked="0" code="" scaleX="1" scaleY="30" colour="4294967295" rotation="0"/>
-    <instance objName="obj_climb_r" x="0" y="260" name="inst_495D4600" locked="0" code="" scaleX="1" scaleY="15" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="800" y="560" name="inst_7AA49AC7" locked="0" code="" scaleX="83" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1840" y="480" name="inst_AD10CE03" locked="0" code="" scaleX="13" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_r" x="1680" y="540" name="inst_1844AF31" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -167,6 +166,11 @@ with(par_mb)
     <instance objName="obj_climb_r" x="460" y="480" name="inst_A1602A39" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="880" y="480" name="inst_9C187B69" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="enemy_T" x="680" y="560" name="inst_AF9107EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_move_path" x="0" y="380" name="inst_4031022F" locked="0" code="x1 = x;&#xA;y1 = y;&#xA;x2 = x;&#xA;y2 = y+180;&#xA;&#xA;event_user(0);&#xA;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall_move" x="160" y="340" name="inst_2DC01AAB" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="40" y="380" name="inst_1E20EA56" locked="0" code="" scaleX="11" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="20" y="340" name="inst_BAE73B64" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="260" y="340" name="inst_26178198" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

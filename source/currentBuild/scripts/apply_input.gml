@@ -41,7 +41,7 @@ switch(move_state)
                 or   ((input_left)  and (wc_side & tile_side.right == tile_side.right)))
                     {
                     // ground transition from walking to wallclimb
-                    if (on_ground and (input_up xor input_down))
+                    if (on_ground and input_up)
                     or (!on_ground)
                         {
                         move_state = mState.wc;
@@ -354,12 +354,12 @@ switch(move_state)
                             var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
                             
                             // don't move up into a monkey bar
-                            if ((off < 0) or (off > len)) or (y <= yto+32) or (!can_mb)
+                            if ((off < 0) or (off > len)) or (y <= yto+33)
                                 yspeed = max(0,yspeed);
                             
                             // transition from wallclimb to monkeybar
                             if ((input_right and wc_r) or (input_left and wc_l)) and (input_up)
-                            and (abs(y-(yto+32)) <= wc_speed)
+                            and (can_mb) and (abs(y-(yto+32)) <= wc_speed)
                             and (!place_meeting(x,yto+32,par_solid))
                                 {
                                 move_state = mState.mb;

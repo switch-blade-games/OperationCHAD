@@ -25,19 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>event_inherited();
 
-WAIT = -1;
-RIGHT = 0;
-UP = 1;
-LEFT = 2;
-DOWN = 3;
-
-wait_time = 40;
-
-state = WAIT;
-range = 20;
-timer = 0;
+xspeed = 1;
+yspeed = 0;
 </string>
           </argument>
         </arguments>
@@ -60,161 +51,15 @@ timer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>delta_x = xspeed;
+delta_y = yspeed;
 
-if (timer &gt; 0)
-    {
-    ldx = 0;
-    ldy = 0;
-    timer--;
-    }
-else
-    {
-    if (dir == 1)
-        {
-        xto = x2;
-        yto = y2;
-        ang = point_direction(x1,y1,x2,y2);
-        ldx = lengthdir_x(spd,ang);
-        ldy = lengthdir_y(spd,ang);
-        }
-    else
-        {
-        xto = x1;
-        yto = y1;
-        ang = point_direction(x2,y2,x1,y1);
-        ldx = lengthdir_x(spd,ang);
-        ldy = lengthdir_y(spd,ang);
-        }
-    if (point_distance(x,y,xto,yto) &lt; spd)
-        {
-        ldx = xto-x;
-        ldy = yto-y;
-        
-        timer = delay;
-        dir *= -1;
-        }
-    }
+event_inherited();
 
-var on_actors = 0;
-var on_actor;
-var off_actors = 0;
-var off_actor;
-
-x += ldx;
-
-with(par_actor)
-    {
-    if (place_meeting(x,y+1,other))
-    and !(place_meeting(x,y+1,par_jt) and !place_meeting(x,y,par_jt))
-        {
-        on_actor[on_actors] = id;
-        on_actors++;
-        
-        if (!place_meeting(x+other.ldx,y,par_solid))
-            {
-            if (object_index == obj_player)
-            and ((move_state == mState.hang)
-            or (move_state == mState.climb))
-                {
-                move_state = mState.walk;
-                roll = false;
-                }
-
-            x += other.ldx;
-            }
-        }
-    else
-        {
-        off_actor[off_actors] = id;
-        off_actors++;
-        
-        if (place_meeting(x-other.ldx,y,other))
-            {
-            if (!place_meeting(x+other.ldx,y,par_solid))
-                {
-                if (object_index == obj_player)
-                and ((move_state == mState.hang)
-                or (move_state == mState.climb))
-                    {
-                    move_state = mState.walk;
-                    roll = false;
-                    }
-                
-                x += other.ldx;
-                }
-            }
-        }
-    }
-
-y += ldy;
-
-for(var i=0; i&lt;on_actors; i++;)
-    {
-    with(on_actor[i])
-        {
-        if (!place_meeting(x,y+other.ldy,par_solid))
-            {
-            if (object_index == obj_player)
-            and ((move_state == mState.hang)
-            or (move_state == mState.climb))
-                {
-                move_state = mState.walk;
-                roll = false;
-                }
-            
-            y += other.ldy;
-            }
-        }
-    }
-
-for(var i=0; i&lt;off_actors; i++;)
-    {
-    with(off_actor[i])
-        {
-        if (place_meeting(x,y-other.ldy,other))
-            {
-            if (!place_meeting(x,y+other.ldy,par_solid))
-                {
-                if (object_index == obj_player)
-                and ((move_state == mState.hang)
-                or (move_state == mState.climb))
-                    {
-                    move_state = mState.walk;
-                    roll = false;
-                    }
-                
-                y += other.ldy;
-                }
-            }
-        }
-    }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/*
-
-draw_sprite_ext(spr_wall_move,0,x,y,image_xscale,image_yscale,0,-1,1);
-draw_sprite_ext(spr_arrow_h,0,x+image_xscale*10,y+image_yscale*10,1,1,ang,-1,1);
+if (place_meeting(x+xspeed,y,par_reflector))
+    xspeed *= -1;
+if (place_meeting(x,y+yspeed,par_reflector))
+    yspeed *= -1;
 </string>
           </argument>
         </arguments>
