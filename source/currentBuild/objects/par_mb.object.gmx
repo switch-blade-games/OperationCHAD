@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>x1 = 0;
 y1 = 0;
-x2 = 20;
+x2 = 20*image_xscale;
 y2 = 0;
 ang = 0;
 ang_old = 0;
