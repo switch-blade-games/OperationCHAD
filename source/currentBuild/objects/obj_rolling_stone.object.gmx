@@ -81,9 +81,7 @@ explode_dam = 3; // explosion damage
           <argument>
             <kind>1</kind>
             <string>// image_index += xspeed/(roll_cir*cur_size);
-//roll_ang += (360/(roll_cir*cur_size))*(xspeed/60);
-
-roll_ang += (360/(roll_cir*cur_size))*(xspeed/200);
+roll_ang += (360/(roll_cir*cur_size))*(xspeed/60);
 
 // grow
 if (cur_size &lt; max_size)
