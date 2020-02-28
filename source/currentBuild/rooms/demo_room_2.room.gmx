@@ -456,8 +456,8 @@ with(par_mb)
     <instance objName="NPC_dummy" x="1940" y="7720" name="inst_4C57F138" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7760" y="4960" name="inst_85508BDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7400" y="4960" name="inst_3132EB46" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="monkey_ramp_L" x="7420" y="4960" name="inst_4ABC0146" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="monkey_ramp_L" x="7460" y="4940" name="inst_CDB1CE66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_l" x="7420" y="4960" name="inst_4ABC0146" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_l" x="7460" y="4940" name="inst_CDB1CE66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7440" y="4940" name="inst_D06ADB41" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7480" y="4920" name="inst_CEBB023F" locked="0" code="" scaleX="11" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jt" x="100" y="7660" name="inst_2485A7EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -588,8 +588,8 @@ with(par_mb)
     <instance objName="obj_wall" x="820" y="7680" name="inst_FE2C6DBB" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1980" y="7740" name="inst_6019DEDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="6160" y="5080" name="inst_21FBFC9B" locked="0" code="" scaleX="1" scaleY="42" colour="4294967295" rotation="0"/>
-    <instance objName="monkey_ramp_L" x="7720" y="4940" name="inst_4B2FE1BA" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="monkey_ramp_L" x="7760" y="4960" name="inst_D55EC14A" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_l" x="7720" y="4940" name="inst_4B2FE1BA" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_l" x="7760" y="4960" name="inst_D55EC14A" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7720" y="4940" name="inst_1CCAA3D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7760" y="5140" name="inst_BCA70A4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="7500" y="5180" name="inst_604D0A8E" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>

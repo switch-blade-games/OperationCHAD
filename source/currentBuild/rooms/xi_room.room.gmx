@@ -84,6 +84,14 @@ instance_create(0,0,xi_tracker)</code>
     <instance objName="obj_mb_r" x="20" y="15" name="inst_6D04E43A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="60" y="15" name="inst_ADC763F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="xi_between" x="300" y="220" name="inst_B9CB2D56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_l" x="20" y="20" name="inst_12BFFBD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_ceil_r" x="340" y="20" name="inst_7E4AC161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="60" y="0" name="inst_A5F7A677" locked="0" code="side = tile_side.bottom;&#xA;event_user(0);&#xA;" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="0" y="40" name="inst_1F01FF38" locked="0" code="side = tile_side.right;&#xA;event_user(0);&#xA;" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="60" y="220" name="inst_4E26C991" locked="0" code="side = tile_side.top;&#xA;event_user(0);&#xA;" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector" x="380" y="40" name="inst_5A8BE2A0" locked="0" code="side = tile_side.left;&#xA;event_user(0);&#xA;" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_l" x="20" y="200" name="inst_8F63F06B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_reflector_r" x="340" y="200" name="inst_6290218F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

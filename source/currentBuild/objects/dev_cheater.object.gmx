@@ -488,6 +488,17 @@ file_text_close(file);
             break;
         
         case 3: // resource select
+            if (resourceMode == 1) and (result_select &gt; -1)
+                {
+                if ((resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+220,vy+3*12)))
+                or ((!resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+262,vy+9*12)))
+                    {
+                    var _spr = result_spr[result_select];
+                    if (_spr &gt; -1)
+                        draw_sprite_ext(_spr,0,mouse_x,mouse_y,1,1,0,-1,0.75);
+                    }
+                }
+            
             if (resourceCollapse)
                 {
                 // minimized resource list

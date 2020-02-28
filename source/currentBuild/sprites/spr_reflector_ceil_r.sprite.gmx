@@ -5,7 +5,7 @@
   <yorigin>0</yorigin>
   <colkind>0</colkind>
   <coltolerance>0</coltolerance>
-  <sepmasks>-1</sepmasks>
+  <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>39</bbox_right>
@@ -20,6 +20,6 @@
   <width>40</width>
   <height>20</height>
   <frames>
-    <frame index="0">images\monkey_ramp_L_spr_0.png</frame>
+    <frame index="0">images\spr_reflector_ceil_r_0.png</frame>
   </frames>
 </sprite>

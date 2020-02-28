@@ -73,6 +73,7 @@ if (other.take_damage) and (other.flash &lt; 0.5)
     
     other.flash = 1;
     if (global.CFG[config.particles])
+    and (other.sprite_index &gt; -1)
         {
         var spr = other.sprite_index;
         var ind = other.image_index;
@@ -139,6 +140,7 @@ if (other.take_damage) and (other.flash &lt; 0.5)
     
     other.flash = 1;
     if (global.CFG[config.particles])
+    and (other.sprite_index &gt; -1)
         {
         var spr = other.sprite_index;
         var ind = other.image_index;
@@ -205,6 +207,7 @@ if (other.take_damage) and (other.flash &lt; 0.5)
     
     other.flash = 1;
     if (global.CFG[config.particles])
+    and (other.sprite_index &gt; -1)
         {
         var spr = other.sprite_index;
         var ind = other.image_index;

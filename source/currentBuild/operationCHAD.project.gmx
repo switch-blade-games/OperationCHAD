@@ -118,7 +118,6 @@
           <sprite>sprites\joystix_font_spr</sprite>
           <sprite>sprites\node_spr</sprite>
           <sprite>sprites\msk_particle</sprite>
-          <sprite>sprites\msk_trigger</sprite>
           <sprite>sprites\spr_particle</sprite>
           <sprites name="colliders">
             <sprite>sprites\msk_wall</sprite>
@@ -128,8 +127,8 @@
             <sprite>sprites\msk_mb</sprite>
             <sprite>sprites\msk_mb_r</sprite>
             <sprite>sprites\msk_mb_l</sprite>
+            <sprite>sprites\msk_trigger</sprite>
             <sprite>sprites\spr_wall_move</sprite>
-            <sprite>sprites\text_platform_mask_spr</sprite>
           </sprites>
           <sprites name="gamepad">
             <sprite>sprites\spr_buttons_xbox</sprite>
@@ -832,6 +831,13 @@
       </sprites>
     </sprites>
     <sprites name="environment">
+      <sprites name="reflectors">
+        <sprite>sprites\spr_reflector</sprite>
+        <sprite>sprites\spr_reflector_l</sprite>
+        <sprite>sprites\spr_reflector_r</sprite>
+        <sprite>sprites\spr_reflector_ceil_l</sprite>
+        <sprite>sprites\spr_reflector_ceil_r</sprite>
+      </sprites>
       <sprite>sprites\monkeybar_spr</sprite>
       <sprite>sprites\block_spr</sprite>
       <sprite>sprites\target_spr</sprite>
@@ -843,9 +849,8 @@
       <sprite>sprites\climb_L_spr</sprite>
       <sprite>sprites\platform_spr</sprite>
       <sprite>sprites\death_block_spr</sprite>
-      <sprite>sprites\monkey_ramp_L_spr</sprite>
-      <sprite>sprites\monkey_ramp_R_spr</sprite>
       <sprite>sprites\block_break_spr</sprite>
+      <sprite>sprites\text_platform_mask_spr</sprite>
     </sprites>
     <sprites name="powerups">
       <sprite>sprites\red_pill_spr</sprite>
@@ -1098,6 +1103,7 @@
       <script>scripts\projectile_step.gml</script>
       <script>scripts\ternary.gml</script>
       <script>scripts\reflect.gml</script>
+      <script>scripts\line_line_collision.gml</script>
     </scripts>
     <scripts name="player">
       <script>scripts\input.gml</script>
@@ -1167,6 +1173,7 @@
           <object>objects\painter</object>
           <object>objects\paint_parent</object>
         </objects>
+        <object>objects\obj_debug_marker</object>
         <object>objects\ep_warning</object>
         <object>objects\obj_gamepad_disconnect</object>
         <object>objects\stage_finish</object>
@@ -1801,6 +1808,13 @@
       </objects>
     </objects>
     <objects name="colliders">
+      <objects name="reflectors">
+        <object>objects\obj_reflector</object>
+        <object>objects\obj_reflector_l</object>
+        <object>objects\obj_reflector_r</object>
+        <object>objects\obj_reflector_ceil_l</object>
+        <object>objects\obj_reflector_ceil_r</object>
+      </objects>
       <object>objects\obj_wall</object>
       <object>objects\block_break</object>
       <object>objects\obj_jt</object>
@@ -1818,7 +1832,6 @@
       <object>objects\monkeybar_move</object>
       <object>objects\monkeybar_rotate</object>
       <object>objects\monkeybar_path</object>
-      <object>objects\monkey_ramp_L</object>
     </objects>
     <objects name="parents">
       <objects name="colliders">
@@ -1832,6 +1845,7 @@
         <object>objects\par_move</object>
         <object>objects\par_trigger</object>
         <object>objects\par_death</object>
+        <object>objects\par_reflector</object>
       </objects>
       <objects name="projectiles">
         <object>objects\par_projectile</object>
@@ -1922,7 +1936,7 @@
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
-        <room>rooms\tong_room</room>
+        <room>rooms\tong_P3_room</room>
         <room>rooms\elevator_mockup</room>
         <room>rooms\room44</room>
       </rooms>
