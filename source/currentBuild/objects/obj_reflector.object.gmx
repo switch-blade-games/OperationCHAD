@@ -25,7 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
+            <string>var _x1 = x;
+var _y1 = y;
+var _x2 = x+20*image_xscale;
+var _y2 = y+20*image_yscale;
+
+// hypotenuse
+rx1 = _x2; ry1 = _y1;
+rx2 = _x2; ry2 = _y2;
 
 // default side
 side = tile_side.right;

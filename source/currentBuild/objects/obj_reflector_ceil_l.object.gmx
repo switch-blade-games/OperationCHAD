@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-
-var _x1 = x;
+            <string>var _x1 = x;
 var _y1 = y;
 var _x2 = x+40*image_xscale;
 var _y2 = y+20*image_yscale;

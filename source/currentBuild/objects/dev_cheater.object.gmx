@@ -422,12 +422,14 @@ file_text_close(file);
             with(par_projectile)
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
             draw_set_color(c_fuchsia);
-            with(par_solid)
+            with(par_collider)
                 draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-            with(par_jt)
-                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
-            with(par_mb)
-                draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,1);
+            draw_set_color(c_purple);
+            with(par_reflector)
+                {
+                draw_line(rx1,ry1,rx2,ry2);
+                draw_arrow((rx1+rx2)/2,(ry1+ry2)/2,(rx1+rx2)/2 + nx*16,(ry1+ry2)/2 + ny*16,8);
+                }
             draw_set_color(c_yellow);
             with(par_trigger)
                 {
