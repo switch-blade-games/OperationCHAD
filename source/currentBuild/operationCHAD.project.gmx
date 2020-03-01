@@ -262,6 +262,10 @@
             <sprite>sprites\small_mife_spr</sprite>
             <sprite>sprites\pill_dis_spr</sprite>
             <sprite>sprites\drill_chain_spr</sprite>
+            <sprite>sprites\vag_floor_spr</sprite>
+            <sprite>sprites\green_bubble_spr</sprite>
+            <sprite>sprites\drill_tip_spr</sprite>
+            <sprite>sprites\drill_body_spr</sprite>
           </sprites>
           <sprites name="phase_2">
             <sprite>sprites\diag_BG_spr</sprite>
@@ -1222,14 +1226,18 @@
             <object>objects\big_pill</object>
             <object>objects\tong_1_BG</object>
             <object>objects\small_plop</object>
+            <object>objects\tall_plop</object>
             <object>objects\party_cup</object>
             <object>objects\cig_butt</object>
-            <object>objects\tall_plop</object>
             <object>objects\tong_robo</object>
             <object>objects\small_mife_pill</object>
             <object>objects\pill_dis</object>
             <object>objects\drill_chain_controller</object>
             <object>objects\drill_chain</object>
+            <object>objects\vag_floor</object>
+            <object>objects\green_bubble</object>
+            <object>objects\drill_tent</object>
+            <object>objects\drill_part</object>
           </objects>
           <object>objects\needle</object>
           <object>objects\needle_bubble</object>
@@ -1946,23 +1954,20 @@
     <rooms name="000-FrontEnd">
       <room>rooms\init_room</room>
       <room>rooms\menu_room</room>
-      <room>rooms\tong_P1_room</room>
-      <room>rooms\player_select_room</room>
-      <room>rooms\JB_room</room>
-      <room>rooms\fryguy_room</room>
       <rooms name="demo_rooms">
-        <room>rooms\open_cutscene_room</room>
-        <room>rooms\panel_room</room>
         <room>rooms\final_factory</room>
-        <room>rooms\moloch_mockup</room>
-        <room>rooms\clown_judge_mockup</room>
         <room>rooms\demo_room</room>
         <room>rooms\demo_room_2</room>
       </rooms>
+      <room>rooms\player_select_room</room>
+      <room>rooms\JB_room</room>
     </rooms>
     <rooms name="REDACTED">
       <rooms name="001-Abortion Factory">
+        <room>rooms\tong_P1_room</room>
+        <room>rooms\moloch_mockup</room>
         <room>rooms\elevator_mockup</room>
+        <room>rooms\fryguy_room</room>
         <room>rooms\tong_P3_room</room>
         <room>rooms\drill_room</room>
         <room>rooms\room44</room>
@@ -1972,6 +1977,7 @@
       </rooms>
       <rooms name="003-Clown World">
         <room>rooms\clown_room</room>
+        <room>rooms\clown_judge_mockup</room>
         <room>rooms\circle_room</room>
         <room>rooms\merry_room</room>
         <room>rooms\cloud_room</room>
@@ -2012,6 +2018,8 @@
       <rooms name="cutscenes and gags">
         <room>rooms\end_cutscene_room</room>
         <room>rooms\ep_room</room>
+        <room>rooms\open_cutscene_room</room>
+        <room>rooms\panel_room</room>
         <room>rooms\no_boss_cutscene_room</room>
         <room>rooms\cine_room</room>
         <room>rooms\game_over_room</room>
