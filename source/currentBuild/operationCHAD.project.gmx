@@ -835,6 +835,7 @@
           <sprite>sprites\pumpkin_fly_spr</sprite>
           <sprite>sprites\pumpkin_idle_test_spr</sprite>
           <sprite>sprites\pumpkin_walk_test_spr</sprite>
+          <sprite>sprites\pumpkin_moto_spr</sprite>
         </sprites>
         <sprites name="104-Fox">
           <sprite>sprites\fox_fly_spr</sprite>
@@ -1840,6 +1841,7 @@
         </objects>
         <object>objects\stonetoss_comic</object>
       </objects>
+      <object>objects\pumpkin_moto</object>
     </objects>
     <objects name="colliders">
       <objects name="reflectors">
