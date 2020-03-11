@@ -285,21 +285,21 @@ motion_set(point_direction(x,y,GRAPx,GRAPy),GOspe)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///GRAP shots
+            <string>/// Grapple Electric Attack
 
+var HANDson = GRAPson[GRAPnum-1];
 
+var inst = instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
+    inst.direction = 180;
+    inst.speed = 4;
+    inst.roll_direction = +1;
 
-var HANDson=GRAPson[GRAPnum-1];
+var inst = instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
+    inst.direction = 0;
+    inst.speed = 4;
+    inst.roll_direction = +1;
         
-        var ELECr=instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
-        ELECr.direction=0
-        var ELECl=instance_create(HANDson.x,HANDson.y,rolling_elec_ball);
-        ELECr.direction=180
-        
-        
-
-alarm[3]=2
-
+alarm[3] = 2;
 </string>
           </argument>
         </arguments>

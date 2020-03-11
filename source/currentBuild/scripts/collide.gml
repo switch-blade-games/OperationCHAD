@@ -11,7 +11,7 @@ suby -= ry;
 xpre = x;
 ypre = y;
 
-if (no_clip) or (move_state == mState.moto)
+if (no_clip)
     {
     if (tx > 0)
         x += sign(xspeed)*tx;

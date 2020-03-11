@@ -427,7 +427,7 @@ switch(move_state)
         break;
     
     case mState.moto:
-        lock = (input_lock) and (on_moto);
+        lock = (input_lock) and (on_vehicle);
         if (lock)
             {
             // aim
@@ -503,8 +503,11 @@ switch(move_state)
             }
         
         // jump
-        if (on_moto) and (input_jump_pressed) and (!input_down)
+        if (on_vehicle) and (input_jump_pressed) and (!input_down)
+            {
             jump();
+            on_vehicle = false;
+            }
         
         // fire weapon
         fire_weapon();

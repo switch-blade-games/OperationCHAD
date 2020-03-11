@@ -17,9 +17,8 @@ room_init();
 instance_create(0,0,motor_controller_2);
 instance_create(0,0,forest_drawer)
 
-var player = instance_create(90,180,obj_player);
-player.move_state = mState.moto;
-global.moto_floor=180
+instance_create(90,180,obj_player);
+instance_create(90,180,obj_motorcycle);
 
 mus_loop(ride_of_valk_snd);</code>
   <enableViews>-1</enableViews>

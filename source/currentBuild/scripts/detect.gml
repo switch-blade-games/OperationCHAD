@@ -64,3 +64,10 @@ if (temp_id != noone) and (temp_id.sides & tile_side.bottom == tile_side.bottom)
 if (no_wc_time > 0)
     no_wc_time--;
 can_wc = (!no_wc) and (no_wc_time == 0);
+
+// detect motorcycle
+detect_vehicle = false;
+detect_vehicle_id = noone;
+detect_vehicle_id = instance_place(x,y+1,par_vehicle);
+if (detect_vehicle_id != noone) and (detect_vehicle_id.rider == noone)
+    detect_vehicle = true;

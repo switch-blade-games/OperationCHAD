@@ -24,6 +24,19 @@ switch(move_state)
             on_ramp = detect_ramp;
         else
             {
+            if (detect_vehicle) and (vehicle_id == noone) and (y >= detect_vehicle_id.y-12)
+                {
+                vehicle_id = detect_vehicle_id;
+                detect_vehicle_id.rider = id;
+                
+                move_state = mState.moto;
+                on_vehicle = true;
+                
+                y = detect_vehicle_id.y-12;
+                xspeed = 0;
+                yspeed = 0;
+                }
+            
             // start hanging
             if (detect_mb) and (mb_id == noone)
                 {
@@ -146,38 +159,60 @@ switch(move_state)
         break;
     
     case mState.moto:
-        // player gravity
-        on_moto = false;
-        if (y >= moto_y)
+        if (!instance_exists(vehicle_id))
             {
-            on_moto = true;
-            y = moto_y;
+            move_state = mState.walk;
+            on_ground = false;
+            break;
+            }
+        
+        // player gravity
+        on_vehicle = false;
+        if (y >= vehicle_id.y-12)
+            {
+            on_vehicle = true;
+            y = vehicle_id.y-12;
             yspeed = 0;
             }
         else
             {
             // start hanging
-            if (detect_mb) and (mb_id = noone) and (yspeed > 0)
-            and (!no_mb) and (no_mb_timer == 0)
+            if (detect_mb) and (mb_id == noone)
                 {
-                // wall climbing code
+                var temp_mb = detect_mb_id;
+                
+                var x1 = temp_mb.x+temp_mb.x1;
+                var x2 = temp_mb.x+temp_mb.x2;
+                var y1 = temp_mb.y+temp_mb.y1;
+                var y2 = temp_mb.y+temp_mb.y2;
+                var len = temp_mb.len;
+                var amt = (x-min(x1,x2))/max(1,abs(x2-x1));
+                var yto = round(lerp(ternary(x1<x2,y1,y2),ternary(x1<x2,y2,y1),amt));
+                var off = round(ternary(x1<x2,amt*len,len-(amt*len)));
+                
+                // make sure we can smoothly transition to monkeybar
+                if (off >= 0) and (off <= len) and (abs(y-(yto+32)) <= yspeed)
+                and (yspeed > 0) and (can_mb) and (!place_meeting(x,yto+32,par_solid))
+                    {
+                    move_state = mState.mb;
+                    y = yto+32;
+                    mb_id = temp_mb;
+                    mb_offset = off;
+                    mb_sign = ternary(x1<x2,+1,-1);
+                    xspeed = 0;
+                    yspeed = 0;
+                    
+                    vehicle_id.rider = noone;
+                    vehicle_id = noone;
+                    on_vehicle = false;
+                    
+                    // sfx
+                    snd_play(choose(snd_land_metal_1,snd_land_metal_2,snd_land_metal_3),0.1,0.2);
+                    }
                 }
             if (yspeed < fall_speed)
                 yspeed += grav;
             }
-        
-        // moto gravity
-        if (moto_y >= global.moto_floor)
-            {
-            moto_y = global.moto_floor;
-            moto_yspeed = 0;
-            }
-        else
-            {
-            if (moto_yspeed < fall_speed)
-                moto_yspeed += grav;
-            }
-        moto_y += moto_yspeed;
         break;
     
     case mState.dead:

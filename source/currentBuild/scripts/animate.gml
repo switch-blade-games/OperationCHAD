@@ -164,12 +164,8 @@ switch(move_state)
         break;
     
     case mState.moto:
-        if (on_moto)
+        if (on_vehicle)
             {
-            if (anim_state != aState.moto_idle)
-                anim_state = aState.moto_idle;
-            
-            /*
             if (input_fire)
                 {
                 if (anim_state != aState.moto_fire)
@@ -177,10 +173,9 @@ switch(move_state)
                 }
             else
                 {
-                if (anim_state != aState.moto)
-                    anim_state = aState.moto;
+                if (anim_state != aState.moto_idle)
+                    anim_state = aState.moto_idle;
                 }
-            */
             }
         else
             {
@@ -282,6 +277,7 @@ switch(anim_state)
         break;
     
     case aState.moto_idle:
+    case aState.moto_fire:
         anim_update(1);
         img_index += img_speed[anim_state];
         gun_y = -18;

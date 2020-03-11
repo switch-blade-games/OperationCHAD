@@ -1504,6 +1504,7 @@
           <object>objects\front_plane</object>
           <object>objects\para_leave</object>
           <object>objects\projectile_test</object>
+          <object>objects\obj_motorcycle</object>
         </objects>
         <objects name="hitler">
           <objects name="P1">
@@ -1897,6 +1898,7 @@
       <object>objects\par_explode</object>
       <object>objects\par_effect</object>
       <object>objects\par_verlet</object>
+      <object>objects\par_vehicle</object>
     </objects>
     <objects name="weapons">
       <object>objects\obj_bullet</object>

@@ -74,7 +74,6 @@ no_clip = false;
 move_state = mState.walk;
 on_ground = false;
 on_ramp = false;
-on_moto = false;
 lock = false;
 drop = false;
 wait = 0;
@@ -95,9 +94,8 @@ mb_offset_old = 0;
 mb_sign = 1;
 no_mb = false;
 no_mb_time = 0;
-moto_y = 0;
-moto_yspeed = 0;
-moto_shake = 0;
+vehicle_id = noone;
+on_vehicle = false;
 step_sfx = false;
 land_sfx = false;
 
@@ -227,10 +225,7 @@ if (cur_weapon == weapon.flame) and (flame_ang != aim)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (on_moto)
-    var mShake = moto_shake;
-else
-    var mShake = 0;
+            <string>var mShake = 0;
 
 if (!skin_ready)
     {
