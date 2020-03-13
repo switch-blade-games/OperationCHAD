@@ -25,12 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ACTIVE=true
-event_inherited()
+            <string>event_inherited();
 
-
-
-
+ACTIVE = true;
 </string>
           </argument>
         </arguments>
@@ -53,14 +50,15 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(ACTIVE=true)
-if((view_xview[0]+180)&gt;x){
+            <string>if (!ACTIVE)
+    exit;
 
+if(x &lt; (view_xview[0]+180))
+    {
+    ACTIVE = false;
     with(JB_cam)
-        state=DIAGUP
-    
-    ACTIVE=false
-}
+        state = camState.diag_u;
+    }
 </string>
           </argument>
         </arguments>

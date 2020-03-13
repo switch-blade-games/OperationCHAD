@@ -1163,7 +1163,6 @@
       <script>scripts\Yfollow.gml</script>
       <script>scripts\Rfollow.gml</script>
       <script>scripts\checkpoint_check.gml</script>
-      <script>scripts\define_cam_states.gml</script>
       <scripts name="fent">
         <script>scripts\dragon_make_pills.gml</script>
         <script>scripts\dragon_hit.gml</script>
@@ -1172,7 +1171,6 @@
       <script>scripts\elevator_down.gml</script>
     </scripts>
     <script>scripts\camera_deactivate.gml</script>
-    <script>scripts\camera_bounds.gml</script>
     <script>scripts\room_init.gml</script>
   </scripts>
   <shaders name="shaders">
@@ -1951,7 +1949,6 @@
     <object>objects\obj_menu</object>
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
-    <object>objects\obj_camera</object>
     <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">

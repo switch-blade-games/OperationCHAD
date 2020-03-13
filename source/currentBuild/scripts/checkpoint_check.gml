@@ -1,31 +1,30 @@
 if (!instance_exists(par_actor))
     exit;
 
-with(checkpoint_obj){
-
-    var Yset=Yplace;
-
-    if(CHK<global.CHECKPOINT)
-    instance_destroy()
+with(checkpoint_obj)
+    {
+    if (CHK < global.CHECKPOINT)
+        instance_destroy();
     
+    var SETindex = MYindex;
+    var SETstate = MYstate;
+    var SETx = x;
+    var SETy = y;
     
-    var SETstate=MYstate;
-    
-    if(CHK=global.CHECKPOINT){
-    
-    
-    JB_cam.x=x
-    JB_cam.y=y
-    
-    obj_player.x=x+20
-    obj_player.y=y+20
-    
-    
-    with(JB_cam){
-    
-        if not(Yset=-1)
-        Ycurrent=Yset
-        state=SETstate
+    if (CHK = global.CHECKPOINT)
+        {
+        with(JB_cam)
+            {
+            state = SETstate;
+            cam_x = SETx;
+            cam_y = SETy;
+            if (SETindex != -1)
+                Ycurrent = MYarray[SETindex];
+            }
+        with(par_actor)
+            {
+            x = SETx+20;
+            y = SETy+20;
+            }
         }
     }
-}

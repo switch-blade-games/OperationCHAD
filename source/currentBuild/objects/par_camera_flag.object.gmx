@@ -25,10 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-ACTIVE=false
-
-alarm[0]=2
+            <string>ACTIVE = false;
+alarm[0] = 2;
 </string>
           </argument>
         </arguments>

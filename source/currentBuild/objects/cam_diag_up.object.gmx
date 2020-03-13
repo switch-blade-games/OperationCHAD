@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_camera_flag</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>active = true;
+            <string>event_inherited();
+
+ACTIVE = true;
 </string>
           </argument>
         </arguments>
@@ -48,10 +50,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (active) and (obj_camera.x &gt; x)
+            <string>if (!ACTIVE)
+    exit;
+
+if (x &lt; view_xview[0]+180)
     {
-    active = false;
-    obj_camera.cam_state = camState.free-camState.left;
+    ACTIVE = false;
+    with(JB_cam)
+        state = camState.up;
     }
 </string>
           </argument>

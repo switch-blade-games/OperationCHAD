@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>obj_camera.cam_state=camState.right+camState.down
+            <string>with(JB_cam)
+    state = camState.diag_d;
 </string>
           </argument>
         </arguments>

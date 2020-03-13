@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ACTIVE=true
-event_inherited()
+            <string>event_inherited();
+
+ACTIVE = true;
 </string>
           </argument>
         </arguments>
@@ -49,19 +50,18 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if(ACTIVE=true)
-if(view_yview[0]&gt;=y){
+            <string>if(!ACTIVE)
+    exit;
 
-
-    JB_cam.y=y
-    view_yview[0]=y
-    
-    
+var lock_y = y;
+if (y &lt;= view_yview[0])
+    {
+    ACTIVE = false;
     with(JB_cam)
-    state=LOCKED
-    
-    ACTIVE=false
+        {
+        state = camState.locked;
+        cam_y = lock_y;
+        }
     
     switch(room)
         {
@@ -69,31 +69,7 @@ if(view_yview[0]&gt;=y){
             instance_create(3640,2660,fryguy_controller);
             break;
         }
-        
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_text(x-20,y+40,instance_number(fryguy_controller))
+    }
 </string>
           </argument>
         </arguments>

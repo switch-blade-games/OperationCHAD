@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ACTIVE=true
-event_inherited()
+            <string>event_inherited();
+
+ACTIVE = true;
 </string>
           </argument>
         </arguments>
@@ -49,18 +50,19 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(ACTIVE=true){
+            <string>if (!ACTIVE)
+    exit;
 
-    if(x&lt;view_xview[0]+180){
-        with(JB_cam){
-        
-            Ycurrent+=1
-            state=JOGUP
-            }
-        
-        ACTIVE=false
+if (x &lt; view_xview[0]+180)
+    {
+    ACTIVE = false;
+    with(JB_cam)
+        {
+        state = camState.jog_u;
+        if (array_length_1d(MYarray) &gt; Ycurrent+1)
+            Ycurrent++;
+        }
     }
-}
 </string>
           </argument>
         </arguments>

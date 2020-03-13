@@ -13,7 +13,7 @@
   <code>room_init();
 
 with(JB_cam)
-    state = FREE;
+    state = camState.free;
 with(par_solid)
     visible = true;
 with(par_jt)
@@ -50,7 +50,7 @@ with(par_mb)
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
   <views>
-    <view visible="-1" objName="obj_camera" xview="0" yview="0" wview="400" hview="240" xport="0" yport="0" wport="400" hport="240" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
+    <view visible="-1" objName="&lt;undefined&gt;" xview="0" yview="0" wview="400" hview="240" xport="0" yport="0" wport="400" hport="240" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
@@ -137,9 +137,9 @@ with(par_mb)
     <instance objName="obj_wall" x="6940" y="5040" name="inst_9DB7F331" locked="0" code="" scaleX="23.1578941345215" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="6920" y="5060" name="inst_61F9AC17" locked="0" code="" scaleX="25" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_l" x="7420" y="5140" name="inst_CD14E311" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_r" x="7420" y="4960" name="inst_C56B9D29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="7460" y="4960" name="inst_653C2543" locked="0" code="" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_l" x="7740" y="4960" name="inst_A81FCBEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="7420" y="4960" name="inst_C56B9D29" locked="0" code="no_jump = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb" x="7460" y="4960" name="inst_653C2543" locked="0" code="no_jump = true;&#xA;" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_l" x="7740" y="4960" name="inst_A81FCBEB" locked="0" code="no_jump = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_r" x="7740" y="5140" name="inst_D4D46C0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="7780" y="4980" name="inst_EB7CD64A" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="7400" y="4980" name="inst_BF92E6A6" locked="0" code="" scaleX="1" scaleY="4" colour="4294967295" rotation="0"/>

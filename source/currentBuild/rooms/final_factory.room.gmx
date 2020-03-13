@@ -13,7 +13,7 @@
   <code>room_init();
 
 //global.CHECKPOINT=1
-checkpoint_check()
+checkpoint_check();
 
 instance_create(0,0,abort_enemy_controller);
 
@@ -114,11 +114,11 @@ with(obj_wall)
     <instance objName="obj_wall" x="4040" y="1520" name="inst_F65ABF6D" locked="0" code="" scaleX="1" scaleY="56.8421058654785" colour="4294967295" rotation="0"/>
     <instance objName="block_break" x="4040" y="2660" name="inst_4BBFDB7D" locked="0" code="" scaleX="1" scaleY="10" colour="4294967295" rotation="0"/>
     <instance objName="D_lock" x="4020" y="2660" name="inst_14BCEB98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="checkpoint_obj" x="20" y="1440" name="inst_AF3C614B" locked="0" code="CHK=1&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=RIGHT&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="checkpoint_obj" x="3640" y="1280" name="inst_B999DDFB" locked="0" code="CHK=2&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=LOCKED&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="checkpoint_obj" x="3640" y="2660" name="inst_C3EE49A1" locked="0" code="CHK=3&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=LOCKED" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="checkpoint_obj" x="20" y="1440" name="inst_AF3C614B" locked="0" code="CHK = 1;&#xA;&#xA;MYstate = camState.right;&#xA;MYindex = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="checkpoint_obj" x="3640" y="1280" name="inst_B999DDFB" locked="0" code="CHK = 2;&#xA;&#xA;MYstate = camState.locked;&#xA;MYindex = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="checkpoint_obj" x="3640" y="2660" name="inst_C3EE49A1" locked="0" code="CHK = 3;&#xA;&#xA;MYstate = camState.locked;&#xA;MYindex = -1;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="4040" y="2860" name="inst_29942E0B" locked="0" code="" scaleX="17" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="checkpoint_obj" x="4080" y="2660" name="inst_C089267A" locked="0" code="CHK=4&#xA;&#xA;Yplace=2&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;RDEAD=10&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=RDEAD" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="checkpoint_obj" x="4080" y="2660" name="inst_C089267A" locked="0" code="CHK = 4;&#xA;&#xA;MYstate = camState.right_dead;&#xA;MYindex = 2;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="4300" y="2760" name="inst_58C48812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="4300" y="2780" name="inst_6AEBF6E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="4300" y="2800" name="inst_BA01613E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -177,7 +177,7 @@ with(obj_wall)
     <instance objName="obj_mb" x="5640" y="2780" name="inst_A613AA91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="5660" y="2780" name="inst_3F4CE123" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_mb" x="5680" y="2780" name="inst_C582ED4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="checkpoint_obj" x="5800" y="2660" name="inst_1CDD20C6" locked="0" code="CHK=5&#xA;&#xA;Yplace=2&#xA;&#xA;&#xA;/*&#xA;//state list&#xA;RIGHT=1&#xA;DIAGUP=2&#xA;DOWN=3&#xA;DIAGDOWN=4&#xA;JOGUP=5&#xA;RJOG=6&#xA;LOCKED=7&#xA;DOWN=8&#xA;DJOG=9&#xA;RDEAD=10&#xA;*/&#xA;define_cam_states()&#xA;&#xA;MYstate=RDEAD&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="checkpoint_obj" x="5800" y="2660" name="inst_1CDD20C6" locked="0" code="CHK = 5;&#xA;&#xA;MYstate = camState.right_dead;&#xA;MYindex = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="5760" y="2760" name="inst_E6A795DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_l" x="5760" y="2740" name="inst_E6300869" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_climb_r" x="5880" y="2740" name="inst_1DCE9283" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

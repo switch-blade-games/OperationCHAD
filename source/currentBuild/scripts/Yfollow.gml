@@ -1,5 +1,2 @@
-if (!instance_exists(par_actor))
-    exit;
-
-if(obj_player.y<view_yview[0]+argument0)
-Yset=obj_player.y-argument0
+if (target_y < view_yview[0]+argument[0])
+    cam_y = target_y-argument[0];

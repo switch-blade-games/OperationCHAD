@@ -40,6 +40,8 @@ dir2 = point_direction(0,0,x2,y2);
 len = point_distance(x1,y1,x2,y2);
 dir = point_direction(x1,y1,x2,y2);
 
+no_jump = false;
+
 timer_init = 0;
 timer = 0; // how long until speeds are reversed
 </string>

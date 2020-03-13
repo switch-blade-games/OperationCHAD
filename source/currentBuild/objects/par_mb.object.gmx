@@ -39,6 +39,8 @@ len2 = point_distance(0,0,x2,y2);
 dir2 = point_direction(0,0,x2,y2);
 len = point_distance(x1,y1,x2,y2);
 dir = point_direction(x1,y1,x2,y2);
+
+no_jump = false;
 </string>
           </argument>
         </arguments>

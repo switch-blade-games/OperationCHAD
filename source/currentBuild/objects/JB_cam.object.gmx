@@ -25,61 +25,71 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>define_cam_states()
+            <string>// camera states
+enum camState
+    {
+    free,
+    right,
+    diag_u,
+    up,
+    down,
+    diag_d,
+    jog_u,
+    jog_r,
+    jog_d,
+    jog_r_player,
+    right_dead,
+    locked
+    }
 
+// target
+target = par_actor;
+target_x = 0;
+target_y = 0;
+cam_x = 0;
+cam_y = 0;
+
+BUFFER = true;
 alarm[0] = 2;
-BUFFER=true
 
-if (room_width == 400)
-and (room_height = 240)
-    state = LOCKED;
-else
-    state = RIGHT;
-
-//movement speeds
-JOGspe=2
-DJOGspe=10
-
-RJOGx=0
-Ydist=0
-
-if (instance_exists(par_actor))
-    Xset = obj_player.x;
-else
-    Xset = 0;
-    
 Ycurrent = 0;
-if (room == final_factory)
-    {
-    // factory sequencing
-    MYarray[0] = 1440;
-    MYarray[1] = 1280;
-    MYarray[2] = 2660;
-    }
-else if (room == clown_room)
-    {
-    // clown world sequencing
-    MYarray[0] = 19600;
-    }
-else if (room == pooh_stage)
-    {
-    // pooh sequencing
-    MYarray[0] = 240;
-    }
-else if (room == comix_zone_room)
-    {
-    // comix zone sequencing
-    MYarray[0] = 520;
-    }
-else
-    {
-    if (instance_exists(par_actor))
-        MYarray[0] = max(0,obj_player.y-140);
-    else
-        MYarray[0] = 0;
-    }
+Ydist = 0;
+// movement speeds
+JOGspe = 2;
+DJOGspe = 10;
+RJOGx=0;
 
-Yset = MYarray[Ycurrent];
+switch(room)
+    {
+    case final_factory:
+        MYarray[0] = 1440;
+        MYarray[1] = 1280;
+        MYarray[2] = 2660;
+        break;
+    case clown_room:
+        MYarray[0] = 19600;
+        break;
+    case pooh_stage:
+        MYarray[0] = 240;
+        break;
+    case comix_zone_room:
+        MYarray[0] = 520;
+        break;
+    default:
+        MYarray[0] = 0;
+        if (instance_exists(target))
+            MYarray[0] = max(0,target.y-140);
+        break;
+    }
+cam_y = MYarray[Ycurrent];
+if (instance_exists(target))
+    cam_x = target.x;
+
+// initial states
+if (room_width == 400) and (room_height = 240)
+    state = camState.locked;
+else
+    state = camState.right;
 
 // audio listener
 var ear_x = view_xview[0]+view_wview[0]/2;
@@ -137,120 +147,130 @@ audio_listener_velocity(0,0,0);
 if (!BUFFER)
     camera_deactivate(100);
 
-// camera states
+// focus on a target object
+if (instance_exists(target))
+    {
+    var xmin = +9999; var ymin = +9999;
+    var xmax = -9999; var ymax = -9999;
+    with(target)
+        {
+        if (x &lt; xmin)
+            xmin = x;
+        if (x &gt; xmax)
+            xmax = x;
+        if (y &lt; ymin)
+            ymin = y;
+        if (y &gt; ymax)
+            ymax = y;
+        }
+    target_x = round((xmin+xmax)/2);
+    target_y = round((ymin+ymax)/2);
+    }
+
+// finite state machine
 switch(state)
     {
-    case FREE:
-        if (instance_exists(par_actor))
+    case camState.free:
+        cam_x = target_x-180;
+        cam_y = target_y-140;
+        break;
+    
+    case camState.right:
+        Rfollow(180);
+        cam_y = MYarray[Ycurrent];
+        break;
+
+    case camState.diag_u:
+        Rfollow(180);
+        Yfollow(120);
+        break;
+
+    case camState.jog_u:
+        Rfollow(180);
+        cam_y -= JOGspe;
+        if (cam_y &lt;= MYarray[Ycurrent])
             {
-            x=round(obj_player.x-180);
-            y=round(obj_player.y-140);
+            state = camState.right;
+            cam_y = MYarray[Ycurrent];
             }
         break;
-         
-    
-    case RIGHT:
-        Rfollow(180)
-        Yset=MYarray[Ycurrent]
-        x=round(Xset)
-        y=round(Yset)
-        break;
 
-    case DIAGUP:
-        Rfollow(180)
-        Yfollow(120)
-        x=round(Xset)
-        y=round(Yset)
-        break;
-
-    case JOGUP:
-        Rfollow(180)
-        y-=JOGspe
-        if(y&lt;=MYarray[Ycurrent]){
-            y=MYarray[Ycurrent]
-            state=RIGHT
-        }
-        x=round(Xset)
-        break;
-
-    case RJOG:
-        Yset=MYarray[Ycurrent]
-        x+=JOGspe
-        if(x&gt;=RJOGx){
-            x=RJOGx
-            state=LOCKED
+    case camState.jog_r:
+        cam_x += JOGspe;
+        if (cam_x &gt;= RJOGx)
+            {
+            state = camState.locked;
+            cam_x = RJOGx;
             
-            
-            //trigger lady
-            if(room=final_factory){
-            
-            
-            with(moloch_lady){
-                state=SURPRISE
-                alarm[1]=SURPRISEtime
-                    with(cat)
-                    state=JUMP
+            if (room == final_factory)
+                {
+                with(moloch_lady)
+                    {
+                    state = SURPRISE;
+                    alarm[1] = SURPRISEtime;
+                    }
+                with(cat)
+                    state = JUMP;
                 }
             }
-                
-            
-            }
-        y=round(Yset)
+        cam_y = MYarray[Ycurrent];
         break;
     
-    case DJOG:
-        y+=DJOGspe
-        if(y&gt;=obj_player.y-120){
-            y=obj_player.y-120
-            state=DOWN
-        }
-    break;
+    case camState.jog_d:
+        cam_y += DJOGspe;
+        if (cam_y &gt;= target_y-120)
+            {
+            state = camState.down;
+            cam_y = target_y-120;
+            }
+        break;
 
-    case DOWN:
-        if(obj_player.y-120&gt;y)
-            y=obj_player.y-120
+    case camState.down:
+        if (cam_y &lt; target_y-120)
+            cam_y = target_y-120;
         break;
         
-    //JB code
-    case UP:
-        if(obj_player.y-140&lt;y)
-            y=obj_player.y-140
+    case camState.up:
+        if (cam_y &gt; target_y-140)
+            cam_y = target_y-140;
         break;
-        
-    //end jb code
     
-    case RJOGPLAYER:
-        Yset=MYarray[Ycurrent]
-        x+=JOGspe
-        if(x&gt;=obj_player.x-180){
-            x=obj_player.x-180
-            Rfollow(180)
-            state=RIGHT
+    case camState.jog_r_player:
+        cam_x += JOGspe;
+        if (cam_x &gt;= target_x-180)
+            {
+            state = camState.right;
+            cam_x = target_x-180;
             }
-        y=round(Yset)
+        cam_y = MYarray[Ycurrent];
         break;
     
-    case RDEAD:
-        Yset=MYarray[Ycurrent]
-        if(obj_player.x&gt;view_xview[0]+180){
-            Rfollow(180)
-            state=RIGHT
-        }
-        y=round(Yset)
+    case camState.right_dead:
+        if (target_x &gt; view_xview[0]+180)
+            state = camState.right;
+        cam_y = MYarray[Ycurrent];
+        break;
+    
+    case camState.locked:
+        cam_x = x;
+        cam_y = y;
         break;
     }
+
+x = round(cam_x);
+y = round(cam_y);
     
 // apply screenshake/nudge
-cam_x = x+global.xnudge;
-cam_y = y+global.ynudge;
+var cx = x+global.xnudge;
+var cy = y+global.ynudge;
 if (global.xshake &gt; 1)
-    cam_x += random_range(-global.xshake,global.xshake);
+    cx += random_range(-global.xshake,global.xshake);
 if (global.yshake &gt; 1)
-    cam_y += random_range(-global.yshake,global.yshake);
+    cy += random_range(-global.yshake,global.yshake);
 
 // move the view and round it
-view_xview[0] += (cam_x-view_xview[0])*0.25;
-view_yview[0] += (cam_y-view_yview[0])*0.25;
+view_xview[0] += (cx-view_xview[0])*0.25;
+view_yview[0] += (cy-view_yview[0])*0.25;
 view_xview[0] = round(view_xview[0]);
 view_yview[0] = round(view_yview[0]);
 
@@ -300,7 +320,7 @@ draw_set_halign(fa_left);
 draw_set_color(WHITE);
 draw_text(25,2,"="+string(global.P1LIVES));
 
-//weapons
+// weapons
 for(var i=0; i&lt;obj_player.weapons; i++;)
     {
     draw_sprite(HUD_weapon_bg,i,40 + i*20,0)

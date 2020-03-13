@@ -25,17 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enum camState
-    {
-    static = 0,
-    right = 1,
-    up = 2,
-    left = 4,
-    down = 8,
-    free = 15
-    }
-
-xstart = x;
+            <string>xstart = x;
 ystart = y;
 cam_x = x;
 cam_y = y;

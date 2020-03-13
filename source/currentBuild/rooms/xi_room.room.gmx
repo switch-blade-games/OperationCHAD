@@ -53,26 +53,14 @@ instance_create(0,0,xi_tracker)</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="obj_wall" x="0" y="220" name="inst_295960AF" locked="0" code="" scaleX="20" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="60" y="220" name="inst_295960AF" locked="0" code="" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="100" y="120" name="inst_AA8DDFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_r" x="340" y="200" name="inst_6845954A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ramp_l" x="20" y="200" name="inst_77250E33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_climb_r" x="0" y="10" name="inst_B0553B83" locked="0" code="" scaleX="1" scaleY="9.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_climb_l" x="380" y="10" name="inst_2376CCCB" locked="0" code="" scaleX="1" scaleY="9.5" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_l" x="340" y="15" name="inst_329BE1B2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="80" y="15" name="inst_AD0847A0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="100" y="15" name="inst_8CAEF4C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="120" y="15" name="inst_25DB734F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="140" y="15" name="inst_039C1659" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="160" y="15" name="inst_2C891E0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="180" y="15" name="inst_DA6EE3E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="200" y="15" name="inst_201FE1F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="220" y="15" name="inst_F63823E8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="240" y="15" name="inst_425B4A18" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="260" y="15" name="inst_4BB3E30C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="280" y="15" name="inst_3C5DA0EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="300" y="15" name="inst_D30E8833" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="320" y="15" name="inst_CE9BCDD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_climb_r" x="0" y="40" name="inst_B0553B83" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_climb_l" x="380" y="40" name="inst_2376CCCB" locked="0" code="" scaleX="1" scaleY="8" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_l" x="340" y="20" name="inst_329BE1B2" locked="0" code="no_jump = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb" x="60" y="20" name="inst_25DB734F" locked="0" code="no_jump = true;&#xA;" scaleX="14" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hunny_node" x="300" y="20" name="inst_224749FD" locked="0" code="SET=8&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hunny_node" x="200" y="20" name="inst_4839FDB5" locked="0" code="SET=7&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hunny_node" x="100" y="20" name="inst_A95E9668" locked="0" code="SET=6&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -81,8 +69,7 @@ instance_create(0,0,xi_tracker)</code>
     <instance objName="hunny_node" x="100" y="220" name="inst_C8BFDAB8" locked="0" code="SET=4&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hunny_node" x="20" y="120" name="inst_3E1663EA" locked="0" code="SET=5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hunny_node" x="380" y="120" name="inst_4E37C90A" locked="0" code="SET=1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb_r" x="20" y="15" name="inst_6D04E43A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_mb" x="60" y="15" name="inst_ADC763F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_mb_r" x="20" y="20" name="inst_6D04E43A" locked="0" code="no_jump = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="xi_between" x="300" y="220" name="inst_B9CB2D56" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_reflector_ceil_l" x="20" y="20" name="inst_12BFFBD6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_reflector_ceil_r" x="340" y="20" name="inst_7E4AC161" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
