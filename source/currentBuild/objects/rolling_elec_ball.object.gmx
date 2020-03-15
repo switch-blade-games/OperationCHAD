@@ -25,7 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>roll_dir = 1;
+            <string>speed = 4;
+
+// tuners
+duration = 5*room_speed; // time in steps
+roll_dir = 1;
+
+timer = duration;
 </string>
           </argument>
         </arguments>
@@ -73,6 +79,11 @@ if (inst != noone)
             }
         }
     }
+
+if (timer &gt; 0)
+    timer--;
+else
+    instance_destroy();
 </string>
           </argument>
         </arguments>

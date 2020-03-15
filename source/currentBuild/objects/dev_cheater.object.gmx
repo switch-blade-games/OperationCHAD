@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.BUILDversion = "v0.12";
+            <string>global.BUILDversion = "v0.13"; // as of 3/14/2020
 
 debugMode = 0; // 0=detail; 1=simple; 2=extra;
 event_user(0);
@@ -477,7 +477,8 @@ file_text_close(file);
             draw_text_outline(vx+4,vy+4+00,"Version: BUILD["+string(global.BUILDversion)+"] CFG["+string(global.CFGversion)+"]");
             draw_text_outline(vx+4,vy+4+12,"Instances: "+string(inst_num));
             draw_text_outline(vx+4,vy+4+24,"Projectiles: "+string(proj_num));
-            draw_text_outline(vx+4,vy+4+36,"Particles: "+string(part_num));            draw_set_color($000000);
+            draw_text_outline(vx+4,vy+4+36,"Particles: "+string(part_num));
+            draw_set_color($000000);
             draw_rectangle(vx+400-(graph_w+4+1),vy+4-1,vx+400-4,vy+4+graph_h,0);
             draw_surface(surf_graph,(vx+400)-(graph_w+4),vy+4);
             draw_text_outline((vx+400)-(graph_w+4),vy+4+graph_h+4,"FPS: "+string(round(avg_fps/fps_num)));
