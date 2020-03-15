@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="5" name="datafiles">
+  <datafiles number="6" name="datafiles">
     <datafile>
       <name>skins.zip</name>
       <exists>-1</exists>
-      <size>149601</size>
+      <size>121180</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>

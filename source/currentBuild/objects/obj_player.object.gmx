@@ -127,7 +127,7 @@ flame_ang = 0;
 gun_y = -18;
 
 anim_init();
-skin_id = skin.stone;
+skin_id = skin.yolo;
 anim_set_skin(skin_id);
 </string>
           </argument>
