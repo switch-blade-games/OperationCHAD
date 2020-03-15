@@ -5,6 +5,13 @@ if (move_state == mState.dead)
         death_timer--;
     else
         {
+        // gameover?
+        if (global.P1LIVES <= 0)
+            {
+            room_goto(game_over_room);
+            exit;
+            }
+        
         // respawn
         life = lifemax;
         respawn_timer = respawn_time;
@@ -15,68 +22,52 @@ if (move_state == mState.dead)
         no_mb = false;
         mb_id = noone;
         
-        dead_moto = false;
+        // normal vs. moto respawn
         if (instance_exists(motor_controller))
         or (instance_exists(sub_controller))
-            dead_moto = true;
-        
-        if (dead_moto)
             {
             move_state = mState.moto;
             drop = false;
-            
-            y = moto_y;
             }
         else
             {
             move_state = mState.walk;
             drop = true;
-            
-            if (instance_exists(JB_cam))
-                {
-                if(global.P1LIVES<=0)
-                    room_goto(game_over_room)
-                
-                if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
-                    {
-                    x = xstart;
-                    y = ystart;
-                    }
-                else
-                    {
-                    x = view_xview[0]+64;
-                    y = view_yview[0];
-                    }
-                }
-            else
-                {
-                x = xstart;
-                y = ystart;
-                }
             }
+        
+        // respawn coordinates
+        if (point_in_rectangle(xstart,ystart,view_xview[0],view_yview[0],view_xview[0]+view_wview[0],view_yview[0]+view_hview[0]))
+            {
+            x = xstart;
+            y = ystart;
+            }
+        else
+            {
+            x = view_xview[0]+64;
+            y = view_yview[0];
+            }
+        while(place_meeting(x,y,par_solid))
+            y++;
         }
     }
 else
     {
     if (life > 0)
         {
-        // respawn flash
         if (respawn_timer > 0)
             {
+            // respawn flash
             respawn_timer--;
-            
-            // invulnerability/flash
-            if (respawn_timer > 0)
-                {
-                if (respawn_timer mod flash_rate == 0)
-                    respawn_flash = !respawn_flash;
-                take_damage = false;
-                }
-            else
-                {
-                take_damage = true;
-                respawn_flash = false;
-                }
+            if (respawn_timer mod flash_rate == 0)
+                respawn_flash = !respawn_flash;
+            // invincibility
+            take_damage = false;
+            }
+        else if (!take_damage)
+            {
+            // end invincibility/respawn flash
+            take_damage = true;
+            respawn_flash = false;
             }
         }
     else
@@ -84,9 +75,13 @@ else
         // die
         global.P1LIVES--;
         death_timer = death_time;
-        block_projectiles = false;
         
-        // player dead state and knockback
+        // stop blocking projectiles
+        block_projectiles = false;
+        take_damage = false;
+        respawn_flash = false;
+        
+        // dead state and knockback
         move_state = mState.dead;
         on_ground = false;
         xspeed = choose(-2,2);

@@ -220,8 +220,8 @@ switch(anim_state)
     case aState.flat_wait:
         anim_update();
         img_index += img_speed[anim_state];
-        if (img_index >= anim_end)
-            wait = 0;
+        //if (img_index >= anim_end)
+            //wait = 0;
         break;
     
     case aState.flat_idle:
@@ -292,7 +292,7 @@ switch(anim_state)
     
     case aState.dead:
         anim_update();
-        img_index = anim_start;
+        img_index += img_speed[anim_state];
         break;
     
     case aState.victory:

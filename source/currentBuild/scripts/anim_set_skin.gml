@@ -69,7 +69,7 @@ switch(skin_id)
         img_speed[aState.moto_fire] = 0.2;
         img_speed[aState.roll] = 0.5;
         img_speed[aState.dead_roll] = 0.3;
-        img_speed[aState.dead] = 0.2;
+        img_speed[aState.dead] = 0;
         img_speed[aState.victory] = 0.2;
         break;
     case skin.foxford:
