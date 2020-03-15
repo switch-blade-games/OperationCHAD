@@ -32,6 +32,8 @@ duration = 5*room_speed; // time in steps
 roll_dir = 1;
 
 timer = duration;
+
+//look in xi_grapple alarm[2] event for creation code
 </string>
           </argument>
         </arguments>
