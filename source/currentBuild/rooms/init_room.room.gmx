@@ -62,6 +62,10 @@ for(var i=0; i&lt;skin.size; i++;)
     global.frame_info[i] = -1;
     global.anim_info[i] = -1;
     global.frames[i] = 0;
+    global.autosprite_rate = room_speed;
+    global.autosprite_time = room_speed;
+    global.sheet_sha1[i] = "";
+    global.json_sha1[i] = "";
     }
 
 // unpack skins

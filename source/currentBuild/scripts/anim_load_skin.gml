@@ -1,6 +1,16 @@
-/// anim_load_skin(skin_id);
+/// anim_load_skin(skin_id,?sheetpath,?jsonpath);
 
 var _skin_id = argument[0];
+if (argument_count == 3)
+    {
+    var _sheet_path = argument[1];
+    var _json_path = argument[2];
+    }
+else
+    {
+    var _sheet_path = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_sheet.png";
+    var _json_path  = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_info.json";
+    }
 
 // tag enums
 TAG_NAME    = 0;
@@ -37,12 +47,11 @@ else
     global.anim_info[_skin_id] = ds_grid_create(aState.size,11);
 global.frames[_skin_id] = 0;
 
-// sheet/json paths
-sheet_path = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_sheet.png";
-json_path  = working_directory+"skins\"+string(global.skin_tag[_skin_id])+"_info.json";
-
-if (file_exists(sheet_path)) and (file_exists(json_path))
+if (file_exists(_sheet_path)) and (file_exists(_json_path))
     {
+    global.sheet_sha1[_skin_id] = sha1_file(_sheet_path);
+    global.json_sha1[_skin_id]  = sha1_file(_json_path);
+    
     // tag lookup
     tag_map = ds_map_create();
     tag_info = -1;
@@ -101,11 +110,11 @@ if (file_exists(sheet_path)) and (file_exists(json_path))
     tag_expected[aState.victory,0]           = "V_pose";
     
     // load the texture
-    global.player_sprite[_skin_id] = sprite_add(sheet_path,1,true,0,0,0);
+    global.player_sprite[_skin_id] = sprite_add(_sheet_path,1,true,0,0,0);
     
     // load and read json
     var json = "";
-    var file = file_text_open_read(json_path);
+    var file = file_text_open_read(_json_path);
     while(!file_text_eof(file))
         json = string(json)+string(file_text_readln(file));
     file_text_close(file);
