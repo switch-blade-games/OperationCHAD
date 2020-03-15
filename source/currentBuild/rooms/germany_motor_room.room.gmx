@@ -14,13 +14,13 @@
 
 room_init();
 
-instance_create(0,0,motor_controller_2);
+//instance_create(0,0,motor_controller_2);
 instance_create(0,0,forest_drawer)
 
 instance_create(90,180,obj_player);
 instance_create(90,180,obj_motorcycle);
 
-mus_loop(ride_of_valk_snd);</code>
+//mus_loop(ride_of_valk_snd);</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
