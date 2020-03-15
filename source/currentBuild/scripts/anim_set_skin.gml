@@ -97,7 +97,7 @@ switch(skin_id)
         break;
     case skin.yolo:
         off_x = 0;
-        off_y = 36;
+        off_y = 20;
         img_speed[aState.flat_idle] = 0.2;
         img_speed[aState.flat_wait] = 0.2;
         img_speed[aState.flat_fire] = 0.2;

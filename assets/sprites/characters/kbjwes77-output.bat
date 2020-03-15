@@ -1,16 +1,16 @@
 @echo off
 
 REM ---ASEPRITE EXECUTABLE PATH---
-set aseprite="F:\Gamedev\GameMaker\Tools\Aseprite\Aseprite.exe"
+set aseprite="F:\Programs\Aseprite\Aseprite.exe"
 
 REM ---STONETOSS ASE PROJECT PATH---
-set ase101="D:\Git\OperationCHAD\Sprites\characters\aseprite_files\101-Stone_sheet.aseprite"
+set ase101="C:\Git\OperationCHAD\assets\sprites\characters\aseprite_files\101-Stone_sheet.aseprite"
 REM ---PUMPKINFACE ASE PROJECT PATH---
-set ase102="D:\Git\OperationCHAD\Sprites\characters\aseprite_files\102-Pumpkin_sheet.aseprite"
+set ase102="C:\Git\OperationCHAD\assets\sprites\characters\aseprite_files\102-Pumpkin_sheet.aseprite"
 REM ---FOXFORD ASE PROJECT PATH---
-set ase103="D:\Git\OperationCHAD\Sprites\characters\aseprite_files\103-Fox_sheet.aseprite"
+set ase103="C:\Git\OperationCHAD\assets\sprites\characters\aseprite_files\103-Fox_sheet.aseprite"
 REM ---YOLOSWAG ASE PROJECT PATH---
-set ase104="D:\Git\OperationCHAD\Sprites\characters\aseprite_files\104-Yolo_sheet.aseprite"
+set ase104="C:\Git\OperationCHAD\assets\sprites\characters\aseprite_files\104-Yolo_sheet.aseprite"
 
 REM ---EXPORT ALL FOUR CHARACTERS---
 %aseprite% %ase101% -b --sheet 101-Stone_sheet.png --sheet-type rows --sheet-width 1000 --data 101-Stone_info.json --list-tags
