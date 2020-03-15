@@ -16,6 +16,7 @@ if (move_state == mState.dead)
         life = lifemax;
         respawn_timer = respawn_time;
         block_projectiles = true;
+        death_time = get_timer();
         
         xspeed = 0;
         yspeed = 0;

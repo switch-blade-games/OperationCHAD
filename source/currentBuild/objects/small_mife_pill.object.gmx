@@ -25,30 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>TARGETx=obj_player.x
+            <string>image_angle = random(360);
 
-TARGETy=obj_player.y
-
-spe=2
-
-motion_set(point_direction(x,y,TARGETx,TARGETy),spe)
-
+// states
 OUT=1
-
 DIS=2
-
 state=OUT
 
-image_angle=random(360)
+TARGET = target(par_actor);
+if (!instance_exists(TARGET))
+    {
+    instance_destroy();
+    exit;
+    }
+
+TARGETx = TARGET.x;
+TARGETy = TARGET.y;
+
+spe=2
+motion_set(point_direction(x,y,TARGETx,TARGETy),spe)
 
 SPINspe=6
-
 DIStime=60
-
 SHRINKspe=0.005
-
 FOAMspe=3
-
 SIZE=1
 </string>
           </argument>

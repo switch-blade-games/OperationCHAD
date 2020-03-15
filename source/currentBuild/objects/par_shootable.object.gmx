@@ -35,6 +35,10 @@ take_damage = false;
 deal_damage = false;
 block_projectiles = true;
 
+// targeting stats
+target_num = 0;
+death_time = get_timer();
+
 // sprite flash
 flash = 0;
 </string>

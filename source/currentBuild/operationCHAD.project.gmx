@@ -1150,7 +1150,7 @@
     <scripts name="enemy">
       <script>scripts\enemy_init.gml</script>
       <script>scripts\draw_enemy_self.gml</script>
-      <script>scripts\target_player.gml</script>
+      <script>scripts\target.gml</script>
     </scripts>
     <scripts name="JB_scripts">
       <script>scripts\outside_view.gml</script>
