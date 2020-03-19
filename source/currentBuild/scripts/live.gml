@@ -53,6 +53,23 @@ if (move_state == mState.dead)
     }
 else
     {
+    if (move_state == mState.moto)
+        {
+        mShake += (0-mShake)*0.125;
+        if (mShake_timer > 0)
+            mShake_timer--;
+        else if (abs(mShake) < 1)
+            {
+            mShake_timer = 70+irandom(70);
+            mShake = choose(2,2,3);
+            }
+        }
+    else
+        {
+        mShake = 0;
+        mShake_timer = 140;
+        }
+    
     if (life > 0)
         {
         if (respawn_timer > 0)

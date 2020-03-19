@@ -96,6 +96,8 @@ no_mb = false;
 no_mb_time = 0;
 vehicle_id = noone;
 on_vehicle = false;
+mShake = 0;
+mShake_timer = 140;
 step_sfx = false;
 land_sfx = false;
 
@@ -212,9 +214,7 @@ if (cur_weapon == weapon.flame) and (flame_ang != aim)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var mShake = 0;
-
-if (!skin_ready)
+            <string>if (!skin_ready)
     {
     draw_sprite(player_icon_spr,skin_id,x,y-20);
     exit;

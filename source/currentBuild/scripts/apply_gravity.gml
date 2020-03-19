@@ -24,7 +24,7 @@ switch(move_state)
             on_ramp = detect_ramp;
         else
             {
-            if (detect_vehicle) and (vehicle_id == noone) and (y >= detect_vehicle_id.y-12)
+            if (detect_vehicle) and (vehicle_id == noone) and (y >= detect_vehicle_id.y-12) and (yspeed >= 0)
                 {
                 vehicle_id = detect_vehicle_id;
                 detect_vehicle_id.rider = id;
@@ -168,7 +168,7 @@ switch(move_state)
         
         // player gravity
         on_vehicle = false;
-        if (y >= vehicle_id.y-12)
+        if (y >= vehicle_id.y-12) and (yspeed >= 0)
             {
             on_vehicle = true;
             y = vehicle_id.y-12;

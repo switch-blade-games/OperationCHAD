@@ -83,7 +83,7 @@ yspeed = 0;
             <string>if (rider == noone)
     draw_self();
 else
-    draw_sprite(sprite_index,image_index,rider.x,rider.y+12);
+    draw_sprite(sprite_index,image_index,rider.x,y+rider.mShake);
 </string>
           </argument>
         </arguments>

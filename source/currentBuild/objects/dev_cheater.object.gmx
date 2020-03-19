@@ -498,9 +498,12 @@ file_text_close(file);
                 if ((resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+220,vy+3*12)))
                 or ((!resourceCollapse) and (!point_in_rectangle(mouse_x,mouse_y,vx+6,vy+6,vx+262,vy+9*12)))
                     {
+                    var _x = ternary(keyboard_check(vk_shift),round_n(mouse_x,10),mouse_x);
+                    var _y = ternary(keyboard_check(vk_shift),round_n(mouse_y,10),mouse_y);
+                    
                     var _spr = result_spr[result_select];
                     if (_spr &gt; -1)
-                        draw_sprite_ext(_spr,0,mouse_x,mouse_y,1,1,0,-1,0.75);
+                        draw_sprite_ext(_spr,0,_x,_y,1,1,0,-1,0.75);
                     }
                 }
             
