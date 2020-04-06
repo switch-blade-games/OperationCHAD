@@ -50,8 +50,8 @@ CRY=9
 
 state=DRINK
 
-
-//alarm[0]=30
+//comment out later
+alarm[0]=30
 
 SURPRISEtime=30
 
