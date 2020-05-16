@@ -27,21 +27,11 @@
             <kind>1</kind>
             <string>event_inherited();
 
-//image_xscale = 2;
-x1 = -300;
-y1 = 0;
-x2 = 0;
-y2 = 0;
+len = 300;
+dir = 180;
 
-// init offsets
-event_user(0);
-
-// just assign a path or speed/direction here
-// it will take care of everything else by itself
-//direction = 90;
-//speed = 1;
-//timer_init = room_speed*1;
-//timer = timer_init;
+offx = 0;
+offy = 0;
 
 ANGdest=22
 </string>
@@ -66,61 +56,13 @@ ANGdest=22
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x=base_needle.x
-y=base_needle.y
-
-image_angle=base_needle.image_angle
-
-
-ang = image_angle;
-
-event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>event_inherited();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>event_inherited();
+
+x = base_needle.x;
+y = base_needle.y;
+
+dir = base_needle.image_angle;
+image_angle = dir;
 </string>
           </argument>
         </arguments>

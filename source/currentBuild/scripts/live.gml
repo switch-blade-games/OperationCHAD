@@ -16,12 +16,13 @@ if (move_state == mState.dead)
         life = lifemax;
         respawn_timer = respawn_time;
         block_projectiles = true;
-        death_time = get_timer();
+        life_time = get_timer();
         
         xspeed = 0;
         yspeed = 0;
         no_mb = false;
         mb_id = noone;
+        vehicle_id = noone;
         
         // normal vs. moto respawn
         if (instance_exists(motor_controller))

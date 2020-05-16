@@ -27,12 +27,14 @@
             <kind>1</kind>
             <string>event_inherited();
 
-x1 = 0;
-y1 = 0;
-x2 = 100;
-y2 = 0;
+len = 100;
+dir = 0;
 
-event_user(0);
+offx = 0;
+offy = 0;
+
+// set to true so the player can only drop down
+no_jump = false;
 </string>
           </argument>
         </arguments>

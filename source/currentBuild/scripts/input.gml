@@ -18,7 +18,15 @@ input_jump_pressed  = false;
 input_lock_pressed  = false;
 input_swap_pressed  = false;
 
-if (slot <= 0)
+var _id = id;
+var _p1 = true;
+with(par_actor)
+    {
+    if (id < _id)
+        _p1 = false;
+    }
+
+if (_p1)
     {
     var _keyL = global.CFG[config.keyL1];
     var _keyR = global.CFG[config.keyR1];
@@ -38,7 +46,7 @@ if (slot <= 0)
     var _padLock = global.CFG[config.padLock1];
     var _padSwap = global.CFG[config.padSwap1];
     }
-else if (slot == 1)
+else
     {
     var _keyL = global.CFG[config.keyL2];
     var _keyR = global.CFG[config.keyR2];
@@ -77,7 +85,7 @@ input_jump_pressed  = keyboard_check_pressed(_keyJump);
 input_lock_pressed  = keyboard_check_pressed(_keyLock);
 input_swap_pressed  = keyboard_check_pressed(_keySwap);
 
-if (slot >= 0) and (slot <= 1)
+if (slot >= 0)
     {
     input_left  = input_left    or gamepad_check(slot,_padL);
     input_right = input_right   or gamepad_check(slot,_padR);

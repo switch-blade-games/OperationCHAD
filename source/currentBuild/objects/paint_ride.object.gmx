@@ -27,22 +27,17 @@
             <kind>1</kind>
             <string>event_inherited()
 
+len = sprite_get_width(sprite_index);
+dir = 0;
 
-x1 = 0;
-y1 = 0;
-x2 = sprite_get_width(sprite_index);
-y2 = 0;
+offx = 0;
+offy = 0;
 
-
-image_xscale=1;
-
+// set to true so the player can only drop down
+no_jump = false;
 
 MYsur=surface_create(160,200)
-
 CURRENTspr=sprite_index
-
-UPspe=1
-
 
 WAIT=1
 UP=2
@@ -52,25 +47,18 @@ DOWNdone=5
 
 state=WAIT
 
+UPspe=1
 UPadd=0.01
-
 UPmax=1
-
 UPpush=0.2
-
 UPy=60
 
-
 DOWNpush=4
-
 DOWNy=180
-
 DOWNmax=8
 DOWNadd=0.2
 
-
 //when becoming the same as all the pencils
-
 spe=1
 SPEnoise=0.5
 </string>
