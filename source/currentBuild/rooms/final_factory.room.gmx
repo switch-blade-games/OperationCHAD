@@ -408,7 +408,6 @@ with(obj_wall)
     <instance objName="obj_wall" x="480" y="1640" name="inst_E3D8C496" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="960" y="1640" name="inst_CAAD1C50" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1440" y="1640" name="inst_44951C4E" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="moloch_controller" x="3650" y="1290" name="inst_3A8FFFA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="3640" y="1500" name="inst_F1460A9F" locked="0" code="" scaleX="20" scaleY="1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
