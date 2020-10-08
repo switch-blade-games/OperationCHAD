@@ -13,7 +13,7 @@
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>400</width>
+  <width>60</width>
   <height>260</height>
-  <data>images\thot_BG.png</data>
+  <data>images\thot_2_BG.png</data>
 </background>

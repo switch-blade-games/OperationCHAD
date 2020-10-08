@@ -846,6 +846,28 @@
           <sprite>sprites\white_knight_spr</sprite>
         </sprites>
       </sprites>
+      <sprites name="005-Thot Paradise">
+        <sprite>sprites\thot_chamber_spr</sprite>
+        <sprite>sprites\thot_pose_1_spr</sprite>
+        <sprite>sprites\thot_pose_2_spr</sprite>
+        <sprite>sprites\thot_pose_4_spr</sprite>
+        <sprite>sprites\thot_pose_3_spr</sprite>
+        <sprite>sprites\thot_light_spr</sprite>
+        <sprite>sprites\thot_block_spr</sprite>
+        <sprite>sprites\coomer_spr</sprite>
+        <sprite>sprites\dildo_1_spr</sprite>
+        <sprite>sprites\screen_1_spr</sprite>
+        <sprite>sprites\tax_free_spr</sprite>
+        <sprite>sprites\big_girl_spr</sprite>
+        <sprite>sprites\all_night_spr</sprite>
+        <sprite>sprites\vending_machine_spr</sprite>
+        <sprite>sprites\pantie_NPC_spr</sprite>
+        <sprite>sprites\thot_cash_1_spr</sprite>
+        <sprite>sprites\thot_cash_2_spr</sprite>
+        <sprite>sprites\chamber_big_spr</sprite>
+        <sprite>sprites\chamber_mid_1_spr</sprite>
+        <sprite>sprites\chamber_mid_2_spr</sprite>
+      </sprites>
     </sprites>
     <sprites name="environment">
       <sprites name="reflectors">
@@ -1001,9 +1023,6 @@
         <background>background\pollution_BG</background>
       </backgrounds>
       <backgrounds name="099-Misc">
-        <backgrounds name="Flying">
-          <background>background\thot_BG</background>
-        </backgrounds>
         <backgrounds name="Minigames">
           <background>background\FF_BG</background>
           <background>background\mario_BG</background>
@@ -1021,6 +1040,12 @@
       <background>background\big_TS</background>
       <background>background\background61</background>
       <background>background\comic_BG</background>
+      <backgrounds name="005-Thot Paradise">
+        <background>background\thot_BG</background>
+        <background>background\thot_1_BG</background>
+        <background>background\thot_2_BG</background>
+        <background>background\thot_3_BG</background>
+      </backgrounds>
     </backgrounds>
   </backgrounds>
   <paths name="paths">
@@ -1172,6 +1197,7 @@
       </scripts>
       <script>scripts\moloch_die_list.gml</script>
       <script>scripts\elevator_down.gml</script>
+      <script>scripts\thot_create.gml</script>
     </scripts>
     <script>scripts\camera_deactivate.gml</script>
     <script>scripts\room_init.gml</script>
@@ -1619,12 +1645,6 @@
           <object>objects\tank_spin_gun</object>
           <object>objects\tank_spin_shot</object>
         </objects>
-        <objects name="005-Thot Paradise">
-          <object>objects\PC_fly</object>
-          <object>objects\flying_cam</object>
-          <object>objects\flying_shot</object>
-          <object>objects\white_knight</object>
-        </objects>
       </objects>
       <objects name="006- Comix Zone">
         <object>objects\NPC_enemy</object>
@@ -1844,6 +1864,24 @@
         <object>objects\stonetoss_comic</object>
       </objects>
       <object>objects\pumpkin_moto</object>
+      <objects name="005-Thot Paradise">
+        <object>objects\PC_fly</object>
+        <object>objects\white_knight</object>
+        <object>objects\thot_1</object>
+        <object>objects\thot_chamber</object>
+        <object>objects\thot_chamber_big</object>
+        <object>objects\thot_light</object>
+        <object>objects\thot_block</object>
+        <object>objects\dildo_1</object>
+        <object>objects\screen_1</object>
+        <object>objects\all_night</object>
+        <object>objects\big_girl</object>
+        <object>objects\vending_machine</object>
+        <object>objects\pantie_bullet</object>
+        <object>objects\coomer</object>
+        <object>objects\thot_cash</object>
+        <object>objects\thot_BG_drawer</object>
+      </objects>
     </objects>
     <objects name="colliders">
       <objects name="reflectors">
@@ -1913,6 +1951,7 @@
       <object>objects\obj_spin_flame</object>
       <object>objects\obj_buckshot</object>
       <object>objects\obj_rolling_stone</object>
+      <object>objects\flying_shot</object>
     </objects>
     <objects name="effects">
       <object>objects\obj_casing</object>
@@ -1934,6 +1973,7 @@
       <object>objects\C_powerup</object>
     </objects>
     <objects name="camera">
+      <object>objects\flying_cam</object>
       <object>objects\JB_cam</object>
       <object>objects\UR_cam</object>
       <object>objects\R_ramp_finish</object>

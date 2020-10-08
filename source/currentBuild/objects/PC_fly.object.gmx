@@ -31,7 +31,7 @@ FACE=1
 
 FIRE=false
 
-FIRErate=6
+FIRErate=12
 </string>
           </argument>
         </arguments>
@@ -58,7 +58,7 @@ FIRErate=6
 exit
 
 
-instance_create(x,y+10,flying_shot)
+instance_create(x,y-10,flying_shot)
 
 alarm[0]=FIRErate
 
@@ -208,7 +208,7 @@ draw_self()
             <kind>1</kind>
             <string>FIRE=true
 
-instance_create(x,y+10,flying_shot)
+instance_create(x,y-10,flying_shot)
 
 alarm[0]=FIRErate
 </string>
