@@ -409,6 +409,11 @@ with(obj_wall)
     <instance objName="obj_wall" x="960" y="1640" name="inst_CAAD1C50" locked="0" code="" scaleX="24" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1440" y="1640" name="inst_44951C4E" locked="0" code="" scaleX="19" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="3640" y="1500" name="inst_F1460A9F" locked="0" code="" scaleX="20" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="test_characters" x="430" y="1600" name="inst_A04D79A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="test_characters" x="1560" y="1600" name="inst_B945B3B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="test_characters" x="2370" y="1360" name="inst_0B48F9BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="test_characters" x="2990" y="1460" name="inst_197A1DE6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="test_characters" x="3370" y="1460" name="inst_4DA31FBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="big_TS" x="0" y="1610" w="100" h="100" xo="0" yo="0" id="10006230" name="inst_7209E580" depth="80" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

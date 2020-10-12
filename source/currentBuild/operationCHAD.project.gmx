@@ -845,6 +845,7 @@
         <sprites name="flying">
           <sprite>sprites\white_knight_spr</sprite>
         </sprites>
+        <sprite>sprites\test_characters_spr</sprite>
       </sprites>
       <sprites name="005-Thot Paradise">
         <sprite>sprites\thot_chamber_spr</sprite>
@@ -1993,6 +1994,7 @@
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_player</object>
+    <object>objects\test_characters</object>
   </objects>
   <rooms name="rooms">
     <rooms name="000-FrontEnd">
