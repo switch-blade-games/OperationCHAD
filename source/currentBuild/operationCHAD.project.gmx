@@ -868,6 +868,7 @@
         <sprite>sprites\chamber_big_spr</sprite>
         <sprite>sprites\chamber_mid_1_spr</sprite>
         <sprite>sprites\chamber_mid_2_spr</sprite>
+        <sprite>sprites\granny_stand_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="environment">

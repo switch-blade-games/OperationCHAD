@@ -1,4 +1,4 @@
-sprite_index=choose(thot_pose_1_spr,thot_pose_2_spr,thot_pose_3_spr,thot_pose_4_spr)
+sprite_index=choose(thot_pose_1_spr,thot_pose_1_spr,thot_pose_1_spr,thot_pose_1_spr)
 
 image_xscale=choose(1,-1)
 

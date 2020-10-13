@@ -20,7 +20,6 @@
   <width>100</width>
   <height>100</height>
   <frames>
-    <frame index="0">images\thot_pose_1_spr_0.png</frame>
-    <frame index="1">images\thot_pose_1_spr_1.png</frame>
+    <frame index="0">images\granny_stand_spr_0.png</frame>
   </frames>
 </sprite>
