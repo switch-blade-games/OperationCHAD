@@ -869,6 +869,11 @@
         <sprite>sprites\chamber_mid_1_spr</sprite>
         <sprite>sprites\chamber_mid_2_spr</sprite>
         <sprite>sprites\granny_stand_spr</sprite>
+        <sprite>sprites\stacy_time_spr</sprite>
+        <sprite>sprites\clock_big_spr</sprite>
+        <sprite>sprites\hour_glass_spr</sprite>
+        <sprite>sprites\belle_spr</sprite>
+        <sprite>sprites\belle_clock_spr</sprite>
       </sprites>
     </sprites>
     <sprites name="environment">
@@ -1883,6 +1888,10 @@
         <object>objects\coomer</object>
         <object>objects\thot_cash</object>
         <object>objects\thot_BG_drawer</object>
+        <object>objects\thot_clock</object>
+        <object>objects\hourglass</object>
+        <object>objects\belle</object>
+        <object>objects\belle_clock</object>
       </objects>
     </objects>
     <objects name="colliders">

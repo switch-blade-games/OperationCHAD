@@ -54,35 +54,6 @@ instance_create(0,0,thot_BG_drawer)</code>
   </views>
   <instances>
     <instance objName="PC_fly" x="40" y="100" name="inst_F63BB9D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="0" y="0" name="inst_06AC6A4E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="40" y="0" name="inst_9E517F8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="80" y="0" name="inst_F8BB9872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="120" y="0" name="inst_665E19C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="160" y="0" name="inst_10F595C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="200" y="0" name="inst_63265899" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="240" y="0" name="inst_6D23B6C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="280" y="0" name="inst_2DE51998" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="320" y="0" name="inst_A7474AC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="360" y="0" name="inst_5232FC1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="400" y="0" name="inst_6D482E6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="440" y="0" name="inst_EFDA323C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="480" y="0" name="inst_ECB8CE93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="520" y="0" name="inst_03C0CE54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="560" y="0" name="inst_E0A30F96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="600" y="0" name="inst_19D5C273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="640" y="0" name="inst_5466B7FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="680" y="0" name="inst_ED556A3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="720" y="0" name="inst_34836D78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="760" y="0" name="inst_C67F6DCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="800" y="0" name="inst_AF7DE232" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="840" y="0" name="inst_FB26D4AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="880" y="0" name="inst_AAD0FE53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1400" y="0" name="inst_681D4C75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1440" y="0" name="inst_47F26AD1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1480" y="0" name="inst_7C66A597" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1520" y="0" name="inst_10DBCAF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1560" y="0" name="inst_3986E729" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1600" y="0" name="inst_DE88C244" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2160" y="0" name="inst_E03B7890" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2200" y="0" name="inst_72457516" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2240" y="0" name="inst_E90896FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -138,131 +109,6 @@ instance_create(0,0,thot_BG_drawer)</code>
     <instance objName="thot_light" x="5160" y="0" name="inst_35EE2670" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="5200" y="0" name="inst_E8825675" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="5240" y="0" name="inst_EA433B71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5280" y="0" name="inst_4EFE314F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5320" y="0" name="inst_180F2EFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5360" y="0" name="inst_94828893" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5400" y="0" name="inst_702A3277" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5440" y="0" name="inst_31A2304B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5480" y="0" name="inst_9BE47304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5520" y="0" name="inst_B2EFAC44" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5560" y="0" name="inst_CF4F6765" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5600" y="0" name="inst_E3FADECF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5640" y="0" name="inst_E3BDD690" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5680" y="0" name="inst_9CDC3273" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5720" y="0" name="inst_9AD6E249" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5760" y="0" name="inst_3F2DD0E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5800" y="0" name="inst_30B46403" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5840" y="0" name="inst_5B9404E9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5880" y="0" name="inst_CC3E815B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5920" y="0" name="inst_EB3D8D63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="5960" y="0" name="inst_2D64DE27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="20" y="200" name="inst_6B0840C4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="0" y="220" name="inst_C3F94242" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="20" y="220" name="inst_BA1D8EF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="40" y="220" name="inst_255FB726" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="40" y="200" name="inst_E7B6AFA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="20" y="200" name="inst_86431896" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="0" y="200" name="inst_4C38C7A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="0" y="220" name="inst_28C22B79" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="20" y="220" name="inst_A1AC0C5C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="40" y="220" name="inst_D615D8C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="60" y="220" name="inst_A625846E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="80" y="220" name="inst_E212B2C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="100" y="200" name="inst_FD8169ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="120" y="200" name="inst_1566ED37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="140" y="200" name="inst_3330D3EA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="160" y="200" name="inst_2442B436" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="160" y="220" name="inst_F7812571" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="140" y="220" name="inst_60C622A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="120" y="220" name="inst_EFF1E3FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="100" y="220" name="inst_FD102069" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="120" y="220" name="inst_975F67C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="100" y="220" name="inst_A9144D12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="100" y="200" name="inst_E7546493" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="80" y="200" name="inst_1D014A37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="60" y="200" name="inst_79791751" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="780" y="220" name="inst_E0684078" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="800" y="220" name="inst_98A28629" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="800" y="200" name="inst_181122F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="780" y="200" name="inst_AD8673A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="820" y="200" name="inst_516F2328" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="840" y="200" name="inst_B7E44D14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="860" y="200" name="inst_3BAEE08B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="880" y="200" name="inst_DD19959F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="900" y="200" name="inst_482D258F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="920" y="200" name="inst_9894514E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="940" y="200" name="inst_F658231F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="960" y="200" name="inst_3FFCD031" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="980" y="200" name="inst_47595262" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1000" y="200" name="inst_8FDC66DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1020" y="200" name="inst_92DBED87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1040" y="200" name="inst_89EB9013" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1060" y="200" name="inst_1EBCD78F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1080" y="200" name="inst_BA23B72A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1100" y="200" name="inst_72B98A1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1120" y="200" name="inst_F85E1172" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1140" y="200" name="inst_95B03E9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1160" y="200" name="inst_0AF375F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1180" y="200" name="inst_6AABDBFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1200" y="200" name="inst_3945D8D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1220" y="200" name="inst_9ECF2DD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1240" y="200" name="inst_E1DEEC62" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1260" y="220" name="inst_4ABCDC54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1240" y="220" name="inst_38B9AFCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1220" y="220" name="inst_9D708DA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1200" y="220" name="inst_EC72B384" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1180" y="220" name="inst_0F3FF9ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1160" y="220" name="inst_A7776964" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1140" y="220" name="inst_B5CE1AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1120" y="220" name="inst_BEDFB3CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1100" y="220" name="inst_CDBEB3EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1080" y="220" name="inst_39DAEDC9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1060" y="220" name="inst_EF30AAB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1040" y="220" name="inst_12B324FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1020" y="220" name="inst_3EC7E884" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1000" y="220" name="inst_86274EFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="980" y="220" name="inst_FE3534C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="960" y="220" name="inst_A3FFC05A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="940" y="220" name="inst_A2C65B0D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="920" y="220" name="inst_6B71281A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="900" y="220" name="inst_C640109D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="880" y="220" name="inst_B4B7154B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="860" y="220" name="inst_2C9B660F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="840" y="220" name="inst_5FF19F87" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="820" y="220" name="inst_E7ACA67A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="800" y="220" name="inst_42486890" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="820" y="220" name="inst_9CD05322" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1260" y="200" name="inst_C5C16258" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1280" y="200" name="inst_B46B293A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1300" y="200" name="inst_79B62045" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1320" y="200" name="inst_331BBFB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1340" y="200" name="inst_3962E312" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1360" y="200" name="inst_8177D8B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1380" y="200" name="inst_45823282" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1400" y="200" name="inst_FE3BFEBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1420" y="200" name="inst_0EB4B191" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1440" y="200" name="inst_1367B750" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1460" y="200" name="inst_C5189F6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1480" y="200" name="inst_292415FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1500" y="200" name="inst_675BEB90" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1520" y="200" name="inst_DC52175E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1540" y="200" name="inst_3BEF0CA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1560" y="200" name="inst_3FA2A25B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1560" y="220" name="inst_DFEBA5AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1540" y="220" name="inst_C0289697" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1520" y="220" name="inst_C00D7737" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1500" y="220" name="inst_5E10EB80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1480" y="220" name="inst_E1A2ABA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1460" y="220" name="inst_6212F6F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1440" y="220" name="inst_28E2C75D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1420" y="220" name="inst_FADB9861" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1400" y="220" name="inst_E302FEA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1380" y="220" name="inst_53FA76A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1360" y="220" name="inst_820497E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1340" y="220" name="inst_86788CF6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1320" y="220" name="inst_3BF1FD2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1300" y="220" name="inst_0B8DFE28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1280" y="220" name="inst_517BF070" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="2180" y="200" name="inst_8EF3DC26" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="2200" y="200" name="inst_9E805431" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="2220" y="200" name="inst_F9E623D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -529,120 +375,7 @@ instance_create(0,0,thot_BG_drawer)</code>
     <instance objName="thot_block" x="4780" y="220" name="inst_FEDD9542" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="4760" y="220" name="inst_ACEBEF96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="4740" y="220" name="inst_F9863951" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5280" y="200" name="inst_A22C6738" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5300" y="200" name="inst_513AE234" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5320" y="200" name="inst_535FC5BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5340" y="200" name="inst_AE80B10A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5360" y="200" name="inst_3A4C7EF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5380" y="200" name="inst_C3D930EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5420" y="200" name="inst_C7A20A8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5440" y="200" name="inst_A5AE9C7F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5460" y="200" name="inst_DC267D97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5480" y="200" name="inst_6B779B8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5500" y="200" name="inst_D9CFCA4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5520" y="200" name="inst_023D433D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5540" y="200" name="inst_3510E0FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5560" y="200" name="inst_8672BCA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5580" y="200" name="inst_14FF5B5A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5600" y="200" name="inst_B5F121AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5620" y="200" name="inst_174BDB0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5640" y="200" name="inst_F95090B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5660" y="200" name="inst_66A6C718" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5680" y="200" name="inst_35AE664C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5700" y="200" name="inst_5778AC9A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5720" y="200" name="inst_0BC2C3D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5740" y="200" name="inst_92DF4AC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5760" y="200" name="inst_4371126B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5780" y="200" name="inst_70323609" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5780" y="220" name="inst_266F8397" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5760" y="220" name="inst_59BBDEFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5740" y="220" name="inst_1120FE5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5720" y="220" name="inst_BD477F63" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5700" y="220" name="inst_BFCBB99E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5680" y="220" name="inst_7D4795B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5660" y="220" name="inst_E825E15C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5640" y="220" name="inst_77D16589" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5620" y="220" name="inst_8764E882" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5600" y="220" name="inst_C1006A85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5580" y="220" name="inst_77118784" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5540" y="220" name="inst_EDD73505" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5520" y="220" name="inst_A54A348A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5480" y="220" name="inst_4D02EF58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5460" y="220" name="inst_0EA12782" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5440" y="220" name="inst_49DF69F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5420" y="220" name="inst_7695538E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5400" y="220" name="inst_6A8131EB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5380" y="220" name="inst_C993E796" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5360" y="220" name="inst_B14FD754" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5340" y="220" name="inst_985D624F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5320" y="220" name="inst_BACCC876" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5300" y="220" name="inst_50F873E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5280" y="220" name="inst_D2F2F133" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_block" x="5260" y="220" name="inst_A237FC99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5280" y="220" name="inst_7A4667ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5300" y="220" name="inst_D22CA9DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5340" y="220" name="inst_A12B2A68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5360" y="200" name="inst_F3E12DAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5380" y="200" name="inst_C586CD1E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5400" y="200" name="inst_55769CCA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5420" y="200" name="inst_AC0618CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5440" y="200" name="inst_DF919D53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5460" y="200" name="inst_F1FBAACA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5480" y="200" name="inst_896B0C82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5500" y="200" name="inst_79463927" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5500" y="220" name="inst_6518584E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5520" y="220" name="inst_8960762F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5540" y="220" name="inst_0B5C2AAF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5560" y="220" name="inst_FE5AD3E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5800" y="200" name="inst_27B57EB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5820" y="200" name="inst_83399206" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5840" y="200" name="inst_FCFFAAEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5860" y="200" name="inst_53CF3594" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5880" y="200" name="inst_F87864C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5900" y="200" name="inst_D7C701C5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5920" y="200" name="inst_9924B453" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5940" y="200" name="inst_03BFB687" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5960" y="200" name="inst_C170DFB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5980" y="200" name="inst_00109B2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5980" y="220" name="inst_19EE9B9B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5960" y="220" name="inst_8B29F41E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5940" y="220" name="inst_7234F80E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5920" y="220" name="inst_066507BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5900" y="220" name="inst_6EAF6E37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5880" y="220" name="inst_6EF51AE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5860" y="220" name="inst_53CA616F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5840" y="220" name="inst_D7733A12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5820" y="220" name="inst_25DDD4E0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5800" y="220" name="inst_DA117458" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="5780" y="220" name="inst_FC2E9D71" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_chamber" x="180" y="160" name="inst_E75EC007" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_chamber" x="380" y="160" name="inst_BBC2AD88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_1" x="300" y="235" name="inst_42D5EE80" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_1" x="480" y="235" name="inst_182E4505" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_chamber" x="1120" y="100" name="inst_61A0DF24" locked="0" code="" scaleX="1" scaleY="-1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1300" y="0" name="inst_D4D13C55" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1300" y="20" name="inst_0185BA95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1280" y="20" name="inst_23AF0CF7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1260" y="20" name="inst_FABAFDFC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1260" y="0" name="inst_CF1463FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1240" y="0" name="inst_C9209222" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1220" y="0" name="inst_F9A47AA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1200" y="0" name="inst_B3D05C65" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1180" y="0" name="inst_49B8E975" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1160" y="0" name="inst_A80882E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1140" y="0" name="inst_9B06B867" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1140" y="20" name="inst_2605CE84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1160" y="20" name="inst_49F76444" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1180" y="20" name="inst_421C4E07" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1200" y="20" name="inst_9454CCBE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1220" y="20" name="inst_D8C5F136" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1240" y="20" name="inst_A3251DB2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1240" y="0" name="inst_FB5868B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1260" y="0" name="inst_274149C8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1280" y="0" name="inst_35F87B01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1320" y="0" name="inst_13BAB7EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_light" x="1360" y="0" name="inst_DB7EB661" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_1" x="1220" y="45" name="inst_3E4804C1" locked="0" code="" scaleX="1" scaleY="-1" colour="4294967295" rotation="0"/>
     <instance objName="dildo_1" x="1620" y="280" name="inst_CDB51404" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="dildo_1" x="1700" y="300" name="inst_3F2BF43D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="dildo_1" x="1780" y="300" name="inst_FC89188D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -653,8 +386,6 @@ instance_create(0,0,thot_BG_drawer)</code>
     <instance objName="screen_1" x="2220" y="60" name="inst_733337FF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="screen_1" x="2340" y="60" name="inst_1EC22D7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="screen_1" x="2460" y="60" name="inst_90EC847B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1120" y="20" name="inst_D1BAC1DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_block" x="1120" y="0" name="inst_5198E982" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="big_girl" x="2700" y="0" name="inst_F1E853D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="all_night" x="2980" y="100" name="inst_95034CF8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_chamber" x="3280" y="140" name="inst_E21662D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -700,14 +431,11 @@ instance_create(0,0,thot_BG_drawer)</code>
     <instance objName="screen_1" x="4520" y="60" name="inst_A7F6BDE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="screen_1" x="4680" y="60" name="inst_E54CC05F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="screen_1" x="4840" y="60" name="inst_4C4E5D74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="vending_machine" x="1400" y="140" name="inst_FE5E4816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coomer" x="500" y="40" name="inst_2B06C37F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coomer" x="380" y="40" name="inst_39517FF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coomer" x="1340" y="40" name="inst_14784CA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="coomer" x="1460" y="40" name="inst_5F99538A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_chamber_big" x="580" y="160" name="inst_9833BE7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_chamber_big" x="920" y="80" name="inst_BF0B8BD1" locked="0" code="" scaleX="1" scaleY="-1" colour="4294967295" rotation="0"/>
-    <instance objName="thot_1" x="500" y="160" name="inst_B5576DA7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="thot_clock" x="180" y="120" name="inst_692DDB96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="thot_clock" x="940" y="120" name="inst_FFDD0736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="hourglass" x="1360" y="20" name="inst_FE3CC176" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="belle" x="5200" y="0" name="inst_10EB3F08" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="belle_clock" x="5920" y="40" name="inst_44CE2340" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
