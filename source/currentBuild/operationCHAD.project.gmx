@@ -823,8 +823,11 @@
         </sprites>
         <sprites name="102-Yolo">
           <sprites name="flying">
+            <sprite>sprites\yolo_fly_die_spr</sprite>
+            <sprite>sprites\yolo_fly_caught_spr</sprite>
             <sprite>sprites\yolo_fly_spr</sprite>
             <sprite>sprites\yolo_shot_spr</sprite>
+            <sprite>sprites\yolo_fly_caught_2_spr</sprite>
           </sprites>
           <sprites name="moto">
             <sprite>sprites\yolo_vehicle_moto_spr</sprite>
@@ -874,6 +877,20 @@
         <sprite>sprites\hour_glass_spr</sprite>
         <sprite>sprites\belle_spr</sprite>
         <sprite>sprites\belle_clock_spr</sprite>
+        <sprites name="catfish">
+          <sprite>sprites\catfish_body_1_spr</sprite>
+          <sprite>sprites\catfish_body_2_spr</sprite>
+          <sprite>sprites\catfish_body_3_spr</sprite>
+          <sprite>sprites\catfish_body_4_spr</sprite>
+          <sprite>sprites\catfish_body_5_spr</sprite>
+          <sprite>sprites\catfish_water_spr</sprite>
+          <sprite>sprites\black_mask_spr</sprite>
+          <sprite>sprites\catfish_egg_spr</sprite>
+          <sprite>sprites\catfish_egg_small_spr</sprite>
+          <sprite>sprites\fishing_pole_spr</sprite>
+          <sprite>sprites\fish_hook_spr</sprite>
+          <sprite>sprites\fish_hook_busted_spr</sprite>
+        </sprites>
       </sprites>
     </sprites>
     <sprites name="environment">
@@ -1872,7 +1889,6 @@
       </objects>
       <object>objects\pumpkin_moto</object>
       <objects name="005-Thot Paradise">
-        <object>objects\PC_fly</object>
         <object>objects\white_knight</object>
         <object>objects\thot_1</object>
         <object>objects\thot_chamber</object>
@@ -1892,6 +1908,25 @@
         <object>objects\hourglass</object>
         <object>objects\belle</object>
         <object>objects\belle_clock</object>
+        <objects name="catfish">
+          <object>objects\catfish_controller</object>
+          <object>objects\ripple_drawer</object>
+          <object>objects\catfish_water_strip</object>
+          <objects name="swim">
+            <object>objects\catfish_head</object>
+            <object>objects\catfish_surface</object>
+            <object>objects\catfish_egg</object>
+            <object>objects\catfish_seg</object>
+          </objects>
+          <objects name="fish">
+            <object>objects\fishing_controller</object>
+            <object>objects\cat_fishing_surface</object>
+            <object>objects\fishing_base</object>
+            <object>objects\fishing_seg</object>
+            <object>objects\fishing_pole</object>
+            <object>objects\fishing_hook</object>
+          </objects>
+        </objects>
       </objects>
     </objects>
     <objects name="colliders">
@@ -2004,6 +2039,8 @@
     <object>objects\obj_control</object>
     <object>objects\obj_shader</object>
     <object>objects\obj_player</object>
+    <object>objects\PC_fly</object>
+    <object>objects\PC_fly_die</object>
     <object>objects\test_characters</object>
   </objects>
   <rooms name="rooms">
