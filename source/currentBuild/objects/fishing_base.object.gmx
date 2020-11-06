@@ -36,9 +36,11 @@ LOSEHOOK=7
 
 WAIT=8
 
+ALLDONE=9
+
 DONEFISHIN=false
 
-PULLmax=4
+PULLmax=6
 
 PULLnum=0
 
@@ -116,6 +118,9 @@ BASEang=120
 state=RISE
 
 motion_set(BASEang,2)
+
+PULLwaittime=60
+PULLnoise=30
 
 
 </string>
@@ -245,23 +250,48 @@ if(state=DOWN){
     
     if(CURVE&gt;=CURVEmaxUP){
     
+    
+    //DONE FISHING/////////////////////////////////////////////////////////////
     if(DONEFISHIN=true){
     
     state=LOSEHOOK
     
     
-    //code that applies to fishing hook getting busted
-    with(fishing_hook){
+    with(PC_fly){
     
-        state=BUSTED
-        alarm[0]=2
-        }
+        CAUGHT=false
     
     }
     
+    //code that applies to fishing hook getting busted
+    with(fishing_hook){
+    
+        if not(state=BUSTED){
+        state=BUSTED
+        alarm[0]=2
+        motion_set(90,2)
+        
+            }
+        
+        }
+        
+        
+     //send pole back
+     with(fishing_pole){
+        alarm[1]=POSTBUSTtime
+        state=DONE
+        }
+        
+    
+    }
+    //END OF DONEFISHIN' CODE/////////////////////////////////////////////////
+    
+    
+    
+    //cast again
     if(DONEFISHIN=false){
         state=WAIT
-        alarm[2]=180
+        alarm[2]=PULLwaittime+random(PULLnoise)
         }
         
         
@@ -323,6 +353,21 @@ if(y&lt;ystart-60){
     state=BOB
     
     alarm[0]=60
+}
+
+
+if(state=ALLDONE){
+
+
+    if(y&gt;fishing_controller.y+100){
+        instance_destroy()
+        with(fishing_controller)
+            instance_destroy()
+            
+           with(cat_fishing_surface){
+            alarm[0]=2
+            } 
+        }
 }
 </string>
           </argument>

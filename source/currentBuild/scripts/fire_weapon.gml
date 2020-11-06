@@ -101,4 +101,4 @@ if (global.CFG[config.particles])
     }
 
 // sound
-snd_play_3d(x,y,weapon_snd[cur_weapon],0.5,1);
+snd_play(weapon_snd[cur_weapon],0.5,1);

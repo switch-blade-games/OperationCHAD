@@ -8,7 +8,7 @@
 // argument[3] = pitch variance
 // argument[4] = volume
 
-exit
+
 
 var _sx = argument[0];
 var _sy = argument[1];

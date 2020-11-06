@@ -114,6 +114,9 @@ PC_fly.x+=VIEWspe
 if(view_xview[0]+400&gt;=room_width){
     view_xview[0]=room_width-400
     state=DONE
+    
+    if(room=thot_room)
+        belle.alarm[0]=120
     }
 }
 

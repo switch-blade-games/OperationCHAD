@@ -42,6 +42,10 @@ PULL=6
 
 DOWN=5
 
+DONE=7
+
+FINALDOWN=8
+
 DOWNang=45
 
 PULLmax=100
@@ -55,7 +59,66 @@ motion_set(110,2)
 
 instance_create(x,y,fishing_hook)
 
+POSTBUSTtime=120
 
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(state=FINALDOWN){
+
+    with(fishing_base){
+    
+        state=ALLDONE
+        motion_set(270,1)
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///FINAL DOWN movement
+
+motion_set(300,2)
+
+state=FINALDOWN
 </string>
           </argument>
         </arguments>
@@ -130,6 +193,19 @@ if(state=CAST){
             state=SEEK
     }
 }
+
+//destroy once low enough
+if(state=FINALDOWN){
+
+    if(instance_number(fishing_controller)=1){
+    
+        if(y&gt;fishing_controller.y+100)
+            instance_destroy()
+        }
+
+    if(y&gt;view_yview[0]+400)
+        instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -161,13 +237,28 @@ HOOKx=x+lengthdir_x(LEN,DIR+image_angle)
 
 HOOKy=y+lengthdir_y(LEN,DIR+image_angle)
 
+if(instance_number(fishing_hook)=1){
 
 draw_set_color(WHITE)
-draw_line(HOOKx,HOOKy,fishing_hook.x,fishing_hook.y)
 
-draw_sprite(node_spr,-1,HOOKx,HOOKy)
 
-draw_text(x,y-100,image_angle)
+//4=BUSTED for fishing hook
+
+
+//migrated to cat_fishing_surface
+
+
+
+}
+
+if(image_angle&gt;10)
+image_angle=10
+
+//draw_sprite(node_spr,-1,HOOKx,HOOKy)
+
+//draw_text(x,y-100,image_angle)
+
+//draw_text(view_xview[0]+100,view_yview[0]+100,'pole y' + string(y))
 </string>
           </argument>
         </arguments>

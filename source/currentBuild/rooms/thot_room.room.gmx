@@ -13,8 +13,9 @@
   <code>instance_create(0,0,flying_cam);
 
 instance_create(0,0,thot_BG_drawer)
+background_color=DARKpurple
 
-instance_create(0,0,catfish_controller)</code>
+//instance_create(0,0,catfish_controller)</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
@@ -55,7 +56,7 @@ instance_create(0,0,catfish_controller)</code>
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="PC_fly" x="5720" y="120" name="inst_F63BB9D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="PC_fly" x="5240" y="120" name="inst_F63BB9D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2160" y="0" name="inst_E03B7890" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2200" y="0" name="inst_72457516" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_light" x="2240" y="0" name="inst_E90896FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -436,7 +437,8 @@ instance_create(0,0,catfish_controller)</code>
     <instance objName="thot_clock" x="180" y="120" name="inst_692DDB96" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="thot_clock" x="940" y="120" name="inst_FFDD0736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="hourglass" x="1360" y="20" name="inst_FE3CC176" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="fishing_controller" x="5940" y="160" name="inst_78A87BDC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="belle" x="5200" y="0" name="inst_42890ABF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="belle_clock" x="5940" y="40" name="inst_BF3119A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

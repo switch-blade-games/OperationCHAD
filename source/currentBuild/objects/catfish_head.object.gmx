@@ -27,6 +27,10 @@
             <kind>1</kind>
             <string>instance_create(0,0,catfish_surface)
 
+LAPmax=3
+
+LAPS=0
+
 
 EGGshots=4
 
@@ -264,6 +268,8 @@ if(SWIMstate=SWIMdown){
     
 ///when fish head is off screen
 
+
+//right off screen
 if(SWIMdir=SWIMright){
 
 
@@ -271,6 +277,19 @@ if(x&gt;view_xview[0]+400+SWIMmargin){
 
     SWIMdir=SWIMleft
     x-=1
+    
+    LAPS+=1
+    
+    if(LAPS=LAPmax){
+        with(catfish_surface)
+            alarm[0]=2
+        with(catfish_seg)
+            instance_destroy()
+        with(catfish_egg)
+            instance_destroy()
+        instance_destroy()
+        
+    }
     
     SWIMybase=view_yview[0]+60+random(120)
     y=SWIMybase
@@ -284,12 +303,16 @@ if(x&gt;view_xview[0]+400+SWIMmargin){
     
 }
 
+
+//off scren left
 if(SWIMdir=SWIMleft){
 
 
 if(x&lt;view_xview[0]-SWIMmargin){
     SWIMdir=SWIMright
     x+=1
+    
+    LAPS+=1
     
     SWIMybase=view_yview[0]+60+random(120)
     y=SWIMybase
@@ -361,7 +384,7 @@ else
 image_yscale=-1
 
 
-//draw_text(x,y,HARMplayer)
+draw_text(x,y+40,LAPS)
 
 //draw_text(view_xview[0]+20,view_yview[0]+20,life)
 

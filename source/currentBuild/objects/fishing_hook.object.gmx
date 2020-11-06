@@ -45,7 +45,7 @@ ON=true
 
 FLASHrate=10
 
-BUSTgrav=0.1
+BUSTgrav=0.05
 
 
 </string>
@@ -102,7 +102,7 @@ ON=true
 alarm[1]=FLASHrate
 
 
-motion_set(90,2)
+
 
 
 </string>
@@ -127,7 +127,18 @@ motion_set(90,2)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_number(fishing_pole)=0)
+            <string>if(state=BUSTED){
+
+motion_add(270,BUSTgrav)
+
+if(y&gt;view_yview[0]+20+240)
+    instance_destroy()
+    
+}
+
+
+
+if(instance_number(fishing_pole)=0)
 exit
 
 if(state=HANG){
@@ -202,14 +213,7 @@ if(state=PULL){
 
 
 
-if(state=BUSTED){
 
-motion_add(270,BUSTgrav)
-
-if(y&gt;view_yview[0]+20+240)
-    instance_destroy()
-    
-}
 
 </string>
           </argument>
@@ -242,7 +246,9 @@ image_angle-=10
 sprite_index=fish_hook_busted_spr
 }
 
-draw_self()
+//draw_self()
+
+//draw_text(x,y-20,state)
 </string>
           </argument>
         </arguments>

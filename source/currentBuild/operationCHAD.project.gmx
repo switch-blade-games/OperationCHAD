@@ -79,6 +79,7 @@
         <sound>sound\snd_buckshot</sound>
         <sound>sound\snd_missile</sound>
       </sounds>
+      <sound>sound\player_hit_snd</sound>
     </sounds>
     <sounds name="effects">
       <sound>sound\explode_snd</sound>
@@ -875,8 +876,11 @@
         <sprite>sprites\stacy_time_spr</sprite>
         <sprite>sprites\clock_big_spr</sprite>
         <sprite>sprites\hour_glass_spr</sprite>
-        <sprite>sprites\belle_spr</sprite>
-        <sprite>sprites\belle_clock_spr</sprite>
+        <sprites name="belle">
+          <sprite>sprites\belle_spr</sprite>
+          <sprite>sprites\belle_clock_spr</sprite>
+          <sprite>sprites\belle_arm_spr</sprite>
+        </sprites>
         <sprites name="catfish">
           <sprite>sprites\catfish_body_1_spr</sprite>
           <sprite>sprites\catfish_body_2_spr</sprite>
@@ -1131,7 +1135,7 @@
       </scripts>
       <scripts name="audio">
         <script>scripts\snd_play.gml</script>
-        <script>scripts\snd_play_3d.gml</script>
+        <script>scripts\snd_play_3dd.gml</script>
         <script>scripts\snd_loop.gml</script>
         <script>scripts\mus_loop.gml</script>
         <script>scripts\mus_stop.gml</script>
@@ -1906,8 +1910,11 @@
         <object>objects\thot_BG_drawer</object>
         <object>objects\thot_clock</object>
         <object>objects\hourglass</object>
-        <object>objects\belle</object>
-        <object>objects\belle_clock</object>
+        <objects name="belle">
+          <object>objects\belle</object>
+          <object>objects\belle_clock</object>
+          <object>objects\belle_arm</object>
+        </objects>
         <objects name="catfish">
           <object>objects\catfish_controller</object>
           <object>objects\ripple_drawer</object>
