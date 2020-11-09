@@ -1,6 +1,8 @@
 on_ground = false;
 yspeed = -8;
 
+
+exit
 repeat(5)
     {
     var inst = instance_create(x+random_range(-8,8),y+16,obj_dust);

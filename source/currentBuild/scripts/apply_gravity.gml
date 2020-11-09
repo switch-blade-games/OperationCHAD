@@ -15,7 +15,7 @@ switch(move_state)
             if (land_sfx)
                 {
                 land_sfx = false;
-                snd_play(choose(snd_land_stone_1,snd_land_stone_2,snd_land_stone_3),0.1,0.2);
+                //snd_play(choose(snd_land_stone_1,snd_land_stone_2,snd_land_stone_3),0.1,0.2);
                 }
             }
         

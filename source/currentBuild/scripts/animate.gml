@@ -36,7 +36,7 @@ switch(move_state)
                     if (step_sfx)
                         {
                         step_sfx = false;
-                        snd_play(choose(snd_step_stone_1,snd_step_stone_2,snd_step_stone_3),0.1,0.2);
+                        //snd_play(choose(snd_step_stone_1,snd_step_stone_2,snd_step_stone_3),0.1,0.2);
                         }
                     }
                 else
@@ -104,7 +104,7 @@ switch(move_state)
                     if (step_sfx)
                         {
                         step_sfx = false;
-                        snd_play(choose(snd_step_metal_1,snd_step_metal_2,snd_step_metal_3),0.1,0.2);
+                        //snd_play(choose(snd_step_metal_1,snd_step_metal_2,snd_step_metal_3),0.1,0.2);
                         }
                     }
                 else

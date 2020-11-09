@@ -75,6 +75,7 @@ var ldy = lengthdir_y(1,aim);
 if (weapon_case[cur_weapon] >= 0)
     {
     // bullet/shell casing
+    /*
     var inst = instance_create(x+ldx*12,y+muzzle_y+ldy*12,obj_casing);
     if (face > 0)
         inst.direction = aim+random_range(130,160);
@@ -83,6 +84,7 @@ if (weapon_case[cur_weapon] >= 0)
     inst.speed = 4+random(2);
     inst.image_speed = 0;
     inst.image_index = weapon_case[cur_weapon];
+    */
     }
 
 if (global.CFG[config.particles])
