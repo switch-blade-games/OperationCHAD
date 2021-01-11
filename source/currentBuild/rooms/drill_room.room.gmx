@@ -13,13 +13,9 @@
   <code>room_init()
 
 with(JB_cam){
-    state = UP;
-    
+    state = camState.up;
     y=room_height
-    
-}
-    
-
+    }    
 
 instance_create(0,0,drill_controller)</code>
   <enableViews>-1</enableViews>

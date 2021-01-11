@@ -321,7 +321,7 @@ draw_set_color(WHITE);
 draw_text(25,2,"="+string(global.P1LIVES));
 
 // weapons
-for(var i=0; i&lt;obj_player.weapons; i++;)
+for(var i=0; i&lt;min(3,obj_player.weapons); i++;)
     {
     draw_sprite(HUD_weapon_bg,i,40 + i*20,0)
     draw_sprite(HUD_weapon_icon,i,40 + i*20,0)

@@ -11,7 +11,7 @@ if (mb_id != mb_id_last)
         if (mb_land_sfx)
             {
             mb_land_sfx = false;
-            snd_play(choose(snd_land_metal_1,snd_land_metal_2,snd_land_metal_3),0.1,0.2);
+            //snd_play(choose(snd_land_metal_1,snd_land_metal_2,snd_land_metal_3),0.1,0.2);
             }
         }
     }

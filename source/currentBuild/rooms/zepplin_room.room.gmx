@@ -12,7 +12,14 @@
   <showcolour>-1</showcolour>
   <code>background_visible[1] = false;
 
-room_init();</code>
+room_init();
+
+with(JB_cam)
+    {
+    state = camState.locked;
+    x = 220;
+    y = 140;
+    }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
